@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <title>Configuring Git</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+  <header id="site-header">
+    <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+    <div><p>Metamation Developer Notes</p></div>
+  </header>
+  <div id="site-main">
+    <nav id="site-nav">
+      <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Tools</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a class="active" href="configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    </nav>
+    <div id="site-nav-right">
+      <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Tools</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="configuregit.html">Configuring Git</a>
+  </div>
+</nav>
+
+      <div id="site-crumb-below">
+        <div id="site-toc-left">
+          <article id="article">
+            <h1>Configuring Git</h1>
+<div class="sect1">
+<h2 id="_pre_requisites">Pre-requisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Download and install <strong>WinMerge</strong>. Make sure this is in the path (turn on the <strong>Add WinMerge folder
+to your system path</strong> switch) when you install this. We will configure Git to use this as a <em>diff</em> tool,
+and the <strong>Flux.Test</strong> system also uses WinMerge to display differences in text files when tests fail.</p>
+</div>
+<div class="paragraph">
+<p>Download and install <strong>Notepad++</strong>. We will configure this as the <em>message editor</em> for Git.</p>
+</div>
+<div class="paragraph">
+<p>Download and install <strong>P4Merge</strong>. We will use this as the  <em>3-way merge</em> tool for Git.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_git_installation">Git Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Download and install <strong>git</strong> from <strong>git-scm.com/downloads/win</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Overrides from the default installation process are listed below. The headings in bold are the
+Git Setup dialog pages, and the notes below are the recommendations for that page.</p>
+</div>
+<div class="sect2">
+<h3 id="_select_components">Select Components</h3>
+<div class="paragraph">
+<p>Make sure to turn on the check-box to install <strong>Git LFS (Large File Support)</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_choosing_the_default_editor_used_by_git">Choosing the default editor used by Git</h3>
+<div class="paragraph">
+<p>Install <strong>Notepad++</strong> first, and during the Git installation, select that as the default editor.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adjusting_the_name_of_the_initial_branch_in_new_repositories">Adjusting the name of the initial branch in new repositories</h3>
+<div class="paragraph">
+<p>Override the default branch name for new repositories, and set that to <strong>main</strong> (this is what
+we are using for the Flux repositories).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_the_line_ending_conversions">Configuring the line ending conversions</h3>
+<div class="paragraph">
+<p>Make sure to select <strong>Checkout as-is, commit as-is</strong>. In short, we don’t want any LF to
+CRLF conversions or vice versa. We have a lot of text and HTML files in our test-data set that use
+Unix style endings and this conversion will cause tests to fail.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_the_terminal_emulator_to_use_with_git_bash">Configuring the terminal emulator to use with Git Bash</h3>
+<div class="paragraph">
+<p>I recommend that you choose to use the Windows Default Console window than to use MinTTY.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_choose_the_default_behavior_of_git_pull">Choose the default behavior of "git pull"</h3>
+<div class="paragraph">
+<p>Make sure to select <strong>Only ever fast-forward</strong>. This is especially important for folks like
+ us who are coming over from Mercurial. By default a <strong>git pull</strong> will do a merge of the incoming
+ commit, and that is usually not what you want unless we can do a fast-forward merge. The equivalent
+ to a <strong>hg pull</strong> is really a <strong>git fetch</strong> and then one can do a <strong>git merge</strong> appropriately.
+ I think this is definitely better than doing silent merges of the non-fast-forward variety.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_choose_a_credential_helper">Choose a credential helper</h3>
+<div class="paragraph">
+<p>Pick the <strong>Git Credential Manager Core</strong> – this will make it easy to log in just once to Github
+and you will not keep seeing name and password prompts each time.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_one_time_git_setup">One-time Git setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Edit your <strong>global</strong> git configuration file using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git config --global --edit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This should open up notepad and load your global config file. Edit your config file, and make it
+look similar to the config file I have listed below (change the email and name, of course).
+Note that I have installed the tools like notepad, winmerge etc to the C:/Apps folder, and so
+my config uses those paths. If you use a different path (like <strong>Program Files</strong>, make the appropriate
+changes).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[user]
+	email = gandalf@shire.com
+	name = gandalf
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[core]
+	autocrlf = false
+	whitespace = -trailing-space,cr-at-eol
+	editor = 'C:/Apps/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+
+[alias]
+	st = status
+	sw = switch
+	di = difftool --dir-diff
+	tip = log -1 head
+	undo = restore
+	lg = log -n 20 --graph --format='%h  %C(yellow)%an%Creset  %C(green)%as%Creset  %s %C(brightblue)%d%Creset'
+	find = log --format='%h  %C(yellow)%an%Creset  %C(green)%as%Creset  %s %C(brightblue)%d%Creset' --grep
+
+[diff]
+	tool = winmerge
+[difftool]
+	prompt = true
+[difftool "winmerge"]
+	cmd = 'C:/Apps/WinMerge/WinMergeU.exe' -e -r -dl \"Old $BASE\" -dr \"New $BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+
+[merge]
+	tool = P4Merge
+	conflictstyle = diff3
+[mergetool]
+	prompt = true
+[mergetool "P4Merge"]
+	path = 'C:/Apps/P4Merge/P4Merge.exe'
+	keepBackup = false</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_git_aliases">Git aliases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Note that the git configuration file above has a number of entries in the <strong>[alias]</strong> section. These
+set up <em>aliases</em>, or <em>shortcuts</em> that can simplify your use of git. For example, even though we have
+set up WinMerge as out diff tool, the normal <code>git diff</code> command will not use it (it will output
+the results to the console). To use the diff tool, you need to use <code>git difftool --dir-diff</code>. This
+can get tedious to keep typing each time, so I have set up an alias called <code>git di</code> to do just this.</p>
+</div>
+<div class="paragraph">
+<p>Likewise, the <code>git st</code> (for status), <code>git undo</code> to revert changes back and <code>git sw</code> to switch to
+a different branch are useful shortcuts. We also set up <code>git find</code> as a shortcut to search through
+commit messages. For example, here&#8217;s a typical interaction, where we are trying to find the commits
+related to a particular case:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/1002.1.png" alt="Using git find" width="802">
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly, the <code>git lg</code> shortcut is useful to provide a quick view at recent history:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/1002.2.png" alt="Using git lg" width="1082">
+</div>
+</div>
+<div class="paragraph">
+<p>You can create your own aliases by editing the global config file, using <code>git config --global --edit</code>.</p>
+</div>
+</div>
+</div>
+
+          </article>
+        </div>
+        <div id="site-toc-holder">
+          <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_pre_requisites">Pre-requisites</a>
+    </li>
+    <li level="1">
+      <a href="#_git_installation">Git Installation</a>
+    </li>
+    <li level="2">
+      <a href="#_select_components">Select Components</a>
+    </li>
+    <li level="2">
+      <a href="#_choosing_the_default_editor_used_by_git">Choosing the default editor used by Git</a>
+    </li>
+    <li level="2">
+      <a href="#_adjusting_the_name_of_the_initial_branch_in_new_repositories">Adjusting the name of the initial branch in new repositories</a>
+    </li>
+    <li level="2">
+      <a href="#_configuring_the_line_ending_conversions">Configuring the line ending conversions</a>
+    </li>
+    <li level="2">
+      <a href="#_configuring_the_terminal_emulator_to_use_with_git_bash">Configuring the terminal emulator to use with Git Bash</a>
+    </li>
+    <li level="2">
+      <a href="#_choose_the_default_behavior_of_git_pull">Choose the default behavior of "git pull"</a>
+    </li>
+    <li level="2">
+      <a href="#_choose_a_credential_helper">Choose a credential helper</a>
+    </li>
+    <li level="1">
+      <a href="#_one_time_git_setup">One-time Git setup</a>
+    </li>
+    <li level="1">
+      <a href="#_git_aliases">Git aliases</a>
+    </li>
+  </ul>
+</aside>
+
+        </div>
+      </div>
+      <nav class="pagination">
+  <span class="prev"><a href="codeformatting.html">Code Formatting</a></span>
+  <span class="next"><a href="bento.html">Documentation using Bento</a></span>
+</nav>
+
+    </div>
+  </div>
+  <footer id="site-footer">
+    <div class="left">
+      <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+    </div>
+    <div class="middle"></div>
+    <div class="right">
+      <p>Compiled by Bento</p>
+      <img src="../res/bento.png" />
+    </div>
+  </footer>
+  <script src="../res/site.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

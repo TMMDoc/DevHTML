@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <title>Release notes for Flux</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+  <header id="site-header">
+    <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+    <div><p>Metamation Developer Notes</p></div>
+  </header>
+  <div id="site-main">
+    <nav id="site-nav">
+      <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Flux Guidelines</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a class="active" href="releasenotes.html">Release notes for Flux</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    </nav>
+    <div id="site-nav-right">
+      <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Flux Guidelines</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="releasenotes.html">Release notes for Flux</a>
+  </div>
+</nav>
+
+      <div id="site-crumb-below">
+        <div id="site-toc-left">
+          <article id="article">
+            <h1>Release notes for Flux</h1>
+<div class="sect1">
+<h2 id="_writing_release_notes_for_flux">Writing Release Notes for Flux</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Release Notes for Flux are created using the following <em>distributed process</em>.</p>
+</div>
+<div class="paragraph">
+<p>Flux typically ships every Monday, and we always have a <em>build in progress</em>. The release notes for
+that upcoming build are stored in the <strong>Flux.Main.docx</strong> shared file in the
+<a href="https://tinyurl.com/yf6k4dzc"><strong>NextBuild</strong></a> OneDrive folder.</p>
+</div>
+<div class="sect2">
+<h3 id="_when_a_case_is_fixed">When a Case is Fixed</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When somebody writes code for a case and creates a pull request, they should update this document
+and add the release notes to the <strong>Pull request</strong> section. This is in addition to updating the
+release notes on Fogbugz itself.</p>
+</li>
+<li>
+<p>The case may go through one or more rounds of pull request and rewrite. If any of these changes
+may update the release notes, they should be updated in the docx file as well (so the
+release notes are always up-to-date and match the contents of the current pull request).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_when_a_pull_request_is_merged">When a Pull Request is merged</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When the pull request is finally approved and <strong>merged</strong> into main, the person doing the merge
+will move that release note from the Pull request section to the Cases fixed section.</p>
+</li>
+<li>
+<p>If the fix is required in an older build, whoever does the <strong>cherry-pick</strong> should move the fix from
+Flux.Main.docx to the appropriate document like Flux.Canopus.docx</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_when_a_build_is_shipped">When a Build is Shipped</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The Flux.Main.docx is saved with a name like Flux.496.docx in the Flux/ReleaseNotes Onedrive
+folder below:</p>
+</li>
+<li>
+<p>All sections except the Cases Fixed section are deleted from this DOCX (for example the Pull
+request section, the Template section etc). The appropriate build number and shipping date
+are added at the top, and the file is saved again for permanent archive.</p>
+</li>
+<li>
+<p>The file is then exported to PDF (to a local folder) and used as the release notes for that build.</p>
+</li>
+<li>
+<p>The Cases Fixed section of the Flux.Main.docx is then cleared to prepare for the next build.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Flux/Bend and Flux/Cut fixes are all merged into this same release notes.
+There is no longer a separate Flux Cut revision number, and we will no longer append a Flux Cut
+release notes section to the Flux release notes.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All older release notes are archived in the <a href="https://tinyurl.com/56rbd5e6"><strong>ReleaseNotes</strong></a>
+OneDrive folder.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+          </article>
+        </div>
+        <div id="site-toc-holder">
+          <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_writing_release_notes_for_flux">Writing Release Notes for Flux</a>
+    </li>
+    <li level="2">
+      <a href="#_when_a_case_is_fixed">When a Case is Fixed</a>
+    </li>
+    <li level="2">
+      <a href="#_when_a_pull_request_is_merged">When a Pull Request is merged</a>
+    </li>
+    <li level="2">
+      <a href="#_when_a_build_is_shipped">When a Build is Shipped</a>
+    </li>
+  </ul>
+</aside>
+
+        </div>
+      </div>
+      <nav class="pagination">
+  <span class="prev"><a href="fluxgitworkflow.html">Flux Git Workflow</a></span>
+</nav>
+
+    </div>
+  </div>
+  <footer id="site-footer">
+    <div class="left">
+      <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+    </div>
+    <div class="middle"></div>
+    <div class="right">
+      <p>Compiled by Bento</p>
+      <img src="../res/bento.png" />
+    </div>
+  </footer>
+  <script src="../res/site.js"></script>
+  
+</body>
+</html>

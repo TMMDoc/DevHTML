@@ -1,0 +1,455 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <title>Flux Git Workflow</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+  <header id="site-header">
+    <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+    <div><p>Metamation Developer Notes</p></div>
+  </header>
+  <div id="site-main">
+    <nav id="site-nav">
+      <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Flux Guidelines</a>
+      <ul>
+        <li><button class="tree blank"></button><a class="active" href="fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="releasenotes.html">Release notes for Flux</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    </nav>
+    <div id="site-nav-right">
+      <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Flux Guidelines</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="fluxgitworkflow.html">Flux Git Workflow</a>
+  </div>
+</nav>
+
+      <div id="site-crumb-below">
+        <div id="site-toc-left">
+          <article id="article">
+            <h1>Flux Git Workflow</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ll explain here how to set up a computer for Flux development. We assume you
+have already read the <a href="../tools/configuregit.html">Git Configuration</a> document.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clone_the_flux_repository">Clone the Flux repository</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s assume you want to set this up at <code>C:/Work/Flux</code>. Use this command sequence:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">md C:\Work
+cd /d C:\Work
+git clone https://github.com/Metamation/Flux
+subst X: C:\Work\Flux</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: Add X:\Src\Bin to your path for convenience. The instructions below assume
+that you have done this</p>
+</div>
+<div class="paragraph">
+<p>{{% notice info "Authenticating Git" %}}
+The first time you use Git to access a GitHub repo on this computer, you will get
+an authentication prompt asking you to select an authentication method. Use the
+Web browser method and follow the instructions to log into Github and authenticate
+this device.
+{{% /notice %}}</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_add_the_pre_commit_hook_to_your_git_folder">Add the pre-commit hook to your Git folder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We need a <strong>pre-commit hook</strong> to prevent accidental commits directly into the main
+branch. The hook executable is already part of the Flux repository, but you need
+to create the pre-commit file in the <strong>X:/.git/hooks</strong> folder with the following
+content (this is just a Bash script that runs the <strong>PreCommit.exe</strong> filter).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">#!/bin/sh
+exec Tools/bin/PreCommit.exe</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This step is very imporant – don’t skip it!</p>
+</div>
+<div class="sect2">
+<h3 id="_testing_the_pre_commit_hook">Testing the pre-commit Hook</h3>
+<div class="paragraph">
+<p>It&#8217;s important to test that the pre-commit hook is set up correctly.
+Go to <strong>X:/</strong>, then switch to the main branch and try to commit (with no changes):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git switch main
+git commit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the hook is correctly installed, you should see:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">**ABORT**: Do not commit to the main branch.
+Unstage your work from main using 'git restore --staged',
+Create a new branch using 'git switch --create NewBranchName',
+and commit your work there.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you don’t see this error message you have not installed the pre-commit hook correctly.
+Do not proceed further, ask one of the Flux developers for help.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: The source code for the <strong>PreCommit</strong> tool can be found in <strong>Tools/Git</strong>
+in the Flux source tree.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_first_build_of_flux_and_running_flux_test">First build of Flux, and running Flux.Test</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Set up your environment variables:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add <code>X:\Src\Bin</code> to the PATH (the instructions below assume this)</p>
+</li>
+<li>
+<p>Set the environment variable <code>FLUXDEVELOPER</code> to 1</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then, use this command sequence:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">dotnet nuget add source X:\Src\Lib
+cd /d X:\Src
+dotnet build
+flux.test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first line (which you have to do only once) adds the X:/Src/Lib path to the <strong>NuGet</strong>
+search path (we store some private NuGet packages used by Flux there). The <code>dotnet build</code>
+command builds all the DLLs and EXEs used by Flux (including the Flux tests). We run those
+tests in the last line.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_working_on_flux_cases">Working on Flux cases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here is the basic workflow you use to work on Flux cases. As you get more familiar
+with Git you can bend these rules <em>if you know what you are doing</em>.</p>
+</div>
+<div class="paragraph">
+<p>In general, we are going to use a branch for each case and these branches will be
+merged into main periodically (typically daily). There are no <em>per-developer</em>
+branches. New case branches are always created starting from <strong>main</strong>. There are no
+commits to the main branch directly – that grows only by merging in development from
+other branches.</p>
+</div>
+<div class="paragraph">
+<p>First, create a new branch to work on. Make sure to base that branch on the
+current version of main like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git switch main                        &lt;- switch to main first
+git pull                               &lt;- pull the latest changes, this will never cause a conflict
+git switch --create Case.12345         &lt;- create a new branch that forks from main</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the <code>git pull</code> will <em>never</em> cause a conflict since you will have no
+local changes on the main branch. Now, work as normal and periodically stage and
+commit your changes into the branch you created. Once you are done, push the branch to
+the Github server (which is called origin). The first time you do this, you need to
+create a corresponding upstream branch on the server that mirrors the local
+<strong>Case.12345</strong> branch you created. So you need to do this (if you forget this, git push will
+helpfully remind you)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git push --set-upstream origin Case.12345</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Subsequently, you can just do a git push. Eventually, you may have a few commits on this branch
+and you are then done. Go to <strong>github.com</strong> and create a pull request for this branch.
+This signals to me that there are changes ready to be merge into main,
+and they will merge the code to main.</p>
+</div>
+<div class="paragraph">
+<p>Meanwhile, you can  start working on another case by creating a new branch and starting
+afresh. Remember to do the sequence with git switch main etc again.
+<em>Don’t fork the new branch from your already existing Case.12345 branch!</em></p>
+</div>
+<div class="sect2">
+<h3 id="_switching_between_cases">Switching between cases</h3>
+<div class="paragraph">
+<p>Now with Git you have the flexibility to switch to some other case and work there without having
+to <em>complete</em> your work on the first case. Suppose you also want start working on <strong>Case.67890</strong>
+without necessarily completing the first case. Commit your changes to <strong>Case.12345</strong> to your local
+branch and make sure you have a clean working directory. Now, create a new branch
+(<em>remembering to switch to <strong>main</strong> first</em>) and work there. You can now commit changes to that branch,
+switch back to the previous one and work on both of them in parallel.</p>
+</div>
+<div class="paragraph">
+<p>Finally, when one of them is done, you can raise a pull request for this. This also gives me
+the flexibility to merge <strong>Case.67890</strong> or <strong>Case.12345</strong> in any order without necessarily having to merge
+the other one. The pull request in Github is structured like a discussion. If the lead is happy
+with some changes, they can use the pull request to make some notes. You adjust the code further
+based on these notes, commit and push again. This throws the pull request back to me and your
+code will get reviewedagain. After some back and forth, the branch is judged good to go and is
+merged. After this, we typically delete the branch (like <strong>Case.12345</strong>) since it has served
+its purpose.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pull_periodically_from_main">Pull periodically from main</h3>
+<div class="paragraph">
+<p>Each time you start work on a new case, you are always starting with the latest main, thanks to
+the <code>git switch main / git pull</code> that you do before creating a new branch. However, if work on a
+case takes a while, it might be useful for you to periodically merge the latest changes from
+<strong>main</strong> into your branch. Let’s say you are working on <strong>Case.12345</strong>. You will then do:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git add Changed.cs                                  &lt;- assume we are now on Case.12345 branch
+git commit -m "Case.12345 – Add local rendering"    &lt;- commit all changes here
+git switch main                                     &lt;- wwitch to the main branch
+git pull                                            &lt;- get the latest version of it
+git switch Case.12345                               &lt;- switch back to your work branch
+git merge main                                      &lt;- merge the changes in main</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this merge may cause a conflict if somebody else has edited the same area of the
+same file. You have to resolve this conflict.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_merge_conflicts">Handling merge conflicts</h3>
+<div class="paragraph">
+<p>Occassionally you will get merge conflicts (though less often than you would with Mercurial).
+Let&#8217;s take a simple example. Suppose we started with a text file like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/1003.1.png" alt="Origina" width="457">
+</div>
+</div>
+<div class="paragraph">
+<p>Next, developer A, working on some branch changed this as follows (the changes are highlighted
+in yellow):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/1003.2.png" alt="Changes by A" width="457">
+</div>
+</div>
+<div class="paragraph">
+<p>Meanwhile, developer B, working on some other branch changed this same file as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/1003.3.png" alt="Changes by B" width="457">
+</div>
+</div>
+<div class="paragraph">
+<p>Now suppose developer A pushes their change and files a pull request. I will merge this into the
+main branch and at this time, there will be no conflicts – the merge result will be a
+<em>fast-forward merge</em> (see the Git documentation to understand this).</p>
+</div>
+<div class="paragraph">
+<p>Later, developer B, wanting to continue working on the code, tries to pull the changes from
+main (what we used to call a refresh in Mercurial), like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git switch main
+git pull                       &lt;- get the latest changes on main
+git switch BranchB
+git merge main                 &lt;- and try to merge them in</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will get a result from git that looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Auto-merging greeting.txt
+CONFLICT (content): Merge conflict in greeting.txt
+Automatic merge failed; fix conflicts and then commit the result.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point, you have two options:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You can resolve the conflict using the external merge tool by using git mergetool.
+This brings up the conflicts in P4Merge and you can resolve them there.</p>
+</li>
+<li>
+<p>You can just use a text editor to resolve the merge. Each area of conflict will have
+conflict markers around it. In this case, the file is so small that every line of it was involved
+in the conflict so the markers appear like this if you edit greeting.txt:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/1003.4.png" alt="3-Way Merge" width="457">
+</div>
+</div>
+<div class="paragraph">
+<p>Note that there are actually 3 versions of the text shown in the file. The part in <strong>green</strong>
+(in the middle) is the original version from before the branches diverged. The part in <strong>yellow</strong>
+is the local version of the file that was just edited (this is called <em>ours</em> by Git). And the part
+in <strong>cyan</strong> is the remote version of the file that the other person has edited (Git calls
+this <em>theirs</em>). Note that the part in green (the original file) is included here only if you had
+set up <code>conflictstyle = diff3</code> as explained in the section above on setting up the merge tool.
+I find this green text (original) to be very useful when figuring out how to resolve the conflict,
+so I strongly recomment you set up this conflictstyle.</p>
+</div>
+<div class="paragraph">
+<p>Now you can easily clean up the conflict in the text editor since you have all 3 versions
+available and you can pick the exact version you want to keep. Usually, I find this is the
+easiest way for me to work, since I can just search for all occurances of <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> in the code
+and quickly find all the merge conflicts.</p>
+</div>
+<div class="paragraph">
+<p>If you edit the file manually, you will finally do this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git add greeting.txt            &lt;- mark the resolution
+git commit                      &lt;- and complete the merge</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you forget to resolve one of the conflicts, the pre-commit hook we have installed will
+prevent the commit from happening. Edit the offending files again to remove all the conflict
+markers and try the commit again. If this conflict resolution becomes really complex or you are
+unsure of how to resolve some of the conflicts, you can just back out of the whole mess by
+using <code>git merge --abort</code>, push the code as is and file a pull request. Then it becomes my
+problem to merge the incoming changes into main when I am handling the pull request.</p>
+</div>
+</div>
+</div>
+</div>
+
+          </article>
+        </div>
+        <div id="site-toc-holder">
+          <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_clone_the_flux_repository">Clone the Flux repository</a>
+    </li>
+    <li level="1">
+      <a href="#_add_the_pre_commit_hook_to_your_git_folder">Add the pre-commit hook to your Git folder</a>
+    </li>
+    <li level="2">
+      <a href="#_testing_the_pre_commit_hook">Testing the pre-commit Hook</a>
+    </li>
+    <li level="1">
+      <a href="#_first_build_of_flux_and_running_flux_test">First build of Flux, and running Flux.Test</a>
+    </li>
+    <li level="1">
+      <a href="#_working_on_flux_cases">Working on Flux cases</a>
+    </li>
+    <li level="2">
+      <a href="#_switching_between_cases">Switching between cases</a>
+    </li>
+    <li level="2">
+      <a href="#_pull_periodically_from_main">Pull periodically from main</a>
+    </li>
+    <li level="2">
+      <a href="#_handling_merge_conflicts">Handling merge conflicts</a>
+    </li>
+  </ul>
+</aside>
+
+        </div>
+      </div>
+      <nav class="pagination">
+  <span class="prev"><a href="index.html">Flux Guidelines</a></span>
+  <span class="next"><a href="releasenotes.html">Release notes for Flux</a></span>
+</nav>
+
+    </div>
+  </div>
+  <footer id="site-footer">
+    <div class="left">
+      <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+    </div>
+    <div class="middle"></div>
+    <div class="right">
+      <p>Compiled by Bento</p>
+      <img src="../res/bento.png" />
+    </div>
+  </footer>
+  <script src="../res/site.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
