@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <title>SonarCloud analysis for Flux</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+  <header id="site-header">
+    <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+    <div><p>Metamation Developer Notes</p></div>
+  </header>
+  <div id="site-main">
+    <nav id="site-nav">
+      <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Flux Guidelines</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a class="active" href="sonarcloud.html">SonarCloud analysis for Flux</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+    </nav>
+    <div id="site-nav-right">
+      <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Flux Guidelines</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="sonarcloud.html">SonarCloud analysis for Flux</a>
+  </div>
+</nav>
+
+      <div id="site-crumb-below">
+        <div id="site-toc-left">
+          <article id="article">
+            <h1>SonarCloud analysis for Flux</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains the SonarCloud analysis we are doing for Flux.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rules_that_are_turned_off_for_now">Rules that are turned off <em>for now</em>.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following rules ahve been temporarily turned off, and we will need
+to re-enable them one by one as we clean up the code.</p>
+</div>
+<div class="sect2">
+<h3 id="_s3925_iserialiable_should_be_implemented_correctly">S3925: "ISerialiable" should be implemented correctly</h3>
+<div class="paragraph">
+<p>In general, we don&#8217;t use the .Net serialization mechanisms directly in our
+code. However, any Custom Exception types we implement need to implement
+ISerializable if they are to be correctly marshalled across app-domains. This will
+become more important if we build some WebServices that use the Flux API. See <a href="https://bytedev.medium.com/the-art-of-net-custom-exceptions-82f5b1a16ced#:~:text=Custom%20exceptions%20are%20not%20serializable,properties%20you%20might%20have%20defined">Custom Exceptions</a> for an implementation patern.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s2365_properties_should_not_make_collections_or_array_copies">S2365: Properties should not make collections or array copies</h3>
+<div class="paragraph">
+<p>This happens about 150 times in the code. After analysis, I found a few places where
+the performance <em>might</em> be improved. But mostly we are using this to return small collections (like the set of installed tool catalogs etc) that have a few dozen members
+at most.</p>
+</div>
+<div class="paragraph">
+<p>Besides, half of these issues happen in the Flux.API where this would be a breaking
+change. For now, I have turned this off, and we might re-enable later and selectively
+fix only the cases in Flux.Core, and leave the Flux.API intact.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s1133_deprecated_code_should_be_removed">S1133: Deprecated code should be removed</h3>
+<div class="paragraph">
+<p>Code marked with [Obsolete] should be removed - we use this mainly in Flux.API to
+clients of the API a heads-up before removing some methods / properties. However,
+we want to give them a 6-month grace time for removal, during which this code-smell
+would be annoying. So I turned this off.</p>
+</div>
+<div class="paragraph">
+<p>Usages of the [Obsolete] attribute in Flux.API are each tagged with a remove-by date,
+so we can periodically (say once a month) revisit them and remove those that have finished
+their 6-month warning cycle.</p>
+</div>
+</div>
+</div>
+</div>
+
+          </article>
+        </div>
+        <div id="site-toc-holder">
+          <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_rules_that_are_turned_off_for_now">Rules that are turned off <em>for now</em>.</a>
+    </li>
+    <li level="2">
+      <a href="#_s3925_iserialiable_should_be_implemented_correctly">S3925: "ISerialiable" should be implemented correctly</a>
+    </li>
+    <li level="2">
+      <a href="#_s2365_properties_should_not_make_collections_or_array_copies">S2365: Properties should not make collections or array copies</a>
+    </li>
+    <li level="2">
+      <a href="#_s1133_deprecated_code_should_be_removed">S1133: Deprecated code should be removed</a>
+    </li>
+  </ul>
+</aside>
+
+        </div>
+      </div>
+      <nav class="pagination">
+  <span class="prev"><a href="releasenotes.html">Release notes for Flux</a></span>
+</nav>
+
+    </div>
+  </div>
+  <footer id="site-footer">
+    <div class="left">
+      <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+    </div>
+    <div class="middle"></div>
+    <div class="right">
+      <p>Compiled by Bento</p>
+      <img src="../res/bento.png" />
+    </div>
+  </footer>
+  <script src="../res/site.js"></script>
+  
+</body>
+</html>
