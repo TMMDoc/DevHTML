@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
@@ -11,13 +12,13 @@
   <title>SonarCloud analysis for Flux</title>
 </head>
 <body id="site-body" onload="sLoaded()">
-  <header id="site-header">
-    <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
-    <div><p>Metamation Developer Notes</p></div>
-  </header>
-  <div id="site-main">
-    <nav id="site-nav">
-      <div class="treesite">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
   <ul>
     <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
     <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
@@ -27,6 +28,7 @@
       <ul class="hide">
         <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
         <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
         <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
       </ul>
     </li>
@@ -42,9 +44,9 @@
   </ul>
 </div>
 
-    </nav>
-    <div id="site-nav-right">
-      <nav id="site-crumb">
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
   <div>
     <button>
       <img src="../res/home.png">
@@ -59,10 +61,10 @@
   </div>
 </nav>
 
-      <div id="site-crumb-below">
-        <div id="site-toc-left">
-          <article id="article">
-            <h1>SonarCloud analysis for Flux</h1>
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>SonarCloud analysis for Flux</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -116,10 +118,10 @@ their 6-month warning cycle.</p>
 </div>
 </div>
 
-          </article>
-        </div>
-        <div id="site-toc-holder">
-          <aside id="site-toc">
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
   <h3>Contents</h3>
   <ul>
     <li level="1">
@@ -137,25 +139,37 @@ their 6-month warning cycle.</p>
   </ul>
 </aside>
 
-        </div>
-      </div>
-      <nav class="pagination">
+                </div>
+            </div>
+            <nav class="pagination">
   <span class="prev"><a href="releasenotes.html">Release notes for Flux</a></span>
 </nav>
 
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
     </div>
-  </div>
-  <footer id="site-footer">
-    <div class="left">
-      <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
-    </div>
-    <div class="middle"></div>
-    <div class="right">
-      <p>Compiled by Bento</p>
-      <img src="../res/bento.png" />
-    </div>
-  </footer>
-  <script src="../res/site.js"></script>
-  
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
 </body>
 </html>
