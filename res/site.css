@@ -332,3 +332,47 @@
 .hljs-strong {
   font-weight: bold
 }
+
+#searchbox {
+   position: fixed;
+   bottom: 66px;
+   right: 2px;
+   vertical-align: top;
+   display: grid;
+   border-top:0px;
+}
+
+#searchinput {
+   border-top: 0;
+   border-color: lightgray;
+}
+
+   #searchinput:focus {
+      outline: none;
+      border-color: lightblue;
+   }
+
+#results {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   max-width:280px;
+}
+
+   #results li a {
+      border: 1px solid #ddd;
+      margin-top: -1px; /* Prevent double borders */
+      background-color: #f6f6f6;
+      padding: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      color: black;
+      display: block
+   }
+      #results li a:focus {
+         background-color: lightblue
+      }
+
+      #results li a:hover:not(.header) {
+         background-color: #eee;
+      }
