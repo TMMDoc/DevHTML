@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Build a Flux SDK Program</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Flux Guidelines</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a class="active" href="usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Flux Guidelines</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="usingfluxsdk.html">Build a Flux SDK Program</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Build a Flux SDK Program</h1>
+<div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains to users about how to use Flux API binaries in an application to implement the API functionalities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_locate_api_resources">Locate API Resources</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Default location: C:\Program Files\Metamation\Flux SDK
+
+Note: If the SDK is not installed in the default path, then obtain the installed location.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>API Binaries:</code> Flux SDK installed path \ <strong>Bin</strong></p>
+</div>
+<div class="paragraph">
+<p><code>API Reference:</code> Flux SDK installed path \ <strong>Documents</strong> \ <strong>Flux.API.chm</strong></p>
+</div>
+<div class="paragraph">
+<p><code>Samples:</code> Flux SDK installed path \ <strong>Samples</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_license">License</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Contact  <a href="mailto:support@metamation.com">support@metamation.com</a> to get license key.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_steps_to_build_a_flux_sdk_program">Steps to build a Flux SDK program</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_step_1_create_a_net_core_application_using_microsoft_visual_studio"><code>Step 1:</code> Create a .Net Core application using Microsoft Visual Studio</h3>
+<div class="paragraph">
+<p>Create a .net console application in a desired path.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/sdk_001.png" alt="sdk 001">
+</div>
+</div>
+<div class="paragraph">
+<p>On the next page choose the framework and create the project.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/sdk_002.png" alt="sdk 002">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_2_after_successfully_creating_project_modify_the_csprojcsproject_file_to_add_properties_to_comply_with_flux_api_architecture"><code>Step 2:</code> After successfully creating project, modify the .csproj(csproject) file to add properties to comply with Flux API architecture</h3>
+<div class="paragraph">
+<p>Below commands should go under <code>&lt;PropertyGroup&gt;</code> in the project file.</p>
+</div>
+<div class="paragraph">
+<p>Target the platform to <code>x64</code> (Console &amp; WPF projects)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;PlatformTarget&gt;x64&lt;/PlatformTarget&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another way to change the target platform is right click the project from <code>Solution Explorer</code> and select <code>Properties</code>, and modify the target platform under <code>Build &gt; General</code> tab.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/sdk_003.png" alt="sdk 003">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> For console application, set the below property elements to <code>&lt;PropertyGroup&gt;</code> in the project file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;TargetFramework&gt;net7.0-windows&lt;/TargetFramework&gt;
+&lt;UseWPF&gt;true&lt;/UseWPF&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_3_move_the_api_binaries_to_the_application_bin_folder"><code>Step 3:</code> Move the API binaries to the application bin folder</h3>
+<div class="paragraph">
+<p>Copy all the API binaries from <code>Bin</code> folder in SDK installed path (e.g., C:\Program Files\Metamation\FluxSDK\Bin) to the project bin folder (e.g., D:\Samples\TestFluxSDK\bin\Release\net7.0-windows\).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_4_include_flux_api_dll_reference_in_the_project"><code>Step 4:</code> Include Flux.API.dll reference in the project</h3>
+<div class="imageblock">
+<div class="content">
+<img src="img/sdk_004.png" alt="sdk 004">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_5_add_flux_api_assembly_reference_in_the_program_file"><code>Step 5:</code> Add Flux.API assembly reference in the program file</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using Flux.API;
+class Program {
+    static void Main (string args[]) {
+
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_6_initialize_flux_api_in_the_program"><code>Step 6:</code> Initialize Flux API in the program</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using Flux.API;
+class Program {
+    static void Main (string args[]) {
+        Library.Init (ELib.SDK, null, "C:\\ProgramData\\Metamation\\Flux");
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_7_implement_logics_and_run_the_application"><code>Step 7:</code> Implement logics, and run the application</h3>
+<div class="paragraph">
+<p><code>Example:</code> Implement some logic to print part information</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using Flux.API;
+using System.IO;
+class Program {
+   static void Main (string[] args) {
+      if (args.Length == 0)
+         Console.WriteLine ("Provide a valid geo file path as an argument");
+      var file = args[0];
+      if (!File.Exists (file)) Console.WriteLine ("Invalid file");
+      // Initialize library
+      Library.Init (ELib.SDK, null, "C:\\ProgramData\\Metamation\\Flux");
+      Console.WriteLine ("Flux build {0}", Sys.FluxBuild);
+      var part = Part.Load (file);
+      Console.WriteLine ($"Name: {part.Info.Name}");
+      Console.WriteLine ($"Author: {part.Info.Author}");
+      foreach (var pair in part.Info.Dict)
+         Console.WriteLine ($"{pair.Key}: {pair.Value}");
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Execute program:</code> Build the project and execute the program in command prompt</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">D:\Samples\TestFluxSDK\bin\Release\net7.0-windows&gt;TestFluxSDK.exe C:\etc\060020.sldprt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Output:</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Flux build 522
+Name: 060030
+Author: vignesh
+SrcSystem: Slw
+Component Type: 0
+HMOTNOST: 1155.61
+MATERIAL: 1.4016
+NAZEV: CELO ZASUVKY GN1/2 &lt;SCHGN&gt;
+SW-HasDesignTable: 0
+SW-Long Date: 18. prosince 2015
+SW-MassProp-Config-0: 0.059877, 0.007752, 0.207499, 0.000148, 0.372030, 1.155611, 0.021033, 0.033245, 0.012511, -0.000246, -0.000000, -0.000000, 1.000000, 0.000000
+SW-MassProp-Config-3: 0.059772, -0.000400, 0.207500, 0.000148, 0.370623, 1.151364, 0.022145, 0.035843, 0.013698, -0.000000, -0.000000, -0.000000, 1.000000, 0.000000
+SW-Naposledy Ulozen Kym(Last Saved By): Spicák
+SW-Název konfigurace(Configuration Name): Default
+SW-Short Date: 18.12.2015
+SW-datum tvorby(Created Date): 14. srpna 2006 7:03:10
+SW-naposledy ulozen(Last Saved Date): 18. prosince 2015 7:34:52
+SW-název slozky(Folder Name): F:\doslá posta\PLOCHA\208604_CELO_GN_1_2_710\
+SW-název souboru(File Name): 060030
+TLOUSTKA: 0.8
+UNIT_OF_MEASURE: - zádné -
+SHEETMETAL_PARAMETERS: 0.32</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Execution of the program might launch the “Register Flux” window if the Flux license is not registered already in the machine (if prompted, request TMM support for license).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/sdk_005.png" alt="sdk 005">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_overview">Overview</a>
+    </li>
+    <li level="1">
+      <a href="#_locate_api_resources">Locate API Resources</a>
+    </li>
+    <li level="1">
+      <a href="#_license">License</a>
+    </li>
+    <li level="1">
+      <a href="#_steps_to_build_a_flux_sdk_program">Steps to build a Flux SDK program</a>
+    </li>
+    <li level="2">
+      <a href="#_step_1_create_a_net_core_application_using_microsoft_visual_studio"><code>Step 1:</code> Create a .Net Core application using Microsoft Visual Studio</a>
+    </li>
+    <li level="2">
+      <a href="#_step_2_after_successfully_creating_project_modify_the_csprojcsproject_file_to_add_properties_to_comply_with_flux_api_architecture"><code>Step 2:</code> After successfully creating project, modify the .csproj(csproject) file to add properties
+      to comply with Flux API architecture</a>
+    </li>
+    <li level="2">
+      <a href="#_step_3_move_the_api_binaries_to_the_application_bin_folder"><code>Step 3:</code> Move the API binaries to the application bin folder</a>
+    </li>
+    <li level="2">
+      <a href="#_step_4_include_flux_api_dll_reference_in_the_project"><code>Step 4:</code> Include Flux.API.dll reference in the project</a>
+    </li>
+    <li level="2">
+      <a href="#_step_5_add_flux_api_assembly_reference_in_the_program_file"><code>Step 5:</code> Add Flux.API assembly reference in the program file</a>
+    </li>
+    <li level="2">
+      <a href="#_step_6_initialize_flux_api_in_the_program"><code>Step 6:</code> Initialize Flux API in the program</a>
+    </li>
+    <li level="2">
+      <a href="#_step_7_implement_logics_and_run_the_application"><code>Step 7:</code> Implement logics, and run the application</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="sonarcloud.html">SonarCloud analysis for Flux</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
