@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Translation tables</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Technical Notes</a>
+      <ul>
+        <li><button class="tree blank"></button><a class="active" href="translationtables.html">Translation tables</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Technical Notes</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="translationtables.html">Translation tables</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Translation tables</h1>
+<div class="paragraph">
+<p>Translation tables are managed in Flux using <strong>XLate</strong> tool. <strong>XLate</strong> tool source can be found in X:\Tools\XLate.</p>
+</div>
+<div class="paragraph">
+<p><strong>XLate</strong> is used to create xls files for all languages based on the .txt files in x:\wad\lang which are then sent for translation.</p>
+</div>
+<div class="paragraph">
+<p>Once the updated/translated xls files are received, <strong>XLate</strong> is used to update the .txt files in x:\wad\lang back.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>XLATE MAKE ALL</code> is used to generate updated translation spreadsheets for all languages. The existing translation spreadsheets are found in Y:/XLate. These are edited by this  command, and any newly added strings (from the various text files are added in, with a blank space left for the translation; the blank cell is colored yellow to indicate that it must be filled). For all strings that already exist in the spreadsheet, the previous value is carried over. Thus, this incremental process creates a new spreadsheet with a few more rows added with English text (and the corresponding foreign text cell colored yellow). The help images are also inserted into the spreadsheet at this time. The new xls files created will be found in the Y:\XLate\New folder. Sample xls shown below:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/tt_001.png" alt="New xls">
+</div>
+</div>
+<div class="paragraph">
+<p>All the languages will have English, DE and the respective language columns as shown above. Initially only the DE.xls is sent for translation. The updated DE.xls file is copied to
+Y:\XLate and then other language xls files are created to get the updated DE column. Probably this is to help the translators who can use either an English or German string to translate it to another language.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Once the updated translation spreadsheets are received back from
+the translation agencies, we copy these back into Y:/XLate
+and use <code>XLATE USE ALL</code> to generate fresh string-tables that use the newly translated phrases. This updates the .txt files in x:\wad\lang folder.</p>
+</li>
+<li>
+<p>We use <code>XLATE DELPICS ALL</code> to remove all the help images from
+the translation spreadsheets before archiving them in the repository.</p>
+</li>
+<li>
+<p>Below is the lang map used in Flux:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/tt_002.png" alt="Language map">
+</div>
+</div>
+<div class="paragraph">
+<p><code>XLATE MAKE &lt;XX&gt;</code> will make the xls for a particular language. Similarly, <code>XLATE USE &lt;XX&gt;</code> to update the .txt file back in x:\wad\lang folder.
+For eg:
+<code>XLATE MAKE RU</code> will create RU.xls in Y:\XLate\New folder.
+<code>XLATE USE RU</code> will update the RU.txt in lang folder.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When you add a new entry in string table, make sure you create an empty text file for that entry in the respective language folder when you use <code>XLATE MAKE</code> or <code>XLATE USE</code>. Refer <a href="https://metamation.fogbugz.com/f/cases/34012/">Case 34012</a>.</p>
+</li>
+</ul>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc"></aside>
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="index.html">Technical Notes</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>

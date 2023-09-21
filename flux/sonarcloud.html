@@ -43,6 +43,13 @@
         <li><button class="tree blank"></button><a href="usingfluxsdk.html">Build a Flux SDK Program</a></li>
       </ul>
     </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../technical notes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technical notes/translationtables.html">Translation tables</a></li>
+      </ul>
+    </li>
   </ul>
 </div>
 
@@ -87,14 +94,17 @@ to re-enable them one by one as we clean up the code.</p>
 <p>In general, we don&#8217;t use the .Net serialization mechanisms directly in our
 code. However, any Custom Exception types we implement need to implement
 ISerializable if they are to be correctly marshalled across app-domains. This will
-become more important if we build some WebServices that use the Flux API. See <a href="https://bytedev.medium.com/the-art-of-net-custom-exceptions-82f5b1a16ced#:~:text=Custom%20exceptions%20are%20not%20serializable,properties%20you%20might%20have%20defined">Custom Exceptions</a> for an implementation patern.</p>
+become more important if we build some WebServices that use the Flux API.
+See <a href="https://bytedev.medium.com/the-art-of-net-custom-exceptions-82f5b1a16ced#:~:text=Custom%20exceptions%20are%20not%20serializable,properties%20you%20might%20have%20defined">Custom Exceptions</a>
+for an implementation patern.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_s2365_properties_should_not_make_collections_or_array_copies">S2365: Properties should not make collections or array copies</h3>
 <div class="paragraph">
 <p>This happens about 150 times in the code. After analysis, I found a few places where
-the performance <em>might</em> be improved. But mostly we are using this to return small collections (like the set of installed tool catalogs etc) that have a few dozen members
+the performance <em>might</em> be improved. But mostly we are using this to return small collections
+(like the set of installed tool catalogs etc) that have a few dozen members
 at most.</p>
 </div>
 <div class="paragraph">
@@ -119,6 +129,93 @@ their 6-month warning cycle.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_rules_that_are_turned_off_permanently">Rules that are turned off permanently</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These rules are turned off in the 'metamation' profile, and I don&#8217;t intend that
+we will turn them on again.</p>
+</div>
+<div class="sect2">
+<h3 id="_s2696_instance_methods_should_not_update_static_fields">S2696: Instance methods should not update static fields</h3>
+<div class="paragraph">
+<p>There are a lot of places where we use static fields to store UI state (like whether
+a collapsible section is open or not, the position of a particular editing panel on the
+screen etc). This state is also sometimes persisted across sessions (by the Flux PStatic
+mechanism). Such UI code is inherently single threaded, and the danger of updating the
+same static from different locations does not arise. So this rule should be turned off.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s907_goto_statements_should_not_be_used">S907: Goto statements should not be used</h3>
+<div class="paragraph">
+<p>Disagree. Sometimes, a goto statement is the cleanest way to write the code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s2344_enumeration_types_should_not_have_flags_or_enum_suffixes">S2344: Enumeration types should not have Flags or Enum suffixes</h3>
+<div class="paragraph">
+<p>Disagree.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s1066_collapsible_if_statements_should_be_merged">S1066: Collapsible 'if' statements should be merged</h3>
+<div class="paragraph">
+<p>Sometimes, a single if statement with a lot of clauses merged with &amp;&amp; is more complicated
+to read and parse than a pair of nested if statements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">  if (machine is ...)
+     if (bend is ...)
+        bend.ProcessOnMachine ()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s3010_dont_initialize_a_static_field_in_a_constructor">S3010: Don&#8217;t initialize a static field in a constructor</h3>
+<div class="paragraph">
+<p>This is used a lot in Flux to implement a singleton pattern. For example, since there is
+exactly one instance of the Flux.Application class, the constructor of Flux.Application
+does an assignment to the static Flux.Application.It field:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">   It = this;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a common and well established pattern we use in many places. This is SonarCloud
+being too paranoid.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_s2376_write_only_properties_should_not_be_used">S2376: Write-only properties should not be used</h3>
+<div class="paragraph">
+<p>There are situations where we like to use this kind of write-only property in Flux.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rules_that_sonarcloud_gets_wrong_consistently">Rules that SonarCloud gets wrong consistently</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The implementation of these rules seems to be defective - SonarCloud&#8217;s flow analysis
+is not good enough to detect if the error is actual, or a false alarm and it confidently
+asserts an error when a simple inspection would show the error is spurious.</p>
+</div>
+<div class="paragraph">
+<p>Though these rules might sometimes catch a real problem, I am going to turn them off for
+Flux, because a few false alarms tend to build an overall sense of distrust about the
+whole system.</p>
+</div>
+<div class="sect2">
+<h3 id="_s4158_empty_collections_should_not_be_accessed_or_iterated">S4158: Empty collections should not be accessed or iterated</h3>
+
+</div>
+</div>
+</div>
 
                     </article>
                 </div>
@@ -137,6 +234,33 @@ their 6-month warning cycle.</p>
     </li>
     <li level="2">
       <a href="#_s1133_deprecated_code_should_be_removed">S1133: Deprecated code should be removed</a>
+    </li>
+    <li level="1">
+      <a href="#_rules_that_are_turned_off_permanently">Rules that are turned off permanently</a>
+    </li>
+    <li level="2">
+      <a href="#_s2696_instance_methods_should_not_update_static_fields">S2696: Instance methods should not update static fields</a>
+    </li>
+    <li level="2">
+      <a href="#_s907_goto_statements_should_not_be_used">S907: Goto statements should not be used</a>
+    </li>
+    <li level="2">
+      <a href="#_s2344_enumeration_types_should_not_have_flags_or_enum_suffixes">S2344: Enumeration types should not have Flags or Enum suffixes</a>
+    </li>
+    <li level="2">
+      <a href="#_s1066_collapsible_if_statements_should_be_merged">S1066: Collapsible 'if' statements should be merged</a>
+    </li>
+    <li level="2">
+      <a href="#_s3010_dont_initialize_a_static_field_in_a_constructor">S3010: Don&#8217;t initialize a static field in a constructor</a>
+    </li>
+    <li level="2">
+      <a href="#_s2376_write_only_properties_should_not_be_used">S2376: Write-only properties should not be used</a>
+    </li>
+    <li level="1">
+      <a href="#_rules_that_sonarcloud_gets_wrong_consistently">Rules that SonarCloud gets wrong consistently</a>
+    </li>
+    <li level="2">
+      <a href="#_s4158_empty_collections_should_not_be_accessed_or_iterated">S4158: Empty collections should not be accessed or iterated</a>
     </li>
   </ul>
 </aside>
@@ -173,6 +297,12 @@ their 6-month warning cycle.</p>
     <script src="../res/files.js"></script>
     <script src="../res/site.js"></script>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
 </body>
 </html>
