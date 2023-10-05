@@ -74,70 +74,114 @@
                 <div id="site-toc-left">
                     <article id="article">
                         <h1>Translation tables</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Translation tables are managed in Flux using <strong>XLate</strong> tool. <strong>XLate</strong> tool source can be found in X:\Tools\XLate.</p>
+<p>Translation tables are managed in Flux using online <strong>XLate</strong> tool.</p>
 </div>
 <div class="paragraph">
-<p><strong>XLate</strong> is used to create xls files for all languages based on the .txt files in x:\wad\lang which are then sent for translation.</p>
+<p>This can be found <a href="https://xlate.azurewebsites.net/">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>Once the updated/translated xls files are received, <strong>XLate</strong> is used to update the .txt files in x:\wad\lang back.</p>
+<p>Refer <a href="https://xlate.azurewebsites.net/notes/build3/">this</a> for usage of this online translation tool.</p>
+</div>
+<div class="paragraph">
+<p>To keep the translations updated, a developer has to:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>XLATE MAKE ALL</code> is used to generate updated translation spreadsheets for all languages. The existing translation spreadsheets are found in Y:/XLate. These are edited by this  command, and any newly added strings (from the various text files are added in, with a blank space left for the translation; the blank cell is colored yellow to indicate that it must be filled). For all strings that already exist in the spreadsheet, the previous value is carried over. Thus, this incremental process creates a new spreadsheet with a few more rows added with English text (and the corresponding foreign text cell colored yellow). The help images are also inserted into the spreadsheet at this time. The new xls files created will be found in the Y:\XLate\New folder. Sample xls shown below:</p>
+<p>Update the remote translation database with the new phrases from a new release which have to be translated.</p>
+</li>
+<li>
+<p>Pull the remote translation updates and synchronize the local dictionaries. This will update the .txt files in X:\Wad\Lang.</p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_steps">Steps</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Refer <a href="https://xlate.azurewebsites.net/notes/build2/">this</a> for installing XL tool and the commands to use.</p>
+</li>
+<li>
+<p>After installing, do CLI sign-in.</p>
+</li>
+<li>
+<p>Now, switch to the product <em>Flux</em> as shown below:</p>
+<div class="listingblock">
 <div class="content">
-<img src="img/tt_001.png" alt="New xls">
+<pre class="highlightjs highlight"><code class="language-none hljs">xl sw Flux "X:\Wad\lang" "Y:\Xlate\0"</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>All the languages will have English, DE and the respective language columns as shown above. Initially only the DE.xls is sent for translation. The updated DE.xls file is copied to
-Y:\XLate and then other language xls files are created to get the updated DE column. Probably this is to help the translators who can use either an English or German string to translate it to another language.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Once the updated translation spreadsheets are received back from
-the translation agencies, we copy these back into Y:/XLate
-and use <code>XLATE USE ALL</code> to generate fresh string-tables that use the newly translated phrases. This updates the .txt files in x:\wad\lang folder.</p>
 </li>
 <li>
-<p>We use <code>XLATE DELPICS ALL</code> to remove all the help images from
-the translation spreadsheets before archiving them in the repository.</p>
-</li>
+<p>To upload the translation phrases that have to be translated:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
-<p>Below is the lang map used in Flux:</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
+<p>Use <code>xl out</code> to see the changes going to the remote server</p>
+<div class="listingblock">
 <div class="content">
-<img src="img/tt_002.png" alt="Language map">
+<pre class="highlightjs highlight"><code class="language-none hljs">xl out Flux -diff</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p><code>XLATE MAKE &lt;XX&gt;</code> will make the xls for a particular language. Similarly, <code>XLATE USE &lt;XX&gt;</code> to update the .txt file back in x:\wad\lang folder.
-For eg:
-<code>XLATE MAKE RU</code> will create RU.xls in Y:\XLate\New folder.
-<code>XLATE USE RU</code> will update the RU.txt in lang folder.</p>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
-<p>When you add a new entry in string table, make sure you create an empty text file for that entry in the respective language folder when you use <code>XLATE MAKE</code> or <code>XLATE USE</code>. Refer <a href="https://metamation.fogbugz.com/f/cases/34012/">Case 34012</a>.</p>
+<p>Use <code>xl put</code> command to seed the translation phrases from the local translation dictionaries</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">xl put Flux "X:\Wad\lang" "Y:\Xlate\0"</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>To download the translated texts for the phrases uploaded earlier:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Use <code>xl in</code> and <code>xl recent</code> commands to check the incoming and recently updated translations</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">xl in Flux</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use the <code>xl get</code> command to download and apply the remote changes to the local dictionaries</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">xl get Flux</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
 </li>
 </ul>
+</div>
+</div>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc"></aside>
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_steps">Steps</a>
+    </li>
+  </ul>
+</aside>
+
                 </div>
             </div>
             <nav class="pagination">
@@ -169,6 +213,12 @@ For eg:
     <script src="../res/files.js"></script>
     <script src="../res/site.js"></script>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
 </body>
 </html>
