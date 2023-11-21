@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Translation tables</title>
+  <title>Technical Notes</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -45,10 +45,11 @@
     </li>
     <li>
       <button class="tree open"></button>
-      <a href="index.html">Technical Notes</a>
+      <a class="active" href="index.html">Technical Notes</a>
       <ul>
-        <li><button class="tree blank"></button><a class="active" href="translationtables.html">Translation tables</a></li>
-        <li><button class="tree blank"></button><a href="importingbendmachines.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="importbendmc.html">Importing bend machines</a></li>
       </ul>
     </li>
   </ul>
@@ -65,129 +66,38 @@
   <div>
     <a href="index.html">Technical Notes</a>
   </div>
-  <div>/</div>
-  <div>
-    <a href="translationtables.html">Translation tables</a>
-  </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Translation tables</h1>
-<div id="preamble">
-<div class="sectionbody">
+                        <h1>Technical Notes</h1>
 <div class="paragraph">
-<p>Translation tables are managed in Flux using online <strong>XLate</strong> tool.</p>
-</div>
-<div class="paragraph">
-<p>This can be found <a href="https://xlate.azurewebsites.net/">here</a>.</p>
-</div>
-<div class="paragraph">
-<p>Refer <a href="https://xlate.azurewebsites.net/notes/build3/">this</a> for usage of this online translation tool.</p>
-</div>
-<div class="paragraph">
-<p>To keep the translations updated, a developer has to:</p>
+<p>Technical notes for developers on various topics.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Update the remote translation database with the new phrases from a new release which have to be translated.</p>
+<p><a href="machineids.html">Machine ID Scheme</a></p>
 </li>
 <li>
-<p>Pull the remote translation updates and synchronize the local dictionaries. This will update the .txt files in X:\Wad\Lang.</p>
+<p><a href="xlate.html">Translation Tables</a></p>
+</li>
+<li>
+<p><a href="importbendmc.html">Importing bend machines</a></p>
 </li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_steps">Steps</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Refer <a href="https://xlate.azurewebsites.net/notes/build2/">this</a> for installing XL tool and the commands to use.</p>
-</li>
-<li>
-<p>After installing, do CLI sign-in.</p>
-</li>
-<li>
-<p>Now, switch to the product <em>Flux</em> as shown below:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">xl sw Flux "X:\Wad\lang" "Y:\Xlate\0"</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>To upload the translation phrases that have to be translated:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Use <code>xl out</code> to see the changes going to the remote server</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">xl out Flux -diff</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Use <code>xl put</code> command to seed the translation phrases from the local translation dictionaries</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">xl put Flux "X:\Wad\lang" "Y:\Xlate\0"</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>To download the translated texts for the phrases uploaded earlier:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Use <code>xl in</code> and <code>xl recent</code> commands to check the incoming and recently updated translations</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">xl in Flux</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Use the <code>xl get</code> command to download and apply the remote changes to the local dictionaries</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">xl get Flux</code></pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-</div>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc">
-  <h3>Contents</h3>
-  <ul>
-    <li level="1">
-      <a href="#_steps">Steps</a>
-    </li>
-  </ul>
-</aside>
-
+                    <aside id="site-toc"></aside>
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="index.html">Technical Notes</a></span>
-  <span class="next"><a href="importingbendmachines.html">Importing bend machines</a></span>
+  <span class="prev"><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></span>
+  <span class="next"><a href="machineids.html">Machine ID Scheme</a></span>
 </nav>
 
         </div>
@@ -215,12 +125,6 @@
     <script src="../res/files.js"></script>
     <script src="../res/site.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-  <script>
-    if (!hljs.initHighlighting.called) {
-      hljs.initHighlighting.called = true
-      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-    }
-  </script>
+    
 </body>
 </html>
