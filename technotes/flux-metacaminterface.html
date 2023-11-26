@@ -1,0 +1,845 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Flux-MetaCAM interface</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Technical Notes</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a class="active" href="flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Technical Notes</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="flux-metacaminterface.html">Flux-MetaCAM interface</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Flux-MetaCAM interface</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This explains how Flux interfaces with MetaCAM.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_locating_metacam">Locating MetaCAM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux locates the MetaCAM installation by looking for some registry entries. First, it looks in the <strong>HKEY_CURRENT_USER\SOFTWARE\Metamation\MetaCAM</strong> location for the <strong>Home</strong> entry. If it can find that, that is the MetaCAM installation <em>folder</em> and it then looks for a <strong>metacam.exe</strong> in
+that folder.</p>
+</div>
+<div class="paragraph">
+<p>Else, it looks in the <strong>HKEY_CLASSES_ROOT\CLSID{44A73BF9-B0C5-49ce-AA52-FB475FA7FBE6}\LocalServer32</strong>
+registry key. If it can find that key, that should contain the complete path and filename of the MetaCAM executable. One or both of these registry entries will normally be set if MetaCAM is installed using the typical MetaCAM installation process.</p>
+</div>
+<div class="paragraph">
+<p>On some developer machines, or on machines used by support engineers, there may be multiple MetaCAM installations, and you may want to tell Flux to use a particular one. That is done by setting the <strong>MCAMPATH</strong> environment variable. This variable should be set to the name of the directory where MetaCAM is installed.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">set MCAMPATH=C:\Work\MetaCAM\1018\Bin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this environment variable is set, it overrides any values read from the registry.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_trek_utility">The Trek utility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every copy of Flux is bundled with a special version of MetaCAM (called <strong>trek.exe</strong>). You can find this is in the <strong>Trek</strong> folder inside the Flux installation. This special version of MetaCAM has no user interface, and can be used only by Flux. It is used to convert files to and from MetaCAM formats. For example, when you try to open a PDG file from Flux, trek.exe is used to convert that to a file that Flux can read. The bundling of the Trek utility with Flux means that Flux can read and write MetaCAM formats without requiring a MetaCAM license to be installed on that computer.</p>
+</div>
+<div class="paragraph">
+<p>Refer <a href="#trek_command_line">Trek command line reference</a> section that explains various command line parameters for Trek.</p>
+</div>
+<div class="sect2">
+<h3 id="_trek_source_code_and_compilation">Trek source code and compilation</h3>
+<div class="paragraph">
+<p>Sometimes, Trek application requires changes to fix some bugs like <a href="https://metamation.fogbugz.com/f/cases/37245">this</a>.</p>
+</div>
+<div class="paragraph">
+<p>Steps to compile Trek:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Clone the source code for Trek available <a href="https://metamation.kilnhg.com/Code/Internal/MCAM/IMMSrc">here</a></p>
+</li>
+<li>
+<p>Use <em>default</em> branch of Trek</p>
+</li>
+<li>
+<p>Trek requires the drive mapping U: to include trek.pch and U: is mapped to the X:\Src folder</p>
+</li>
+<li>
+<p>Don&#8217;t set the <em>TrekPath</em> in the Environment variables. The standalone Flux expects it in the &lt;Bin&gt;\Trek folder (where &lt;Bin&gt; is the Flux.exe install location).</p>
+</li>
+<li>
+<p>Use V10 version of MetaCAM and clone the source code available <a href="https://metamation.kilnhg.com/Code/MCAMShared/Src/V10">here</a></p>
+</li>
+<li>
+<p>Both source code should be in m: - <em>m:\IMMSrc</em> for Trek and <em>m:\work</em> for MetaCAM</p>
+</li>
+<li>
+<p>To compile MetaCAM, VisualStudio 2010 should be installed as 2010 platform toolset is required</p>
+</li>
+<li>
+<p>Now, Trek should compile properly</p>
+</li>
+<li>
+<p>Make changes in MetaCAM/Trek (mostly MetaCAM) to fix the bug and push the changes to the respective repo</p>
+</li>
+<li>
+<p>To test the fix in Flux, copy Trek.exe, t-lego.dll and t-assist.dll from m:\work\MetaCAM\bin to X:\Src\Bin\Trek folder</p>
+</li>
+<li>
+<p>Trek.exe, t-lego.dll and t-assist.dll should be pushed to Flux repo</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_export_flats_to_metacam">Export flats to MetaCAM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A typical workflow is that Flux is used as an <em>unfolder</em> to convert 3D models to flats. These unfolded models are then sent to MetaCAM for further laser or punch processing. The simplest way to do this is to turn on the <strong>Start MetaCAM when PDG files are exported</strong> setting in the
+ <strong>Settings  ●  Import/Export</strong> page. Then, the part can be sent directly to MetaCAM:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Unfold a part and make sure you are in the 2D view of the part (shortcut key: <strong>2</strong>)</p>
+</li>
+<li>
+<p>Choose <strong>File  ●  Export</strong> and export the part as a PDG file</p>
+</li>
+<li>
+<p>MetaCAM starts and opens the exported PDG file, ready for further processing</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_material_mapping">Material mapping</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux works with much fewer <em>materials</em> in the material table than MetaCAM does. In MetaCAM, different material names are sometimes used to indicate the same material with different cutting gases (like SUS-O2 and SUS-N2). Sometimes, different material names are used to indicate the same material with different bending tools. Flux avoids this messy situation by having the different materials actually correspond to different physical materials, like <strong>Steel</strong>, <strong>Aluminum</strong> or <strong>Stainless</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Each of these Flux <em>materials</em> is further subdivided into a set of <em>raw materials</em> which is just a combination of a material and a thickness<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>Materials are stored in Flux in the material.curl file (which can be found in the <strong>Data\System</strong> folder of the Flux installation). This is a text file that can be edited with any text editor (but do this <em>carefully</em>!). Here is a (somewhat abridged) data for one material:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-curl hljs" data-lang="curl">{ Id:1  Name:1.0038  Tensile:425  FoldTensile:400  EModulus:210000  Density:7.85  DINName:St37  ASTMName:A570Gr.36  SpringbackFactor:1
+  AltNames:[ 1.0038 St37 Fe360 "40 B" ST AE235 RSt37-2 "BSt 3 sp 2" "NS 12 124" St360 Fe DC01 DC03 "Fe P0X" C CR4 AP00 1142 A366 Steel S235JR RSt37-2 "UNS K01500" "UNS K01702" "UNS K02401" "UNS K02502" "UNS K03000" Fe360BFN SS330 ST
+  ]
+  BendKFactor:[
+     { RTRatio:1  KFactor:0.38 } { RTRatio:2  KFactor:0.43 } { RTRatio:3  KFactor:0.5 }
+  ]
+  CoinKFactor:[
+     { RTRatio:1  KFactor:0.41 } { RTRatio:2  KFactor:0.46 } { RTRatio:3  KFactor:0.5 }
+  ]
+  RawMaterials:[
+     { Name:ST#20  Thickness:0.953 } { Name:ST#19  Thickness:1.11 } { Name:ST#18  Thickness:1.27 }
+     { Name:ST#17  Thickness:1.43 } { Name:ST#16  Thickness:1.59 } { Name:ST#15  Thickness:1.79 }
+     { Name:ST#14  Thickness:1.98 } { Name:ST#13  Thickness:2.38 } { Name:ST#12  Thickness:2.78 }
+     { Name:ST#11  Thickness:3.18 } { Name:ST#10  Thickness:3.57 } { Name:ST#9  Thickness:3.97 }
+     { Name:ST#8  Thickness:4.37 } { Name:ST#7  Thickness:4.76 } { Name:ST#6  Thickness:5.16 }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is the process Flux uses to map material names to MetaCAM.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>First, Flux queries the MetaCAM installation to get the list of all the material names that are available in that MetaCAM configuration.</p>
+</li>
+<li>
+<p>Then, it takes the <em>raw material</em> (material + thickness) combination for that part, and looks it up in the list of RawMaterials (as seen in the material database above). If there is a matching RawMaterial entry for the part&#8217;s thickness, then it takes that RawMaterial&#8217;s name and checks if that is available in MetaCAM. If so, that becomes the MetaCAM material name for the part. So, a Flux material of St37, with sheet thickness 2.38mm will map to the MetaCAM material name ST#13 (assuming that is available in the MetaCAM configuration file).</p>
+</li>
+<li>
+<p>Else, it looks through all the <em>alternative names</em> for the material (you can see these names in the <strong>AltNames</strong> field above). If any one of these alternative names is found in the MetaCAM configuration file, then that becomes the MetaCAM material name for the part.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In general, we discourage using MetaCAM material names like ST#20 or GALV-034 etc. These material names are not good because they encode both the material and the thickness in the name, and cause a lot of confusion downstream. Unfortunately, there are many MetaCAM configuration files (especially in the US) that use this kind of material naming. So, we have to support this mapping.</p>
+</div>
+<div class="paragraph">
+<p>The <em>correct</em> way of mapping material names from Flux to MetaCAM is by using only the AltNames field, and that is designed to handle correctly the different names materials have in different countries. If this method is consistently followed, then the list of <strong>RawMaterials</strong> in each material is really redundant, and can be deleted. All Flux needs to work correctly is the <strong>Material</strong>; the RawMaterial is used only during such import<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> and export operations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="trek_command_line">Trek command line reference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Trek</strong> application is a special command-line version of MetaCAM used by Flux and Praxis.
+This section explains the various command line parameters for Trek.</p>
+</div>
+<div class="sect2">
+<h3 id="_command_line">Command Line</h3>
+<div class="paragraph">
+<p>Trek commands take the form <em>action param1 param2 &#8230;&#8203;</em> The command line parameter naming the
+action is followed by zero or more parameters required for the action. The <em>action</em> is not
+case sensitive.</p>
+</div>
+<div class="sect3">
+<h4 id="_3dtol3d_input_output">3DtoL3D input output</h4>
+<div class="paragraph">
+<p>Converts the <em>input</em> MetaCAM 3D model to the <em>output</em> L3D file (which Flux can then read as a
+Mesh).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dxftopdg_input_name_material_thickness_output">DXFtoPDG input name material thickness output</h4>
+<div class="paragraph">
+<p>Converts a DXF file to a PDG file. Here are the parameters. This can also be done as a sub-command
+of the PraxCMD action. If there is a single file to convert this is much more convenient, while the
+PraxCMD is designed for use by Praxis when it is converting multiple DXFs to PDGs.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>Parameter</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The full filename (with path) of the input DXF file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name to be assigned for the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">material</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The MetaCAM material to be assigned for the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">thickness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The thickness (in mm) to be assigned to the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The full filename (with path) of the output PDG file</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_expmcset_mcid_output">ExpMCSet mcid output</h4>
+<div class="paragraph">
+<p>Exports all the settings for a particular machine, specified by machine ID (these are the
+settings that we save in the config.dat when we do a <em>Save as default for machine</em>). The
+settings are exported as an INI file that Flux knows how to read, and these are then
+written into the settings.curl file for that machine. This command is used by Flux.Migrate
+when it imports a machine from MetaCAM to Flux</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_expmcmatlset_mcid_matlid_thickness_output">ExpMCMatlSet mcid matlid thickness output</h4>
+<div class="paragraph">
+<p>Exports all the settings for a particular &lt;machine, material, thickness&gt; combination into
+a settings INI file. The machine and material are specified using their integer IDs. The
+format of this settings file is similar to the one exported by ExpMCSet, and this is also
+used by Flux.Migrate when it imports a machine from MetaCAM to Flux.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enumset_output">EnumSet output</h4>
+<div class="paragraph">
+<p>This enumerates all the various combinations of &lt;machine, material, thickness&gt; tuples for
+which settings exist in the config file. This can then be the basis for repeated
+ExpMCMatlSet to extract each of these settings. The output is in a simple INI format, and
+is used by Flux.Migrate when it imports a machine from MetaCAM to Flux.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_listmc_output">ListMC output</h4>
+<div class="paragraph">
+<p>This lists all the machines in the config file in a simple INI format</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_listmetal_output">ListMetal output</h4>
+<div class="paragraph">
+<p>This lists all the materials in the config file, in a simple INI format</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_praxcmd_cmdfile">PraxCMD cmdfile</h4>
+<div class="paragraph">
+<p>This parses and executes a <em>command file</em> that contains multiple commands in it. The point
+of the command file is that one can submit a large <em>batch</em> of commands that all get executed
+during one invocation of Trek. The cmdfile is an INI file that has a [Header] section with
+a count of actions, and a set of sections called [Action 1] .. [Action N] that provide the
+data for the actions. These individual actions are detailed in the section below.
+In addition, the [Header] section also provides the name of an output result file. This
+is an INI file that Trek will create and will populate this INI file with the results for
+each action. Corresponding to each action, there will be a similarly numbered [Result N]
+section, and the exact content of the report section will depend on the action. If a
+client is not interested in the results for a set of actions, this Results file can simply
+be left blank.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: This <em>Results</em> key contains the overall output result for all the actions in the file.
+It is primarily useful now for the ToolUpPDG actions, since one often requests multiple
+tool-up actions in one batch, and all the results for all the tool-up actions are reported
+in a single results file.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_command_file_actions">Command File Actions</h3>
+<div class="paragraph">
+<p>A set of commands can be passed in a command file, and Trek will then execute these
+commands one by one, and will exit once all the commands are complete. The command file is
+just an INI file, like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[Header]
+Count=2
+Results=C:\Out\Result.ini
+
+[Action 1]
+Command=cmd
+parameters
+
+[Action 2]
+Command=cmd
+parameters</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each section is a particular command action (identified by the <strong>Command</strong> key) and the
+following lines contain parameters specific to that action. These are the command actions
+available:</p>
+</div>
+<div class="sect3">
+<h4 id="_dxftopdg">DXFtoPDG</h4>
+<div class="paragraph">
+<p>The DXFtoPDG action is used to convert a DXF file to a PDG file</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>Parameter</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DXFtoPDG</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Data\00\Input.dxf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the input DXF file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name that should be assigned to the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Grain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The part grain. A value of <strong>H</strong> or <strong>Horizontal</strong> sets a horizontal grain, and a value of
+   <strong>V</strong> or <strong>Vertical</strong> sets a vertical grain. Any other value, or a missing key for Grain means
+   that the part has no grain setting.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Material</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The material that should be assigned when this is saved as a PDG file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Thickness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The thickness that should be assigned</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Data\01\Valence.pdg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The full path and filename where the output is to be saved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">NoDelete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to 0 (the default), the Part that was loaded is
+   discarded after we have saved it to DXF. If this is set to 1, then
+   the Part is stored as the global CurrentPart and is used as the input
+   for the next operation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_tooluppdg">ToolUpPDG</h4>
+<div class="paragraph">
+<p>This is used to tool-up a PDG part for a given machine.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>Parameter</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Command</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolUpPDG</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Data\01\Valence.pdg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The file from which the input PDG should be read in. It is possible to leave this blank if the previous Action in the same command file used the NoDelete flag. In that case, the part that was loaded as part of the previous command would have been stored as the global CurrentPart and is used as the input for this operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Machine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1709</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ID of the machine to use for tooling up the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Material</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The material to assign when tooling up this part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Thickness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The thickness to assign before tooling up this part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Data\Valence_1709.pdg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The output file where the tooled-up part should be saved</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ICode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Data\Valence_1709.ic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Optional</em>: The location where the I-Code for this file should be saved. You can omit this key to avoid generating ICode</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">NoDelete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to 0, the part is discarded after saving the output and ICode. If set to 1, the part is stored as the global CurrentPart and can be used as the input for the next operation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>See the entry in the <em>Command File Results</em> section of this document for details on the
+results returned from a ToolUpPDG operation</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_donesting">DoNesting</h4>
+<div class="paragraph">
+<p>This is command is used to invoke a nesting operation using Trek.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>Parameter</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Example</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Nest\test.ndf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The input file for nesting (should be an NDF file, though a JOB file is also accepted)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Nest\results.ini</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An INI file where the results are written. Note that the DoNesting action does not use the [Header]/Results global results file; it produces a separate results file for each nest.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Folder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C:\Nest\</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A folder name where the nested layouts, I-Code, NC-Code should be written. <strong>Note</strong>: it is important for the folder name to end with a \</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>After nesting, a results file is produced (for each nest). And several other output files
+(LYT files, NC files etc) are produced. These are just sequentially numbered 1.lyt, 2.lyt
+etc. So, if you have a command batch with multiple DoNesting operations, it is important
+to specify a separate <strong>Folder</strong> for each one, so the outputs don&#8217;t get mixed up.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: It is probably better to submit DoNesting tasks one at a time - create a command
+file with just one action when you are doing nesting. The intrinsic work involved in
+nesting is high enough that there is not much benefit by <em>batching</em> nests together.</p>
+</div>
+<div class="paragraph">
+<p>The output file is an INI file, and it contains a header like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[Header]
+Error=0
+Patterns=3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An error code of 0 means no error, while +ve values mean various different nesting errors.
+Following the header, is a section like this for each pattern (numbered starting from 1)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[Pattern 1]
+Sheet=2500x1500
+Thickness=1
+Copies=1
+Parts=12x1,3x2,8x7,12x8,9x9
+ICode=c:\Nest\0.ic
+NCCode1=c:\Nest\0.nc
+Layout=c:\Nest\0.lyt
+PartArea=2833524.89
+SlugArea=23976.88
+SkeletonArea=892498.24
+TotalTime=1101.44
+PunchCount=0
+CutLength=64416.5
+NestBound=27,1473,2464.81,100.492
+ToolCount=0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <strong>Parts</strong> value is a set of key-value pairs of tuples, and each tuple has a <em>repeat-count x part-index</em>,
+where the part indexes match the indices from the [Part N] section of the NDF
+file. Thus, these part indices start from 1.</p>
+</div>
+<div class="paragraph">
+<p>If this is a nest for a punch machine, the ToolCount is set to the total number of tools
+used for this layout, and there are Tool entries (matching exactly the Tool1, Tool2
+entries produced by the output of ToolUpPDG).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">ToolCount=7
+Tool1=c7c894d2-5eb6-447d-bed6-f8411bfcbf84,RE, 29.9974;5.0038;0;0;0;0;0;0, 0,6,Yes,A,4,""
+Tool2=71292a2b-77a4-49c0-85e5-27e65975f6e1,RE, 56.896;10.414;0;0;0;0;0;0, 0,7,Yes,A,4,""
+Tool3=90f7b048-238e-4f9a-9709-b8064528dc78,SQ, 19.05;0;0;0;0;0;0;0, 0,11,Yes,A,48,""
+Tool4=e357c5d4-0d69-407c-8fbb-af1fc373f27c,RE, 75.0062;5.0038;0;0;0;0;0;0,0,14,Yes,A,634,""
+Tool5=83307323-65c6-41b7-b9f7-f9cc391bf497,RE, 38.1;3.175;0;0;0;0;0;0, 0,19,Yes,A,8,""
+Tool6=f1c9cda6-e79a-4e6f-b7a2-6e4bda4c6238,RE, 36.83;13.97;0;0;0;0;0;0, 0,22,Yes,A,4,""
+Tool7=3bbc1840-2d02-462b-bdf9-ea6da003a770,RE, 52.07;8.001;0;0;0;0;0;0, 0,34,Yes,A,24,""</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the section below on Command File Results of the ToolUpPDG command to understand the
+ToolN entries.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_command_file_results">Command File Results</h3>
+<div class="paragraph">
+<p>Corresponding to each action above, the results file will contain a section with a similar
+number, called [Result N], that contains the results of the processing. This global
+results files (for an entire batch of commands) is used only for a few commands, including
+ToolUpPDG. Other commands such as DoNesting produce a separate results file for each
+action.</p>
+</div>
+<div class="sect3">
+<h4 id="_tooluppdg_2">ToolUpPDG</h4>
+<div class="paragraph">
+<p>The following results are returned from a ToolUpPDG operation. The results are in a
+[Result N] section of this results INI file, where N is the corresponding action number
+(like [Action 3])</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>Key</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Value</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Material</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Actual material assigned (might change for laser machines, if they don*t have any
+   cutting condition tables for the input material)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Thickness</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Actual thickness assigned</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Plines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of toolable plines in the drawing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Untooled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of untooled plines in the drawing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">PartialTooled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of partially-tooled plines in the drawing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">UntooledLength</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total length of untooled segments of plines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TotalTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total process time (s)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">PunchCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of punch hits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">CutLength</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total cutting length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">PierceCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of pierces</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">PierceTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total pierce time, s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">CuttingTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total cutting time, s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">PunchingTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total punching time, s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">IndexingTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total tool-indexing time, s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ToolChangeTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total tool change time, s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">RepoCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of repositions required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ToolChangeCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of tool changes required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TraverseTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total time spent in rapid traverse, s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ToolCount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of tools used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Tool1, Tool2, Tool3, &#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data for each tool, as a set of comma separate values. The values
+   are in this precise order within the CSV string:<br>
+   - GUID<br>
+   - Shape (RE/CI/etc)<br>
+   - Parameters (the shape parameters, as a semicolon separated list of numbers)<br>
+   - Mounting angle<br>
+   - Station number<br>
+   - Indexing flag (Yes/No)<br>
+   - Tool range (A/B/C etc)<br>
+   - Hit count (punch hits made with this tool for this part)<br>
+   - Name (tool name, for special tools, or an empty string). This value is always quoted.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. This terminology is not very descriptive, but it is adopted from TruTops
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. It is used during import, for example, to map a MetaCAM material name like ST#18 to a material of <strong>Steel</strong> and a thickness of 1.27
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_locating_metacam">Locating MetaCAM</a>
+    </li>
+    <li level="1">
+      <a href="#_the_trek_utility">The Trek utility</a>
+    </li>
+    <li level="2">
+      <a href="#_trek_source_code_and_compilation">Trek source code and compilation</a>
+    </li>
+    <li level="1">
+      <a href="#_export_flats_to_metacam">Export flats to MetaCAM</a>
+    </li>
+    <li level="1">
+      <a href="#_material_mapping">Material mapping</a>
+    </li>
+    <li level="1">
+      <a href="#trek_command_line">Trek command line reference</a>
+    </li>
+    <li level="2">
+      <a href="#_command_line">Command Line</a>
+    </li>
+    <li level="2">
+      <a href="#_command_file_actions">Command File Actions</a>
+    </li>
+    <li level="2">
+      <a href="#_command_file_results">Command File Results</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="importbendmc.html">Importing bend machines</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
