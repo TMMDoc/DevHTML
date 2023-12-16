@@ -1,0 +1,1046 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Creating bend machines</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Technical Notes</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a class="active" href="createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="toolarvfields.html">ARV fields used in tool import</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Technical Notes</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="createbendmc.html">Creating bend machines</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Creating bend machines</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains how to create bend-machines for Flux using a bmachine.ini file
+to provide machine data, and MetaCAM 3D models for the geometry. This is loosely based
+on the format that was used in MetaCAM (with the bendmachine.ini file), but has some
+key differences.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The geometry is stored in a more <em>modular</em> form, with separate 3D models being used
+for different components like the frame, the ram, the die-rail etc. This makes it easier
+to share components between machines of the same family.</p>
+</li>
+<li>
+<p>There are no external files (like the accurpress.ini or cincinnati.ini etc). All the data required for the machine is stored in the <strong>bmachine.ini</strong> file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_folder_structure">Folder Structure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The starting point for the machine conversion is a <strong>bmachine.ini</strong> file. This file is read first, and will contain pointers to other files providing the component 3D models. For example, here are a couple of sections from a typical bmachine.ini file, providing models for the Beam and the DieBed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Beam]
+Model=B23-5130-Druckbalken.sat
+Shift=-1615,0,-120
+
+[DieBed]
+Model=B23_Tisch_120.geo
+XSpan=-1615,1615
+Shift=0,0,100</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Flux will try to find this geometry file in the same folder where the bmachine.ini file exists. If that does not work, it will look in the <em>parent</em> folder, and will keep searching upwards until it can locate the file.</p>
+</div>
+<div class="paragraph">
+<p>The reason for this is the following: this particular frame model (B23-5130-Druckbalken.sat) could be shared by multiple Trumpf machines. Instead of storing a copy of this file in each of these machine folders, we could simplify things by storing these in a parent folder. Below, for example, is a set of files and folders taken from the <strong>Komatsu</strong> press brakes repository. Assume here that names in capital letters are folder, and names in lower case are files</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">C:\
+   KOMATSU
+      komatsu.png
+      PAS-SERIES
+         frame-2005.3d
+         base-2005.3d
+         PAS5020
+            bmachine.ini
+         PAS5012
+            bmachine.ini
+      PVS-SERIES
+         ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this figure you can see that the frame-2005.3d is placed in a folder where it can be shared by both the PAS5020 and PAS5012 machines. And the <strong>komatsu.png</strong> file is placed even higher, and could be shared by PAS-SERIES machines and PVS-SERIES machines.</p>
+</div>
+<div class="paragraph">
+<p>You can use this search mechanism to easily ensure that you never need to have two copies of any file. Files that can be shared in this way are 3D files, PNG files (for decals), and other INI files like the material maps or tool maps.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_non_geometry_sections">Non-geometry Sections</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The BMachine.ini file contains several mandatory sections (and some optional ones, depending on whether the machine has clamps, whether the back-gauge system is modeled etc).</p>
+</div>
+<div class="sect2">
+<h3 id="_the_macdata_section">The MacData section</h3>
+<div class="paragraph">
+<p>This is a mandatory section that provides basic machine data. Here&#8217;s an annotated example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[MacData]
+ID=120300                    ; the Flux machine ID
+Brand=TruBend                ; machine brand / manufacturer
+Name=1066 2A Wila            ; machine name (this is the short name that appears in machine selector)
+NCName=TruBend 1066_B22      ; machine name to use in NC code (optional)
+Wibu=TRUBEND_5130_B23        ; machine package to use for WIBU licensing
+OpenHeight=385               ; open height of the machine, in mm
+ClosedHeight=170             ; closed-height of the machine, in mm
+TableLength=3230             ; table length, in mm
+NCXCenter=1615               ; NC ordinate at center of the machine table (optional)
+Tonnage=1300                 ; press force, in kN
+MinTonnageFactor=0.04        ; minimum machine tonnage, as a factor of maximum tonnage (optional)
+PunchValency=PTrumpf         ; beam valency (as MetaCAM integer ID, or Flux name)
+DieValency=DTrumpf           ; die-rail valency (as MetaCAM integer ID, or Flux name)
+ToolMap=std-tools            ; Pointer to the tool map (if needed for this machine)
+DontAutoFlipTool=0           ; Don't flip tools while doing auto tool when the value is set to 1</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The punch valency and die valency can both be provided as Flux names, or as MetaCAM integer Ids. See the appendices at the end of this document for details on the valency names.</p>
+</li>
+<li>
+<p>The <strong>[Materials]</strong> section contains the material mapping for this machine.
+Here is how a MaterialMap might look</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Materials]
+ALUM=1
+A5052P=1
+SPC=2
+SECC=2
+SUS304=5
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For some machines (like Trumpf B23 machines), the MaterialMap is even simpler, and is really just a list of materials the machine knows about (there is no <em>mapping</em>). Here&#8217;s the material map for a typical Trumpf machine</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Materials]
+Names = St37, 1.4301, AlMg3,</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The ToolMap entry is an INI file containing mapping tools to codes used by the controller. Note that the <strong>.ini</strong> extension is implied, and does not need to be specified in the ToolMap key. Likewise the ToolMap is the INI file. These files are searched for using the same search algorithm explained in the <strong>Folder Structure</strong> section above.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how a ToolMap file might look</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[ToolID]
+AMD-004=64
+GN028A=1
+PHA-3=1
+1VHC=5
+DHB=2
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Like the material mapping, tool mapping can also be done in the <strong>[ToolMap]</strong> section like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[ToolMap]
+AMD-004=64
+GN028A=1
+PHA-3=1
+1VHC=5
+DHB=2
+...</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_nccode_section">The NCCode section</h3>
+<div class="paragraph">
+<p>This section is quite simple, and contains the NC code type and the extension used in the code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[NCCode]
+Type=Jupidu
+Extension=jupidu
+ControlType=B23            ; NC-control type (optional, except for Trumpf machines)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <strong>Type</strong> value contains either an NC code type name, or an integer code as used in MetaCAM&#8217;s bendmachine.ini files. For B23 machines, always set the Type to Jupidu, and then Flux will use either Jupidu or BNC depending on whether the Jupidu option switch is set in the Flux installation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_acb_section">The ACB section</h3>
+<div class="paragraph">
+<p>This section is present if the machine has ACB classic or ACB wireless as an option, and it provides some basic information about the ACB system</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[ACB]
+MinDistBetween=640                  ; minimum distance between 2 ACB sensors
+MinDistToCrowning=350               ; minimum distance between angle sensor and crowning sensor
+MaxDistCrowningToCenter=300         ; maximum distance crowning sensor to table-center
+MaxDiskMeasures=2                   ; max measurements per bend</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_extra_section">The Extra section</h3>
+<div class="paragraph">
+<p>The values in this section are all copied to the machine&#8217;s <strong>Extra</strong> dictionary. The exact set of values that are needed here depends on the post (NC code type) for the machine. All the values here are treated as strings. Here&#8217;s an extract from the <strong>Extra</strong> section for a Komatsu machine.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Extra]
+DieMinWidth=50
+DieWidthPitch=10
+BackStopWidth=60
+BackStopThickness=13
+BackStopDepth=50
+MachineName=PAS5020
+PunchHolder=PHB-3
+BGDeltaY=0
+PHB-3=0,100,-6.5,0
+PHG-B=0,148,-6.5,0
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For many Trumpf machines, the [Extra] section is much simpler, and looks like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Extra]
+LeftBGName=SixAxis_B03_Default_Left
+RightBGName=SixAxis_B03_Default_Right</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_extrafiles_section">The ExtraFiles section</h3>
+<div class="paragraph">
+<p>This contains the template file name that has to be used by the post for the machine. This file is searched by using the same search algorithm explained in the <strong>Folder Structure</strong> section above. Here&#8217;s an extract from the <strong>ExtraFiles</strong> section for a Dener machine</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[ExtraFiles]
+Template=template.dld</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_settings_section">The Settings section</h3>
+<div class="paragraph">
+<p>The settings section looks like this, and contains various speeds, and other default-overrides</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Settings]
+BGXSpeed=1000
+BGY1Speed=1000
+BGY2Speed=1000
+BGZ1Speed=330
+BGZ2Speed=330</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The settings here get saved to a <strong>settings.curl</strong> file in the machine output folder. Here is an example of a settings.curl file that contains all the <em>possible</em> settings that can be set using this section.
+The values below are the defaults for all machines, and you only need to specify the settings that are different from these defaults.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-curl hljs" data-lang="curl">(FluxSettings){
+  Bend:{
+    OpDefault:{
+      RamVClosing:200  RamZSafety:6  RamVPinch:10  RamPinchCorrect:0  RamPinchDelay:0
+      RamVBend:5  RamBendDelay:0.1  RamVDecompress:10  RamZDecompress:0.5
+      RamZRelease:15  HemMutePoint:20  RamVOpen:200  RamZOpen:100  RamMinZOpen:10
+      AngleCorrection:0  MinAirgap:50  BGXSpeed:1000  BGY1Speed:1000  BGY2Speed:1000
+      BGZ1Speed:330  BGZ2Speed:330  BGTransitionDelay:0  BendToolShorterBy:5
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_options_section">The Options section</h3>
+<div class="paragraph">
+<p>This section looks like this and the ACB options are set to 0 or 1 depending on whether that is supported by this machine. Also the relevant ACB data should be present in <strong>ACB</strong> section or <strong>ACBLaserF</strong> etc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Options]
+ACBClassic=1                        ; sensor disk based ACB
+ACBWireLess=1                       ; wireless ACB
+ACBLaser=0                          ; laser ACB</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_geometry_conventions">Geometry Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is some basic machine geometry required for all machines. The image below shows these basic components. These, in addition to the back-gauge geometry is all that is required to get a minimal machine working. In practice, there are often additional geometry sections (like bend-guards). These four components shown below are modeled as separate 3D models (or they could also be modeled as <em>extrusions</em>, specified with a 2D geometry and an extrusion length):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/bmcbasicmodel.png" alt="Basic machine models" width="60%">
+</div>
+</div>
+<div class="paragraph">
+<p>Here are some notes on the origin points:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>dierail</strong> is drawn so that the origin point lies exactly in the center, and where the zero-position of a die would be. The <strong>base</strong> and <strong>frame</strong> are drawn in the same reference coordinates so that if these three models are just <em>glued</em> together they will connect correctly without any gaps.</p>
+</li>
+<li>
+<p>The <strong>ram</strong> is drawn so that the origin lies exactly at the center of the mounting rail. This is different from the way it is often drawn with MetaCAM bendmachine.3d files, so take care with this. A quick check is this: if you paste the ram model into the dierail model, they should both be touching exactly with their mounting surfaces (in other words, the closed-height should be zero).</p>
+</li>
+<li>
+<p>If the machine has a clamping system, the <strong>ram</strong> is drawn so that the bottom center of the ram is lifted to the clamp height from the origin. In other words, in this case the Z-origin of the ram model is where the top of the clamps will get mounted.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_using_metacam_3d_models">Using MetaCAM 3D models</h3>
+<div class="paragraph">
+<p>Especially when migrating machines from MetaCAM, it is common to represent geometry using MetaCAM 3D models. The notes below are relevant if you are using MetaCAM 3D models.</p>
+</div>
+<div class="sect3">
+<h4 id="_layer_conventions">Layer conventions<a id="Layer_Conventions"></a></h4>
+<div class="paragraph">
+<p>When drawing all these 3D models, try to minimize the number of layers used. The only reason to use multiple layers is if the component has multiple colors. As such, it is only necessary to have as many layers as there are colors. Unlike with the bendmachine.3d files, the actual layers names are not important, and you can use any names that you like. For example, you could use layers names that
+like White, Gray, Blue to make the layering more clear.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_decals_on_geometry">Decals on geometry</h4>
+<div class="paragraph">
+<p>We try to represent logos, machine model numbers etc with <em>decals</em>, which are just bitmaps that are painted on top of the model like a texture. This uses far less graphics resources, and you can use as many colors as needed in these decals. Since MetaCAM does not have a way to actually paste a decal into a model, we use a simple convention.</p>
+</div>
+<div class="paragraph">
+<p>At the position where a decal is required, just draw a simple rectangular plane, and use a special layer name to tell Flux that this is just a place-holder for a decal. The plane should be drawn in a layer whose name looks like <strong>Decal:komatsu</strong> or <strong>Decal:maxform-9</strong>. The part after the colon is the filename of the PNG file that contains the image for the decal, and Flux will search for
+this decal file using the standard rules explained above. The position and size of the rectangular plane will determine where the decal will appear and how big it will be (the actual rectangular plane will be removed, so the color of this plane is not important).</p>
+</div>
+<div class="paragraph">
+<p>Here are some additional notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For best results, make sure that the <em>aspect ratio</em> of the decal placeholder you draw matches the aspect ratio of the decal PNG file you are using. For example, if the PNG file is 1500x400 pixels in size, make sure the plane has an aspect ratio of 15:4.</p>
+</li>
+<li>
+<p>Create the decal PNG file with a transparent background. Do not try to match the color of the underlying geometry, there will always be subtle differences. (This is also the reason that only PNG files are used for decals).</p>
+</li>
+<li>
+<p>Draw the Decal placeholder plane 3mm in front of the actual geometry it is supposed to be painted on. If you draw it exactly on the geometry the decal will not render properly (it may get clipped to the background behind the geometry).</p>
+</li>
+<li>
+<p>A machine can contain only 3 decals. The decals can be pasted on the frame, the base, the ram or to any geometry. If a decal is painted on the ram, it will automatically move with the ram.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The image above show two decal placeholders on the ram (the yellow rectangles). When the machine is rendered in Flux these are replaced with the actual PNG images, as the image below shows.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/bmcdecals.png" alt="Decal rendered on an LVD machine" width="60%">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_satiges_files_for_geometry">Using SAT/IGES files for Geometry</h3>
+<div class="paragraph">
+<p>Geometry can also be supplied using SAT/IGES or any other 3D file format that Flux can read. This is the common practice when creating Trumpf machines, since there usually exist SAT files providing the geometry. Very often, this geometry does not have the correct coordinate system as required for this process, so one can use a <strong>Shift</strong> vector to move the geometry. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Beam]
+Model=B23_5130_Druckbalken.sat
+Shift=-1615,0,-120</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Most often, you will find that the Trumpf beam models have to be shifted like this: the -1615 represents half the table length, and the -120 represents the reference punch height used in the Trumpf machine models.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to <em>compose</em> a component using multiple separate models, and one can also apply <em>decals</em> on top of models. Both of those are described here</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Frame]
+Model=B23_5130_Zylinderabdeckung.sat
+Shift=-1615,0,100
+Model2=IAxisDrive.mesh
+Shift2=-1459.5,0,-20
+Model3=IAxisDrive.mesh
+Shift3=1459.5,0,-20
+Decal=TruBend5130.png
+DecalPos=-795,-137,995
+DecalScale=0.5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this particular example, the frame is described using 3 separate 3D models (each with its own different shift vector), and there is finally a decal pasted on the model.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_extruded_geometry">Using Extruded Geometry</h3>
+<div class="paragraph">
+<p>Also very common (in the Trumpf world) is to specify geometry using an extrusion of a 2D cross-section. The extrusions is always in the X direction, and the 2D geometry is specified using a GEO or DXF file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[DieBed]
+Model=B23_Tisch_120.geo
+XSpan=-1615,1615
+Shift=0,0,100</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example above is typical of the shift required to position the die correctly, because Trumpf die-rail drawings are usually drawn with a reference point that is 100mm above the mounting point on the rail (100 is the <em>reference</em> die height). The <strong>XSpan</strong> value indicates that the die is extruded 1615 mm on either side of the center-line.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_geometry_sections">Geometry Sections</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The conventions for providing geometry listed above are used to actually provide the machine geometry, and we list those geometry sections below.</p>
+</div>
+<div class="sect2">
+<h3 id="_core_geometry">Core Geometry</h3>
+<div class="paragraph">
+<p>These are the geometry sections that are mandatory for every machine.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_frame_section">The Frame section</h4>
+<div class="paragraph">
+<p>The mandatory <strong>Frame</strong> section provides the geometry for the machine frame. Here is a typical example from a Trumpf machine</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Frame]
+Model=B23_5130_Zylinderabdeckung.sat
+Shift=-1615,0,100</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_beam_section">The Beam section</h4>
+<div class="paragraph">
+<p>The mandatory <strong>Beam</strong> section provides the geometry for the press-beam. The beam should be drawn so that the center-point of the mounting surface is at 0,0,0. (Alternatively, one can use a shift vector to shift the geometry so it aligns to this constraint). For example</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Beam]
+Model=B23_5130_Druckbalken.sat
+Shift=-1615,0,-120</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_diebed_and_dierail_sections">The DieBed and DieRail sections</h4>
+<div class="paragraph">
+<p>These sections describe the geometry of the die-bed (table) and the die-rail. The reason they are separated is that for many machines the die-rail can move forward or backward in the Y direction using the I-Axis drive. Here are examples from a Trumpf machine</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[DieBed]
+Model=B23_Tisch_120.geo
+XSpan=-1615,1615
+Shift=0,0,100
+
+[DieRail]
+Model=B23_UW_Klem_105mm.geo
+XSpan=-1615,1615
+Shift=0,0,100</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_geometry">Optional Geometry</h3>
+<div class="paragraph">
+<p>These sections provide optional geometry elements that may or may not be present for a given machine.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_clamp_section">The Clamp section</h4>
+<div class="paragraph">
+<p>This section is present only if the machine has clamps. Flux will get the geometry
+from <strong>clamp-komatsu.3d</strong> model to get the 3D model of the clamp, the <em>count</em> of how many clamps exist and the rest of the clamp data from this section. Here&#8217;s how that file could look</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Clamp]
+Count=11
+Model=clamp-komatsu.3d
+MinPitch=160
+Pitch=180
+Shift=0,0,350</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The clamp 3D model contains only one clamp, and is drawn with the origin aligned to the left-edge of the clamp, with Z at the <em>bottom</em> (where the punch would be mounted). Use a <strong>Shift</strong> vector to shift the geometry so it lifts up to the Z of the ram model (usually the Z of shift vector is the <strong>OpenHeight</strong>).
+Here&#8217;s an example, where the blue marker indicates where the origin would lie.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/bmcclamporigin.png" alt="Clamp model origin" width="40%">
+</div>
+</div>
+<div class="paragraph">
+<p>Note 1: The clamp model is often repeated several times in the machine. As such, it is worth spending some time to make sure this model is as <em>lightweight</em> as possible (as few surfaces as possible).</p>
+</div>
+<div class="paragraph">
+<p>Note 2: The INI file does not provide the X-position of the first clamp. This is not required; Flux will figure it out automatically on the assumption that the set of all clamps is centered in the machine.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_acb_laser_sections">ACB Laser sections</h4>
+<div class="paragraph">
+<p>If the machine has ACB-Laser (or LCB), these sections are used to provide the geometry for the sensors and the rail</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[ACBLaserF]
+Model=SensorF.mesh              ; model used for LCB front sensor
+Stroke=-1810,1653               ; stroke in X direction
+Shift=192.7,0,100               ; shift-vector to position model at X=0 laser position
+
+[ACBLaserR]
+Model=SensorB.mesh              ; model used for LCB rear sensor
+Stroke=-1810,1653
+Shift=192.7,0,100
+
+[ACBLaserRail]
+Model=ACBLaserRail.mesh2        ; model used for the rail on which the sensors move
+Shift=-2210,0,100</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bendguard_section">Bendguard section</h4>
+<div class="paragraph">
+<p>If the machine has a laser-safety system, this section is used</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[BendGuard]
+BeamWidth=74                            ; laser beam-width (used for BoxHeight calculation)
+Model=B23_5130_BendGuard_Links.sat      ; left bend-guard emitter model
+Shift=-1615,0,-120                      ; shift to align this (assuming punch height = 0)
+Model2=B23_5130_BendGuard_Rechts.sat    ; right bend-guard collector model
+Shift2=1615,0,-120
+
+[BendGuardCover]
+Model=BendGuardCover-L.sat
+Shift=-1615,0,-120
+Model2=BendGuardCover-R.sat
+Shift2=1615,0,-120</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_back_gauge_information">Back-gauge information<a id="Bg_info"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The back-gauges are a bit complex, since a complete machine definition can also include the <em>mechanisms</em> that move the gauge fingers. Also, this section has to describe the gauging <em>geometry</em>, in terms of the flat and clamping type gauging surfaces for each gauge. The gauge information is provided in several sections.</p>
+</div>
+<div class="sect2">
+<h3 id="_the_bgsystem_section">The BGSystem section</h3>
+<div class="paragraph">
+<p>We start with the <strong>BGSystem</strong> section that defines some basics (remember
+that X,Y,Z in this discussion refers to the Flux coordinate system)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[BGSystem]
+Count=2                              ; Count of gauges
+MinXSpacing=190                      ; Minimum spacing between gauges
+LockedYZ=0                           ; if set, gauges move together in Y and Z
+MaxYDifference=9999                  ; if set, defines maximum gap between Y1 and Y2
+ManualX=0                            ; if set, then this is a 2-axis gauging system
+Model=B23_An6_LaufHinten.geo         ; gauge-system rails (optional)
+Shift=0,65.9,100
+XSpan=-1350,1350
+Model2=B23_An6_LaufVorne.geo
+Shift2=0,65.9,100
+XSpan2=-1350,1350
+Mechanism=XZY                        ;The order in which bg mechanism moves. Default is XYZ for 6 axis and for others it is YZX</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setting LockedYZ=1 makes this effectively a 2,4 or 5 axis gauging system. If MaxYDifference is to a non-zero value it means that Y2 can move a bit relative to Y1 (and this is a 5-axis gauging system). If ManualX is set to 1, then it means that the gauges can be moved in X only manually (by the operator), and this is a 2-axis gauging sytem.</p>
+</li>
+<li>
+<p>If LockedYZ=0, then this is a 6-axis gauging system and MaxYDifference is ignored.</p>
+</li>
+<li>
+<p>The <strong>Model</strong>, <strong>Model2</strong> etc entries above provide the geometry for the gauge-system rails. These are merely a cosmetic detail and can be omitted (they are not used for collision checks).</p>
+</li>
+<li>
+<p>Mechanism tells the order in which BG carriers moves. XZY mean moving X carrier will move both Z and Y carriers along with X. Moving Z moves Y and moving Y moves the backgauge model.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_bg1_bg2_sections">The BG1, BG2, sections</h3>
+<div class="paragraph">
+<p>Sections like BG1, BG2 etc define the set of gauging surfaces for each of the gauges. These sections must also provide a model, and that model should be drawn so that the origin is at the 0,0,0 reference point of the gauge. All the measurements in this section are relative to that origin point. Here is an example of a gauge definition for a Trumpf 6-axis gauge</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[BG1]
+Model=AnLiNeu.sat
+Stroke=-1235,1235, 3,600, -50,200
+SurfaceCount=5
+S0Type=Flat
+S0Params=0,8, 26,0, 52
+S0Support=0
+S1Type=Flat
+S1Support=1
+S1Params=8,25, 15.5,30, 31
+S2Type=Flat
+S2Support=1
+S2Params=25,49, 39.5,260, 79
+S3Type=Finger
+S3Support=0
+S3Params=0,8, 52,8,8,-90,60, 82,24,8,-150,0
+S4Type=Finger
+S4Support=1
+S4Params=8,25, 31,38,8,-90,60, 71,54,8,-150,0</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>Stroke</strong> is a set of 6 numbers X1,X2, Y1,Y2 and Z1,Z2 that define the range of movement of the gauge in the X,Y and Z directions. These limits refer to the cuboid within which the <em>reference point</em> of the gauge can move. In addition to this stroke, the gauge movement is also constrained by the <strong>MinXSpacing</strong> value from the <strong>BGSystem</strong> section, so Flux will prevent the gauges from getting too close to each other.</p>
+</li>
+<li>
+<p>The surfaces of the gauges are numbered from 0 .. SurfaceCount-1, and for each surface, there is a surface type (flat or finger), defined by a set of parameters (see below). The values like S0Support, S1Support etc are set to 0 or 1 depending on whether that particular surface is a <em>supporting</em> surface (meaning the part is laid on the gauge if that surface is used for gauging).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_surface_definitions">Surface definitions</h3>
+<div class="paragraph">
+<p>There are several different types of <em>gauging surfaces</em> that can appear in the BGn section. In the example above, there are 5 surfaces; the first 3 are <em>Flat</em> and the next 2 are <em>Finger</em>. For each different type of surface definition, there is a different set of <em>parameters</em> that you can see in the values like S0Params, S1Params etc.</p>
+</div>
+<div class="sect3">
+<h4 id="_s_n_typeflat">S_n_Type=Flat</h4>
+<div class="paragraph">
+<p>A flat-type surface is defined using 5 parameters as shown below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">S1Params=8,25, 15.5,30, 31</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These 5 numbers are <strong>Zmin</strong>,<strong>Zmax</strong>, <strong>Xcen</strong>,<strong>Y</strong>, <strong>Dx</strong>, with the following meanings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Zmin</strong>, <strong>Zmax</strong> define the limits of the surface in the Z axis, relative to the reference point of the gauge. In this example, the surface stretches from Z=8 to Z=25.</p>
+</li>
+<li>
+<p><strong>Xcen</strong>, <strong>Y</strong> define the X and Y coordinates of the center-point of the gauging surface, relative to the reference point. In this example, the gauge surface is 30mm behind the reference point in Y</p>
+</li>
+<li>
+<p><strong>Dx</strong> is the width of the gauging surface in X. Taken in conjunction with Xcen, you can also see that in this example, the gauging surface stretches from X=0 to X=31 in this example (Xcen - Dx/2 .. Xcen + Dx/2)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s_n_type1">S_n_Type=1</h4>
+<div class="paragraph">
+<p>This is very similar to the <em>Flat</em> surface type, except that the parameters are specified slightly differently. This is mainly for compatibility reasons with older MetaCAM bendmachine.ini files</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">S1Params=8,25, 30, 0,31</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The 5 numbers here are <strong>Zmin</strong>,<strong>Zmax</strong>, <strong>Y</strong>, <strong>Xmin</strong>,<strong>Xmax</strong>. Instead of specifying the surface limit in X as XCen and Dx, the surface is specified using Xmin and Xmax.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s_n_typefinger">S_n_Type=Finger</h4>
+<div class="paragraph">
+<p>This defines a <em>finger</em> type gauging (which uses 2 cylindrical surfaces). There are more parameters for this type</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">S3Params=0,8, 52,8,8,-90,60, 82,24,8,-150,0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The values here are <strong>Zmin</strong>,<strong>ZMax</strong>, <strong>Xcen1</strong>,<strong>Ycen1</strong>,<strong>R1</strong>,<strong>Sang1</strong>,<strong>Eang1</strong>,
+<strong>Xcen2</strong>,<strong>Ycen2</strong>,<strong>R2</strong>,<strong>Sang2</strong>,<strong>Eang2</strong> with the following meanings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Zmin</strong>, <strong>Zmax</strong> define the extents of the cylindrical surface in Z (the bottom and top Z of the cylindrical surface).</p>
+</li>
+<li>
+<p><strong>Xcen1</strong>, <strong>Ycen1</strong> define the center point of the first cylinder in the top view (see image below).</p>
+</li>
+<li>
+<p><strong>R1</strong> is the radius of the first cylinder * <strong>Sang1</strong>, <strong>Eang1</strong> are the start and end angles of the gauging surface, going CCW around the center with East = 0 (see image)</p>
+</li>
+<li>
+<p><strong>Xcen2</strong>, <strong>Ycen2</strong>, <strong>R2</strong>, <strong>Sang2</strong>, <strong>Eang2</strong> are the corresponding values for the second cylindrical surface.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This image should make these values more clear:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/bmcfingerparams.png" alt="Finger type parameters" width="60%"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s_n_type2">S_n_Type=2</h4>
+<div class="paragraph">
+<p>This is also a finger gauging definition, with exactly the same 12 parameters as above. It is maintained for compatibility with MetaCAM.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_back_gauge_carriers">Back-gauge carriers</h3>
+<div class="paragraph">
+<p>It is possible to model the back-gauge <em>carriers</em>  that support and move the gauges. This is not found for most of the MetaCAM bend machines, but we have this for all the Trumpf machines. Different gauging systems will require slightly different approaches here.</p>
+</div>
+<div class="sect3">
+<h4 id="_6_axis_back_gauge_system">6-axis back-gauge system</h4>
+<div class="paragraph">
+<p>For a 6-axis BG system, you must prepare 6 models containing the moving parts for the X, Y and Z axes of each of the gauges.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/bmcbgsystem.png" alt="BG System Components" width="60%"></span></p>
+</div>
+<div class="paragraph">
+<p>The image above shows the three models you need to draw for the left gauge - they are the ones labelled XAxis0, YAxis0 and ZAxis0. These are all shown together as one model here, but they are to be saved as separate 3D models, and of course the gauge model that is shown here in yellow is not part of this set of <em>carriers</em> models.</p>
+</div>
+<div class="paragraph">
+<p>To get these pieces in the correct location that Flux expects, position the entire system so that the gauge reference point is at the origin. This might mean moving the various components in X Y and Z until the gauge reaches this position. The model at this point should look <em>correctly composed</em> as shown in the image above. Then, split up the components and save the three axis drives separately. The gauge model can now be deleted (since it is already part of a gauge.3d file).</p>
+</div>
+<div class="paragraph">
+<p>Then, INI sections like these are added to introduce these models to Flux. This example below is from a Trumpf 6-axis machine</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[BG1X]
+Model=B23_An6_XAchs.geo
+Shift=0,65.9,100
+XSpan=-88,88
+[BG2X]
+Model=B23_An6_XAchs.geo
+Shift=0,65.9,100
+XSpan=-88,88
+
+[BG1Y]
+Model=an6_YAchsNeu.geo
+Shift=0,229.9,100
+XSpan=-90,90
+[BG2Y]
+Model=an6_YAchsNeu.geo
+Shift=0,229.9,100
+XSpan=-90,90
+
+[BG1Z]
+Model=an6_ZAchsNeu.geo
+Shift=0,229.9,0
+XSpan=-88,88
+[BG2Z]
+Model=an6_ZAchsNeu.geo
+Shift=0,229.9,0
+XSpan=-88,88</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_importing_a_bendmachine_into_flux">Importing a BendMachine into Flux</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Machines are imported from the bmachine.ini format. In Flux application you can import machines using these steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To import a machine, create an FXCMD file like this and invoke flux.exe with this FXCMD file as parameter.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">  [Header]
+  Type=FluxCommandFile
+
+  [Command]
+  Type=ImportBendMC
+  InputFolder=W:\BMC\1001</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>bmachine.ini</strong> file containing the machine definition and the required geometry files should be in the input folder. The machine will then be imported and will also be set as the default bend machine.</p>
+</li>
+<li>
+<p>Note that you should use bend machine IDs between 1001 and 1999 only. This range of IDs is reserved for <em>test</em> machines that are being created outside of Metamation. Once the machine is created and tested, you can send the data file to Metamation and it will become an official machine with a proper ID.</p>
+</li>
+<li>
+<p>Note that Flux will automatically create the machine in {Data}/Machine/{N} folder, where {Data} is your Flux data folder and {N} is the machine ID. If this folder already exists, the command will fail (to avoid overwriting data, so you have to delete that folder before running this).</p>
+</li>
+<li>
+<p>These test machines are not meant to be shipped to customers - in fact, a warning like this is displayed whenever the machine is used.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/bmctestmachine.png" alt="Test Machine" width="80%"></span></p>
+</div>
+<div class="paragraph">
+<p>It is likely these FXCMD will be removed later, and replaced with API functions to import/export machines, since these are not likely to be used by end-users.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_folder_structure">Folder Structure</a>
+    </li>
+    <li level="1">
+      <a href="#_non_geometry_sections">Non-geometry Sections</a>
+    </li>
+    <li level="2">
+      <a href="#_the_macdata_section">The MacData section</a>
+    </li>
+    <li level="2">
+      <a href="#_the_nccode_section">The NCCode section</a>
+    </li>
+    <li level="2">
+      <a href="#_the_acb_section">The ACB section</a>
+    </li>
+    <li level="2">
+      <a href="#_the_extra_section">The Extra section</a>
+    </li>
+    <li level="2">
+      <a href="#_the_extrafiles_section">The ExtraFiles section</a>
+    </li>
+    <li level="2">
+      <a href="#_the_settings_section">The Settings section</a>
+    </li>
+    <li level="2">
+      <a href="#_the_options_section">The Options section</a>
+    </li>
+    <li level="1">
+      <a href="#_geometry_conventions">Geometry Conventions</a>
+    </li>
+    <li level="2">
+      <a href="#_using_metacam_3d_models">Using MetaCAM 3D models</a>
+    </li>
+    <li level="2">
+      <a href="#_using_satiges_files_for_geometry">Using SAT/IGES files for Geometry</a>
+    </li>
+    <li level="2">
+      <a href="#_using_extruded_geometry">Using Extruded Geometry</a>
+    </li>
+    <li level="1">
+      <a href="#_geometry_sections">Geometry Sections</a>
+    </li>
+    <li level="2">
+      <a href="#_core_geometry">Core Geometry</a>
+    </li>
+    <li level="2">
+      <a href="#_optional_geometry">Optional Geometry</a>
+    </li>
+    <li level="1">
+      <a href="#_back_gauge_information">Back-gauge information</a>
+    </li>
+    <li level="2">
+      <a href="#_the_bgsystem_section">The BGSystem section</a>
+    </li>
+    <li level="2">
+      <a href="#_the_bg1_bg2_sections">The BG1, BG2, sections</a>
+    </li>
+    <li level="2">
+      <a href="#_surface_definitions">Surface definitions</a>
+    </li>
+    <li level="2">
+      <a href="#_back_gauge_carriers">Back-gauge carriers</a>
+    </li>
+    <li level="1">
+      <a href="#_importing_a_bendmachine_into_flux">Importing a BendMachine into Flux</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="xlate.html">Translation tables</a></span>
+  <span class="next"><a href="importbendmc.html">Importing bend machines</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

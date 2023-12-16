@@ -1,0 +1,1297 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>ARV fields used in tool import</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Technical Notes</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a class="active" href="toolarvfields.html">ARV fields used in tool import</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Technical Notes</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="toolarvfields.html">ARV fields used in tool import</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>ARV fields used in tool import</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains the fields we are using during reading a tool ARV file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_header_table">Header Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">entries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of entries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">attachements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of attachments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of ARCHIV</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tool_table">Tool Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Table of the entry</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_punch_table">Punch Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radius</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Winkel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">GruppeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">AufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TopValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">StempelformID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Group</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Biegeart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ProcessType</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">HalterTyp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Holder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckFlag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplFlavor - HemPunch</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckVersatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckBreite</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShapeWZG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_radius_punch_table">Radius Punch Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">RadiusStart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radius</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">GruppeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">HalterTyp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Holder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShapeWZG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_z_punch_table">Z Punch Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">RadiusSpitze</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radius</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelOben</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">GruppeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">AufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TopValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">HalterTyp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Holder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">LageID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsUpper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShapeWZG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">VersatzBgUnten</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">VersatzBgOben</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelOben</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelUnten</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelEndlage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">RadiusMatrize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_die_table">Die Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radius</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Winkel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">GruppeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">AufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BottomValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Gesenkweite</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VWidth</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">HalterTyp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Holder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MatrizenformID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Group</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MittenVersatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YShift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BohrungMoeglich</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine HemBlock</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Falzversatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HemBlockMountPos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">GWOhneRadius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VWidth type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">SymmetrieX_Negativ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For deciding HemBlockMountPos when angle &lt; 35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">SymmetrieX_Positiv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HemBlockMountPos when angle &lt; 35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Biegeart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ProcessType</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">FalzEinlegePositionX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams – I0HemDie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">FalzHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams – I0HemDie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Falzversatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams – Self hemming die</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">FALZHOEHE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams – Self hemming die</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShapeWZG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hem_block_die_table">Hem Block Die Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShapeWZG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckVersatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_z_die_table">Z Die Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">RadiusSpitze</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radius</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelOben</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">GruppeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">AufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BottomValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MittenVersatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YShift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Gesenkweite</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VWidth</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShapeWZG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">LageID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsUpper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">VersatzBgUnten</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">VersatzBgOben</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelOben</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelUnten</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelEndlage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">RadiusMatrize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_roll_die_table">Roll Die Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WinkelMin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">GruppeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">AufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BottomValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Gesenkwinkel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TBSAngle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Gesenkweite</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VWidth</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">SkizzeDetailBackeLinks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">SkizzeDetailBackeRechts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_holder_table">Holder Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">LageID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsUpper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">LageID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsUpper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MittenVersatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YShift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Einbauhoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">InstallHeight</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WzgAufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckFlag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplFlavor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckVersatz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckBreite</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZudrueckHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SplParams</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adapter_table">Adapter Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypAlt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShortName</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ArbeitsHoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BelastungMax</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaxLoad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">LageID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IsUpper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">BeschreibungID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGTyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Profilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ZugeordneteProfilnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AltOrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Einbauhoehe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">InstallHeight</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WzgAufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BottomValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">AufnahmeID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TopValency</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool.Shape</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_attachment_section_fields">Attachment section fields</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Below are the common fields referred for punch, die, holder and adapter in attachment section:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">typ</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wzg file name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool.Shape</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sensor_disk_table">Sensor Disk Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TrumpfIdentnummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Skizzedetail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ShapeWZG</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sensor_pair_table">Sensor Pair Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">OwTyp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Punch</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypMesswerkzeug</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WzgArt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypScheibe1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disk1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">TypScheibe2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disk2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For each pair, below fields are read where n ranges from 1 to 3.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MaxZugfestigkeit&lt;n&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MinBlechdicke&lt;n&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MaxBlechdicke&lt;n&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MinMesswinkel&lt;n&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MaxMesswinkel&lt;n&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sensor_pair_measurement_range_table">Sensor Pair Measurement Range Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">OwTyp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">owtyp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Messwinkel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">MinSchenkellaenge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Length</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tool_list_table">Tool list Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Listenname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool list name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Werkzeugname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_segment_in_tool_list_table">Segment in Tool list Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Werkzeuglaenge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WzgAttribTyp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGArt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Werkzeuganzahl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantity</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_catalog_piece_table">Catalog Piece Table</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>ARV Field</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flux Reference</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WZG_LAENGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WZG_ANZAHL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Qty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WZG_AUFNAHMELAENGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">InsertLength</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WZG_BESTELLNUMMER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OrderNo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Oberflaechenbehandlung</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finish</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WZG_TYP_ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WZGArt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">WZG_ZEICHNUNG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shape</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ToolMap</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_header_table">Header Table</a>
+    </li>
+    <li level="1">
+      <a href="#_tool_table">Tool Table</a>
+    </li>
+    <li level="1">
+      <a href="#_punch_table">Punch Table</a>
+    </li>
+    <li level="1">
+      <a href="#_radius_punch_table">Radius Punch Table</a>
+    </li>
+    <li level="1">
+      <a href="#_z_punch_table">Z Punch Table</a>
+    </li>
+    <li level="1">
+      <a href="#_die_table">Die Table</a>
+    </li>
+    <li level="1">
+      <a href="#_hem_block_die_table">Hem Block Die Table</a>
+    </li>
+    <li level="1">
+      <a href="#_z_die_table">Z Die Table</a>
+    </li>
+    <li level="1">
+      <a href="#_roll_die_table">Roll Die Table</a>
+    </li>
+    <li level="1">
+      <a href="#_holder_table">Holder Table</a>
+    </li>
+    <li level="1">
+      <a href="#_adapter_table">Adapter Table</a>
+    </li>
+    <li level="1">
+      <a href="#_attachment_section_fields">Attachment section fields</a>
+    </li>
+    <li level="1">
+      <a href="#_sensor_disk_table">Sensor Disk Table</a>
+    </li>
+    <li level="1">
+      <a href="#_sensor_pair_table">Sensor Pair Table</a>
+    </li>
+    <li level="1">
+      <a href="#_sensor_pair_measurement_range_table">Sensor Pair Measurement Range Table</a>
+    </li>
+    <li level="1">
+      <a href="#_tool_list_table">Tool list Table</a>
+    </li>
+    <li level="1">
+      <a href="#_segment_in_tool_list_table">Segment in Tool list Table</a>
+    </li>
+    <li level="1">
+      <a href="#_catalog_piece_table">Catalog Piece Table</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="virtualdrives.html">Virtual drives</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>
