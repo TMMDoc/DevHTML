@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Testing with Windows Sandbox</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Tools</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a class="active" href="testsandbox.html">Testing with Windows Sandbox</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Tools</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="testsandbox.html">Testing with Windows Sandbox</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Testing with Windows Sandbox</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains how to run UI test automation scripts in Windows Sandbox</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_windows_sandbox">Windows Sandbox</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Windows Sandbox provides a lightweight desktop environment to safely
+run applications in isolation.
+Software installed inside the Windows Sandbox environment remains "sandboxed" and runs separately from the host machine.
+A sandbox is temporary. When it&#8217;s closed, all the software and files and the state are deleted. You get a brand-new instance of the sandbox every time you open the application.
+This makes 'Sandbox' ideal for use in Sanity/Smoke testing.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">Prerequisites</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>ARM64 (for Windows 11, version 22H2 and later) or AMD64 architecture</p>
+</li>
+<li>
+<p>Virtualization capabilities enabled in BIOS</p>
+</li>
+<li>
+<p>At least 4 GB of RAM (8 GB recommended)</p>
+</li>
+<li>
+<p>At least 1 GB of free disk space (SSD recommended)</p>
+</li>
+<li>
+<p>At least two CPU cores (four cores with hyper-threading recommended)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation">Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use the search bar on the task bar and type <strong>Turn Windows Features on or off</strong> to access the Windows Optional Features tool. Select Windows Sandbox and then OK. Restart the computer if you&#8217;re prompted.</p>
+</div>
+<div class="paragraph">
+<p>If the Windows Sandbox option is unavailable, your computer doesn&#8217;t meet the requirements to run Windows Sandbox.</p>
+</div>
+<div class="paragraph">
+<p>To enable Sandbox using PowerShell, open PowerShell as Administrator and run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Enable-WindowsOptionalFeature -FeatureName "Containers-DisposableClientVM" -All -Online</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Locate and select Windows Sandbox on the Start menu to run it for the first time.</p>
+</div>
+<div class="paragraph">
+<p>Windows Sandbox supports simple configuration files, which provide a minimal set of customization parameters for Sandbox. Windows Sandbox configuration files are formatted as XML and are associated with Sandbox via the .wsb file extension. An example wsb file is shown below. The below text can be saved to a file with .wsb extension which can be double clicked to open a sandbox instance with the specified configurations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Configuration&gt;
+  &lt;Networking&gt;Enable&lt;/Networking&gt;
+  &lt;MappedFolders&gt;
+    &lt;MappedFolder&gt;
+      &lt;HostFolder&gt;C:\Users\username\source\repos&lt;/HostFolder&gt;
+      &lt;SandboxFolder&gt;C:\Users\WDAGUtilityAccount\desktop\repos&lt;/SandboxFolder&gt;
+      &lt;ReadOnly&gt;false&lt;/ReadOnly&gt;
+    &lt;/MappedFolder&gt;
+	&lt;MappedFolder&gt;
+      &lt;HostFolder&gt;C:\mm\sandbox&lt;/HostFolder&gt;
+      &lt;SandboxFolder&gt;C:\mm\sandbox&lt;/SandboxFolder&gt;
+      &lt;ReadOnly&gt;false&lt;/ReadOnly&gt;
+    &lt;/MappedFolder&gt;
+  &lt;/MappedFolders&gt;
+  &lt;LogonCommand&gt;
+  &lt;Command&gt;c:\mm\sandbox\startup.bat&lt;/Command&gt;
+  &lt;/LogonCommand&gt;
+&lt;/Configuration&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Folders on the host machine can be mapped to the specified path on the sandbox so that files in the host machines can be accessed inside the sandbox.</p>
+</div>
+<div class="paragraph">
+<p>Logon commands are executed after the sandbox is started.
+We can use batch (.bat) or powershell scripts to perform actions after the sandbox is started. An example batch file is given below.</p>
+</div>
+<div class="paragraph">
+<p>Note: The batch file should be accessible from inside the sandbox for it to be executed. In the example xml file, the batch file location on the host <strong>("c:\mm\sandbox")</strong> has been mapped to the sandbox.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">REM FluxTester prerequisites
+md c:\mm\bin
+c:\mm\sandbox\dotnet7.exe /quiet
+REM Set LicenseServer to SYS546 or its current IP address in the TMM network
+md c:\programdata\metamation\flux\recent
+echo [Basic] &gt; c:\programdata\metamation\flux\recent\notes.ini
+echo LicenseServer=192.168.1.183 &gt;&gt; c:\programdata\metamation\flux\recent\notes.ini
+REM Run Flux setup file without any prompts
+c:\mm\sandbox\setup.Flux.545.exe /SP- /SILENT</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note: <strong>REM</strong> indicates a comment in the batch file</p>
+</div>
+<div class="paragraph">
+<p>A screen recording of starting a new sandbox instance and running some automated tests can be found <a href="https://drive.google.com/file/d/1dd1Eyp3xGlAiKcqJS-G-uFkMyexHgoGX/view?usp=sharing">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_notes">Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux and other application require OpenGL to work correctly. There are a couple of requirements to enable this in Windows sandbox.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Hardware access inside virtualization (<strong>Intel VT-d</strong> for Intel PCs) should be enabled in bios</p>
+</li>
+<li>
+<p><strong>Above 4G Decoding</strong> should also be enabled in bios if available</p>
+</li>
+<li>
+<p>If running on a laptop with both integrated and discrete gpus, make sure Windows Sandbox application is using the discrete gpu.
+Also set power profile setting to <strong>high performance</strong> if running on battery.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Eg: In a Laptop with Intel and NVidia GPUs, set preferred gpu in NVidia control panel as shown below</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/sandbox.png" alt="Wrapping Settings" width="361">
+</div>
+</div>
+<div class="paragraph">
+<p>The license server running in SYS546 has limited seats available. Check if free seats are available before running tests.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_windows_sandbox">Windows Sandbox</a>
+    </li>
+    <li level="1">
+      <a href="#_prerequisites">Prerequisites</a>
+    </li>
+    <li level="1">
+      <a href="#_installation">Installation</a>
+    </li>
+    <li level="1">
+      <a href="#_notes">Notes</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="bento.html">Documentation using Bento</a></span>
+  <span class="next"><a href="../flux/index.html">Flux Guidelines</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
