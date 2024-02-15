@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Self-Updating Applications</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Tools</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a class="active" href="selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Tools</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="selfupdate.html">Self-Updating Applications</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Self-Updating Applications</h1>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Click <a href="testapp.zip">this link</a> to download the source skeleton implementing the self-update functionality. The zip file contains the <strong>TestApp</strong> console project. Unzip and launch the project in VisualStudio, switch it to release mode, compile and run. It checks for the new update and updates itself to a newer build. The update process looks something like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-demo1.png" alt="selfupdate demo1">
+</div>
+</div>
+<div class="paragraph">
+<p>From the next run onwards, it should continue as usual after the update check. The updates are checked at an interval of 60 minutes to avoid unnecessary launch delays.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-demo2.png" alt="selfupdate demo2" width="60%">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_update_mechanism">The update mechanism</h3>
+<div class="paragraph">
+<p>Central to the update mechanism is a publish registry where information like the published build number and the download link are stored. When launched, the application reads the build number from the registry and compares it with its own build number. It downloads the application Exe from the download link to a temporary folder if a new newer build is found. The download is a self-contained, single Exe file. It then launches the downloaded application in update mode and terminates itself to free up the write lock on the <em>current</em> exe file. The target exe path, and parent process etc. are passed as command parameters to the updater app (it is same exe running in special mode). The updater copies itself to the given path and terminates to complete the update process.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_publishing_a_new_build">Publishing a new build</h3>
+<div class="paragraph">
+<p><strong>Prerequisites</strong></p>
+</div>
+<div class="paragraph">
+<p>Following one-time preparation is needed before the first publish.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Obtain a publish registry credential from <a href="https://xlate.azurewebsites.net/Identity/Account/Register?returnUrl=%2F">here</a>.</p>
+</li>
+<li>
+<p><a href="#_creating_a_onedrive_download_url">Create a OneDrive download URL.</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>TestApp.exe -publish</strong></p>
+</div>
+<div class="paragraph">
+<p>A TestApp developer publishes a new build after a significant functionality update/bug fix. Like the self-update, TestApp can also publish itself when launched with <strong>-publish</strong> command argument.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-publish.png" alt="selfupdate publish">
+</div>
+</div>
+<div class="paragraph">
+<p>It expects following additional, positional parameters and needs a publish registry credential to complete the publish.</p>
+</div>
+<div class="paragraph">
+<p><strong>CSProjPath:</strong> The first publish parameter, defines path of the TestApp project file (.csproj). TestApp uses it to compile a self-contained single Exe file. The publish settings are configured via a publish-profile, stored in the same csproj file.</p>
+</div>
+<div class="paragraph">
+<p><strong>PublishDir:</strong> The Exe is then copied to a local folder provided as the second publish parameter. This a local OneDrive folder mapped to the download location. Note: Make sure the OneDrive Sync service is running in the background otherwise the download location mentioned next, will point to an incorrect TestApp version. Alternately, you can also publish it to any other local folder and upload the published Exe manually via web interface.</p>
+</div>
+<div class="paragraph">
+<p><strong>DownloadUrl:</strong> The third and the final parameter is the download URL from where the Exe can be streamed. This can be a read-only, public share created from the OneDrive folder mentioned above. (See Creating a OneDrive download URL section below.)</p>
+</div>
+<div class="paragraph">
+<p>Running <strong>TestApp.exe -publish</strong> with these parameters from the TestApp build directory (TestApp\Bin) prompts for publish registry Sign-in after the confirmation.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-publishprompt.png" alt="selfupdate publishprompt">
+</div>
+</div>
+<div class="paragraph">
+<p>Use the existing publish credential or create a new on using this <a href="https://xlate.azurewebsites.net/Identity/Account/Register">Register link</a>. Application is published on successful sign-in.<br>
+<strong>Note:</strong> The user-name is the registration email address.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-msg.png" alt="selfupdate msg">
+</div>
+</div>
+<div class="paragraph">
+<p>Or an error message is displayed and sign-in is prompted again. Press <span class="keyseq"><kbd>Ctl</kbd>+<kbd>C</kbd></span> to cancel the publish.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-error.png" alt="selfupdate error">
+</div>
+</div>
+<div class="paragraph">
+<p>The publish details and sign-in credentials are stored securely and are used in the subsequent publishes. So next publish command would just be <strong>TestApp.exe -publish</strong> from the TestApp\Bin.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plugging_the_update_mechanism">Plugging the update mechanism</h3>
+<div class="paragraph">
+<p>The update mechanism is reasonably moduler and can be easily plugged into relatively smaller console tools. To plug:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Copy the <strong>AutoUpdate.cs</strong> and the <strong>Res</strong> folder to the project&#8217;s root directory.</p>
+</li>
+<li>
+<p>Change file <strong>Res\K.dat</strong> <em>build action</em> to <strong>Embedded resource</strong>.</p>
+</li>
+<li>
+<p>Update the <strong>App.Name</strong> constant and the project namespace.</p>
+</li>
+<li>
+<p>Place <strong>AutoUpdate.Run ()</strong> call near the application entry point.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_onedrive_download_url">Creating a OneDrive download URL</h3>
+<div class="paragraph">
+<p>The steps mentioned here assumes a local OneDrive setup. It should be easy to adapt them to browser based online interface.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a local OneDrive folder on your computer and copy TestApp.exe to this folder (it can be same exe compiled to TestApp\Bin folder on a developer computer).</p>
+</li>
+<li>
+<p>Now right-click TestApp.exe and select <strong>OneDrive &gt; Copy Link</strong> menu to create a public link.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-1drive1.png" alt="selfupdate 1drive1">
+</div>
+</div>
+</li>
+<li>
+<p>It should launch the Share dialog. We first need to change the link access from edit to view. To change:</p>
+<div class="olist upperalpha">
+<ol class="upperalpha">
+<li>
+<p>Click <em class="underline">Anyone with the link can edit</em> link.</p>
+</li>
+<li>
+<p>Now in the second dialog select <em class="underline">Anyone</em> radio if not already selected.</p>
+</li>
+<li>
+<p>Change <em class="underline">Can edit</em> to <em class="underline">Can view</em> and press the <strong>Apply</strong> button. This would bring back to the first dialog. Use the <strong>Copy</strong> button to copy the share link.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-1drive2.png" alt="selfupdate 1drive2" width="60%">
+</div>
+</div>
+</li>
+<li>
+<p>The copied link would be in the format https://indiametamationsoft-my.sharepoint.com/:u:/g/personal/rajesh_metamation_com/EXKAkf99ld1KlJz_XAfs6hsBj0U0raViIZnZjUVVD-Y_dA<strong><em>?e=uXN86k</em></strong>. This is a browser link and <strong class="underline">cannot</strong> be used as direct download link. Remove the suffix after <strong>?</strong> highlighted in the bold and append <strong>?download=1</strong> to change it to a direct download link. So the above link would change to:
+https://indiametamationsoft-my.sharepoint.com/:u:/g/personal/rajesh_metamation_com/EXKAkf99ld1KlJz_XAfs6hsBj0U0raViIZnZjUVVD-Y_dA<strong><em>?download=1</em></strong><br>
+Copying this to a browser would immediately start the download as shown in the image below.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/selfupdate-download-link.png" alt="selfupdate download link" width="60%">
+</div>
+</div>
+<div class="paragraph">
+<p>Use this link as the <strong>DownloadUrl</strong> publish parameter.<br>
+<strong>Note:</strong> Do not delete the TestApp.exe file (it changes the URL), it would get revised by a new one during the TestApp publish.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_introduction">Introduction</a>
+    </li>
+    <li level="2">
+      <a href="#_the_update_mechanism">The update mechanism</a>
+    </li>
+    <li level="2">
+      <a href="#_publishing_a_new_build">Publishing a new build</a>
+    </li>
+    <li level="2">
+      <a href="#_plugging_the_update_mechanism">Plugging the update mechanism</a>
+    </li>
+    <li level="2">
+      <a href="#_creating_a_onedrive_download_url">Creating a OneDrive download URL</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="singlefileapps.html">Single Binary Applications</a></span>
+  <span class="next"><a href="../flux/index.html">Flux Guidelines</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>

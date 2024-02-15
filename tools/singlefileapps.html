@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Code Formatting</title>
+  <title>Single Binary Applications</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -27,12 +27,12 @@
       <button class="tree open"></button>
       <a href="index.html">Tools</a>
       <ul>
-        <li><button class="tree blank"></button><a class="active" href="codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
         <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
         <li><button class="tree blank"></button><a href="pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
         <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
         <li><button class="tree blank"></button><a href="testsandbox.html">Testing with Windows Sandbox</a></li>
-        <li><button class="tree blank"></button><a href="singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a class="active" href="singlefileapps.html">Single Binary Applications</a></li>
         <li><button class="tree blank"></button><a href="selfupdate.html">Self-Updating Applications</a></li>
       </ul>
     </li>
@@ -76,85 +76,78 @@
   </div>
   <div>/</div>
   <div>
-    <a href="codeformatting.html">Code Formatting</a>
+    <a href="singlefileapps.html">Single Binary Applications</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Code Formatting</h1>
-<div class="sect1">
-<h2 id="_format_settings_for_visual_studio">Format settings for Visual Studio</h2>
+                        <h1>Single Binary Applications</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document explains the Metamation conventions for formatting C# code.</p>
-</div>
-<div class="sect2">
-<h3 id="_tabs">Tabs</h3>
-<div class="paragraph">
-<p>Use Spaces instead of Tab characters in source files. Set the indent level as
-3 spaces. (2 is too narrow, 4 is too wide, 3 is the Goldilocks number).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_indentation_newlines_and_spacing">Indentation, Newlines and Spacing</h3>
-<div class="paragraph">
-<p>Metamation indentation style is a mix between the K&amp;R Style and the 1TBS (One True Brace Style).
-Like K&amp;R style, we generally dispense with the braces when there is only one statement in the
-block. Like 1TBS, we place the braces opening a function on the same line as the function header.</p>
+<p>Typically a .Net Core application is compiled into multiple files like &lt;App&gt;.exe, &lt;App&gt;.dll, &lt;App&gt;.runtimeconfig.json, &lt;App&gt;.deps.json. All of these must be copied together when deploying the application to another computer. Additional depedencies add proportionally to the deployment complexity. This complexity is justified for applications with mulitple executables using shared libraries and resources. Commonly, installer applications are used to bundle all the files together and simplify the deployment in such scenarios. However it is an overkill for a simple, single-purpose tool or library.</p>
 </div>
 <div class="paragraph">
-<p>That is:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">void CheckLevel () {
-   if (nLevel &gt; 0 &amp;&amp; !mLevelStack.IsEmpty)
-      PopLevel ();
-}</code></pre>
+<p>Dotnet publish can be used to bundle all application files and dependecies into a single file simplifying the deployment. Rest of this article describes creating a VisualStudio publish profile to produce a single file binary.</p>
 </div>
 </div>
-<div class="paragraph">
-<p>However, this is discretionary. If you think adding braces clarifies the meaning, add them.</p>
 </div>
-<div class="paragraph">
-<p>Here are how we configure Visual Studio to get the exact indentation, newlines and spacing
-settings that we want. Once configured, the editor will <em>reformat</em> your code using these settings
-each time you complete a block, ensuring consistency. Go to the <strong>Tools / Options</strong> dialog, and you
-can find these settings under <strong>Text Editor / C# / Code Style / Formatting</strong></p>
-</div>
+<div class="sect1">
+<h2 id="_steps">Steps</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the Solution Explorer, Right-Mouse-Click and select the <strong>Publish</strong> menu option.</p>
 <div class="imageblock">
 <div class="content">
-<img src="img/1001.1.png" alt="Indentation Settings" width="302">
+<img src="img/singlefile-publish1.png" alt="singlefile publish1">
 </div>
 </div>
-<div class="paragraph">
-<p>A key point with these brace styles it that we try to reduce the number of lines code
-occupies. Thus, the <strong>New Lines</strong> section of the Visual Studio editor is configured by
-turning all the new line check-boxes off:</p>
-</div>
+</li>
+<li>
+<p>Press <strong>New Profile</strong> button. It should start the publish wizard. Select <strong>Folder</strong> option from the list and press <strong>Next</strong>.</p>
 <div class="imageblock">
 <div class="content">
-<img src="img/1001.2.png" alt="NewLines Settings" width="462">
+<img src="img/singlefile-publish2.png" alt="singlefile publish2" width="80%">
 </div>
 </div>
-<div class="paragraph">
-<p>Continuing the <em>brevity</em> theme, the Wrapping settings are configured thus:</p>
-</div>
+</li>
+<li>
+<p>Select the <strong>Folder</strong> taget option and press <strong>Next</strong>.</p>
 <div class="imageblock">
 <div class="content">
-<img src="img/1001.3.png" alt="Wrapping Settings" width="361">
+<img src="img/singlefile-publish3.png" alt="singlefile publish3" width="80%">
 </div>
 </div>
-<div class="paragraph">
-<p>The spacing rules are set like this:</p>
-</div>
+</li>
+<li>
+<p>Key-in the publish path and press <strong>Finish</strong> to close the wizard.</p>
 <div class="imageblock">
 <div class="content">
-<img src="img/1001.4.png" alt="Spacing Settings" width="403">
+<img src="img/singlefile-publish4.png" alt="singlefile publish4">
 </div>
 </div>
+</li>
+<li>
+<p>Click on <strong>Show all settings</strong> link to edit <strong>Profile settings</strong>. Change the <strong>Target runtime</strong> from <strong>Portable</strong> to <strong>win-x64</strong>. Now check <strong>Produce single file</strong> option under the <strong>File publish options</strong> and press OK to save the settings.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/singlefile-publish5.png" alt="singlefile publish5" width="80%">
+</div>
+</div>
+</li>
+<li>
+<p>Click the <strong>Publish</strong> button placed at the top-right corner to compile and publish. Use the <strong>open folder</strong> link to open and locate the published binary.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/singlefile-publish6.png" alt="singlefile publish6" width="80%">
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -166,13 +159,7 @@ turning all the new line check-boxes off:</p>
   <h3>Contents</h3>
   <ul>
     <li level="1">
-      <a href="#_format_settings_for_visual_studio">Format settings for Visual Studio</a>
-    </li>
-    <li level="2">
-      <a href="#_tabs">Tabs</a>
-    </li>
-    <li level="2">
-      <a href="#_indentation_newlines_and_spacing">Indentation, Newlines and Spacing</a>
+      <a href="#_steps">Steps</a>
     </li>
   </ul>
 </aside>
@@ -180,8 +167,8 @@ turning all the new line check-boxes off:</p>
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="index.html">Tools</a></span>
-  <span class="next"><a href="configuregit.html">Configuring Git</a></span>
+  <span class="prev"><a href="testsandbox.html">Testing with Windows Sandbox</a></span>
+  <span class="next"><a href="selfupdate.html">Self-Updating Applications</a></span>
 </nav>
 
         </div>
@@ -209,12 +196,6 @@ turning all the new line check-boxes off:</p>
     <script src="../res/files.js"></script>
     <script src="../res/site.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-  <script>
-    if (!hljs.initHighlighting.called) {
-      hljs.initHighlighting.called = true
-      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-    }
-  </script>
+    
 </body>
 </html>
