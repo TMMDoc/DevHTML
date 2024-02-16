@@ -1,0 +1,435 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Flux Development Style Guide</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Flux Guidelines</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a class="active" href="fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Flux Guidelines</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="fluxdevelopementstyleguide.html">Flux Development Style Guide</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Flux Development Style Guide</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains the style guidelines for Flux development. It covers the naming conventions and commenting conventions for Flux code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_class_headers">File &amp; Class Headers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Insert something like the following header at the start of every file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>// ---------------------------------------------------------------------------------------
+// Flux ~ Sheet metal CAD/CAM system
+// Copyright (c) Metamation India.                                                === --
+// ---------------------------------------------------------------------------      ==( )
+// Part.cs                                                                        === --
+// Implements the Part class, which is the generic unit of processing in
+// Flux. A part may be a flat-sheet part, a bending part, a 5-axis laser part,
+// a welding part (or many of these at the same time).
+// ---------------------------------------------------------------------------------------</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This header is from <strong>Flux.Core.dll</strong>, the other DLLs have a slightly different first line.
+Each top-level class in a file has a header like this, where the divider extends to column 100 (with the
+region open). The region header contains just two words like <strong>class Something</strong> or <strong>interface AnotherThing</strong> or
+<strong>enum YetAnother</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>namespace Flux;
+#region class Part --------------------------------------------------------------------------------
+/// &lt;summary&gt;Summary for class Part&lt;/summary&gt;
+/// More detailed documentation for class Part (a few lines, to a page or two even)
+public class Part {
+... many lines ...
+}
+#endregion</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The class itself is divided into several segments and each segment has a header like this, extending to
+column 70.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public class Part {
+   #region Properties -----------------------------------------------
+   ...properties ...
+   #endregion
+
+   #region Methods --------------------------------------------------
+   ... methods ...
+   #endregion
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The section below explains the possible segments in a class</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_class_segments">Class Segments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The members of a class are organized into one or more segments. The order in which these segments are
+listed below is the preferred ordering of segments, and we explain here what should go into each
+segment.</p>
+</div>
+<div class="sect2">
+<h3 id="_constructors">Constructors</h3>
+<div class="paragraph">
+<p>Public<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> or protected constructors go here; private constructors go into the Implementation section. Static
+constructors should be private, and therefore should be in the implementation section. If there are static
+factory methods that create objects, then those should appear here in the Constructors section. For
+example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>class Pline {
+   #region Constructors ---------------------------------------------
+   /// &lt;summary&gt;Construct a Circle polyline, given the center and radius&lt;/summary&gt;
+   static Pline MakeCircle (Point2 center, double radius) {
+   ... code ...
+   }
+   #endregion
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this appears in the constructors section only if this is static, and the return type is the enclosing
+class itself. In other words, it is effectively a constructor. The constructors are ordered in increasing
+complexity of parameter lists<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_properties">Properties</h3>
+<div class="paragraph">
+<p>The properties section lists all public properties, fields and events. We don’t distinguish between public
+properties and public fields, and where there is no particular need to use a property, we would
+recommend using a field instead. For example, consider this class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public struct Point2 {
+   public double X { get =&gt; mX; private set =&gt; mX = value; }
+   double mX;
+
+   public double Y { get =&gt; mY; private set =&gt; mY = value; }
+   double mY;
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This could safely be replaced by this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public readonly struct Point2 {
+   public readonly double X;
+   public readonly double Y;
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If, for some reason, we find it necessary to make X and Y properties (maybe we want to enforce some
+kind of range checking, or fire a property-changed event), this entails re-compilation of all the
+downstream code using Point2. That’s OK; we have the luxury of enforcing such re-compilation. If you are in doubt, consult senior programmer before using fields.</p>
+</div>
+<div class="paragraph">
+<p>Properties are ordered alphabetically.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_methods">Methods</h3>
+<div class="paragraph">
+<p>This lists all the public or protected methods of the type. Private methods go into the implementation
+section.</p>
+</div>
+<div class="paragraph">
+<p>Overrides are treated in a special manner. If the root method of an override is part of Flux, then the
+method belongs here. For example, <strong>GridPunch.GenCode()</strong> method is listed here (since it implements
+<strong>ToolingItem.GenCode()</strong>, which is declared in Flux). On the other hand, <strong>GridPunch.ToString()</strong> method
+appears in the implementation section, since it overrides the <strong>Object.ToString()</strong> methods, which is declared
+outside Flux.</p>
+</div>
+<div class="paragraph">
+<p>In some situations (as in implementing containers, or in WPF controls) one overrides a number of methods
+from a particular base class or interface. When doing this, it is a good idea to have a separate section titled
+something like <strong>UserControl implementation</strong> or <strong>IList implementation</strong>. Don’t do this if there are just one or
+two methods being overridden.</p>
+</div>
+<div class="paragraph">
+<p>Methods appear in alphabetical order; methods with the same name are sorted in increasing order of
+parameter complexity.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operators">Operators</h3>
+<div class="paragraph">
+<p>This lists all public or protected type conversion operators, binary and unary operators. Private operators
+are moved into the implementation section<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementation">Implementation</h3>
+<div class="paragraph">
+<p>This list all the private methods, as well as the overrides that got shunted here from the methods section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nested_types">Nested types</h3>
+<div class="paragraph">
+<p>This lists all the nested types (including enumerations) that are declared within this class. Public types first,
+private types next. Types are listed in alphabetical order.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_private_data">Private data</h3>
+<div class="paragraph">
+<p>This lists private fields and properties. All instance fields come first, followed by all static fields. Within
+these sections they are listed in alphabetical order. There are some exceptions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A field or private property that is used only in one method (for example, some kind of cache) can
+be placed immediately after that method.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public Rect2 GetBound () {
+   if (mBound.IsEmpty) { ... compute bound ... }
+   return mBound;
+}
+Rect2 mBound; // Place this here, rather than in the private data section</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A field that is used as a backing field for a property is placed immediately after that property:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public double Area {
+   get =&gt; mArea;
+   set { mArea = value; PropertyChanged.Fire ("Area"); }
+}
+double mArea; // Place this here, rather than in the Private data section</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Follow this rule in general. Extending this, one could infer that static data that is used only in one static
+constructor should appear immediately after that static constructor.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_naming_conventions">Naming Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Class names: <strong>PlineIntersector</strong></p>
+</div>
+<div class="paragraph">
+<p>Methods: <strong>GetExtendedBounds (&#8230;&#8203;)</strong></p>
+</div>
+<div class="paragraph">
+<p>Public fields &amp; properties: <strong>MinHeight</strong></p>
+</div>
+<div class="paragraph">
+<p>Private instance fields &amp; properties: <strong>mExtending</strong></p>
+</div>
+<div class="paragraph">
+<p>Private static fields and properties: <strong>sCharMap</strong></p>
+</div>
+<div class="paragraph">
+<p>Enumeration types: <strong>EClampType</strong>, <strong>ECorner</strong>, <strong>ECharacterSet</strong></p>
+</div>
+<div class="paragraph">
+<p>Interface types: <strong>IDisplayDevice</strong>, <strong>ICurlable</strong>, <strong>IFormattable</strong></p>
+</div>
+<div class="paragraph">
+<p>Use an <strong>m</strong> prefix for instance fields, and an <strong>s</strong> prefix for static fields, but no other type-specific (Hungarian)
+prefixes<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. In this discussion, treat internal as public
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. We know this is rather vague; do your best.
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. Not sure if one even needs private operators.
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. There is a special variation of this m prefix rule. For classes that are designed to be serialized with the Au metadata system, field names that start with an underscore are implicitly treated as <em>cached</em> fields that are never serialized. This greatly simplifies writing the Metadata for that type; without this convention, one would have to list every such cached field and explicitly tag it as Cached so it does not get serialized.
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_file_class_headers">File &amp; Class Headers</a>
+    </li>
+    <li level="1">
+      <a href="#_class_segments">Class Segments</a>
+    </li>
+    <li level="2">
+      <a href="#_constructors">Constructors</a>
+    </li>
+    <li level="2">
+      <a href="#_properties">Properties</a>
+    </li>
+    <li level="2">
+      <a href="#_methods">Methods</a>
+    </li>
+    <li level="2">
+      <a href="#_operators">Operators</a>
+    </li>
+    <li level="2">
+      <a href="#_implementation">Implementation</a>
+    </li>
+    <li level="2">
+      <a href="#_nested_types">Nested types</a>
+    </li>
+    <li level="2">
+      <a href="#_private_data">Private data</a>
+    </li>
+    <li level="1">
+      <a href="#_naming_conventions">Naming Conventions</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="fluxgitworkflow.html">Flux Git Workflow</a></span>
+  <span class="next"><a href="releasenotes.html">Release notes for Flux</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <ul id="results"></ul>
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>

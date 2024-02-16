@@ -41,6 +41,7 @@
       <a href="../flux/index.html">Flux Guidelines</a>
       <ul class="hide">
         <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
         <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
         <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
         <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
@@ -88,6 +89,11 @@
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>Usually an application goes through multiple refinements and functionally updates during its life cycle. It is useful to have the applications self-update when a new version is released. This article discusses one such technique to enable self-update in a <a href="singlefileapps.html">single-file console application</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_self_update_demo">Self-update demo</h3>
+<div class="paragraph">
 <p>Click <a href="testapp.zip">this link</a> to download the source skeleton implementing the self-update functionality. The zip file contains the <strong>TestApp</strong> console project. Unzip and launch the project in VisualStudio, switch it to release mode, compile and run. It checks for the new update and updates itself to a newer build. The update process looks something like this:</p>
 </div>
 <div class="imageblock">
@@ -103,10 +109,11 @@
 <img src="img/selfupdate-demo2.png" alt="selfupdate demo2" width="60%">
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_the_update_mechanism">The update mechanism</h3>
 <div class="paragraph">
-<p>Central to the update mechanism is a publish registry where information like the published build number and the download link are stored. When launched, the application reads the build number from the registry and compares it with its own build number. It downloads the application Exe from the download link to a temporary folder if a new newer build is found. The download is a self-contained, single Exe file. It then launches the downloaded application in update mode and terminates itself to free up the write lock on the <em>current</em> exe file. The target exe path, and parent process etc. are passed as command parameters to the updater app (it is same exe running in special mode). The updater copies itself to the given path and terminates to complete the update process.</p>
+<p>Central to the update mechanism is a publish registry where information like the published build number and the download link are stored. When launched, the application reads the build number from the registry and compares it with its own build number. It downloads the application Exe from the download link to a temporary folder if a new newer build is found. The download is a self-contained, single Exe file. It then launches the downloaded application in update mode and terminates itself to free up the write lock on the <em>current</em> exe file. The target exe path, and parent process etc. are passed as command parameters to the updater app (it is the same exe running in a special mode). The updater copies itself to the given path and terminates to complete the update process.</p>
 </div>
 </div>
 <div class="sect2">
@@ -123,7 +130,7 @@
 <p>Obtain a publish registry credential from <a href="https://xlate.azurewebsites.net/Identity/Account/Register?returnUrl=%2F">here</a>.</p>
 </li>
 <li>
-<p><a href="#_creating_a_onedrive_download_url">Create a OneDrive download URL.</a></p>
+<p><a href="#_creating_a_onedrive_download_url">Create a OneDrive download URL.</a><sup class="footnote" id="_footnote_download-link">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
 </li>
 </ul>
 </div>
@@ -142,13 +149,13 @@
 <p>It expects following additional, positional parameters and needs a publish registry credential to complete the publish.</p>
 </div>
 <div class="paragraph">
-<p><strong>CSProjPath:</strong> The first publish parameter, defines path of the TestApp project file (.csproj). TestApp uses it to compile a self-contained single Exe file. The publish settings are configured via a publish-profile, stored in the same csproj file.</p>
+<p><strong>CSProjPath:</strong> The first publish parameter, defines path of the TestApp project file (.csproj). TestApp uses it to compile a <a href="singlefileapps.html">self-contained, single Exe</a> file. The publish settings are configured via a publish-profile, stored in the same csproj file.</p>
 </div>
 <div class="paragraph">
-<p><strong>PublishDir:</strong> The Exe is then copied to a local folder provided as the second publish parameter. This a local OneDrive folder mapped to the download location. Note: Make sure the OneDrive Sync service is running in the background otherwise the download location mentioned next, will point to an incorrect TestApp version. Alternately, you can also publish it to any other local folder and upload the published Exe manually via web interface.</p>
+<p><strong>PublishDir:</strong> The Exe is then copied to a local folder provided as the second publish parameter. This a local OneDrive<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> folder mapped to the download location. Note: Make sure the OneDrive Sync service is running in the background otherwise the download location mentioned next, will point to an incorrect TestApp version. Alternately, you can also publish it to any other local folder and upload the published Exe manually via web interface.</p>
 </div>
 <div class="paragraph">
-<p><strong>DownloadUrl:</strong> The third and the final parameter is the download URL from where the Exe can be streamed. This can be a read-only, public share created from the OneDrive folder mentioned above. (See Creating a OneDrive download URL section below.)</p>
+<p><strong>DownloadUrl:</strong> The third and the final parameter is the download URL from where the Exe can be streamed. This can be a read-only, public share created from the OneDrive<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> folder mentioned above. (See <a href="#_creating_a_onedrive_download_url">Creating a OneDrive download URL</a> section below.)</p>
 </div>
 <div class="paragraph">
 <p>Running <strong>TestApp.exe -publish</strong> with these parameters from the TestApp build directory (TestApp\Bin) prompts for publish registry Sign-in after the confirmation.</p>
@@ -197,6 +204,9 @@
 </li>
 <li>
 <p>Place <strong>AutoUpdate.Run ()</strong> call near the application entry point.</p>
+</li>
+<li>
+<p>Add a <a href="singlefileapps.html">single-file publish profile</a> called <strong>FolderProfile</strong> to the project.</p>
 </li>
 </ol>
 </div>
@@ -259,6 +269,12 @@ Copying this to a browser would immediately start the download as shown in the i
 </div>
 </div>
 </div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Any other file share service (Dropbox, Azure Files, Google Drive etc.) can be used instead of the OneDrive. There should be a local mapped folder where the published Exe can be stored. And, it should be possible to create a public download link to the Exe. The link needs to be public (no password protection), read-only and direct. A simple check can be performed by browsing the link in a browser in private-mode. Depending on the browser, it should start downloading it or prompt with the file-save dialog.
+</div>
+</div>
 
                     </article>
                 </div>
@@ -268,6 +284,9 @@ Copying this to a browser would immediately start the download as shown in the i
   <ul>
     <li level="1">
       <a href="#_introduction">Introduction</a>
+    </li>
+    <li level="2">
+      <a href="#_self_update_demo">Self-update demo</a>
     </li>
     <li level="2">
       <a href="#_the_update_mechanism">The update mechanism</a>

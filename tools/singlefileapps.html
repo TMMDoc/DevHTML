@@ -41,6 +41,7 @@
       <a href="../flux/index.html">Flux Guidelines</a>
       <ul class="hide">
         <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
         <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
         <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
         <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
@@ -90,7 +91,7 @@
 <p>Typically a .Net Core application is compiled into multiple files like &lt;App&gt;.exe, &lt;App&gt;.dll, &lt;App&gt;.runtimeconfig.json, &lt;App&gt;.deps.json. All of these must be copied together when deploying the application to another computer. Additional depedencies add proportionally to the deployment complexity. This complexity is justified for applications with mulitple executables using shared libraries and resources. Commonly, installer applications are used to bundle all the files together and simplify the deployment in such scenarios. However it is an overkill for a simple, single-purpose tool or library.</p>
 </div>
 <div class="paragraph">
-<p>Dotnet publish can be used to bundle all application files and dependecies into a single file simplifying the deployment. Rest of this article describes creating a VisualStudio publish profile to produce a single file binary.</p>
+<p>Dotnet publish can be used to bundle all application files and dependecies into a single file simplifying the deployment. Rest of this article describes creating a VisualStudio publish profile to produce a single file binary (executable or a library).</p>
 </div>
 </div>
 </div>
