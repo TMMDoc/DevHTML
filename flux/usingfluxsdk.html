@@ -56,6 +56,7 @@
         <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
         <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
         <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importcomponents.html">Importing bend and cell components</a></li>
         <li><button class="tree blank"></button><a href="../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
         <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
         <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
@@ -98,19 +99,19 @@
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">Default location: C:\FluxSDK
+<pre class="highlightjs highlight"><code class="language-none hljs">Default location: C:/FluxSDK
 
 Note: If the SDK is not installed in the default path, then obtain the installed location.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>API Binaries:</code> Flux SDK installed path \ <strong>Bin</strong></p>
+<p><code>API Binaries:</code> Flux SDK installed path / <strong>Bin</strong></p>
 </div>
 <div class="paragraph">
 <p><code>API Reference:</code> <a href="https://metamation-fluxapi.onrender.com/classes.htm">Documentation</a></p>
 </div>
 <div class="paragraph">
-<p><code>Samples:</code> Flux SDK installed path \ <strong>Samples</strong></p>
+<p><code>API sample programs:</code> Flux SDK installed path / <strong>Samples</strong></p>
 </div>
 </div>
 </div>
@@ -125,6 +126,9 @@ Note: If the SDK is not installed in the default path, then obtain the installed
 <div class="sect1">
 <h2 id="_steps_to_build_a_flux_sdk_program">Steps to build a Flux SDK program</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Below steps provide information about how to write a simple Flux API console application.</p>
+</div>
 <div class="sect2">
 <h3 id="_step_1_create_a_net_core_application_using_microsoft_visual_studio"><code>Step 1:</code> Create a .Net Core application using Microsoft Visual Studio</h3>
 <div class="paragraph">
@@ -154,7 +158,7 @@ Note: If the SDK is not installed in the default path, then obtain the installed
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">&lt;PlatformTarget&gt;x64&lt;/PlatformTarget&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;PlatformTarget&gt;x64&lt;/PlatformTarget&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -166,11 +170,11 @@ Note: If the SDK is not installed in the default path, then obtain the installed
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> For console application, set the below property elements to <code>&lt;PropertyGroup&gt;</code> in the project file.</p>
+<p><strong>Important:</strong> For console application, add the below property elements to <code>&lt;PropertyGroup&gt;</code> in the project file.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">&lt;TargetFramework&gt;net7.0-windows&lt;/TargetFramework&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;TargetFramework&gt;net8.0-windows&lt;/TargetFramework&gt;
 &lt;UseWPF&gt;true&lt;/UseWPF&gt;</code></pre>
 </div>
 </div>
@@ -178,7 +182,23 @@ Note: If the SDK is not installed in the default path, then obtain the installed
 <div class="sect2">
 <h3 id="_step_3_move_the_api_binaries_to_the_application_bin_folder"><code>Step 3:</code> Move the API binaries to the application bin folder</h3>
 <div class="paragraph">
-<p>Copy all the API binaries from <code>Bin</code> folder in SDK installed path (e.g., C:\Program Files\Metamation\FluxSDK\Bin) to the project bin folder (e.g., D:\Samples\TestFluxSDK\bin\Release\net7.0-windows\).</p>
+<p>Copy all the binaries and files from <code>Flux SDK installed path / Bin</code> folder (<em>e.g., C:/FluxSDK/Bin</em>) to the project bin folder (<em>e.g., C:/FluxSDK/Samples/PartInfo/bin/Release/net8.0</em>).</p>
+</div>
+<div class="paragraph">
+<p><strong><em>OR</em></strong></p>
+</div>
+<div class="paragraph">
+<p>Target the application output directory to <code><em>Flux SDK installed path / Bin</em></code> in .csproj file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;Project Sdk="Microsoft.NET.Sdk"&gt;
+   &lt;PropertyGroup&gt;
+      ....
+      &lt;OutDir&gt;C:/FluxSDK/Bin&lt;/OutDir&gt;
+   &lt;/PropertyGroup&gt;
+&lt;/Project&gt;</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -186,6 +206,23 @@ Note: If the SDK is not installed in the default path, then obtain the installed
 <div class="imageblock">
 <div class="content">
 <img src="img/sdk_004.png" alt="sdk 004">
+</div>
+</div>
+<div class="paragraph">
+<p><strong><em>OR</em></strong></p>
+</div>
+<div class="paragraph">
+<p>Add the Flux.API.dll reference in the .csproj file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;Project Sdk="Microsoft.NET.Sdk"&gt;
+   &lt;ItemGroup&gt;
+     &lt;Reference Include="Flux.API"&gt;
+        &lt;HintPath&gt;C:/FluxSDK/Bin/Flux.API.dll&lt;/HintPath&gt;
+     &lt;/Reference&gt;
+   &lt;/ItemGroup&gt;
+&lt;/Project&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -208,15 +245,20 @@ class Program {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using Flux.API;
 class Program {
-    static void Main (string args[]) {
-        Library.Init (ELib.SDK, null, "C:\\ProgramData\\Metamation\\Flux");
-    }
+   static void Main (string[] args) {
+      // Initialize library
+      // Init method accepts three parameters.
+      // param 1: Flux data directory (e.g. SDK installed path / Data)
+      // param 2: Flux SDK bin directory (e.g. SDK installed path / Bin)
+      // param 3: Window object (set null for console apps)
+      Library.Init ("C:/FluxSDK/Data", "C:/FluxSDK/Bin", null);
+   }
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_step_7_implement_logics_and_run_the_application"><code>Step 7:</code> Implement logics, and run the application</h3>
+<h3 id="_step_7_implement_logics_and_run_the_application"><code>Step 7:</code> Implement logics and run the application</h3>
 <div class="paragraph">
 <p><code>Example:</code> Implement some logic to print part information</p>
 </div>
@@ -231,7 +273,7 @@ class Program {
       var file = args[0];
       if (!File.Exists (file)) Console.WriteLine ("Invalid file");
       // Initialize library
-      Library.Init (ELib.SDK, null, "C:\\ProgramData\\Metamation\\Flux");
+      Library.Init ("C:/FluxSDK/Data", "C:/FluxSDK/Bin", null);
       Console.WriteLine ("Flux build {0}", Sys.FluxBuild);
       var part = Part.Load (file);
       Console.WriteLine ($"Name: {part.Info.Name}");
@@ -247,7 +289,7 @@ class Program {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">D:\Samples\TestFluxSDK\bin\Release\net7.0-windows&gt;TestFluxSDK.exe C:\etc\060020.sldprt</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">C:\FluxSDK\Bin&gt;PartInfo.exe C:/etc/060030.sldprt</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -279,12 +321,44 @@ UNIT_OF_MEASURE: - zádné -
 SHEETMETAL_PARAMETERS: 0.32</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_product_license">Register product license</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p><strong>Note:</strong> Execution of the program might launch the “Register Flux” window if the Flux license is not registered already in the machine (if prompted, request TMM support for license).</p>
+<p><strong>Note:</strong> Execution of the program might launch <strong>NoLicense</strong> API exception if Flux license for SDK is not registered already.</p>
+</div>
+<div class="sect2">
+<h3 id="_api_to_register_product">API to register product</h3>
+<div class="sect3">
+<h4 id="_console_application">Console application</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Register license (non user interface method for console apps).
+Library.RegisterLicense (serial, user, email);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_windows_application">Windows application</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Register license (user interface method for windows apps).
+Library.RegisterLicenseUI ();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Windows application license prompt</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="img/sdk_005.png" alt="sdk 005">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Request TMM support for license.</p>
 </div>
 </div>
 </div>
@@ -329,7 +403,13 @@ SHEETMETAL_PARAMETERS: 0.32</code></pre>
       <a href="#_step_6_initialize_flux_api_in_the_program"><code>Step 6:</code> Initialize Flux API in the program</a>
     </li>
     <li level="2">
-      <a href="#_step_7_implement_logics_and_run_the_application"><code>Step 7:</code> Implement logics, and run the application</a>
+      <a href="#_step_7_implement_logics_and_run_the_application"><code>Step 7:</code> Implement logics and run the application</a>
+    </li>
+    <li level="1">
+      <a href="#_register_product_license">Register product license</a>
+    </li>
+    <li level="2">
+      <a href="#_api_to_register_product">API to register product</a>
     </li>
   </ul>
 </aside>
