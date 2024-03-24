@@ -29,7 +29,7 @@
       <ul class="hide">
         <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
         <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
-        <li><button class="tree blank"></button><a href="../tools/pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
         <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
         <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
         <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
@@ -148,8 +148,17 @@ content (this is just a Bash script that runs the <strong>PreCommit.exe</strong>
 exec Tools/bin/PreCommit.exe</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>This step is very imporant – don’t skip it!</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This step is very important - don&#8217;t skip it!
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_testing_the_pre_commit_hook">Testing the pre-commit Hook</h3>
@@ -174,13 +183,31 @@ Create a new branch using 'git switch --create NewBranchName',
 and commit your work there.</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>If you don’t see this error message you have not installed the pre-commit hook correctly.
-Do not proceed further, ask one of the Flux developers for help.</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+If you don&#8217;t see this error message you have not installed the pre-commit hook correctly.
+Do not proceed further, ask one of the Flux developers for help.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p><strong>Note</strong>: The source code for the <strong>PreCommit</strong> tool can be found in <strong>Tools/Git</strong>
-in the Flux source tree.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The source code for the <strong>PreCommit</strong> tool can be found in <strong>Tools/Git</strong>
+in the Flux source tree.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -231,7 +258,7 @@ with Git you can bend these rules <em>if you know what you are doing</em>.</p>
 <p>In general, we are going to use a branch for each case and these branches will be
 merged into main periodically (typically daily). There are no <em>per-developer</em>
 branches. New case branches are always created starting from <strong>main</strong>. There are no
-commits to the main branch directly – that grows only by merging in development from
+commits to the main branch directly - that grows only by merging in development from
 other branches.</p>
 </div>
 <div class="paragraph">
@@ -267,8 +294,19 @@ and they will merge the code to main.</p>
 </div>
 <div class="paragraph">
 <p>Meanwhile, you can  start working on another case by creating a new branch and starting
-afresh. Remember to do the sequence with git switch main etc again.
-<em>Don’t fork the new branch from your already existing Case.12345 branch!</em></p>
+afresh. Remember to do the sequence with git switch main etc again.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Don&#8217;t fork the new branch from your already existing Case.12345 branch!
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_switching_between_cases">Switching between cases</h3>
@@ -286,7 +324,7 @@ the flexibility to merge <strong>Case.67890</strong> or <strong>Case.12345</stro
 the other one. The pull request in Github is structured like a discussion. If the lead is happy
 with some changes, they can use the pull request to make some notes. You adjust the code further
 based on these notes, commit and push again. This throws the pull request back to me and your
-code will get reviewedagain. After some back and forth, the branch is judged good to go and is
+code will get reviewed again. After some back and forth, the branch is judged good to go and is
 merged. After this, we typically delete the branch (like <strong>Case.12345</strong>) since it has served
 its purpose.</p>
 </div>
@@ -297,13 +335,13 @@ its purpose.</p>
 <p>Each time you start work on a new case, you are always starting with the latest main, thanks to
 the <code>git switch main / git pull</code> that you do before creating a new branch. However, if work on a
 case takes a while, it might be useful for you to periodically merge the latest changes from
-<strong>main</strong> into your branch. Let’s say you are working on <strong>Case.12345</strong>. You will then do:</p>
+<strong>main</strong> into your branch. Let&#8217;s say you are working on <strong>Case.12345</strong>. You will then do:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">git add Changed.cs                                  &lt;- assume we are now on Case.12345 branch
-git commit -m "Case.12345 – Add local rendering"    &lt;- commit all changes here
-git switch main                                     &lt;- wwitch to the main branch
+git commit -m "Case.12345 - Add local rendering"    &lt;- commit all changes here
+git switch main                                     &lt;- switch to the main branch
 git pull                                            &lt;- get the latest version of it
 git switch Case.12345                               &lt;- switch back to your work branch
 git merge main                                      &lt;- merge the changes in main</code></pre>
@@ -317,7 +355,7 @@ same file. You have to resolve this conflict.</p>
 <div class="sect2">
 <h3 id="_handling_merge_conflicts">Handling merge conflicts</h3>
 <div class="paragraph">
-<p>Occassionally you will get merge conflicts (though less often than you would with Mercurial).
+<p>Occasionally you will get merge conflicts (though less often than you would with Mercurial).
 Let&#8217;s take a simple example. Suppose we started with a text file like this:</p>
 </div>
 <div class="imageblock">
@@ -344,7 +382,7 @@ in yellow):</p>
 </div>
 <div class="paragraph">
 <p>Now suppose developer A pushes their change and files a pull request. I will merge this into the
-main branch and at this time, there will be no conflicts – the merge result will be a
+main branch and at this time, there will be no conflicts - the merge result will be a
 <em>fast-forward merge</em> (see the Git documentation to understand this).</p>
 </div>
 <div class="paragraph">
@@ -398,12 +436,12 @@ in <strong>cyan</strong> is the remote version of the file that the other person
 this <em>theirs</em>). Note that the part in green (the original file) is included here only if you had
 set up <code>conflictstyle = diff3</code> as explained in the section above on setting up the merge tool.
 I find this green text (original) to be very useful when figuring out how to resolve the conflict,
-so I strongly recomment you set up this conflictstyle.</p>
+so I strongly recommend you set up this conflictstyle.</p>
 </div>
 <div class="paragraph">
 <p>Now you can easily clean up the conflict in the text editor since you have all 3 versions
 available and you can pick the exact version you want to keep. Usually, I find this is the
-easiest way for me to work, since I can just search for all occurances of <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> in the code
+easiest way for me to work, since I can just search for all occurrences of <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> in the code
 and quickly find all the merge conflicts.</p>
 </div>
 <div class="paragraph">

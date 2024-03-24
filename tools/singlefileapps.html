@@ -29,7 +29,7 @@
       <ul>
         <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
         <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
-        <li><button class="tree blank"></button><a href="pushacademyassignmentstogithub.html">How to push Academy assignments to GitHub</a></li>
+        <li><button class="tree blank"></button><a href="assignments.html">Assignments</a></li>
         <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
         <li><button class="tree blank"></button><a href="testsandbox.html">Testing with Windows Sandbox</a></li>
         <li><button class="tree blank"></button><a class="active" href="singlefileapps.html">Single Binary Applications</a></li>
@@ -89,10 +89,10 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Typically a .Net Core application is compiled into multiple files like &lt;App&gt;.exe, &lt;App&gt;.dll, &lt;App&gt;.runtimeconfig.json, &lt;App&gt;.deps.json. All of these must be copied together when deploying the application to another computer. Additional depedencies add proportionally to the deployment complexity. This complexity is justified for applications with mulitple executables using shared libraries and resources. Commonly, installer applications are used to bundle all the files together and simplify the deployment in such scenarios. However it is an overkill for a simple, single-purpose tool or library.</p>
+<p>Typically a .Net Core application is compiled into multiple files like &lt;App&gt;.exe, &lt;App&gt;.dll, &lt;App&gt;.runtimeconfig.json, &lt;App&gt;.deps.json. All of these must be copied together when deploying the application to another computer. Additional dependencies add proportionally to the deployment complexity. This complexity is justified for applications with multiple executables using shared libraries and resources. Commonly, installer applications are used to bundle all the files together and simplify the deployment in such scenarios. However it is an overkill for a simple, single-purpose tool or library.</p>
 </div>
 <div class="paragraph">
-<p>Dotnet publish can be used to bundle all application files and dependecies into a single file simplifying the deployment. Rest of this article describes creating a VisualStudio publish profile to produce a single file binary (executable or a library).</p>
+<p>Dotnet publish can be used to bundle all application files and dependencies into a single file simplifying the deployment. Rest of this article describes creating a VisualStudio publish profile to produce a single file binary (executable or a library).</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 </div>
 </li>
 <li>
-<p>Select the <strong>Folder</strong> taget option and press <strong>Next</strong>.</p>
+<p>Select the <strong>Folder</strong> target option and press <strong>Next</strong>.</p>
 <div class="imageblock">
 <div class="content">
 <img src="img/singlefile-publish3.png" alt="singlefile publish3" width="80%">
