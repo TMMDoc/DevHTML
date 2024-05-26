@@ -148,12 +148,30 @@ column 70.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The section below explains the possible segments in a class</p>
+<p><a href="#class_segments">Class Segments</a> section below explains the possible segments in a class</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_class_segments">Class Segments</h2>
+<h2 id="_usings">Usings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The user defined namespaces should be added after all the system namespaces being used in a particular file.</p>
+</div>
+<div class="paragraph">
+<p>For eg: Flux namespaces should come after the system namespaces as shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using System.Windows;
+using System.Windows.Controls;
+using Flux.API.Bend;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="class_segments">Class Segments</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The members of a class are organized into one or more segments. The order in which these segments are
@@ -344,6 +362,830 @@ prefixes<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_f
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_coding_conventions">Coding Conventions</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Use a stable (global) path for Flux.API</strong></p>
+<div class="paragraph">
+<p>Using a relative path will make it difficult for somebody who pulls your project to compile it. Also, it is best to checkout project files into a location closer to some drive root, rather than to your user-specific folders. So clone FChassis repo to W:/FChassis (where W: is work drive, created by "SUBST W: C:\Work")</p>
+</div>
+</li>
+<li>
+<p><strong>Update .gitignore to ignore folders with temporary artifacts</strong>#</p>
+<div class="paragraph">
+<p>Sometimes temporary files will be created which need not be in repo. For example say intermediate code files are generated in Sample/Head1 and Sample/Head2 folders. These should be added to .gitignore, so they don&#8217;t keep showing up as 'Untracked files'. Even worse, we may forget and add the contents of these folders to the repository.</p>
+</div>
+</li>
+<li>
+<p><strong>Don&#8217;t use the "private" keyword</strong></p>
+<div class="paragraph">
+<p>Private is the default access specifier in most cases (except for interfaces). So we rarely use it, if ever, need to specify the 'private' keyword in front of any field, property or method.</p>
+</div>
+</li>
+<li>
+<p><strong>Remove unnecessary usings</strong></p>
+<div class="paragraph">
+<p>Very often, when you create a new CS file, Visual Studio will helpfully add a bunch of using statements at the top. Before you commit, remove the ones that are not actually being used to reduce clutter. You can right click on one of these and execute the cleanup action (you can do this for the entire solution or project in one go).</p>
+</div>
+</li>
+<li>
+<p><strong>Use expression-bodies for trivial properties</strong><a id="expression-bodies"></a></p>
+<div class="paragraph">
+<p>Trivial properties that consist of a single expression should be replaced by a single expression body (reduce clutter).</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public Point3 StartPoint { get { return mStartPoint; } }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public Point3 StartPoint =&gt; mStartPoint;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Use the [] notation to create collection-expressions succinctly</strong><a id="collection-expressions"></a></p>
+<div class="paragraph">
+<p>The creation of a new empty collection can be written very simply using the 'empty collection expression'.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">HashSet&lt;int&gt; mHashProgNo = new HashSet&lt;int&gt; ();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">HashSet&lt;int&gt; mHashProgNo = [];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even if the collection is initialized with some elements, you can use this to simplify the code (both the statements below compile into exactly the same code).</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">mPriority = new List&lt;EKind&gt; { EKind.Hole, EKind.Cutout, EKind.Notch, EKind.Mark };</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">mPriority = [EKind.Hole, EKind.Cutout, EKind.Notch, EKind.Mark];</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Prefer file-scoped namespaces</strong></p>
+<div class="paragraph">
+<p>When all the contents of a file are contained in one namespace (the usual case), prefer a file scoped namespace - this reduces one level of indent for all the code in the file, and makes it more readable.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">namespace FChassis {
+  public partial class SettingsDialogHostWindow : Window {
+     ...
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">namespace FChassis;
+
+public partial class SettingsDialogHostWindow : Window {
+   ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note the empty line after namespace FChassis - this is a whitespace convention we follow.</p>
+</div>
+</li>
+<li>
+<p><strong>Use expression-bodies where possible (extension of <a href="#expression-bodies">[expression-bodies]</a>)</strong></p>
+<div class="paragraph">
+<p>Not just property getters, but property setters, methods, constructors, operators can all be rewritten as a single expression. This reduces clutter of open and close braces, and often converts 3 lines of code into one.</p>
+</div>
+<div class="paragraph">
+<p><strong>Constructors.</strong></p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public GCodeGenerator (Process process) {
+   mProcess = process;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public GCodeGenerator (Process process) =&gt; mProcess = process;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Method bodies.</strong></p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public static double D2R (this double degrees) {
+   return degrees * (Math.PI / 180);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public static double D2R (this double degrees) =&gt; degrees * Math.PI / 180;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Getters and Setters.</strong></p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public double this[int i, int j] {
+   get { return A[i, j]; }
+   set { A[i, j] = value; }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public double this[int i, int j] { get =&gt; A[i, j]; set =&gt; A[i, j] = value; }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Operators.</strong></p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public static XForm4 operator * (XForm4 a, XForm4 b) {
+   return a.MultiplyNew (b);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public static XForm4 operator * (XForm4 a, XForm4 b) =&gt; a.MultiplyNew (b);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Remove dead code before committing</strong></p>
+<div class="paragraph">
+<p>Git allows you to always go back to a previous version of code if you want to retrace your history. So there is no reason to keep dead code hanging around behind a comment. It creates a messy look for the code and promotes a 'broken window syndrome'. Remove dead code aggressively, and if some code needs to remain in for now, always mark it with a TODO comment like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs"> // TODO: Not sure if this alternative leads to better sequencing:
+ // items = items.SortBy (a =&gt; a.Z).ThenBy (a =&gt; a.X).ToList ();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That way, it is clear that you mean to come back to this code later and experiment with it.</p>
+</div>
+</li>
+<li>
+<p><strong>Remove empty documentation nodes before commit</strong></p>
+<div class="paragraph">
+<p>When you type in /// to create a documentation node, Visual Studio fills it with empty nodes for each of the parameters, return value, exceptions etc. If you are not actually documenting these, remove them.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">/// &lt;summary&gt;
+/// Get the ordinate direction sense for a vector
+/// &lt;/summary&gt;
+/// &lt;param name="toolingItem"&gt;&lt;/param&gt;
+/// &lt;returns&gt;&lt;/returns&gt;
+/// &lt;exception cref="InvalidCastException"&gt;&lt;/exception&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">/// &lt;summary&gt;Get the ordinate direction sense for a vector&lt;/summary&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that we are using the 'single line summary' Metamation convention.</p>
+</div>
+</li>
+<li>
+<p><strong>Don&#8217;t create lambda expressions unnecessarily</strong></p>
+<div class="paragraph">
+<p>Functions like Dispatcher.Invoke, Task.Run etc require objects of type Action&lt;T&gt; or just Action (with no parameters). If you already have a method that matches this signature, you can just directly pass it in - there is no need to create a wrapper lambda. So you can replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">Dispatcher.Invoke (() =&gt; {
+   mOverlay.Redraw ();
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">Dispatcher.Invoke (mOverlay.Redraw);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>You can often elide the type in a new() expression</strong></p>
+<div class="paragraph">
+<p>If the type of the object being created can be inferred (either because it is a parameter, or it is being assigned to a typed variable), then the type can be elided from a new expression.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">XForm4 transMatrix = new XForm4 ();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">var transMatrix = new ();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An alternative form of this (that is also acceptable) is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">var transMatrix = new XForm4 ();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This works even if you need to pass parameters to the constructor.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">Point3 prev = new Point3 (tooling.X, tooling.Y, mClearance);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">Point3 prev = new (tooling.X, tooling.Y, mClearance);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Use ?. to automate null checks</strong></p>
+<div class="paragraph">
+<p>The ?. operator can be used to call a method on an object only if it is not null. Thus, we can replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public void ClearDrawables () {
+   if (mDrawables != null) mDrawables.Clear ();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public void ClearDrawables () =&gt; mDrawables?.Clear ();</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Replace 'as' and a null check with 'is'</strong></p>
+<div class="paragraph">
+<p>This code uses 'as' to try casting the Curve object to an Arc3, and then does some work if that is not null.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">Arc3 arc = segsList[0].Curve as Arc3;
+if (arc != null) {
+   if (arc.Start.EQ (arc.End))
+      return true;
+}
+return false;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A simpler way is to to use an is operator that can do the check AND return a temporary of the cast type in one shot:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (segsList[0].Curve is Arc3 arc) {
+   if (arc.Start.EQ (arc.End))
+      return true;
+}
+return false;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In fact, this code above can then be cleaned up even further by merging the nested if:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (segsList[0].Curve is Arc3 arc &amp;&amp; arc.Start.EQ (arc.End)) return true;
+return false;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even this can be simplified further. We are checking an expression (which is already a boolean) and returning true if that expression is true. So, we can simply write:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">return segsList[0].Curve is Arc3 arc &amp;&amp; arc.Start.EQ (arc.End);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Enumeration types always start with a capital E</strong></p>
+<div class="paragraph">
+<p>Enumeration types are always named with a capital E at the start. Likewise, interface types are always named with a capital I at the start. Also, since these are always <em>types</em>, do not use the Type suffix for the name.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">enum MoveType { Arc, Line };</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">enum EMove { Arc, Line };</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Don&#8217;t repeat namespace prefixes in class names; avoid very long type names</strong></p>
+<div class="paragraph">
+<p>There is a readability issue with very long type names. Code like this is too verbose:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">arcStartPoint = FChassisUtils.MovePoint (arcStartPoint, startNormal, FChassisMachineSettings.Instance.MachiningToolClearance);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s what is recommended:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">arcStart = Utils.MovePoint (arcStart, startNormal, MCSettings.It.Standoff);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In particular, since we are working with the <strong>FChassis</strong> namespace, starting type names with <strong>FChassis</strong> is redundant.</p>
+</div>
+<div class="paragraph">
+<p>Rename:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">FChassis.FChassisMachineSettings FChassis.FChassisUtils</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">FChassis.MCSettings FChassis.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rename such types to keep the names more compact, without losing legibility. Some of this is subjective, but code with very long identifiers for types, variables etc feels hard to understand.</p>
+</div>
+</li>
+<li>
+<p><strong>Avoid multiple blank lines in code</strong></p>
+<div class="paragraph">
+<p>There should never be two or more successive blank lines anywhere in the code.</p>
+</div>
+</li>
+<li>
+<p><strong>The canonical Singleton pattern</strong></p>
+<div class="paragraph">
+<p>Metamation convention: Use 'It' as the property by which we get at the singleton object (rather than Instance).</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">static MCSettings instance;
+public static MCSettings Instance =&gt; instance ?? (instance = new MCSettings ());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public static MCSettings It =&gt; mIt ??= new ();
+static MCSettings mIt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note how we use the ??= operator to conditionally assign to an object only if it is not null. Also, we use these conventions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name fields with an m prefix</p>
+</li>
+<li>
+<p>Place the private backing field of a property <em>after</em> the property, not before it</p>
+<div class="paragraph">
+<p>The code above is almost fine, but is not thread-safe. If you want to be absolutely rigorous about it, here is the correct, thread-safe, performant way that does not lock. (See System.Lazy for more documentation on that type)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public static MCSettings It =&gt; mLazy.Value;
+static readonly Lazy&lt;MCSettings&gt; mLazy = new (() =&gt; new ());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The initialize for Lazy can be cryptic, here is the same code with type names for clarity:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">static readonly Lazy&lt;MCSettings&gt; mLazy = new Lazy&lt;MCSettings&gt; (() =&gt; new MCSettings ());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Lazy&lt;T&gt; takes a delegate that can be called to construct a T on demand.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Pattern matching, instead of multiple == checks</strong></p>
+<div class="paragraph">
+<p>Code like this can be simplified:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">bool ShouldOutputInfo (Tooling item) =&gt; item.Kind == EKind.Hole || item.Kind == EKind.Mark;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">bool ShouldOutputInfo (Tooling item) =&gt; item.Kind is EKind.Hole or EKind.Mark;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, this code can be further simplified from:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (MCSettings.It.ToolConfiguration == MCSettings.EHeads.Left ||
+    MCSettings.It.ToolConfiguration == MCSettings.EHeads.Both)
+       tooling.Head = 0;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (MCSettings.It.Heads is MCSettings.EHeads.Left or MCSettings.EHeads.Both)
+   tooling.Head = 0;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, ToolConfiguration is renamed to Heads, since that is what it really is:</p>
+</div>
+<div class="paragraph">
+<p>Heads = Left/Right/Both (it is less generic a name than ToolConfiguration).</p>
+</div>
+<div class="paragraph">
+<p>Here is another simplification.</p>
+</div>
+<div class="paragraph">
+<p>From:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (toolingItem.IsCutout ()) blockType =
+   (Utils.GetFlange (Workpiece, toolingItem) == EFlange.Top ||
+    Utils.GetFlange (Workpiece, toolingItem) == EFlange.Bottom ? -1 : 1) * 3;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (toolingItem.IsCutout ()) blockType =
+   Utils.GetFlange (Workpiece, toolingItem) is EFlange.Top or EFlange.Bottom ? -3 : 3;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can also pattern match on ranges.</p>
+</div>
+<div class="paragraph">
+<p>From:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (thick &gt;= 3.5 &amp;&amp; thick &lt; 4.5) { webPageNo = 8; flangePageNo = 7; }
+if (thick &gt;= 4.5 &amp;&amp; thick &lt; 5.5) { webPageNo = 10; flangePageNo = 9; }
+if (thick &gt;= 6.5 &amp;&amp; thick &lt; 7.5) { webPageNo = 14; flangePageNo = 13; }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (thick is &gt;= 3.5 and &lt; 4.5) { webPageNo = 8; flangePageNo = 7; }
+if (thick is &gt;= 4.5 and &lt; 5.5) { webPageNo = 10; flangePageNo = 9; }
+if (thick is &gt;= 6.5 and &lt; 7.5) { webPageNo = 14; flangePageNo = 13; }</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Use of the 'is not' pattern to simplify code</strong></p>
+<div class="paragraph">
+<p>This code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">while (targetItem != null &amp;&amp; !(targetItem is ListBoxItem)) {
+   targetItem = VisualTreeHelper.GetParent (targetItem) as FrameworkElement;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>can be rewritten as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">while (targetItem is not null and not ListBoxItem)
+   targetItem = VisualTreeHelper.GetParent (targetItem) as FrameworkElement;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note also the convention we follow that a single statement as the body of a for / while loop is not surrounded by braces.</p>
+</div>
+</li>
+<li>
+<p><strong>Using the ??= operator (compound assignment)</strong></p>
+<div class="paragraph">
+<p>Using the ??= operator can avoid the typical pattern of 'check if not null before assignment'.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">E3Plane YNegPlane {
+   get {
+      if (mYNegPlane == null)
+         mYNegPlane = Ents.OfType&lt;E3Plane&gt; ().Single (a =&gt; a.ThickVector.Z.EQ (1));
+      return mYNegPlane;
+   }
+}
+E3Plane mYNegPlane;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">E3Plane YNegPlane {
+   get {
+      mYNegPlane ??= Ents.OfType&lt;E3Plane&gt; ().Single (a =&gt; a.ThickVector.Z.EQ (1));
+      return mYNegPlane;
+   }
+}
+E3Plane mYNegPlane;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In fact, this very common pattern can be simplified even further to this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">E3Plane YNegPlane =&gt;
+   mYNegPlane ??= Model.Ents.OfType&lt;E3Plane&gt; ().Single (a =&gt; a.ThickVector.Z.EQ (1));
+E3Plane mYNegPlane;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>More use of collection expressions [] (similar to <a href="#collection-expressions">[collection-expressions]</a>)</strong></p>
+<div class="paragraph">
+<p>Collection expressions are useful to replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">double[] mControlDiameter = new[] { 14.7 };</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">double[] mControlDiameter = [14.7];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>They can also be used to create nested collections.</p>
+</div>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">List&lt;List&lt;GCodeSeg&gt;&gt;&gt; mDrawable = new List&lt;List&lt;GCodeSeg&gt;&gt; () {
+   new List&lt;GCodeSeg&gt; (), new List&lt;GCodeSeg&gt; ()
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">List&lt;GCodeSeg&gt;[] mDrawable = [[], []];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also, in parameter lists. This code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">Lux.Draw (EDraw.Lines, new Point3[2] { pt, pt2 });</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>can be replaced with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">Lux.Draw (EDraw.Lines, [pt, pt2]);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Using the spread operator .. to build up lists</strong></p>
+<div class="paragraph">
+<p>When the spread operator (..) is used within a collection initializer, it effectively creates a list out of the contents of that collection. This works with Enumerable&lt;T&gt; as well. Here&#8217;s some old code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public List&lt;Tooling&gt; GetToolings4LHHead () {
+   var toolingItems = Cuts.Where (a =&gt; a.Head == 0).ToList ();
+   toolingItems = toolingItems.OrderBy (obj =&gt; Priority.IndexOf (obj.Kind)).ToList ();
+   return toolingItems;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>that we can simplify to this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">public List&lt;Tooling&gt; GetToolings4LHHead () =&gt;
+   [.. Cuts.Where (a =&gt; a.Head == 0).OrderBy (a =&gt; Priority.IndexOf (a.Kind))];</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We don&#8217;t need to capture the results of the filter (Where) into an intermediate list (in fact, that is inefficient). We can just pass that sequence directly to OrderBy, and make a list at the end.</p>
+</li>
+<li>
+<p>Note how the .. at the start of the collection expression replaces the <em>sequence</em> we have with the actual elements of that sequence. Without that, this expression would be a list of exactly one IEnumerable&lt;T&gt;. With this .., the enumerable gets replaced with the actual enumerated elements, forming the correct list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Don&#8217;t check with List.Contains before calling List.Remove</strong></p>
+<div class="paragraph">
+<p>This code is inefficient, since it will walk through the List twice (once for the Contains, once for the Remove).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (itemsSource.Contains (droppedData)) {
+   itemsSource.Remove (droppedData);
+   ... more code ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead, write:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (itemsSource.Remove (droppedData)) {
+   ... more code ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This works, since Remove returns a bool (true if the item was found and removed).</p>
+</div>
+</li>
+<li>
+<p><strong>string.SubString can usually be replaced with a range operator</strong></p>
+<div class="paragraph">
+<p>Replace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (ncname.Length &gt; 20) ncname = ncname.Substring (0, 20);
+string trimStart = ncname.SubString (5);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">if (ncname.Length &gt; 20) ncname = ncname[..20];
+string trimStart = ncname[5..];</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
@@ -370,7 +1212,10 @@ prefixes<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_f
       <a href="#_file_class_headers">File &amp; Class Headers</a>
     </li>
     <li level="1">
-      <a href="#_class_segments">Class Segments</a>
+      <a href="#_usings">Usings</a>
+    </li>
+    <li level="1">
+      <a href="#class_segments">Class Segments</a>
     </li>
     <li level="2">
       <a href="#_constructors">Constructors</a>
@@ -395,6 +1240,9 @@ prefixes<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_f
     </li>
     <li level="1">
       <a href="#_naming_conventions">Naming Conventions</a>
+    </li>
+    <li level="1">
+      <a href="#_coding_conventions">Coding Conventions</a>
     </li>
   </ul>
 </aside>
@@ -431,6 +1279,12 @@ prefixes<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_f
     <script src="../res/files.js"></script>
     <script src="../res/site.js"></script>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
 </body>
 </html>
