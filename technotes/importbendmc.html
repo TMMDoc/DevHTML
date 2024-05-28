@@ -97,6 +97,9 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>A new <strong>Version</strong> field has been included to facilitate the Clamp definition refinement. Refer <a href="https://metamation.fogbugz.com/f/cases/27173">this</a> case. <strong>Version</strong> field must be set to <strong>1</strong> in the <strong>MacData</strong> section in order to import bend machines. <span class="underline">BMachine INI files without Version or Version set to zero will not be imported</span>.</p>
+</li>
+<li>
 <p><strong>ID</strong> field must be set for the machine.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
@@ -154,7 +157,7 @@ For eg if ID=2420001 then
 </div>
 </li>
 <li>
-<p>Old bmachine.ini files will have <strong>[ClampInfo]</strong> section which must be changed to <strong>[Clamp]</strong> section. Sometimes a shift with open-height must be applied for clamps.  If the same clamp model is used but with ram at different height, then a shift must be applied to the ram model. Refer <a href="https://metamation.fogbugz.com/f/cases/27148">this</a> case.</p>
+<p>Old bmachine.ini files will have <strong>[ClampInfo]</strong> section which must be changed to <strong>[Clamp]</strong> section. If the same clamp model is used but with ram at different height, then a shift must be applied to the ram model. Refer <a href="https://metamation.fogbugz.com/f/cases/27148">this</a> case. The clamp definition <span class="underline">must not include</span> the <strong>Open Height</strong> in <strong>Shift</strong>, as all clamps are by default raised to that height. Refer <a href="https://metamation.fogbugz.com/f/cases/27173">this</a> case.</p>
 </li>
 <li>
 <p>Make sure every model has minimum number of surfaces and layers. Because unnecessary layers will create unnecessary mesh data into Flux. Check the <a href="../technotes/createbendmc.html#Layer_Conventions"><strong>Layer conventions</strong></a> for more information.</p>
