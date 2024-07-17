@@ -209,7 +209,9 @@ sub-folders in the contents.txt file specifies how the content tree is generated
 <div class="sect2">
 <h3 id="_images">Images</h3>
 <div class="paragraph">
-<p>The AsciiDoc file can <em>references</em> images, and the convention  is to place these in an <strong>img</strong> sub-folder inside that folder. Then, you should use the  <strong>:imagesdir:</strong> variable to point to the images. Thus a typical document would begin like this:</p>
+<p>The AsciiDoc file can <em>references</em> images, and the convention is to place these in an <strong>img</strong>
+sub-folder inside that folder. Then, you should use the <strong>:imagesdir:</strong> variable to point to the
+images. Thus a typical document would begin like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -222,6 +224,104 @@ because of the :imagesdir: setting on the previous line.
 image::welcome.png[Welcome, Width=224]</pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asciidoc_attributes">AsciiDoc attributes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use AsciiDoc attributes to support <em>text substitution</em>, and also to support
+<em>conditional compilation</em> of content. These attributes are often useful when we want to
+generate multiple <em>flavors</em> of a documentation site to suit different situations.</p>
+</div>
+<div class="sect2">
+<h3 id="_conditional_attributes">Conditional attributes</h3>
+<div class="paragraph">
+<p>Attributes meant for controlling conditional compilation are simply either defined or not, and
+they take this form in the manifest file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ATTRIBUTE=trumpf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Such a condition attribute can be used to include some content only if it set, using
+the ifdef construct in AsciiDoc. For example, in the content below, the second paragraph
+is included only if the <strong>trumpf</strong> attribute is defined in the manifest.txt file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>It is possible to program laser machines, press-brakes and panel-benders, and
+generate NC code directly.
+
+#ifdef::trumpf[]
+Full integration with the Oseon and Fab systems is also available.
+#endif::[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These conditional attributes can also be used in the contents.txt files to include entire
+topics (or even sub-folders) based on whether an attribute is defined or not. For example,
+suppose we have a contents.txt file like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Introduction
+CADSketch       #if (!trumpf)
+UIConventions
+[Cut]
+[Bend]          #if (trumpf)
+[Fold]
+[Reports]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, the CADSketch page is included only if the <strong>trumpf</strong> attribute is NOT defined, and
+the entire [Bend] subfolder of content is included only if the <strong>trumpf</strong> attribute IS defined.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_substitution_attributes">Substitution attributes</h3>
+<div class="paragraph">
+<p>These attributes are used to replace a particular <em>tag</em> with appropriate expansion text.
+These attributes take the following form in the manifest file:</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>ATTRIBUTE=appName:Flux
+---</p>
+</div>
+<div class="paragraph">
+<p>For example, suppose a product has different names by which it is marketed in different
+regions, one could avoid using the actual product name in the documentation, and use
+instead the attribute tag in curly braces. Assuming an attribute definition as listed above,
+one could write:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Welcome to {appName}!
+
+{appName} is an integrated sheet-metal solution.</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_invoking_bento">Invoking Bento</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bento takes a single command line parameter. If this is the name of a directory, then it
+picks up and compiles the project defined by the <strong>manifest.txt</strong> in that directory. If this
+parameter is a filename, then that is assumed to the be manifest file.</p>
+</div>
+<div class="paragraph">
+<p>Any Bento manifest file must have a filename that ends with manifest.txt (like flux-manifest.txt,
+for example). This second form is used when there are multiple manifest files for some
+Bento content, each with different attributes, designed to compile different <em>flavors</em> of the
+documentation.</p>
 </div>
 </div>
 </div>
@@ -240,6 +340,18 @@ image::welcome.png[Welcome, Width=224]</pre>
     </li>
     <li level="2">
       <a href="#_images">Images</a>
+    </li>
+    <li level="1">
+      <a href="#_asciidoc_attributes">AsciiDoc attributes</a>
+    </li>
+    <li level="2">
+      <a href="#_conditional_attributes">Conditional attributes</a>
+    </li>
+    <li level="2">
+      <a href="#_substitution_attributes">Substitution attributes</a>
+    </li>
+    <li level="1">
+      <a href="#_invoking_bento">Invoking Bento</a>
     </li>
   </ul>
 </aside>

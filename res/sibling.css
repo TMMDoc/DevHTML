@@ -12,7 +12,13 @@ nav.pagination {
   }
 
   nav.pagination .next {
-    text-align: right
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  nav.pagination .prev {
+    text-align: left;
+    align-items: flex-start;
   }
 
   nav.pagination span::before {
