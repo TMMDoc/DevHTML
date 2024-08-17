@@ -161,6 +161,13 @@ This step is very important - don&#8217;t skip it!
 </table>
 </div>
 <div class="sect2">
+<h3 id="_build_precommit">Build PreCommit</h3>
+<div class="paragraph">
+<p>The source code for the <strong>PreCommit</strong> tool can be found in <strong>Tools/Git</strong>
+in the Flux source tree. Build this project found in X:\Tools\Git.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_testing_the_pre_commit_hook">Testing the pre-commit Hook</h3>
 <div class="paragraph">
 <p>It&#8217;s important to test that the pre-commit hook is set up correctly.
@@ -196,19 +203,6 @@ Do not proceed further, ask one of the Flux developers for help.
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The source code for the <strong>PreCommit</strong> tool can be found in <strong>Tools/Git</strong>
-in the Flux source tree.
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 </div>
@@ -225,6 +219,15 @@ in the Flux source tree.
 </li>
 <li>
 <p>Set the environment variable <code>FLUXDEVELOPER</code> to 1</p>
+</li>
+<li>
+<p>Add <code>C:\mm\bin</code> to the PATH</p>
+</li>
+<li>
+<p>Install Arial Unicode MS font</p>
+</li>
+<li>
+<p>Build <strong>Flux.Log</strong> found in X:\Tools\Flux.Log</p>
 </li>
 </ul>
 </div>
@@ -244,6 +247,9 @@ flux.test</code></pre>
 search path (we store some private NuGet packages used by Flux there). The <code>dotnet build</code>
 command builds all the DLLs and EXEs used by Flux (including the Flux tests). We run those
 tests in the last line.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: Some image comparison tests may fail if using different graphic card. Get the <em>Skip.txt</em> from anyone in the Flux team and copy it in X:\TData. This will skip image failure tests.</p>
 </div>
 </div>
 </div>
@@ -289,8 +295,12 @@ helpfully remind you)</p>
 <div class="paragraph">
 <p>Subsequently, you can just do a git push. Eventually, you may have a few commits on this branch
 and you are then done. Go to <strong>github.com</strong> and create a pull request for this branch.
-This signals to me that there are changes ready to be merge into main,
+This signals the person who merges pull requests that there are changes ready to be merged into main,
 and they will merge the code to main.</p>
+</div>
+<div class="paragraph">
+<p>Once you raise the pull request you have to write release notes in the respective FogBugz case.
+Refer <a href="https://metamation-devbook.onrender.com/flux/releasenotes.html">this</a> page regarding release notes.</p>
 </div>
 <div class="paragraph">
 <p>Meanwhile, you can  start working on another case by creating a new branch and starting
@@ -319,11 +329,11 @@ branch and make sure you have a clean working directory. Now, create a new branc
 switch back to the previous one and work on both of them in parallel.</p>
 </div>
 <div class="paragraph">
-<p>Finally, when one of them is done, you can raise a pull request for this. This also gives me
+<p>Finally, when one of them is done, you can raise a pull request for this. This also gives
 the flexibility to merge <strong>Case.67890</strong> or <strong>Case.12345</strong> in any order without necessarily having to merge
 the other one. The pull request in Github is structured like a discussion. If the lead is happy
 with some changes, they can use the pull request to make some notes. You adjust the code further
-based on these notes, commit and push again. This throws the pull request back to me and your
+based on these notes, commit and push again. This throws the pull request back to the reviewer and your
 code will get reviewed again. After some back and forth, the branch is judged good to go and is
 merged. After this, we typically delete the branch (like <strong>Case.12345</strong>) since it has served
 its purpose.</p>
@@ -340,7 +350,7 @@ case takes a while, it might be useful for you to periodically merge the latest 
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">git add Changed.cs                                  &lt;- assume we are now on Case.12345 branch
-git commit -m "Case.12345 - Add local rendering"    &lt;- commit all changes here
+git commit -m "Case 12345: Add local rendering"     &lt;- commit all changes here
 git switch main                                     &lt;- switch to the main branch
 git pull                                            &lt;- get the latest version of it
 git switch Case.12345                               &lt;- switch back to your work branch
@@ -440,8 +450,8 @@ so I strongly recommend you set up this conflictstyle.</p>
 </div>
 <div class="paragraph">
 <p>Now you can easily clean up the conflict in the text editor since you have all 3 versions
-available and you can pick the exact version you want to keep. Usually, I find this is the
-easiest way for me to work, since I can just search for all occurrences of <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> in the code
+available and you can pick the exact version you want to keep. Usually, this is the
+easiest way, since we can just search for all occurrences of <code>&lt;&lt;&lt;&lt;&lt;&lt;</code> in the code
 and quickly find all the merge conflicts.</p>
 </div>
 <div class="paragraph">
@@ -458,8 +468,8 @@ git commit                      &lt;- and complete the merge</code></pre>
 prevent the commit from happening. Edit the offending files again to remove all the conflict
 markers and try the commit again. If this conflict resolution becomes really complex or you are
 unsure of how to resolve some of the conflicts, you can just back out of the whole mess by
-using <code>git merge --abort</code>, push the code as is and file a pull request. Then it becomes my
-problem to merge the incoming changes into main when I am handling the pull request.</p>
+using <code>git merge --abort</code>, push the code as is and file a pull request. Then it becomes the
+problem of the person who is merging, to merge the incoming changes into main when handling the pull request.</p>
 </div>
 </div>
 </div>
@@ -479,6 +489,9 @@ problem to merge the incoming changes into main when I am handling the pull requ
     </li>
     <li level="1">
       <a href="#_add_the_pre_commit_hook_to_your_git_folder">Add the pre-commit hook to your Git folder</a>
+    </li>
+    <li level="2">
+      <a href="#_build_precommit">Build PreCommit</a>
     </li>
     <li level="2">
       <a href="#_testing_the_pre_commit_hook">Testing the pre-commit Hook</a>

@@ -113,6 +113,138 @@ release notes are always up-to-date and match the contents of the current pull r
 </li>
 </ul>
 </div>
+<div class="sect3">
+<h4 id="_updating_the_release_notes">Updating the release notes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>The document looks as shown below:</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/releasenote.png" alt="Template"></span></p>
+</div>
+</li>
+<li>
+<p>Install the Segoe UI, Segoe Condensed and Ubuntu Mono fonts.</p>
+</li>
+<li>
+<p>Install the Segoe Condensed font if you don’t have it – it is used for the actual case titles (Heading 3 style). You should already have the SegoeUI</p>
+</li>
+<li>
+<p>Use the icons in the template at the top of  <strong>Flux.Main.docx</strong> for feature, bug and refinement.</p>
+<div class="paragraph">
+<p>If the case is a feature or refinement the first word should be <strong>Implemented</strong> and then the related notes.</p>
+</div>
+<div class="paragraph">
+<p>If it is a bug, it should be <strong>Fixed</strong> and then the related notes.</p>
+</div>
+<div class="paragraph">
+<p>If you have added a test case you should add a note like <strong>(Added Flux.Test 16000)</strong> in FogBugz.</p>
+</div>
+<div class="paragraph">
+<p>If you have regenerated test cases you should add a note like <strong>(Regenerated Flux.Test 3123, 3844)</strong> in FogBugz.</p>
+</div>
+<div class="paragraph">
+<p>In the <strong>Flux.Main.docx</strong>, add the note about test as shown below:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/releasenote.4.png" alt="Test data in template"></span></p>
+</div>
+</li>
+<li>
+<p>Each case ID number is actually a link to the case in Fogbugz.</p>
+<div class="paragraph">
+<p>To insert this link, select the number (without the trailing .) and press Ctrl+K. Type in the link, which looks like <a href="https://metamation.fogbugz.com/f/cases/27323" class="bare">https://metamation.fogbugz.com/f/cases/27323</a></p>
+</div>
+</li>
+<li>
+<p>Keep the sections ordered by Case ID number</p>
+</li>
+<li>
+<p>Add the correct milestone marker at the end of the title with the correct spacing, capitalization:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the case is not assigned to any milestone remove the placeholder milestone</p>
+</li>
+<li>
+<p>Keep the milestone in lower case (not Jenner but jenner)</p>
+</li>
+<li>
+<p>Have exactly one space between the text and the milestone indicator (not 0, not 2)</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<strong>Flux.Main.docx</strong> need not be updated for cases in internal projects like FluxDev, FluxTinker etc.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_taking_screen_shots">Taking Screen-shots</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>We want all our screen-shots to look consistently sized. So correct <em>scaling</em> is important. First, determine what DPI scaling you are running your monitor at (right click on the desktop, choose <strong>Display settings</strong> and inspect this):</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/releasenote.2.png" alt="DPI"></span></p>
+</div>
+<div class="paragraph">
+<p>In this case, the monitor is running at 200%. Figure out the corresponding value for your setup.</p>
+</div>
+</li>
+<li>
+<p>Take a screen-shot and crop it as tight as possible so only the area of interest is visible. We don’t want large empty screens filling up space in the release notes. For example:</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/releasenote.3.png" alt="Crop"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+When taking screenshots to include in release notes, run Flux without developer mode <strong>(flux.exe -notdevelopermc)</strong>. If you run Flux in developer mode, there is some additional tooltips displayed (which the end-user will not see). Also, many Globs have some special ‘green’ buttons / settings that are visible only in Developer mode, and we don’t want that appearing in screen shots.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Use a tool like Paint.Net for this cropping. Then, scale the image in Paint.Net to normalize it to 100%. I scale by 50% since my screen DPI scaling is 200%. If your screen DPI scaling were 150%, you should scale your screen-shots by 67% to normalize them to 100% size. If your screen DPI scaling were 125%, you should scale your screen-shots by 80% to normalize them to 100% size.</p>
+</li>
+<li>
+<p>Then, paste the image into new Word document. Select the image and further scale it by 50% in Word. (Right click on the image, choose <strong>Size and position</strong> and enter 50% for both width and height). With these steps we now have a uniformly scaled image.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Do the scaling in 2 steps as described here – don’t short cut by doing the additional 50% scaling in Paint.net – that loses too many pixels and the final image is not sharp enough. The scaling in Word (unlike the one you are doing in Paint.Net) preserves all the pixels of the image and the detail is visible when you zoom in.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Now, insert this scaled image into <strong>Flux.Main.docx</strong></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_when_a_pull_request_is_merged">When a Pull Request is merged</h3>
