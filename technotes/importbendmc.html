@@ -418,7 +418,7 @@ Below steps are relevant only for developers.
 <div class="sect2">
 <h3 id="_epost_inclusion">EPost Inclusion</h3>
 <div class="paragraph">
-<p>When a new EPost value is included, please ensure to update the TandemMachineMaker code in Flux.Migrate so as to output the correct post value for the tandem machine. This is also required to ensure that all the ACB laser variants are output to the mechanism.curl file.</p>
+<p>If the WIBU used is not yet included in Flux, a license error is thrown. So, please ensure that the EPost value is updated in Flux before running this.</p>
 </div>
 </div>
 <div class="sect2">
@@ -426,10 +426,10 @@ Below steps are relevant only for developers.
 <div class="ulist">
 <ul>
 <li>
-<p>First import the left and right standalone machines following the same steps until Step 24.</p>
+<p>First import the left and right standalone machines following the same steps until Step 25.</p>
 </li>
 <li>
-<p>Similarly, import the left and right internal machines</p>
+<p>Similarly, import the left and right internal machines. Add 'TandemID=(rightID + 1)' to the 'Extra' section of both the left and right machine.curl files. If not, an error is thrown during tandem machine creation.</p>
 </li>
 <li>
 <p>Once the standalone and constituent machines are imported, copy all the four machine folders to X:\Data\Archive\Machines.</p>
@@ -446,13 +446,10 @@ Below steps are relevant only for developers.
 <p>Tandem machine folder (rightID + 1) will be created in X:\Data\Archive\Machines.</p>
 </li>
 <li>
-<p>Add 'TandemId=(rightID + 1)' to the 'Extra' section of both the left and right machine.curl files.</p>
-</li>
-<li>
 <p>Do not create manifest entries for the constituent left and right machines.</p>
 </li>
 <li>
-<p>Continue with step 25.</p>
+<p>Continue with step 27.</p>
 </li>
 <li>
 <p>Check the machine.curl to set the <code>ACBChainPos</code> value for the tandem machine. This may not be accurately set through import.</p>
