@@ -60,6 +60,7 @@
         <li><button class="tree blank"></button><a href="flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
         <li><button class="tree blank"></button><a href="virtualdrives.html">Virtual drives</a></li>
         <li><button class="tree blank"></button><a href="toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="kfactorandradius.html">Bend radius and K factor calculation</a></li>
       </ul>
     </li>
   </ul>
@@ -154,6 +155,19 @@ For eg if ID=2420001 then
 <div class="content">
 <img src="img/bmcdecal.png" alt="Decal image size" width="60%">
 </div>
+</div>
+</li>
+<li>
+<p>Name and NCName of the machine in the machine.curl should use the format as seen below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Name: 8600 (044)-H700/HD 6A B36</code> <code>NC Name: TruBend 8600 (044) H700/HD (6-axes) B36</code></p>
+</li>
+<li>
+<p><code>Name: ProBend-Merit C-1740-2A</code> <code>NC Name: ProBend Merit C 1740 (2 axes)</code></p>
+</li>
+</ul>
 </div>
 </li>
 <li>
@@ -360,10 +374,21 @@ Below steps are relevant only for developers.
 <p>Do <strong>flux.console UnStreamlineWad x:\data\archive\machines</strong> - this will unpack the folder using the redirect.map and effectively make a lot of duplicate copies. This means after that each machine folder in x:/data/archive/machines will be complete, and needs no redirection.</p>
 </li>
 <li>
-<p>After validating machine import, copy machine id folder created in X:\Data\Machine folder to X:\Data\Archive.</p>
+<p>After validating machine import, copy machine id folder created in X:\Data\Machine folder to X:\Data\Archive\Machines.</p>
 </li>
 <li>
 <p>Do <strong>flux.console StreamlineWad x:\data\archive\machines</strong> - this will find all duplicates and rebuild from scratch the redirect.map file.</p>
+</li>
+<li>
+<p>Now check the model folder for the machine, which will have unique mesh/mesh2 files. Open the mesh/mesh2 files into Flux and verify that the original source file name matches the original .3d files given.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/bmcoriginalsource.png" alt="Orignal source" width="60%">
+</div>
+</div>
+</li>
+<li>
+<p>Create a respective branch in ReFlux repository and add the original .3d models to the respective machine brand folder in Y:/Models and push these into git.</p>
 </li>
 <li>
 <p>Updating manifest.txt:</p>
@@ -769,8 +794,8 @@ Here start angle2 is 180. See image below for reference and add 180 to the measu
 
         </div>
         <div id="searchbox">
-          <ul id="results"></ul>
           <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
         </div>
     </div>
     <footer id="site-footer">

@@ -6,13 +6,14 @@ function sLoaded () {
    });
    searchBox = document.getElementById("searchinput");
    searchResult = document.getElementById("results");
-   searchBox.focus();
+   searchBox.focus({ preventScroll: true });
+
    document.onkeyup = evt => {
       evt || window.event;
       node = null;
       // Shortcut: F
       if (document.activeElement != searchBox && evt.key == "f") {
-         searchBox.focus();
+         searchBox.focus({ preventScroll: false });
          return;
       }
       // Ignore left/right if search box is not empty and it has the focus 
@@ -23,6 +24,22 @@ function sLoaded () {
       if (searchResult.childNodes.length && evt.key == "ArrowUp" || evt.key == "ArrowDown" || evt.key == "Escape") navigateResults(evt);
       if (node != null) window.location = node.firstChild.getAttribute("href");
    }
+
+   document.onkeydown = evt => {
+      // When 'this' site is embedded via an iframe, the Up/Down key events cause
+      // both results list scroll as well as frame/page scroll. Eat up the Up/Down key 
+      // events to prevent the page scrolls.
+      var ul = searchResult; if (!ul.childNodes.length) return;
+      if (evt.key == "ArrowUp" || evt.key == "ArrowDown") {
+         var active = document.activeElement;
+         var li = active.parentNode.parentNode == ul ? active.parentNode : null;
+         if (!li) return;
+         // The focus is on one of the search result items. Trap the event.
+         evt.preventDefault();
+         return;
+      }
+   }
+
    // Setup lunr search
    lunrIndex = lunr.Index.load(indexJSON);
    initSearch();
@@ -45,22 +62,7 @@ function sNavToggle (btn) {
 
 // Search interface ---
 function initSearch () {
-   searchBox.onkeydown = (e) => {
-      var scrollOffset = 0;
-      // Use up/down arrows for the article scrolling.
-      if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {         
-         scrollOffset = e.key == 'ArrowUp' ? -50 : 50;
-      } else if (e.key == 'PageUp' || e.key == 'PageDown') {
-         scrollOffset = e.key == 'PageUp' ? -500 : 500;
-      }
-
-      if (scrollOffset != 0) {
-         if (searchBox.value.length || searchResult.childNodes.length) return;
-         var article = document.getElementById("article");
-         article.scrollBy(0, scrollOffset);
-         e.preventDefault();
-      }
-   };
+   searchBox.onkeydown = (e) => scrollArticle(e);
 
    searchBox.onkeyup = (e) => {
       // Up/down keys are used in list navigation.
@@ -86,6 +88,26 @@ function initSearch () {
    };
 }
 
+// Scrolls the article on Up/Down keys.
+function scrollArticle (e) {
+   var scrollOffset = 0;
+   // Use up/down arrows for the article scrolling.
+   if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
+      scrollOffset = e.key == 'ArrowUp' ? -50 : 50;
+   } else if (e.key == 'PageUp' || e.key == 'PageDown') {
+      scrollOffset = e.key == 'PageUp' ? -500 : 500;
+   }
+
+   if (scrollOffset != 0) {
+      e.preventDefault();
+      // Displaying results? Do nothing. Let the event get handled on Keyup.
+      if (searchBox.value.length || searchResult.childNodes.length) return;
+      var article = document.getElementById("article");
+      article.scrollBy(0, scrollOffset);
+   }
+}
+
+// Displays the top 10 search results.
 function showResults (results) {
    if (!results.length) return;
    var files = filesJSON.files;
@@ -119,21 +141,23 @@ function navigateResults (e) {
          // We are here because Escape was pressed during the result navigation.
          // Collapse the list and switch the focus back to search.
          ul.innerHTML = "";
-         searchBox.focus();
+         searchBox.focus({ preventScroll: true });
          e.preventDefault();
          break;
       case 'ArrowUp':
-         if (searchBox == active) last.firstChild.focus();
-         else if (li) {
-            if (li.previousSibling) li.previousSibling.firstChild.focus();
-            else searchBox.focus();
+         if (searchBox == active) {
+            last.firstChild.focus({ preventScroll: true });
+         } else if (li) {
+            if (li.previousSibling) li.previousSibling.firstChild.focus({ preventScroll: true });
+            else searchBox.focus({ preventScroll: true });
          }
          break;
       case 'ArrowDown':
-         if (searchBox == active) first.firstChild.focus();
-         else if (li) {
-            if (li.nextSibling) li.nextSibling.firstChild.focus();
-            else searchBox.focus();
+         if (searchBox == active) {
+            first.firstChild.focus({ preventScroll: true });
+         } else if (li) {
+            if (li.nextSibling) li.nextSibling.firstChild.focus({ preventScroll: true });
+            else searchBox.focus({ preventScroll: true });
          }
          break;
    }

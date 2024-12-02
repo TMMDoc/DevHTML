@@ -1,0 +1,670 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Bend radius and K factor calculation</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Technical Notes</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a class="active" href="kfactorandradius.html">Bend radius and K factor calculation</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Technical Notes</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="kfactorandradius.html">Bend radius and K factor calculation</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Bend radius and K factor calculation</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux calculates <code>K factor</code> and <code>actual radius (R<sub>A</sub>)</code> for a bend line with <code>thickness of 1.5mm</code> and <code>design radius at 90° (R<sub>D</sub>) of 2.1mm</code> as below:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Interior angle in °</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Inner bend radius (R<sub>A</sub>) in mm</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>K-Factor</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.92</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.394</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.46</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.38</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">135</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.45</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.498</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Let us see how we arrive at the above values.
+For a given dxf file, <code>V width</code> is suggested based on <code>thickness, radius (R<sub>D</sub>) and interior angle</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deciding_v_width_if_not_specified">Deciding V width if not specified</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First for given thickness, V width range is selected</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Up to thickness in mm</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>V width range in mm</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.875</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 - 14</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.125</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 - 18</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.375</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6 - 22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.625</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 - 22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.875</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 - 27</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9 - 27</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11 - 35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 - 45</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 - 55</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 - 65</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 - 75</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 - 85</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 - 95</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37 - 110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47 - 120</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">57 - 120</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1e99</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">67 - 120</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>After the V width range is decided, V width is fine-tuned based on radius using table below.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bend radius (R<sub>D</sub>) at 90° in mm</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>V width in mm</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">70</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example">Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let us take the example, where <code>thickness is 1.5mm, desired radius (R<sub>D</sub>) is 2.1mm and interior angle of 90°</code>.</p>
+</div>
+<div class="paragraph">
+<p>From the table, <code>V width range is 7-22mm</code> and <code>desired V width based on R<sub>D</sub>(2.1mm) is 12mm</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Note</span>: If die is suggested in geo file, above step is skipped.</p>
+</div>
+<div class="paragraph">
+<p>Now, based on thickness, V width and interior angle, bend radius and deduction are computed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bend_radius_computation">Bend radius computation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For Trumpf machines, TBS is used to compute bend radius (R<sub>A</sub>).</p>
+</div>
+<div class="paragraph">
+<p>From given V width, actual radius at 90° (R<sub>A</sub>) is computed by multiplying constant 0.16 with V width.</p>
+</div>
+<div class="paragraph">
+<p>So, for the given <a href="#example">Example</a>,</p>
+</div>
+<div class="paragraph">
+<p><code>R<sub>A</sub> = 0.16 * 12 = 1.92mm</code></p>
+</div>
+<div class="paragraph">
+<p>For angles other than 90°, radius is computed as below.</p>
+</div>
+<div class="sect2">
+<h3 id="_angle_less_than_90">Angle less than 90°</h3>
+<div class="paragraph">
+<p>For a given <code>angle 45°</code> radius factor is computed using interpolation.</p>
+</div>
+<div class="paragraph">
+<p><code>radius factor = interpolated radius (R<sub>I</sub>) / calculated radius at 90° (R<sub>C90</sub>)</code></p>
+</div>
+<div class="paragraph">
+<p><code>R<sub>I</sub> = interpolation between the punch tip radius and the effective radius at 90° (R<sub>C90</sub>)</code></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>= Punch tip radius * (1 - interpolation lie) + calculated radius at 90° * interpolation lie</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Punch tip radius is 1mm</code> for the given <code>thickness 1.5mm</code>, calculated using below table.</p>
+</div>
+<div class="paragraph">
+<p>For angle 45°, the interpolation lie between 30° and 90° is</p>
+</div>
+<div class="paragraph">
+<p><code>interpolation lie = (45 - 30) / (90 - 30) = 0.25</code></p>
+</div>
+<div class="paragraph">
+<p><code>R<sub>C90</sub> = 1.92</code>,</p>
+</div>
+<div class="paragraph">
+<p>so applying these,</p>
+</div>
+<div class="paragraph">
+<p><code>R<sub>I</sub> = 1 * (1 - 0.25) + 1.92 * 0.25 = 1.23</code></p>
+</div>
+<div class="paragraph">
+<p><code>∴ radius factor = 1.23 / 1.92 = 0.640625</code></p>
+</div>
+<div class="paragraph">
+<p><code>∴ actual radius at 45° (R<sub>A</sub>) = R<sub>A90</sub> * radius factor
+                                = 1.92 * 0.640625
+                                = 1.23</code></p>
+</div>
+<div class="sect3">
+<h4 id="_punch_radius_calculation_based_on_thickness">Punch radius calculation based on thickness</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Up to Thickness in mm</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Punch tip radius in mm</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.95</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1e99</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_calculated_radius_rc90_based_on_thickness">Calculated radius (R<sub>C90</sub>) based on thickness</h4>
+<div class="paragraph">
+<p>From the thickness, V width is computed from the table below:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Thickness in mm</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>V width in mm</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">70</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Then, for the <a href="#example">Example</a>,</p>
+</div>
+<div class="paragraph">
+<p><code>calculated radius (R<sub>C90</sub>) = 0.16 * V width = 0.16 * 12 = 1.92mm</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_angle_greater_than_90">Angle greater than 90°</h3>
+<div class="paragraph">
+<p>Based on angle, a radius factor is decided from the table below:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Angle in degree</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Factor</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">105</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.25</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.93</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">135</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.32</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.98</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">157</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">169</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">175</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In the above <a href="#example">Example</a>, if the <code>interior angle is 135°</code>, <code>inner bend radius (R<sub>A</sub>)</code> is calculated by multiplying <code>radius factor 2.32</code> with <code>actual radius at 90° (R<sub>A90</sub>)</code>. Thus,</p>
+</div>
+<div class="paragraph">
+<p><code>R<sub>A</sub> = radius factor * R<sub>A90</sub> = 2.32 * 1.92 = 4.45mm</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_k_factor_computation">K factor computation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For Trumpf machines, TBS is used to compute bend deduction and from that K factor is calculated.</p>
+</div>
+<div class="paragraph">
+<p>Based on K factor table in Material settings <code>(Database &#8594; Material)</code>
+K factor is computed and from that bend deduction is computed.</p>
+</div>
+<div class="paragraph">
+<p>See below for sample table:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ratio (Inner radius / Thickness)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>K-Factor</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.38</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.43</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In the <a href="#example">Example</a>, <code>inner radius for 90° is 1.92mm</code> and <code>thickness is 1.5mm</code>. So the <code>ratio is 1.28</code>.</p>
+</div>
+<div class="paragraph">
+<p>We have to now compute K factor for 1.28 by interpolation.</p>
+</div>
+<div class="paragraph">
+<p>Let the required intervals of K factor be <code>K<sub>a</sub> = 0.38</code> and <code>K<sub>b</sub> = 0.43</code> and the intervals of ratio be <code>Ratio<sub>a</sub> = 1</code> and <code>Ratio<sub>b</sub> = 2</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>K factor = K<sub>a</sub> * (1 - lie of the ratio) + K<sub>b</sub> * lie of the ratio</code></p>
+</div>
+<div class="paragraph">
+<p><code>lie of the ratio between Ratio<sub>a</sub> and Ratio<sub>b</sub> = (1.28 - Ratio<sub>a</sub>) / (Ratio<sub>b</sub> - Ratio<sub>a</sub>) = 1.28 - 1 / 2 - 1 = 0.28</code></p>
+</div>
+<div class="paragraph">
+<p><code>∴ K factor  = 0.38 * (1 - 0.28) + 0.43 * 0.28 = 0.394</code></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_deciding_v_width_if_not_specified">Deciding V width if not specified</a>
+    </li>
+    <li level="1">
+      <a href="#example">Example</a>
+    </li>
+    <li level="1">
+      <a href="#_bend_radius_computation">Bend radius computation</a>
+    </li>
+    <li level="2">
+      <a href="#_angle_less_than_90">Angle less than 90°</a>
+    </li>
+    <li level="2">
+      <a href="#_angle_greater_than_90">Angle greater than 90°</a>
+    </li>
+    <li level="1">
+      <a href="#_k_factor_computation">K factor computation</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="toolarvfields.html">ARV fields used in tool import</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>
