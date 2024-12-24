@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Flux Git Workflow</title>
+  <title>Flux Workflow</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -30,7 +30,6 @@
         <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
         <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
         <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
-        <li><button class="tree blank"></button><a href="../tools/bento.html">Documentation using Bento</a></li>
         <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
         <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
         <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
@@ -40,7 +39,7 @@
       <button class="tree open"></button>
       <a href="index.html">Flux Guidelines</a>
       <ul>
-        <li><button class="tree blank"></button><a class="active" href="fluxgitworkflow.html">Flux Git Workflow</a></li>
+        <li><button class="tree blank"></button><a class="active" href="fluxgitworkflow.html">Flux Workflow</a></li>
         <li><button class="tree blank"></button><a href="fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
         <li><button class="tree blank"></button><a href="releasenotes.html">Release notes for Flux</a></li>
         <li><button class="tree blank"></button><a href="sonarcloud.html">SonarCloud analysis for Flux</a></li>
@@ -63,6 +62,18 @@
         <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
       </ul>
     </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../documentation/index.html">Documentation</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../documentation/bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="../documentation/hosting.html">Hosting </a></li>
+        <li><button class="tree blank"></button><a href="../documentation/languages.html">Languages</a></li>
+        <li><button class="tree blank"></button><a href="../documentation/deltatranslation.html">Delta translations</a></li>
+        <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Changing to a flavor</a></li>
+        <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+      </ul>
+    </li>
   </ul>
 </div>
 
@@ -79,19 +90,18 @@
   </div>
   <div>/</div>
   <div>
-    <a href="fluxgitworkflow.html">Flux Git Workflow</a>
+    <a href="fluxgitworkflow.html">Flux Workflow</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Flux Git Workflow</h1>
+                        <h1>Flux Workflow</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>We&#8217;ll explain here how to set up a computer for Flux development. We assume you
-have already read the <a href="../tools/configuregit.html">Git Configuration</a> document.</p>
+<p>This document explains how to set up a computer for Flux development. It also outlines the best development practices when working on issues in Flux. Following this workflow ensures a clean, efficient and collaborative development process. We assume that you are already familiar with the Git workflow and have already read the <a href="../tools/configuregit.html">Git Configuration</a> document.</p>
 </div>
 </div>
 </div>
@@ -261,13 +271,19 @@ tests in the last line.</p>
 <p>Here is the basic workflow you use to work on Flux cases. As you get more familiar
 with Git you can bend these rules <em>if you know what you are doing</em>.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Update GitHub Profile Name</strong>: Set your GitHub profile name to lowercase. You can find this option in GitHub account settings &gt; Profile. Use only your first name unless there is a conflict with another user.</p>
 <div class="paragraph">
-<p>In general, we are going to use a branch for each case and these branches will be
-merged into main periodically (typically daily). There are no <em>per-developer</em>
-branches. New case branches are always created starting from <strong>main</strong>. There are no
+<p><span class="image"><img src="img/fluxgitworkflow.png" alt="Template"></span></p>
+</div>
+</li>
+<li>
+<p><strong>Create a New Branch for Every Case</strong><a id="NewBranch"></a>: In general, we are going to use a branch for each case and these branches will be
+merged into main periodically (typically daily). There are no <em>per-developer</em> branches. New case branches are always created starting from <strong>main</strong>. There are no
 commits to the main branch directly - that grows only by merging in development from
 other branches.</p>
-</div>
 <div class="paragraph">
 <p>First, create a new branch to work on. Make sure to base that branch on the
 current version of main like this:</p>
@@ -282,7 +298,7 @@ git switch --create Case.12345         &lt;- create a new branch that forks from
 <div class="paragraph">
 <p>Note that the <code>git pull</code> will <em>never</em> cause a conflict since you will have no
 local changes on the main branch. Now, work as normal and periodically stage and
-commit your changes into the branch you created. Once you are done, push the branch to
+commit your changes into the branch you created. Before committing, ensure you are <a href="#Commit-Ready">commit-ready</a>. Once you are done, push the branch to
 the Github server (which is called origin). The first time you do this, you need to
 create a corresponding upstream branch on the server that mirrors the local
 <strong>Case.12345</strong> branch you created. So you need to do this (if you forget this, git push will
@@ -294,15 +310,85 @@ helpfully remind you)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Subsequently, you can just do a git push. Eventually, you may have a few commits on this branch
-and you are then done. Go to <strong>github.com</strong> and create a pull request for this branch.
-This signals the person who merges pull requests that there are changes ready to be merged into main,
-and they will merge the code to main.</p>
+<p>Subsequently, you can just do a git push. Eventually, you may have a few commits on this branch and you are then done. Go to <strong>github.com</strong> and create a pull request for this branch. This signals the person who merges pull requests that there are changes ready to be merged into main.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Avoid reusing branch names. After the pull request is merged into <code>main</code>, the case branch will be deleted. If you are working on additional fixes for the same case, append a version number to the branch name (e.g., <strong>Case.12345.1</strong>)
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>Creating a Pull Request (PR)</strong><a id="CreatePR"></a>: Once a PR is created in GitHub, it has to be assigned to a fellow developer for review. Upon approval, it will be assigned to the lead for merging. Some of the key considerations when creating a PR are listed below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>PR Title</strong><a id="PRTitle"></a>: Title the pull request like "<em>Case 37463: Add license check for API</em>".</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There should be a space between Case and the number. Then, the commit will get automatically linked to the case in FogBugz (because of the GitHub - FogBugz integration filter installed).</p>
+</li>
+<li>
+<p>Use a colon after that. Then a space, then the case title in a more meaningful manner (note the captial letter for Add). The PR title should always be set correctly. Otherwise, when performing a <em>Squash and Merge</em> (which combines multiple commits that are part of pull request into a single one), the summary in the log is lost.</p>
 <div class="paragraph">
-<p>Once you raise the pull request you have to write release notes in the respective FogBugz case.
-Refer <a href="https://metamation-devbook.onrender.com/flux/releasenotes.html">this</a> page regarding release notes.</p>
+<p><span class="image"><img src="img/fluxgitworkflow2.png" alt="Template"></span></p>
 </div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>PR Notes</strong><a id="PRNotes"></a>: To ease reviews, write a brief note explaining the fix, so the code reviewer has some context on the problem. For an excellent example of this, see notes for <a href="https://github.com/metamation/Flux/pull/1189">#1189</a></p>
+</li>
+<li>
+<p><strong>Draft PR</strong>: If your work is still in progress, create a Draft PR and assign it to yourself. Once completed, it can be moved up for review.</p>
+</li>
+<li>
+<p><strong>Review Assignment</strong><a id="AssignReview"></a>: Before assigning code for review, ensure all checks have been completed, such as verifying formatting, removing commented lines of code, and eliminating unwanted space changes. Once the PR is ready for review, just assign it to the reviewer without explicitly raising a request for review in GitHub.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Avoid making commits after putting up for review. If further changes are required, unassign it, make the necessary adjustments, commit and then reassign for review.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>FogBugz Case Status</strong><a id="FogBugzStatus"></a>: After assigning the PR for review, mark the relevant FogBugz case as <em>For Review</em> and assign it to the reviewer.  Ensure that all necessary test data are attached to the case so the reviewer can validate the fix.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+TMM does not have access to JIRA, so all the relevant attachments must be added manually to the case.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>Release Notes</strong>: After submitting the pull request, release notes must be added. Please refer to the guidelines in <a href="releasenotes.html">Release Notes for Flux</a>.</p>
+</li>
+<li>
+<p><strong>Addressing Review Feedback</strong><a id="ReviewFeedback"></a>: If changes are required during the review process, the reviewer will reassign the PR and the FogBugz case back to the author for updates. In this case, make the necessary changes and commit them with a "<em>Review Fix</em>" message. If you haven&#8217;t already merged the latest changes from the main branch please do so. Ensure that all requested changes are made in the same branch. Once completed, reassign both the PR and the FogBugz case back to the reviewer. <strong>Do not create a new branch</strong>.</p>
 <div class="paragraph">
 <p>Meanwhile, you can  start working on another case by creating a new branch and starting
 afresh. Remember to do the sequence with git switch main etc again.</p>
@@ -318,6 +404,9 @@ Don&#8217;t fork the new branch from your already existing Case.12345 branch!
 </td>
 </tr>
 </table>
+</div>
+</li>
+</ul>
 </div>
 <div class="sect2">
 <h3 id="_switching_between_cases">Switching between cases</h3>
@@ -338,6 +427,13 @@ based on these notes, commit and push again. This throws the pull request back t
 code will get reviewed again. After some back and forth, the branch is judged good to go and is
 merged. After this, we typically delete the branch (like <strong>Case.12345</strong>) since it has served
 its purpose.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Stashing your changes</strong><a id="GitStash"></a>: When you are working on a feature or fix and need to quickly switch to another branch without committing incomplete or experimental changes, use <code>git stash</code> to save your progress. This Git command allows you to temporarily store uncommitted changes in your working directory so you can switch tasks and return to your work by applying the stashed changes. For more details on how to use <code>git stash</code>, refer to the Git documentation.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -475,6 +571,214 @@ problem of the person who is merging, to merge the incoming changes into main wh
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_tools_tiny">Tools &gt; Tiny</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can find some useful tools in the <code>X:\Tools\Tiny</code> folder. Open the <strong>Developer Command Prompt for Visual Studio</strong>, and build the <code>.cs</code> file to get the executable in the same directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">X:\Tools\Tiny&gt; csc FXOpen.cs
+X:\Tools\Tiny&gt; FXOpen.exe C40122.fx</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see in the example shown, FXOpen can be used to open any FX file within the <code>X:\TData</code> folder without the need to specify the exact file path.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_automate">Automate</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>To streamline repetitive tasks, you can create batch files that automate commands you frequently use. A batch file is a simple text file with a .bat extension containing a series of commands that run sequentially when executed. For example, you can create a batch file to automate your test runs as shown below.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cd /d X:\Src\Bin
+Flux.Console Optimize 1
+Flux.Console ResetData
+Flux.Test.exe
+Flux.Console Optimize 0
+cd\</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When dealing with repetitive or large-scale changes across multiple files, it is best to automate it.For example, if you need to update the <code>Z Shift</code> values for some machine ranges or adjust the back gauge settings, it is far more efficient to automate it than doing it manually. You can write the necessary code in a temporary file in FConsole, and later move it to the ReFlux repository under <code>Y:\DeadCode\Bend</code>. This ensures the code can be easily accessed if needed in the future, while minimizing the risk of human error.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ready_to_commit">Ready to commit?<a id="Commit-Ready"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before committing your code, take a look at these guidelines below and make sure to follow them carefully.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Avoid Data Redundancy</strong>: Redundant data should never be included, as this leads to unnecessary bloat. A good example of this is the <strong>redirect.map</strong>. With thousands of machines and the list still growing, there is bound to be a lot of duplicated data across machine models. Flux uses a redirection mechanism to avoid this redundancy. It generates a redirection map - a list that associates each file with its unique counterpart.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-map hljs" data-lang="map">...
+120020/Model/BendGuard.mesh2|120000/Model/BendGuard.mesh2
+120020/Model/BendGuard2.mesh2|120000/Model/BendGuard2.mesh2
+120020/Model/BG1.geo2|120000/Model/BG1.geo2
+120020/Model/BG1Y.geo2|120000/Model/BG1Y.geo2
+120020/Model/BG1Z.geo2|120000/Model/BG1Z.geo2
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This ensures that only one instance of the file is stored and helps keep the storage compact. When you encounter a similar scenario use a similar approach to avoid redundancy and keep the application streamlined.</p>
+</div>
+</li>
+<li>
+<p><strong>Rebuild Metadata</strong>: Metadata must be rebuilt whenever there are changes to type definitions. See the <a href="#_metadata">Metadata</a> section for more information.</p>
+</li>
+<li>
+<p><strong>Keep the API Up-to-date</strong>: When there is a change in a class or type, the API definition must also be updated accordingly. To do this, run the APIGen tool (in X:\Tools\APIGen). This will help keep the API classes in sync.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Do not modify the <em>.gen.cs</em> files generated by APIGen or <em>metadata.curl</em> manually.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>XLate</strong><a id="XLate"></a>: Whenever a new text is added or modified, it should be updated in the appropriate string table file in the <code>X:\Wad\Lang</code> folder. When updating translation strings, ensure proper grammar and punctuation. Avoid camel case (for example, ToBendLine should be To Bendline).</p>
+</li>
+<li>
+<p><strong>Be cautious with <code>git clean</code></strong><a id="GitClean"></a>: When using git clean, always perform a dry run (<code>git clean -n -d</code>) first to preview the files and directories that will be affected. Once you confirm, proceed with the actual clean: <code>git clean -f -d</code></p>
+</li>
+<li>
+<p><strong>Run Flux Tests For Every Change</strong>: Run all Flux tests, even for minor fixes, to ensure everything works correctly. Follow the guidelines listed in the <a href="#_test_cases">Test Cases</a> section</p>
+</li>
+<li>
+<p><strong>Use Clear, Descriptive Commit Messages</strong><a id="CommitMessages"></a>: Use commit messages like "<em>Case 30081: Pickup from TBC machine should not be editable</em>" to make it easy to search for commits later. Ideally, the text message should be not more than about 80 characters, so abbreviate it if the case title is too long.</p>
+</li>
+<li>
+<p><strong>Avoid Force Pushing</strong><a id="ForcePush"></a>: Refrain from using <code>git push --force</code> unless absolutely necessary. Force pushing can rewrite history and cause issues with the repository.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metadata">Metadata</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Metadata should be rebuilt whenever there is a change in type definition. To update, run <strong>Flux.Console RebuildMetadata</strong>. This will generate a new metadata file and prompt it for review. Changes to types will be marked with <code>Review: True</code>. Carefully review each change and validate it. Key considerations for validation include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Flux, fields intended to store the serializable internal state of an object are prefixed with <strong>m</strong>, while fields representing transient, cached state (which can be recomputed) are prefixed with an underscore (_). Name your field accordingly.</p>
+</li>
+<li>
+<p>Each type has its own version number in the metadata.curl file. (It&#8217;s up to us to bump this up whenever we refresh the metadata for a type!). When serializing an object out, this <em>current version number</em> is also written out into the Au stream. This can then be inferred in <code>PostLoad</code> as seen below:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-C# hljs" data-lang="C#">[PostLoad]
+   void PostLoad () {
+      if (mClampPos != null &amp;&amp; AuType.ObjVersion &lt; 4 &amp;&amp; BMachine != null) {
+         float dx = BMachine.Clamp0XPos;
+         for (int i = 0; i &lt; mClampPos.Length; i++) mClampPos[i] += dx;
+      }
+   }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update the Flux version number to the current one.</p>
+</li>
+<li>
+<p>After all changes are validated, remove the <code>Review: True</code> flag and rename the metadata.new file to metadata.curl.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Only commit changes relevant to your fix and revert any unrelated changes.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_cases">Test Cases</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Use valid test case IDs</strong>: Ensure the test case ID is correct and hasn&#8217;t been previously used in another branch that has not yet been merged into the <code>main</code> branch.</p>
+</li>
+<li>
+<p><strong>Follow the test case naming convention</strong>: Use the format "<em>C37239: Stop position in X direction is incorrect</em>" instead of "<em>Case 37239: Stop position&#8230;&#8203;</em>" even if latter variants exist in the repository.</p>
+</li>
+<li>
+<p><strong>Review existing test cases</strong>: Before creating a new test case examine similar test cases in the repository for reference and consistency.</p>
+</li>
+<li>
+<p><strong>Understand the test case code</strong>: Ensure you fully understand the test case logic and verify that every line of code is essential for the test to run properly.</p>
+</li>
+<li>
+<p><strong>Disable tests that affect parallel execution</strong>: If a test case interferes with others during parallel test execution, disable it to avoid conflicts.</p>
+</li>
+<li>
+<p><strong>Ensure test failure without the fix</strong>: Confirm that the test case fails if the fix is not applied.</p>
+</li>
+<li>
+<p><strong>SkipReason</strong><a id="SkipReason"></a>: If you are temporarily disabling a test, provide a clear reason in the <strong>SkipReason</strong> attribute. For example: <em>SkipReason = "Broken with fix for Case 37551"</em>. Avoid using vague statements like "<em>Turning off</em>" or "<em>Temporarily turning off</em>"; instead, specify the valid reason for the action.</p>
+</li>
+<li>
+<p><strong>Handling Image Tests</strong><a id="ImageTests"></a>: There are several tests in Flux that are comparing images rendered using OpenGL. In addition to actual image comparison tests, tests that use the report writer also have this dependency. These tests fail sometimes, especially when there are new graphics cards, or new generations of existing graphics cards. There are two solutions to this.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Creating a result variant</strong>: Suppose a test is using an output file like <strong>C23806.html</strong>, and it fails on your computer. This typically means the generated result (TData/tmpfile.tmp) does not match the reference (C23806.html). You can create a new variant of the result, which is also acceptable by creating a file like <strong>C23806.(1).html</strong> in the same target folder. Flux.Test will check for variants like C23806.(1).html, C23806.(2).html etc.</p>
+<div class="paragraph">
+<p>Of course, first verify that the failing result tmpfile.tmp looks visually similar to C23806.html.</p>
+</div>
+<div class="paragraph">
+<p><strong>Removing variants</strong>: Sometimes, a change will be made that causes the original result C23806.html to change drastically. For example, suppose we change the rendering color for the punches. This will cause C23806.html to be regenerated. In this case, you should not just regenerate this test, but should also <strong>delete all the variants</strong> (since they are definitely no longer good).</p>
+</div>
+</li>
+<li>
+<p><strong>Skipping the test</strong>: A simpler alternative (which is recommended) is to just skip the test on your computer. To do this, create a local skip file called <strong>C:/ProgramData/Metamation/Flux.Test/skip.txt</strong>. Each line in this file contains an integer test number. Those tests will be skipped on your computer. You should never have to do this for a non image-based test. If some such test fails on your computer, please report. Unless you are working on code that could potentially change the image rendering, skipping image tests should not be a big concern.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 
                     </article>
                 </div>
@@ -511,6 +815,21 @@ problem of the person who is merging, to merge the incoming changes into main wh
     </li>
     <li level="2">
       <a href="#_handling_merge_conflicts">Handling merge conflicts</a>
+    </li>
+    <li level="1">
+      <a href="#_tools_tiny">Tools &gt; Tiny</a>
+    </li>
+    <li level="1">
+      <a href="#_automate">Automate</a>
+    </li>
+    <li level="1">
+      <a href="#_ready_to_commit">Ready to commit?</a>
+    </li>
+    <li level="1">
+      <a href="#_metadata">Metadata</a>
+    </li>
+    <li level="1">
+      <a href="#_test_cases">Test Cases</a>
     </li>
   </ul>
 </aside>

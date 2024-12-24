@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Single Binary Applications</title>
+  <title>Documentation</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -24,15 +24,15 @@
     <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
     <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
     <li>
-      <button class="tree open"></button>
-      <a href="index.html">Tools</a>
-      <ul>
-        <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
-        <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
-        <li><button class="tree blank"></button><a href="assignments.html">Assignments</a></li>
-        <li><button class="tree blank"></button><a href="testsandbox.html">Testing with Windows Sandbox</a></li>
-        <li><button class="tree blank"></button><a class="active" href="singlefileapps.html">Single Binary Applications</a></li>
-        <li><button class="tree blank"></button><a href="selfupdate.html">Self-Updating Applications</a></li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
       </ul>
     </li>
     <li>
@@ -63,15 +63,15 @@
       </ul>
     </li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../documentation/index.html">Documentation</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../documentation/bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/hosting.html">Hosting </a></li>
-        <li><button class="tree blank"></button><a href="../documentation/languages.html">Languages</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/deltatranslation.html">Delta translations</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Changing to a flavor</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+      <button class="tree open"></button>
+      <a class="active" href="index.html">Documentation</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="hosting.html">Hosting </a></li>
+        <li><button class="tree blank"></button><a href="languages.html">Languages</a></li>
+        <li><button class="tree blank"></button><a href="deltatranslation.html">Delta translations</a></li>
+        <li><button class="tree blank"></button><a href="flavoring.html">Changing to a flavor</a></li>
+        <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
       </ul>
     </li>
   </ul>
@@ -86,82 +86,90 @@
     </button>
   </div>
   <div>
-    <a href="index.html">Tools</a>
-  </div>
-  <div>/</div>
-  <div>
-    <a href="singlefileapps.html">Single Binary Applications</a>
+    <a href="index.html">Documentation</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Single Binary Applications</h1>
-<div id="preamble">
+                        <h1>Documentation</h1>
+<div class="sect1">
+<h2 id="_steps">Steps</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Typically a .Net Core application is compiled into multiple files like &lt;App&gt;.exe, &lt;App&gt;.dll, &lt;App&gt;.runtimeconfig.json, &lt;App&gt;.deps.json. All of these must be copied together when deploying the application to another computer. Additional dependencies add proportionally to the deployment complexity. This complexity is justified for applications with multiple executables using shared libraries and resources. Commonly, installer applications are used to bundle all the files together and simplify the deployment in such scenarios. However it is an overkill for a simple, single-purpose tool or library.</p>
+<p>Documentation covers the following steps</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Writing Master document (e.g. FluxBook)</p>
+</li>
+<li>
+<p>Translation</p>
+</li>
+<li>
+<p>Branding (e.g. replacing FluxBend &#8594; TecZoneBend and changing color scheme)</p>
+</li>
+<li>
+<p>Rearranging (e.g. TecZoneBend):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>TRUMPF intro page (Homezone)</p>
+</li>
+<li>
+<p>Flux Introduciton</p>
+</li>
+<li>
+<p>Bend chapter</p>
+</li>
+<li>
+<p>Applicatin setting</p>
+</li>
+<li>
+<p>TRUMPF Impressum</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Converting into HTML via Bento</p>
+</li>
+<li>
+<p>Hosting the HTML pages via Onrender.com</p>
+</li>
+<li>
+<p>Putting external URL links on the onrender.com pages</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Dotnet publish can be used to bundle all application files and dependencies into a single file simplifying the deployment. Rest of this article describes creating a VisualStudio publish profile to produce a single file binary (executable or a library).</p>
+<p><span class="image"><img src="img/multiply.png" alt="multiply"></span></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_steps">Steps</h2>
+<h2 id="_design_principles">Design principles</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>Open the Solution Explorer, Right-Mouse-Click and select the <strong>Publish</strong> menu option.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/singlefile-publish1.png" alt="singlefile publish1">
-</div>
-</div>
+<p>All content are written only once in FluxBook</p>
 </li>
 <li>
-<p>Press <strong>New Profile</strong> button. It should start the publish wizard. Select <strong>Folder</strong> option from the list and press <strong>Next</strong>.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/singlefile-publish2.png" alt="singlefile publish2" width="80%">
-</div>
-</div>
+<p><strong>N</strong> translations should be only done once for all brands (TMM internal, Trumpf, JFY, Lantek)</p>
 </li>
 <li>
-<p>Select the <strong>Folder</strong> target option and press <strong>Next</strong>.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/singlefile-publish3.png" alt="singlefile publish3" width="80%">
-</div>
-</div>
+<p>only delta text files are given to the translation office which will reduce the costs significantly</p>
 </li>
 <li>
-<p>Key-in the publish path and press <strong>Finish</strong> to close the wizard.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/singlefile-publish4.png" alt="singlefile publish4">
-</div>
-</div>
+<p>The translated documents get rearranged to <strong>M</strong>  products (TZBend standalone, TZBend Boost, JFY+ etc)</p>
 </li>
-<li>
-<p>Click on <strong>Show all settings</strong> link to edit <strong>Profile settings</strong>. Change the <strong>Target runtime</strong> from <strong>Portable</strong> to <strong>win-x64</strong>. Now check <strong>Produce single file</strong> option under the <strong>File publish options</strong> and press OK to save the settings.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/singlefile-publish5.png" alt="singlefile publish5" width="80%">
+</ul>
 </div>
-</div>
-</li>
-<li>
-<p>Click the <strong>Publish</strong> button placed at the top-right corner to compile and publish. Use the <strong>open folder</strong> link to open and locate the published binary.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/singlefile-publish6.png" alt="singlefile publish6" width="80%">
-</div>
-</div>
-</li>
-</ol>
+<div class="paragraph">
+<p>&#8594; the multiplication of <strong>N * M</strong> translatios and products split up in many HTML hostings</p>
 </div>
 </div>
 </div>
@@ -175,14 +183,17 @@
     <li level="1">
       <a href="#_steps">Steps</a>
     </li>
+    <li level="1">
+      <a href="#_design_principles">Design principles</a>
+    </li>
   </ul>
 </aside>
 
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="testsandbox.html">Testing with Windows Sandbox</a></span>
-  <span class="next"><a href="selfupdate.html">Self-Updating Applications</a></span>
+  <span class="prev"><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></span>
+  <span class="next"><a href="bento.html">Documentation using Bento</a></span>
 </nav>
 
         </div>

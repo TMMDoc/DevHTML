@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Hosting </title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="index.html">Documentation</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a class="active" href="hosting.html">Hosting </a></li>
+        <li><button class="tree blank"></button><a href="languages.html">Languages</a></li>
+        <li><button class="tree blank"></button><a href="deltatranslation.html">Delta translations</a></li>
+        <li><button class="tree blank"></button><a href="flavoring.html">Changing to a flavor</a></li>
+        <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="index.html">Documentation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="hosting.html">Hosting </a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Hosting </h1>
+<div class="sect1">
+<h2 id="_basics">Basics</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The master file in the Metamation repository is kept in a most complete form but should also not be cluttered with all kind of branding information</p>
+</li>
+<li>
+<p>First step is that all documents are translated in order to keep the translation clean and non redundant and are stored in the TMMDoc Repository. Each releas cycle we get the diff and only send the delta to the translation office.</p>
+</li>
+<li>
+<p>Within the branding process we only have delta descriptions in contents.txt. This ensures that every added file in the master document gets automatically populated in all branded files</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/process.png" alt="process"></span></p>
+</div>
+<div class="paragraph">
+<p>The structure is explained on the complex example of FluxBook</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metamation_repository">Metamation repository</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Master documents like FluxBook stays on the Metamation repository that every employee has a low threshold to contribute</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tmmdoc_repositiory">TMMDoc  repositiory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Fluxbook repository contains for each product a folder and the translated versions of FluxBook in _DE etc.</p>
+</div>
+<div class="paragraph">
+<p>A example folder structure of TecZoneLaeser is shown below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/filestructure.png" alt="Filestructure"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_branding_folder_e_g_teczonelaeser">Branding folder (e.g TecZoneLaeser)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For each branding a separate folder is set up with a new manifest and a delta contents.txt</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manifest_txt_in_branding_folder">Manifest.txt in Branding folder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Manifest.txt looks like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>TITLE=TecZoneLaser
+OUTDIR=../TecZoneLaserHTML
+LOGO=img/Trumpflogo.png,207,34
+COPYRIGHT=Copyright &amp;copy; 2023 by Trumpf. All rights reserved.
+LANGUAGES=EN,DE,ES
+ATTRIBUTE=appName:Flux
+ATTRIBUTE=bendApp:Flux</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the branding a new title etc is given, languages are added</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contents_txt_in_branding_folder">contents.txt in Branding folder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The contents.txt file is a substraction and replacement description. if it is a empty file then the direct version of the Master is published. If a subproduct like TecZoneLaser is extracted it might look like this:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Master contents.txt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TecZoneLaser contents.txt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[Intro]<br>
+[CAD]<br>
+[Cut]<br>
+[Bend]<br>
+[BCell]<br>
+[Fold]<br>
+[Settings]<br>
+[Report]<br>
+[Appendix]<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[.\Cut\intro]<br>
+[HomeZone]<br>
+[.\Cut\workflow]<br>
+[.\Cut\Advancetopics]
+[.\Cut\Applicationsettings]
+-[Cut]<br>
+-[CAD]<br>
+-[Bend]<br>
+-[BCell]<br>
+-[Fold]<br>
+impressum<br></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Explanation of contents.txt in the TecZoneLaser folder:</p>
+</div>
+<div class="sect2">
+<h3 id="_intro">[intro]</h3>
+<div class="paragraph">
+<p>The intro chapter is used but heavily modified. The master file has a lot of bending examples which are not good for a laser program.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_homezone">[HomeZone]</h3>
+<div class="paragraph">
+<p>A new chapter HomeZone is added which is specific for the Trumpf installation how FluxCut is integrated in Boost HomeZone</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cutworkflow_etc">[.\Cut\workflow] etc&#8230;&#8203;</h3>
+<div class="paragraph">
+<p>The folders workflow, advancedtopics and Applicationsetup is lifted one level up</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cut">-[Cut]</h3>
+<div class="paragraph">
+<p>Since all folders were lifted up we don&#8217;t need the original cut chapters</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cad">-[CAD] &#8230;&#8203;</h3>
+<div class="paragraph">
+<p>Many other chapters are not needed</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_impressum">impressum</h3>
+<div class="paragraph">
+<p>The Trumpf impressum is added</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_further_details_of_the_folder_structure_example_above">Further details of the folder structure example above</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the branding folder needs to have the same structure than the master folder. Cut is a sub-chapter of FluxBook which will be lifted one level up so it needs to be on level 2</p>
+</li>
+<li>
+<p>in the folder res are the informations added in Bento for the HTML file to define the branded color scheme</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>bento.css</p>
+</li>
+<li>
+<p>site.css</p>
+</li>
+<li>
+<p>favicon.ico</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>as stated the contents.txt of e.g. .\TecZoneLaser\Cut\workflow is a delta file, if its empty then the chapter is taken as it is or if a subfolder is not set up the master subfolder will be taken as it is.</p>
+</li>
+<li>
+<p>if a e.g .\TecZoneLaser\Cut\ApplicationSetting\index.adoc needs to be changed the path needs to be replicated in the branding folder</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_basics">Basics</a>
+    </li>
+    <li level="1">
+      <a href="#_metamation_repository">Metamation repository</a>
+    </li>
+    <li level="1">
+      <a href="#_tmmdoc_repositiory">TMMDoc  repositiory</a>
+    </li>
+    <li level="1">
+      <a href="#_branding_folder_e_g_teczonelaeser">Branding folder (e.g TecZoneLaeser)</a>
+    </li>
+    <li level="1">
+      <a href="#_manifest_txt_in_branding_folder">Manifest.txt in Branding folder</a>
+    </li>
+    <li level="1">
+      <a href="#_contents_txt_in_branding_folder">contents.txt in Branding folder</a>
+    </li>
+    <li level="2">
+      <a href="#_intro">[intro]</a>
+    </li>
+    <li level="2">
+      <a href="#_homezone">[HomeZone]</a>
+    </li>
+    <li level="2">
+      <a href="#_cutworkflow_etc">[.\Cut\workflow] etc&#8230;&#8203;</a>
+    </li>
+    <li level="2">
+      <a href="#_cut">-[Cut]</a>
+    </li>
+    <li level="2">
+      <a href="#_cad">-[CAD] &#8230;&#8203;</a>
+    </li>
+    <li level="2">
+      <a href="#_impressum">impressum</a>
+    </li>
+    <li level="1">
+      <a href="#_further_details_of_the_folder_structure_example_above">Further details of the folder structure example above</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="bento.html">Documentation using Bento</a></span>
+  <span class="next"><a href="languages.html">Languages</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>
