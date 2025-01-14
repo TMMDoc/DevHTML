@@ -68,11 +68,43 @@
       <a href="../documentation/index.html">Documentation</a>
       <ul class="hide">
         <li><button class="tree blank"></button><a href="../documentation/bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/hosting.html">Hosting </a></li>
-        <li><button class="tree blank"></button><a href="../documentation/languages.html">Languages</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/deltatranslation.html">Delta translations</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Changing to a flavor</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+        <li><button class="tree blank"></button><a href="../documentation/hosting.html">Documentation Repositories</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../documentation/workflow/index.html">Documentation Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../documentation/workflow/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/workflow/prerequisites.html">Prerequisite Installation</a></li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="../documentation/workflow/docsteps/index.html">Working Stages in Brief</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/analyze.html">Analyze</a></li>
+                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/edit.html">Edit</a></li>
+                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/review.html">Review</a></li>
+                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/approve.html">Approve</a></li>
+                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/publish.html">Publish</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="../documentation/workflow/misc/index.html">Miscellaneous Information</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="../documentation/workflow/misc/environmentvariables.html">Environment Variable</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../documentation/translation/index.html">Flavors and Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">Delta translations</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/translation/flavoring.html">Changing to a Flavor</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/translation/citations.html">Citations</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/translation/controlcommands.html">Control Commands</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -275,6 +307,56 @@ related to a particular case:</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_set_proxy_for_trumpf_network">Set Proxy for Trumpf Network</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Working with Trumpf&#8217;s computer and network requires proxy to be enabled to access external websites.</p>
+</div>
+<div class="paragraph">
+<p>By default, the environment variable for Git is mapped to a network shared folder (H: drive), which has a high latency. Hence, accessing the <strong>git config</strong> file created and stored in a network shared folder is slow. To resolve this issue, we must set the environment variable, which must be mapped to a local folder in <strong>C:</strong> drive. Create and use the <strong>Visual Studio projects</strong> in this local folder.</p>
+</div>
+<div class="paragraph">
+<p>Create a new folder inside C: drive and name it <strong>Work</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Open the command prompt and type the command <code>SETX HOME C:\Work</code> to set the work as your local folder.</p>
+</div>
+<div class="paragraph">
+<p>Move the git global configuration file <strong>.gitconfig</strong> from H: to C:\Work.</p>
+</div>
+<div class="paragraph">
+<p>Modify the proxy server setting by typing the below command in the command prompt window:</p>
+</div>
+<div class="paragraph">
+<p><code>Git config --global http.proxy <a href="http://WindowsLoginID@srv34prox.corp.trumpf.com:80" class="bare">http://WindowsLoginID@srv34prox.corp.trumpf.com:80</a></code></p>
+</div>
+<div class="paragraph">
+<p><code>Git config --global http.sslverify false</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<em>WindowsLoginID</em> must be substituted with your Windows <em>username</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Type the following command to enable proxy for Trumpf network:</p>
+</div>
+<div class="paragraph">
+<p><code>setx HTTPS_PROXY <a href="http://WindowsLoginID@srv34prox.corp.trumpf.com:80" class="bare">http://WindowsLoginID@srv34prox.corp.trumpf.com:80</a></code></p>
+</div>
+<div class="paragraph">
+<p><code>setx HTTP_PROXY <a href="http://WindowsLoginID@srv34prox.corp.trumpf.com:80" class="bare">http://WindowsLoginID@srv34prox.corp.trumpf.com:80</a></code></p>
+</div>
+</div>
+</div>
 
                     </article>
                 </div>
@@ -314,6 +396,9 @@ related to a particular case:</p>
     </li>
     <li level="1">
       <a href="#_git_aliases">Git aliases</a>
+    </li>
+    <li level="1">
+      <a href="#_set_proxy_for_trumpf_network">Set Proxy for Trumpf Network</a>
     </li>
   </ul>
 </aside>

@@ -1,0 +1,411 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Prerequisite Installation</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="../index.html">Documentation</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="../bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="../hosting.html">Documentation Repositories</a></li>
+        <li>
+          <button class="tree open"></button>
+          <a href="index.html">Documentation Workflow</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a class="active" href="prerequisites.html">Prerequisite Installation</a></li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="docsteps/index.html">Working Stages in Brief</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="docsteps/analyze.html">Analyze</a></li>
+                <li><button class="tree blank"></button><a href="docsteps/edit.html">Edit</a></li>
+                <li><button class="tree blank"></button><a href="docsteps/review.html">Review</a></li>
+                <li><button class="tree blank"></button><a href="docsteps/approve.html">Approve</a></li>
+                <li><button class="tree blank"></button><a href="docsteps/publish.html">Publish</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="misc/index.html">Miscellaneous Information</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="misc/environmentvariables.html">Environment Variable</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../translation/index.html">Flavors and Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../translation/deltatranslation.html">Delta translations</a></li>
+            <li><button class="tree blank"></button><a href="../translation/flavoring.html">Changing to a Flavor</a></li>
+            <li><button class="tree blank"></button><a href="../translation/citations.html">Citations</a></li>
+            <li><button class="tree blank"></button><a href="../translation/controlcommands.html">Control Commands</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="../index.html">Documentation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="index.html">Documentation Workflow</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="prerequisites.html">Prerequisite Installation</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Prerequisite Installation</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install MS Visual Studio Code</p>
+</li>
+<li>
+<p>Add AsciiDoc Extension</p>
+</li>
+<li>
+<p>Install Ruby Gems for AsciiDoctor</p>
+</li>
+<li>
+<p>Download <a href="https://www.dropbox.com/s/9ort6swyqdb5q36/Bento.exe?dl=1">Bento</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ms_visual_studio_code">MS Visual Studio Code</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Contact IT administrator to install the latest version of <strong>MS Visual Studio Code</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asciidoc_extension_from_vs_code">AsciiDoc Extension from VS Code</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Open VS Code application and click the <strong>Extensions</strong> icon.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/vsextension.png" alt="VSExtension" width="400"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>On the search field, type <strong><em>asciidoc</em></strong> and click <strong>Install</strong> under the AsciiDoc extension.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/vsascii.png" alt="VSAscii" width="400"></span></p>
+</div>
+<div class="sect2">
+<h3 id="_asciidoc_syntaxes_used_in_documentation">AsciiDoc Syntaxes used in documentation</h3>
+<div class="paragraph">
+<p>Refer to <a href="https://docs.asciidoctor.org">AsciiDoc Syntax Quick Reference</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_install_ruby_gem">Install Ruby Gem</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to <a href="https://rubyinstaller.org/downloads">ruby installer</a> and download the set up file.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/rubyinstall.png" alt="Ruby package" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>Go to downloads, unblock the setup file and run <strong>rubyinstaller</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Only for me</strong> when prompted.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/rubysetup.png" alt="Ruby setup">
+</div>
+</div>
+</li>
+<li>
+<p>At the end of the installation click the <strong>Finish</strong>.</p>
+</li>
+<li>
+<p>Ensure a command prompt window opens with <strong>MSYS2</strong> installed properly message.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/msys2.png" alt="MSYS2" width="500">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_install_asciidoctor">Install AsciiDoctor</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p>Open command prompt and type <code><em>gem install asciidoctor</em></code> to install asciidoctor.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/installasciidoctor.png" alt="InstallAsciidoctor" width="450">
+</div>
+</div>
+</li>
+<li>
+<p>Type <code><em>asciidoctor --version</em></code> command to confirm the asciidoctor installation.</p>
+</li>
+<li>
+<p>Type command <code><em>gem install asciidoctor-html5s</em></code> to create html files.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/asciidoctorhtml.png" alt="AsciidoctorHtml" width="500">
+</div>
+</div>
+</li>
+<li>
+<p>Type <code><em>gem install asciidoctor-diagram</em></code>.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/asciidoctordiagram.png" alt="AsciidoctorDiagram" width="500">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_set_environment_variables">Set Environment Variables</h3>
+<div class="paragraph">
+<p>Follow the steps to set <a href="misc/environmentvariables.html">Environment Variable</a> for successful installation of Ruby gem and Bento.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ruby_gem">Ruby gem</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open command prompt and type <code><em>set path</em></code>.</p>
+</li>
+<li>
+<p>Locate for <strong>Ruby</strong> installation folder.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/setpath.png" alt="SetPath" width="600">
+</div>
+</div>
+</li>
+<li>
+<p>Add <strong>C:\Ruby33-x64\bin</strong> to <em>path</em> in user variable.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/sysprop.png" alt="SysProp" width="500">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_install_and_run_bento">Install and Run Bento</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Place <strong>Bento.exe</strong> file in C:\Work.</p>
+</li>
+<li>
+<p>Add <strong>C:\Work</strong> to path variable.</p>
+</li>
+<li>
+<p>Type <code>bento</code> in command prompt to check for compatibility.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/bento.png" alt="Bento" width="500">
+</div>
+</div>
+</li>
+<li>
+<p>Open command prompt and go to any of the document folder (Book).</p>
+</li>
+<li>
+<p>Type <code>bento .</code> to compile.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/bentocompile.png" alt="BentoCompile" width="500"></span></p>
+</div>
+</li>
+<li>
+<p>Check for <strong>errors</strong>, fix <strong>broken links</strong> and remove <strong>orphaned images</strong>, if any.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_ms_visual_studio_code">MS Visual Studio Code</a>
+    </li>
+    <li level="1">
+      <a href="#_asciidoc_extension_from_vs_code">AsciiDoc Extension from VS Code</a>
+    </li>
+    <li level="2">
+      <a href="#_asciidoc_syntaxes_used_in_documentation">AsciiDoc Syntaxes used in documentation</a>
+    </li>
+    <li level="1">
+      <a href="#_install_ruby_gem">Install Ruby Gem</a>
+    </li>
+    <li level="1">
+      <a href="#_install_asciidoctor">Install AsciiDoctor</a>
+    </li>
+    <li level="2">
+      <a href="#_set_environment_variables">Set Environment Variables</a>
+    </li>
+    <li level="2">
+      <a href="#_ruby_gem">Ruby gem</a>
+    </li>
+    <li level="1">
+      <a href="#_install_and_run_bento">Install and Run Bento</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="softwarerequired.html">Software Requirement</a></span>
+  <span class="next"><a href="docsteps/index.html">Working Stages in Brief</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    
+</body>
+</html>

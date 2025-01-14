@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Hosting </title>
+  <title>Documentation Repositories</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -68,11 +68,43 @@
       <a href="index.html">Documentation</a>
       <ul>
         <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a class="active" href="hosting.html">Hosting </a></li>
-        <li><button class="tree blank"></button><a href="languages.html">Languages</a></li>
-        <li><button class="tree blank"></button><a href="deltatranslation.html">Delta translations</a></li>
-        <li><button class="tree blank"></button><a href="flavoring.html">Changing to a flavor</a></li>
-        <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
+        <li><button class="tree blank"></button><a class="active" href="hosting.html">Documentation Repositories</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="workflow/index.html">Documentation Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="workflow/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="workflow/prerequisites.html">Prerequisite Installation</a></li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="workflow/docsteps/index.html">Working Stages in Brief</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="workflow/docsteps/analyze.html">Analyze</a></li>
+                <li><button class="tree blank"></button><a href="workflow/docsteps/edit.html">Edit</a></li>
+                <li><button class="tree blank"></button><a href="workflow/docsteps/review.html">Review</a></li>
+                <li><button class="tree blank"></button><a href="workflow/docsteps/approve.html">Approve</a></li>
+                <li><button class="tree blank"></button><a href="workflow/docsteps/publish.html">Publish</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="workflow/misc/index.html">Miscellaneous Information</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="workflow/misc/environmentvariables.html">Environment Variable</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="translation/index.html">Flavors and Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="translation/deltatranslation.html">Delta translations</a></li>
+            <li><button class="tree blank"></button><a href="translation/flavoring.html">Changing to a Flavor</a></li>
+            <li><button class="tree blank"></button><a href="translation/citations.html">Citations</a></li>
+            <li><button class="tree blank"></button><a href="translation/controlcommands.html">Control Commands</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -91,27 +123,44 @@
   </div>
   <div>/</div>
   <div>
-    <a href="hosting.html">Hosting </a>
+    <a href="hosting.html">Documentation Repositories</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Hosting </h1>
-<div class="sect1">
-<h2 id="_basics">Basics</h2>
+                        <h1>Documentation Repositories</h1>
+<div id="preamble">
 <div class="sectionbody">
+<div class="paragraph">
+<p>There are two organizations in GitHub for managing document control, translation and branding.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The master file in the Metamation repository is kept in a most complete form but should also not be cluttered with all kind of branding information</p>
+<p>Metamation</p>
 </li>
 <li>
-<p>First step is that all documents are translated in order to keep the translation clean and non redundant and are stored in the TMMDoc Repository. Each releas cycle we get the diff and only send the delta to the translation office.</p>
+<p>TMMDoc</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/githuborg.png" alt="GitHubOrg" width="700">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Metamation contains master files for all software products kept in a most complete form without any branding information.</p>
 </li>
 <li>
-<p>Within the branding process we only have delta descriptions in contents.txt. This ensures that every added file in the master document gets automatically populated in all branded files</p>
+<p>Translation is done from these master files to keep the translation clean and non redundant. Each release cycle we get the diff from the master file and only send the delta for translation.</p>
+</li>
+<li>
+<p>Within the branding process we only have delta descriptions in <strong>contents.txt</strong>. This ensures that every added file in the master document gets automatically populated in all brands.</p>
 </li>
 </ol>
 </div>
@@ -119,26 +168,26 @@
 <p><span class="image"><img src="img/process.png" alt="process"></span></p>
 </div>
 <div class="paragraph">
-<p>The structure is explained on the complex example of FluxBook</p>
+<p>The above structure is explained taking <strong>FluxBook</strong> repository as example.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_metamation_repository">Metamation repository</h2>
+<h2 id="_metamation">Metamation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Master documents like FluxBook stays on the Metamation repository that every employee has a low threshold to contribute</p>
+<p><strong>FluxBook</strong> (master file) stays on the Metamation org that every employee has a low threshold to contribute.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tmmdoc_repositiory">TMMDoc  repositiory</h2>
+<h2 id="_tmmdoc">TMMDoc</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Fluxbook repository contains for each product a folder and the translated versions of FluxBook in _DE etc.</p>
+<p>The Fluxbook repository contains several modules (CAD, CUT, BEND, FOLD etc.,) as folders along with the translated versions (EN, DE, ES etc.,) in individual folders.</p>
 </div>
 <div class="paragraph">
-<p>A example folder structure of TecZoneLaeser is shown below.</p>
+<p>A example folder structure of <strong>TecZoneLaser</strong> is shown below:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="img/filestructure.png" alt="Filestructure"></span></p>
@@ -146,28 +195,28 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_branding_folder_e_g_teczonelaeser">Branding folder (e.g TecZoneLaeser)</h2>
+<h2 id="_branding_folder">Branding Folder</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For each branding a separate folder is set up with a new manifest and a delta contents.txt</p>
+<p>For each branding (let&#8217;s say <strong>TechZoneLaser</strong>) a separate folder is set up with a new <strong>manifest.txt</strong> and <strong>contents.txt</strong> files.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_manifest_txt_in_branding_folder">Manifest.txt in Branding folder</h2>
+<h2 id="_manifest_txt_folder">Manifest.txt folder</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Manifest.txt looks like this:</p>
+<p>Manifest.txt file looks like this:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>TITLE=TecZoneLaser
+<pre class="highlightjs highlight"><code class="language-none hljs">TITLE=TecZoneLaser
 OUTDIR=../TecZoneLaserHTML
 LOGO=img/Trumpflogo.png,207,34
 COPYRIGHT=Copyright &amp;copy; 2023 by Trumpf. All rights reserved.
 LANGUAGES=EN,DE,ES
 ATTRIBUTE=appName:Flux
-ATTRIBUTE=bendApp:Flux</pre>
+ATTRIBUTE=bendApp:Flux</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -176,20 +225,20 @@ ATTRIBUTE=bendApp:Flux</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contents_txt_in_branding_folder">contents.txt in Branding folder</h2>
+<h2 id="_contents_txt_folder">Contents.txt folder</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The contents.txt file is a substraction and replacement description. if it is a empty file then the direct version of the Master is published. If a subproduct like TecZoneLaser is extracted it might look like this:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table class="tableblock frame-all grid-all fit-content">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col>
+<col>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Master contents.txt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TecZoneLaser contents.txt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FluxBook contents.txt</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TecZoneLaser contents.txt</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[Intro]<br>
@@ -201,11 +250,11 @@ ATTRIBUTE=bendApp:Flux</pre>
 [Settings]<br>
 [Report]<br>
 [Appendix]<br></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[.\Cut\intro]<br>
+<td class="tableblock halign-center valign-top"><p class="tableblock">[.\Cut\intro]<br>
 [HomeZone]<br>
 [.\Cut\workflow]<br>
-[.\Cut\Advancetopics]
-[.\Cut\Applicationsettings]
+[.\Cut\Advancetopics]<br>
+[.\Cut\Applicationsettings]<br>
 -[Cut]<br>
 -[CAD]<br>
 -[Bend]<br>
@@ -227,45 +276,39 @@ impressum<br></p></td>
 <div class="sect2">
 <h3 id="_homezone">[HomeZone]</h3>
 <div class="paragraph">
-<p>A new chapter HomeZone is added which is specific for the Trumpf installation how FluxCut is integrated in Boost HomeZone</p>
+<p>A new chapter HomeZone is added which is specific for the Trumpf installation of how FluxCut is integrated in Boost HomeZone</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_cutworkflow_etc">[.\Cut\workflow] etc&#8230;&#8203;</h3>
 <div class="paragraph">
-<p>The folders workflow, advancedtopics and Applicationsetup is lifted one level up</p>
+<p>The folders workflow, advancedtopics and Applicationsetup is moved up one level.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_cut">-[Cut]</h3>
 <div class="paragraph">
-<p>Since all folders were lifted up we don&#8217;t need the original cut chapters</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_cad">-[CAD] &#8230;&#8203;</h3>
-<div class="paragraph">
-<p>Many other chapters are not needed</p>
+<p>Since all folders were lifted up we don&#8217;t need the original cut chapters. Applicable also for CAD, BEND, BCELL, FOLD folders.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_impressum">impressum</h3>
 <div class="paragraph">
-<p>The Trumpf impressum is added</p>
+<p>The Trumpf impressum is added.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_further_details_of_the_folder_structure_example_above">Further details of the folder structure example above</h2>
+<h2 id="_further_details_of_the_folder_structure">Further details of the folder structure</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>the branding folder needs to have the same structure than the master folder. Cut is a sub-chapter of FluxBook which will be lifted one level up so it needs to be on level 2</p>
+<p>The branding folder needs to have the same structure as the master folder. Cut is a sub-chapter of FluxBook which will be lifted one level up so it needs to be on level 2.</p>
 </li>
 <li>
-<p>in the folder res are the informations added in Bento for the HTML file to define the branded color scheme</p>
+<p><strong>Res</strong> folder has informations required for Bento to create HTML file to define the branded color scheme.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -281,10 +324,10 @@ impressum<br></p></td>
 </div>
 </li>
 <li>
-<p>as stated the contents.txt of e.g. .\TecZoneLaser\Cut\workflow is a delta file, if its empty then the chapter is taken as it is or if a subfolder is not set up the master subfolder will be taken as it is.</p>
+<p>As stated the <strong>contents.txt</strong> of e.g. .\TecZoneLaser\Cut\workflow is a delta file, if its empty then the chapter is taken as it is or if a subfolder is not set up the master subfolder will be taken as it is.</p>
 </li>
 <li>
-<p>if a e.g .\TecZoneLaser\Cut\ApplicationSetting\index.adoc needs to be changed the path needs to be replicated in the branding folder</p>
+<p>If e.g .\TecZoneLaser\Cut\ApplicationSetting\index.adoc needs to be changed the path needs to be replicated in the branding folder.</p>
 </li>
 </ol>
 </div>
@@ -298,22 +341,19 @@ impressum<br></p></td>
   <h3>Contents</h3>
   <ul>
     <li level="1">
-      <a href="#_basics">Basics</a>
+      <a href="#_metamation">Metamation</a>
     </li>
     <li level="1">
-      <a href="#_metamation_repository">Metamation repository</a>
+      <a href="#_tmmdoc">TMMDoc</a>
     </li>
     <li level="1">
-      <a href="#_tmmdoc_repositiory">TMMDoc  repositiory</a>
+      <a href="#_branding_folder">Branding Folder</a>
     </li>
     <li level="1">
-      <a href="#_branding_folder_e_g_teczonelaeser">Branding folder (e.g TecZoneLaeser)</a>
+      <a href="#_manifest_txt_folder">Manifest.txt folder</a>
     </li>
     <li level="1">
-      <a href="#_manifest_txt_in_branding_folder">Manifest.txt in Branding folder</a>
-    </li>
-    <li level="1">
-      <a href="#_contents_txt_in_branding_folder">contents.txt in Branding folder</a>
+      <a href="#_contents_txt_folder">Contents.txt folder</a>
     </li>
     <li level="2">
       <a href="#_intro">[intro]</a>
@@ -328,13 +368,10 @@ impressum<br></p></td>
       <a href="#_cut">-[Cut]</a>
     </li>
     <li level="2">
-      <a href="#_cad">-[CAD] &#8230;&#8203;</a>
-    </li>
-    <li level="2">
       <a href="#_impressum">impressum</a>
     </li>
     <li level="1">
-      <a href="#_further_details_of_the_folder_structure_example_above">Further details of the folder structure example above</a>
+      <a href="#_further_details_of_the_folder_structure">Further details of the folder structure</a>
     </li>
   </ul>
 </aside>
@@ -343,7 +380,7 @@ impressum<br></p></td>
             </div>
             <nav class="pagination">
   <span class="prev"><a href="bento.html">Documentation using Bento</a></span>
-  <span class="next"><a href="languages.html">Languages</a></span>
+  <span class="next"><a href="workflow/index.html">Documentation Workflow</a></span>
 </nav>
 
         </div>
@@ -371,6 +408,12 @@ impressum<br></p></td>
     <script src="../res/files.js"></script>
     <script src="../res/site.js"></script>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
 </body>
 </html>

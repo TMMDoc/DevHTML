@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Changing to a Flavor</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="../index.html">Documentation</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="../bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="../hosting.html">Documentation Repositories</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../workflow/index.html">Documentation Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../workflow/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/prerequisites.html">Prerequisite Installation</a></li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="../workflow/docsteps/index.html">Working Stages in Brief</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="../workflow/docsteps/analyze.html">Analyze</a></li>
+                <li><button class="tree blank"></button><a href="../workflow/docsteps/edit.html">Edit</a></li>
+                <li><button class="tree blank"></button><a href="../workflow/docsteps/review.html">Review</a></li>
+                <li><button class="tree blank"></button><a href="../workflow/docsteps/approve.html">Approve</a></li>
+                <li><button class="tree blank"></button><a href="../workflow/docsteps/publish.html">Publish</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="../workflow/misc/index.html">Miscellaneous Information</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="../workflow/misc/environmentvariables.html">Environment Variable</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree open"></button>
+          <a href="index.html">Flavors and Translation</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="deltatranslation.html">Delta translations</a></li>
+            <li><button class="tree blank"></button><a class="active" href="flavoring.html">Changing to a Flavor</a></li>
+            <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
+            <li><button class="tree blank"></button><a href="controlcommands.html">Control Commands</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="../index.html">Documentation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="index.html">Flavors and Translation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="flavoring.html">Changing to a Flavor</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Changing to a Flavor</h1>
+<div class="paragraph">
+<p>Macros are used to change the document to a specific customer scheme.</p>
+</div>
+<div class="paragraph">
+<p>On the example of TecZoneLaser:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Change the product name (will be done in future with "appName")</p>
+</li>
+<li>
+<p>Add a favicon on the tab of the browser</p>
+</li>
+<li>
+<p>Change the CSS files for a fitting color scheme</p>
+<div class="literalblock">
+<div class="content">
+<pre> txt=strrep(txt,'logo-flux.png','logo-trumpf.png');
+ txt=strrep(txt,'Flux Cut','TecZone Laser');
+ txt=strrep(txt,'FluxBend','TecZone Bend');
+ txt=strrep(txt,'Flux','TecZone');
+ txt=strrep(txt,'Outdated','');   // just in case
+ txt=strrep(txt,'  &lt;link rel="stylesheet" href="res/sibling.css"&gt;','  &lt;link rel="stylesheet" href="res/sibling.css"&gt; &lt;link rel="icon" href="img/favicon.ico"&gt;');
+txt=strrep(txt,'&lt;link rel="stylesheet" href="../res/sibling.css"&gt;','&lt;link rel="stylesheet" href="../res/sibling.css"&gt; &lt;link rel="icon" href="../img/favicon.ico"&gt;');
+txt=strrep(txt,'&lt;link rel="stylesheet" href="../../res/sibling.css"&gt;','&lt;link rel="stylesheet" href="../../res/sibling.css"&gt; &lt;link rel="icon" href="../img/favicon.ico"&gt;');</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>copyfile('D:\BENTO\matlab\res_matlab\bento.css',[startingFolder,'\res']);
+copyfile('D:\BENTO\matlab\res_matlab\big-logo.png',[startingFolder,'\img']);
+copyfile('D:\BENTO\matlab\res_matlab\site.css',[startingFolder,'\res']);
+copyfile('D:\BENTO\matlab\res_matlab\favicon.ico',[startingFolder,'\img']);</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc"></aside>
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="deltatranslation.html">Delta translations</a></span>
+  <span class="next"><a href="citations.html">Citations</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    
+</body>
+</html>
