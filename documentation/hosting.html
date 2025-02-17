@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Documentation Repositories</title>
+  <title>Repositories and Workflow</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -68,7 +68,7 @@
       <a href="index.html">Documentation</a>
       <ul>
         <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a class="active" href="hosting.html">Documentation Repositories</a></li>
+        <li><button class="tree blank"></button><a class="active" href="hosting.html">Repositories and Workflow</a></li>
         <li>
           <button class="tree closed"></button>
           <a href="workflow/index.html">Documentation Workflow</a>
@@ -123,38 +123,33 @@
   </div>
   <div>/</div>
   <div>
-    <a href="hosting.html">Documentation Repositories</a>
+    <a href="hosting.html">Repositories and Workflow</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Documentation Repositories</h1>
+                        <h1>Repositories and Workflow</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>There are two organizations in GitHub for managing document control, translation and branding.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Metamation</p>
 </li>
 <li>
 <p>TMMDoc</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/githuborg.png" alt="GitHubOrg" width="700">
-</div>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Metamation contains master files for all software products kept in a most complete form without any branding information.</p>
+<p>The <strong>Metamation</strong> contains master files for all software products kept in a most complete form without any branding information. - all repositories are <strong>private</strong></p>
+</li>
+<li>
+<p>The <strong>TMMDoc</strong> contains HTML files for all software products with branding and translation. - all repositories are <strong>public</strong></p>
 </li>
 <li>
 <p>Translation is done from these master files to keep the translation clean and non redundant. Each release cycle we get the diff from the master file and only send the delta for translation.</p>
@@ -164,27 +159,154 @@
 </li>
 </ol>
 </div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
+<div class="title">Example - FluxBook repository</div>
 <p><span class="image"><img src="img/process.png" alt="process"></span></p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_workflow_for_collaboration_with_documentation">Workflow for collaboration with documentation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_product_owners">Product Owners</h3>
 <div class="paragraph">
-<p>The above structure is explained taking <strong>FluxBook</strong> repository as example.</p>
+<p>Product owners are responsible for their own product documentation. Product owners should regularly check their documentation to ensure it is complete and readable. Product owners must evaluate the release notes, open a case in Fogbugz, establish priorities, and notify the documentation team.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor updates</strong> (like updating screen shots) don&#8217;t need a lengthy description. Just create a Fogbugz case for Documentation with reference to the relevant release note.</p>
+</li>
+<li>
+<p><strong>Major updates</strong> and new features require Product Owners to define the substance of the documentation. It is needed to include high-quality images (.png files) with the input files. Provide the input in asciidoc format (if possible) or in a basic word document for the documentation team to work with.</p>
+</li>
+<li>
+<p><strong>Minute updates</strong> can be added directly in the respective product&#8217;s GitHub repository.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Create a Fogbugz case to inform the documentation team about this minor update.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline">Procedure for minor updates in GitHub:</span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the file you want to edit.</p>
+</li>
+<li>
+<p>Click on <strong>Edit this file</strong> icon and edit your changes.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/directcommit.png" alt="directcommit">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>After editing, click <strong>Commit changes&#8230;&#8203;</strong> to create a new branch with a commit message.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/commitchanges.png" alt="commitchanges">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/preview.png" alt="preview" width="400">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>Type the commit message, add description, select <strong>Creating a new branch</strong> for this commit, and type the branch name.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/proposechange.png" alt="proposechange" width="350">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>Click <strong>Propose changes</strong> to create a pull request.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/openpr.png" alt="openpr">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="6">
+<li>
+<p>Goto the <strong>Pull Request</strong> and assign it to documentation team member.</p>
+</li>
+<li>
+<p>After the documentation team has reviewed and merged the changes into the main branch, close the Fogbugz case.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_documentation_team">Documentation Team</h3>
+<div class="paragraph">
+<p>The documentation is responsible for</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Updating the documentation according the Fogbugz cases created by the Product Owners.</p>
+</li>
+<li>
+<p>Work on major updates (conver input file to asciidoc format), commit changes and assign pull request for review.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_significant_changes_to_document_folder_structure_under_development">Significant changes to document folder structure (Under Development)</h3>
+<div class="paragraph">
+<p>Wolf will lend his support on creating macros to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>set up new base structures for new documents by simple text files.</p>
+</li>
+<li>
+<p>restructure documents (move folders and pictures).</p>
+</li>
+<li>
+<p>convert existing lengthy word documents via pandoc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Feel free to contact Wolf to avoid a lot of manual labor.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_metamation">Metamation</h2>
+<h2 id="_structure_of_tmmdoc">Structure of TMMDoc</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>FluxBook</strong> (master file) stays on the Metamation org that every employee has a low threshold to contribute.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_tmmdoc">TMMDoc</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Fluxbook repository contains several modules (CAD, CUT, BEND, FOLD etc.,) as folders along with the translated versions (EN, DE, ES etc.,) in individual folders.</p>
+<p>The FluxBook repository contains several modules (CAD, CUT, BEND, FOLD etc.,) as folders along with the translated versions (EN, DE, ES etc.,) in individual folders.</p>
 </div>
 <div class="paragraph">
 <p>A example folder structure of <strong>TecZoneLaser</strong> is shown below:</p>
@@ -198,7 +320,7 @@
 <h2 id="_branding_folder">Branding Folder</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For each branding (let&#8217;s say <strong>TechZoneLaser</strong>) a separate folder is set up with a new <strong>manifest.txt</strong> and <strong>contents.txt</strong> files.</p>
+<p>For each branding (let&#8217;s say <strong>TechZoneLaser</strong>) a separate Manifest and contents file <strong>manifest.txt</strong> and <strong>contents.txt</strong> files.</p>
 </div>
 </div>
 </div>
@@ -341,10 +463,19 @@ impressum<br></p></td>
   <h3>Contents</h3>
   <ul>
     <li level="1">
-      <a href="#_metamation">Metamation</a>
+      <a href="#_workflow_for_collaboration_with_documentation">Workflow for collaboration with documentation</a>
+    </li>
+    <li level="2">
+      <a href="#_product_owners">Product Owners</a>
+    </li>
+    <li level="2">
+      <a href="#_documentation_team">Documentation Team</a>
+    </li>
+    <li level="2">
+      <a href="#_significant_changes_to_document_folder_structure_under_development">Significant changes to document folder structure (Under Development)</a>
     </li>
     <li level="1">
-      <a href="#_tmmdoc">TMMDoc</a>
+      <a href="#_structure_of_tmmdoc">Structure of TMMDoc</a>
     </li>
     <li level="1">
       <a href="#_branding_folder">Branding Folder</a>
