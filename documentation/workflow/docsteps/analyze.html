@@ -140,37 +140,218 @@
                     <article id="article">
                         <h1>Analyze</h1>
 <div class="sect1">
-<h2 id="_fogbugz">Fogbugz</h2>
+<h2 id="_fogbugz_documention_cases_creation_and_analysis">FogBugz - Documention cases creation and analysis</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_case_creation_inputs">Case creation inputs</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Inputs for document case creation is provided by the following channels:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>DocTeam</p>
+</li>
+<li>
+<p>Product Owners</p>
+</li>
+<li>
+<p>Developers</p>
+</li>
+<li>
+<p>Internal Customers</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docteam_case_handling_scenarios">DocTeam case handling scenarios</h3>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>The DocTeam handles cases in the following scenarios:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p><strong>DocUpdate Cases</strong>: When Product Owners or Developers mark a case with <strong>DocUpdate</strong> tag in FogBugz, the DocTeam creates a sub/child case, marking the original case as the parent. After creating the sub/child case, the <strong>DocUpdate</strong> tag is removed from the parent case.</p>
+</li>
+<li>
+<p><strong>DocTeam Cases:</strong> If DocTeam identifies a need for refinement in a document, the team creates a case to address the necessary corrections or improvements.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When DocTeam creates a new case in FogBugz, it is necessary that the following fields are filled as follows,<br>
+i. Project &#8594; Documentation<br>
+ii. Area &#8594; Select it according to a particular case<br>
+iii. Category &#8594; Inquiry (Initially, the category is set as "inquiry" until the respective Product Owner or Developer approves the changes for updating. Once approved, the category will be changed accordingly)<br>
+iv. Assign to &#8594; DocTeam
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_post_case_creation">Post-case creation</h3>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Once the case is created, inquire the case with the <strong>case creator</strong> to set <strong>priority</strong> and <strong>due date</strong>.</p>
+</li>
+<li>
+<p>Then assign the case to the specific DocTeam member.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_document_analysis">Document analysis</h3>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>The assigned member has to analyze the case input.</p>
+</li>
+<li>
+<p>Clarify any doubts with the Product Owners.</p>
+</li>
+<li>
+<p>Ensure quality input is received within a reasonable time period.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If received, proceed to create a document skeleton.</p>
+</li>
+<li>
+<p>If not received, mark the case with <strong>NeedInfo</strong> tag in FogBugz and proceed with document creation based on available knowledge.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_content_additionediting">Content addition/editing</h3>
+<div class="olist arabic">
+<ol class="arabic" start="8">
+<li>
+<p>Start adding or editing content in the document.</p>
+</li>
+<li>
+<p>For more details on the adding/editing process, refer to <a href="../docsteps/edit.html">Edit</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_create_case_in_fogbugz">How to create case in FogBugz</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Log in to <a href="https://metamation.fogbugz.com/login">Fogbuz</a></p>
-</li>
-</ol>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Using <strong>Refine Further</strong> option, select <strong>Documentation</strong> project.</p>
+<p>Log in to <a href="https://metamation.fogbugz.com/login">FogBugz</a></p>
 </li>
 <li>
-<p>Using <strong>Sort</strong> option, select <strong>Area</strong>.</p>
+<p>Click on New case.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/newcase.png" alt="300" width="100"></span></p>
+</div>
 </li>
 <li>
-<p>To customize the fogbugz column, click <strong>Select Columns</strong> and choose required columns from the list.</p>
+<p>Enter the case Title.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/title.png" alt="300" width="500"></span></p>
+</div>
 </li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/filter.png" alt="Filter">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="5">
 <li>
-<p>Based on priority level, review and select a documentation case assigned for document creation/revision.</p>
+<p>Select Documentation from Project dropdown list.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/documentation.png" alt="300" width="200"></span></p>
+</div>
+</li>
+<li>
+<p>Select the Area that corresponds to a particular case.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/area.png" alt="300" width="200"></span></p>
+</div>
+</li>
+<li>
+<p>Select the Category that corresponds to a particular case.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Inquiry, Feature, Refinement and Bug are the categories frequently used by Documentation team.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/category.png" alt="300" width="200"></span></p>
+</div>
+</li>
+<li>
+<p>Assign the case to a person or a team by selecting the Assinged To dropdown list.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/assignedto.png" alt="300" width="200"></span></p>
+</div>
+</li>
+<li>
+<p>Set the Status of a particular case.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Active, For Review, For Merge and Ready to Ship (Publish) are the statuses frequently used by Documentation team.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/status.png" alt="300" width="200"></span></p>
+</div>
+</li>
+<li>
+<p>Add users in Notify More Users about the status of your project.</p>
+</li>
+<li>
+<p>Set Priorities based on the task requirement.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/priority.png" alt="300" width="200"></span></p>
+</div>
+</li>
+<li>
+<p>Add Parent cases and Subcases if applicable.</p>
+</li>
+<li>
+<p>Add due date as required.</p>
+</li>
+<li>
+<p>Click the Open button to create a case.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/open.png" alt="300" width="200"></span></p>
+</div>
 </li>
 </ol>
 </div>
@@ -181,67 +362,10 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Let&#8217;s create an example document to understand the workflow better. I have created a case
-<a href="https://metamation.fogbugz.com/f/cases/39323/Create-a-sample-document-using-Documentation-Workflow">39323</a> for this purpose.
+The creator of a specific case is responsible for closing it once the content for the case is published.
 </td>
 </tr>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_folder_structure">Folder structure</h3>
-<div class="olist arabic">
-<ol class="arabic" start="6">
-<li>
-<p>Create a new directory named <strong>Documentation</strong>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><code>md Documentation</code></p>
-</div>
-<div class="paragraph">
-<p><code>cd Documentation</code></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="7">
-<li>
-<p>Create a <strong>Draft</strong> folder inside the Documentation folder.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><code>md Draft</code></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="8">
-<li>
-<p>Collect document inputs from SMEs and place them inside the <strong>Draft</strong> folder.</p>
-</li>
-<li>
-<p>Create input folder &lt;TitleBook&gt; for AsciiDoc content.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><code>md TitleBook</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/folder.png" alt="folder" width="50%">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Output folder &lt;TitleBookHMTL&gt; will be created by Bento while compiling.
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 </div>
@@ -253,10 +377,25 @@ Output folder &lt;TitleBookHMTL&gt; will be created by Bento while compiling.
   <h3>Contents</h3>
   <ul>
     <li level="1">
-      <a href="#_fogbugz">Fogbugz</a>
+      <a href="#_fogbugz_documention_cases_creation_and_analysis">FogBugz - Documention cases creation and analysis</a>
     </li>
     <li level="2">
-      <a href="#_folder_structure">Folder structure</a>
+      <a href="#_case_creation_inputs">Case creation inputs</a>
+    </li>
+    <li level="2">
+      <a href="#_docteam_case_handling_scenarios">DocTeam case handling scenarios</a>
+    </li>
+    <li level="2">
+      <a href="#_post_case_creation">Post-case creation</a>
+    </li>
+    <li level="2">
+      <a href="#_document_analysis">Document analysis</a>
+    </li>
+    <li level="2">
+      <a href="#_content_additionediting">Content addition/editing</a>
+    </li>
+    <li level="1">
+      <a href="#_how_to_create_case_in_fogbugz">How to create case in FogBugz</a>
     </li>
   </ul>
 </aside>
