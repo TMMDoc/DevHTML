@@ -1,0 +1,466 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Testing in Controller</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="../index.html">Technical Notes</a>
+      <ul>
+        <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="../flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="../kfactorandradius.html">Bend radius and K factor calculation</a></li>
+        <li><button class="tree blank"></button><a href="../createfoldtool.html">Creating fold tool .tdata file</a></li>
+        <li>
+          <button class="tree open"></button>
+          <a href="index.html">RightAngle</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="tracegatherer.html">Trace Gatherer</a></li>
+            <li><button class="tree blank"></button><a class="active" href="testingcontroller.html">Testing in Controller</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../documentation/index.html">Documentation</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../documentation/bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="../../documentation/asciidoc.html">AsciiDoc Syntax</a></li>
+        <li><button class="tree blank"></button><a href="../../documentation/hosting.html">Repositories and Workflow</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../documentation/workflow/index.html">Documentation Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../documentation/workflow/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../../documentation/workflow/prerequisites.html">Prerequisite Installation</a></li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="../../documentation/workflow/docsteps/index.html">Working Stages in Brief</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="../../documentation/workflow/docsteps/analyze.html">Analyze</a></li>
+                <li><button class="tree blank"></button><a href="../../documentation/workflow/docsteps/edit.html">Edit</a></li>
+                <li><button class="tree blank"></button><a href="../../documentation/workflow/docsteps/review.html">Review</a></li>
+                <li><button class="tree blank"></button><a href="../../documentation/workflow/docsteps/approve.html">Pre-Publish</a></li>
+                <li><button class="tree blank"></button><a href="../../documentation/workflow/docsteps/publish.html">Publish</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="tree closed"></button>
+              <a href="../../documentation/workflow/misc/index.html">Miscellaneous Information</a>
+              <ul class="hide">
+                <li><button class="tree blank"></button><a href="../../documentation/workflow/misc/environmentvariables.html">Environment Variable</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../documentation/translation/index.html">Flavors and Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">Delta translations</a></li>
+            <li><button class="tree blank"></button><a href="../../documentation/translation/flavoring.html">Changing to a Flavor</a></li>
+            <li><button class="tree blank"></button><a href="../../documentation/translation/citations.html">Citations</a></li>
+            <li><button class="tree blank"></button><a href="../../documentation/translation/controlcommands.html">Control Commands</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="../index.html">Technical Notes</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="index.html">RightAngle</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="testingcontroller.html">Testing in Controller</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Testing in Controller</h1>
+<div class="sect1">
+<h2 id="info">IP Information</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Ip address of controller is <strong>192.168.1.22</strong></p>
+</li>
+<li>
+<p>The IP address of the machine with RightAngle for downloading firmware and plc application is <strong>192.168.1.188</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pc_with_ra">RightAngle Using PC Simulator</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>You can connect via remote desktop connection with the following credentials:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>IP address</em> - <strong>192.168.1.188</strong></p>
+</li>
+<li>
+<p><em>Username</em>   - <strong>IMM</strong></p>
+</li>
+<li>
+<p><em>Password</em>   - <strong>Meta@119</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Ensure Team Viewer 12 is active and log in using the following credentials:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>User ID</em>: <strong>283641760</strong></p>
+</li>
+<li>
+<p><em>Password</em>: <strong>v1yb23</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Run RightAngle in PC Simulator to load the firmware and bending program.  To restart the controller, open <strong>RightAngle</strong>, press <strong>Off</strong>, and then select <strong>Restart RightAngle</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/restart-ra.png" alt="Restart RA" width="650">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="set_ip">Setting IP address of the Controller</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open <strong>E°ConSet</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/econset.png" alt="Econset">
+</div>
+</div>
+</li>
+<li>
+<p>Select <strong>Ethernet</strong> from connection type.</p>
+</li>
+<li>
+<p>Select the required <strong>IP address</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/ip.png" alt="IP">
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Connect</strong> and check system information.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/info.png" alt="Info">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_running_rightangle_with_smart_control">Running RightAngle with Smart Control</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_pre_requisites">Pre-requisites</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The controller and PC are connected to the office&#8217;s internal network.  If accessing from your home network, you will need VPN access to the internal network.</p>
+</li>
+<li>
+<p>RightAngle should be configured as below in <code>C:\ProgramData\Metamation\RA\RData\Middleware.ini</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[Basic]
+DemoMode=0
+LaserSafeDemoMode=1
+ControllerIP=192.168.1.22</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Firmware and PLC program (bending.app) should have been loaded in the controller.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Make sure to take <strong>bending.app</strong> and <strong>bending.crc</strong> from the controller system.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_editing_environment_variable">Editing environment variable</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Press <span class="icon"><i class="fa fa-windows"></i></span> and search for <strong>Edit environment variables for your account</strong>.</p>
+</li>
+<li>
+<p>In the user variables, click <strong>New&#8230;&#8203;</strong> and type the variables name as RALOG and the value as 1. Press <strong>OK</strong> to confirm the action.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/variable.png" alt="variable">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_steps_to_run_rightangle">Steps to run RightAngle</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open <strong>RightAngle</strong> and click <strong>Metamation</strong> logo at the bottom right corner. HPB Library, OEM PLC, Smart Core and VDrive 106 should display version number instead of Demo.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/version.png" alt="Version" width="300">
+</div>
+</div>
+</li>
+<li>
+<p>To open Smart Panel, go to <a href="http://192.168.1.22:8080/webvisu.html" class="bare">http://192.168.1.22:8080/webvisu.html</a> using web browser.</p>
+</li>
+<li>
+<p>The following screen should be displayed:</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/smartpanel.png" alt="SmartPanel">
+</div>
+</div>
+</li>
+<li>
+<p>Bookmark this URL for easy access of Smart Control for future use.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_troubleshoot">Troubleshoot</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When RightAngle is connected to the controller, perform the following checks to troubleshoot:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If the Smart panel does not open, ensure that the configuration of <a href="#info">IP Information</a> and <a href="#set_ip">Setting IP address of the Controller</a> are right.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Open <strong>command prompt</strong>, and type <strong>ping 192.168.1.188</strong>. Do similar check for <strong>192.168.1.22</strong>. The output should be as shown below:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">Pinging 192.168.1.188 with 32 bytes of data:
+Reply from 192.168.1.188: bytes=32 time=56ms TTL=127
+Reply from 192.168.1.188: bytes=32 time=68ms TTL=127
+Reply from 192.168.1.188: bytes=32 time=53ms TTL=127
+Reply from 192.168.1.188: bytes=32 time=46ms TTL=127
+Ping statistics for 192.168.1.188:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 46ms, Maximum = 68ms, Average = 55ms</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If ping is not successful, the following could be the reason:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Internal network of TMM is not connected.</p>
+</li>
+<li>
+<p>IP address of the PC or controller may have been changed. Contact network administrator.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If the message "PLC not connected" appears in the RightAngle, then rename the RightAngle setup file from <strong>Setup.RightAngle.exe</strong> to <strong>Setup.RAControl.exe</strong> and install again.</p>
+</li>
+<li>
+<p>If the below mentioned PLC version not compatible error message appears in the RightAngle, then the Firmware and PLC program are not correctly loaded into the controller. See <a href="#pc_with_ra">RightAngle Using PC Simulator</a> to check the firmware is properly loaded.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/plc-error.png" alt="plc error" width="650">
+</div>
+<div class="title">Figure 1. PLC version not compatible</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#info">IP Information</a>
+    </li>
+    <li level="1">
+      <a href="#pc_with_ra">RightAngle Using PC Simulator</a>
+    </li>
+    <li level="1">
+      <a href="#set_ip">Setting IP address of the Controller</a>
+    </li>
+    <li level="1">
+      <a href="#_running_rightangle_with_smart_control">Running RightAngle with Smart Control</a>
+    </li>
+    <li level="2">
+      <a href="#_pre_requisites">Pre-requisites</a>
+    </li>
+    <li level="2">
+      <a href="#_editing_environment_variable">Editing environment variable</a>
+    </li>
+    <li level="2">
+      <a href="#_steps_to_run_rightangle">Steps to run RightAngle</a>
+    </li>
+    <li level="1">
+      <a href="#_troubleshoot">Troubleshoot</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="tracegatherer.html">Trace Gatherer</a></span>
+  <span class="next"><a href="../../documentation/index.html">Documentation</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

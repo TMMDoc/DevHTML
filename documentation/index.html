@@ -61,6 +61,14 @@
         <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
         <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
         <li><button class="tree blank"></button><a href="../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../technotes/ra/index.html">RightAngle</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+            <li><button class="tree blank"></button><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li>
@@ -68,6 +76,7 @@
       <a class="active" href="index.html">Documentation</a>
       <ul>
         <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="asciidoc.html">AsciiDoc Syntax</a></li>
         <li><button class="tree blank"></button><a href="hosting.html">Repositories and Workflow</a></li>
         <li>
           <button class="tree closed"></button>
@@ -82,7 +91,7 @@
                 <li><button class="tree blank"></button><a href="workflow/docsteps/analyze.html">Analyze</a></li>
                 <li><button class="tree blank"></button><a href="workflow/docsteps/edit.html">Edit</a></li>
                 <li><button class="tree blank"></button><a href="workflow/docsteps/review.html">Review</a></li>
-                <li><button class="tree blank"></button><a href="workflow/docsteps/approve.html">Approve</a></li>
+                <li><button class="tree blank"></button><a href="workflow/docsteps/approve.html">Pre-Publish</a></li>
                 <li><button class="tree blank"></button><a href="workflow/docsteps/publish.html">Publish</a></li>
               </ul>
             </li>
@@ -138,13 +147,16 @@
 <p><a href="bento.html">Documentation using Bento</a></p>
 </li>
 <li>
+<p><a href="asciidoc.html">Asciidoc Syntax</a></p>
+</li>
+<li>
 <p><a href="hosting.html">Documentation Repositories</a></p>
 </li>
 <li>
-<p><a href="translation/index.html">Flavors and Translation</a></p>
+<p><a href="workflow/index.html">Documentation Workflow</a></p>
 </li>
 <li>
-<p><a href="workflow/index.html">Documentation Workflow</a></p>
+<p><a href="translation/index.html">Flavors and Translation</a></p>
 </li>
 </ul>
 </div>
@@ -154,72 +166,79 @@
 <h2 id="_documentation_index">Documentation Index</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_product_manuals">Product Manuals</h3>
-<table class="tableblock frame-all grid-all stretch">
+<h3 id="_product_manuals">Product manuals</h3>
+<table class="tableblock frame-all grid-all fit-content">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 40%;">
+<col>
+<col>
+<col>
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Repository</th>
-<th class="tableblock halign-left valign-top">HTML</th>
-<th class="tableblock halign-left valign-top">URLs</th>
+<th class="tableblock halign-left valign-top">AsciiDoc Repository</th>
+<th class="tableblock halign-left valign-top">HTML Repository</th>
+<th class="tableblock halign-left valign-top">Internal Document</th>
+<th class="tableblock halign-left valign-top">Customer Document</th>
 <th class="tableblock halign-left valign-top">Desc.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/FluxBook">FluxBook</a>
-  &#160;TecZoneLaser
-  &#160;TecZoneBend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/FluxBook">FluxBook</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/FluxBookHTML_EN">FluxBookHTML_EN</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation-flux-en.onrender.com/" class="bare">https://metamation-flux-en.onrender.com/</a>, <a href="https://metamation.com/flux-help/" class="bare">https://metamation.com/flux-help/</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Comprehensive reference manual, providing detailed information and guidelines on how to use the software</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation-flux-en.onrender.com/" class="bare">https://metamation-flux-en.onrender.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation.com/flux-help/" class="bare">https://metamation.com/flux-help/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comprehensive reference manual, providing detailed information and guidelines on how to use Flux</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/FluxSDKBook">FluxSDKBook</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/FluxSDKBookHTML">FluxSDKBookHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation-fluxsdk.onrender.com/" class="bare">https://metamation-fluxsdk.onrender.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SDK documentation for Flux</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/PraxisBook">PraxisBook</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/PraxisBookHTML">PraxisBookHTML</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation-praxis-en.onrender.com/" class="bare">https://metamation-praxis-en.onrender.com/</a>, <a href="https://metamation.com/praxis-help/" class="bare">https://metamation.com/praxis-help/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://praxisbookhtml-en-qmaj.onrender.com/" class="bare">https://praxisbookhtml-en-qmaj.onrender.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation.com/praxis-help/" class="bare">https://metamation.com/praxis-help/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comprehensive reference manual for Praxis</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/PraxSDKBook">PraxSDKBook</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/PraxSDKHTML">PraxSDKHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation-praxsdk.onrender.com/" class="bare">https://metamation-praxsdk.onrender.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SDK documentation for Praxis</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/VulcanBook">VulcanBook</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/VulcanBookHTML_EN">VulcanBookHTML_EN</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vulcan-reference-manual.onrender.com/" class="bare">https://vulcan-reference-manual.onrender.com/</a>, <a href="https://metamation.com/vulcan/" class="bare">https://metamation.com/vulcan/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vulcan-reference-manual.onrender.com/" class="bare">https://vulcan-reference-manual.onrender.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation.com/vulcan/" class="bare">https://metamation.com/vulcan/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comprehensive reference manual for Vulcan</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/VulcanErrorCodes">VulcanErrorCodes</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/VulcanErrorCodeHTML_EN">VulcanErrorCodeHTML_EN</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vulcanerrorcodehtml-en.onrender.com/" class="bare">https://vulcanerrorcodehtml-en.onrender.com/</a>, <a href="https://metamation.com/vulcan-error-codes/" class="bare">https://metamation.com/vulcan-error-codes/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vulcanerrorcodehtml-en.onrender.com/" class="bare">https://vulcanerrorcodehtml-en.onrender.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation.com/vulcan-error-codes/" class="bare">https://metamation.com/vulcan-error-codes/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contains descriptions of various error codes appearing in Vulcan</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/RABook">RABook</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/RABookHTML_EN">RABookHTML</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://ra-reference-manual.onrender.com/" class="bare">https://ra-reference-manual.onrender.com/</a>, <a href="https://metamation.com/ra/" class="bare">https://metamation.com/ra/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://ra-reference-manual.onrender.com/" class="bare">https://ra-reference-manual.onrender.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation.com/ra/" class="bare">https://metamation.com/ra/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comprehensive reference manual for RA</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_knowledge_base">Knowledge Base</h3>
+<h3 id="_knowledge_base">Knowledge base</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -229,9 +248,9 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Repository</th>
-<th class="tableblock halign-left valign-top">HTML</th>
-<th class="tableblock halign-left valign-top">URL</th>
+<th class="tableblock halign-left valign-top">AsciiDoc Repository</th>
+<th class="tableblock halign-left valign-top">HTML Repository</th>
+<th class="tableblock halign-left valign-top">Internal Document</th>
 <th class="tableblock halign-left valign-top">Desc.</th>
 </tr>
 </thead>
@@ -251,6 +270,81 @@
 </tbody>
 </table>
 </div>
+<div class="sect2">
+<h3 id="_software_release_cycle">Software release cycle</h3>
+<div class="paragraph">
+<p>A software release cycle is the process through which software is developed, tested, and released to users. It ensures that software is delivered in a structured and reliable manner, involving planning, development, testing, and deployment. The cycle helps manage the progression of software from initial concept to final release, ensuring quality and functionality.</p>
+</div>
+<div class="sect3">
+<h4 id="_release_notes">Release notes</h4>
+<div class="paragraph">
+<p>A release note is a technical document that announces the updates to a product. It is published alongside new or updated software and details the technical features of the product. For every build releases, these release notes provide end-users with a brief summary of the product itself. Release notes are distributed with software products, sometimes when the product is still in the development or test state.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_software_build_release_frequency">Software build release frequency</h4>
+<div class="paragraph">
+<p>The frequency of updating release notes depends on product&#8217;s release cycle and the nature of the updates.</p>
+</div>
+<div class="paragraph">
+<p>See the table below for release frequency:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock"><strong>Product</strong></p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock"><strong>Build Release Frequency</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Build Release Type</strong></p></td>
+<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock"><strong>Build Release Authority</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Internal Build</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Customer Build</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Weekly once</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Every monday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7th of every month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arvind</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Praxis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Weekly once</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Every tuesday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last tuesday of every month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rajesh Kumar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Angle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monthly twice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">End of the month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15th of every month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dinesh. S</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vulcan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monthly once</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">24th of every month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Priyarathna. S</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_document_request_notification">Document request notification</h3>
+<div class="paragraph">
+<p>The Product Owners selects and releases an effective build for the client. Based on the release notes of this build, the Product Owners then adds a 'DocUpdate' tag to the product cases in FogBugz to notify the documentation team.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -264,10 +358,22 @@
       <a href="#_documentation_index">Documentation Index</a>
     </li>
     <li level="2">
-      <a href="#_product_manuals">Product Manuals</a>
+      <a href="#_product_manuals">Product manuals</a>
     </li>
     <li level="2">
-      <a href="#_knowledge_base">Knowledge Base</a>
+      <a href="#_knowledge_base">Knowledge base</a>
+    </li>
+    <li level="2">
+      <a href="#_software_release_cycle">Software release cycle</a>
+    </li>
+    <li level="3">
+      <a href="#_release_notes">Release notes</a>
+    </li>
+    <li level="3">
+      <a href="#_software_build_release_frequency">Software build release frequency</a>
+    </li>
+    <li level="2">
+      <a href="#_document_request_notification">Document request notification</a>
     </li>
   </ul>
 </aside>
@@ -275,7 +381,7 @@
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="../technotes/createfoldtool.html">Creating fold tool .tdata file</a></span>
+  <span class="prev"><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></span>
   <span class="next"><a href="bento.html">Documentation using Bento</a></span>
 </nav>
 

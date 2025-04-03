@@ -61,6 +61,14 @@
         <li><button class="tree blank"></button><a href="../../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
         <li><button class="tree blank"></button><a href="../../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
         <li><button class="tree blank"></button><a href="../../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../../technotes/ra/index.html">RightAngle</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+            <li><button class="tree blank"></button><a href="../../../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li>
@@ -68,6 +76,7 @@
       <a href="../../index.html">Documentation</a>
       <ul>
         <li><button class="tree blank"></button><a href="../../bento.html">Documentation using Bento</a></li>
+        <li><button class="tree blank"></button><a href="../../asciidoc.html">AsciiDoc Syntax</a></li>
         <li><button class="tree blank"></button><a href="../../hosting.html">Repositories and Workflow</a></li>
         <li>
           <button class="tree open"></button>
@@ -82,7 +91,7 @@
                 <li><button class="tree blank"></button><a href="analyze.html">Analyze</a></li>
                 <li><button class="tree blank"></button><a class="active" href="edit.html">Edit</a></li>
                 <li><button class="tree blank"></button><a href="review.html">Review</a></li>
-                <li><button class="tree blank"></button><a href="approve.html">Approve</a></li>
+                <li><button class="tree blank"></button><a href="approve.html">Pre-Publish</a></li>
                 <li><button class="tree blank"></button><a href="publish.html">Publish</a></li>
               </ul>
             </li>
@@ -140,12 +149,163 @@
                     <article id="article">
                         <h1>Edit</h1>
 <div class="sect1">
-<h2 id="_repositories_for_documentation">Repositories for Documentation</h2>
+<h2 id="_editing_an_existing_document">Editing an Existing Document</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create/identify repositories, one for AsciiDoc files and another one for HTML files.</p>
+<p>Navigate to <strong>C: drive &#8594; Work</strong> folder to clone the repository.</p>
+</li>
+<li>
+<p>Initiate <strong>Command Prompt</strong>.</p>
+</li>
+<li>
+<p>Type <code>git clone &lt;repo link&gt;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wait for the clone action to complete.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Type <code>cd &lt;folder name&gt;</code> to navigate inside the cloned folder.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default, only the <strong>main</strong> branch of a repository will be cloned.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Create a new branch to edit your changes.</p>
+</li>
+<li>
+<p>Type <code>git sw -c Case.12345</code></p>
+</li>
+<li>
+<p>Type <code>code .</code> to open Visual Studio Code.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Visual Studio Code will launch. Check the branch details in the status bar at the left bottom corner.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/sample.png" alt="sample" width="750"></span></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Select and edit your .adoc file in Visual Studio Code and save the file after making changes.</p>
+</li>
+<li>
+<p>In the Command Prompt, type <code>bento .</code> to compile the .adoc files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>During the Bento compilation, a new HTML folder will be created for the document folder.</p>
+</li>
+<li>
+<p>Navigate to the HTML folder, review the HTML files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In <strong>Command Prompt</strong>, type <code>git status</code> to check the modified files.</p>
+</li>
+<li>
+<p>Type <code>git add .</code> to stage the changes.</p>
+</li>
+<li>
+<p>Type <code>git commit -m "write description here"</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+While writing the commit message description, follow this naming convention <code>Case 12345: Your message</code>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Type <code>git push</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Follow the <strong>Command Prompt</strong> instructions to add the new branch (one-time process). The following instruction will be displayed when the <code>git push</code> command is entered.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/gitpushupstream.png" alt="gitpushupstream">
+</div>
+</div>
+</li>
+<li>
+<p>To push the current branch, copy and paste this in <strong>Command Prompt</strong> <code>git push -set-upstream origin Case.12345</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This <code>git push -set-upstream origin Case.12345</code> command pushes your local branch to the remote repository and sets the upstream (tracking) branch. This means that future git push and git pull commands will default to this remote branch.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Next, go to <a href="https://github.com/metamation">GitHub</a>'s respective repository in your browser and click on <strong>Compare &amp; pull request</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/comparepullreq.png" alt="comparepullreq">
+</div>
+</div>
+</li>
+<li>
+<p>Add a title and a description to create the new pull request. Follow the below convention,</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Title:</strong> Case 12345: &lt;Add FogBugz case title as pull request title here&gt;</p>
+</li>
+<li>
+<p><strong>Description:</strong> Add the commit message description here, along with any details that you want to notify to the assignee.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/pullrequestcreation.png" alt="pullrequestcreation">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>To select the assignees, click the gear icon <span class="icon"><i class="fa fa-gear"></i></span> to view the list of people. Then, click <strong>Create pull request</strong> to proceed.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/assignees.png" alt="assignees">
+</div>
+</div>
+</li>
+<li>
+<p>Once assigned, the assignee begins to review the changes.</p>
 </li>
 </ol>
 </div>
@@ -156,18 +316,178 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Contact "Metamation GitHub Owner" to create new repositories.
+To know more on the review process, please refer <a href="review.html">Review</a>
 </td>
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_new_document">Creating a New Document</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_set_up_folder_structure">Set Up Folder Structure</h3>
+<div class="ulist">
+<ul>
 <li>
-<p>Make sure <strong>precommit hook</strong> is deployed.</p>
+<p>Folder structure is essential for creating a new document. You can create as many folders as needed. Each folder and subfolder represents a chapter and subchapter.</p>
+</li>
+<li>
+<p>Following files are needed in the new folder while creating a document.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>manifest.txt</p>
+</li>
+<li>
+<p>contents.txt</p>
+</li>
+<li>
+<p>index.adoc</p>
+</li>
+<li>
+<p>img folder</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Use the exact file names mentioned above.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_required_files">Required Files</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>manifest.txt file:</strong>
+The manifest.txt file sets up the Logo, Title, and Footer sections for the documentation project. This is a one-time setup file and is not required in each subfolder. Here is an example of what the manifest.txt file contains:</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/manifestexample.png" alt="manifestexample" width="600"></span></p>
+</div>
+</li>
+<li>
+<p><strong>contents.txt file:</strong>
+Each folder contains a contents.txt file. This file lists the order in which the .adoc files in that folder appear in the Content Tree on the left. It simply lists each source .adoc file and each subfolder to be considered. Files are represented by their names (without the .adoc extension), while folders are represented by names enclosed in square brackets. Here is an example of contents.txt file:</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/contentsexample.png" alt="contentsexample" width="400"></span></p>
+</div>
+</li>
+<li>
+<p><strong>index.adoc file:</strong>
+Each folder also should contain an index.adoc file that provides the root content for that folder. It acts as a homepage, along with additional chapter or subchapter .adoc files. Typically, this is a short introduction to the topics discussed in this section of the documentation. You can also include links to the topics in this chapter.</p>
+<div class="paragraph">
+<p><span class="image"><img src="img/indexexample.png" alt="indexexample" width="600"></span></p>
+</div>
+</li>
+<li>
+<p><strong>img folder:</strong>
+Every folder and subfolder must have an img folder for images, logos, icons. Make sure images are placed in the respective img folders and check for the naming convention.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://render.com/">Render</a> is highly case sensitive. Make sure you enter the exact image name under image syntax. Also, make sure to save all images in .png format. To avoid confusion, keep the image names entirely in lower-case.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_adoc_and_txt_files">Creating .adoc and .txt Files</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>C:drive &#8594; Work</strong> folder.</p>
+</li>
+<li>
+<p>In the Address Bar, type cmd to open the <strong>Command Prompt</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Command Prompt</strong>, type code . to open Visual Studio Code.</p>
+</li>
+<li>
+<p>Open File Explorer and hover the mouse pointer over the Explorer panel to see <strong>New file</strong> and <strong>New Folder</strong> options.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/vscode.png" alt="vscode" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>New file</strong>:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>For .adoc file, type index.adoc (home page) and other .adoc files as required.</p>
+</li>
+<li>
+<p>For .txt files, create the .txt files specified in the <a href="#_set_up_folder_structure">Set Up Folder Structure</a>.</p>
 </li>
 </ol>
 </div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each folder can have multiple .adoc files depending on the content requirements. Each folder and subfolder has a contents.txt file, but manifest.txt is a one-time setup file and is not required in each subfolder.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_procedure_for_creating_a_new_document">Procedure for Creating a New Document</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>C:drive &#8594; Work</strong> folder.</p>
+</li>
+<li>
+<p>Create a new document folder and name it after the product.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When creating a new document folder, make sure that the following Prerequisites are met.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>PREREQUISITES:</strong></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Make sure <strong>precommit hook</strong> is deployed.</p>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -180,31 +500,131 @@ This is to make sure no one is allowed to work or push code directly into <stron
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Add collaborators, reviewers and approvers to &lt;TitleBook&gt; repository.</p>
 </li>
 <li>
 <p>Add <strong>.gitattributes</strong> and <strong>.gitignore</strong> files.</p>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_folder_structure">Folder structure</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Analyze the topics and chapters required to create a document. This will make easier for us to create a document skeleton.</p>
 </li>
 <li>
-<p>Create .adoc files for each topic using <strong>MS Visual Studio Code</strong>. Rearrange the topics if required to have a meaningful chapter.</p>
+<p>In the address bar of the newly created document folder, type <code>cmd</code> to open the Command Prompt.</p>
 </li>
 <li>
-<p>Make sure images are placed in the respective <strong>img</strong> folders and check for the naming convention.</p>
+<p>In the <strong>Command Prompt</strong>, type <code>code .</code> to open Visual Studio Code.</p>
+</li>
+<li>
+<p>Create and verify that you have all the necessary files listed in the <a href="#_set_up_folder_structure">Set Up Folder Structure</a> with the required content.</p>
+</li>
+<li>
+<p>In the .adoc file, write content in Visual Studio Code using the <a href="../../asciidoc.html">AsciiDoc syntax</a> format.</p>
+</li>
+<li>
+<p>While writing content in Visual Studio Code, you can use the preview option to check the .adoc file&#8217;s overview.</p>
+</li>
+<li>
+<p>After adding your content in the .adoc file, save the file.</p>
+</li>
+<li>
+<p>In the <strong>Command Prompt</strong>, type <code>bento .</code> to compile the .adoc files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>During the Bento compilation, a new HTML folder will be created for the document folder.</p>
+</li>
+<li>
+<p>Navigate to the HTML folder, review the HTML files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In <strong>Command Prompt</strong>, type <code>git status</code> to check the modified files.</p>
+</li>
+<li>
+<p>Type <code>git add .</code> to stage the changes.</p>
+</li>
+<li>
+<p>Type <code>git commit -m "write description here"</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+While writing the commit message description, follow this convintion <code>Case 12345: Your message</code>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Type <code>git push</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Follow the <strong>Command Prompt</strong> instructions to add the new branch (one-time process). The following instruction will be displayed when the <code>git push</code> command is entered.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/gitpushupstream.png" alt="gitpushupstream">
+</div>
+</div>
+</li>
+<li>
+<p>To push the current branch, copy and paste this in <strong>Command Prompt</strong> <code>git push -set-upstream origin Case.12345</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This <code>git push -set-upstream origin Case.12345</code> command pushes your local branch to the remote repository and sets the upstream (tracking) branch. This means that future git push and git pull commands will default to this remote branch.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Next, go to <a href="https://github.com/metamation">GitHub</a>'s respective repository in your browser and click on <strong>Compare &amp; pull request</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/comparepullreq.png" alt="comparepullreq">
+</div>
+</div>
+</li>
+<li>
+<p>Add a title and a description to create a new pull request. Follow the below convention,</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Title:</strong> Case 12345: &lt;Add FogBugz case title as pull request title here&gt;</p>
+</li>
+<li>
+<p><strong>Description:</strong> Add the commit message description here, along with any details that you want to notify to the assignee.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/pullrequestcreation.png" alt="pullrequestcreation">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>To select the assignees, click the gear icon <span class="icon"><i class="fa fa-gear"></i></span> to view the list of people. Then, click 'Create pull request' to proceed.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/assignees.png" alt="assignees">
+</div>
+</div>
+</li>
+<li>
+<p>Once assigned, the assignee begins to review the changes.</p>
 </li>
 </ol>
 </div>
@@ -215,219 +635,7 @@ This is to make sure no one is allowed to work or push code directly into <stron
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<a href="https://render.com/">Render</a> is highly case sensitive. Make sure you enter the exact image name under image syntax. Also, make sure to save all images in <strong>.png</strong> format. To avoid confusion, keep the image names entirely in lower-case.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/image-naming.png" alt="image naming" width="350">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="4">
-<li>
-<p>Create <strong>content.txt</strong> and <strong>manifest.txt</strong> files for Bento to compile.</p>
-</li>
-<li>
-<p>Each folder and sub folder represents a chapter and  sub chapter respectively.</p>
-</li>
-<li>
-<p>Every folder and sub folder must have a <strong>img</strong> folder for images, logos, icons and <strong>contents</strong> folder for ToC and <strong>index</strong>.adoc file for home page and an additional chapter or sub chapter .adoc files.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="img/fs.png" alt="fs"></span></p>
-</div>
-<div class="sect2">
-<h3 id="_how_to_create_adoc_file">How to create .adoc file</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Open VS Code and press <span class="keyseq"><kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>E</kbd></span> to open <strong>Explorer</strong>.</p>
-</li>
-<li>
-<p>Click Open Folder, locate the &lt;TitleBook&gt; folder path and click <b class="button">Select Folder</b>.</p>
-</li>
-<li>
-<p>Hover the mouse pointer over the Explorer panel to see <strong>New file</strong> and <strong>New Folder&#8230;&#8203;</strong> option.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/vscode.png" alt="vscode" width="400">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="4">
-<li>
-<p>Click new file, type <em>index.adoc</em> and press <kbd>Enter</kbd>.
-NOTE: You have created your first .adoc file.</p>
-</li>
-<li>
-<p>Now create the document structure, chapters and sub-chapters.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_set_the_changes_for_review">Set the changes for Review</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Goto &lt;TitleBook&gt; folder and initiate <strong>CMD</strong>.</p>
-</li>
-<li>
-<p>Type <code>git st</code> to see list of files modified/added/removed.</p>
-</li>
-<li>
-<p>Type <code>git add .</code> to move all the files to staging area.</p>
-</li>
-<li>
-<p>Type <code>git commit -m</code> "message" to commit all the changes.</p>
-</li>
-<li>
-<p>Type <code>git push</code> to push all the files to GitHub repository.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This is to make sure every one can collaborate in document creation process.
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="6">
-<li>
-<p>Goto &lt;TitleBookHTML&gt; folder and initiate <strong>CMD</strong>.</p>
-</li>
-<li>
-<p>Repeat steps 2 to 5.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Only the document owner is responsible for pushing the HTML folder to GitHub.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Every time you update a document (edit a .adoc files) after a <code>git push</code>, make sure you delete the &lt;TitleBookHTML&gt; folder. Clone the &lt;TitleBookHTML&gt; repository freshly and then run bento from the &lt;TitleBook&gt; folder.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Missing this step will make differences in files between &lt;TitleBookHTML&gt; GitHub repo files and &lt;TitleBookHTML&gt; local files.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_github">GitHub</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Go to <a href="https://github.com/metamation">GitHub</a> &lt;TitleBook&gt; repo and click <strong>Pull Request</strong>.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/pullrequest.png" alt="pullrequest">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>In the Pull request page, click <strong>New pull request</strong> option to compare and review between different branches and commits.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/newpullrequest.png" alt="newpullrequest">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Select the branch name and commit details.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/compare-review.png" alt="compare review">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Leave a short comment about the pull request and click create pull request.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/createpullrequest.png" alt="createpullrequest">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Add reveiwer details and set the pull request for review.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/reviewer.png" alt="reviewer">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/reviewadded.png" alt="reviewadded">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The reviewer can either <em>approve</em> and <em>merge</em> the pull request or set it back for <em>rework</em> with <em>comments</em>.
+To know more on the review process, please refer <a href="review.html">Review</a>
 </td>
 </tr>
 </table>
@@ -443,19 +651,22 @@ The reviewer can either <em>approve</em> and <em>merge</em> the pull request or 
   <h3>Contents</h3>
   <ul>
     <li level="1">
-      <a href="#_repositories_for_documentation">Repositories for Documentation</a>
+      <a href="#_editing_an_existing_document">Editing an Existing Document</a>
     </li>
     <li level="1">
-      <a href="#_folder_structure">Folder structure</a>
+      <a href="#_creating_a_new_document">Creating a New Document</a>
     </li>
     <li level="2">
-      <a href="#_how_to_create_adoc_file">How to create .adoc file</a>
+      <a href="#_set_up_folder_structure">Set Up Folder Structure</a>
     </li>
     <li level="2">
-      <a href="#_set_the_changes_for_review">Set the changes for Review</a>
+      <a href="#_required_files">Required Files</a>
     </li>
     <li level="2">
-      <a href="#_github">GitHub</a>
+      <a href="#_creating_adoc_and_txt_files">Creating .adoc and .txt Files</a>
+    </li>
+    <li level="2">
+      <a href="#_procedure_for_creating_a_new_document">Procedure for Creating a New Document</a>
     </li>
   </ul>
 </aside>
