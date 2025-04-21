@@ -1,0 +1,385 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Structure</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../technotes/ra/index.html">RightAngle</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+            <li><button class="tree blank"></button><a href="../../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="../index.html">Documentation</a>
+      <ul>
+        <li>
+          <button class="tree open"></button>
+          <a href="index.html">Bento tool</a>
+          <ul>
+            <li><button class="tree blank"></button><a class="active" href="bento.html">Structure</a></li>
+            <li><button class="tree blank"></button><a href="syntax.html">Syntax</a></li>
+            <li><button class="tree blank"></button><a href="attributes.html">Attributes</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../software/index.html">Software</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="../software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="../software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="../software/tools/index.html">Tools</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../workflow/index.html">Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../workflow/roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/release.html">Release cycle</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../translation/index.html">Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../translation/deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a href="../translation/generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="../translation/edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a href="../translation/btapply/index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a href="../translation/order/index.html">Order at Seprotec</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/tools.html">Tools</a></li>
+          </ul>
+        </li>
+        <li><button class="tree blank"></button><a href="../citations.html">Citations</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="../index.html">Documentation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="index.html">Bento tool</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="bento.html">Structure</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Structure</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Bento</strong> is the tool we use to author online documentation in
+<a href="https://docs.asciidoctor.org/asciidoc/latest/">AsciiDoc</a> format. It is designed to compile
+a <em>hierarchical</em> set of AsciiDoc pages into a website with navigation mechanisms.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_structure_of_a_bento_page">Structure of a Bento page</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The image below shows a typical HTML page rendered by Bento.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/bento1.png" alt="Bento Taxonomy" width="629">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>Logo</strong>, <strong>Title</strong> and <strong>Footer</strong> sections are all set up in the <strong>manifest.txt</strong> file that was
+created for the documentation project.</p>
+</li>
+<li>
+<p>The <strong>Content Tree</strong> provides a collapsible tree-view of all the pages in the documentation
+project. This is automatically generated from the directory structure of the project and
+only requires that you create a <strong>contents.txt</strong> file in each folder that specifies the order
+in which these pages should appear.</p>
+</li>
+<li>
+<p>The <strong>Breadcrumb Navigation</strong> provides another way of navigating up the hierarchy of folders,
+and is useful especially with deeply nested folder structures. This is also generated
+automatically.</p>
+</li>
+<li>
+<p>The <strong>Page TOC</strong> (table of contents) for this page is also auto-generated based on the level-1
+and level-2 section headings in the page.</p>
+</li>
+<li>
+<p>The <strong>Sequential Flow</strong> links allow the reader to go back and forth in the documentation
+like a book. The <strong>left-arrow</strong> and <strong>right-arrow</strong> keys can also be used to go to the <em>previous</em>
+and <em>next</em> pages in the documentation.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setting_up_a_bento_project">Setting up a Bento Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Bento project consists of a set of directories (folders), and this folder structure translates
+into the hierarchical structure of the <strong>Content Tree</strong> that gets generated.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each folder contains a set of AsciiDoc files (with the extension <strong>.adoc</strong>). Each of these files
+gets compiled into a HTML page.</p>
+</li>
+<li>
+<p>The root folder contains a <code>manifest.txt</code> file that contains a few settings for the documentation
+project. Here is a typical manifest.txt file:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">TITLE = Acme Reference Manual
+OUTDIR = ../AcmeOutput
+LOGO = img/logo.png,103,34
+COPYRIGHT = Copyright &amp;copy; 2023 by Acme.</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>OUTDIR</strong> setting in the manifest.txt can be a relative path (as above) or an absolute
+path. Bento will create a folder structure at that output location that matches the
+source folder structure exactly, except that each <strong>.adoc</strong> file will be compiled into
+a <strong>.html</strong> file.</p>
+</li>
+<li>
+<p>The <strong>LOGO</strong> is used at the top left. The actual image can be any size, but you should specify
+as the 2<sup>nd</sup> and 3<sup>rd</sup> parameter on that line the width and height - set the height to 34, and
+the width to a proportionate value (based on the aspect-ratio of your logo image)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each folder should contain an <strong>index.adoc</strong> file that provides the <em>root content</em> for that folder.
+Typically, this is a short introduction to the topics being discussed in this section of the
+documentation. You could also include here links to the pages in this section.</p>
+</li>
+<li>
+<p><span class="image right"><img src="img/bento2.png" alt="bento2" width="254"></span>
+Each folder also contains a <strong>contents.txt</strong> file. This file provides the <em>order</em> in which the
+<strong>.adoc</strong> files in that folder are listed (in the Content Tree on the left). This file simply lists
+each source .adoc file, and each sub-folder that should be considered. Files are represented with
+the names (without the .adoc extension), while folders are represented with names enclosed in square
+brackets. For example, below is a typical contents.txt file that is part of the <strong>Fold CAM</strong> folder,
+and the image on the right shows how it renders in the Content Tree.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">SwitchingToFold
+FoldView
+[Editing]
+ToolManagement
+FoldSummary</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, there are content files with names like <strong>SwitchingToFold.adoc</strong>, <strong>FoldView.adoc</strong>
+etc. And there is a subfolder called <strong>Editing</strong>. As you can see, the order of files and
+sub-folders in the contents.txt file specifies how the content tree is generated.</p>
+</div>
+<div class="sect2">
+<h3 id="_images">Images</h3>
+<div class="paragraph">
+<p>The AsciiDoc file can <em>references</em> images, and the convention is to place these in an <strong>img</strong>
+sub-folder inside that folder. Then, you should use the <strong>:imagesdir:</strong> variable to point to the
+images. Thus a typical document would begin like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">= Document Title
+:imagesdir: img
+
+Using an image is like this. The image is picked up from the img subfolder,
+because of the :imagesdir: setting on the previous line.
+
+image::welcome.png[Welcome, Width=224]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_invoking_bento">Invoking Bento</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bento takes a single command line parameter. If this is the name of a directory, then it
+picks up and compiles the project defined by the <strong>manifest.txt</strong> in that directory. If this
+parameter is a filename, then that is assumed to the be manifest file.</p>
+</div>
+<div class="paragraph">
+<p>Any Bento manifest file must have a filename that ends with manifest.txt (like flux-manifest.txt,
+for example). This second form is used when there are multiple manifest files for some
+Bento content, each with different attributes, designed to compile different <em>flavors</em> of the
+documentation.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_structure_of_a_bento_page">Structure of a Bento page</a>
+    </li>
+    <li level="1">
+      <a href="#_setting_up_a_bento_project">Setting up a Bento Project</a>
+    </li>
+    <li level="2">
+      <a href="#_images">Images</a>
+    </li>
+    <li level="1">
+      <a href="#_invoking_bento">Invoking Bento</a>
+    </li>
+  </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="index.html">Bento tool</a></span>
+  <span class="next"><a href="syntax.html">Syntax</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

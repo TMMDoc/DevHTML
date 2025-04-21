@@ -75,45 +75,60 @@
       <button class="tree open"></button>
       <a class="active" href="index.html">Documentation</a>
       <ul>
-        <li><button class="tree blank"></button><a href="bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a href="asciidoc.html">AsciiDoc Syntax</a></li>
-        <li><button class="tree blank"></button><a href="hosting.html">Repositories and Workflow</a></li>
         <li>
           <button class="tree closed"></button>
-          <a href="workflow/index.html">Documentation Workflow</a>
+          <a href="asciidoc/index.html">Bento tool</a>
           <ul class="hide">
-            <li><button class="tree blank"></button><a href="workflow/softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="workflow/prerequisites.html">Prerequisite Installation</a></li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="workflow/docsteps/index.html">Working Stages in Brief</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="workflow/docsteps/analyze.html">Analyze</a></li>
-                <li><button class="tree blank"></button><a href="workflow/docsteps/edit.html">Edit</a></li>
-                <li><button class="tree blank"></button><a href="workflow/docsteps/review.html">Review</a></li>
-                <li><button class="tree blank"></button><a href="workflow/docsteps/approve.html">Pre-Publish</a></li>
-                <li><button class="tree blank"></button><a href="workflow/docsteps/publish.html">Publish</a></li>
-              </ul>
-            </li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="workflow/misc/index.html">Miscellaneous Information</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="workflow/misc/environmentvariables.html">Environment Variable</a></li>
-              </ul>
-            </li>
+            <li><button class="tree blank"></button><a href="asciidoc/bento.html">Structure</a></li>
+            <li><button class="tree blank"></button><a href="asciidoc/syntax.html">Syntax</a></li>
+            <li><button class="tree blank"></button><a href="asciidoc/attributes.html">Attributes</a></li>
           </ul>
         </li>
         <li>
           <button class="tree closed"></button>
-          <a href="translation/index.html">Flavors and Translation</a>
+          <a href="software/index.html">Software</a>
           <ul class="hide">
-            <li><button class="tree blank"></button><a href="translation/deltatranslation.html">Delta translations</a></li>
-            <li><button class="tree blank"></button><a href="translation/flavoring.html">Changing to a Flavor</a></li>
-            <li><button class="tree blank"></button><a href="translation/citations.html">Citations</a></li>
-            <li><button class="tree blank"></button><a href="translation/controlcommands.html">Control Commands</a></li>
+            <li><button class="tree blank"></button><a href="software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="software/tools/index.html">Tools</a></li>
           </ul>
         </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="workflow/index.html">Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="workflow/roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="workflow/analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="workflow/edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="workflow/proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="workflow/approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="workflow/publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="workflow/release.html">Release cycle</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="translation/index.html">Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="translation/deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a href="translation/generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="translation/edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a href="translation/btapply/index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a href="translation/order/index.html">Order at Seprotec</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="flavoring/tools.html">Tools</a></li>
+          </ul>
+        </li>
+        <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
       </ul>
     </li>
   </ul>
@@ -139,26 +154,47 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Topics related to documentation are explained in this chapter.</p>
+<p>The Documentation team supports the creation of product documentation</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><a href="bento.html">Documentation using Bento</a></p>
+<p>The Documentation needs is based on the input of the technical experts (see <a href=".\workflow\roles.html">roles</a> )</p>
 </li>
 <li>
-<p><a href="asciidoc.html">Asciidoc Syntax</a></p>
+<p>its based on a FogbugZ workflow (see <a href=".\workflow\analyze.html">FogbugZ</a>)</p>
 </li>
 <li>
-<p><a href="hosting.html">Documentation Repositories</a></p>
+<p>See the complete workflow (see <a href=".\workflow\index.html">Workflow</a>)</p>
 </li>
 <li>
-<p><a href="workflow/index.html">Documentation Workflow</a></p>
+<p>The base documentation gets translated (see <a href=".\translation\index.html">Translation</a>). With each version we need to identify the difference between the new and the previous version. This is dode vith the BookTool.</p>
 </li>
 <li>
-<p><a href="translation/index.html">Flavors and Translation</a></p>
+<p>The relevant chapters of FluxBook are combined and a customer specific theming is added (<a href=".\flavoring\index.html">Flavoring</a>)</p>
 </li>
-</ul>
+<li>
+<p>A word or a sentence could often be translated in different ways. In case the documentaion refers to text elements of the HMI it is important to state exactly the same wording of the HMI. This is done by <a href=".\citations.html">Citations</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hosting_of_the_html_documents">Hosting of  the HTML documents</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The Render-online manual always provides the latest <strong>official released version</strong> of a Document</p>
+</li>
+<li>
+<p>The Sharepoint <strong>Manuals - Documents</strong> folder provides the latest <strong>main branch</strong> of a Document</p>
+</li>
+<li>
+<p>The Sharepoint <strong>Manuals - Proofread</strong> folder provides full or fragments of documents to proof read</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -270,81 +306,6 @@
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_software_release_cycle">Software release cycle</h3>
-<div class="paragraph">
-<p>A software release cycle is the process through which software is developed, tested, and released to users. It ensures that software is delivered in a structured and reliable manner, involving planning, development, testing, and deployment. The cycle helps manage the progression of software from initial concept to final release, ensuring quality and functionality.</p>
-</div>
-<div class="sect3">
-<h4 id="_release_notes">Release notes</h4>
-<div class="paragraph">
-<p>A release note is a technical document that announces the updates to a product. It is published alongside new or updated software and details the technical features of the product. For every build releases, these release notes provide end-users with a brief summary of the product itself. Release notes are distributed with software products, sometimes when the product is still in the development or test state.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_software_build_release_frequency">Software build release frequency</h4>
-<div class="paragraph">
-<p>The frequency of updating release notes depends on product&#8217;s release cycle and the nature of the updates.</p>
-</div>
-<div class="paragraph">
-<p>See the table below for release frequency:</p>
-</div>
-<table class="tableblock frame-all grid-all fit-content">
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock"><strong>Product</strong></p></td>
-<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock"><strong>Build Release Frequency</strong></p></td>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Build Release Type</strong></p></td>
-<td class="tableblock halign-center valign-top" rowspan="2"><p class="tableblock"><strong>Build Release Authority</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Internal Build</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Customer Build</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Flux</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Weekly once</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Every monday</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7th of every month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arvind</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Praxis</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Weekly once</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Every tuesday</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Last tuesday of every month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Rajesh Kumar</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Right Angle</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Monthly twice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">End of the month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15th of every month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Dinesh. S</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vulcan</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Monthly once</p></td>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">24th of every month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Priyarathna. S</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_document_request_notification">Document request notification</h3>
-<div class="paragraph">
-<p>The Product Owners selects and releases an effective build for the client. Based on the release notes of this build, the Product Owners then adds a 'DocUpdate' tag to the product cases in FogBugz to notify the documentation team.</p>
-</div>
-</div>
 </div>
 </div>
 
@@ -355,6 +316,9 @@
   <h3>Contents</h3>
   <ul>
     <li level="1">
+      <a href="#_hosting_of_the_html_documents">Hosting of  the HTML documents</a>
+    </li>
+    <li level="1">
       <a href="#_documentation_index">Documentation Index</a>
     </li>
     <li level="2">
@@ -363,18 +327,6 @@
     <li level="2">
       <a href="#_knowledge_base">Knowledge base</a>
     </li>
-    <li level="2">
-      <a href="#_software_release_cycle">Software release cycle</a>
-    </li>
-    <li level="3">
-      <a href="#_release_notes">Release notes</a>
-    </li>
-    <li level="3">
-      <a href="#_software_build_release_frequency">Software build release frequency</a>
-    </li>
-    <li level="2">
-      <a href="#_document_request_notification">Document request notification</a>
-    </li>
   </ul>
 </aside>
 
@@ -382,7 +334,7 @@
             </div>
             <nav class="pagination">
   <span class="prev"><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></span>
-  <span class="next"><a href="bento.html">Documentation using Bento</a></span>
+  <span class="next"><a href="asciidoc/index.html">Bento tool</a></span>
 </nav>
 
         </div>

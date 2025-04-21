@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../res/tree.css">
   <link rel="stylesheet" href="../../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Delta translations</title>
+  <title>General process</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -75,45 +75,60 @@
       <button class="tree open"></button>
       <a href="../index.html">Documentation</a>
       <ul>
-        <li><button class="tree blank"></button><a href="../bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a href="../asciidoc.html">AsciiDoc Syntax</a></li>
-        <li><button class="tree blank"></button><a href="../hosting.html">Repositories and Workflow</a></li>
         <li>
           <button class="tree closed"></button>
-          <a href="../workflow/index.html">Documentation Workflow</a>
+          <a href="../asciidoc/index.html">Bento tool</a>
           <ul class="hide">
-            <li><button class="tree blank"></button><a href="../workflow/softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/prerequisites.html">Prerequisite Installation</a></li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="../workflow/docsteps/index.html">Working Stages in Brief</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="../workflow/docsteps/analyze.html">Analyze</a></li>
-                <li><button class="tree blank"></button><a href="../workflow/docsteps/edit.html">Edit</a></li>
-                <li><button class="tree blank"></button><a href="../workflow/docsteps/review.html">Review</a></li>
-                <li><button class="tree blank"></button><a href="../workflow/docsteps/approve.html">Pre-Publish</a></li>
-                <li><button class="tree blank"></button><a href="../workflow/docsteps/publish.html">Publish</a></li>
-              </ul>
-            </li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="../workflow/misc/index.html">Miscellaneous Information</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="../workflow/misc/environmentvariables.html">Environment Variable</a></li>
-              </ul>
-            </li>
+            <li><button class="tree blank"></button><a href="../asciidoc/bento.html">Structure</a></li>
+            <li><button class="tree blank"></button><a href="../asciidoc/syntax.html">Syntax</a></li>
+            <li><button class="tree blank"></button><a href="../asciidoc/attributes.html">Attributes</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../software/index.html">Software</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="../software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="../software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="../software/tools/index.html">Tools</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../workflow/index.html">Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../workflow/roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/release.html">Release cycle</a></li>
           </ul>
         </li>
         <li>
           <button class="tree open"></button>
-          <a href="index.html">Flavors and Translation</a>
+          <a href="index.html">Translation</a>
           <ul>
-            <li><button class="tree blank"></button><a class="active" href="deltatranslation.html">Delta translations</a></li>
-            <li><button class="tree blank"></button><a href="flavoring.html">Changing to a Flavor</a></li>
-            <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
-            <li><button class="tree blank"></button><a href="controlcommands.html">Control Commands</a></li>
+            <li><button class="tree blank"></button><a class="active" href="deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a href="generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a href="btapply/index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a href="order/index.html">Order at Seprotec</a></li>
           </ul>
         </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/tools.html">Tools</a></li>
+          </ul>
+        </li>
+        <li><button class="tree blank"></button><a href="../citations.html">Citations</a></li>
       </ul>
     </li>
   </ul>
@@ -132,23 +147,40 @@
   </div>
   <div>/</div>
   <div>
-    <a href="index.html">Flavors and Translation</a>
+    <a href="index.html">Translation</a>
   </div>
   <div>/</div>
   <div>
-    <a href="deltatranslation.html">Delta translations</a>
+    <a href="deltatranslation.html">General process</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Delta translations</h1>
+                        <h1>General process</h1>
+<div class="sect1">
+<h2 id="_translation">Translation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the translation we use the provider Seprotec. All costs are booked onto DS17952.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_delta_translation">Delta Translation</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>In order to have a cost efficient translation process we only send the changes to the translation office. For every release to the customer (~6 month), the changes made in the documents need to be filtered out and added / modified in the official product documentation of each flavor.</p>
 </div>
 <div class="paragraph">
-<p><strong>Procedure:</strong></p>
+<p><span class="image"><img src="img/bentobasic.png" alt="bentobasic"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>The Book tool</strong></p>
+</div>
+<div class="paragraph">
+<p>Main purpose of the book tool is to:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -159,10 +191,7 @@
 <p>Store in a document with control information and a reference to the chapter</p>
 </li>
 <li>
-<p>Translate</p>
-</li>
-<li>
-<p>The translated fragments need to be sorted into the existing flavors</p>
+<p>Restore the translated fragments  into the existing flavors</p>
 </li>
 </ul>
 </div>
@@ -181,19 +210,29 @@ we need to give the translators the context of the sentence since it is otherwis
 <div class="paragraph">
 <p>For more information on process/macros reach out to <a href="mailto:dakshita.minocha@trumpf.com">dakshita.minocha@trumpf.com</a></p>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="img/booktool.png" alt="Booktool"></span></p>
+</div>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc"></aside>
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_translation">Translation</a>
+    </li>
+    <li level="1">
+      <a href="#_delta_translation">Delta Translation</a>
+    </li>
+  </ul>
+</aside>
+
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="index.html">Flavors and Translation</a></span>
-  <span class="next"><a href="flavoring.html">Changing to a Flavor</a></span>
+  <span class="prev"><a href="index.html">Translation</a></span>
+  <span class="next"><a href="generate/index.html">BT diff generation</a></span>
 </nav>
 
         </div>

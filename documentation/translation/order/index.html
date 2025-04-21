@@ -1,0 +1,487 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../../res/bento.css">
+  <link rel="stylesheet" href="../../../res/site.css">
+  <link rel="stylesheet" href="../../../res/tree.css">
+  <link rel="stylesheet" href="../../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Order at Seprotec</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../../../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../../../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../../technotes/ra/index.html">RightAngle</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+            <li><button class="tree blank"></button><a href="../../../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="../../index.html">Documentation</a>
+      <ul>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../asciidoc/index.html">Bento tool</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../asciidoc/bento.html">Structure</a></li>
+            <li><button class="tree blank"></button><a href="../../asciidoc/syntax.html">Syntax</a></li>
+            <li><button class="tree blank"></button><a href="../../asciidoc/attributes.html">Attributes</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../software/index.html">Software</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../../software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="../../software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="../../software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="../../software/tools/index.html">Tools</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../workflow/index.html">Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../workflow/roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/release.html">Release cycle</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree open"></button>
+          <a href="../index.html">Translation</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="../deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a href="../generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="../edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a href="../btapply/index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a class="active" href="index.html">Order at Seprotec</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="../../flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="../../flavoring/tools.html">Tools</a></li>
+          </ul>
+        </li>
+        <li><button class="tree blank"></button><a href="../../citations.html">Citations</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../../../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="../../index.html">Documentation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="../index.html">Translation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="index.html">Order at Seprotec</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Order at Seprotec</h1>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Storing location of the “contents” for translations.
+Stored on TINC/TMM server
+N:\06_Operations\4_Documentation\03 Translations</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image1.png" alt="image1" width="601" height="278"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The Folders are the primary 4 products viz. FLUX; Praxis; Right Angle (RA); Vulcan.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The contents for primary product folder will come from git</p>
+</li>
+<li>
+<p>The git on Metamation site would have repositories for the “main products”</p>
+</li>
+<li>
+<p>Details will be found in the image below: <span class="image"><img src="img/image2.png" alt="image2" width="474" height="197"></span></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Git “Metamation” site within which there is main product repository</p>
+</li>
+<li>
+<p>“tag” used to identify the version used for translations</p>
+</li>
+<li>
+<p>Version nomenclature used within “tag” ( version definition YY.MM)</p>
+</li>
+<li>
+<p>Below there is “zip” which could be facilitate the zip download of the “tagged” revision”</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong><em>NOTE: while the .adoc files are available the images do not get actually transferred. It would be best at his time to have “clone” in local and use the contents of the cloned files . ALWAYS keep the folder contents in .zip to optimize space usage.</em></strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>Currently <strong><span class="underline">Prabhakaran is the owner</span></strong> of version control.</p>
+</li>
+<li>
+<p>NOTE: For FLUX v25.04 the “Fold” folder will not be used while sending for translation. The marked files from the cloned folder will not be sent for translation<span class="image"><img src="img/image3.png" alt="image3" width="601" height="382"></span></p>
+</li>
+<li>
+<p>Also need to validate if the “content” and “manifest” files need translation</p>
+</li>
+<li>
+<p>In future we would need “Flavor” specific folder such as:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Intro for TecZone Laser</p>
+</li>
+<li>
+<p>Intro for JFY Cut</p>
+</li>
+<li>
+<p>Intro for JFY Bend</p>
+</li>
+<li>
+<p>Intro for JFY+</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>There would be also need to store “Flavor” images</p>
+</li>
+<li>
+<p>There is another folder “Xlate” for the UI translation</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Within UI translation folder there would be again 4 primary products related folders.</p>
+</li>
+<li>
+<p>The Xlate folders will maintain .json format files.</p>
+</li>
+<li>
+<p>Primary language will always be “English”</p>
+</li>
+<li>
+<p>The .json file will have name of primary product, source language, expected translation language. As shown in attached image: <span class="image"><img src="img/image4.png" alt="image4" width="140" height="22"></span></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The Xlate tool is developed by TINC/TMM</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Rajesh Kumar is the owner and access can be requested from him.</p>
+</li>
+<li>
+<p>Details of the site and notes on important tab functions:</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image5.png" alt="image5" width="554" height="131"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>The TSD site</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Login page:<span class="image"><img src="img/image6.png" alt="image6" width="465" height="362"></span></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Need to apply for the “Login” credentials</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Current contact: Mr Luehrs Henning email: <a href="mailto:hluehrs@seprotec.com">hluehrs@seprotec.com</a></p>
+</li>
+<li>
+<p>Create Quote request:<span class="image"><img src="img/image7.png" alt="image7" width="398" height="254"></span></p>
+</li>
+<li>
+<p>Entering the details:<span class="image"><img src="img/image8.png" alt="image8" width="534" height="826"></span></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Project Name:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>We will have following “projects” which has to be entered as <em>free text</em>.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>For User Interface (UI):</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Praxis- Xlate</p>
+</li>
+<li>
+<p>Flux Cut- Xlate</p>
+</li>
+<li>
+<p>Flux Bend- Xlate</p>
+</li>
+<li>
+<p>RA- Xlate</p>
+</li>
+<li>
+<p>Vulcan- Xlate</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>For Online Help:</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Praxis</p>
+</li>
+<li>
+<p>FLUX</p>
+</li>
+<li>
+<p>RA</p>
+</li>
+<li>
+<p>Vulcan</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Request Delivery</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select the date when the output is desired.</p>
+</li>
+<li>
+<p>Plan well to avoid rush.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>TRUMPF Cost center/Internal Order:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Cost Center for BC7 DS16974</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>TRUMPF Billing Address:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>TRUMPF Werkzeugmaschinen + Co. KG</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>TRUMPF- What area does the text to be translated come from?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Always select “HMI/Software texts”</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>TRUMPF- Does your text contain texts from a controller/HMI/software?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Always select The file consists exclusively of texts from a controller/HMI/software”</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>TRUMPF- Type of HMI texts</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Always select “Documentation”</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>TRUMPF- Project category plunet</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Always select “Documentation”</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>TRUMPF- File format</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>For UI it would be <strong>.json</strong></p>
+</li>
+<li>
+<p>For online HELP would be <strong>.adoc</strong>
+Please note all above data are “ESSENTIAL” to go to next tab, wherein “Source language” and “Desired Language” are required to be entered
+Last step would be to “Upload” the file.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc"></aside>
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="../btapply/index.html">BT apply changes</a></span>
+  <span class="next"><a href="../../flavoring/index.html">Changing to a Flavor</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../../res/index.js"></script>
+    <script src="../../../res/files.js"></script>
+    <script src="../../../res/site.js"></script>
+
+    
+</body>
+</html>

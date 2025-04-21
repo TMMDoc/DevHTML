@@ -1,0 +1,52 @@
+% creates a new folder structure under .\new, (workaround: for now 1.5 levels)
+% INTENTION and content seperation by TAB only!
+% [] = folder, otherwise file, tab in ilin(1) for readability
+% text after the first word becomes content
+% fid = file (read) with filestructure
+% fid2 = index.adoc (write)
+% fid3 = high
+
+
+clc;
+if 0; [f.file,f.path] = uigetfile('*.txt'); end
+cd(f.path);
+mkdir('new'); cd('new');
+fid=fopen([f.path,f.file],'r');
+fid3=fopen(['contents.txt'],'w');
+ilin=fgetl(fid);
+ii=1; h=0; %hirarcy
+mkdir('0'); cd('0'); %start of level2
+while ~feof(fid);
+    if length(ilin>3);
+        if ilin(1)==9; ilin=ilin(2:end); end %remove tab
+        a=strfind(ilin,'	'); if ~isempty(a); content=ilin(a(1)+1:end); ilin=ilin(1:a); else content='lorem\n'; end;
+        ilin=strrep(ilin,'	',''); %no whitespace
+        if ilin(1)=='[' %folder
+            fprintf('%s\n',ilin);
+            ilin=ilin(2:end-1); %remove bracktes
+            ilin_=[num2str(ii),'_',ilin];ii=ii+1; %add sorting
+            fprintf(fid3,'[%s]\n',ilin_);
+            cd ..; mkdir(ilin_); cd(ilin_);
+            
+            fid2=fopen(['index.adoc'],'w');
+            fprintf(fid2,'= %s\n:imagesdir: img\n\n%s\n',ilin,content);
+            fclose(fid2);
+            mkdir('img');
+            fid2=fopen(['contents.txt'],'w'); %en empty file
+            fclose(fid2);
+            
+        else %regular file
+            fid2=fopen([ilin,'.adoc'],'w');
+            fprintf(fid2,'= %s\n:imagesdir: img\n\n%s\n',ilin,content);
+            fclose(fid2);
+            fid2=fopen(['contents.txt'],'a'); %en empty file
+            fprintf(fid2,'%s\n',ilin);
+            fclose(fid2);
+        end
+     end;
+     ilin=fgetl(fid);
+end;
+fclose(fid);
+fclose(fid3);
+
+filecopy('C:\user\archiv\matlab_tools\bento\*.*','f.path');

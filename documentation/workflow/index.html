@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../res/tree.css">
   <link rel="stylesheet" href="../../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Documentation Workflow</title>
+  <title>Workflow</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -75,45 +75,60 @@
       <button class="tree open"></button>
       <a href="../index.html">Documentation</a>
       <ul>
-        <li><button class="tree blank"></button><a href="../bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a href="../asciidoc.html">AsciiDoc Syntax</a></li>
-        <li><button class="tree blank"></button><a href="../hosting.html">Repositories and Workflow</a></li>
         <li>
-          <button class="tree open"></button>
-          <a class="active" href="index.html">Documentation Workflow</a>
-          <ul>
-            <li><button class="tree blank"></button><a href="softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="prerequisites.html">Prerequisite Installation</a></li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="docsteps/index.html">Working Stages in Brief</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="docsteps/analyze.html">Analyze</a></li>
-                <li><button class="tree blank"></button><a href="docsteps/edit.html">Edit</a></li>
-                <li><button class="tree blank"></button><a href="docsteps/review.html">Review</a></li>
-                <li><button class="tree blank"></button><a href="docsteps/approve.html">Pre-Publish</a></li>
-                <li><button class="tree blank"></button><a href="docsteps/publish.html">Publish</a></li>
-              </ul>
-            </li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="misc/index.html">Miscellaneous Information</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="misc/environmentvariables.html">Environment Variable</a></li>
-              </ul>
-            </li>
+          <button class="tree closed"></button>
+          <a href="../asciidoc/index.html">Bento tool</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../asciidoc/bento.html">Structure</a></li>
+            <li><button class="tree blank"></button><a href="../asciidoc/syntax.html">Syntax</a></li>
+            <li><button class="tree blank"></button><a href="../asciidoc/attributes.html">Attributes</a></li>
           </ul>
         </li>
         <li>
           <button class="tree closed"></button>
-          <a href="../translation/index.html">Flavors and Translation</a>
+          <a href="../software/index.html">Software</a>
           <ul class="hide">
-            <li><button class="tree blank"></button><a href="../translation/deltatranslation.html">Delta translations</a></li>
-            <li><button class="tree blank"></button><a href="../translation/flavoring.html">Changing to a Flavor</a></li>
-            <li><button class="tree blank"></button><a href="../translation/citations.html">Citations</a></li>
-            <li><button class="tree blank"></button><a href="../translation/controlcommands.html">Control Commands</a></li>
+            <li><button class="tree blank"></button><a href="../software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="../software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="../software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="../software/tools/index.html">Tools</a></li>
           </ul>
         </li>
+        <li>
+          <button class="tree open"></button>
+          <a class="active" href="index.html">Workflow</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="release.html">Release cycle</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../translation/index.html">Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../translation/deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a href="../translation/generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="../translation/edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a href="../translation/btapply/index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a href="../translation/order/index.html">Order at Seprotec</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/tools.html">Tools</a></li>
+          </ul>
+        </li>
+        <li><button class="tree blank"></button><a href="../citations.html">Citations</a></li>
       </ul>
     </li>
   </ul>
@@ -132,16 +147,14 @@
   </div>
   <div>/</div>
   <div>
-    <a href="index.html">Documentation Workflow</a>
+    <a href="index.html">Workflow</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Documentation Workflow</h1>
-<div id="preamble">
-<div class="sectionbody">
+                        <h1>Workflow</h1>
 <div class="paragraph">
 <p>The image below illustrates the documentation workflow for creating, editing, publishing, and managing a document&#8217;s lifecycle.</p>
 </div>
@@ -150,91 +163,38 @@
 <img src="img/overview.png" alt="Overview">
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_github_workflow">GitHub Workflow</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Git, being a distributed version control system, allows everyone to work on the documentation project.</p>
-</div>
-<div class="paragraph">
-<p>To understand the documentation workflow, it is required to have a basic understanding of GitHub workflow and git commands used.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/gitworkflow.png" alt="GitWorkflow">
-</div>
-</div>
-<div class="sect2">
-<h3 id="_git_commands_used">Git commands used</h3>
-<div class="paragraph">
-<p>Following are the basic git commands used in our documentation process.</p>
+<p>Following are the technical documentation working stages:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>git init</strong> - To create a new git repository.</p>
+<p><a href="analyze.html">Analyze</a></p>
 </li>
 <li>
-<p><strong>git status</strong> - Shows the state of the working directory, staging area, tracked and untracked files.</p>
+<p><a href="edit.html">Edit</a></p>
 </li>
 <li>
-<p><strong>git add</strong> - To add changes from the working directory to the staging area.</p>
+<p><a href="review.html">Review</a></p>
 </li>
 <li>
-<p><strong>git commit</strong> -  To save all staged changes, along with a brief description from the user.</p>
+<p><a href="approve.html">Pre-Publish</a></p>
 </li>
 <li>
-<p><strong>git pull</strong> - To fetch and merge the changes which are present in the remote repository to the local repository.</p>
-</li>
-<li>
-<p><strong>git push</strong> -  To upload local repository content to a remote repository.</p>
-</li>
-<li>
-<p><strong>git branch</strong> - To work on a different parts of a project without impacting the Main branch.</p>
-</li>
-<li>
-<p><strong>git switch</strong> - To switch between the branches.</p>
-</li>
-<li>
-<p><strong>git log</strong> - To view the history of commited changes within a git repository.</p>
-</li>
-<li>
-<p><strong>git config --global --edit</strong> - To edit the configuration file.</p>
-</li>
-<li>
-<p><strong>git restore</strong> - To unstage or even discard uncommitted local changes.</p>
-</li>
-<li>
-<p><strong>git diff</strong> - To shows the differences between various states of a repository.</p>
+<p><a href="publish.html">Publish</a></p>
 </li>
 </ul>
-</div>
-</div>
-</div>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc">
-  <h3>Contents</h3>
-  <ul>
-    <li level="1">
-      <a href="#_github_workflow">GitHub Workflow</a>
-    </li>
-    <li level="2">
-      <a href="#_git_commands_used">Git commands used</a>
-    </li>
-  </ul>
-</aside>
-
+                    <aside id="site-toc"></aside>
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="../hosting.html">Repositories and Workflow</a></span>
-  <span class="next"><a href="softwarerequired.html">Software Requirement</a></span>
+  <span class="prev"><a href="../software/tools/index.html">Tools</a></span>
+  <span class="next"><a href="roles.html">Roles</a></span>
 </nav>
 
         </div>

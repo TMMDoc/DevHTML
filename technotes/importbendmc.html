@@ -75,45 +75,60 @@
       <button class="tree closed"></button>
       <a href="../documentation/index.html">Documentation</a>
       <ul class="hide">
-        <li><button class="tree blank"></button><a href="../documentation/bento.html">Documentation using Bento</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/asciidoc.html">AsciiDoc Syntax</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/hosting.html">Repositories and Workflow</a></li>
         <li>
           <button class="tree closed"></button>
-          <a href="../documentation/workflow/index.html">Documentation Workflow</a>
+          <a href="../documentation/asciidoc/index.html">Bento tool</a>
           <ul class="hide">
-            <li><button class="tree blank"></button><a href="../documentation/workflow/softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/prerequisites.html">Prerequisite Installation</a></li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="../documentation/workflow/docsteps/index.html">Working Stages in Brief</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/analyze.html">Analyze</a></li>
-                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/edit.html">Edit</a></li>
-                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/review.html">Review</a></li>
-                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/approve.html">Pre-Publish</a></li>
-                <li><button class="tree blank"></button><a href="../documentation/workflow/docsteps/publish.html">Publish</a></li>
-              </ul>
-            </li>
-            <li>
-              <button class="tree closed"></button>
-              <a href="../documentation/workflow/misc/index.html">Miscellaneous Information</a>
-              <ul class="hide">
-                <li><button class="tree blank"></button><a href="../documentation/workflow/misc/environmentvariables.html">Environment Variable</a></li>
-              </ul>
-            </li>
+            <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/asciidoc/syntax.html">Syntax</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
           </ul>
         </li>
         <li>
           <button class="tree closed"></button>
-          <a href="../documentation/translation/index.html">Flavors and Translation</a>
+          <a href="../documentation/software/index.html">Software</a>
           <ul class="hide">
-            <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">Delta translations</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/flavoring.html">Changing to a Flavor</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/citations.html">Citations</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/controlcommands.html">Control Commands</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
           </ul>
         </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../documentation/workflow/index.html">Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/workflow/proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../documentation/translation/index.html">Translation</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../documentation/flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../documentation/flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="../documentation/flavoring/tools.html">Tools</a></li>
+          </ul>
+        </li>
+        <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
       </ul>
     </li>
   </ul>
@@ -337,7 +352,7 @@ InputFolder=W:\BMC\1001</code></pre>
 </div>
 </li>
 <li>
-<p>Check the backgauge limits by dragging to the left and right extents as shown below.</p>
+<p><a id="limits"></a>Check the backgauge limits by dragging to the left and right extents as shown below.</p>
 <div class="imageblock">
 <div class="content">
 <img src="img/bmcbglimits.png" alt="BG Limits" width="40%">
@@ -353,7 +368,7 @@ InputFolder=W:\BMC\1001</code></pre>
 </div>
 </li>
 <li>
-<p>Check if the bg surfaces are shown correctly using the bg glob as shown below.
+<p><a id="surfaces"></a>Check if the bg surfaces are shown correctly using the bg glob as shown below.
 Add <strong>MCAnalysis=1</strong> in experimental.ini found in System folder of Flux installation. This enables the <strong><em>Surfaces</em></strong> checkbox to be available in bg glob.</p>
 <div class="paragraph">
 <p><span class="underline">DevNotes</span>:</p>
@@ -373,10 +388,53 @@ Refer <a href="#bg_angle_measurement">BG surfaces angle measurement</a> for BG s
 </div>
 </li>
 <li>
-<p>If bg limits/surfaces (step 10 / step 11) are wrong, check <a href="createbendmc.html#Bg_info"><strong>Back-gauge information</strong></a> and fix them.</p>
+<p>When <strong><em>Surfaces</em></strong> checkbox is enabled, origin of the bg will also be indicated (<strong>red dot</strong>) along with the bg surfaces.</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>For Trumpf machines, the origin should be at the ends as shown below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/trumpfbg.png" alt="trumpfbg" width="30%">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For JFY and Proteck machines, the origin should be at the center as shown below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/jfybg.png" alt="jfybg" width="28%">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For some Proteck machines with crab finger bg, the origin should be lightly shifted from the center.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/proteckbg.png" alt="proteckbg" width="50%">
+</div>
+</div>
+</div>
+</div>
 </li>
 <li>
-<p>If there are ACBLaserF, ACBLaserR and ACBLaserRail meshes for the machine, make sure that the ACBLaserRail is displayed only when ACB is activated for that machine. ACB can be activated for the machine through machine database dialog as shown below:</p>
+<p>If bg <a href="#limits">limits</a>/<a href="#surfaces">surfaces</a> are wrong, check <a href="createbendmc.html#Bg_info"><strong>Back-gauge information</strong></a> and fix them.</p>
+</li>
+<li>
+<p><a id="ACB-Laser"></a>If there are ACBLaserF, ACBLaserR and ACBLaserRail meshes for the machine, make sure that the ACBLaserRail is displayed only when ACB is activated for that machine. ACB can be activated for the machine through machine database dialog as shown below:</p>
 <div class="imageblock">
 <div class="content">
 <img src="img/bmcacblaser.png" alt="ACB Laser option" width="40%">
@@ -414,7 +472,7 @@ Refer the image below. This image has too many triangles which could have cleane
 </div>
 </li>
 <li>
-<p>If tooling and other layers are in place, check generation of NC code.</p>
+<p><a id="NC_code_generation"></a>If tooling and other layers are in place, check generation of NC code.</p>
 </li>
 <li>
 <p>For JFY machines, the NCCode section should be as shown below:</p>
@@ -440,7 +498,7 @@ Below steps are relevant only for developers.
 </div>
 </li>
 <li>
-<p>Do <strong>flux.console UnStreamlineWad x:\data\archive\machines</strong> - this will unpack the folder using the redirect.map and effectively make a lot of duplicate copies. This means after that each machine folder in x:/data/archive/machines will be complete, and needs no redirection.</p>
+<p><a id="UnStreamlineWad"></a>Do <strong>flux.console UnStreamlineWad x:\data\archive\machines</strong> - this will unpack the folder using the redirect.map and effectively make a lot of duplicate copies. This means after that each machine folder in x:/data/archive/machines will be complete, and needs no redirection.</p>
 </li>
 <li>
 <p>After validating machine import, copy machine id folder created in X:\Data\Machine folder to X:\Data\Archive\Machines.</p>
@@ -520,7 +578,7 @@ Below steps are relevant only for developers.
 <div class="ulist">
 <ul>
 <li>
-<p>First import the left and right standalone machines following the same steps until Step 25.</p>
+<p>First import the left and right standalone machines following the same steps until <a href="#NC_code_generation">NC code generation</a>.</p>
 </li>
 <li>
 <p>Similarly, import the left and right internal machines. Add 'TandemID=(rightID + 1)' to the 'Extra' section of both the left and right machine.curl files. If not, an error is thrown during tandem machine creation.</p>
@@ -543,13 +601,13 @@ Below steps are relevant only for developers.
 <p>Do not create manifest entries for the constituent left and right machines.</p>
 </li>
 <li>
-<p>Continue with step 27.</p>
+<p>Continue with <a href="#UnStreamlineWad">UnStreamlineWad</a> step.</p>
 </li>
 <li>
 <p>Check the machine.curl to set the <code>ACBChainPos</code> value for the tandem machine. This may not be accurately set through import.</p>
 </li>
 <li>
-<p>Check the display of ACB-Laser sensors and rail as per step 20.</p>
+<p>Check the display of <a href="#ACB-Laser">ACB-Laser sensors and rail</a>.</p>
 </li>
 </ul>
 </div>

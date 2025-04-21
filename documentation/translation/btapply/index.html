@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../../res/bento.css">
+  <link rel="stylesheet" href="../../../res/site.css">
+  <link rel="stylesheet" href="../../../res/tree.css">
+  <link rel="stylesheet" href="../../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>BT apply changes</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+  <ul>
+    <li><button class="tree blank"></button><a href="../../../index.html">Developer Notes</a></li>
+    <li><button class="tree blank"></button><a href="../../../resourcemap.html">Resource Map</a></li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../../tools/index.html">Tools</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../../tools/codeformatting.html">Code Formatting</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/configuregit.html">Configuring Git</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/assignments.html">Assignments</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/singlefileapps.html">Single Binary Applications</a></li>
+        <li><button class="tree blank"></button><a href="../../../tools/selfupdate.html">Self-Updating Applications</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../../flux/index.html">Flux Guidelines</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/releasenotes.html">Release notes for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+        <li><button class="tree blank"></button><a href="../../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree closed"></button>
+      <a href="../../../technotes/index.html">Technical Notes</a>
+      <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../../technotes/machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/xlate.html">Translation tables</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/createbendmc.html">Creating bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/importbendmc.html">Importing bend machines</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/importbendtools.html">Importing bend tools</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/importcomponents.html">Importing bend and cell components</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/virtualdrives.html">Virtual drives</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+        <li><button class="tree blank"></button><a href="../../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../../technotes/ra/index.html">RightAngle</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+            <li><button class="tree blank"></button><a href="../../../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button class="tree open"></button>
+      <a href="../../index.html">Documentation</a>
+      <ul>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../asciidoc/index.html">Bento tool</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../asciidoc/bento.html">Structure</a></li>
+            <li><button class="tree blank"></button><a href="../../asciidoc/syntax.html">Syntax</a></li>
+            <li><button class="tree blank"></button><a href="../../asciidoc/attributes.html">Attributes</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../software/index.html">Software</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../../software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="../../software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="../../software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="../../software/tools/index.html">Tools</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../workflow/index.html">Workflow</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../workflow/roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="../../workflow/release.html">Release cycle</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree open"></button>
+          <a href="../index.html">Translation</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="../deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a href="../generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="../edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a class="active" href="index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a href="../order/index.html">Order at Seprotec</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="tree closed"></button>
+          <a href="../../flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../../flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="../../flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="../../flavoring/tools.html">Tools</a></li>
+          </ul>
+        </li>
+        <li><button class="tree blank"></button><a href="../../citations.html">Citations</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+  <div>
+    <button>
+      <img src="../../../res/home.png">
+    </button>
+  </div>
+  <div>
+    <a href="../../index.html">Documentation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="../index.html">Translation</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="index.html">BT apply changes</a>
+  </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>BT apply changes</h1>
+<div class="paragraph">
+<p>After the translation is done click on 'Import Patch' button at the bottom of the screen and choose the file from the file explorer.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image14.png" alt="image14" width="601" height="139"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image15.png" alt="image15" width="473" height="342"></span></p>
+</div>
+<div class="paragraph">
+<p>File will be loaded on the right side of the screen.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image16.png" alt="image16" width="625" height="316"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Click on Apply patch. The right document will contain a detailed description if any error is encountered. Applying can sometimes take a while, user should not close the application while it is underway.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image17.png" alt="image17" width="601" height="62"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Patches that can be applied are applied, and failed patches are stored in <strong>Failed.sew</strong> in the target repository. A small description is given as to <em>why</em> the patch application may have failed. The user may use the hyperlink to open Failed.sew, make the necessary changes and import to file to apply the remaining changes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image18.png" alt="image18" width="499" height="516"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generally, “Error: Cannot Apply Patch” or “CouldNotApplyAllChanges” messages occur because you are trying to apply changes already there in the target repository.</p>
+</li>
+<li>
+<p>Use the <strong>Restore Changes</strong> button to run the “git restore .” command (remove all un-staged changes) and the <strong>Force Clean</strong> button to run “git clean -f” command (remove any unwanted files) on the target repository.</p>
+</li>
+<li>
+<p>If any patch is applied, a <strong>diff</strong> is shown in winmerge/any difftool, if it is configured.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image19.png" alt="image19" width="601" height="271"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Changes can also be seen in the tool’s right window by choosing files from the treeview on the left.
+Sew also supports applying changes made in other file formats such as .pngs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image20.png" alt="image20" width="601" height="107"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Currently, only .png is supported for images.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the following <strong>Shortcuts</strong> to navigate in the Flow Documents:
+Press [Ctrl+G] to go to a specific line in document after content has loaded.
+Press [Ctrl+F] to find occurrences of words.</p>
+</li>
+</ul>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc"></aside>
+                </div>
+            </div>
+            <nav class="pagination">
+  <span class="prev"><a href="../edit/index.html">BT translate</a></span>
+  <span class="next"><a href="../order/index.html">Order at Seprotec</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../../res/index.js"></script>
+    <script src="../../../res/files.js"></script>
+    <script src="../../../res/site.js"></script>
+
+    
+</body>
+</html>
