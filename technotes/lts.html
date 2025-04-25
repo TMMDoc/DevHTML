@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Machine ID Scheme</title>
+  <title>LTS (Long term support mechanism)</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -50,7 +50,7 @@
       <button class="tree open"></button>
       <a href="index.html">Technical Notes</a>
       <ul>
-        <li><button class="tree blank"></button><a class="active" href="machineids.html">Machine ID Scheme</a></li>
+        <li><button class="tree blank"></button><a href="machineids.html">Machine ID Scheme</a></li>
         <li><button class="tree blank"></button><a href="xlate.html">Translation tables</a></li>
         <li><button class="tree blank"></button><a href="createbendmc.html">Creating bend machines</a></li>
         <li><button class="tree blank"></button><a href="importbendmc.html">Importing bend machines</a></li>
@@ -69,7 +69,7 @@
             <li><button class="tree blank"></button><a href="ra/testingcontroller.html">Testing in Controller</a></li>
           </ul>
         </li>
-        <li><button class="tree blank"></button><a href="lts.html">LTS (Long term support mechanism)</a></li>
+        <li><button class="tree blank"></button><a class="active" href="lts.html">LTS (Long term support mechanism)</a></li>
       </ul>
     </li>
     <li>
@@ -149,242 +149,75 @@
   </div>
   <div>/</div>
   <div>
-    <a href="machineids.html">Machine ID Scheme</a>
+    <a href="lts.html">LTS (Long term support mechanism)</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Machine ID Scheme</h1>
-<div id="preamble">
-<div class="sectionbody">
+                        <h1>LTS (Long term support mechanism)</h1>
 <div class="paragraph">
-<p>This document explains the scheme we use to assign machine IDs for Flux machines.
-We try to follow a more rational scheme than ahs been done in MetaCAM, so that
-inspection of the IDs can give us some clue about the machine. The machine ID
-has the following form:</p>
-</div>
-<div class="paragraph">
-<p>MMTTNNN</p>
+<p>The FX data exchange format between Flux and e.g. RA control creates the need of a mechanism to avoid issues if the compatibility gets compromised. The situation is:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>MM</strong> is the manufacturer code. This can be from 1 .. 3 digits long, with the smaller
-codes reserved for the more major players.</p>
+<p>Customers update their desktop software quite frequently but don&#8217;t want to update the machine. We will have different FX versions between Flux and RA.</p>
 </li>
 <li>
-<p><strong>TT</strong> is the &lt;i&gt;technology&lt;/i&gt; code (like laser, bend, combination etc). This is
-always exactly 2 digits long</p>
-</li>
-<li>
-<p><strong>NNN</strong> is the index within that manufacturer/technology cluster. This is always
-exactly 3 digits long</p>
+<p>FX is a self descriptive data format where additional data could be added without a compatibility issue. The only problem comes if we change the interpretation of the data / data format but the FX format is already quite mature.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_manufacturer_codes">Manufacturer Codes</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>These are the manufacturer codes now assigned.</p>
+<p>In order to allow the customer to run different versions of RA and Flux, a stepping mechanism is introduced from Flux build 602 and RA 182.</p>
 </div>
-<table class="tableblock frame-all grid-all fit-content">
-<colgroup>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">ID</th>
-<th class="tableblock halign-left valign-top">Manufacturer</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf (EHT)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf (Custom)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">11</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accurpress</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bystronic</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">13</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cinncinati</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LVD</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amada</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">16</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PrimaPower</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">17</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Komatsu</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">18</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Safan</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Muratec</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JFY</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">21</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ursviken</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Proteck</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Adira</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ermaksan</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Dener</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Euromac</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BLM</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">28</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mitsubishi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RMT</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">30</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mazak</p></td>
-</tr>
-</tbody>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>We start with stepping version 1 in all systems</p>
+</li>
+<li>
+<p>We increase the stepping version in case we need to do an incompatible change in the FX format.</p>
+</li>
+<li>
+<p>Flux checks the stepping version while loading a FX file. If it is identical or lower, then the file could be loaded without issues</p>
+</li>
+<li>
+<p>If Flux identifies that a file has a higher stepping version then it will raise Flux.APIException with VersionMismatch code. RA catches the exception, checks the code and tries to call an external downgrade application "Flux.Stepper.exe" which is located in the binary folder of RA. It will save a fx file with a lower stepping version and can be loaded into RA.</p>
+</li>
+<li>
+<p>External application takes 3 arguments which are source fx file, target fx file name and target stepping version.</p>
+</li>
+<li>
+<p>External application can contain different version of Flux.API than the one installed in the machine and can be installed at any location. In that case, environmental variable FLUXSTEPPER should be set to the directory containing Flux.Stepper.exe.</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_technology_codes">Technology Codes</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Here are the technology codes now assigned.</p>
+<p>This means that if we need to introduce a new stepping version we will deliver to all customers this Flux.Stepper.exe which could be installed instead of upgrading the machine.</p>
 </div>
-<table class="tableblock frame-all grid-all fit-content">
-<colgroup>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Standard panel bender</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">20</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Standard press-brake</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">21</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Press-brake with handling robot</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">30</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Flat-bed laser</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">31</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Laser with part unloader</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Punch-press</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">41</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Punch-press with part unloader</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">42</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Punch-press with right-angled shear</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">50</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Combination (hybrid) machine</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">51</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Combination machine with part unloader</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">60</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Plasma</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">61</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Water-jet</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the build version of Flux and RA is different but the stepping version is identical we will not display a warning message.</p>
+</li>
+<li>
+<p>If the stepping downgrader gets executed we will display a warning message in RA that we are using an external application to downgrade the fx file.</p>
+</li>
+</ul>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc">
-  <h3>Contents</h3>
-  <ul>
-    <li level="1">
-      <a href="#_manufacturer_codes">Manufacturer Codes</a>
-    </li>
-    <li level="1">
-      <a href="#_technology_codes">Technology Codes</a>
-    </li>
-  </ul>
-</aside>
-
+                    <aside id="site-toc"></aside>
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="index.html">Technical Notes</a></span>
-  <span class="next"><a href="xlate.html">Translation tables</a></span>
+  <span class="prev"><a href="ra/testingcontroller.html">Testing in Controller</a></span>
+  <span class="next"><a href="../documentation/index.html">Documentation</a></span>
 </nav>
 
         </div>

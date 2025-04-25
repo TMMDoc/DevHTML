@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../res/tree.css">
   <link rel="stylesheet" href="../../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Substituting documents</title>
+  <title>Anchor points</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -110,24 +110,24 @@
           </ul>
         </li>
         <li>
-          <button class="tree closed"></button>
-          <a href="../translation/index.html">Translation</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../translation/deltatranslation.html">General process</a></li>
-            <li><button class="tree blank"></button><a href="../translation/anchor.html">Anchor points</a></li>
-            <li><button class="tree blank"></button><a href="../translation/generate/index.html">BT diff generation</a></li>
-            <li><button class="tree blank"></button><a href="../translation/edit/index.html">BT translate</a></li>
-            <li><button class="tree blank"></button><a href="../translation/btapply/index.html">BT apply changes</a></li>
-            <li><button class="tree blank"></button><a href="../translation/order/index.html">Order at Seprotec</a></li>
+          <button class="tree open"></button>
+          <a href="index.html">Translation</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="deltatranslation.html">General process</a></li>
+            <li><button class="tree blank"></button><a class="active" href="anchor.html">Anchor points</a></li>
+            <li><button class="tree blank"></button><a href="generate/index.html">BT diff generation</a></li>
+            <li><button class="tree blank"></button><a href="edit/index.html">BT translate</a></li>
+            <li><button class="tree blank"></button><a href="btapply/index.html">BT apply changes</a></li>
+            <li><button class="tree blank"></button><a href="order/index.html">Order at Seprotec</a></li>
           </ul>
         </li>
         <li>
-          <button class="tree open"></button>
-          <a href="index.html">Changing to a Flavor</a>
-          <ul>
-            <li><button class="tree blank"></button><a href="general.html">Concept</a></li>
-            <li><button class="tree blank"></button><a class="active" href="flavoring.html">Substituting documents</a></li>
-            <li><button class="tree blank"></button><a href="tools.html">Tools</a></li>
+          <button class="tree closed"></button>
+          <a href="../flavoring/index.html">Changing to a Flavor</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../flavoring/general.html">Concept</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/flavoring.html">Substituting documents</a></li>
+            <li><button class="tree blank"></button><a href="../flavoring/tools.html">Tools</a></li>
           </ul>
         </li>
         <li><button class="tree blank"></button><a href="../citations.html">Citations</a></li>
@@ -149,61 +149,66 @@
   </div>
   <div>/</div>
   <div>
-    <a href="index.html">Changing to a Flavor</a>
+    <a href="index.html">Translation</a>
   </div>
   <div>/</div>
   <div>
-    <a href="flavoring.html">Substituting documents</a>
+    <a href="anchor.html">Anchor points</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Substituting documents</h1>
-<div class="sect1">
-<h2 id="_flavorisation_process">Flavorisation Process</h2>
-<div class="sectionbody">
+                        <h1>Anchor points</h1>
 <div class="paragraph">
-<p>In order to create specific content for a flavor (Adding context for e.g. the integration of Homezone, changing pictures with a different background color) the repository has an additional folder <strong>.Falvor</strong></p>
+<p>It is a significant advantage if we are able to identify the corresponding sentences in a translated document even we are not able to read the characters anymore (e.g. Chinese). For this reason anchor points are inserted into the document before it is sent to translation.</p>
 </div>
 <div class="paragraph">
-<p>in the sub folder <strong>.JFYADOC</strong> the folder structure of the original document is replicated and will overwrite the original documents / pictures for the JFY flavor</p>
+<p>Natural anchor points are</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Images since the image name will not be translated and is unique in a document</p>
+</li>
+<li>
+<p>Tables</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>in the sub folder  <strong>.JFYHTML</strong> the respective style sheets are stored (\img and \res folders)</p>
+<p>In order not to clutter the document completely a good practise of anchor points are</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sub headlines (first two characters = '==')</p>
+</li>
+<li>
+<p>Lists (first characters = '*' or '. ')</p>
+</li>
+</ol>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_translation_process">Translation process</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>After the translation all headlines are in a different language and it is hard to find the anchor points to identify the difference for subsequent translations. For this reason all headlines, images and tables are taged with a 6 digit hash-ID  like ==Headline 1 [[h234234]]</p>
+<p>If we put the anchor in front of the text no control items seem to break</p>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="img/anchor.png" alt="anchor"></span></p>
 </div>
+<div class="paragraph">
+<p>The Documents with the added anchors will not be merged with the original FluxBook.</p>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc">
-  <h3>Contents</h3>
-  <ul>
-    <li level="1">
-      <a href="#_flavorisation_process">Flavorisation Process</a>
-    </li>
-    <li level="1">
-      <a href="#_translation_process">Translation process</a>
-    </li>
-  </ul>
-</aside>
-
+                    <aside id="site-toc"></aside>
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="general.html">Concept</a></span>
-  <span class="next"><a href="tools.html">Tools</a></span>
+  <span class="prev"><a href="deltatranslation.html">General process</a></span>
+  <span class="next"><a href="generate/index.html">BT diff generation</a></span>
 </nav>
 
         </div>
