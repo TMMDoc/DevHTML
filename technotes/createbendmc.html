@@ -582,6 +582,44 @@ Shift=0,0,100</code></pre>
 <p>The example above is typical of the shift required to position the die correctly, because Trumpf die-rail drawings are usually drawn with a reference point that is 100mm above the mounting point on the rail (100 is the <em>reference</em> die height). The <strong>XSpan</strong> value indicates that the die is extruded 1615 mm on either side of the center-line.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_creating_mesh2_file">Creating mesh2 file<a id="Creating_mesh2"></a></h3>
+<div class="paragraph">
+<p>3D files should not be used for the display models, if there is a good SAT file available. The below workflow should be followed to create a mesh2 file from a SAT file.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the original SAT file to create a display mesh with the <strong>ExtraLow</strong> parameter at the end.</p>
+</li>
+<li>
+<p>Convert the SAT to an IGS file.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">flux.console convert3d beam.sat beam.igs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open the IGS file with MetaCAM, clean up the model and save it as a 3D file. Then convert that 3D file into a mesh.</p>
+</div>
+</li>
+<li>
+<p>Compress these two mesh files to a zip file.</p>
+</li>
+<li>
+<p>Then rename the zip file as mesh2 file.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">flux.console convert3d beam.sat model.mesh ExtraLow
+flux.console convert3d beam_crash.3d crash.mesh
+zip -add -max -move a.zip model.mesh crash.mesh
+ren a.zip beam.mesh2</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1049,6 +1087,9 @@ XSpan=-88,88</code></pre>
     </li>
     <li level="2">
       <a href="#_using_extruded_geometry">Using Extruded Geometry</a>
+    </li>
+    <li level="2">
+      <a href="#_creating_mesh2_file">Creating mesh2 file</a>
     </li>
     <li level="1">
       <a href="#_geometry_sections">Geometry Sections</a>
