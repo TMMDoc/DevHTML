@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../res/tree.css">
   <link rel="stylesheet" href="../../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Software</title>
+  <title>Checklist for Documenters</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -86,28 +86,28 @@
           </ul>
         </li>
         <li>
-          <button class="tree open"></button>
-          <a class="active" href="index.html">Software</a>
-          <ul>
-            <li><button class="tree blank"></button><a href="softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="prerequisites.html">Installation</a></li>
-            <li><button class="tree blank"></button><a href="git.html">Git</a></li>
-            <li><button class="tree blank"></button><a href="environmentvariables.html">Environment Variable</a></li>
-            <li><button class="tree blank"></button><a href="tools/index.html">Tools</a></li>
+          <button class="tree closed"></button>
+          <a href="../software/index.html">Software</a>
+          <ul class="hide">
+            <li><button class="tree blank"></button><a href="../software/softwarerequired.html">Software Requirement</a></li>
+            <li><button class="tree blank"></button><a href="../software/prerequisites.html">Installation</a></li>
+            <li><button class="tree blank"></button><a href="../software/git.html">Git</a></li>
+            <li><button class="tree blank"></button><a href="../software/environmentvariables.html">Environment Variable</a></li>
+            <li><button class="tree blank"></button><a href="../software/tools/index.html">Tools</a></li>
           </ul>
         </li>
         <li>
-          <button class="tree closed"></button>
-          <a href="../workflow/index.html">Workflow</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../workflow/roles.html">Roles</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/analyze.html">Analyze</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/edit.html">Edit</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/proofreading.html">Proof reading</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/approve.html">Pre-Publish</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/publish.html">Publish</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/release.html">Release cycle</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/checklist.html">Checklist for Documenters</a></li>
+          <button class="tree open"></button>
+          <a href="index.html">Workflow</a>
+          <ul>
+            <li><button class="tree blank"></button><a href="roles.html">Roles</a></li>
+            <li><button class="tree blank"></button><a href="analyze.html">Analyze</a></li>
+            <li><button class="tree blank"></button><a href="edit.html">Edit</a></li>
+            <li><button class="tree blank"></button><a href="proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="approve.html">Pre-Publish</a></li>
+            <li><button class="tree blank"></button><a href="publish.html">Publish</a></li>
+            <li><button class="tree blank"></button><a href="release.html">Release cycle</a></li>
+            <li><button class="tree blank"></button><a class="active" href="checklist.html">Checklist for Documenters</a></li>
           </ul>
         </li>
         <li>
@@ -150,27 +150,187 @@
   </div>
   <div>/</div>
   <div>
-    <a href="index.html">Software</a>
+    <a href="index.html">Workflow</a>
+  </div>
+  <div>/</div>
+  <div>
+    <a href="checklist.html">Checklist for Documenters</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Software</h1>
+                        <h1>Checklist for Documenters</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>To develop high-quality documentation, we must adhere to certain standards.
+As a result, we use a checklist to guarantee that all document quality parameters are met.</p>
+</li>
+<li>
+<p>Documenters must utilize this checklist after editing content and do a self-check.
+In some circumstances (when creating a lengthy document), a peer review can also help to avoid the most trivial errors.</p>
+</li>
+<li>
+<p>A pull request should not be sent for review without self-check or peer review.</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
-<p>This chapter describes the tool chain to create the HTML pages</p>
+<p>The checklist below will cover basic quality characteristics:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accuracy">Accuracy</h2>
+<div class="sectionbody">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> Is all the information documented correct and error-free?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Have you meticulously checked the content for any inaccuracies, typographical errors, or misleading statements?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Have you cross-checked facts, figures, and data against reliable sources?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Is all the information presented based on verified and trustworthy references?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are software UI elements (button names, menu items, labels) documented correctly?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clarity_and_readability">Clarity and Readability</h2>
+<div class="sectionbody">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> Is the language clear, concise, and free of jargon?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Is active voice used throughout the document?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Is the grammar, spelling, and punctuation correct?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are sentences well-structured and easy to understand?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are appropriate headings and subheadings used for better readability?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Used bullet points or numbered lists wherever required to enhance readability?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are software features explained with examples?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_consistency">Consistency</h2>
+<div class="sectionbody">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> Is approved terminology used in the document? (Refer to <a href="https://acrossmain01.corp.trumpf.com/crossTermNow/#!/Home">inTerm</a>)</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are the same terms and definitions used consistently to avoid confusion?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Does the document adhere to a uniform writing style and tone that aligns with its purpose and audience?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are abbreviations and acronyms defined the first time they appear?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are all figures and tables labeled consistently?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are software UI elements (button names, menu items, labels) named consistently?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usability">Usability</h2>
+<div class="sectionbody">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are diagrams, charts, and images relevant and well-integrated?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are cross references working correctly?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Is cross reference easy to navigate between topics or pages?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are the navigation buttons and page-wise TOC working properly?</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_localization">Localization</h2>
+<div class="sectionbody">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><input type="checkbox" data-item-complete="0"> Are the sentences, words and verbs easy to translate?</p>
+</li>
+<li>
+<p><input type="checkbox" data-item-complete="0"> Translation IDs (Anchor points) for heading and subheadings created wherever required?</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc"></aside>
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_accuracy">Accuracy</a>
+    </li>
+    <li level="1">
+      <a href="#_clarity_and_readability">Clarity and Readability</a>
+    </li>
+    <li level="1">
+      <a href="#_consistency">Consistency</a>
+    </li>
+    <li level="1">
+      <a href="#_usability">Usability</a>
+    </li>
+    <li level="1">
+      <a href="#_localization">Localization</a>
+    </li>
+  </ul>
+</aside>
+
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="../asciidoc/attributes.html">Attributes</a></span>
-  <span class="next"><a href="softwarerequired.html">Software Requirement</a></span>
+  <span class="prev"><a href="release.html">Release cycle</a></span>
+  <span class="next"><a href="../translation/index.html">Translation</a></span>
 </nav>
 
         </div>

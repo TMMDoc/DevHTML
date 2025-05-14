@@ -1,4 +1,5 @@
 var searchBox, searchResult;
+const ResultLimit = 15;
 function sLoaded () {
    document.querySelectorAll('button.tree').forEach(btn => {
       if (btn.classList.contains("open") || btn.classList.contains("closed"))
@@ -47,7 +48,7 @@ function sLoaded () {
 
 function sNavToggle (btn) {
   ul = btn;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < ResultLimit; i++) {
     ul = ul.nextSibling;
     if (ul.nodeName == "UL") break;
   }
@@ -74,17 +75,44 @@ function initSearch () {
       ul.innerHTML = "";
       const term = searchBox.value;
       if (!term || term.length < 2) return;
-      // First try the exact match.
-      var res = lunrIndex.search(term);
-      const regex = /\+|\*|~|-/gm;
-      // If no result is found, and the text doesn't already use modifiers, 
-      // apply the fuzzy search.
-      if (!res.length && !regex.exec(term)) {
-         res = lunrIndex.search(term + "*");
-         if (!res.length)
-            res = lunrIndex.search(term + "~1");
+      // Search file names first before initiating an index lookup.
+      var files = filesJSON.files;
+      var results = [];
+      var termLower = term.toLowerCase ();
+      for (let i = 0; i < files.length; i++) {
+         let file = files[i];
+         let idx = file.lbl.toLowerCase ().indexOf (termLower); 
+         if (idx >= 0) {
+            let score = 50.0 / (idx + 1);
+            results.push ({ref: i, score : 50 + score});
+         }
+         if (results.length >= ResultLimit) break;
       }
-      showResults(res);
+      // Sort matching results by score. So names starting with the terms show-up earlier.
+      if (results.length > 0) results.sort ((a, b) => b.score - a.score);
+      if (results.length < ResultLimit) {
+         // First try the exact match.
+         var res = lunrIndex.search(term);
+         const regex = /\+|\*|~|-/gm;
+         // If no result is found, and the text doesn't already use modifiers, 
+         // apply the fuzzy search.
+         if (!res.length && !regex.exec(term)) {
+            res = lunrIndex.search(term + "*");
+            if (!res.length)
+               res = lunrIndex.search(term + "~1");
+         }
+         // Concatenate both results.
+         if (results.length == 0) results = results.concat(res);
+         else {
+            var refs = results.map(a => "" + a.ref);
+            for (let i = 0; i < res.length && results.length < ResultLimit; i++) {
+               var obj = res[i];
+               // Ignore duplicates.
+               if (refs.indexOf(obj.ref) < 0) results.push(obj);
+            }
+         }
+      }
+      showResults (results);
    };
 }
 
@@ -113,7 +141,7 @@ function showResults (results) {
    var files = filesJSON.files;
    var ul = searchResult;
    // Only show the first ten results
-   results.slice(0, 10).forEach(result => {
+   results.slice(0, ResultLimit).forEach(result => {
       var file = files[result.ref];
       var li = document.createElement("li"); ul.appendChild(li);
       var a = document.createElement("a"); li.appendChild(a);
