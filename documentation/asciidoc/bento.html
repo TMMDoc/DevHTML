@@ -103,7 +103,7 @@
             <li><button class="tree blank"></button><a href="../workflow/roles.html">Roles</a></li>
             <li><button class="tree blank"></button><a href="../workflow/analyze.html">Analyze</a></li>
             <li><button class="tree blank"></button><a href="../workflow/edit.html">Edit</a></li>
-            <li><button class="tree blank"></button><a href="../workflow/proofreading.html">Proof reading</a></li>
+            <li><button class="tree blank"></button><a href="../workflow/proofreading.html">Proofread</a></li>
             <li><button class="tree blank"></button><a href="../workflow/approve.html">Pre-Publish</a></li>
             <li><button class="tree blank"></button><a href="../workflow/publish.html">Publish</a></li>
             <li><button class="tree blank"></button><a href="../workflow/release.html">Release cycle</a></li>
@@ -122,15 +122,7 @@
             <li><button class="tree blank"></button><a href="../translation/order/index.html">Order at Seprotec</a></li>
           </ul>
         </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../flavoring/index.html">Changing to a Flavor</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../flavoring/general.html">Concept</a></li>
-            <li><button class="tree blank"></button><a href="../flavoring/flavoring.html">Substituting documents</a></li>
-            <li><button class="tree blank"></button><a href="../flavoring/tools.html">Tools</a></li>
-          </ul>
-        </li>
+        <li><button class="tree blank"></button><a href="../flavoring.html">Flavoring</a></li>
         <li><button class="tree blank"></button><a href="../citations.html">Citations</a></li>
       </ul>
     </li>
@@ -236,6 +228,7 @@ project. Here is a typical manifest.txt file:</p>
 <pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">TITLE = Acme Reference Manual
 OUTDIR = ../AcmeOutput
 LOGO = img/logo.png,103,34
+ICON = img/favicon.ico
 COPYRIGHT = Copyright &amp;copy; 2023 by Acme.</code></pre>
 </div>
 </div>
@@ -251,8 +244,28 @@ a <strong>.html</strong> file.</p>
 <p>The <strong>LOGO</strong> is used at the top left. The actual image can be any size, but you should specify
 as the 2<sup>nd</sup> and 3<sup>rd</sup> parameter on that line the width and height - set the height to 34, and
 the width to a proportionate value (based on the aspect-ratio of your logo image)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="img/bento_webpage_icon.png" alt="Webpage icon sample" width="250"></span>
+<span class="image right"><img src="img/bento_icon_preference.png" alt="Icon Preference" width="250"></span></p>
+</div>
 <div class="ulist">
 <ul>
+<li>
+<p>The <strong>ICON</strong> setting specifies the <a href="https://en.wikipedia.org/wiki/Favicon" target="_blank" rel="noopener">Favicon</a> used by the webpage. The <code>.ico</code> file path should be relative to the site root so that all pages can reference it correctly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>By default, the path is set to <strong>img/favicon.ico</strong>.</p>
+</li>
+<li>
+<p>The images illustrate the recommended dimensions of the <code>.ico</code> file and how the favicon appears in the browser tab.</p>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>Each folder should contain an <strong>index.adoc</strong> file that provides the <em>root content</em> for that folder.
 Typically, this is a short introduction to the topics being discussed in this section of the
@@ -266,9 +279,6 @@ each source .adoc file, and each sub-folder that should be considered. Files are
 the names (without the .adoc extension), while folders are represented with names enclosed in square
 brackets. For example, below is a typical contents.txt file that is part of the <strong>Fold CAM</strong> folder,
 and the image on the right shows how it renders in the Content Tree.</p>
-</li>
-</ul>
-</div>
 </li>
 </ul>
 </div>

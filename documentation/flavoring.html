@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Citations</title>
+  <title>Flavoring</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -122,8 +122,8 @@
             <li><button class="tree blank"></button><a href="translation/order/index.html">Order at Seprotec</a></li>
           </ul>
         </li>
-        <li><button class="tree blank"></button><a href="flavoring.html">Flavoring</a></li>
-        <li><button class="tree blank"></button><a class="active" href="citations.html">Citations</a></li>
+        <li><button class="tree blank"></button><a class="active" href="flavoring.html">Flavoring</a></li>
+        <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
       </ul>
     </li>
   </ul>
@@ -142,39 +142,239 @@
   </div>
   <div>/</div>
   <div>
-    <a href="citations.html">Citations</a>
+    <a href="flavoring.html">Flavoring</a>
   </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Citations</h1>
+                        <h1>Flavoring</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Citations are references between the manual and the program&#8217;s UI. A human language allows for a wide range of descriptions, particularly when translated, however it might be misleading if the terms do not match 1:1 between the UI and the manual.</p>
+<p>Flavoring is the process to modify a product to the identity of a sales channel (Trumpf, Lantek, JFY). Bento has a set of functionality to perform this tasks by conditional compilation. The flavoring is mainly defined by attributes set in the manifest.txt file.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Refer to the Bento documentation for a general description and the command reference
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="img/setting.png" alt="setting"></span></p>
+<p>A typical manifest.txt for a Metamation product looks like (shortened to the significant elements):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>FLAVORS=FLUX, JFY, TRUMPF, BOOST   -&gt; The flavor alternatives</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ATTRIBUTE=APPNAME:Flux          -&gt; Substitution Attributes
+ATTRIBUTE=CUTAPP:Flux
+ATTRIBUTE=BENDAPP:Flux
+ATTRIBUTE=MIS:Praxis</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>#if TRUMPF | BOOST              -&gt; if condition based on Flavor
+ATTRIBUTE=APPNAME:TecZone       -&gt; replace Attributes for this Flavor
+ATTRIBUTE=CUTAPP:TecZone Laser
+ATTRIBUTE=BENDAPP:TecZone Bend
+ATTRIBUTE=MIS:Praxis
+  #if BOOST
+  ATTRIBUTE=integrated          -&gt; Conditional Attributes
+  #endif
+#endif</pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_flavors">FLAVORS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All possible flavors are the first line of manifest.txt.</p>
 </div>
 <div class="paragraph">
-<p>The original XLATE phrase should match especially after the translation word for word. The ID from the XLATE .json export needs to be included into the adoc file. Bento needs to filter out while translating into HTML.</p>
+<p>FLAVORS is used for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Control attributes within the manifest file itself</p>
+</li>
+<li>
+<p>Add or exchange files</p>
+<div class="literalblock">
+<div class="content">
+<pre>Impressum.adoc             &lt;-- Used for FLUX, TRUMPF flavors
+JFY.Impressum.adoc         &lt;-- Used only for JFY flavor</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Control alternative bitmaps</p>
+<div class="literalblock">
+<div class="content">
+<pre>[img]
+logo.png               &lt;-- Used for FLUX flavor
+TRUMPF.logo.png        &lt;-- Used for TRUMPF flavor</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Define an alternative CSS files</p>
+<div class="literalblock">
+<div class="content">
+<pre>JFY.Site.css          &lt;-- Custom site CSS (framing style)</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_substitution_attributes_attribute">Substitution Attributes (ATTRIBUTE= &#8230;&#8203; : &#8230;&#8203; )</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Within Metamation we call all technology modules Flux, Trumpf distinguishes the modules like TecZone Bend etc.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="img/setting_xlate.png" alt="setting xlate"></span></p>
+<p>The Substitution Attributes replace the product name within ADoc files</p>
 </div>
+<div class="sect2">
+<h3 id="_needed_attributes_for_fluxbook">Needed attributes for FluxBook:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>APPNAME: the general product name for Flux</p>
+</li>
+<li>
+<p>CUTAPP, BENDAPP, FOLDAPP: The specific module names for the technologies</p>
+</li>
+<li>
+<p>MIS: The part management system like <strong>Praxis</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_needed_attributes_for_praxis">Needed attributes for Praxis:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>APPNAME: the general product name for Praxis</p>
+</li>
+<li>
+<p>FLUXAPP: Branded name of Flux</p>
+</li>
+<li>
+<p>FLUXDOCPATH: Path for referencing Flux</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conditional_attributes_attribute">Conditional Attributes (ATTRIBUTE=&#8230;&#8203;)</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<div class="title">Example citing</div>
-<p><strong>{{SH.PickBox:Aperture size for picking (pixels)}}</strong> - This adjustment specifies how close to an object you must click to select it. If 10 pixels are selected, an object must be clicked within an area of 10 pixels.</p>
+<p>Used for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Control if documents or subfolders are considerd within contents.txt</p>
+<div class="literalblock">
+<div class="content">
+<pre>Installation        #ifndef INTEGRATED
+[Settings]
+PraxisLink          #ifdef FLUX</pre>
+</div>
+</div>
+</li>
+<li>
+<p>do conditional paragraphs in ADocs</p>
+<div class="literalblock">
+<div class="content">
+<pre>ifdef::INTEGRATED[]
+The text here is included only in the INTEGRATED flavor of the product and describes how TecZone is called from HomeZone
+endif::[]</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_needed_attributes_for_fluxbook_2">Needed attributes for FluxBook:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>INTEGRATED: removes chapters like installation or part loading in case Flux is integrated in Praxis</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_needed_attributes_for_praxis_2">Needed attributes for Praxis:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>none</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc"></aside>
+                    <aside id="site-toc">
+  <h3>Contents</h3>
+  <ul>
+    <li level="1">
+      <a href="#_flavors">FLAVORS</a>
+    </li>
+    <li level="1">
+      <a href="#_substitution_attributes_attribute">Substitution Attributes (ATTRIBUTE= &#8230;&#8203; : &#8230;&#8203; )</a>
+    </li>
+    <li level="2">
+      <a href="#_needed_attributes_for_fluxbook">Needed attributes for FluxBook:</a>
+    </li>
+    <li level="2">
+      <a href="#_needed_attributes_for_praxis">Needed attributes for Praxis:</a>
+    </li>
+    <li level="1">
+      <a href="#_conditional_attributes_attribute">Conditional Attributes (ATTRIBUTE=&#8230;&#8203;)</a>
+    </li>
+    <li level="2">
+      <a href="#_needed_attributes_for_fluxbook_2">Needed attributes for FluxBook:</a>
+    </li>
+    <li level="2">
+      <a href="#_needed_attributes_for_praxis_2">Needed attributes for Praxis:</a>
+    </li>
+  </ul>
+</aside>
+
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="flavoring.html">Flavoring</a></span>
+  <span class="prev"><a href="translation/order/index.html">Order at Seprotec</a></span>
+  <span class="next"><a href="citations.html">Citations</a></span>
 </nav>
 
         </div>

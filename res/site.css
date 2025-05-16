@@ -72,6 +72,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - var(--header-height) - var(--footer-height)); /* Case 37500 */
 }
 
 #site-crumb {
@@ -111,6 +112,7 @@
 #site-crumb-below {
   display: flex;
   flex: 1;
+  height: calc(100vh - var(--header-height) - var(--footer-height) - var(--crumb-height) - var(--sibling-height));
 }
 
 #site-toc-left {
