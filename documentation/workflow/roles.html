@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../res/tree.css">
   <link rel="stylesheet" href="../../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <title>Roles</title>
 </head>
 <body id="site-body" onload="sLoaded()">
@@ -20,134 +21,133 @@
     <div id="site-main">
         <nav id="site-nav">
             <div class="treesite">
-  <ul>
-    <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
-    <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../technotes/machineids.html">Machine ID Scheme</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/xlate.html">Translation tables</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/createbendmc.html">Creating bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/importbendmc.html">Importing bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/importbendtools.html">Importing bend tools</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/importcomponents.html">Importing bend and cell components</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/fluxmetacaminterface.html">Flux-MetaCAM interface</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/virtualdrives.html">Virtual drives</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+    <li><button class="tree blank"></button><a href="../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../../tools/index.html">Tools</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
-        <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
-        <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
-        <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
-        <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
-        <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../../technotes/ra/index.html">RightAngle</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../technotes/lts.html">LTS (Long term support mechanism)</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Documentation</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../asciidoc/attributes.html">Attributes</a></li>
+     </ul>
     </li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../../flux/index.html">Flux Guidelines</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
-        <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
-        <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
-        <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
-        <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../software/tools/index.html">Tools</a></li>
+     </ul>
     </li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../../technotes/index.html">Technical Notes</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../../technotes/machineids.html">Machine ID Scheme</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/xlate.html">Translation tables</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/createbendmc.html">Creating bend machines</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/importbendmc.html">Importing bend machines</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/importbendtools.html">Importing bend tools</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/importcomponents.html">Importing bend and cell components</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/virtualdrives.html">Virtual drives</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
-        <li><button class="tree blank"></button><a href="../../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../../technotes/ra/index.html">RightAngle</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
-            <li><button class="tree blank"></button><a href="../../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
-          </ul>
-        </li>
-        <li><button class="tree blank"></button><a href="../../technotes/lts.html">LTS (Long term support mechanism)</a></li>
-      </ul>
+     <button class="tree open"></button>
+     <a href="index.html">Workflow</a>
+     <ul>
+      <li><button class="tree blank"></button><a class="active" href="roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="checklist.html">Checklist for Documenters</a></li>
+     </ul>
     </li>
+    <li><button class="tree blank"></button><a href="../flavoring.html">Flavoring</a></li>
     <li>
-      <button class="tree open"></button>
-      <a href="../index.html">Documentation</a>
-      <ul>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../asciidoc/index.html">Bento tool</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../asciidoc/bento.html">Structure</a></li>
-            <li><button class="tree blank"></button><a href="../asciidoc/syntax.html">Syntax</a></li>
-            <li><button class="tree blank"></button><a href="../asciidoc/attributes.html">Attributes</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../software/index.html">Software</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../software/softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="../software/prerequisites.html">Installation</a></li>
-            <li><button class="tree blank"></button><a href="../software/git.html">Git</a></li>
-            <li><button class="tree blank"></button><a href="../software/environmentvariables.html">Environment Variable</a></li>
-            <li><button class="tree blank"></button><a href="../software/tools/index.html">Tools</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree open"></button>
-          <a href="index.html">Workflow</a>
-          <ul>
-            <li><button class="tree blank"></button><a class="active" href="roles.html">Roles</a></li>
-            <li><button class="tree blank"></button><a href="analyze.html">Analyze</a></li>
-            <li><button class="tree blank"></button><a href="edit.html">Edit</a></li>
-            <li><button class="tree blank"></button><a href="proofreading.html">Proofread</a></li>
-            <li><button class="tree blank"></button><a href="approve.html">Pre-Publish</a></li>
-            <li><button class="tree blank"></button><a href="publish.html">Publish</a></li>
-            <li><button class="tree blank"></button><a href="release.html">Release cycle</a></li>
-            <li><button class="tree blank"></button><a href="checklist.html">Checklist for Documenters</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../translation/index.html">Translation</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../translation/deltatranslation.html">General process</a></li>
-            <li><button class="tree blank"></button><a href="../translation/anchor.html">Anchor points</a></li>
-            <li><button class="tree blank"></button><a href="../translation/generate/index.html">BT diff generation</a></li>
-            <li><button class="tree blank"></button><a href="../translation/edit/index.html">BT translate</a></li>
-            <li><button class="tree blank"></button><a href="../translation/btapply/index.html">BT apply changes</a></li>
-            <li><button class="tree blank"></button><a href="../translation/order/index.html">Order at Seprotec</a></li>
-          </ul>
-        </li>
-        <li><button class="tree blank"></button><a href="../flavoring.html">Flavoring</a></li>
-        <li><button class="tree blank"></button><a href="../citations.html">Citations</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
     </li>
-  </ul>
+    <li><button class="tree blank"></button><a href="../citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
 </div>
 
         </nav>
         <div id="site-nav-right">
             <nav id="site-crumb">
-  <div>
-    <button>
-      <img src="../../res/home.png">
-    </button>
-  </div>
-  <div>
-    <a href="../index.html">Documentation</a>
-  </div>
-  <div>/</div>
-  <div>
-    <a href="index.html">Workflow</a>
-  </div>
-  <div>/</div>
-  <div>
-    <a href="roles.html">Roles</a>
-  </div>
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Documentation</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">Workflow</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="roles.html">Roles</a>
+ </div>
 </nav>
 
             <div id="site-crumb-below">
@@ -165,21 +165,18 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Minor updates</strong> (like updating screen shots) don&#8217;t need a lengthy description. Just create a Fogbugz case for Documentation with reference to the relevant release note.</p>
+<p><strong>Minor updates</strong> (like updating screenshots) don&#8217;t need a lengthy description. Just create a FogBugz case for Documentation with reference to the relevant release note.</p>
 </li>
 <li>
 <p><strong>Major updates</strong> and new features require Product Owners to define the substance of the documentation. It is needed to include high-quality images (.png files) with the input files. Provide the input in asciidoc format (if possible) or in a basic word document for the documentation team to work with.</p>
 </li>
 <li>
-<p><strong>Minute updates</strong> can be added directly in the respective product&#8217;s GitHub repository.</p>
+<p><strong>Minute updates</strong> can be added directly in the respective product&#8217;s GitHub repository. Create a FogBugz case to inform the documentation team about this minute update. This will help the documentation team in processing the branch for review and merge.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Create a Fogbugz case to inform the documentation team about this minor update.</p>
-</div>
-<div class="paragraph">
-<p><span class="underline">Procedure for minor updates in GitHub:</span></p>
+<p><span class="underline">Procedure for minute updates in GitHub:</span></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -243,7 +240,7 @@
 <p>Goto the <strong>Pull Request</strong> and assign it to documentation team member.</p>
 </li>
 <li>
-<p>After the documentation team has reviewed and merged the changes into the main branch, close the Fogbugz case.</p>
+<p>After the documentation team has reviewed and merged the changes into the main branch, close the FogBugz case.</p>
 </li>
 </ol>
 </div>
@@ -251,7 +248,7 @@
 <div class="sect2">
 <h3 id="_documentation_team">Documentation Team</h3>
 <div class="paragraph">
-<p>The documentation is responsible for</p>
+<p>The documentation team is responsible for:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -259,7 +256,7 @@
 <p>Updating the documentation according the Fogbugz cases created by the Product Owners.</p>
 </li>
 <li>
-<p>Work on major updates (conver input file to asciidoc format), commit changes and assign pull request for review.</p>
+<p>Work on major updates (convert input file to asciidoc format), commit changes and assign pull request for review.</p>
 </li>
 </ul>
 </div>
@@ -267,23 +264,23 @@
 <div class="sect2">
 <h3 id="_significant_changes_to_document_folder_structure_under_development">Significant changes to document folder structure (Under Development)</h3>
 <div class="paragraph">
-<p>Wolf will lend his support on creating macros to:</p>
+<p>Wolf Wadehn will lend his support on creating macros:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>set up new base structures for new documents by simple text files.</p>
+<p>Set up new base structures for new documents by simple text files.</p>
 </li>
 <li>
-<p>restructure documents (move folders and pictures).</p>
+<p>Restructure documents (move folders and pictures).</p>
 </li>
 <li>
-<p>convert existing lengthy word documents via pandoc.</p>
+<p>Convert existing lengthy word documents via pandoc.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Feel free to contact Wolf to avoid a lot of manual labor.</p>
+<p>Feel free to contact Wolf Wadehn to avoid a lot of manual labor.</p>
 </div>
 </div>
 </div>
@@ -293,28 +290,28 @@
                 </div>
                 <div id="site-toc-holder">
                     <aside id="site-toc">
-  <h3>Contents</h3>
-  <ul>
-    <li level="1">
-      <a href="#_workflow_for_collaboration_with_documentation">Workflow for collaboration with documentation</a>
-    </li>
-    <li level="2">
-      <a href="#_product_owners">Product Owners</a>
-    </li>
-    <li level="2">
-      <a href="#_documentation_team">Documentation Team</a>
-    </li>
-    <li level="2">
-      <a href="#_significant_changes_to_document_folder_structure_under_development">Significant changes to document folder structure (Under Development)</a>
-    </li>
-  </ul>
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_workflow_for_collaboration_with_documentation">Workflow for collaboration with documentation</a>
+  </li>
+  <li level="2">
+   <a href="#_product_owners">Product Owners</a>
+  </li>
+  <li level="2">
+   <a href="#_documentation_team">Documentation Team</a>
+  </li>
+  <li level="2">
+   <a href="#_significant_changes_to_document_folder_structure_under_development">Significant changes to document folder structure (Under Development)</a>
+  </li>
+ </ul>
 </aside>
 
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="index.html">Workflow</a></span>
-  <span class="next"><a href="analyze.html">Analyze</a></span>
+ <span class="prev"><a href="index.html">Workflow</a></span>
+ <span class="next"><a href="analyze.html">Analyze</a></span>
 </nav>
 
         </div>

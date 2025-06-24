@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <title>Documentation</title>
 </head>
 <body id="site-body" onload="sLoaded()">
@@ -20,126 +21,125 @@
     <div id="site-main">
         <nav id="site-nav">
             <div class="treesite">
-  <ul>
-    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
-    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importcomponents.html">Importing bend and cell components</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/fluxmetacaminterface.html">Flux-MetaCAM interface</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../tools/index.html">Tools</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
-        <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
-        <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
-        <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
-        <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
-        <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../technotes/ra/index.html">RightAngle</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a class="active" href="index.html">Documentation</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="asciidoc/attributes.html">Attributes</a></li>
+     </ul>
     </li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../flux/index.html">Flux Guidelines</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
-        <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
-        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
-        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
-        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="software/tools/index.html">Tools</a></li>
+     </ul>
     </li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../technotes/index.html">Technical Notes</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/importcomponents.html">Importing bend and cell components</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../technotes/ra/index.html">RightAngle</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
-            <li><button class="tree blank"></button><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
-          </ul>
-        </li>
-        <li><button class="tree blank"></button><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
     </li>
+    <li><button class="tree blank"></button><a href="flavoring.html">Flavoring</a></li>
     <li>
-      <button class="tree open"></button>
-      <a class="active" href="index.html">Documentation</a>
-      <ul>
-        <li>
-          <button class="tree closed"></button>
-          <a href="asciidoc/index.html">Bento tool</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="asciidoc/bento.html">Structure</a></li>
-            <li><button class="tree blank"></button><a href="asciidoc/syntax.html">Syntax</a></li>
-            <li><button class="tree blank"></button><a href="asciidoc/attributes.html">Attributes</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="software/index.html">Software</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="software/softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="software/prerequisites.html">Installation</a></li>
-            <li><button class="tree blank"></button><a href="software/git.html">Git</a></li>
-            <li><button class="tree blank"></button><a href="software/environmentvariables.html">Environment Variable</a></li>
-            <li><button class="tree blank"></button><a href="software/tools/index.html">Tools</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="workflow/index.html">Workflow</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="workflow/roles.html">Roles</a></li>
-            <li><button class="tree blank"></button><a href="workflow/analyze.html">Analyze</a></li>
-            <li><button class="tree blank"></button><a href="workflow/edit.html">Edit</a></li>
-            <li><button class="tree blank"></button><a href="workflow/proofreading.html">Proofread</a></li>
-            <li><button class="tree blank"></button><a href="workflow/approve.html">Pre-Publish</a></li>
-            <li><button class="tree blank"></button><a href="workflow/publish.html">Publish</a></li>
-            <li><button class="tree blank"></button><a href="workflow/release.html">Release cycle</a></li>
-            <li><button class="tree blank"></button><a href="workflow/checklist.html">Checklist for Documenters</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="translation/index.html">Translation</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="translation/deltatranslation.html">General process</a></li>
-            <li><button class="tree blank"></button><a href="translation/anchor.html">Anchor points</a></li>
-            <li><button class="tree blank"></button><a href="translation/generate/index.html">BT diff generation</a></li>
-            <li><button class="tree blank"></button><a href="translation/edit/index.html">BT translate</a></li>
-            <li><button class="tree blank"></button><a href="translation/btapply/index.html">BT apply changes</a></li>
-            <li><button class="tree blank"></button><a href="translation/order/index.html">Order at Seprotec</a></li>
-          </ul>
-        </li>
-        <li><button class="tree blank"></button><a href="flavoring.html">Flavoring</a></li>
-        <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
     </li>
-  </ul>
+    <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
 </div>
 
         </nav>
         <div id="site-nav-right">
             <nav id="site-crumb">
-  <div>
-    <button>
-      <img src="../res/home.png">
-    </button>
-  </div>
-  <div>
-    <a href="index.html">Documentation</a>
-  </div>
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">Documentation</a>
+ </div>
 </nav>
 
             <div id="site-crumb-below">
@@ -149,29 +149,29 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Documentation team supports the creation of product documentation</p>
+<p>The Documentation team provides support for the creation of product documentation.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>The Documentation needs is based on the input of the technical experts (see <a href="workflow\roles.html">roles</a> )</p>
+<p>Documentation requirements are defined based on the input from the technical experts (see <a href="workflow\roles.html">roles</a>).</p>
 </li>
 <li>
-<p>its based on a FogbugZ workflow (see <a href="workflow\analyze.html">FogbugZ</a>)</p>
+<p>The process follows a FogBugz driven workflow (see <a href="workflow\analyze.html">FogBugz</a>).</p>
 </li>
 <li>
-<p>See the complete workflow (see <a href="workflow\index.html">Workflow</a>)</p>
+<p>For an overview of the complete documentation process, refer to the workflow summary (see <a href="workflow\index.html">Workflow</a>).</p>
 </li>
 <li>
-<p>The base documentation gets translated (see <a href="translation\index.html">Translation</a>). With each version we need to identify the difference between the new and the previous version. This is dode vith the BookTool.</p>
+<p>The base documentation is translated (see <a href="translation\index.html">Translation</a>). With each new version, differences from the previous version must be identified. This is handled using the BookTool.</p>
 </li>
 <li>
-<p>The relevant chapters of FluxBook are combined and a customer specific theming is added (<a href="flavoring\index.html">Flavoring</a>)</p>
+<p>Relevant chapters from the FluxBook are compiled, and customer-specific theming is applied (see <a href="flavoring.html">Flavoring</a>).</p>
 </li>
 <li>
-<p>A word or a sentence could often be translated in different ways. In case the documentaion refers to text elements of the HMI it is important to state exactly the same wording of the HMI. This is done by <a href="citations.html">Citations</a></p>
+<p>Words or phrases may have multiple translation options. When referencing HMI text elements, it is essential to use the exact wording as shown in the HMI. This consistency is ensured through the use of <a href="citations.html">Citations</a>.</p>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>
@@ -181,13 +181,13 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The Render-online manual always provides the latest <strong>official released version</strong> of a Document</p>
+<p>The <strong>official released version</strong> of all the documents produced at TMM are listed below in <strong>Documentation Index</strong> topic.</p>
 </li>
 <li>
-<p>The Sharepoint <strong>Manuals - Documents</strong> folder provides the latest <strong>main branch</strong> of a Document</p>
+<p>The Sharepoint site <a href="https://trumpf.sharepoint.com/sites/tinc/manuals/shared%20documents/forms/allitems.aspx"><strong>Manuals - Documents</strong></a> folder provides the latest content that reflects the <strong>main branch</strong> of a document.</p>
 </li>
 <li>
-<p>The Sharepoint <strong>Manuals - Proofread</strong> folder provides full or fragments of documents to proof read</p>
+<p>The Sharepoint site <a href="https://trumpf.sharepoint.com/sites/tinc/manuals/proofread/forms/allitems.aspx"><strong>Manuals - Proofread</strong></a> folder provides full or fragments of documents to review.</p>
 </li>
 </ol>
 </div>
@@ -216,50 +216,50 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Flux</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/FluxBook">FluxBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/FluxHTML">FluxHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/fluxbook">FluxBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/fluxhtml">FluxHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fluxbook-en.onrender.com">fluxbook-en</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/PixBook">PixBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/PixHTML">PixHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/pixbook">PixBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/pixhtml">PixHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://pixbook.onrender.com">pixbook</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Praxis</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/PraxisBook">PraxisBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/PraxisHTML">PraxisHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/praxisbook">PraxisBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/praxishtml">PraxisHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://praxisbook-en.onrender.com">praxisbook-en</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Praxis (Old)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/OldPraxisBook">OldPraxisBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/OldPraxisHTML">OldPraxisHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/oldpraxisbook">OldPraxisBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/oldpraxishtml">OldPraxisHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://old-praxisbook-en.onrender.com">old-praxisbook-en</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RA</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/RABook">RABook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/RAHTML">RAHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/rabook">RABook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/rahtml">RAHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://rabook-en.onrender.com">rabook-en</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">RA (Old)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/OldRABook">OldRABook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/OldRAHTML">OldRAHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/oldrabook">OldRABook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/oldrahtml">OldRAHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://old-rabook-en.onrender.com">old-rabook-en</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vulcan</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/VulcanBook">VulcanBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/VulcanHTML">VulcanHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/vulcanbook">VulcanBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/vulcanhtml">VulcanHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vulcanbook-en.onrender.com">vulcanbook-en</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vulcan (Old)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/OldVulcanBook">OldVulcanBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/OldVulcanHTML">OldVulcanHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/oldvulcanbook">OldVulcanBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/oldvulcanhtml">OldVulcanHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://old-vulcanbook-en.onrender.com">old-vulcanbook-en</a></p></td>
 </tr>
 </tbody>
@@ -285,26 +285,26 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Flux SDK documentation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/FluxSDKBook">FluxSDKBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/FluxSDKHTML">FluxSDKBookHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/fluxsdkbook">FluxSDKBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/fluxsdkhtml">FluxSDKBookHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://flux-sdk.onrender.com">flux-sdk</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Praxis SDK documentation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/PraxisSDKBook">PraxisSDKBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/PraxisSDKHTML">PraxisSDKHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/praxissdkbook">PraxisSDKBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/praxissdkhtml">PraxisSDKHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://praxis-sdk.onrender.com">praxis-sdk</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Developer Documentation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/DevBook">DevBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/DevHTML">DevHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/devbook">DevBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/devhtml">DevHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://metamation-devbook.onrender.com">metamation-devbook</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Academy'23 lectures</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/AcademyBook">AcademyBook</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/TMMDoc/AcademyHTML">AcademyHTML</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/metamation/academybook">AcademyBook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tmmdoc/academyhtml">AcademyHTML</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://academy23.onrender.com">academy23</a></p></td>
 </tr>
 </tbody>
@@ -317,28 +317,28 @@
                 </div>
                 <div id="site-toc-holder">
                     <aside id="site-toc">
-  <h3>Contents</h3>
-  <ul>
-    <li level="1">
-      <a href="#_hosting_of_the_html_documents">Hosting of  the HTML documents</a>
-    </li>
-    <li level="1">
-      <a href="#_documentation_index">Documentation Index</a>
-    </li>
-    <li level="2">
-      <a href="#_product_manuals">Product manuals</a>
-    </li>
-    <li level="2">
-      <a href="#_sdk_documentation_knowledge_bases">SDK Documentation / Knowledge bases</a>
-    </li>
-  </ul>
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_hosting_of_the_html_documents">Hosting of  the HTML documents</a>
+  </li>
+  <li level="1">
+   <a href="#_documentation_index">Documentation Index</a>
+  </li>
+  <li level="2">
+   <a href="#_product_manuals">Product manuals</a>
+  </li>
+  <li level="2">
+   <a href="#_sdk_documentation_knowledge_bases">SDK Documentation / Knowledge bases</a>
+  </li>
+ </ul>
 </aside>
 
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></span>
-  <span class="next"><a href="asciidoc/index.html">Bento tool</a></span>
+ <span class="prev"><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></span>
+ <span class="next"><a href="asciidoc/index.html">Bento tool</a></span>
 </nav>
 
         </div>

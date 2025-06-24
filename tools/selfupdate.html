@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../res/tree.css">
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <title>Self-Updating Applications</title>
 </head>
 <body id="site-body" onload="sLoaded()">
@@ -20,130 +21,129 @@
     <div id="site-main">
         <nav id="site-nav">
             <div class="treesite">
-  <ul>
-    <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
-    <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree open"></button>
+   <a href="index.html">Tools</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a class="active" href="selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importcomponents.html">Importing bend and cell components</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/fluxmetacaminterface.html">Flux-MetaCAM interface</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
     <li>
-      <button class="tree open"></button>
-      <a href="index.html">Tools</a>
-      <ul>
-        <li><button class="tree blank"></button><a href="codeformatting.html">Code Formatting</a></li>
-        <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
-        <li><button class="tree blank"></button><a href="assignments.html">Assignments</a></li>
-        <li><button class="tree blank"></button><a href="testsandbox.html">Testing with Windows Sandbox</a></li>
-        <li><button class="tree blank"></button><a href="singlefileapps.html">Single Binary Applications</a></li>
-        <li><button class="tree blank"></button><a class="active" href="selfupdate.html">Self-Updating Applications</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../technotes/ra/index.html">RightAngle</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
     </li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../flux/index.html">Flux Guidelines</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
-        <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
-        <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
-        <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
-        <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
     </li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../technotes/index.html">Technical Notes</a>
-      <ul class="hide">
-        <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/importcomponents.html">Importing bend and cell components</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/flux-metacaminterface.html">Flux-MetaCAM interface</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
-        <li><button class="tree blank"></button><a href="../technotes/createfoldtool.html">Creating fold tool .tdata file</a></li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../technotes/ra/index.html">RightAngle</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
-            <li><button class="tree blank"></button><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
-          </ul>
-        </li>
-        <li><button class="tree blank"></button><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
     </li>
+    <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Flavoring</a></li>
     <li>
-      <button class="tree closed"></button>
-      <a href="../documentation/index.html">Documentation</a>
-      <ul class="hide">
-        <li>
-          <button class="tree closed"></button>
-          <a href="../documentation/asciidoc/index.html">Bento tool</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/asciidoc/syntax.html">Syntax</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../documentation/software/index.html">Software</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../documentation/workflow/index.html">Workflow</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/proofreading.html">Proofread</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
-          </ul>
-        </li>
-        <li>
-          <button class="tree closed"></button>
-          <a href="../documentation/translation/index.html">Translation</a>
-          <ul class="hide">
-            <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/anchor.html">Anchor points</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT diff generation</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT translate</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT apply changes</a></li>
-            <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
-          </ul>
-        </li>
-        <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Flavoring</a></li>
-        <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
-      </ul>
+     <button class="tree closed"></button>
+     <a href="../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
     </li>
-  </ul>
+    <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
 </div>
 
         </nav>
         <div id="site-nav-right">
             <nav id="site-crumb">
-  <div>
-    <button>
-      <img src="../res/home.png">
-    </button>
-  </div>
-  <div>
-    <a href="index.html">Tools</a>
-  </div>
-  <div>/</div>
-  <div>
-    <a href="selfupdate.html">Self-Updating Applications</a>
-  </div>
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">Tools</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="selfupdate.html">Self-Updating Applications</a>
+ </div>
 </nav>
 
             <div id="site-crumb-below">
@@ -192,7 +192,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Obtain a publish registry credential from <a href="https://xlate.azurewebsites.net/Identity/Account/Register?returnUrl=%2F">here</a>.</p>
+<p>Obtain a publish registry credential from <a href="https://xlate.azurewebsites.net/identity/account/register?returnurl=%2f">here</a>.</p>
 </li>
 <li>
 <p><a href="#_creating_a_onedrive_download_url">Creating a OneDrive download URL</a><sup class="footnote" id="_footnote_download-link">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
@@ -231,7 +231,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Use the existing publish credential or create a new on using this <a href="https://xlate.azurewebsites.net/Identity/Account/Register">Register link</a>. Application is published on successful sign-in.<br>
+<p>Use the existing publish credential or create a new on using this <a href="https://xlate.azurewebsites.net/identity/account/register">Register link</a>. Application is published on successful sign-in.<br>
 <strong>Note:</strong> The user-name is the registration email address.</p>
 </div>
 <div class="imageblock">
@@ -345,34 +345,34 @@ Copying this to a browser would immediately start the download as shown in the i
                 </div>
                 <div id="site-toc-holder">
                     <aside id="site-toc">
-  <h3>Contents</h3>
-  <ul>
-    <li level="1">
-      <a href="#_introduction">Introduction</a>
-    </li>
-    <li level="2">
-      <a href="#_self_update_demo">Self-update demo</a>
-    </li>
-    <li level="2">
-      <a href="#_the_update_mechanism">The update mechanism</a>
-    </li>
-    <li level="2">
-      <a href="#_publishing_a_new_build">Publishing a new build</a>
-    </li>
-    <li level="2">
-      <a href="#_plugging_the_update_mechanism">Plugging the update mechanism</a>
-    </li>
-    <li level="2">
-      <a href="#_creating_a_onedrive_download_url">Creating a OneDrive download URL</a>
-    </li>
-  </ul>
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_introduction">Introduction</a>
+  </li>
+  <li level="2">
+   <a href="#_self_update_demo">Self-update demo</a>
+  </li>
+  <li level="2">
+   <a href="#_the_update_mechanism">The update mechanism</a>
+  </li>
+  <li level="2">
+   <a href="#_publishing_a_new_build">Publishing a new build</a>
+  </li>
+  <li level="2">
+   <a href="#_plugging_the_update_mechanism">Plugging the update mechanism</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_a_onedrive_download_url">Creating a OneDrive download URL</a>
+  </li>
+ </ul>
 </aside>
 
                 </div>
             </div>
             <nav class="pagination">
-  <span class="prev"><a href="singlefileapps.html">Single Binary Applications</a></span>
-  <span class="next"><a href="../flux/index.html">Flux Guidelines</a></span>
+ <span class="prev"><a href="singlefileapps.html">Single Binary Applications</a></span>
+ <span class="next"><a href="../flux/index.html">Flux Guidelines</a></span>
 </nav>
 
         </div>
