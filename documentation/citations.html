@@ -151,20 +151,50 @@
                     <article id="article">
                         <h1>Citations</h1>
 <div class="paragraph">
-<p>Citations are references between the manual and the program&#8217;s UI. A human language allows for a wide range of descriptions, particularly when translated, however it might be misleading if the terms do not match 1:1 between the UI and the manual.</p>
+<p>In general, software programs developed in TINC are available in 24 different
+languages. To facilitate the translation of the user interface (UI) and the
+document, a system of citations is used. This allows for a consistent reference
+between the document and the UI elements across all languages.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="img/setting.png" alt="setting"></span></p>
+<p>This citation system is based on the XLATE .json export, which contains all the
+phrases used in the UI. Each phrase has a unique <strong>ID</strong> that can be referenced in
+the documentation. When translating the documentation, these IDs are used to
+ensure that the correct phrases are linked to their corresponding UI elements.</p>
 </div>
 <div class="paragraph">
-<p>The original XLATE phrase should match especially after the translation word for word. The ID from the XLATE .json export needs to be included into the adoc file. Bento needs to filter out while translating into HTML.</p>
+<p>All the UI elements from the source code are exported to the
+<strong><a href="../technotes/xlate.html">Xlate</a></strong> database (internally named as <strong>translation
+tables</strong>).</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="img/setting_xlate.png" alt="setting xlate"></span></p>
+<p>To insert these IDs, the following syntax is used in the asciidoc file of the
+bento documentation:<br>
+<code>UI phrase</code>.</p>
 </div>
 <div class="paragraph">
-<div class="title">Example citing</div>
-<p><strong>{{SH.PickBox:Aperture size for picking (pixels)}}</strong> - This adjustment specifies how close to an object you must click to select it. If 10 pixels are selected, an object must be clicked within an area of 10 pixels.</p>
+<p>While compiling a document, the Bento tool will replace these
+syntaxes with the actual phrases from the XLATE .json file.</p>
+</div>
+<div class="paragraph">
+<p>To achieve this, Xlate .json files are converted into .txt format for each
+product across all supported languages, and then stored in their corresponding
+documentation repositories.</p>
+</div>
+<div class="paragraph">
+<p>The following image illustrates how to insert the syntax in the documentation:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/fluxsettings.png" alt="Flux environment settings" width="695">
+</div>
+<div class="title">Figure 1. Flux environment settings</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/code.png" alt="Document code" width="700">
+</div>
+<div class="title">Figure 2. Asciidoc file with UI syntax</div>
 </div>
 
                     </article>
