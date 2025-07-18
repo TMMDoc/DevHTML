@@ -153,190 +153,221 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Flavoring is the process to modify a product to the identity of a sales channel (Trumpf, Lantek, JFY). Bento has a set of functionality to perform this tasks by conditional compilation. The flavoring is mainly defined by attributes set in the manifest.txt file.</p>
+<p>At TMM, we create documents for a set of products that are used by different
+customers within TRUMPF. Each customer has their own identity, which is
+reflected in the product name, the logo, and other branding elements. To support
+this, we use a process called <strong>Flavoring</strong>.</p>
 </div>
-<div class="admonitionblock tip">
+<div class="paragraph">
+<p>Flavoring is the process of adapting a core document into a customer-specific
+version—such as for Trumpf, JFY, or Lantek. Flavoring can be apply to entire
+product documents (e.g., Praxis transformed to JFY+) or modular extractions,
+where components are split into tailored modules (e.g., Flux transformed into
+FluxCut, FluxBend, FluxFold).</p>
+</div>
+<div class="paragraph">
+<p><strong><a href="asciidoc/bento.html">Bento</a></strong> tool has a set of functionality to perform these
+tasks using substitutional and conditional compilation. The flavoring is mainly
+defined by <a href="asciidoc/attributes.html">attributes</a> in the <em>manifest.txt</em> and
+<em>contents.txt</em> file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_substitutional_compilation">Substitutional compilation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Below is a typical example of substitutional compilation in <em>manifest.txt</em> for
+<strong>Flux reference manual</strong> to create <strong>TecZone reference manual</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">FLAVORS=FLUX, JFY, TRUMPF <i class="conum" data-value="1"></i><b>(1)</b>
+
+TITLE=Flux Reference Manual <i class="conum" data-value="2"></i><b>(2)</b>
+OUTDIR=../FluxHTML
+LOGO=img/logo.png,103,34
+COPYRIGHT=Copyright &amp;copy; 2025 by Metamation. All rights reserved.
+FAVICON=img/flux-icon.png
+
+ATTRIBUTE=APPNAME:Flux <i class="conum" data-value="3"></i><b>(3)</b>
+ATTRIBUTE=BENDAPP:Flux
+ATTRIBUTE=FOLDAPP:Flux
+ATTRIBUTE=CUTAPP:Flux
+ATTRIBUTE=PRAXISAPP=Praxis
+ATTRIBUTE=BRAND:TRUMPF
+
+#if TRUMPF <i class="conum" data-value="4"></i><b>(4)</b>
+  TITLE=TecZone Bend Reference Manual
+  OutDIR=../BoostHTML
+  COPYRIGHT=Copyright &amp;copy; 2025 by TRUMPF SE + Co.KG. All rights reserved.
+
+  ATTRIBUTE=APPNAME:TecZone
+  ATTRIBUTE=BENDAPP:TecZone Bend
+  ATTRIBUTE=FOLDAPP:TecZone Fold
+  ATTRIBUTE=CUTAPP:TecZone Cut
+  ATTRIBUTE=PRAXISAPP=HomeZone
+  ATTRIBUTE=BRAND:TRUMPF
+#endif</code></pre>
+</div>
+</div>
+<div class="colist arabic">
 <table>
 <tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-Refer to the Bento documentation for a general description and the command reference
-</td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The FLAVORS line defines the available flavors for this document. Each flavor
+can have its own set of attributes and files, which are used to customize
+the document for different customers. The first flavor name in this line is
+the default flavor.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The second section defines the title of the document and other metadata.
+The OUTDIR specifies where the generated HTML files will be placed, and LOGO
+provides the path to the logo image. COPYRIGHT and FAVICON are also defined
+here.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The ATTRIBUTE section define substitution attributes that replace <strong>product</strong> names
+within the document. These attributes can be used to customize the content
+for different flavors, such as <strong>Flux or TecZone</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>#if TRUMPF</code> conditional block allows for specific attributes and content
+to be included only when the TRUMPF flavor is being processed. This is
+useful for tailoring the document to the specific needs of TRUMPF customers.</td>
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conditional_compilation">Conditional compilation</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>A typical manifest.txt for a Metamation product looks like (shortened to the significant elements):</p>
+<p>Below is a typical example of conditional compilation in <em>contents.txt</em> for a
+<strong>Flux reference manual</strong> to create <strong>TecZone Cut reference manual</strong>:</p>
 </div>
-<div class="literalblock">
+<div class="paragraph">
+<p>On the left is the files or folder names and on the right is the conditional
+attributes.</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<pre>FLAVORS=FLUX, JFY, TRUMPF, BOOST   -&gt; The flavor alternatives</pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">[Intro] <i class="conum" data-value="1"></i><b>(1)</b>
+[CAD]
+[Cut]           #ifdef TRUMPF <i class="conum" data-value="2"></i><b>(2)</b>
+[Bend]          #ifndef TRUMPF
+[BCell]         #ifndef TRUMPF
+[Fold]          #ifndef TRUMPF
+[Settings]      #ifdef TRUMPF
+[Database]
+[Report]
+[Appendix]</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Defines the content for the document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>#ifdef TRUMPF</code> &amp; <code>#ifndef TRUMPF</code> directive allows for specific sections
+to be included or excluded based on the flavor being processed. In this case,
+the <strong>Cut</strong> section is included only for the TRUMPF flavor, while the <strong>Bend</strong>,
+<strong>BCell</strong>, and <strong>Fold</strong> sections are excluded.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exchange_files_for_a_flavor">Exchange files for a flavor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to the manifest file, each flavor can have its own set of files
+that are used to customize the document. These files can include:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Asciidoc files (.adoc)</p>
+</li>
+<li>
+<p>Images (.png)</p>
+</li>
+<li>
+<p>CSS files (.css)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To enable this, the naming of the files must have the flavor name at the
+beginning as shown below:</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<pre>ATTRIBUTE=APPNAME:Flux          -&gt; Substitution Attributes
-ATTRIBUTE=CUTAPP:Flux
-ATTRIBUTE=BENDAPP:Flux
-ATTRIBUTE=MIS:Praxis</pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">Impressum.adoc
+TRUMPF.Impressum.adoc</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>#if TRUMPF | BOOST              -&gt; if condition based on Flavor
-ATTRIBUTE=APPNAME:TecZone       -&gt; replace Attributes for this Flavor
-ATTRIBUTE=CUTAPP:TecZone Laser
-ATTRIBUTE=BENDAPP:TecZone Bend
-ATTRIBUTE=MIS:Praxis
-  #if BOOST
-  ATTRIBUTE=integrated          -&gt; Conditional Attributes
-  #endif
-#endif</pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">logo.png
+TRUMPF.logo.png</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Site.css
+TRUMPF.Site.css</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This option is highly essential for images when creating a flavored document.
+The images for TRUMPF flavor can be placed in the same <strong>img</strong> folder. <strong>Bento</strong>
+will identify the images based on the flavor name and use the appropriate image
+for the TRUMPF document.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conditional_attributes_in_asciidoc_file">Conditional attributes in asciidoc file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Conditional attributes can also be used to include or exclude
+content<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> based on the current flavor. This is done using the
+<code>ifdef</code> directive in the Asciidoc files. For example, to include content only
+for the TRUMPF flavor, you can use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs"> ifdef::TRUMPF[]
+ The text here is included only in the TRUMPF flavor of the product and describes
+ how TecZone module is used.
+ endif::[]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the <code>ifndef</code> directive to exclude content for a specific flavor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs"> ifndef::TRUMPF[]
+ The text here is included in all flavors except for the TRUMPF flavor.
+ endif::[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
 <hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_flavors">FLAVORS</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>All possible flavors are the first line of manifest.txt.</p>
-</div>
-<div class="paragraph">
-<p>FLAVORS is used for:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Control attributes within the manifest file itself</p>
-</li>
-<li>
-<p>Add or exchange files</p>
-<div class="literalblock">
-<div class="content">
-<pre>Impressum.adoc             &lt;-- Used for FLUX, TRUMPF flavors
-JFY.Impressum.adoc         &lt;-- Used only for JFY flavor</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Control alternative bitmaps</p>
-<div class="literalblock">
-<div class="content">
-<pre>[img]
-logo.png               &lt;-- Used for FLUX flavor
-TRUMPF.logo.png        &lt;-- Used for TRUMPF flavor</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Define an alternative CSS files</p>
-<div class="literalblock">
-<div class="content">
-<pre>JFY.Site.css          &lt;-- Custom site CSS (framing style)</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_substitution_attributes_attribute">Substitution Attributes (ATTRIBUTE= &#8230;&#8203; : &#8230;&#8203; )</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Within Metamation we call all technology modules Flux, Trumpf distinguishes the modules like TecZone Bend etc.</p>
-</div>
-<div class="paragraph">
-<p>The Substitution Attributes replace the product name within ADoc files</p>
-</div>
-<div class="sect2">
-<h3 id="_needed_attributes_for_fluxbook">Needed attributes for FluxBook:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>APPNAME: the general product name for Flux</p>
-</li>
-<li>
-<p>CUTAPP, BENDAPP, FOLDAPP: The specific module names for the technologies</p>
-</li>
-<li>
-<p>MIS: The part management system like <strong>Praxis</strong></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_needed_attributes_for_praxis">Needed attributes for Praxis:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>APPNAME: the general product name for Praxis</p>
-</li>
-<li>
-<p>FLUXAPP: Branded name of Flux</p>
-</li>
-<li>
-<p>FLUXDOCPATH: Path for referencing Flux</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_conditional_attributes_attribute">Conditional Attributes (ATTRIBUTE=&#8230;&#8203;)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Used for:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Control if documents or subfolders are considerd within contents.txt</p>
-<div class="literalblock">
-<div class="content">
-<pre>Installation        #ifndef INTEGRATED
-[Settings]
-PraxisLink          #ifdef FLUX</pre>
-</div>
-</div>
-</li>
-<li>
-<p>do conditional paragraphs in ADocs</p>
-<div class="literalblock">
-<div class="content">
-<pre>ifdef::INTEGRATED[]
-The text here is included only in the INTEGRATED flavor of the product and describes how TecZone is called from HomeZone
-endif::[]</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_needed_attributes_for_fluxbook_2">Needed attributes for FluxBook:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>INTEGRATED: removes chapters like installation or part loading in case Flux is integrated in Praxis</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_needed_attributes_for_praxis_2">Needed attributes for Praxis:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>none</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. This content can a paragraph, table, images or an entire section in a document.
 </div>
 </div>
 
@@ -347,25 +378,16 @@ endif::[]</pre>
  <h3>Contents</h3>
  <ul>
   <li level="1">
-   <a href="#_flavors">FLAVORS</a>
+   <a href="#_substitutional_compilation">Substitutional compilation</a>
   </li>
   <li level="1">
-   <a href="#_substitution_attributes_attribute">Substitution Attributes (ATTRIBUTE= &#8230;&#8203; : &#8230;&#8203; )</a>
-  </li>
-  <li level="2">
-   <a href="#_needed_attributes_for_fluxbook">Needed attributes for FluxBook:</a>
-  </li>
-  <li level="2">
-   <a href="#_needed_attributes_for_praxis">Needed attributes for Praxis:</a>
+   <a href="#_conditional_compilation">Conditional compilation</a>
   </li>
   <li level="1">
-   <a href="#_conditional_attributes_attribute">Conditional Attributes (ATTRIBUTE=&#8230;&#8203;)</a>
+   <a href="#_exchange_files_for_a_flavor">Exchange files for a flavor</a>
   </li>
-  <li level="2">
-   <a href="#_needed_attributes_for_fluxbook_2">Needed attributes for FluxBook:</a>
-  </li>
-  <li level="2">
-   <a href="#_needed_attributes_for_praxis_2">Needed attributes for Praxis:</a>
+  <li level="1">
+   <a href="#_conditional_attributes_in_asciidoc_file">Conditional attributes in asciidoc file</a>
   </li>
  </ul>
 </aside>
@@ -402,6 +424,12 @@ endif::[]</pre>
     <script src="../res/files.js"></script>
     <script src="../res/site.js"></script>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
 </body>
 </html>

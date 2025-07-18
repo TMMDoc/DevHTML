@@ -254,31 +254,37 @@ the width to a proportionate value (based on the aspect-ratio of your logo image
 <div class="ulist">
 <ul>
 <li>
-<p>The <strong>ICON</strong> setting specifies the <a href="https://en.wikipedia.org/wiki/favicon" target="_blank" rel="noopener">Favicon</a> used by the webpage. The <code>.ico</code> file path should be relative to the site root so that all pages can reference it correctly.</p>
+<p>The <strong>ICON</strong> setting specifies the <a href="https://en.wikipedia.org/wiki/favicon" target="_blank" rel="noopener">Favicon</a>
+used by the webpage. The <code>.ico</code> file path should be relative to the site root so that
+all pages can reference it correctly.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>By default, the path is set to <strong>img/favicon.ico</strong>.</p>
 </li>
 <li>
-<p>The images illustrate the recommended dimensions of the <code>.ico</code> file and how the favicon appears in the browser tab.</p>
+<p>The images illustrate the recommended dimensions of the <code>.ico</code> file and how
+the favicon appears in the browser tab.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Each folder should contain an <strong>index.adoc</strong> file that provides the <em>root content</em> for that folder.
-Typically, this is a short introduction to the topics being discussed in this section of the
-documentation. You could also include here links to the pages in this section.</p>
+<p>Each folder should contain an <strong>index.adoc</strong> file that provides the <em>root
+content</em> for that folder. Typically, this is a short introduction to the
+topics being discussed in this section of the documentation. You could also
+include here links to the pages in this section.</p>
 </li>
 <li>
 <p><span class="image right"><img src="img/bento2.png" alt="bento2" width="254"></span>
-Each folder also contains a <strong>contents.txt</strong> file. This file provides the <em>order</em> in which the
-<strong>.adoc</strong> files in that folder are listed (in the Content Tree on the left). This file simply lists
-each source .adoc file, and each sub-folder that should be considered. Files are represented with
-the names (without the .adoc extension), while folders are represented with names enclosed in square
-brackets. For example, below is a typical contents.txt file that is part of the <strong>Fold CAM</strong> folder,
-and the image on the right shows how it renders in the Content Tree.</p>
+Each folder also contains a <strong>contents.txt</strong> file. This file provides the
+<em>order</em> in which the <strong>.adoc</strong> files in that folder are listed (in the Content
+Tree on the left). This file simply lists each source .adoc file, and each
+sub-folder that should be considered. Files are represented with the names
+(without the .adoc extension), while folders are represented with names
+enclosed in square brackets. For example, below is a typical contents.txt file
+that is part of the <strong>Fold CAM</strong> folder, and the image on the right shows how it
+renders in the Content Tree.</p>
 </li>
 </ul>
 </div>
@@ -292,16 +298,18 @@ FoldSummary</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, there are content files with names like <strong>SwitchingToFold.adoc</strong>, <strong>FoldView.adoc</strong>
-etc. And there is a subfolder called <strong>Editing</strong>. As you can see, the order of files and
-sub-folders in the contents.txt file specifies how the content tree is generated.</p>
+<p>In this example, there are content files with names like <strong>SwitchingToFold.adoc</strong>,
+<strong>FoldView.adoc</strong> etc. And there is a subfolder called <strong>Editing</strong>. As you can see,
+the order of files and sub-folders in the contents.txt file specifies how the
+content tree is generated.</p>
 </div>
 <div class="sect2">
 <h3 id="_images">Images</h3>
 <div class="paragraph">
-<p>The AsciiDoc file can <em>references</em> images, and the convention is to place these in an <strong>img</strong>
-sub-folder inside that folder. Then, you should use the <strong>:imagesdir:</strong> variable to point to the
-images. Thus a typical document would begin like this:</p>
+<p>The AsciiDoc file can <em>references</em> images, and the convention is to place these
+in an <strong>img</strong> sub-folder inside that folder. Then, you should use the
+<strong>:imagesdir:</strong> variable to point to the images. Thus a typical document would
+begin like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -321,15 +329,49 @@ image::welcome.png[Welcome, Width=224]</code></pre>
 <h2 id="_invoking_bento">Invoking Bento</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Bento takes a single command line parameter. If this is the name of a directory, then it
-picks up and compiles the project defined by the <strong>manifest.txt</strong> in that directory. If this
-parameter is a filename, then that is assumed to the be manifest file.</p>
+<p>Bento processes a single command-line argument. When the argument specifies a
+directory path, Bento searches for a manifest.txt file within that directory and
+initiates compilation based on its definitions. If the argument denotes a file
+name, Bento interprets it as the explicit manifest file to be used for project
+compilation.</p>
 </div>
 <div class="paragraph">
-<p>Any Bento manifest file must have a filename that ends with manifest.txt (like flux-manifest.txt,
-for example). This second form is used when there are multiple manifest files for some
-Bento content, each with different attributes, designed to compile different <em>flavors</em> of the
-documentation.</p>
+<p>Any Bento manifest file must have a filename that ends with manifest.txt (like
+flux-manifest.txt, for example). This second form is used when there are
+multiple manifest files for some Bento content, each with different attributes,
+designed to compile different <em>flavors</em> of the documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bento_commands">Bento commands</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To see a list of available bento commands type <code>bento help</code> in the command
+prompt window. You will see the bento version followed by the <strong>Compilation
+switches</strong> and the <strong>Operations</strong> commands.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Compilation switches:
+  &lt;no parameters&gt;       : compile project with default flavor
+  -flavor=FLUX          : set flavor to FLUX
+  -attribute=ATTR       : defines the conditional attribute ATTR
+  -attribute=KEY:VALUE  : defines the attribute KEY to VALUE
+  -rebuild              : force a complete rebuild (not incremental)
+  -uixlate              : looks up UI terms from the language string tables
+  -debuguixlate         : highlight every UI term in yellow
+  -language=FR          : sets uixlate language (default = EN)
+  -altlanguage=EN       : also includes second language translations in [Brackets]
+  -checkorphans         : check for orphaned pages &amp; images
+
+Operations:
+  remove Page1          : removes the Page1.adoc page
+  rename Page2 AltPage  : renames Page2.adoc to AltPage.adoc
+  move Page3 Folder     : moves Page3.adoc to specified Folder
+  pngcrush Folder       : optimizes PNG files in Folder (and subfolders)
+  pngcrush File.png     : optimizes specific PNG file</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -351,6 +393,9 @@ documentation.</p>
   </li>
   <li level="1">
    <a href="#_invoking_bento">Invoking Bento</a>
+  </li>
+  <li level="1">
+   <a href="#_bento_commands">Bento commands</a>
   </li>
  </ul>
 </aside>
