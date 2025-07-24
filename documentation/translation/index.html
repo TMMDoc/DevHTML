@@ -151,13 +151,85 @@
                     <article id="article">
                         <h1>Translation</h1>
 <div class="paragraph">
-<p>Trumpf software products are translated into 23 international languages.</p>
+<p>TINC software products are translated into 23 international languages.</p>
 </div>
 <div class="paragraph">
-<p>The following chart gives an overview of translation requirement for different Trumpf software products:</p>
+<p>The following chart gives an overview of translation requirement for different
+Trumpf software products:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="img/languages.png" alt="languages"></span></p>
+</div>
+<div class="paragraph">
+<p>There are two translation activities handled at TINC.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Translation of the UI elements used in the software supported by online
+<strong><a href="../../technotes/xlate.html">Xlate</a></strong> tool.</p>
+</li>
+<li>
+<p>Translation of the bento documentation which has UI elements embedded in the
+documents.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These translations are triggered at <strong>three months</strong> intervals for the Xlate UI
+elements and at <strong>six months</strong> intervals for the bento documentation. Translation
+activity is outsourced to a translation agency&#8201;&#8212;&#8201;<a href="https://seprotec.com/en/services/document-translation">Seprotec</a>.</p>
+</div>
+<div class="paragraph">
+<p>Xlate tool is used to introduce <a href="../citations.html">citations</a> in the bento
+documentation and these must exactly match the UI elements used in the actual
+software.</p>
+</div>
+<div class="paragraph">
+<p>For any new software product created at TINC, the initial version of the
+document is created in <strong>English</strong> and the entire asciidoc files are sent to the
+translation agency for translation into all the supported languages. The
+translated asciidoc files are then stored in the corresponding GitHub
+documentation repositories language wise.</p>
+</div>
+<div class="paragraph">
+<p>For the next translation cycle, the translation agency is provided with the diff
+between the initial version and the second version of the asciidoc files. This
+diff is extracted as a patch and the patch is send for translation. This saves
+the translation cost for the upcoming versions (by not translating the entire
+document every cycle). Once the patch is translated, it is inserted back into
+the second version of the corresponding language document repositories.</p>
+</div>
+<div class="paragraph">
+<p>From there, the bento tool is used to generate HTML files and published.</p>
+</div>
+<div class="paragraph">
+<p>The extraction and insertion of the patch is done using <strong>Book Tool</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Let us discuss the process in detail using the following topics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="deltatranslation.html">Delta translation</a></p>
+</li>
+<li>
+<p><a href="anchor.html">Anchor points</a></p>
+</li>
+<li>
+<p><a href="generate/index.html">Diff generation</a></p>
+</li>
+<li>
+<p><a href="edit/index.html">Edit the diff file</a></p>
+</li>
+<li>
+<p><a href="btapply/index.html">Apply the diff file</a></p>
+</li>
+<li>
+<p><a href="order/index.html">Order translation</a></p>
+</li>
+</ul>
 </div>
 
                     </article>
