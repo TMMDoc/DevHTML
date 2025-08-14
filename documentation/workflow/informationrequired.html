@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  <title>Pre-Publish</title>
+  <title>Information required for Documentation Team</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -104,10 +104,10 @@
       <li><button class="tree blank"></button><a href="analyze.html">Analyze</a></li>
       <li><button class="tree blank"></button><a href="edit.html">Edit</a></li>
       <li><button class="tree blank"></button><a href="review.html">Proofread</a></li>
-      <li><button class="tree blank"></button><a class="active" href="approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="approve.html">Pre-Publish</a></li>
       <li><button class="tree blank"></button><a href="publish.html">Publish</a></li>
       <li><button class="tree blank"></button><a href="release.html">Release cycle</a></li>
-      <li><button class="tree blank"></button><a href="informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a class="active" href="informationrequired.html">Information required for Documentation Team</a></li>
       <li><button class="tree blank"></button><a href="checklist.html">Checklist for Documenters</a></li>
      </ul>
     </li>
@@ -147,148 +147,74 @@
  </div>
  <div>/</div>
  <div>
-  <a href="approve.html">Pre-Publish</a>
+  <a href="informationrequired.html">Information required for Documentation Team</a>
  </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Pre-Publish</h1>
-<div class="sect1">
-<h2 id="_merge_pull_request">Merge Pull Request</h2>
-<div class="sectionbody">
+                        <h1>Information required for Documentation Team</h1>
 <div class="paragraph">
-<p>Once the pull request is approved, it should be merged the main branch.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To merge a pull request, go to the specific GitHub repository &#8594; Pull request page.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/pullrequest.png" alt="pullrequest">
-</div>
-</div>
-</li>
-<li>
-<p>Click <strong>Merge pull request</strong> and select <strong>Confirm merge</strong>.</p>
-<div class="imageblock">
-<div class="content">
-<img src="img/mergepullrequest.png" alt="mergepullrequest">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/confirmmerge.png" alt="confirmmerge">
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Ensure to resolve conflicts, if any.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_generate_html_files">Generate HTML Files</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Run Bento to compile AsciiDoc files and generate HTML files.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Ensure you pull the contents from remote main branch to your local main branch.
-</td>
-</tr>
-</table>
+<p>The main input channel for documentation team is creating a case in FogBugz.</p>
 </div>
 <div class="paragraph">
-<p>Following are the steps to generate the HTML files:</p>
+<p>When a case is assigned to the documentation team in FogBugz, the following
+information is vital to create a high-quality document:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>From your local Git folder, open Command Prompt and type <code>git br</code> to see list of all branches.</p>
+<p>Select the category of the case (feature, refinement, or bug), build release
+information, priority, and any relevant tags.</p>
 </li>
 <li>
-<p>Type <code>git sw main</code> to switch to the main branch.</p>
+<p>Attach any relevant documents and files.</p>
 </li>
 <li>
-<p>Type <code>git pull</code> to pull the latest content from the main branch.</p>
+<p>History of case requirement with context, purpose, and intended audience.</p>
 </li>
 <li>
-<p>Type <code>bento .</code> to generate HTML files.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Once HTML files are generated, commit and push the files to the relevant HTML GitHub repository.</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>If it is a new document, create a new URL by following the steps in <a href="../workflow/publish.html">Publish</a>.</p>
+<p>Localization needs (flavoring and translation).</p>
 </li>
 <li>
-<p>If it is an existing document, it will deploy automatically.</p>
+<p>Find where to insert/create the context.</p>
 </li>
-</ol>
+<li>
+<p>Conduct impact analysis to find what impact this new context will have on
+existing document.</p>
+</li>
+<li>
+<p>Quality images to support the document.</p>
+</li>
+<li>
+<p>Hazard statement (safety topics), if any, to include in the document.</p>
+</li>
+<li>
+<p>Discussion with a documentation team member to provide extended support to
+clearly understand the case.</p>
+</li>
+<li>
+<p>If required, documentation team members collaborate with the testers while
+practically testing the case.</p>
+</li>
+</ul>
 </div>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Ensure that the Auto-deploy in Render setting is <strong>ON</strong>.
-</td>
-</tr>
-</table>
-</div>
-</div>
+<div class="paragraph">
+<p>Most of the information can be found in the FogBugz case entries, but it is the
+responsibility of the documentation team member to gather all relevant
+information before starting to work on a case.</p>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc">
- <h3>Contents</h3>
- <ul>
-  <li level="1">
-   <a href="#_merge_pull_request">Merge Pull Request</a>
-  </li>
-  <li level="1">
-   <a href="#_generate_html_files">Generate HTML Files</a>
-  </li>
- </ul>
-</aside>
-
+                    <aside id="site-toc"></aside>
                 </div>
             </div>
             <nav class="pagination">
- <span class="prev"><a href="review.html">Proofread</a></span>
- <span class="next"><a href="publish.html">Publish</a></span>
+ <span class="prev"><a href="release.html">Release cycle</a></span>
+ <span class="next"><a href="checklist.html">Checklist for Documenters</a></span>
 </nav>
 
         </div>
