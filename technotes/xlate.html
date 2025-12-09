@@ -45,6 +45,7 @@
     <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
     <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
     <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../flux/shippingflux.html">Shipping Flux</a></li>
    </ul>
   </li>
   <li>
@@ -61,7 +62,6 @@
     <li><button class="tree blank"></button><a href="virtualdrives.html">Virtual drives</a></li>
     <li><button class="tree blank"></button><a href="toolarvfields.html">ARV fields used in tool import</a></li>
     <li><button class="tree blank"></button><a href="kfactorandradius.html">Bend radius and K factor calculation</a></li>
-    <li><button class="tree blank"></button><a href="createfoldtool.html">Creating fold tool .tdata file</a></li>
     <li>
      <button class="tree closed"></button>
      <a href="ra/index.html">RightAngle</a>
@@ -246,6 +246,93 @@
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_handling_translation_case_for_a_flux_version">Handling translation case for a Flux version</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Use <code>xl get</code> to get the translation from the server.</p>
+</li>
+<li>
+<p>If there are any changes in English translation (.txt) files revert them.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+There may be some changes we have to do.
+For example, sometimes a string id will be removed from English txt file but not
+in other language files. So we need to remove it from other languages before updating the server.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Use <code>xl put</code> to update the server with latest English translation</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If there are relevant changes like string id being removed, create a branch and commit the changes.</p>
+</li>
+<li>
+<p>Other changes like empty lines etc need to be restored in the branch.</p>
+</li>
+<li>
+<p>Keep the branch as draft.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Assign the respective FogBugz case to the case opener to get the translated strings for other languages.</p>
+</li>
+<li>
+<p>Once the translation is completed, use <code>xl get</code> and update the other language translation and commit to the repository.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If the respective branch is created then switch to that before <code>xl get</code>.</p>
+</li>
+<li>
+<p>While committing make sure only the respective area related changes are committed.
+i.e. if the bend translation has to be updated, push only the .txt files related to bend and not cut files.</p>
+</li>
+<li>
+<p>Verify the deletions in .txt files carefully.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 
                     </article>
                 </div>
@@ -255,6 +342,9 @@
  <ul>
   <li level="1">
    <a href="#_steps">Steps</a>
+  </li>
+  <li level="1">
+   <a href="#_handling_translation_case_for_a_flux_version">Handling translation case for a Flux version</a>
   </li>
  </ul>
 </aside>
@@ -274,7 +364,7 @@
     </div>
     <footer id="site-footer">
         <div class="left">
-            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
         </div>
         <div class="middle"></div>
         <div class="right">

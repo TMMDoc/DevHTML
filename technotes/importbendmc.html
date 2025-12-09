@@ -45,6 +45,7 @@
     <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
     <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
     <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../flux/shippingflux.html">Shipping Flux</a></li>
    </ul>
   </li>
   <li>
@@ -61,7 +62,6 @@
     <li><button class="tree blank"></button><a href="virtualdrives.html">Virtual drives</a></li>
     <li><button class="tree blank"></button><a href="toolarvfields.html">ARV fields used in tool import</a></li>
     <li><button class="tree blank"></button><a href="kfactorandradius.html">Bend radius and K factor calculation</a></li>
-    <li><button class="tree blank"></button><a href="createfoldtool.html">Creating fold tool .tdata file</a></li>
     <li>
      <button class="tree closed"></button>
      <a href="ra/index.html">RightAngle</a>
@@ -430,6 +430,24 @@ Refer <a href="#bg_angle_measurement">BG surfaces angle measurement</a> for BG s
 <p>If bg <a href="#limits">limits</a>/<a href="#surfaces">surfaces</a> are wrong, check <a href="createbendmc.html#Bg_info"><strong>Back-gauge information</strong></a> and fix them.</p>
 </li>
 <li>
+<p>Flux currently supports only 6 Axis gauges. However, some custom machines (like Koval (ID:320054)) support 9 Axis gauges, and the Delem controller requires all BG values to be output in the DLD code. To accommodate this, we calculate the mean of BG1 and BG3 use it as the value for BG2.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">X2 = (X1 + X3) / 2
+R2 = (R1 + R3) / 2
+Z2 = (Z1 + Z3) / 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This ensures that BG2 remains centered, thereby preventing output errors from the Delem controller. So, the <code>machine.curl</code> for 9 Axis machines must have <code>BGAxis=9</code> and <code>X3=Z3 Y3=X3 Z3=R3</code> set in the <code>Extra</code> section as shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Extra:&lt; BGAxis=9 BGName="9 Achs Anschlag - 260" TrumpfMachineId=B1885R0005 X3=Z3 Y3=X3 Z3=R3 &gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
 <p><a id="ACB-Laser"></a>If there are ACBLaserF, ACBLaserR and ACBLaserRail meshes for the machine, make sure that the ACBLaserRail is displayed only when ACB is activated for that machine. ACB can be activated for the machine through machine database dialog as shown below:</p>
 <div class="imageblock">
 <div class="content">
@@ -437,7 +455,7 @@ Refer <a href="#bg_angle_measurement">BG surfaces angle measurement</a> for BG s
 </div>
 </div>
 <div class="paragraph">
-<p>After activating ACB / LCB for the machine, verify if the ACB rail is displayed as shown       below when Show die rail is on in the display.  Verify if the sensors (which are in blue color on the ACB rail) are displayed only when Show ACB-Laser sensors is on in the display.</p>
+<p>After activating ACB / LCB for the machine, verify if the ACB rail is displayed as shown below when Show die rail is on in the display.  Verify if the sensors (which are in blue color on the ACB rail) are displayed only when Show ACB-Laser sensors is on in the display.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -447,6 +465,9 @@ Refer <a href="#bg_angle_measurement">BG surfaces angle measurement</a> for BG s
 <div class="paragraph">
 <p>If the ACB is not activated, <em>Show ACB-Laser sensors</em> option won’t be part of the display dialog and ACB rail will not be displayed even if <em>Show die rail</em> is on.</p>
 </div>
+</li>
+<li>
+<p>If a machine has to be included without I-Axis then some code changes may be required based on the <em>EPost</em>. Check <code>BendMachine.MaxIAxisType</code>.</p>
 </li>
 <li>
 <p>Run Flux.exe and click View menu and use <strong>Toggle ShowCrashModel</strong> to check the triangle count of the machine model. Remember to set <strong>MCAnalysis=1</strong> in experimental.ini for this option to appear in View menu.
@@ -923,7 +944,7 @@ Here start angle2 is 180. See image below for reference and add 180 to the measu
     </div>
     <footer id="site-footer">
         <div class="left">
-            <p>&nbsp;&nbsp;Copyright &copy; 2023 by Metamation. All rights reserved.</p>
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
         </div>
         <div class="middle"></div>
         <div class="right">

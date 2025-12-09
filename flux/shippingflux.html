@@ -1,0 +1,661 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Shipping Flux</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="index.html">Flux Guidelines</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a class="active" href="shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/xlate.html">Translation tables</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/createbendmc.html">Creating bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importbendmc.html">Importing bend machines</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importbendtools.html">Importing bend tools</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/importcomponents.html">Importing bend and cell components</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/fluxmetacaminterface.html">Flux-MetaCAM interface</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/virtualdrives.html">Virtual drives</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/toolarvfields.html">ARV fields used in tool import</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/kfactorandradius.html">Bend radius and K factor calculation</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/ra/index.html">RightAngle</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/ra/tracegatherer.html">Trace Gatherer</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/ra/testingcontroller.html">Testing in Controller</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">Flux Guidelines</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="shippingflux.html">Shipping Flux</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Shipping Flux</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains the process of Flux release.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_flux_release_schedule">Flux release schedule</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Flux weekly builds should always be released on Tuesday</p>
+</li>
+<li>
+<p>Flux milestone build should always be released on 7<sup>th</sup> of a month. If that falls on a weekend then it should be released on the next working day.</p>
+</li>
+<li>
+<p>The next weekly build which has to be released after this milestone will be on next week&#8217;s Tuesday and not the immediate Tuesday after the milestone release.</p>
+<div class="paragraph">
+<p>i.e. For eg if a milestone build is released on Nov 7<sup>th</sup> Friday, next weekly build should be on  Nov 18<sup>th</sup> Tuesday</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_fogbugz_case">Creating a FogBugz case</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Flux shipment is managed by the Flux release team on a monthly rotation. To identify the person currently responsible for shipping, create a FogBugz case with a title like <em>Shipping Flux - Lete</em> and assign it to the designated team member for that month. The case will remain assigned to them until the milestone release is complete, at which point it can be closed. Each time a build is shipped, the responsible person should update the case by adding a comment indicating the shipment, such as <em>Shipped Flux 619</em> or <em>Shipped Flux 616.2 "Janssen"</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_merging_pull_requests">Merging pull requests</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Only pull requests assigned to the <code>reviewerL3</code> should be merged.</p>
+</li>
+<li>
+<p>Build and run all tests in main and note down the time taken for the tests.</p>
+</li>
+<li>
+<p>Switch to the branch of the pull request – say <em>Case.41908</em></p>
+</li>
+<li>
+<p>Do a <code>git pull</code>. This is to avoid any issues if the branch already exists locally.</p>
+</li>
+<li>
+<p>Do a <code>git merge main</code></p>
+</li>
+<li>
+<p>Build and run all tests</p>
+</li>
+<li>
+<p>Now, note the time taken for tests in this branch and check with that of main.</p>
+<div class="paragraph">
+<p>If there is noticeable change then please check with the respective team about the pull request and then proceed to merge.</p>
+</div>
+</li>
+<li>
+<p>If all tests pass, push the merged changes to the remote case branch</p>
+</li>
+<li>
+<p>Merge this branch into the <strong>main</strong> branch, using the <code>Squash and Merge</code> option</p>
+</li>
+<li>
+<p>Delete the branch after merge</p>
+</li>
+<li>
+<p>Mark the respective FogBugz case as <code>ReadyToShip</code> and set the <code>FixedIn</code> field with the Flux version being shipped.</p>
+</li>
+<li>
+<p>If there are merge conflicts:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Simple conflicts</strong>: Resolve and merge them yourself</p>
+</li>
+<li>
+<p><strong>Complex conflicts</strong>: If the tests fail due to a change in another branch, assign the issue to the respective developer to resolve or check and regenerate the tests.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Pull the merged changes into your local <strong>main</strong> branch</p>
+</li>
+<li>
+<p>Build Flux in <strong>main</strong> branch</p>
+</li>
+<li>
+<p>Once all pull requests are merged, build Flux in <strong>main</strong> branch and make sure all tests pass</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_release_notes">Release notes</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The release notes for the upcoming build can be found in <em>Flux.Main.docx</em> <a href="https://trumpf.sharepoint.com/sites/tinc/nextbuild/shared%20documents/forms/allitems.aspx">here</a></p>
+</li>
+<li>
+<p>As and when you merge the pull requests, copy the release note for the respective case from <em>Flux.Main.docx</em> and append it to the file named Flux.xxx.docx (where xxx is the version to be shipped).</p>
+</li>
+<li>
+<p>After all notes are appended, set the correct Flux version in <em>Title</em>, the <em>Shipped</em> date, and then refresh the <em>Table of Contents</em> at the top of the page. Remove the <em>CONTENTS</em> row displayed with a page number.</p>
+</li>
+<li>
+<p>Use <em>Save As</em> to save the release notes as a <em>pdf</em></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_the_installer_and_uploading_flux">Creating the installer and uploading Flux</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Test the installer using the Sandbox tool. See the <a href="#SandboxTesting">Testing with Windows Sandbox</a> section for more details.</p>
+</li>
+<li>
+<p>You can either:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Keep the installer output from the <code>TestSandbox</code> run, or</p>
+</li>
+<li>
+<p>Run <code>FShip</code> to create the installer again.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If issues arise (e.g., missing Nuget packages), fix them in a new branch, merge to main, recheck the tests and create the installer again.</p>
+</li>
+<li>
+<p>Upload the installer and the release notes PDF to the <a href="https://trumpf.sharepoint.com/sites/tinc/nextbuild/shipping/forms/allitems.aspx">Trumpf sharepoint folder</a></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Only the latest milestone, last weekly release installers and release notes should be kept. Move the older setups and release notes to the <strong>Older</strong> folder.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Send an email about the release from the shared mail id <strong>Shipping.TINC@trumpf.com</strong> to the recipients in the <em>Flux Shipping</em> mailing list. When sending the email, set <a href="mailto:shipping.tinc@trumpf.com">Shipping.TINC@trumpf.com</a> as the recipient in the <em>To</em> field and add the <em>Flux Shipping</em> contact group to the <em>BCC</em> field.</p>
+</li>
+<li>
+<p>Attach the release notes PDF.</p>
+</li>
+<li>
+<p>Set the mail label as <strong>Business Confidential</strong> before sending the email.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing_with_windows_sandbox">Testing with Windows Sandbox<a id="SandboxTesting"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Sandbox</strong> tool is a utility tool that creates a Flux installer and tests it within a Windows Sandbox instance. It&#8217;s a C# script file (<code>.csx</code>) which can be executed using the <code>dotnet-script</code> tool.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install the dotnet-script tool by running the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">dotnet tool install -global dotnet-script</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Optionally, you may choose to register the <code>dotnet-script</code> tool to ensure your system is properly set up to handle C# scripts:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">dotnet script register</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Clone the UI test scripts and the TestFramework repositories into the same parent directory as the Flux repository. If you already have them, ensure you have the latest repository.</p>
+<div class="paragraph">
+<p><a href="https://github.com/metamation/testframework.git" class="bare">https://github.com/metamation/TestFramework.git</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/metamation/fluxtester.git" class="bare">https://github.com/metamation/Fluxtester.git</a></p>
+</div>
+</li>
+<li>
+<p>Run the Sandbox tool by passing your <strong>Work</strong> directory as an argument:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">dotnet script X:\Tools\Tiny\TestSandbox.csx C:\Work</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, <strong>C:\Work</strong> should contain the Flux, TestFramework and FluxTester repositories.</p>
+</div>
+</li>
+<li>
+<p>The tool will automatically build and run FShip. When prompted with <strong>Create Flux installer (Y/N):</strong>, enter <strong>Y</strong>. It will then create a Windows Sandbox instance and install Flux using the latest installer.</p>
+</li>
+<li>
+<p>After the installation finishes, maximize the <strong>Sandbox</strong> window and then click <strong>runTests.bat</strong> on the Desktop. This will run all the necessary sanity tests to test Flux and then stop. Next, close the <strong>command window</strong> inside the sandbox instance and then close the Sandbox window. Finally, press any key in the <strong>command window</strong> (from where you ran <code>dotnet script</code>) to stop the Sandbox instance.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Closing the <strong>Windows Sandbox</strong> does not automatically stop the instance. The last step mentioned above is required to stop it. If not done, you will need to stop the Sandbox manually using the command <strong>wsb stop --</strong> <em>&lt;sandbox instance ID&gt;</em>. The <strong>sandbox instance ID</strong> will be printed by the TestSandbox script before launching the Sandbox.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resolving_cases_in_fogbugz">Resolving cases in FogBugz</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>After the build is shipped, resolve the FogBugz cases corresponding to the pull requests that were merged.</p>
+</li>
+<li>
+<p>Update the FogBugz case (<em>Shipping Flux - Lete</em>) created earlier with the respective comment indicating the build number.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tag_branch">Tag / Branch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Only for the named release a branch has to be created otherwise a tag has to be added to the main branch.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_branch_for_the_named_release">Creating a branch for the named release</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Only for the named release (which occurs monthly), create a branch like <em>25.06.Isagel</em></p>
+</li>
+<li>
+<p>Push the branch to the remote</p>
+</li>
+<li>
+<p>Mark this branch as protected. All the branches that are created this year (with prefix <strong>25</strong>) will be protected as the protection rule is already set.  Branch protection can be set only by the repo admin, <em>Sanjiv</em>. So drop an email to him when the first branch is created at the start of a new calender year.</p>
+</li>
+<li>
+<p>Create a new branch, bump the version (as shown below) and push the changes:</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/startingflux_namedbranch.png" alt="startingflux namedbranch">
+</div>
+</div>
+</li>
+<li>
+<p>Create a PR and assign it to <code>reviewerL2</code>. Note that when creating the pull request, the base branch must be correctly set as shown below.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/basebranch.png" alt="basebranch" width="50%">
+</div>
+</div>
+</li>
+<li>
+<p>Once it is assigned to <code>reviewerL3</code> it can be merged into the branch.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_a_tag_to_the_main_branch_for_weekly_release">Adding a Tag to the main branch for weekly release</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure you are on the main branch and then use the following command to add a tag for the shipping version:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git tag Flux.611</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Push the tag to the remote:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git push --tags</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bumping_the_flux_version">Bumping the Flux version</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After shipping a Flux build, the version number should be incremented. Create a new branch and follow the steps below based on the upcoming type of release.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>For a weekly release</strong>: Only the main version number should be incremented as shown below:</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/startingflux.png" alt="startingflux">
+</div>
+</div>
+</li>
+<li>
+<p><strong>For a milestone release</strong>: In addition to incrementing the main version, the decimal part should also be bumped up. Add the milestone name to <strong>Builds.txt</strong> (located at X:\Tools\FShip) to ensure FShip includes the milestone name in the installer.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/startingflux_named.png" alt="startingflux named">
+</div>
+</div>
+</li>
+<li>
+<p><strong>For a subsequent release after a milestone release</strong>: In addition to incrementing the main version, bump up the <strong>month</strong> and reset the decimal part to <strong>0</strong> as shown below.</p>
+<div class="imageblock">
+<div class="content">
+<img src="img/startingflux_named_2.png" alt="startingflux named 2">
+</div>
+</div>
+</li>
+<li>
+<p>Push the changes to remote, create a PR and assign it to <code>reviewerL2</code>.</p>
+</li>
+<li>
+<p>Once the changes are approved and assigned to <code>reviewerL3</code>, merge the updates into the main branch.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cherry_picking">Cherry-Picking</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Occasionally, there are requests to apply fixes to older builds. In such cases, certain commits are <strong>cherry-picked</strong> and applied, then re-released as R2, R3, etc. The following process outlines how to cherry-pick a commit after merging a pull request into the main branch using <strong>Squash and Merge</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure the commit is in the local main branch and all latest changes are fetched using <code>git pull</code>.</p>
+</li>
+<li>
+<p>Switch to the target branch say, <code>git sw 25.06.Isagel</code> where the commit needs to be applied.</p>
+</li>
+<li>
+<p>Apply the commit using the command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git cherry-pick &lt;commit-hash&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Copy the hash from the commits page in the repository (as seen below). If the hash is long, it is often sufficient to use the first few characters, as long as they are unique.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/commithash.png" alt="commithash">
+</div>
+</div>
+</li>
+<li>
+<p>Push the changes to remote. Follow the usual shipping process.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The release notes should contain all the cherry picked fixes. So, move the fix from Flux.Main.docx to the appropriate document like <em>Flux.612.3.docx</em> (where <em>.3</em> implies an R3 release).
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>If the cherry-pick fails</strong>, it indicates a conflict with the target branch and the commit cannot be applied without resolving merge conflicts. In such cases, <strong>do not ship</strong> the build.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_flux_release_schedule">Flux release schedule</a>
+  </li>
+  <li level="1">
+   <a href="#_creating_a_fogbugz_case">Creating a FogBugz case</a>
+  </li>
+  <li level="1">
+   <a href="#_merging_pull_requests">Merging pull requests</a>
+  </li>
+  <li level="1">
+   <a href="#_release_notes">Release notes</a>
+  </li>
+  <li level="1">
+   <a href="#_creating_the_installer_and_uploading_flux">Creating the installer and uploading Flux</a>
+  </li>
+  <li level="1">
+   <a href="#_testing_with_windows_sandbox">Testing with Windows Sandbox</a>
+  </li>
+  <li level="1">
+   <a href="#_resolving_cases_in_fogbugz">Resolving cases in FogBugz</a>
+  </li>
+  <li level="1">
+   <a href="#_tag_branch">Tag / Branch</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_a_branch_for_the_named_release">Creating a branch for the named release</a>
+  </li>
+  <li level="2">
+   <a href="#_adding_a_tag_to_the_main_branch_for_weekly_release">Adding a Tag to the main branch for weekly release</a>
+  </li>
+  <li level="1">
+   <a href="#_bumping_the_flux_version">Bumping the Flux version</a>
+  </li>
+  <li level="1">
+   <a href="#_cherry_picking">Cherry-Picking</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="usingfluxsdk.html">Build a Flux SDK Program</a></span>
+ <span class="next"><a href="../technotes/index.html">Technical Notes</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
