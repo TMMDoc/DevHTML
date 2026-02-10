@@ -220,7 +220,15 @@
 <p>If all tests pass, push the merged changes to the remote case branch</p>
 </li>
 <li>
-<p>Merge this branch into the <strong>main</strong> branch, using the <code>Squash and Merge</code> option</p>
+<p>Merge this branch into the <strong>main</strong> branch, using the <code>Squash and Merge</code> option.</p>
+<div class="paragraph">
+<p>Ensure that the commit message shown in the image below includes the case number in the required format so it can be linked to FogBugz. The extended description shows all commit messages from the branch. You can safely clear this section if the commit title already captures the purpose of the change. In many cases, commit messages are generic placeholders like “review fix” or “minor” which do not add meaningful context. Removing them helps keep the history clean and easy to follow.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/squashandmerge.png" alt="squashandmerge" width="50%">
+</div>
+</div>
 </li>
 <li>
 <p>Delete the branch after merge</p>
