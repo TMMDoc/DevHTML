@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  <title>Code Formatting</title>
+  <title>Python</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -25,15 +25,15 @@
   <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
   <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
   <li>
-   <button class="tree open"></button>
-   <a href="index.html">Tools</a>
-   <ul>
-    <li><button class="tree blank"></button><a class="active" href="codeformatting.html">Code Formatting</a></li>
-    <li><button class="tree blank"></button><a href="configuregit.html">Configuring Git</a></li>
-    <li><button class="tree blank"></button><a href="assignments.html">Assignments</a></li>
-    <li><button class="tree blank"></button><a href="testsandbox.html">Testing with Windows Sandbox</a></li>
-    <li><button class="tree blank"></button><a href="singlefileapps.html">Single Binary Applications</a></li>
-    <li><button class="tree blank"></button><a href="selfupdate.html">Self-Updating Applications</a></li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
    </ul>
   </li>
   <li>
@@ -74,10 +74,10 @@
    </ul>
   </li>
   <li>
-   <button class="tree closed"></button>
-   <a href="../software/index.html">3d party software</a>
-   <ul class="hide">
-    <li><button class="tree blank"></button><a href="../software/python.html">Python</a></li>
+   <button class="tree open"></button>
+   <a href="index.html">3d party software</a>
+   <ul>
+    <li><button class="tree blank"></button><a class="active" href="python.html">Python</a></li>
    </ul>
   </li>
   <li>
@@ -146,88 +146,89 @@
   </button>
  </div>
  <div>
-  <a href="index.html">Tools</a>
+  <a href="index.html">3d party software</a>
  </div>
  <div>/</div>
  <div>
-  <a href="codeformatting.html">Code Formatting</a>
+  <a href="python.html">Python</a>
  </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>Code Formatting</h1>
-<div class="sect1">
-<h2 id="_format_settings_for_visual_studio">Format settings for Visual Studio</h2>
+                        <h1>Python</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document explains the Metamation conventions for formatting C# code.</p>
+<p>Excerpt from:
+Python + conda / pip install guide - TW543 Data + AI - Confluence (trumpf.com)</p>
 </div>
-<div class="sect2">
-<h3 id="_tabs">Tabs</h3>
+<hr>
 <div class="paragraph">
-<p>Use Spaces instead of Tab characters in source files. Set the indent level as
-3 spaces. (2 is too narrow, 4 is too wide, 3 is the Goldilocks number).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_indentation_newlines_and_spacing">Indentation, Newlines and Spacing</h3>
-<div class="paragraph">
-<p>Metamation indentation style is a mix between the K&amp;R Style and the 1TBS (One True Brace Style).
-Like K&amp;R style, we generally dispense with the braces when there is only one statement in the
-block. Like 1TBS, we place the braces opening a function on the same line as the function header.</p>
+<p>Use the Python version that best suits your needs:
+<a href="https://www.python.org/downloads/windows/" class="bare">https://www.python.org/downloads/windows/</a>.</p>
 </div>
 <div class="paragraph">
-<p>That is:</p>
+<p>Ensure to tick the option "Add Python to environment variables" during
+installation. This allows you to use Python directly from the command prompt.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This method is not recommended if it requires setting a username and password.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuring_pip_ini_with_proxy_settings">Configuring pip.ini with Proxy Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To configure Trumpf&#8217;s local Python PyPi repository (jFrog-based) for installing
+packages, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install Python on the <code>C:</code> drive.</p>
+</li>
+<li>
+<p>Navigate to <code>AppData\Roaming\pip</code> under your user directory on the C drive.</p>
+</li>
+<li>
+<p>Create a <code>pip.ini</code> file with the following content:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">trusted-host = artifactory.corp.trumpf.com
+index = https://artifactory.corp.trumpf.com/artifactory/api/pypi/pypi-remote/
+index-url = https://artifactory.corp.trumpf.com/artifactory/api/pypi/pypi-remote/simple</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If the <code>pip</code> folder does not exist, create it manually.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_python_packages_with_pip">Installing Python Packages with pip</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To install Python packages using pip, open the command prompt and run the
+following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">void CheckLevel () {
-   if (nLevel &gt; 0 &amp;&amp; !mLevelStack.IsEmpty)
-      PopLevel ();
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>However, this is discretionary. If you think adding braces clarifies the meaning, add them.</p>
-</div>
-<div class="paragraph">
-<p>Here are how we configure Visual Studio to get the exact indentation, newlines and spacing
-settings that we want. Once configured, the editor will <em>reformat</em> your code using these settings
-each time you complete a block, ensuring consistency. Go to the <strong>Tools / Options</strong> dialog, and you
-can find these settings under <strong>Text Editor / C# / Code Style / Formatting</strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/1001.1.png" alt="Indentation Settings" width="302">
-</div>
-</div>
-<div class="paragraph">
-<p>A key point with these brace styles it that we try to reduce the number of lines code
-occupies. Thus, the <strong>New Lines</strong> section of the Visual Studio editor is configured by
-turning all the new line check-boxes off:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/1001.2.png" alt="NewLines Settings" width="462">
-</div>
-</div>
-<div class="paragraph">
-<p>Continuing the <em>brevity</em> theme, the Wrapping settings are configured thus:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/1001.3.png" alt="Wrapping Settings" width="361">
-</div>
-</div>
-<div class="paragraph">
-<p>The spacing rules are set like this:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/1001.4.png" alt="Spacing Settings" width="403">
-</div>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">    pip install &lt;package&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -240,13 +241,10 @@ turning all the new line check-boxes off:</p>
  <h3>Contents</h3>
  <ul>
   <li level="1">
-   <a href="#_format_settings_for_visual_studio">Format settings for Visual Studio</a>
+   <a href="#_configuring_pip_ini_with_proxy_settings">Configuring pip.ini with Proxy Settings</a>
   </li>
-  <li level="2">
-   <a href="#_tabs">Tabs</a>
-  </li>
-  <li level="2">
-   <a href="#_indentation_newlines_and_spacing">Indentation, Newlines and Spacing</a>
+  <li level="1">
+   <a href="#_installing_python_packages_with_pip">Installing Python Packages with pip</a>
   </li>
  </ul>
 </aside>
@@ -254,8 +252,8 @@ turning all the new line check-boxes off:</p>
                 </div>
             </div>
             <nav class="pagination">
- <span class="prev"><a href="index.html">Tools</a></span>
- <span class="next"><a href="configuregit.html">Configuring Git</a></span>
+ <span class="prev"><a href="index.html">3d party software</a></span>
+ <span class="next"><a href="../documentation/index.html">Documentation</a></span>
 </nav>
 
         </div>
