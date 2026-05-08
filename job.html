@@ -1,0 +1,1118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="res/bento.css">
+  <link rel="stylesheet" href="res/site.css">
+  <link rel="stylesheet" href="res/tree.css">
+  <link rel="stylesheet" href="res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Job.cs Overview</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="general.html">General overview</a></li>
+  <li><button class="tree blank"></button><a href="fileoverview.html">Overview of C# Files in Fluxtester Repository</a></li>
+  <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+  <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book: Test Script Creation Commands & Patterns</a></li>
+  <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+  <li><button class="tree blank"></button><a href="nestingcookbook.html">= "Layout";</a></li>
+  <li><button class="tree blank"></button><a class="active" href="job.html">Job.cs Overview</a></li>
+  <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book: Test Script Creation Commands</a></li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="job.html">Job.cs Overview</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Job.cs Overview</h1>
+<div class="sect1">
+<h2 id="_purpose"><strong>Purpose</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Job.cs</code> is a comprehensive test fixture for validating <strong>Job and Layout management functionality</strong> in the Flux cutting application. It tests job creation, part management, sheet handling, and advanced nesting operations with priority, rotation, and grouping.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fixture_details"><strong>Fixture Details</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Property | Value |
+|----------|-------|
+| <strong>Fixture ID</strong> | 1500 |
+| <strong>Name</strong> | "Nesting Job Tests" |
+| <strong>Module</strong> | FluxCut |
+| <strong>Subsystem</strong> | NestJob |
+| <strong>Test Machines</strong> | 2230001, 97 |
+| <strong>Primary File</strong> | 123.fx |
+| <strong>Pattern</strong> | IDisposable (auto-cleanup) |</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setup_teardown"><strong>Setup &amp; Teardown</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_constructor_idisposable_pattern"><strong>Constructor (IDisposable Pattern)</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Job () {
+    Utils.ConfigureMachine (TESTMACHINEID1);  // Machine 2230001
+    Utils.ConfigureMachine (TESTMACHINEID2);  // Machine 97
+}
+
+public void Dispose () {
+    Utils.UninstallMachine (TESTMACHINEID1);
+    Utils.UninstallMachine (TESTMACHINEID2);
+    Utils.DeleteTempFile ();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Key</strong>: Uses <strong>IDisposable pattern</strong> instead of <code>[FixtureInitialize]/[FixtureCleanUp]</code> for more flexible resource management.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_methods_24_tests"><strong>Test Methods (24 Tests)</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_layout_management"><strong>Layout Management</strong></h3>
+<div class="sect3">
+<h4 id="_c150732_test_401_adding_and_deleting_layouts"><strong>C150732</strong> (Test 401) - "Adding and deleting layouts"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job file (TwinJob.fxjob)</p>
+</li>
+<li>
+<p>Tests adding 6 layouts (1 → 7 total)</p>
+</li>
+<li>
+<p>Tests deleting 3 layouts (7 → 4 total)</p>
+</li>
+<li>
+<p>Tests deleting middle layout (4 → 3 total)</p>
+</li>
+<li>
+<p>Validates layout counts</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c150733_test_402_moving_layouts"><strong>C150733</strong> (Test 402) - "Moving layouts"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Adds layout to job</p>
+</li>
+<li>
+<p>Tests move up operation</p>
+</li>
+<li>
+<p>Tests move down operation</p>
+</li>
+<li>
+<p>Compares automation tree dumps with reference files</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_job_creation_dialog_management"><strong>Job Creation &amp; Dialog Management</strong></h3>
+<div class="sect3">
+<h4 id="_c122130_test_1528_selecting_new_job_toolbar_button_opens_a_pop_up_dialog"><strong>C122130</strong> (Test 1528) - "Selecting 'New Job' toolbar button opens a pop-up dialog"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens Flux application</p>
+</li>
+<li>
+<p>Clicks "new job" button</p>
+</li>
+<li>
+<p>Verifies NewJobDlg appears</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c122132_test_1529_in_new_job_dialog_without_adding_mandatory_fields_clicking_cancel_should_close_the_dialog"><strong>C122132</strong> (Test 1529) - "In 'New Job' dialog without adding mandatory fields clicking 'Cancel' should close the dialog"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens Flux and New Job dialog</p>
+</li>
+<li>
+<p>Tests Cancel button functionality</p>
+</li>
+<li>
+<p>Verifies dialog closes</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_management"><strong>Part Management</strong></h3>
+<div class="sect3">
+<h4 id="_c200408_test_1530_save_partss_from_the_job"><strong>C200408</strong> (Test 1530) - "Save Parts(s) from the job"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Creates new job</p>
+</li>
+<li>
+<p>Adds 2 parts (123.fx, InnerContour.fx)</p>
+</li>
+<li>
+<p>Saves parts to temp directory</p>
+</li>
+<li>
+<p>Verifies file existence</p>
+</li>
+<li>
+<p>Cleans up saved files</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c122176_test_1531_add_and_delete_parts_in_the_job"><strong>C122176</strong> (Test 1531) - "Add and delete parts in the job"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Creates new job</p>
+</li>
+<li>
+<p>Adds multiple parts</p>
+</li>
+<li>
+<p>Verifies parts appear in parts table</p>
+</li>
+<li>
+<p>Tests deleting parts</p>
+</li>
+<li>
+<p>Validates deletion</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c122179_test_1532_increase_the_quantity_of_the_part"><strong>C122179</strong> (Test 1532) - "Increase the quantity of the part"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (TwinJob.fxjob)</p>
+</li>
+<li>
+<p>Adds extra parts</p>
+</li>
+<li>
+<p>Modifies part quantities via textbox</p>
+</li>
+<li>
+<p>Handles material warning dialog</p>
+</li>
+<li>
+<p>Renests with new quantities</p>
+</li>
+<li>
+<p>Validates parts count in layout</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sheet_management"><strong>Sheet Management</strong></h3>
+<div class="sect3">
+<h4 id="_c150396_test_1534_add_and_delete_sheets_in_the_sheets_tab_of_a_new_job"><strong>C150396</strong> (Test 1534) - "Add and delete sheets in the sheets tab of a new job"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Creates new job</p>
+</li>
+<li>
+<p>Adds 5 sheets (1 → 6 total)</p>
+</li>
+<li>
+<p>Verifies 6 sheets with size "3000x1500"</p>
+</li>
+<li>
+<p>Deletes all 6 sheets</p>
+</li>
+<li>
+<p>Validates deletion</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c162420_test_1535_export_remainder_sheet"><strong>C162420</strong> (Test 1535) - "Export remainder sheet"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (TwinJob.fxjob)</p>
+</li>
+<li>
+<p>Creates remainder sheet</p>
+</li>
+<li>
+<p>Opens export dialog</p>
+</li>
+<li>
+<p>Exports to DXF file</p>
+</li>
+<li>
+<p>Compares with reference file</p>
+</li>
+<li>
+<p>Cleans up temporary file</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c162522_test_1536_import_remainder_sheet"><strong>C162522</strong> (Test 1536) - "Import remainder sheet"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (TwinJob.fxjob)</p>
+</li>
+<li>
+<p>Checks initial parts count (5)</p>
+</li>
+<li>
+<p>Deletes existing sheet</p>
+</li>
+<li>
+<p>Imports remainder sheet from DXF</p>
+</li>
+<li>
+<p>Verifies imported sheet dimensions (1460.85x1500)</p>
+</li>
+<li>
+<p>Renests and validates parts count (4)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_properties_configuration"><strong>Part Properties &amp; Configuration</strong></h3>
+<div class="sect3">
+<h4 id="_c122180_test_3527_set_the_priority_for_the_part"><strong>C122180</strong> (Test 3527) - "Set the priority for the part"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (NestingJobSample.fxjob)</p>
+</li>
+<li>
+<p>Tests 4 priority combinations: [1,2,3], [2,1,3], [3,2,1], [0,1,2]</p>
+</li>
+<li>
+<p>Sets priorities via parts table</p>
+</li>
+<li>
+<p>Renests after each priority change</p>
+</li>
+<li>
+<p>Validates layout with priority arrangement</p>
+</li>
+<li>
+<p>Generates multiple layouts</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c122181_test_3528_set_the_part_rotation"><strong>C122181</strong> (Test 3528) - "Set the part rotation"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (AsymmetricalPolygon.fxjob)</p>
+</li>
+<li>
+<p>Tests 6 rotation options</p>
+</li>
+<li>
+<p>Handles material warning dialog</p>
+</li>
+<li>
+<p>Sets rotation via context menu</p>
+</li>
+<li>
+<p>Renests after each rotation change</p>
+</li>
+<li>
+<p>Validates layout with different rotations</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c122182_test_3529_group_different_parts"><strong>C122182</strong> (Test 3529) - "Group different parts"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (NestingJobSample.fxjob)</p>
+</li>
+<li>
+<p>Tests 4 group combinations: [1,2,3], [2,1,3], [3,2,1], [0,1,2]</p>
+</li>
+<li>
+<p>Sets group IDs via parts table</p>
+</li>
+<li>
+<p>Renests after each grouping</p>
+</li>
+<li>
+<p>Validates layouts with different groupings</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_copypastecut_operations"><strong>Copy/Paste/Cut Operations</strong></h3>
+<div class="sect3">
+<h4 id="_c145731_test_3530_cutcopy_paste_parts_in_layout_sheets"><strong>C145731</strong> (Test 3530) - "Cut/Copy &amp; Paste parts in layout sheets"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (AsymmetricalPolygon.fxjob)</p>
+</li>
+<li>
+<p>Tests Copy/Paste workflow</p>
+</li>
+<li>
+<p>Copies part (Ctrl+C)</p>
+</li>
+<li>
+<p>Pastes part (Ctrl+V)</p>
+</li>
+<li>
+<p>Validates parts within sheet margin</p>
+</li>
+<li>
+<p>Compares layout</p>
+</li>
+<li>
+<p>Tests Cut/Paste workflow</p>
+</li>
+<li>
+<p>Cuts part (Ctrl+X)</p>
+</li>
+<li>
+<p>Pastes part (Ctrl+V)</p>
+</li>
+<li>
+<p>Validates parts within sheet margin</p>
+</li>
+<li>
+<p>Compares layout</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_dialog_search_sorting"><strong>Add Dialog: Search &amp; Sorting</strong></h3>
+<div class="sect3">
+<h4 id="_c200439_test_3531_search_the_parts_by_its_name_in_add_button"><strong>C200439</strong> (Test 3531) - "Search the parts by its name in add button"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens job (NestingJobSample.fxjob)</p>
+</li>
+<li>
+<p>Tests searching by part name</p>
+</li>
+<li>
+<p>Tests case-insensitive search</p>
+</li>
+<li>
+<p>Tests empty search (shows all)</p>
+</li>
+<li>
+<p>Tests invalid search term</p>
+</li>
+<li>
+<p>Tests placeholder text behavior</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c200440_test_3532_sorting_the_parts_by_their_name_in_the_add"><strong>C200440</strong> (Test 3532) - "Sorting the parts by their name in the Add"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests sort by Name</p>
+</li>
+<li>
+<p>Tests ascending sort</p>
+</li>
+<li>
+<p>Tests descending sort</p>
+</li>
+<li>
+<p>Validates sort order</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c200441_test_3533_sorting_the_parts_by_their_area_in_the_add"><strong>C200441</strong> (Test 3533) - "Sorting the parts by their area in the Add"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests sort by Area</p>
+</li>
+<li>
+<p>Calculates area (width × height)</p>
+</li>
+<li>
+<p>Tests ascending/descending toggle</p>
+</li>
+<li>
+<p>Validates sort order by area</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c200442_test_3534_sorting_the_parts_by_their_width_in_the_add"><strong>C200442</strong> (Test 3534) - "Sorting the parts by their width in the Add"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests sort by Width</p>
+</li>
+<li>
+<p>Tests ascending/descending</p>
+</li>
+<li>
+<p>Validates sort order by width</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c200443_test_3535_sorting_the_parts_by_their_height_in_the_add"><strong>C200443</strong> (Test 3535) - "Sorting the parts by their height in the Add"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests sort by Height</p>
+</li>
+<li>
+<p>Tests ascending/descending</p>
+</li>
+<li>
+<p>Validates sort order by height</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c200444_test_3536_sorting_the_parts_by_their_remaining_quantity_in_the_add"><strong>C200444</strong> (Test 3536) - "Sorting the parts by their remaining quantity in the Add"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests sort by Remaining Quantity</p>
+</li>
+<li>
+<p>Extracts quantity from part info</p>
+</li>
+<li>
+<p>Tests ascending/descending toggle</p>
+</li>
+<li>
+<p><strong>Note</strong>: Logic inverted (ascending shows descending order)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_c200446_test_3537_add_dialog_thumbnail_shows_search_bar_filters_and_sort_options"><strong>C200446</strong> (Test 3537) - "Add dialog thumbnail shows search bar, filters, and sort options"</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Verifies search box presence</p>
+</li>
+<li>
+<p>Verifies sort option presence</p>
+</li>
+<li>
+<p>Verifies all sort options available</p>
+</li>
+<li>
+<p>Tests Add dialog UI elements</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_helper_methods"><strong>Helper Methods</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_job_operations"><strong>Job Operations</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">CreateNewJob(string name = "")              // Create new job with empty layout
+OpenJob(string fileName)                    // Open job file from test data
+GetNewJobWindow()                           // Get NewJobWindow after loading
+SwitchToLayoutPage()                        // Navigate to layout tab
+WaitTillNestingCompletes(int waitTime = 6) // Wait for nesting completion</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validation_methods"><strong>Validation Methods</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">CheckNC(string folder, filename = "test")           // NC code validation
+CheckScreenWith(string folder, filename = "test")   // Screen bitmap comparison
+CheckPartsCountInLayout(int expected, int layoutIdx = 0)  // Validate part count</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ui_element_access"><strong>UI Element Access</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">GetComboBox()                     // Get Sort By dropdown
+GetSearchBox()                    // Get search textbox
+GetSortToggleCheckBox()           // Get sort direction toggle
+GetParts()                        // Get all parts in Add dialog
+GetNewJobWindow()                 // Get job window after loading</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_extraction"><strong>Data Extraction</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">ExtractPartNames(AutomationElement[] parts)      // Extract names from parts
+GetMeasurements(bool height = true)               // Extract width/height values
+GetRemQuantities()                                // Extract remaining quantities
+GetAreas()                                        // Calculate areas (width × height)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sorting_comparison"><strong>Sorting &amp; Comparison</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">IsSorted&lt;T&gt;(T[] array, bool ascending = true)     // Check sort order
+SortAscendingly(bool b)                           // Toggle sort direction
+OpenAddDialog(string fileName)                    // Open job and Add dialog</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ui_interaction"><strong>UI Interaction</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">AddPartsOrLayouts(ELoadOption.Part, string[] parts)  // Add parts/layouts
+Nesting.CheckPartsInLayout(folder, filename)        // External nesting validation
+Nesting.AreAllPartsNestedWithinSheet()              // Check margin fit</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_enums_patterns"><strong>Key Enums &amp; Patterns</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_machine_ids"><strong>Machine IDs</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">const string TESTMACHINEID1 = "2230001";  // Primary machine
+const string TESTMACHINEID2 = "97";       // Secondary machine</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_eloadoption"><strong>ELoadOption</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">ELoadOption.Part      // Load parts
+ELoadOption.Layout    // Load layouts</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testtype"><strong>TestType</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Type = Functional     // Functional test</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_patterns_used"><strong>Key Patterns Used</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_idisposable_pattern"><strong>IDisposable Pattern</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public class Job : IDisposable {
+    public Job () {
+        // Setup in constructor
+        Utils.ConfigureMachine (...);
+    }
+
+    public void Dispose () {
+        // Cleanup
+        Utils.UninstallMachine (...);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Advantage</strong>: Automatic cleanup via using statement or test framework</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ui_automation"><strong>UI Automation</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Find job window
+var job = Utils.MainWin.FindFirstChild ("NewJobWindow");
+
+// Access tabs
+job.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+job.FindFirstChild (a =&gt; a.ByName ("sheets")).Click ();
+job.FindFirstChild (a =&gt; a.ByName ("layouts")).Click ();
+
+// Access buttons
+job.FindFirstChild ("cAddLayout").Click ();
+job.FindFirstChild ("cRemovePattern").Click ();
+job.FindFirstChild ("cNesting").Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_keyboard_navigation"><strong>Keyboard Navigation</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Utils.Type ('p');              // Switch to parts view
+Utils.Type ('l');              // Switch to layout view
+Utils.Type ('a');              // Open Add dialog
+Utils.Type (ESC);              // Close dialogs/escape
+Utils.Type ('c', CONTROL);     // Copy
+Utils.Type ('v', CONTROL);     // Paste
+Utils.Type ('x', CONTROL);     // Cut</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dialog_handling"><strong>Dialog Handling</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Create job dialog
+Utils.MainWin.FindFirstChild ("CmdBar").FindFirstChild (a =&gt; a.ByName ("new job")).Click ();
+var dlg = mainWin.FindFirstChild (a =&gt; a.ByName ("NewJobDlg"));
+dlg.FindFirstChild (a =&gt; a.ByName ("OK")).Click ();
+
+// Warning dialogs
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Ignore and convert all"))?.Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_table_operations"><strong>Table Operations</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Parts table
+var partsTable = job.FindFirstChild (a =&gt; a.ByClassName ("PartsTable"))
+    .FindFirstChild ();
+var parts = partsTable.FindAllChildren ();
+
+// Sheets table
+var pane = job.FindFirstChild (a =&gt; a.ByClassName ("SheetsTable"))
+    .FindFirstChild ();
+
+// Find by index
+partsTable.FindChildAt (index);
+
+// Find by name
+partsTable.FindFirstChild (a =&gt; a.ByName ("partName"));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_combobox_operations"><strong>Combobox Operations</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var combo = element.AsComboBox ();
+combo.Expand ();
+combo.Items[index].Click ();
+combo.Select ("Option Name");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_script_integration"><strong>Script Integration</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get parts from job
+List&lt;string&gt; commands = [
+    "StringBuilder sb = new ();",
+    "foreach (var part in Flux.JobEditor.Current.Job.Parts) sb.Append(part.Name + \",\");",
+    "var result = sb.ToString();"
+];
+string result = Utils.RunScriptWithOutput (commands);
+
+// Get layout part count
+Utils.RunScriptWithOutput ("var result = Flux.Layout.Current.PartCount.ToString();");</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_data_requirements"><strong>Test Data Requirements</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| File | Purpose |
+|------|---------|
+| TwinJob.fxjob | Twin-line nesting job file |
+| NestingJobSample.fxjob | Job with multiple parts for priority/grouping tests |
+| AsymmetricalPolygon.fxjob | Job with asymmetrical parts for rotation tests |
+| 123.fx | Standard test part file |
+| InnerContour.fx | Part with inner contour |
+| Test_C150733/test.txt | Reference for layout order (move up) |
+| Test_C150733/testDown.txt | Reference for layout order (move down) |
+| Test_C162420/test_ExportRemSheet.dxf | Reference remainder sheet export |
+| Test_C122180/ | References for priority test layouts |
+| Test_C122181/ | References for rotation test layouts |
+| Test_C122182/ | References for grouping test layouts |
+| C145731/test_CopyPaste, test_CutPaste | References for copy/paste operations |</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing_areas"><strong>Testing Areas</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>✅ <strong>Layout Management</strong>
+- Add/delete layouts
+- Move layouts up/down</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Job Management</strong>
+- Create new job
+- Open job files
+- Job dialog operations</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Part Management</strong>
+- Add parts to job
+- Delete parts
+- Save parts to disk
+- Modify quantities
+- Set priorities
+- Set rotation options
+- Create groupings</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Sheet Management</strong>
+- Add sheets
+- Delete sheets
+- Export remainder sheets
+- Import sheets from DXF</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Advanced Operations</strong>
+- Copy/Paste parts
+- Cut/Paste parts
+- Priority-based nesting
+- Rotation-based nesting
+- Group-based nesting</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Add Dialog Features</strong>
+- Search by part name
+- Sort by name, area, width, height, quantity
+- Ascending/descending toggle
+- UI element validation</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture_highlights"><strong>Architecture Highlights</strong></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>IDisposable Pattern</strong>: Automatic cleanup on test completion</p>
+</li>
+<li>
+<p><strong>Modular Helpers</strong>: Reusable methods for common operations</p>
+</li>
+<li>
+<p><strong>External Validation</strong>: Uses <code>Nesting</code> class for layout validation</p>
+</li>
+<li>
+<p><strong>Script Integration</strong>: Heavy use of Flux scripting for validation</p>
+</li>
+<li>
+<p><strong>UI Automation</strong>: Comprehensive FlaUI usage for WPF controls</p>
+</li>
+<li>
+<p><strong>Reference-Based Testing</strong>: Compares against baseline files</p>
+</li>
+<li>
+<p><strong>Multi-scenario Testing</strong>: Tests various combinations (priorities, rotations, groups)</p>
+</li>
+<li>
+<p><strong>Dialog Management</strong>: Handles multiple dialog types and warnings</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_differences_from_nesting_cs"><strong>Key Differences from Nesting.cs</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Aspect | Job.cs | Nesting.cs |
+|--------|--------|-----------|
+| <strong>Focus</strong> | Job/Layout management | Layout layout/positioning |
+| <strong>Cleanup Pattern</strong> | IDisposable | FixtureCleanUp |
+| <strong>Machines</strong> | 2 machines configured | 1 machine configured |
+| <strong>Job File</strong> | Works with .fxjob files | Works with .fx files |
+| <strong>Part Properties</strong> | Priority, rotation, grouping | Position, rotation (manual) |
+| <strong>Dialog Testing</strong> | Extensive dialog tests | Minimal dialog testing |
+| <strong>Search/Sort</strong> | Add dialog search/sort | No search functionality |
+| <strong>Complexity</strong> | Higher (24 tests) | Medium (13 tests) |</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_reference_test_categories"><strong>Quick Reference: Test Categories</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Category | Tests | Purpose |
+|----------|-------|---------|
+| <strong>Layout Ops</strong> | 401-402 | Add/delete/move layouts |
+| <strong>Job Creation</strong> | 1528-1529 | Job dialog testing |
+| <strong>Part Mgmt</strong> | 1530-1532 | Add/delete/save/quantity parts |
+| <strong>Sheet Mgmt</strong> | 1534-1536 | Add/delete/import/export sheets |
+| <strong>Part Config</strong> | 3527-3529 | Priority/rotation/grouping |
+| <strong>Clipboard</strong> | 3530 | Copy/Cut/Paste operations |
+| <strong>Add Dialog</strong> | 3531-3537 | Search/sort functionality |</p>
+</div>
+<div class="paragraph">
+<p>This is a <strong>sophisticated job management validation framework</strong> ensuring correct job creation, part handling, priority-based nesting, and advanced layout operations in the Flux application.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_purpose"><strong>Purpose</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_fixture_details"><strong>Fixture Details</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_setup_teardown"><strong>Setup &amp; Teardown</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_constructor_idisposable_pattern"><strong>Constructor (IDisposable Pattern)</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_test_methods_24_tests"><strong>Test Methods (24 Tests)</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_layout_management"><strong>Layout Management</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_job_creation_dialog_management"><strong>Job Creation &amp; Dialog Management</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_part_management"><strong>Part Management</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_sheet_management"><strong>Sheet Management</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_part_properties_configuration"><strong>Part Properties &amp; Configuration</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_copypastecut_operations"><strong>Copy/Paste/Cut Operations</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_add_dialog_search_sorting"><strong>Add Dialog: Search &amp; Sorting</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_helper_methods"><strong>Helper Methods</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_job_operations"><strong>Job Operations</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_validation_methods"><strong>Validation Methods</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_ui_element_access"><strong>UI Element Access</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_data_extraction"><strong>Data Extraction</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_sorting_comparison"><strong>Sorting &amp; Comparison</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_ui_interaction"><strong>UI Interaction</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_key_enums_patterns"><strong>Key Enums &amp; Patterns</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_machine_ids"><strong>Machine IDs</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_eloadoption"><strong>ELoadOption</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_testtype"><strong>TestType</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_key_patterns_used"><strong>Key Patterns Used</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_idisposable_pattern"><strong>IDisposable Pattern</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_ui_automation"><strong>UI Automation</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_keyboard_navigation"><strong>Keyboard Navigation</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_dialog_handling"><strong>Dialog Handling</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_table_operations"><strong>Table Operations</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_combobox_operations"><strong>Combobox Operations</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_script_integration"><strong>Script Integration</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_test_data_requirements"><strong>Test Data Requirements</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_testing_areas"><strong>Testing Areas</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_architecture_highlights"><strong>Architecture Highlights</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_key_differences_from_nesting_cs"><strong>Key Differences from Nesting.cs</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_quick_reference_test_categories"><strong>Quick Reference: Test Categories</strong></a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="nestingcookbook.html">= "Layout";</a></span>
+ <span class="next"><a href="jobcookbook.html">Job.cs Recipe Book: Test Script Creation Commands</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="res/index.js"></script>
+    <script src="res/files.js"></script>
+    <script src="res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

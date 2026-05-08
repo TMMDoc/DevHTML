@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="res/bento.css">
+  <link rel="stylesheet" href="res/site.css">
+  <link rel="stylesheet" href="res/tree.css">
+  <link rel="stylesheet" href="res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>General overview</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a class="active" href="general.html">General overview</a></li>
+  <li><button class="tree blank"></button><a href="fileoverview.html">Overview of C# Files in Fluxtester Repository</a></li>
+  <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+  <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book: Test Script Creation Commands & Patterns</a></li>
+  <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+  <li><button class="tree blank"></button><a href="nestingcookbook.html">= "Layout";</a></li>
+  <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+  <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book: Test Script Creation Commands</a></li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="general.html">General overview</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>General overview</h1>
+<div class="sect1">
+<h2 id="_fluxtester_repository_overview">Fluxtester Repository Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Fluxtester</strong> is a <strong>UI test automation framework</strong> for the Flux application. Here&#8217;s what I found:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_core_details">Core Details</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: Console-based test automation runner for Windows WPF applications</p>
+</li>
+<li>
+<p><strong>.NET Target</strong>: .NET 10 (Windows platform)</p>
+</li>
+<li>
+<p><strong>Purpose</strong>: Automated testing of Flux UI with custom test fixtures and test cases</p>
+</li>
+<li>
+<p><strong>Entry Point</strong>: <code>FluxTester.cs</code> - Main console application</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_features">Key Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Test Runner</strong>: Custom test execution engine with support for:</p>
+</li>
+<li>
+<p>Test fixtures and individual tests</p>
+</li>
+<li>
+<p>Options for regenerating expected outputs (<code>-regenerate</code>)</p>
+</li>
+<li>
+<p>Test result comparison with Windiff (<code>-diff</code>)</p>
+</li>
+<li>
+<p>Stop on failure mode (<code>-stop</code>)</p>
+</li>
+<li>
+<p>Failed test re-runs (<code>-failed</code>)</p>
+</li>
+<li>
+<p>Fixture listing (<code>-fixtures</code>)</p>
+</li>
+<li>
+<p><strong>Interactive Control</strong>: CapsLock key to stop tests during execution</p>
+</li>
+<li>
+<p><strong>Test Management</strong>: Automatic test/fixture ID tracking and sequencing (<code>nextid</code> command)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependencies">Dependencies</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Flit.dll</strong> - Core testing framework library (external dependency from metamation/TestFramework project)</p>
+</li>
+<li>
+<p><strong>FlaUI.UIA3</strong> (v3.2.0) - UI Automation framework for Windows accessibility</p>
+</li>
+<li>
+<p>Custom utilities in <code>Utils.cs</code> for test data and operations</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture">Architecture</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Modular test structure with subdirectories (e.g., <code>FluxCut/</code> for specific test suites)</p>
+</li>
+<li>
+<p>Resource-based test data in <code>Resources/TData/</code></p>
+</li>
+<li>
+<p>Settings and design-time resources for WPF support</p>
+</li>
+<li>
+<p>Unsafe code blocks enabled for advanced interop operations</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is a specialized test automation framework tailored for validating Flux application UI behavior with detailed reporting and flexible test execution options.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_fluxtester_repository_overview">Fluxtester Repository Overview</a>
+  </li>
+  <li level="1">
+   <a href="#_core_details">Core Details</a>
+  </li>
+  <li level="1">
+   <a href="#_key_features">Key Features</a>
+  </li>
+  <li level="1">
+   <a href="#_dependencies">Dependencies</a>
+  </li>
+  <li level="1">
+   <a href="#_architecture">Architecture</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="index.html">Developer Notes</a></span>
+ <span class="next"><a href="fileoverview.html">Overview of C# Files in Fluxtester Repository</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="res/index.js"></script>
+    <script src="res/files.js"></script>
+    <script src="res/site.js"></script>
+
+    
+</body>
+</html>

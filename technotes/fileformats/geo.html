@@ -1,0 +1,816 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>.GEO File Format</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">File formats</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a class="active" href="geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">File formats</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="geo.html">.GEO File Format</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>.GEO File Format</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Excerpt from <a href="https://trumpf.atlassian.net/wiki/spaces/ttbc/pages/103583626/geo-format" class="bare">https://trumpf.atlassian.net/wiki/spaces/TTBC/pages/103583626/GEO-Format</a></p>
+</div>
+<div class="paragraph">
+<p>The GEO file is split into blocks and sections.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>#~1 : Drawing or single part</p>
+</li>
+<li>
+<p>#~11 : Information about the drawing</p>
+</li>
+<li>
+<p>#~3 : General part data</p>
+</li>
+<li>
+<p>#~30 : Description texts for a part (as of T300 V3.2, T100 V5.0)</p>
+</li>
+<li>
+<p>#~31 : Point data of a part/subpart</p>
+</li>
+<li>
+<p>#~32 : Elements of a part/subpart/pattern</p>
+</li>
+<li>
+<p>#~33 : Contour data of a part/subpart/pattern</p>
+</li>
+<li>
+<p>#~34 : Data of a part copy, with description text between #~TEXTINFO and ###~TEXTINFO</p>
+</li>
+<li>
+<p>#~331 : Elements assigned to a contour</p>
+</li>
+<li>
+<p>#~332 : Equidistant elements of a contour</p>
+</li>
+<li>
+<p>#~35 : Data of a subpart</p>
+</li>
+<li>
+<p>#~36 : Element attributes (since V2.2)</p>
+</li>
+<li>
+<p>#~37 : Information about a bend in the part/subpart</p>
+</li>
+<li>
+<p>#~38 : Bend attributes (since V2.3)</p>
+</li>
+<li>
+<p>#~371 : Bending lines</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>General terminators:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>End of file: #~EOF</p>
+</li>
+<li>
+<p>End of block: #~END, #~KONT_END, #~BIEG_END, #~SUB_END, #~TTINFO_END</p>
+</li>
+<li>
+<p>End of section: ##~~</p>
+</li>
+<li>
+<p>End of element/attribute: |~</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_description">Data Description</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_drawing_data">Drawing Data</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~1 // Drawing data
+Database version // 1.03 if new Info data, 1.02, 1.01
+Revision number
+Date created or revised
+Minimum values (x y z)
+Maximum values (x y z)
+Surface area
+Data unit // 1 = MM, 2 = INCH
+Accuracy
+2D or 3D model // 0 = 2D, 1 = 3D
+Number of parts
+++##++~~</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drawing_information">Drawing Information</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~11 // Information about the drawing
+Drawing number
+Drawing name
+Customer
+Programmer
+Job number or name
+Material designation
+Sheet thickness
+Rule name
+Table name
+Machine name
+Switch, whether part can be rotated for nesting
+Switch, whether to form a mini-nest
+Code for part removal method
+Code, if part suitable for common slitting cuts (since 1.03)
+Code, if part is to be placed in a block (since 1.03)
+Number of columns for block layout (since 1.03)
+Number of rows for block layout (since 1.03)
+Code for machining method (laser/punching) (since 1.03)
+Code, if part in Mini-Nest/component (since 1.03)
+Name of Mini-Nest or component (since 1.03)
+++##++~~
+++#++~END</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_data">Part Data</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~3 // Part data
+Part name
+Part information
+Rule name
+Standard vector (x y z)
+Matrix of part position (a1 a2 a3 a4
+b1 b2 b3 b4
+c1 c2 c3 c4
+d1 d2 d3 d4)
+Minimum values (x y z)
+Maximum values (x y z)
+Center of gravity (x y z)
+Surface area
+Number of contours
+Number of part copies
+Number of subparts
+Flag if part is mirrored (since V2.4)
+Index of mirrored part (since V2.4)
+++##++~~</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_text_information_block_30">Part Text Information (Block #~30)</h3>
+<div class="paragraph">
+<p>Text information about the part supports the following keyword meanings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AUFTR : job</p>
+</li>
+<li>
+<p>BEARB : programmer</p>
+</li>
+<li>
+<p>BEZCH : part name</p>
+</li>
+<li>
+<p>DREHINKR : increment for rotation</p>
+</li>
+<li>
+<p>IDENT : part id</p>
+</li>
+<li>
+<p>MASCH : machine</p>
+</li>
+<li>
+<p>MAT : material</p>
+</li>
+<li>
+<p>PART_NESTFITTYPE : lay part in a grid</p>
+</li>
+<li>
+<p>PART_VERSION : format version</p>
+</li>
+<li>
+<p>PRIOFRGEO : nesting priority</p>
+</li>
+<li>
+<p>RGLWK : rules</p>
+</li>
+<li>
+<p>ROTALLOWED : part may be rotated</p>
+</li>
+<li>
+<p>SOURCE_FILE_NAME : original file</p>
+</li>
+<li>
+<p>TABS : tables</p>
+</li>
+<li>
+<p>TKUND : customer entry</p>
+</li>
+<li>
+<p>TMUSTER : is sample part needed</p>
+</li>
+<li>
+<p>TruMasName : machine name</p>
+</li>
+<li>
+<p>WERKSTOFF : raw material</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Further keywords can be added.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~30
+Keyword1@Value1 // Text information about this part
+Keyword2@Value2
+++#++~TTINFO_END</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_point_data">Point Data</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~31 // The points should be sorted according to X value.
+Point number
+++|++~
+++##++~~</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_element_attributes_since_v2_2">Element Attributes (since V2.2)</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~36
+ATT // Element attribute
+Attribute number
+Attribute type
+Attribute data (type-dependent)
+++|++~
+++#++~ATTRIBUTE_END</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bend_attributes_since_v2_3">Bend Attributes (since V2.3)</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~38
+BATT // Bend attributes
+Attribute number
+Attribute type
+Attribute data (type-dependent)
+++|++~
+++#++~BEND_ATTRIBUTE_END</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_elements_block_32">Elements (Block #~32)</h3>
+<div class="paragraph">
+<p>Legend:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Color: 0 = black, 1 = white, 2 = red, 3 = yellow, 4 = green, 5 = cyan, 6 = blue, 7 = magenta</p>
+</li>
+<li>
+<p>Line type: 0 = solid, 1 = dashed, 2 = dotted, 3 = dashed-doted</p>
+</li>
+<li>
+<p>Point symbol: 0 = point, 1 = plus sign, 2 = asterisk, 3 = circle, 4 = cross, 5 = triangle, 6 = square, 7 = rhombus</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~32
+PKT // Point element
+Point symbol color
+Point number
+Number of element attributes (since V2.2) // if number = 0, the whole block can be skipped
+Attribute number 1 (since V2.2)
+Attribute number 2 (since V2.2)
+++|++~
+
+LIN // Line element
+Color linetype
+Startnr Endnr
+Number of element attributes (since V2.2) // if number = 0, the whole block can be skipped
+Attribute number 1 (since V2.2)
+Attribute number 2 (since V2.2)
+++|++~
+
+CIR // Circle element
+Color linetype
+Center No.
+Radius
+Number of element attributes (since V2.2) // if number = 0, the whole block can be skipped
+Attribute number 1 (since V2.2)
+Attribute number 2 (since V2.2)
+++|++~
+
+ARC // Arc element
+Color linetype
+Center No. Startnr. Endnr.
+Direction // 1 = counter-clockwise, -1 = clockwise
+Number of element attributes (since V2.2) // if number = 0, the whole block can be skipped
+Attribute number 1 (since V2.2)
+Attribute number 2 (since V2.2)
+++|++~
+
+CLIN // Construction line element
+Color linetype
+Point No.
+Line values (A B C) // Line equation: Ax {plus} By {plus} C = 0
+++|++~
+
+CCIR // Construction circle element
+Color linetype
+Center No.
+Radius
+++|++~
+
+CHA // Chamfer element
+Color linetype
+Startnr Endnr
+Number of element attributes (since V2.2) // if number = 0, the whole block can be skipped
+Attribute number 1 (since V2.2)
+Attribute number 2 (since V2.2)
+++|++~
+
+FIL // Fillet element
+Color linetype
+Center No. Startnr Endnr
+Direction // 1 = Counter-clockwise, -1 = Clockwise
+Number of element attributes (since V2.2) // if number = 0, the whole block can be skipped
+Attribute number 1 (since V2.2)
+Attribute number 2 (since V2.2)
+++|++~
+
+LED // Arrow element
+Color linetype
+Startnr Endnr
+Tip length Tip width
+++|++~
+
+QUAD // Square element
+Color linetype
+Corner No.1 Corner No.2 Corner No.3 Corner No.4
+Fill marker Fill color
+++|++~
+
+TXT // Text element
+Color Text type
+Start pt. No.
+Character height Character ratio Character angle
+Line spacing Text angle
+Text centering Text direction No. of lines
+Text line1
+Text line2
+Number of element attributes (since V2.2) // if number = 0, the whole block can be skipped
+Attribute number 1 (since V2.2)
+Attribute number 2 (since V2.2)
+++|++~
+++##++~~</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Text element notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Text type: 1 = ISO, 130 = ISO prop, 131 = bold</p>
+</li>
+<li>
+<p>Text centering: 9 = Bottom left, 17 = Bottom center, 33 = Bottom right, 10 = Center left, 18 = Center, 34 = Center right, 12 = Top left, 20 = Top center, 36 = Top right</p>
+</li>
+<li>
+<p>Text direction: 1 = left-to-right, 4 = up-to-down</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_copy_data">Part Copy Data</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~34 // Data of a part copy
+Information about a copy
+Copy number
+Matrix of part position (a1 a2 a3 a4
+b1 b2 b3 b4
+c1 c2 c3 c4
+d1 d2 d3 d4)
+++#++~TEXTINFO // Part information about this copy
+Keyword1@Value1 // overwrites part information of the part
+Keyword2@Value2
+++###++~TEXTINFO
+++##++~~</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contour_data">Contour Data</h3>
+<div class="paragraph">
+<p>Contour notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Contour type: 24 = Closed contour, 25 = Open contour</p>
+</li>
+<li>
+<p>Contour position: 0 = Outside contour, 1 = Inside contour</p>
+</li>
+<li>
+<p>Contour direction: (0,0,1) = Counter-clockwise, (0,0,-1) = Clockwise</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~33 // Contour data
+Information about a contour
+Contour number Contour type Contour position
+Number of inside contours
+Contour direction (x y z)
+Minimum values (x y z)
+Maximum values (x y z)
+Center of gravity (x y z)
+Surface area
+Number of master contour
+++##++~~
+
+++#++~331
+............ // Contour elements
+...........
+++##++~~
+
+++#++~332
+............ // Equidistant elements
+...........
+++##++~~
+
+++#++~KONT_END // End of contour data</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bend_data">Bend Data</h3>
+<div class="paragraph">
+<p>Bend notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bend type: 0 = Normal bending, 1 = Hem, 2 = Radius bend, 4 = Flat processing, 5 = Z-bend, 7 = Double sheet bending, 8 = swing folding</p>
+</li>
+<li>
+<p>Method: 0 = Air bending, 1 = Coining, 2 = seam with gap, 3 = flattening, 4 = swing folding</p>
+</li>
+<li>
+<p>Technique: 0 = Normal bending, 1 = Pre-/Final bending, 10 = Imprinting, 11 = Joining, 12 = Forming, 13 = Punching</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~37 // Data of a bend
+Bend type Method Technique
+Angle Pre-angle
+RadiusStart Radius from bending table
+Bend factor
+Tool type - Top
+Tool type - Bottom
+No. of bend attributes (since V2.3) // if number = 0, the whole block can be skipped
+BendAttribute number1 (since V2.3)
+BendAttribute number2 (since V2.3)
+++##++~~
+
+++#++~371
+............ /* Bending lines */
+...........
+++##++~~
+
+++#++~BIEG_END // End of bend data</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subpart_data">Subpart Data</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">++#++~35 // Data on a subpart of a part
+Subpart name
+Subpart info
+Subpart number
+Minimum values (x y z)
+Maximum values (x y z)
+Center of gravity (x y z)
+Surface area
+Number of contours
+++##++~~
+
+++#++~31
+............ // Points of the subpart
+...........
+++##++~~
+
+++#++~32
+............ // Elements of the subpart
+...........
+++##++~~
+
+++#++~37
+............ // Bends of the subpart
+...........
+++##++~~
+
+++#++~33
+............ // Contours of the subpart
+...........
+++##++~~
+
+++#++~331
+............ // Contour elements of the subpart
+...........
+++##++~~
+
+++#++~332
+............ // Contour equidistant elements of the subpart
+...........
+++##++~~
+
+++#++~KONT_END
+++#++~SUB_END // End of data for a subpart
+++#++~END // End of data for a part
+++#++~EOF // End of file</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_data_description">Data Description</a>
+  </li>
+  <li level="2">
+   <a href="#_drawing_data">Drawing Data</a>
+  </li>
+  <li level="2">
+   <a href="#_drawing_information">Drawing Information</a>
+  </li>
+  <li level="2">
+   <a href="#_part_data">Part Data</a>
+  </li>
+  <li level="2">
+   <a href="#_part_text_information_block_30">Part Text Information (Block #~30)</a>
+  </li>
+  <li level="2">
+   <a href="#_point_data">Point Data</a>
+  </li>
+  <li level="2">
+   <a href="#_element_attributes_since_v2_2">Element Attributes (since V2.2)</a>
+  </li>
+  <li level="2">
+   <a href="#_bend_attributes_since_v2_3">Bend Attributes (since V2.3)</a>
+  </li>
+  <li level="2">
+   <a href="#_elements_block_32">Elements (Block #~32)</a>
+  </li>
+  <li level="2">
+   <a href="#_part_copy_data">Part Copy Data</a>
+  </li>
+  <li level="2">
+   <a href="#_contour_data">Contour Data</a>
+  </li>
+  <li level="2">
+   <a href="#_bend_data">Bend Data</a>
+  </li>
+  <li level="2">
+   <a href="#_subpart_data">Subpart Data</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="augoldfile.html">Au (Gold) file</a></span>
+ <span class="next"><a href="lst.html">.LST File Format</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

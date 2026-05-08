@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Styleguide</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../flux/shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="index.html">Documentation</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a class="active" href="styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">Documentation</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="styleguide.html">Styleguide</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Styleguide</h1>
+<div class="sect1">
+<h2 id="_general_guidelines">General guidelines</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Remove spaces in folder names and filenames</p>
+</li>
+<li>
+<p>Remove hyphens in folder names and filenames</p>
+</li>
+<li>
+<p>Make consistent filenames with PascalCase names for all .adoc files</p>
+</li>
+<li>
+<p>Avoid having more than 1 blank line anywhere in an AsciiDoc document.</p>
+</li>
+<li>
+<p>Avoid having trailing spaces at the end of any line in an AsciiDoc document. You can turn
+on the Trim Trailing Whitespace setting in VSCode to do this.</p>
+</li>
+<li>
+<p>Lines over 100 characters have been split into multiple lines.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links">Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Links within a chapter:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>x ref:Flux/Index#[Flux]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Links to external ressources</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>`API Reference:` link:https://metamation-fluxapi.onrender.com/classes.htm[Documentation]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To jump to specific help pages yet. Could be done like
+	<a href="https://fluxbook-en.onrender.com/bend/editing/editbend.html#_editing_a_hem_bend" class="bare">https://fluxbook-en.onrender.com/bend/editing/editbend.html#_editing_a_hem_bend</a></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_general_guidelines">General guidelines</a>
+  </li>
+  <li level="1">
+   <a href="#_links">Links</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="workflow/checklist.html">Checklist for Documenters</a></span>
+ <span class="next"><a href="flavoring.html">Flavoring</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>

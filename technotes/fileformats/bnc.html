@@ -1,0 +1,1100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>.BNC File Format</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">File formats</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a href="geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a class="active" href="bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">File formats</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="bnc.html">.BNC File Format</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>.BNC File Format</h1>
+<div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>.bnc</code> is a text-based press-brake program container for bending machines.
+It combines structured process tables with embedded geometry and preview payloads.</p>
+</div>
+<div class="paragraph">
+<p>The file has three main parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a short file header</p>
+</li>
+<li>
+<p>a sequence of named table sections with metadata and records</p>
+</li>
+<li>
+<p>embedded model and preview blocks at the end of the file</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This file is 11896 lines long and ends with <code>ED</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_top_level_structure">Top-Level Structure</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">C
+BD
+SET_METRIC
+C
+BEGIN_SECTION
+ZA,MM,&lt;field-count&gt;
+MM,AT,...
+...
+ZA,DA,&lt;row-count&gt;
+DA,...
+...
+ENDE_SECTION
+C
+...
+START_MODELLDATEI_&lt;id&gt;
+... payload ...
+STOP_MODELLDATEI_&lt;id&gt;
+C
+START_VORSCHAUDATEI_&lt;id&gt;
+... payload ...
+STOP_VORSCHAUDATEI_&lt;id&gt;
+C
+ED</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_header_and_terminator">Header And Terminator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The file begins with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">C
+BD
+SET_METRIC
+C</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>BD</code> identifies the file as a BNC-style data container.</p>
+</div>
+<div class="paragraph">
+<p><code>SET_METRIC</code> declares metric units.</p>
+</div>
+<div class="paragraph">
+<p>The file ends with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">ED</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_record_types">Common Record Types</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_c"><code>C</code></h3>
+<div class="paragraph">
+<p><code>C</code> is used as a separator line between logical blocks.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zammn"><code>ZA,MM,&lt;n&gt;</code></h3>
+<div class="paragraph">
+<p>Declares a metadata table with <code>&lt;n&gt;</code> field definitions.
+The following logical rows are <code>MM,AT</code> definitions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mmat"><code>MM,AT,&#8230;&#8203;</code></h3>
+<div class="paragraph">
+<p>Defines one field in a section.
+Observed format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">MM,AT,1,&lt;field-id&gt;,0,0,,'&lt;field name&gt;',,'&lt;unit&gt;',&lt;type&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Relevant parts are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;field-id&gt;</code>: section-local field identifier</p>
+</li>
+<li>
+<p><code>&lt;field name&gt;</code>: display label, mostly German in this file</p>
+</li>
+<li>
+<p><code>&lt;unit&gt;</code>: optional engineering unit such as <code>mm</code>, <code>sec</code>, <code>deg</code>, <code>kg</code>, <code>kN</code>, or <code>Stl</code></p>
+</li>
+<li>
+<p><code>&lt;type&gt;</code>: data class</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Observed types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>T</code>: text</p>
+</li>
+<li>
+<p><code>Z</code>: numeric value</p>
+</li>
+<li>
+<p><code>E</code>: enumerated value</p>
+</li>
+<li>
+<p><code>B</code>: boolean value</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zadan"><code>ZA,DA,&lt;n&gt;</code></h3>
+<div class="paragraph">
+<p>Declares <code>&lt;n&gt;</code> data rows for the section.
+The following logical rows are <code>DA</code> records.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_da"><code>DA,&#8230;&#8203;</code></h3>
+<div class="paragraph">
+<p>Stores one data row, ordered exactly like the preceding <code>MM,AT</code> schema.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id=""><code>*</code></h3>
+<div class="paragraph">
+<p>A line beginning with <code>*</code> continues the previous <code>DA</code> row.
+This is used for long records split across multiple physical lines.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gepa"><code>GE,PA,&#8230;&#8203;</code></h3>
+<div class="paragraph">
+<p><code>GE,PA</code> is a relationship row.
+It appears immediately after some <code>DA</code> rows and links a parent identifier to one or more child identifiers.</p>
+</div>
+<div class="paragraph">
+<p>Examples from this file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">GE,PA,'WzgGrp001','Wzg001','Wzg002'
+GE,PA,'WzgStat001','WzgGrp001'
+GE,PA,'ModPict001','ModPos001','ModPos002',...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This means the <code>.bnc</code> format is not only tabular; it also carries graph-like references between records.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_section_pattern">Section Pattern</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most structured sections follow this pattern:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">BEGIN_&lt;name&gt;
+ZA,MM,&lt;field-count&gt;
+MM,AT,...
+...
+ZA,DA,&lt;row-count&gt;
+DA,...
+...
+ENDE_&lt;name&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_structured_sections_in_this_file">Structured Sections In This File</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Section</th>
+<th class="tableblock halign-left valign-top">Lines</th>
+<th class="tableblock halign-left valign-top">Data Rows</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>KONFIGURATIONSDATEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5-17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine and software configuration records.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FERTIGUNG_AUFTRAG_TMP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20-31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Job-level order record pointing to the generated BNC program path.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BIEGETEILSTAMM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">34-66</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Master data for the bend part, including material, thickness, dimensions, IDs, and timestamps.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>WERKZEUGSTAMM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">69-95</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool master data for punches and dies.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>WERKZEUGGRUPPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98-114</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 plus <code>GE,PA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool group definitions with references to member tools.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>WERKZEUGSTATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">117-131</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 plus <code>GE,PA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool station definitions with references to tool groups.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MODELLSTAMM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">134-152</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model catalog describing embedded models.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MODELLSTATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">155-198</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Placement and transform data for models.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MODELLABLAUFDATEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">201-216</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 plus <code>GE,PA</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-step picture/model grouping for process visualization.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ANSCHLAG_SETZEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">219-260</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backgauge positions, speeds, increments, and related settings.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TEIL_KLEMMEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">263-287</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clamp and mute-point settings for each bend step.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TEIL_BIEGEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">290-323</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pressing and bending parameters such as angle, force, bottom position, and speeds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TEIL_FREIGEBEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">326-341</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Release and opening motion after each bend.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BIEGESCHRITTDATEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">344-380</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High-level bend-step records linking stations, gauges, clamp data, bend data, and release data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_section_details">Section Details</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_konfigurationsdaten"><code>KONFIGURATIONSDATEN</code></h3>
+<div class="paragraph">
+<p>This section stores configuration key records.
+In this file it includes machine, controller, programming system, and backgauge finger configuration.</p>
+</div>
+<div class="paragraph">
+<p>Representative values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TruBend</code></p>
+</li>
+<li>
+<p><code>5320 (6-axes)</code></p>
+</li>
+<li>
+<p><code>Flux</code></p>
+</li>
+<li>
+<p><code>BackgaugeFingerLeft</code></p>
+</li>
+<li>
+<p><code>BackgaugeFingerRight</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fertigung_auftrag_tmp"><code>FERTIGUNG_AUFTRAG_TMP</code></h3>
+<div class="paragraph">
+<p>This section stores one temporary manufacturing-order record.
+The record contains the full generated program path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">C:\ProgramData\Metamation\Flux\Output\Code\1001-E420-0002[4].bnc</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_biegeteilstamm"><code>BIEGETEILSTAMM</code></h3>
+<div class="paragraph">
+<p>This is the main part master-data section.
+It defines 25 fields, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>part ID and drawing number</p>
+</li>
+<li>
+<p>timestamps</p>
+</li>
+<li>
+<p>operator</p>
+</li>
+<li>
+<p>material and sheet thickness</p>
+</li>
+<li>
+<p>weight</p>
+</li>
+<li>
+<p>enclosing rectangle size</p>
+</li>
+<li>
+<p>number of bend steps</p>
+</li>
+<li>
+<p>processing time</p>
+</li>
+<li>
+<p>part X/Y/Z dimensions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Its single <code>DA</code> record is split across multiple physical lines using <code>*</code> continuation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_werkzeugstamm"><code>WERKZEUGSTAMM</code></h3>
+<div class="paragraph">
+<p>This section defines the individual tooling records.
+Observed fields include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tool name</p>
+</li>
+<li>
+<p>tool type and kind</p>
+</li>
+<li>
+<p>angle and radius</p>
+</li>
+<li>
+<p>height and length</p>
+</li>
+<li>
+<p>depth values</p>
+</li>
+<li>
+<p>die width</p>
+</li>
+<li>
+<p>material number</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This file contains four tool records.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_werkzeuggruppe"><code>WERKZEUGGRUPPE</code></h3>
+<div class="paragraph">
+<p>This section groups tools into logical assemblies.
+Each <code>DA</code> row is followed by a <code>GE,PA</code> row that lists the tools belonging to that group.</p>
+</div>
+<div class="paragraph">
+<p>Example structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">DA,'WzgGrp001',...
+GE,PA,'WzgGrp001','Wzg001','Wzg002'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_werkzeugstation"><code>WERKZEUGSTATION</code></h3>
+<div class="paragraph">
+<p>This section defines stations and links each station to one tool group through <code>GE,PA</code>.
+It adds positional information such as total height, total length, and base coordinate system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modellstamm"><code>MODELLSTAMM</code></h3>
+<div class="paragraph">
+<p>This section is a catalog of embedded model identities.
+Each row references one model ID such as <code>Model001</code> through <code>Model010</code> and records model type and file flags.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modellstation"><code>MODELLSTATION</code></h3>
+<div class="paragraph">
+<p>This section defines where models appear in space.
+Its fields include rotation matrix elements and translations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>RotateX1</code> &#8230;&#8203; <code>RotateZ3</code></p>
+</li>
+<li>
+<p><code>VerschiebungX</code></p>
+</li>
+<li>
+<p><code>VerschiebungY</code></p>
+</li>
+<li>
+<p><code>VerschiebungZ</code></p>
+</li>
+<li>
+<p>linked model ID</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The section contains 25 placement rows.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modellablaufdaten"><code>MODELLABLAUFDATEN</code></h3>
+<div class="paragraph">
+<p>This section groups model positions by bend number and bend orientation.
+Each row is followed by a <code>GE,PA</code> relation listing the model positions used for that process image.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_anschlag_setzen"><code>ANSCHLAG_SETZEN</code></h3>
+<div class="paragraph">
+<p>This section contains backgauge setup records.
+It defines 30 fields including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>left and right gauge coordinates</p>
+</li>
+<li>
+<p>correction values</p>
+</li>
+<li>
+<p>axis speeds</p>
+</li>
+<li>
+<p>wait time</p>
+</li>
+<li>
+<p>retraction values</p>
+</li>
+<li>
+<p>sensor mode</p>
+</li>
+<li>
+<p>finger support flags</p>
+</li>
+<li>
+<p>increment values</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are four backgauge records in this file.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_teil_klemmen"><code>TEIL_KLEMMEN</code></h3>
+<div class="paragraph">
+<p>This section describes clamping behavior for each bend step.
+Fields include mute point, clamp point, tool-table position, wait time, closing speed, sheet-thickness correction, and LCB preparation positions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_teil_biegen"><code>TEIL_BIEGEN</code></h3>
+<div class="paragraph">
+<p>This section stores the actual bend-process parameters.
+Fields include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>target angle</p>
+</li>
+<li>
+<p>bottom dead point</p>
+</li>
+<li>
+<p>press correction</p>
+</li>
+<li>
+<p>hold time</p>
+</li>
+<li>
+<p>press force</p>
+</li>
+<li>
+<p>bend speed</p>
+</li>
+<li>
+<p>crowning</p>
+</li>
+<li>
+<p>sensor positions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This file contains two press records: <code>Press001</code> and <code>Press002</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_teil_freigeben"><code>TEIL_FREIGEBEN</code></h3>
+<div class="paragraph">
+<p>This section stores opening and release motions after bending.
+It includes release path, opening path, opening speed, and LCB extraction positions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_biegeschrittdaten"><code>BIEGESCHRITTDATEN</code></h3>
+<div class="paragraph">
+<p>This is the orchestration section for bend steps.
+Each record links together the other setup records by identifier.
+Observed link fields include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>station IDs for top and bottom tooling</p>
+</li>
+<li>
+<p>backgauge ID</p>
+</li>
+<li>
+<p>clamp ID</p>
+</li>
+<li>
+<p>bend ID</p>
+</li>
+<li>
+<p>release ID</p>
+</li>
+<li>
+<p>die-group ID</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This means <code>BIEGESCHRITTDATEN</code> is effectively the execution plan for the program.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_embedded_model_blocks">Embedded Model Blocks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After <code>ENDE_BIEGESCHRITTDATEN</code>, the file switches from table sections to payload blocks.</p>
+</div>
+<div class="paragraph">
+<p>There are ten model blocks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>START_MODELLDATEI_Model001</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model001</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model002</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model002</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model003</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model003</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model004</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model004</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model005</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model005</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model006</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model006</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model007</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model007</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model008</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model008</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model009</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model009</code></p>
+</li>
+<li>
+<p><code>START_MODELLDATEI_Model010</code> &#8230;&#8203; <code>STOP_MODELLDATEI_Model010</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The payload begins with text such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">15 Flux SAT Writer 8 ACIS 3.0 24 Wed Jan 01 08:00:00 2014</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then continues with ACIS SAT geometry records like <code>body</code>, <code>face</code>, <code>vertex</code>, <code>edge</code>, <code>straight-curve</code>, and <code>plane-surface</code>.</p>
+</div>
+<div class="paragraph">
+<p>These blocks are raw geometry payloads and should not be parsed as <code>DA</code> records.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_embedded_preview_block">Embedded Preview Block</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the model blocks, the file contains one preview block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">START_VORSCHAUDATEI_Preview001
+424D...
+STOP_VORSCHAUDATEI_Preview001</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The payload starts with <code>424D</code>, which is the hexadecimal signature of a BMP bitmap.
+This block therefore stores a preview image as raw hex data.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parsing_notes">Parsing Notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When parsing this file, the main rules are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>skip standalone <code>C</code> lines</p>
+</li>
+<li>
+<p>use <code>BEGIN_*</code> and <code>ENDE_*</code> to delimit structured table sections</p>
+</li>
+<li>
+<p>read <code>MM,AT</code> rows as the schema for following <code>DA</code> rows</p>
+</li>
+<li>
+<p>merge lines beginning with <code>*</code> into the preceding <code>DA</code> record</p>
+</li>
+<li>
+<p>treat <code>GE,PA</code> as parent-child relationship records</p>
+</li>
+<li>
+<p>treat <code>START_MODELLDATEI_*</code> &#8230;&#8203; <code>STOP_MODELLDATEI_*</code> as raw ACIS SAT geometry payloads</p>
+</li>
+<li>
+<p>treat <code>START_VORSCHAUDATEI_*</code> &#8230;&#8203; <code>STOP_VORSCHAUDATEI_*</code> as raw preview-image payloads</p>
+</li>
+<li>
+<p>stop at <code>ED</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary">Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This <code>.bnc</code> file is a hybrid container format.
+The first part is relational and table-driven, describing a bending job, tools, stations, gauges, clamp data, bend data, and step planning.
+The second part embeds geometry and preview assets directly into the same file.</p>
+</div>
+<div class="paragraph">
+<p>In practice, the structure is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>header</p>
+</li>
+<li>
+<p>machine and process tables</p>
+</li>
+<li>
+<p>cross-reference rows with <code>GE,PA</code></p>
+</li>
+<li>
+<p>embedded ACIS model blocks</p>
+</li>
+<li>
+<p>embedded preview-image block</p>
+</li>
+<li>
+<p>final <code>ED</code> terminator</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_overview">Overview</a>
+  </li>
+  <li level="1">
+   <a href="#_top_level_structure">Top-Level Structure</a>
+  </li>
+  <li level="1">
+   <a href="#_header_and_terminator">Header And Terminator</a>
+  </li>
+  <li level="1">
+   <a href="#_common_record_types">Common Record Types</a>
+  </li>
+  <li level="2">
+   <a href="#_c"><code>C</code></a>
+  </li>
+  <li level="2">
+   <a href="#_zammn"><code>ZA,MM,&lt;n&gt;</code></a>
+  </li>
+  <li level="2">
+   <a href="#_mmat"><code>MM,AT,&#8230;&#8203;</code></a>
+  </li>
+  <li level="2">
+   <a href="#_zadan"><code>ZA,DA,&lt;n&gt;</code></a>
+  </li>
+  <li level="2">
+   <a href="#_da"><code>DA,&#8230;&#8203;</code></a>
+  </li>
+  <li level="2">
+   <a href="#"><code>*</code></a>
+  </li>
+  <li level="2">
+   <a href="#_gepa"><code>GE,PA,&#8230;&#8203;</code></a>
+  </li>
+  <li level="1">
+   <a href="#_section_pattern">Section Pattern</a>
+  </li>
+  <li level="1">
+   <a href="#_structured_sections_in_this_file">Structured Sections In This File</a>
+  </li>
+  <li level="1">
+   <a href="#_section_details">Section Details</a>
+  </li>
+  <li level="2">
+   <a href="#_konfigurationsdaten"><code>KONFIGURATIONSDATEN</code></a>
+  </li>
+  <li level="2">
+   <a href="#_fertigung_auftrag_tmp"><code>FERTIGUNG_AUFTRAG_TMP</code></a>
+  </li>
+  <li level="2">
+   <a href="#_biegeteilstamm"><code>BIEGETEILSTAMM</code></a>
+  </li>
+  <li level="2">
+   <a href="#_werkzeugstamm"><code>WERKZEUGSTAMM</code></a>
+  </li>
+  <li level="2">
+   <a href="#_werkzeuggruppe"><code>WERKZEUGGRUPPE</code></a>
+  </li>
+  <li level="2">
+   <a href="#_werkzeugstation"><code>WERKZEUGSTATION</code></a>
+  </li>
+  <li level="2">
+   <a href="#_modellstamm"><code>MODELLSTAMM</code></a>
+  </li>
+  <li level="2">
+   <a href="#_modellstation"><code>MODELLSTATION</code></a>
+  </li>
+  <li level="2">
+   <a href="#_modellablaufdaten"><code>MODELLABLAUFDATEN</code></a>
+  </li>
+  <li level="2">
+   <a href="#_anschlag_setzen"><code>ANSCHLAG_SETZEN</code></a>
+  </li>
+  <li level="2">
+   <a href="#_teil_klemmen"><code>TEIL_KLEMMEN</code></a>
+  </li>
+  <li level="2">
+   <a href="#_teil_biegen"><code>TEIL_BIEGEN</code></a>
+  </li>
+  <li level="2">
+   <a href="#_teil_freigeben"><code>TEIL_FREIGEBEN</code></a>
+  </li>
+  <li level="2">
+   <a href="#_biegeschrittdaten"><code>BIEGESCHRITTDATEN</code></a>
+  </li>
+  <li level="1">
+   <a href="#_embedded_model_blocks">Embedded Model Blocks</a>
+  </li>
+  <li level="1">
+   <a href="#_embedded_preview_block">Embedded Preview Block</a>
+  </li>
+  <li level="1">
+   <a href="#_parsing_notes">Parsing Notes</a>
+  </li>
+  <li level="1">
+   <a href="#_summary">Summary</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="lsttechno.html">.LST file - technology</a></span>
+ <span class="next"><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

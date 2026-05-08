@@ -1,0 +1,1174 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>.LST file - technology</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">File formats</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a href="geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a class="active" href="lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">File formats</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="lsttechno.html">.LST file - technology</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>.LST file - technology</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the program sections 'SP' and 'HP' technology commands are used</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tc_laser_on">TC_LASER_ON</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Definition</div>
+<p>With the TC_LASER_ON cycle call-up, the following machine
+commands are executed independently of the entered cycle
+parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch on the distance regulation.</p>
+</li>
+<li>
+<p>Select piercing gas.</p>
+</li>
+<li>
+<p>Move Z axis to piercing position.</p>
+</li>
+<li>
+<p>Switch on beam for piercing.</p>
+</li>
+<li>
+<p>Select the cutting gas.</p>
+</li>
+<li>
+<p>Move Z axis to cutting position.</p>
+</li>
+<li>
+<p>Switch on beam for cutting.</p>
+</li>
+<li>
+<p>Select focal position.</p>
+</li>
+<li>
+<p>Select beam diameter.</p>
+</li>
+<li>
+<p>Select laser power.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">Programming</div>
+<p>TC_LASER_ON (Laser method,"Technology table",piercing
+type,cutting type)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The parameters of the technology table for TC_LASER_ON
+for different materials and material thicknesses are available
+at the machine control. The name of the suitable technology
+table must be specified at the time of programming.</p>
+</li>
+<li>
+<p>If pure cutting or piercing cycles are called up, the value "0"
+must be entered for the cycle parameter "Piercing type" or
+"Cutting type".</p>
+</li>
+<li>
+<p>Is deleted by TC_LASER_OFF.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">Laser method</div>
+<p>The following laser methods are available:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Laser method</th>
+<th class="tableblock halign-left valign-top">Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 or 9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing and cutting with distance regulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 or 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing and cutting without distance regulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing without distance regulation, cutting with distance regulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing with distance regulation, cutting without distance regulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 or 11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cutting with distance regulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6 or 12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cutting without distance regulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing with distance regulation, beam OFF.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing without distance regulation, beam OFF.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microweld</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="title">Piercing type</div>
+<p>Cycle parameters: data is selected from the active technology table via the
+piercing type. Several piercing types are stored there:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Number</th>
+<th class="tableblock halign-left valign-top">Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No piercing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normal piercing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gentle piercing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dot punch marking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special processing hard Microweld</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special processing soft Microweld</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="title">Cutting type</div>
+<p>Cycle parameters: Data is selected from the active technology table via the
+cutting type. Cutting data (e. g. laser output, cutting and approach parameters)
+is stored there for different machining requirements. Differences are as
+follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Size, medium or small contour.</p>
+</li>
+<li>
+<p>Normal or reduced cutting speed.</p>
+</li>
+<li>
+<p>Normal or reduced acceleration values.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The cutting type is selected using a three-digit number, whereby each digit has
+a particular significance:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">1st digit: contour</th>
+<th class="tableblock halign-left valign-top">2nd digit: cutting speed</th>
+<th class="tableblock halign-left valign-top">3rd digit: acceleration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 = large contour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 = normal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 = normal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 = medium contour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 = reduced from piercing hole</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 = reduced</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 = small contour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 = high</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 1. Examples standard cutting types</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Example</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No cutting.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut large contour at normal acceleration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut large contour at reduced acceleration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut medium contour at normal acceleration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">210</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut medium contour at reduced approach speed from the piercing hole and normal acceleration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">211</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut medium contour at reduced approach speed from the piercing hole and reduced acceleration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">310</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut small contour at reduced approach speed from the piercing hole and normal acceleration.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In addition to these standard cutting types, there are also 3 special cutting types:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 2. Special cutting types</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Special cutting type</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special processing: vaporization.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special processing: marking.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">600</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special processing: geometric punch marking.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 3. Example</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2">TC_LASER_ON(1,"1778",10,100)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser method 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing and cutting with distance regulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing type 10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normal piercing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cutting type 100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut large contour at normal acceleration.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<div class="title">Cutting with "floating data exchange"</div>
+<p>With laser methods 5 or 11 and 6 or 12, cutting with "floating data exchange"
+can be programmed. If a further TC_LASER_ON instance is programmed with methods
+5 or 11 and 6 or 12 and the beam has already been ignited, switching over can be
+done as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch among the various cutting data within a technology table (e. g. due to
+a contour change).</p>
+</li>
+<li>
+<p>Switch among the various technology tables.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>No axis stop is necessary in case of modifications of laser power and gating
+frequency as well as for minor modifications of cutting parameters such as gas
+pressure, gating frequency, and cutting distance. The switch will be made to the
+new parameters <strong>during the machining</strong>.</p>
+</div>
+<div class="ulist">
+<div class="title">Advantages</div>
+<ul>
+<li>
+<p>No pits due to reduction of the cutting speed during data exchange.</p>
+</li>
+<li>
+<p>Faster processing due to "floating data exchange".</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 4. Example</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Block</th>
+<th class="tableblock halign-left valign-top">NC program</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_ON(1,"1778",10,100)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Piercing and cutting large contours.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">G01 X20 Y40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_ON(5,"1778",0,300)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Floating data exchange": Cut small contour.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">G02 I0 J10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N140</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_OFF(1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tc_laser_off">TC_LASER_OFF</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Definition</div>
+<p>Depending on the parameters entered, the following machine commands are executed with the TC_LASER_OFF cycle call-up:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch off the laser beam.</p>
+</li>
+<li>
+<p>Position the Z axis.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">Programming</div>
+<p>The TC_LASER_OFF cycle is called up with a cycle parameter in the NC program:<br>
+TC_LASER_OFF(Laser method)</p>
+</div>
+<div class="paragraph">
+<div class="title">Laser method</div>
+<p>The following TC_LASER_OFF cycles are available:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Laser method</th>
+<th class="tableblock halign-left valign-top">Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beam off, Z axis at overshoot height (standard overshoot height = 40 mm).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beam off, cutting gas off, high voltage off, Z axis at home position.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Corresponds to method 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beam off, Z axis remains at processing clearance (at piercing height for the following piercings / at cutting height for the following cuts).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In the case of RotoLas: Laser beam off, Z axis to overshoot height (in relation to the outer circle).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beam off, preparation for hard Microweld.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beam off, preparation for soft Microweld.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The laser methods are used as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If <strong>Laser method 1</strong> is programmed, the overshoot height to approach the Z axis
+must first be programmed with TC_POS_LEVEL. This method is used to switch off
+the laser beam after a processed part and to position the next part.</p>
+</li>
+<li>
+<p><strong>Laser method 2</strong> is used to switch off the laser beam at the end of part
+programming and to move the Z axis to the home position.</p>
+</li>
+<li>
+<p><strong>Laser method 3</strong> corresponds to <strong>Laser method 1</strong>.</p>
+</li>
+<li>
+<p><strong>Laser method 4</strong> is used when processing "Common cuts" and for SprintLine.
+During positioning, there must never be a hole or formed section.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tc_wait">TC_WAIT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Definition</div>
+<p>Laser cycle for corner cooling to prevent burning in. The laser beam is switched off.</p>
+</div>
+<div class="paragraph">
+<div class="title">Programming</div>
+<p>TC_WAIT (Function, Time)</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Functions</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Waiting time from the laser technology table is used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Waiting time from the laser technology table is used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delay time is used from the transfer parameter "Time".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Waiting for start button (unconditional stop M0).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The function is optional.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Functions</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Time</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time indication in seconds.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_g823_flyline">G823 (FlyLine)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Definition</div>
+<p>Programming a contour-related beam suppression. With the G823 function, the laser beam can be suppressed in relation to the block. At the same time, the beam at the block transition is switched off unsupported. If another travel block without a G823 function follows a travel block with this function, the beam will be ignited at the block transition unsupported. The respective process parameters remained unchanged thereby. At the same time, the beam suppression is not restricted to linear blocks.</p>
+</div>
+<div class="paragraph">
+<div class="title">Programming</div>
+<p><strong>G823</strong></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The G823 function is assigned to a group of G commands. Only one G command may be used from this group within an NC block. The G commands G820 – G829 belong to this group.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The function only becomes effective if the laser processing was previously activated by TC_LASER_ON.</p>
+</li>
+<li>
+<p>A piercing process must be possible without axis standstill when the material is selected or the material thickness is selected.</p>
+</li>
+<li>
+<p>Depending on the machine, FlyLine can be used for various material thicknesses (for exact information on the material thickness, see the data collection for the machine concerned).</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 5. Example</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Block</th>
+<th class="tableblock halign-left valign-top">NC program</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">G01 G90 X10 Y10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_ON(5,"4711",0,100)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser ON.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X30 G823</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N140</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N150</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X50 G823</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N160</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N170</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_OFF(3)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tc_pos_mode">TC_POS_MODE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Definition</div>
+<p>The TC_POS_MODE cycle controls the positioning process of
+the cutting head between the cutting processes.</p>
+</div>
+<div class="paragraph">
+<div class="title">Programming</div>
+<p>TC_POS_MODE (Value)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Self-holding (modal) operation.</p>
+</li>
+<li>
+<p>Is deactivated by the renewed programming of the cycle, the
+end of the program or the actuation of the Reset button.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard behavior.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unsupported retraction of the contour after TC_LASER_OFF.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Prerequisite for the programming of this value is that programming be done without piercing and with TC_LASER_OFF(4).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Floating approach of the contour with TC_LASER_ON.</p>
+</li>
+<li>
+<p>Unsupported retraction of the contour after TC_LASER_OFF.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Optimum positioning paths are urgently required when using the TC_POS_MODE(1).
+Pay attention especially to possible falling parts and holes in the traversing
+path of the cutting head.</p>
+</li>
+<li>
+<p>If no TC_LASER_OFF(4) is programmed during the use of TC_POS_MODE(2), then the
+function G823 is automatically deactivated for the contour start. No error is
+output.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tc_fluid_on_option">TC_FLUID_ON (Option)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Definition</div>
+<p>The cycle TC_FLUID_ON activates water spraying. Water spraying
+is used during laser flame cutting.</p>
+</div>
+<div class="paragraph">
+<div class="title">Programming</div>
+<p>TC_FLUID_ON</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Water spraying is generally controlled via the machine technology tables
+(program properties). Mode 0 or 1 switches water spraying on or off generally in
+the overall program. If in the machine technology table mode 2 is active, water
+spraying can be activated in a program-controlled manner via the cycle
+TC_FLUID_ON and deactivated via TC_FLUID_OFF.</p>
+</li>
+<li>
+<p>Is deactivated by program end, program interruption or TC_FLUID_OFF.</p>
+</li>
+<li>
+<p>Contour related: must be programmed before TC_LASER_ON.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 6. Example</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Block</th>
+<th class="tableblock halign-left valign-top">NC program</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_SHEET_TECH("SHT-1")</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_SHEET_LOAD("SHL-1")</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pallet change</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_HEAD("LHT-1")</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activating cutting heads</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N140</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X500 Y300</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positioning motion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N150</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_FLUID_ON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activate water spraying</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N160</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_ON(1,"T2D-5102",10,100)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X&#8230;&#8203; Y&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contour processing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_OFF(1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser OFF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N210</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_FLUID_OFF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deactivate water spraying</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tc_fluid_off_option">TC_FLUID_OFF (Option)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<div class="title">Definition</div>
+<p>The TC_FLUID_OFF cycle deactivates water spraying.</p>
+</div>
+<div class="paragraph">
+<div class="title">Programming</div>
+<p>TC_FLUID_OFF</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Water spraying is generally controlled via the machine technology tables
+(program properties). Mode 0 or 1 switches water spraying on or off generally in
+the overall program. If in the machine technology table mode 2 is active, water
+spraying can be activated in a program-controlled manner via the cycle
+TC_FLUID_ON and deactivated via TC_FLUID_OFF.</p>
+</li>
+<li>
+<p>Deactivate TC_FLUID_ON.</p>
+</li>
+<li>
+<p>Is deactivated by program end or program cancellation.</p>
+</li>
+<li>
+<p>Contour related: must be programmed after TC_LASER_OFF.</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 7. Example</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Block</th>
+<th class="tableblock halign-left valign-top">NC program</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_SHEET_TECH("SHT-1")</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_SHEET_LOAD("SHL-1")</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pallet change</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N130</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_HEAD("LHT-1")</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activating cutting heads</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N140</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X500 Y300</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positioning motion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N150</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_FLUID_ON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activate water spraying</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N160</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_ON(1,"T2D-5102",10,100)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X&#8230;&#8203; Y&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contour processing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_LASER_OFF(1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser OFF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N210</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TC_FLUID_OFF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deactivate water spraying</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_tc_laser_on">TC_LASER_ON</a>
+  </li>
+  <li level="1">
+   <a href="#_tc_laser_off">TC_LASER_OFF</a>
+  </li>
+  <li level="1">
+   <a href="#_tc_wait">TC_WAIT</a>
+  </li>
+  <li level="1">
+   <a href="#_g823_flyline">G823 (FlyLine)</a>
+  </li>
+  <li level="1">
+   <a href="#_tc_pos_mode">TC_POS_MODE</a>
+  </li>
+  <li level="1">
+   <a href="#_tc_fluid_on_option">TC_FLUID_ON (Option)</a>
+  </li>
+  <li level="1">
+   <a href="#_tc_fluid_off_option">TC_FLUID_OFF (Option)</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="lst.html">.LST File Format</a></span>
+ <span class="next"><a href="bnc.html">.BNC File Format</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>.FX File Format</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">File formats</a>
+     <ul>
+      <li><button class="tree blank"></button><a class="active" href="fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a href="geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">File formats</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="fx.html">.FX File Format</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>.FX File Format</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>.fx</code> file is Flux&#8217;s native save format for a single part. This document describes
+exactly what the file contains, how each piece is encoded, and how to read it from
+outside Flux.</p>
+</div>
+<div class="paragraph">
+<p><strong>Entry point:</strong> <code>Core/Part/Part.cs</code> — method <code>Part.SaveFX(Stream stm, ESaveFX flags)</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_container_zip_archive">1. Container: ZIP Archive</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>.fx</code> file is a standard <strong>ZIP archive</strong> (PKZIP format). You can open it with any ZIP
+tool (<code>unzip</code>, 7-Zip, Python <code>zipfile</code>, MATLAB <code>unzip</code>). The archive contains several
+named entries:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Entry name</th>
+<th class="tableblock halign-left valign-top">Encoding</th>
+<th class="tableblock halign-left valign-top">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Summary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTF-8 text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Human-readable key/value summary of the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Thumbnail</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PNG image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 × 256 preview rendered at save time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MMF2D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MMF format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2D drawing (only written when <code>ESaveFX.MMF</code> flag is set)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Attachments/…</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Varies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">External files attached to the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\Info</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PartInfo</code> — name, material, thickness, GUID, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\Version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VersionInfo</code> — Flux build number and revision</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\Dwg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Drawing2</code> — all 2D flat geometry (plines, bend marks, …)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\SurfaceModel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Surface model (only if no 3D model, or in diagnostic mode)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\Model</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Model3</code> — 3D folded model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\FoldTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldTech</code> — bend sequence and fold parameters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\Misc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MiscData</code> dictionary (miscellaneous key/value pairs)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\BendTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTech</code> — press-brake tooling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\CellTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech</code> — bending cell data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\CutTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlatTech[]</code> — laser tooling: <code>[CutTech, Layout]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Plugin\&lt;name&gt;\&lt;key&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom data written by plugin hooks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Geo\&lt;srcfilename&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source geometry for bevel cutting</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Not all entries are always present:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Data\Model</code> is absent if the part was imported as a flat DXF.</p>
+</li>
+<li>
+<p><code>Data\CutTech</code> is absent if no laser tooling has been run.</p>
+</li>
+<li>
+<p><code>Thumbnail</code> is absent when <code>ESaveFX.NoThumbnail</code> is set (e.g. in batch nesting).</p>
+</li>
+<li>
+<p><code>MMF2D</code> is only written when <code>ESaveFX.MMF</code> is explicitly requested.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_summary_entry">2. The Summary Entry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Summary</code> is a plain UTF-8 text file with INI-style sections. It is written by
+<code>Part.SaveSummary()</code> (calling <code>PartInfo.SaveSummary()</code>, then each tech&#8217;s <code>SaveSummary()</code>).</p>
+</div>
+<div class="sect2">
+<h3 id="_basic_section">2.1. [Basic] Section</h3>
+<div class="paragraph">
+<p>Always present. Contains the human-readable part metadata:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[Basic]
+Name=Bracket-Left
+MatlName=1.0038
+Thickness=1.5
+Weight=0.42
+Comments=optional free text
+Guid=3f2a1b00-4c5d-6e7f-8a9b-0c1d2e3f4050
+Bound2=(-50,-30)-(80,60)
+Bound3=(-50,-30,-3)-(80,60,3)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Bound2</code> is the axis-aligned bounding box of the flat drawing in mm.
+<code>Bound3</code> is the bounding box of the 3D folded model.
+Both are written only if the corresponding object exists.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bendtech_foldtech_cuttech_sections">2.2. [BendTech], [FoldTech], [CutTech] Sections</h3>
+<div class="paragraph">
+<p>Written by the respective technology objects when present. Their content varies but
+follows the same <code>Key=Value</code> style.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_thumbnail_entry">3. The Thumbnail Entry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Thumbnail</code> is a raw <strong>PNG file</strong> (RFC 2083). You can write it directly to disk and open
+it as any image. It is a 256 × 256 RGBA image rendered from the part&#8217;s flat drawing.</p>
+</div>
+<div class="paragraph">
+<p>There is no extra header — the entry&#8217;s bytes are the PNG file directly (starting with
+the PNG magic bytes <code>89 50 4E 47 0D 0A 1A 0A</code>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_au_object_entries_data">4. AU Object Entries (Data\*)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All <code>Data\*</code> entries use the <strong>AU object format</strong> — Flux&#8217;s binary serialization system.
+The code lives in <code>Base/IO/ByteStm.cs</code> and <code>Base/Gold/AuStream.cs</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_wrapper_header_written_by_addobject">4.1. Wrapper Header (written by <code>AddObject</code>)</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Extension.cs:356</code></p>
+</div>
+<div class="paragraph">
+<p>Every AU entry starts with an 8-byte wrapper before the actual AU payload:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Offset</th>
+<th class="tableblock halign-left valign-top">Size</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magic: <code>0xA1 0x08 0xDE 0x4B</code> (little-endian <code>0x4BDE08A1</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Payload length in bytes (little-endian <code>int32</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU payload (see below)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// From Extension.cs — AddObject writes exactly:
+stream.Write(OBJSTREAM);          // 0x4BDE08A1 as int32 LE
+stream.Write(bytes.Data.Length);  // int32 LE
+stream.Write(bytes.Data, 0, bytes.Data.Length);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_au_payload_header">4.2. AU Payload Header</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Base/Gold/AuStream.cs:374</code></p>
+</div>
+<div class="paragraph">
+<p>The AU payload starts with:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Offset</th>
+<th class="tableblock halign-left valign-top">Size</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU signature: <code>0x3D 0x2D 0x6F 0x1A</code> (little-endian <code>0x1A6F2D3D</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 byte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AU format version (currently <code>5</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">…</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type table + object graph (see below)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">mStm.WriteInt32(mSign);    // 0x1A6F2D3D
+mStm.WriteByte(AuVersion); // 5
+WriteObj(mObj, null);
+Write(EToken.Epilogue);    // byte 11
+mStm.WriteIntV(objCount);
+mStm.WriteString("EOF");</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_container_zip_archive">1. Container: ZIP Archive</a>
+  </li>
+  <li level="1">
+   <a href="#_the_summary_entry">2. The Summary Entry</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_section">2.1. [Basic] Section</a>
+  </li>
+  <li level="2">
+   <a href="#_bendtech_foldtech_cuttech_sections">2.2. [BendTech], [FoldTech], [CutTech] Sections</a>
+  </li>
+  <li level="1">
+   <a href="#_the_thumbnail_entry">3. The Thumbnail Entry</a>
+  </li>
+  <li level="1">
+   <a href="#_au_object_entries_data">4. AU Object Entries (Data\*)</a>
+  </li>
+  <li level="2">
+   <a href="#_wrapper_header_written_by_addobject">4.1. Wrapper Header (written by <code>AddObject</code>)</a>
+  </li>
+  <li level="2">
+   <a href="#_au_payload_header">4.2. AU Payload Header</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="index.html">File formats</a></span>
+ <span class="next"><a href="augoldfile.html">Au (Gold) file</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

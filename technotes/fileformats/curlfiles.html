@@ -1,0 +1,657 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>.Curl Files: ASCII config information</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">File formats</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a href="geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a class="active" href="curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">File formats</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="curlfiles.html">.Curl Files: ASCII config information</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>.Curl Files: ASCII config information</h1>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most configuration information in Flux, including machine definitions, bend tool catalogues, and default settings, is stored in Curl files. These are text files designed to be easy to write or edit by hand. This document explains the Curl file format.</p>
+</div>
+<div class="sect2">
+<h3 id="_the_metacam_approach">The MetaCAM approach</h3>
+<div class="paragraph">
+<p>MetaCAM uses several different file formats to store this kind of configuration information. Many settings are stored in INI files, which are text files but not as flexible as Curl files. Some settings, especially newer ones, are stored in XML files. Most settings and configuration information are stored in binary files, however. This means that special programs or applets are required to edit these settings. If you need to edit some part of the configuration data for which there is no exporter/importer program, you are out of luck.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_not_xml">Why not XML?</h3>
+<div class="paragraph">
+<p>The Curl file format is simpler and cleaner than XML, while being functionally at least as rich. Creating or editing a Curl file requires less typing, and there are fewer failure possibilities than in XML because there is less redundancy. For example, there are no opening and closing tags, eliminating the possibility of tag mismatch.</p>
+</div>
+<div class="paragraph">
+<p>The Curl file format is very deeply embedded in the Flux Core. Every type of object that Flux knows about, including parts, drawings, models, machine definitions, tool systems, and auto-tooling settings, can be saved and loaded from Curl files. Normally, Flux parts and models are stored as binary files because that is more compact and faster to read and write, but any Flux data can be saved in Curl format and then read or modified by external tools before being imported back into Flux.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_structure_of_curl_files">The structure of Curl files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Curl files represent objects of class types as key-value pairs. The key-value pairs making up an object are enclosed in curly braces, and keys are separated from their corresponding values by a colon.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">{ Name:Elan Manufacturer:"Lotus Racing" Cylinders:4 }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A key is separated from its value by a colon. It is customary that there is no space before or after the colon, though that is permitted.</p>
+</li>
+<li>
+<p>The keys are case-sensitive. You cannot type <code>name</code> where <code>Name</code> is expected.</p>
+</li>
+<li>
+<p>Values can be quoted with double quotes, though this is not always necessary. Values that do not contain special characters do not need to be quoted.</p>
+</li>
+<li>
+<p>Any excess white-space in Curl files is ignored. You can format Curl files in any manner you like.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_special_characters">Special characters</h3>
+<div class="paragraph">
+<p>Any value that contains one of the following special characters must be quoted:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">" { } &lt; &gt; [ ] ( ) = : ; # @ $ % &amp; \ ~</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you need to include a quote character within a value, you can use the escape sequence <code>\"</code>. These are the supported escape sequences:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Escape sequence</th>
+<th class="tableblock halign-left valign-top">Character</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quote character.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backslash character.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\n</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Line-feed character, ASCII 10.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\r</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Carriage return character, ASCII 13.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tab character, ASCII 8.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\u1AB3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unicode character <code>1AB3</code> in hexadecimal.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_composite_values">Composite values</h3>
+<div class="paragraph">
+<p>A value can itself be a class-type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">{ Name:Elan ; Data about the Lotus Elan, (c) 2012
+  Engine:{
+    Cylinders:4
+    Mounting:Transverse
+    Valves:16
+  }
+  Manufacturer:"Lotus Racing"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the <code>Engine</code> attribute has a value that is itself represented as a dictionary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comments">Comments</h3>
+<div class="paragraph">
+<p>The semicolon character starts a comment. The comment extends to the end of the line, and all text within the comment is ignored.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_array_values">Array values</h3>
+<div class="paragraph">
+<p>A value can also be an array. This is a list of items and is indicated by a square bracket rather than a curly bracket.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Teams:[
+  { Name:Ferrari
+    Headquarters:Italy
+    Drivers:[
+      { Name:"Fernando Alonso" Nationality:Spanish }
+      { Name:"Felipe Massa" Nationality:Brazilian }
+    ]
+  }
+  { Name:McLaren
+    Headquarters:England
+    Drivers:[
+      { Name:"Jenson Button" Nationality:British }
+      { Name:"Lewis Hamilton" Nationality:British }
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Teams</code> attribute contains a list with two elements. Each element is of class type and contains an attribute called <code>Drivers</code>, which is again a list. This way, any arbitrarily complex data structure can be mapped to a Curl file using simple values, dictionaries, and lists.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_flux_schema">The Flux Schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In all the Curl files we have seen so far, we never have to specify anywhere the type of the data value. This is because in most situations the type can be deduced by Flux. We are using Curl files to store data based on classes that Flux already knows about.</p>
+</div>
+<div class="paragraph">
+<p>For example, if <code>Team</code> and <code>Driver</code> were classes that Flux knew about, it would already know that the <code>Nationality</code> attribute of a <code>Driver</code> is a string. It would also know that the <code>Drivers</code> attribute of a <code>Team</code> is a list, and specifically a list of <code>Driver</code> objects. Armed with this information, Flux can read the Curl file correctly and report errors if some data is not as expected.</p>
+</div>
+<div class="paragraph">
+<p>This internal knowledge that Flux has about these types is called the Flux Schema. It is embodied in the way we define the internal C++ classes that make up Flux.</p>
+</div>
+<div class="sect2">
+<h3 id="_schema_evolution">Schema evolution</h3>
+<div class="paragraph">
+<p>It is possible that the Flux Schema will evolve over time. For example, we may add some new fields to the <code>Driver</code> type. If we do this, old Curl files that do not have this field still load correctly; the missing field simply gets set to a default value. The converse is also possible. If a field is removed later, old Curl files still load correctly and the removed field is simply read and discarded.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_polymorphism">Polymorphism</h3>
+<div class="paragraph">
+<p>Sometimes, even using the schema, Flux cannot determine what type of value to read from a Curl file. Consider a Flux internal class definition like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cpp hljs" data-lang="cpp">class Drawing {
+  string Name;
+  List&lt;Entity&gt; Ents;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even if you are not familiar with C++, it is easy to see that a <code>Drawing</code> object has two attributes: a <code>Name</code> and a collection called <code>Ents</code>, which is a list of <code>Entity</code>. However, there is not just one <code>Entity</code> type, but several, such as <code>Circle</code>, <code>Line</code>, and <code>Text</code>.</p>
+</div>
+<div class="paragraph">
+<p>When Flux reads a <code>Drawing</code> object from a Curl file, hints are needed to tell Flux which kind of entity to construct. Here is how those hints are provided:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">(Drawing){
+  Name:"Sample drawing"
+  Ents:[
+    (Circle){ Center:"12,33" Radius:45 }
+    (Line){ Start:"0,10" End:"50,25" }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The type hints are provided as class names within parentheses, just before the curly braces indicating the start of the class data. The outermost object within a Curl file is always of a class type and must always be prefixed by such a type hint.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_sample_curl_file_bendmachine">A sample Curl file: BendMachine</h3>
+<div class="paragraph">
+<p>Here is a practical example of polymorphism. When we define a bend machine, we need to define one or more contact surfaces for each back-gauge. These are of two types: flat surfaces and finger-gauging surfaces. Type hints must be used so Flux can determine which kind of surface it has to construct.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">(BendMachine){
+  Id:1 Brand:Trubend Name:"5085 (6-axes)" ControlType:TASC6000 NCExtension:BNC
+  TableLength:2210 NCXCenter:1105 Tonnage:85 PunchValency:[50 51] DieValency:[63]
+  OpenHeight:385 ClosedHeight:215
+  Gauges:[
+    { Surfaces:[
+        (FlatBGSurf){ Support:False DX:52 DZ:8 Cen:"26,0,0" }
+        (FlatBGSurf){ Support:True DX:31 DZ:17 Cen:"15.5,30,8" }
+        (FlatBGSurf){ Support:True DX:79 DZ:24 Cen:"39.5,260,25" }
+        (FingerBGSurf){ Support:False DZ:8 Cen1:"52,8,0" Rad1:8 SAng1:"-90" EAng1:60 Cen2:"82,24" Rad2:8 SAng2:"-150" EAng2:0 }
+        (FingerBGSurf){ Support:True DZ:17 Cen1:"31,38,8" Rad1:8 SAng1:"-90" EAng1:60 Cen2:"71,54" Rad2:8 SAng2:"-150" EAng2:0 }
+      ] ; end of surface list for gauge 1
+      Stroke:"-765,3,-50:575,600,200" GapToNext:190 HandlePt:"40,200,25"
+    } ; end of gauge 1 definition
+    { Surfaces:[
+        (FlatBGSurf){ Support:False DX:52 DZ:8 Cen:"-26,0,0" }
+        (FlatBGSurf){ Support:True DX:31 DZ:17 Cen:"-15.5,30,8" }
+        (FlatBGSurf){ Support:True DX:79 DZ:24 Cen:"-39.5,260,25" }
+        (FingerBGSurf){ Support:False DZ:8 Cen1:"-52,8,0" Rad1:8 SAng1:120 EAng1:270 Cen2:"-82,24" Rad2:8 SAng2:180 EAng2:330 }
+        (FingerBGSurf){ Support:True DZ:17 Cen1:"-31,38,8" Rad1:8 SAng1:120 EAng1:270 Cen2:"-71,54" Rad2:8 SAng2:180 EAng2:330 }
+      ] ; end of surface list for gauge 2
+      Stroke:"-575,3,-50:765,600,200" HandlePt:"-40,200,25"
+    } ; end of gauge 2 definition
+  ] ; end of list of gauges for this machine
+} ; end of BendMachine definition</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From this bend machine definition, one can immediately see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The machine has 2 gauges.</p>
+</li>
+<li>
+<p>Each gauge has 5 gauging surfaces: 3 flat and 2 finger surfaces.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A few more points can be observed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The punch and die valencies for the machine are both arrays of integers.</p>
+</li>
+<li>
+<p>Points and vectors can be specified using simple notation like <code>"30,40,50"</code>.</p>
+</li>
+<li>
+<p>The <code>Stroke</code> of a gauge is of type <code>Bound3</code>, a bounding cuboid in 3D, written in the form <code>"x1,y1,z1:x2,y2,z2"</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is actually a complete <code>BendMachine</code> definition and replaces the <code>bendmachine.ini</code> file that MetaCAM uses. For reference, here is that <code>bendmachine.ini</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[MacData]
+ID=900005
+Manufacturer=Trubend
+MachineName=5085 (SX, 6-axes)
+Force=850
+OpenHeight=615
+BendLength=2720
+PunchValency=410
+DieValency=420
+Upstroking=0
+MovePunchClamps=0
+NCXCenter=1615
+SATFiles=0
+
+[BackGauge]
+Count=2
+SurfaceCount=5
+BGAxisName=ZXR
+BGBelowDieLimit=-40
+BG0PositionInModel=-200,100,100
+BG1PositionInModel=200,100,100
+BG0HandlePos=40,200,25
+BG1HandlePos=-40,200,25
+BG0Stroke=-1020,830, 3,600, 50,250
+BG1Stroke=-830,1020, 3,600, 50,250
+MinXSpacing=190
+MaxYProtrusion=0
+BG0S0Type=1
+BG0S0Params=0,8, 0, 0,52
+BG0S0Support=0
+BG0S1Type=1
+BG0S1Params=8,25, 30, 0,31
+BG0S1Support=1
+BG0S2Type=1
+BG0S2Params=25,49, 260, 0,79
+BG0S2Support=1
+BG0S3Type=2
+BG0S3Params=0,8, 52,8, 8, -90,60, 82,24, 8, -150,0
+BG0S3Support=0
+BG0S4Type=2
+BG0S4Params=8,25, 31,38, 8, -90,60, 71,54, 8, -150,0
+BG0S4Support=1
+BG1S0Type=1
+BG1S0Params=0,8, 0, -52,0
+BG1S0Support=0
+BG1S1Type=1
+BG1S1Params=8,25, 30, -31,0
+BG1S1Support=1
+BG1S2Type=1
+BG1S2Params=25,49, 260, -79,0
+BG1S2Support=1
+BG1S3Type=2
+BG1S3Params=0,8, -52,8, 8, 120,270, -82,24, 8, 180,330
+BG1S3Support=0
+BG1S4Type=2
+BG1S4Params=8,25, -31,38, 8, 120,270, -71,54, 8, 180,330
+BG1S4Support=1
+
+[NCCode]
+Type=4
+Extension=BNC
+Generator=ibc-bnc.exe</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Curl file is more structured and easier to read and understand. For example, it is quite difficult to figure out what the 12 values in the <code>BG1S4Params</code> line mean without looking up the reference document.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_editing_curl_files">Editing Curl Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Curl files are simple text files, and you can edit them using any text editor such as Notepad. However, it is often more convenient to use the Flux application itself, since it provides an intelligent Curl editor. Just open a Curl file in Flux using the File/Open menu and the Flux Curl Editor opens up.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image8.png" alt="Flux Curl Editor" width="775" height="444"></span></p>
+</div>
+<div class="paragraph">
+<p>The annotated figure above shows some of the features of the Flux Curl Editor.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Different colors and fonts are used for different syntactic elements of the Curl file. Keys are colored in gray, while values are in bold black text. Type names are in blue and comments are in green italics.</p>
+</li>
+<li>
+<p>As you type into the Curl file, intellisense windows pop up to provide useful suggestions. For example, while typing a <code>BendMachine</code> definition, Flux can suggest additional fields or possible type overrides.</p>
+</li>
+<li>
+<p>Errors in the Curl file are highlighted with red underlines, and detailed error messages are displayed in the error band at the bottom.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The real-time error checker catches structural problems such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using an incorrect field name.</p>
+</li>
+<li>
+<p>Typing a value of the wrong type.</p>
+</li>
+<li>
+<p>Providing a field value twice for the same object.</p>
+</li>
+<li>
+<p>Using an incorrect type of object where polymorphism is permitted.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_introduction">Introduction</a>
+  </li>
+  <li level="2">
+   <a href="#_the_metacam_approach">The MetaCAM approach</a>
+  </li>
+  <li level="2">
+   <a href="#_why_not_xml">Why not XML?</a>
+  </li>
+  <li level="1">
+   <a href="#_the_structure_of_curl_files">The structure of Curl files</a>
+  </li>
+  <li level="2">
+   <a href="#_special_characters">Special characters</a>
+  </li>
+  <li level="2">
+   <a href="#_composite_values">Composite values</a>
+  </li>
+  <li level="2">
+   <a href="#_comments">Comments</a>
+  </li>
+  <li level="2">
+   <a href="#_array_values">Array values</a>
+  </li>
+  <li level="1">
+   <a href="#_the_flux_schema">The Flux Schema</a>
+  </li>
+  <li level="2">
+   <a href="#_schema_evolution">Schema evolution</a>
+  </li>
+  <li level="2">
+   <a href="#_polymorphism">Polymorphism</a>
+  </li>
+  <li level="2">
+   <a href="#_a_sample_curl_file_bendmachine">A sample Curl file: BendMachine</a>
+  </li>
+  <li level="1">
+   <a href="#_editing_curl_files">Editing Curl Files</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></span>
+ <span class="next"><a href="../folders/index.html">Folders App</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

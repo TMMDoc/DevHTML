@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="res/bento.css">
+  <link rel="stylesheet" href="res/site.css">
+  <link rel="stylesheet" href="res/tree.css">
+  <link rel="stylesheet" href="res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>LaserTooling.cs Test Steps</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="general.html">General overview</a></li>
+  <li><button class="tree blank"></button><a href="fileoverview.html">Overview of C# Files in Fluxtester Repository</a></li>
+  <li><button class="tree blank"></button><a class="active" href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+  <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book: Test Script Creation Commands & Patterns</a></li>
+  <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+  <li><button class="tree blank"></button><a href="nestingcookbook.html">= "Layout";</a></li>
+  <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+  <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book: Test Script Creation Commands</a></li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="lasertooling.html">LaserTooling.cs Test Steps</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>LaserTooling.cs Test Steps</h1>
+<div class="sect1">
+<h2 id="_fixture_setup">Fixture Setup</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>[FixtureInitialize]</strong> - Configures laser cutting machines (IDs: 97, 130167)</p>
+</li>
+<li>
+<p><strong>[FixtureCleanUp]</strong> - Cleans up temporary .txt files and uninstalls machines</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_methods_test_cases">Test Methods (Test Cases)</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C150616</strong> - Changing the tooling direction of the part (normal → reversed profile)</p>
+</li>
+<li>
+<p><strong>C122143</strong> - Changing the cutting condition (Small, Medium, Large, Mark, Vaporize, Dot mark)</p>
+</li>
+<li>
+<p><strong>C122144</strong> - Changing the pierce condition (Normal, Gentle, Mark, None)</p>
+</li>
+<li>
+<p><strong>C122145</strong> - Changing the approach parameters (dimple approach, approach length/radius/angle variations)</p>
+</li>
+<li>
+<p><strong>C122162</strong> - Changing the withdrawal/escape parameters (escape length, radius, angle)</p>
+</li>
+<li>
+<p><strong>C150731</strong> - Adding microjoint to remove scrap tooling</p>
+</li>
+<li>
+<p><strong>C123179</strong> - Adding and deleting scrap tooling</p>
+</li>
+<li>
+<p><strong>C150730</strong> - Adding and managing microjoints (0 to 5 microjoints)</p>
+</li>
+<li>
+<p><strong>C122142</strong> - Opening and closing laser cut edit dialog</p>
+</li>
+<li>
+<p><strong>C168079</strong> - Cut/Mark open polyline backwards (forward vs. backward direction)</p>
+</li>
+<li>
+<p><strong>C200388</strong> - Process for open polylines (None, Mark, Cut, Based on layer)</p>
+</li>
+<li>
+<p><strong>C200390</strong> - Allow approach that is more than 0.5 distance to opposite side</p>
+</li>
+<li>
+<p><strong>C200394</strong> - Corner processing with cool settings where rounding/looping not possible</p>
+</li>
+<li>
+<p><strong>C200395</strong> - Scrap cutting with approach length for separating cut</p>
+</li>
+<li>
+<p><strong>C200398</strong> - Scrap cutting with scrap grid width settings</p>
+</li>
+<li>
+<p><strong>C145702</strong> - Auto-recognize countersink curves and assign forming footprint layer</p>
+</li>
+<li>
+<p><strong>C122167</strong> - Creating and deleting microjoints (with NC code generation)</p>
+</li>
+<li>
+<p><strong>C145687</strong> - Skip point entities setting (None, Points on polylines, All)</p>
+</li>
+<li>
+<p><strong>C145682</strong> - Laser cut glob "To point operation" conversion (path ↔ point)</p>
+</li>
+<li>
+<p><strong>C145706</strong> - Display "mark forming footprint" setting in Laser CAM cutting section</p>
+</li>
+<li>
+<p><strong>C145732</strong> - Pie strategy for cutting circular slugs</p>
+</li>
+<li>
+<p><strong>C145734</strong> - Delete pie cut when scrap tooling is created</p>
+</li>
+<li>
+<p><strong>C3526</strong> - Recompute tooling after enabling dimple on pie strategy sample</p>
+</li>
+<li>
+<p><strong>C202419</strong> - Adding corner treatment processes (Looping, Dwell, Rounding, Stop, Cool, Slowdown, Do Nothing)</p>
+</li>
+<li>
+<p><strong>C214095</strong> - Mark bend lines (with 3 processes: None, Partial, Full; valid &amp; invalid bend data)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_fixture_setup">Fixture Setup</a>
+  </li>
+  <li level="1">
+   <a href="#_test_methods_test_cases">Test Methods (Test Cases)</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="fileoverview.html">Overview of C# Files in Fluxtester Repository</a></span>
+ <span class="next"><a href="lasertoolingcookbook.html">Fluxtester Recipe Book: Test Script Creation Commands & Patterns</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="res/index.js"></script>
+    <script src="res/files.js"></script>
+    <script src="res/site.js"></script>
+
+    
+</body>
+</html>

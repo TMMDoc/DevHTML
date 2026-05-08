@@ -1,0 +1,2339 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="res/bento.css">
+  <link rel="stylesheet" href="res/site.css">
+  <link rel="stylesheet" href="res/tree.css">
+  <link rel="stylesheet" href="res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Job.cs Recipe Book: Test Script Creation Commands</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="general.html">General overview</a></li>
+  <li><button class="tree blank"></button><a href="fileoverview.html">Overview of C# Files in Fluxtester Repository</a></li>
+  <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+  <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book: Test Script Creation Commands & Patterns</a></li>
+  <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+  <li><button class="tree blank"></button><a href="nestingcookbook.html">= "Layout";</a></li>
+  <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+  <li><button class="tree blank"></button><a class="active" href="jobcookbook.html">Job.cs Recipe Book: Test Script Creation Commands</a></li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="jobcookbook.html">Job.cs Recipe Book: Test Script Creation Commands</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Job.cs Recipe Book: Test Script Creation Commands</h1>
+<div class="sect1">
+<h2 id="_table_of_contents">Table of Contents</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>[Test Structure &amp; Attributes](#test-structure&#8212;&#8203;attributes)</p>
+</li>
+<li>
+<p>[IDisposable Pattern Setup](#idisposable-pattern-setup)</p>
+</li>
+<li>
+<p>[File Operations](#file-operations)</p>
+</li>
+<li>
+<p>[Job Creation &amp; Management](#job-creation&#8212;&#8203;management)</p>
+</li>
+<li>
+<p>[Layout Operations](#layout-operations)</p>
+</li>
+<li>
+<p>[Part Management](#part-management)</p>
+</li>
+<li>
+<p>[Sheet Management](#sheet-management)</p>
+</li>
+<li>
+<p>[Part Properties Configuration](#part-properties-configuration)</p>
+</li>
+<li>
+<p>[Dialog Interactions](#dialog-interactions)</p>
+</li>
+<li>
+<p>[Add Dialog: Search &amp; Sorting](#add-dialog-search&#8212;&#8203;sorting)</p>
+</li>
+<li>
+<p>[Keyboard &amp; Input Commands](#keyboard&#8212;&#8203;input-commands)</p>
+</li>
+<li>
+<p>[Mouse Operations](#mouse-operations)</p>
+</li>
+<li>
+<p>[UI Element Access](#ui-element-access)</p>
+</li>
+<li>
+<p>[Data Extraction &amp; Validation](#data-extraction&#8212;&#8203;validation)</p>
+</li>
+<li>
+<p>[Script Execution](#script-execution)</p>
+</li>
+<li>
+<p>[Common Job Workflows](#common-job-workflows)</p>
+</li>
+<li>
+<p>[Helper Methods Reference](#helper-methods-reference)</p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_structure_attributes">Test Structure &amp; Attributes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_job_test_template">Basic Job Test Template</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[TestFixture (1500, "Nesting Job Tests", Module = "FluxCut", Subsystem = "NestJob")]
+internal class Job : IDisposable {
+    const string TESTMACHINEID1 = "2230001";
+    const string TESTMACHINEID2 = "97";
+    const string FXFILE = "123.fx";
+
+    [Test (ID, "Test Description", Type = Functional)]
+    public void Test_CaseID () {
+        // Test implementation
+    }
+
+    #region Helper Routines
+    // Helper methods
+    #endregion
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_attributes">Test Attributes</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// TestFixture attribute
+[TestFixture (1500, "Nesting Job Tests", Module = "FluxCut", Subsystem = "NestJob")]
+
+// Test attribute with type
+[Test (401, "Adding and deleting layouts", Type = Functional)]
+[Test (402, "Moving layouts", Type = Functional)]
+[Test (1528, "Selecting 'New Job' toolbar button opens a pop-up dialog", Type = Functional)]
+
+// Test type options
+Type = Functional</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_idisposable_pattern_setup">IDisposable Pattern Setup</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_constructor_dispose_pattern">Constructor &amp; Dispose Pattern</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Constructor - Setup phase (runs before first test)
+public Job () {
+    Utils.ConfigureMachine (TESTMACHINEID1);  // Machine 2230001
+    Utils.ConfigureMachine (TESTMACHINEID2);  // Machine 97
+}
+
+// Dispose - Cleanup phase (runs after all tests)
+public void Dispose () {
+    Utils.UninstallMachine (TESTMACHINEID1);
+    Utils.UninstallMachine (TESTMACHINEID2);
+    Utils.DeleteTempFile ();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Key Differences from FixtureInitialize/FixtureCleanUp:</strong>
+- Called per test instance (not per fixture)
+- More flexible resource management
+- Automatic cleanup via using statement</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_machine_configuration">Machine Configuration</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">const string TESTMACHINEID1 = "2230001";  // Primary nesting machine
+const string TESTMACHINEID2 = "97";       // Secondary laser machine
+
+// Install machines
+Utils.ConfigureMachine (TESTMACHINEID1);
+Utils.ConfigureMachine (TESTMACHINEID2);
+
+// Uninstall after tests
+Utils.UninstallMachine (TESTMACHINEID1);
+Utils.UninstallMachine (TESTMACHINEID2);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_operations">File Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_opening_job_files">Opening Job Files</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open job file directly
+Utils.OpenJobOrLayout (Utils.tData + "TwinJob.fxjob");
+Utils.OpenJobOrLayout (Utils.tData + "NestingJobSample.fxjob");
+Utils.OpenJobOrLayout (Utils.tData + "AsymmetricalPolygon.fxjob");
+
+// Open job via helper
+OpenJob ("NestingJobSample.fxjob");
+OpenJob ("TwinJob.fxjob");
+
+// Open job and Add dialog
+OpenAddDialog ("NestingJobSample.fxjob");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_access_paths">File Access Paths</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Test data paths
+Utils.tData                                      // Test data directory
+Utils.tData + "TwinJob.fxjob"
+Utils.tData + "NestingJobSample.fxjob"
+Utils.tData + "AsymmetricalPolygon.fxjob"
+Utils.tData + "Test_C150733/test.txt"
+Utils.tData + "Test_C162420/test_ExportRemSheet.dxf"
+
+// Temporary paths
+Utils.tempPath                                   // Temp directory
+Utils.tempPath + "test.dxf"
+Utils.tempPath + "test.png"
+Utils.tempPath + "temp.txt"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cleanup_operations">Cleanup Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Delete temporary files
+Utils.DeleteTempFile ();
+
+// Delete specific file
+File.Delete (Utils.tempPath + "test.dxf");
+
+// Delete multiple files
+foreach (var file in parts) File.Delete (Utils.tempPath + file);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_job_creation_management">Job Creation &amp; Management</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_creating_new_job">Creating New Job</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Create new job with empty layout
+var job = CreateNewJob ();
+
+// Create with job name
+var job = CreateNewJob ("MyJob");
+
+// Internal implementation
+internal static AutomationElement? CreateNewJob (string name = "") {
+    if (!Utils.IsRunning ()) Utils.OpenFlux ();
+    var mainWin = Utils.MainWin;
+    mainWin.FindFirstChild ("CmdBar").FindFirstChild (a =&gt; a.ByName ("new job")).Click ();
+    var dlg = mainWin.FindFirstChild (a =&gt; a.ByName ("NewJobDlg"));
+    if (dlg != null &amp;&amp; string.IsNullOrEmpty (name)) Utils.Type (name);
+    dlg?.FindFirstChild (a =&gt; a.ByName ("OK").And (a.ByControlType (ControlType.Button))).Click ();
+    return Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("NewJobWindow"));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_opening_jobs">Opening Jobs</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open Flux first
+Utils.OpenFlux ();
+
+// Open job
+Utils.OpenJobOrLayout (Utils.tData + filename);
+
+// Get job window
+var job = Utils.MainWin.FindFirstChild ("NewJobWindow");
+var newJobWindow = GetNewJobWindow ();  // With retry logic</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_job_window_access">Job Window Access</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get main job window
+var job = Utils.MainWin.FindFirstChild ("NewJobWindow");
+var job = Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("NewJobWindow"));
+
+// Wait for job window to fully load
+var newJobWindow = GetNewJobWindow ();  // Helper with retry
+
+// Get job window parent
+var jobWin = Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("parts")).Parent;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_job_dialog_operations">Job Dialog Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// New Job dialog
+Utils.MainWin.FindFirstChild ("CmdBar").FindFirstChild (a =&gt; a.ByName ("new job")).Click ();
+var dlg = Utils.MainWin.FindFirstChild (a =&gt; a.ByName ("NewJobDlg"));
+
+// Click OK button
+dlg.FindFirstChild (a =&gt; a.ByName ("OK").And (a.ByControlType (ControlType.Button))).Click ();
+
+// Click Cancel button
+dlg.FindFirstChild (a =&gt; a.ByName ("Cancel").And (a.ByControlType (ControlType.Button))).Click ();
+
+// Check if dialog exists
+Assert.IsNotNull (dlg, "New job dialog is not found");</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layout_operations">Layout Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_tab_navigation">Tab Navigation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Switch to parts tab
+job.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+Utils.FindElement (() =&gt; job.FindFirstChild (a =&gt; a.ByName ("parts"))).Click ();
+
+// Switch to layouts tab
+job.FindFirstChild (a =&gt; a.ByName ("layouts")).Click ();
+
+// Switch to sheets tab
+job.FindFirstChild (a =&gt; a.ByName ("sheets")).Click ();
+
+// Via keyboard shortcut
+Utils.Type ('p');  // Parts view
+Utils.Type ('l');  // Layouts view</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_management">Layout Management</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Access layout controls
+var addBtn = job.FindFirstChild ("cAddLayout");
+var removeBtn = job.FindFirstChild ("cRemovePattern");
+var moveUpBtn = job.FindFirstChild ("cMoveUpBtn");
+var moveDownBtn = job.FindFirstChild ("cMoveDownBtn");
+
+// Add layout
+addBtn.Click ();
+job.FindFirstChild ("cAddLayout").Click ();
+
+// Remove layout
+removeBtn.Click ();
+job.FindFirstChild ("cRemovePattern").Click ();
+
+// Move layout up
+moveUpBtn.Click ();
+job.FindFirstChild ("cMoveUpBtn").Click ();
+
+// Move layout down
+moveDownBtn.Click ();
+job.FindFirstChild ("cMoveDownBtn").Click ();
+
+// Delete all layouts
+for (int i = 0; i &lt; 6; i++) removeBtn.Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_list_operations">Layout List Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get patterns list
+var patterns = job.FindFirstChild ("cPatternsList");
+
+// Get all layouts
+var layouts = patterns.FindAllChildren ();
+
+// Get layout count
+int count = patterns.FindAllChildren ().Length;
+
+// Select layout by index
+patterns.FindChildAt (index).Click ();
+
+// Select random layout
+patterns.FindChildAt (new Random ().Next (3)).Click ();
+
+// Get first layout
+patterns.FindFirstChild ();
+
+// Get layouts via helper
+var layouts = Utils.FindElements (() =&gt; newJobWindow.FindFirstChild ("cPatternsList").FindAllChildren ());</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nesting_operations">Nesting Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Renest
+job.FindFirstChild ("cNesting").Click ();
+
+// Wait for nesting to complete
+WaitTillNestingCompletes ();
+WaitTillNestingCompletes (waitTime: 7);  // Custom wait time
+
+// Helper implementation
+internal static void WaitTillNestingCompletes (int waitTime = 6) {
+    var newJobWin = Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("NewJobWindow"));
+    Utils.FindElement (() =&gt; newJobWin.FindFirstChild ("cPatternsList").FindFirstChild (),
+        timeout: waitTime, timeOutMsg: "Nesting did not complete within timeout");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_switching">Layout Switching</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Switch to layout page (full workflow)
+private static void SwitchToLayoutPage () {
+    Utils.Type (ESC);
+    var newJobWindow = Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("NewJobWindow"));
+    Utils.Type ('l');
+    Utils.FindElement (() =&gt; newJobWindow.FindFirstChild ("cAddLayout"),
+        timeOutMsg: "Layout page was not opened");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_tree_dumping">Layout Tree Dumping</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Dump automation tree for first layout
+Utils.DumpAutomationElement (
+    jobWin.FindFirstChild ("cPatternsList").FindFirstChild ()
+);
+
+// Compare with reference file
+Assert.AreTextFilesEqual (
+    Utils.tData + "Test_C150733/test.txt",
+    Utils.tempPath + "temp.txt"
+);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_part_management">Part Management</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_parts_tab_operations">Parts Tab Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Switch to parts tab
+job.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+Utils.FindElement (() =&gt; job.FindFirstChild (a =&gt; a.ByName ("parts"))).Click ();
+
+// Via keyboard
+Utils.Type ('p');</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_parts">Adding Parts</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Add parts to job
+string[] parts = [FXFILE, "InnerContour.fx"];
+AddPartsOrLayouts (ELoadOption.Part, parts);
+
+// Add single part
+AddPartsOrLayouts (ELoadOption.Part, new[] { "123.fx" });
+
+// External module reference
+using static FluxTester.NestingUtils;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parts_table_access">Parts Table Access</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get parts table
+var partsTable = job.FindFirstChild (a =&gt; a.ByClassName ("PartsTable")).FindFirstChild ();
+
+// Get parts table with scrollviewer
+var partsTable = Utils.FindElement (
+    () =&gt; job.FindFirstChild (a =&gt; a.ByClassName ("PartsTable")
+        .And (a.ByControlType (ControlType.Custom)))
+).FindFirstChild ();
+
+// Get parts from scrollviewer
+var scrollViewer = Utils.FindElement (
+    () =&gt; job.FindFirstChild (a =&gt; a.ByClassName ("PartsTable"))
+        .FindFirstChild (a =&gt; a.ByClassName ("ScrollViewer"))
+);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_table_interactions">Part Table Interactions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get all parts in table
+var parts = partsTable.FindAllChildren ();
+
+// Find part by name
+partsTable.FindFirstChild (a =&gt; a.ByName ("123"));
+partsTable.FindFirstChild (a =&gt; a.ByName (partName.Replace (".fx", "")));
+
+// Find part by index
+var idx = Array.FindIndex (parts, a =&gt; a.Name == "BigCircle");
+partsTable.FindChildAt (idx);
+
+// Get specific column in row
+partsTable.FindChildAt (idx + 3);   // Priority column (idx + 3)
+partsTable.FindChildAt (idx + 6);   // Group column (idx + 6)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_operations">Part Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Select part
+var part = partsTable.FindFirstChild (a =&gt; a.ByName ("Name"));
+part.Click ();
+
+// Select all parts
+Utils.Type ('a', CONTROL);
+
+// Delete part
+job.FindFirstChild ("cPartRemoveBtn").Click ();
+
+// Delete all parts
+foreach (var part in parts.Reverse ()) {
+    job.FindFirstChild ("cPartRemoveBtn").Click ();
+}
+
+// Save parts
+job.FindFirstChild ("cSavePart").Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_quantity_management">Part Quantity Management</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get quantity indices
+var list = partsTable.FindAllChildren ();
+var indices = list.Select ((el, index) =&gt; new { el, idx = index })
+    .Where (x =&gt; x.el.ClassName == "CheckBox")
+    .Select (x =&gt; x.idx)
+    .ToList ();
+
+// Update quantity for each part
+for (int i = 0; i &lt; parts.Length + 1; i++) {
+    var pt = partsTable.FindChildAt (indices[i] - 5).GetClickablePoint ();
+    Utils.MouseClick (new System.Drawing.Point (pt.X - 40, pt.Y));
+    Thread.Sleep (500);
+    Utils.MouseClick (Mouse.Position, doubleClick: true);
+    Utils.Type ($"{(i + 1) * 10}");  // 10, 20, 30, etc.
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_material_warning_handling">Material Warning Handling</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check for warning image
+var warning = scrollViewer.FindFirstChild (a =&gt; a.ByClassName ("Image"));
+
+if (warning != null) {
+    warning.Click ();
+    Utils.MainWin.FindFirstChild ()
+        .FindFirstChild (a =&gt; a.ByClassName ("ScrollViewer"))
+        .FindFirstChild (a =&gt; a.ByName ("Ignore and convert"))?.Click ();
+}
+
+// Alternative: Ignore and convert all
+main.FindFirstDescendant (a =&gt; a.ByName ("Ignore and convert all"))?.Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_validation">Part Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check part count in layout
+CheckPartsCountInLayout (expectedPartsCount: 5);
+CheckPartsCountInLayout (60, layoutIdx: 0);
+
+// Helper
+public static void CheckPartsCountInLayout (int expected, int layoutIdx = 0) {
+    Utils.MainWin.FindFirstChild ("NewJobWindow")
+        .FindFirstChild ("cPatternsList")
+        .FindChildAt (layoutIdx)
+        .FindFirstChild (a =&gt; a.ByClassName ("Image"))
+        .Click ();
+    Assert.AreEqual (
+        Utils.RunScriptWithOutput ("var result = Flux.Layout.Current.PartCount.ToString();"),
+        expected.ToString ()
+    );
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sheet_management">Sheet Management</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_sheets_tab_operations">Sheets Tab Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Switch to sheets tab
+job.FindFirstChild (a =&gt; a.ByName ("sheets")).Click ();
+
+// Access sheet buttons
+var addBtn = job.FindFirstChild ("cAddSheet");
+var delBtn = job.FindFirstChild ("cDelSheet");
+var importBtn = job.FindFirstChild ("cImportSheet");
+
+// Add sheets
+for (int i = 0; i &lt; 5; i++) addBtn.Click ();
+
+// Delete sheets
+for (int i = 0; i &lt; 6; i++) delBtn.Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sheets_table_access">Sheets Table Access</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get sheets table
+var pane = job.FindFirstChild (a =&gt; a.ByClassName ("SheetsTable")).FindFirstChild ();
+
+// Find sheets by size
+var sheets = pane.FindAllChildren (a =&gt; a.ByName ("3000x1500"));
+
+// Count sheets
+int sheetCount = sheets.Length;
+
+// Verify sheet was added/removed
+Assert.Equals (pane.FindAllChildren (a =&gt; a.ByName ("3000x1500")).Length, 6);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sheet_importexport">Sheet Import/Export</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Export remainder sheet
+g.FindFirstChild (a =&gt; a.ByName ("Layout")).Click ();
+g.FindFirstDescendant (a =&gt; a.ByName ("Export Remainder Sheets...")).Click ();
+
+// Save exported file
+g.FindFirstDescendant (a =&gt; a.ByClassName ("Button").And (a.ByName ("Save"))).Click ();
+
+// Import sheet
+job.FindFirstChild ("cImportSheet").Click ();
+Thread.Sleep (1000);
+
+// Type file path
+Utils.Type ($"{Utils.tData}Test_C162420/test_ExportRemSheet.dxf".Replace ('/', '\\'));
+
+// Click Open
+Utils.MainWin.FindFirstChild ()
+    .FindFirstChild (a =&gt; a.ByClassName ("Button").And (a.ByName ("Open")))
+    .Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sheet_operations">Sheet Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Create remainder sheet
+SkeletonCut.CreateRemainderSheet ();
+
+// Click on sheet
+Utils.MouseClick (Utils.MeasurePtToPixel (new Utils.Measure (15.5, 15.5)));
+
+// Get dialog
+var g = Utils.WaitForGlob ();
+
+// Delete sheet with confirmation
+job.FindFirstChild ("cDelSheet").Click ();
+Utils.MainWin.FindFirstChild ()
+    .FindFirstChild (a =&gt; a.ByClassName ("Button").And (a.ByName ("Yes")))?.Click ();</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_part_properties_configuration">Part Properties Configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_priority_settings">Priority Settings</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Set part priority
+string[] parts = ["BigCircle", "Rectangle(400x200)", "Square(250x250)"];
+List&lt;string[]&gt; priorityCombinations = [
+    ["1", "2", "3"],
+    ["2", "1", "3"],
+    ["3", "2", "1"],
+    ["0", "1", "2"]
+];
+
+// For each part, set priority
+for (int k = 0; k &lt; 3; k++) {
+    var idx = Array.FindIndex (partsTable.FindAllChildren (), a =&gt; a.Name == parts[k]);
+    partsTable.FindChildAt (idx + 3).DoubleClick ();  // Priority column
+    Utils.MouseClick (Mouse.Position, doubleClick: true);
+    Utils.Type ($"{priorityCombinations[j][k]}");     // Enter priority
+}
+
+// Renest with new priorities
+newJobWindow.FindFirstChild ("cNesting").Click ();
+var layouts = Utils.FindElements (() =&gt; newJobWindow.FindFirstChild ("cPatternsList").FindAllChildren ());
+
+// Validate each layout
+for (int i = 0; i &lt; layouts.Length; i++) {
+    layouts[i].Click ();
+    Nesting.CheckPartsInLayout ("C122180", $"test_SetPriority{j + 1}-{i + 1}");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rotation_settings">Rotation Settings</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Set part rotation (6 options available)
+for (int i = 0; i &lt; 6; i++) {
+    newJobWindow.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+
+    // Find and click rotation column
+    newJobWindow.FindFirstChild (a =&gt; a.ByClassName ("PartsTable"))
+        .FindFirstChild (a =&gt; a.ByClassName ("ScrollViewer"))
+        .FindAllChildren (a =&gt; a.ByClassName ("TextBlock"))[15]
+        .Click ();
+
+    // Select rotation option
+    newJobWindow.FindFirstDescendant (a =&gt; a.ByClassName ("ContextMenu"))
+        .AsMenu ()
+        .Items[i]
+        .AsMenuItem ()
+        .Click ();
+
+    // Switch to layout and validate
+    SwitchToLayoutPage ();
+    Nesting.CheckPartsInLayout ("C122181", $"test_SetRotation{i}");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_grouping_settings">Grouping Settings</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Set part group
+string[] parts = ["BigCircle", "Rectangle(400x200)", "Square(250x250)"];
+List&lt;string[]&gt; groupCombinations = [
+    ["1", "2", "3"],
+    ["2", "1", "3"],
+    ["3", "2", "1"],
+    ["0", "1", "2"]
+];
+
+// For each part, set group
+for (int k = 0; k &lt; 3; k++) {
+    var idx = Array.FindIndex (partsTable.FindAllChildren (), a =&gt; a.Name == parts[k]);
+    partsTable.FindChildAt (idx + 6).DoubleClick ();  // Group column (idx + 6)
+    Utils.MouseClick (Mouse.Position, doubleClick: true);
+    Utils.Type ($"{groupCombinations[j][k]}");         // Enter group ID
+}
+
+// Renest and validate layouts
+var layouts = Utils.FindElements (() =&gt; newJobWindow.FindFirstChild ("cPatternsList").FindAllChildren ());
+for (int i = 0; i &lt; layouts.Length; i++) {
+    layouts[i].Click ();
+    Nesting.CheckPartsInLayout ("C122182", $"test_LayoutGroup{j + 1}-{i + 1}");
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dialog_interactions">Dialog Interactions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_new_job_dialog">New Job Dialog</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open new job dialog
+Utils.MainWin.FindFirstChild ("CmdBar").FindFirstChild (a =&gt; a.ByName ("new job")).Click ();
+
+// Get dialog
+var dlg = Utils.MainWin.FindFirstChild (a =&gt; a.ByName ("NewJobDlg"));
+
+// Type job name
+if (dlg != null &amp;&amp; string.IsNullOrEmpty (name)) Utils.Type (name);
+
+// Click OK
+dlg?.FindFirstChild (a =&gt; a.ByName ("OK").And (a.ByControlType (ControlType.Button))).Click ();
+
+// Click Cancel
+dlg.FindFirstChild (a =&gt; a.ByName ("Cancel").And (a.ByControlType (ControlType.Button))).Click ();
+
+// Verify dialog appears
+Assert.IsNotNull (dlg, "New job dialog is not found");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_save_parts_dialog">Save Parts Dialog</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open save dialog
+job.FindFirstChild ("cSavePart").Click ();
+
+// Find dialog
+Utils.FindElement (() =&gt; job.FindFirstChild (a =&gt; a.ByName ("Select Folder")));
+
+// Type folder path
+Utils.FindElement (() =&gt; job.FindFirstChild (a =&gt; a.ByName ("Select Folder")))
+    .FindFirstChild (a =&gt; a.ByControlType (ControlType.Edit).And (a.ByName ("Folder:")))
+    .Click ();
+Utils.Type (Utils.tempPath.Replace ('/', '\\')[..^1]);
+
+// Click Save
+Utils.FindElement (() =&gt; Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Select Folder").And (a.ByClassName ("Button"))))
+    .Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_confirmation_dialogs">Confirmation Dialogs</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Click Yes button
+Utils.MainWin.FindFirstChild ()
+    .FindFirstChild (a =&gt; a.ByClassName ("Button").And (a.ByName ("Yes")))
+    ?.Click ();
+
+// Click No button
+Utils.MainWin.FindFirstChild ()
+    .FindFirstChild (a =&gt; a.ByClassName ("Button").And (a.ByName ("No")))
+    ?.Click ();
+
+// Material conversion warning
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Ignore and convert all"))
+    ?.Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_save_as_dialog">Save As Dialog</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Wait for Save As dialog
+Utils.FindElement (() =&gt; Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Save As")));
+
+// Click Save button
+g.FindFirstDescendant (a =&gt; a.ByClassName ("Button").And (a.ByName ("Save")))
+    .Click ();
+
+// Wait for file creation
+Utils.WaitForFileExists (tempfile);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_add_dialog_search_sorting">Add Dialog: Search &amp; Sorting</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_add_dialog_access">Add Dialog Access</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open Add dialog
+Utils.Type ('a');
+
+// Open Add dialog via helper
+OpenAddDialog ("NestingJobSample.fxjob");
+
+// Helper implementation
+static void OpenAddDialog (string fileName) {
+    OpenJob (fileName);
+    Utils.Type (ESC);
+    Utils.Type ('a');
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_operations">Search Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get search box
+var searchBox = GetSearchBox ();
+var searchBoxQuery = searchBox.FindFirstChild (a =&gt; a.ByClassName ("TextBox")).AsTextBox ();
+
+// Search by part name
+foreach (var uniquePartName in partNames.Distinct ()) {
+    searchBoxQuery.Text = uniquePartName;
+    var addPartNames = ExtractPartNames (GetParts ());
+    Assert.True (addPartNames.All (addPartName =&gt; addPartName == uniquePartName));
+}
+
+// Case-insensitive search
+searchBoxQuery.Text = uniquePartName.ToUpper ();
+var uppercaseResults = GetParts ();
+searchBoxQuery.Text = uniquePartName.ToLower ();
+var lowercaseResults = GetParts ();
+Assert.AreEqual (ExtractPartNames (uppercaseResults), ExtractPartNames (lowercaseResults));
+
+// Empty search (shows all)
+searchBoxQuery.Text = "";
+var addPartNames1 = ExtractPartNames (GetParts ());
+
+// Invalid search
+searchBoxQuery.Text = "ahsk%$$^%^&amp;";
+Assert.True (GetParts ().Length == 0);
+
+// Placeholder text
+searchBoxQuery.Text = "Search Parts";
+var parts = GetParts ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sort_operations">Sort Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get sort by combobox
+var comboBox = GetComboBox ();
+
+// Sort by Name
+comboBox.Select ("Name");
+SortAscendingly (true);
+bool ascSort = IsSorted (ExtractPartNames (GetParts ()));
+
+// Sort by Area
+comboBox.Select ("Area");
+var widths = GetMeasurements (false);
+var heights = GetMeasurements ();
+var areas = [.. widths.Select ((w, i) =&gt; w * heights[i])];
+
+// Sort by Width
+comboBox.Select ("Width");
+var ascSort = IsSorted (GetMeasurements (false));
+
+// Sort by Height
+comboBox.Select ("Height");
+var ascSort = IsSorted (GetMeasurements ());
+
+// Sort by Remaining Quantity
+comboBox.Select ("Remaining Quantity");
+var ascSort = !IsSorted (GetRemQuantities ());</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sort_direction">Sort Direction</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Toggle ascending/descending
+SortAscendingly (true);   // Ascending
+SortAscendingly (false);  // Descending
+
+// Helper
+static void SortAscendingly (bool b) {
+    GetSortToggleCheckBox ().IsToggled = b;
+}
+
+// Get toggle checkbox
+var toggleCheckBox = Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Ascending")).AsCheckBox ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_dialog_parts_list">Add Dialog Parts List</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get all parts
+var parts = GetParts ();
+
+// Extract part names
+string[] partNames = ExtractPartNames (parts);
+
+// Get part measurements
+float[] widths = GetMeasurements (false);
+float[] heights = GetMeasurements ();
+
+// Get remaining quantities
+int[] remQuantities = GetRemQuantities ();
+
+// Helper: Extract part names
+static string[] ExtractPartNames (AutomationElement[] parts) =&gt;
+    [.. parts.Select (a =&gt; a.Name.Split ('\n', 2).First ()[3..])];
+
+// Helper: Get measurements
+static float[] GetMeasurements (bool height = true) {
+    var parts = GetParts ();
+    int len = parts.Length;
+    var measurements = new float[len];
+    for (int i = 0; i &lt; len; i++) {
+        var dims = parts[i].Name.Split ('\n', 3)[1].Split ('x');
+        measurements[i] = float.Parse (height ? dims[1] : dims[0]);
+    }
+    return measurements;
+}
+
+// Helper: Get remaining quantities
+static int[] GetRemQuantities () {
+    var parts = GetParts ();
+    int len = parts.Length;
+    int[] remQuantities = new int[len];
+    for (int i = 0; i &lt; parts.Length; i++) {
+        var line3 = parts[i].Name.Split ('\n', 4)[2];
+        int idx = line3.IndexOfAny (['-', '+']);
+        remQuantities[i] = idx &gt;= 0 ? int.Parse (line3[idx..]) : 0;
+    }
+    return remQuantities;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_dialog_ui_validation">Add Dialog UI Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check search box exists
+Assert.IsNotNull (GetSearchBox (), "Search Box not found");
+
+// Check sort option exists
+Assert.IsNotNull (mainWin.FindFirstDescendant (a =&gt; a.ByName ("Ascending")), "Sort option not found");
+
+// Check sort options available
+var comboBoxItems = GetComboBox ().Items;
+foreach (var item in comboBoxItems) {
+    Assert.IsNotNull (item, item.Name + " element not found");
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keyboard_input_commands">Keyboard &amp; Input Commands</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_navigation_keys">Navigation Keys</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Tab navigation
+Utils.Type ('p');              // Parts tab
+Utils.Type ('l');              // Layouts tab
+Utils.Type ('a');              // Add dialog
+
+// Escape/Close
+Utils.Type (ESC);
+Utils.Type (ESCAPE);
+
+// Confirm
+Utils.Type (ENTER);
+
+// Movement
+Utils.Type (LEFT);
+Utils.Type (RIGHT);
+Utils.Type (DELETE);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modifier_keys">Modifier Keys</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using static FluxTester.Utils.KeyShort;
+
+// Ctrl combinations
+Utils.Type ('a', CONTROL);     // Select all
+Utils.Type ('c', CONTROL);     // Copy
+Utils.Type ('x', CONTROL);     // Cut
+Utils.Type ('v', CONTROL);     // Paste
+
+// Key constants
+CONTROL
+SHIFT
+ESC
+ESCAPE
+ENTER
+TAB
+LEFT
+RIGHT
+DELETE</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_text_input">Text Input</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Type job name
+Utils.Type (name);
+
+// Type priority value
+Utils.Type ($"{priority}");
+
+// Type quantity
+Utils.Type ($"{(i + 1) * 10}");
+
+// Type file path
+Utils.Type ($"{Utils.tData}Test_C162420/test_ExportRemSheet.dxf".Replace ('/', '\\'));
+
+// Type folder path
+Utils.Type (Utils.tempPath.Replace ('/', '\\')[..^1]);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mouse_operations">Mouse Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_mouse_actions">Basic Mouse Actions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Single click
+Utils.MouseClick (element.GetClickablePoint ());
+
+// Double click
+Utils.MouseClick (pt, doubleClick: true);
+
+// Click with modifier
+Utils.MouseClick (pt, CONTROL);    // Ctrl+click
+
+// Get current position
+var currentPos = Mouse.Position;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_point_conversion">Point Conversion</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Convert measurement to pixels
+var pt = Utils.MeasurePtToPixel (new Utils.Measure (15.5, 15.5));
+var pt = Utils.MeasurePtToPixel (new Utils.Measure (50, 90));
+
+// Adjust point coordinates
+new System.Drawing.Point (pt.X - 40, pt.Y);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drag_drop">Drag &amp; Drop</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Standard drag and drop
+Utils.DragAndDrop (startPoint, endPoint);
+
+// Copy (Ctrl+drag)
+using (var ob = Keyboard.Pressing ((VirtualKeyShort)CONTROL))
+    Utils.DragAndDrop (start, end);
+
+// Twinline (Shift+drag)
+using (var ob = Keyboard.Pressing ((VirtualKeyShort)SHIFT))
+    Utils.DragAndDrop (start, end);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ui_element_access">UI Element Access</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_job_window_navigation">Job Window Navigation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get main window
+var mainWin = Utils.MainWin;
+
+// Get job window
+var job = Utils.MainWin.FindFirstChild ("NewJobWindow");
+
+// Get job window with retry
+var newJobWindow = GetNewJobWindow ();
+
+// Helper
+static AutomationElement GetNewJobWindow () {
+    AutomationElement newJobWindow;
+    do newJobWindow = Utils.MainWin.FindFirstChild ("NewJobWindow");
+    while (newJobWindow.FindAllChildren ().Length == 0);
+    return newJobWindow;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tab_controls">Tab Controls</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Find and click tabs
+job.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+job.FindFirstChild (a =&gt; a.ByName ("layouts")).Click ();
+job.FindFirstChild (a =&gt; a.ByName ("sheets")).Click ();
+
+// Verify tab exists
+Utils.FindElement (() =&gt; job.FindFirstChild (a =&gt; a.ByName ("parts")));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_button_controls">Button Controls</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Find buttons by automation ID
+var addBtn = job.FindFirstChild ("cAddLayout");
+var removeBtn = job.FindFirstChild ("cRemovePattern");
+var nestBtn = job.FindFirstChild ("cNesting");
+var savePartBtn = job.FindFirstChild ("cSavePart");
+var importSheetBtn = job.FindFirstChild ("cImportSheet");
+
+// Find buttons by name
+Utils.MainWin.FindFirstChild ("CmdBar").FindFirstChild (a =&gt; a.ByName ("new job"));
+
+// Click button
+button.Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_table_controls">Table Controls</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get parts table
+var partsTable = job.FindFirstChild (a =&gt; a.ByClassName ("PartsTable")).FindFirstChild ();
+
+// Get sheets table
+var sheetsTable = job.FindFirstChild (a =&gt; a.ByClassName ("SheetsTable")).FindFirstChild ();
+
+// Get patterns list
+var patterns = job.FindFirstChild ("cPatternsList");
+
+// Navigate table
+partsTable.FindChildAt (index);
+patterns.FindChildAt (0);
+patterns.FindAllChildren ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_combobox_controls">ComboBox Controls</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get sort by combobox
+var comboBox = Utils.FindElement (
+    () =&gt; Utils.MainWin.FindFirstDescendant (a =&gt; a.ByControlType (ControlType.ComboBox))
+).AsComboBox ();
+
+// Select option
+comboBox.Select ("Name");
+comboBox.Select ("Area");
+comboBox.Select ("Width");
+comboBox.Select ("Height");
+comboBox.Select ("Remaining Quantity");
+
+// Expand/collapse
+comboBox.Expand ();
+comboBox.Items[index].Click ();
+
+// Get items
+var items = comboBox.Items;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_checkbox_controls">CheckBox Controls</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get sort toggle
+var toggleCheckBox = Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Ascending")).AsCheckBox ();
+
+// Toggle state
+toggleCheckBox.IsToggled = true;
+toggleCheckBox.IsToggled = false;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_textbox_controls">TextBox Controls</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get textbox
+var searchBox = GetSearchBox ();
+var textBox = searchBox.FindFirstChild (a =&gt; a.ByClassName ("TextBox")).AsTextBox ();
+
+// Set text
+textBox.Text = "searchValue";
+
+// Get text
+string value = textBox.Text;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_globdialog_controls">Glob/Dialog Controls</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Wait for glob
+var g = Utils.WaitForGlob ();
+
+// Find in glob
+g.FindFirstChild (a =&gt; a.ByName ("Layout"));
+g.FindFirstDescendant (a =&gt; a.ByName ("Export Remainder Sheets..."));
+
+// Get context menu
+var menu = newJobWindow.FindFirstDescendant (a =&gt; a.ByClassName ("ContextMenu")).AsMenu ();
+menu.Items[i].AsMenuItem ().Click ();</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_extraction_validation">Data Extraction &amp; Validation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_extracting_job_data">Extracting Job Data</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get part names from job
+List&lt;string&gt; commands = [
+    "StringBuilder sb = new ();",
+    "foreach (var part in Flux.JobEditor.Current.Job.Parts) sb.Append(part.Name + \",\");",
+    "var result = sb.ToString();"
+];
+string[] partNames = Utils.RunScriptWithOutput (commands).Split (',', options: StringSplitOptions.RemoveEmptyEntries);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_name_extraction">Part Name Extraction</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Extract from Add dialog
+string[] ExtractPartNames (AutomationElement[] parts) =&gt;
+    [.. parts.Select (a =&gt; a.Name.Split ('\n', 2).First ()[3..])];
+
+// Usage
+var addPartNames = ExtractPartNames (GetParts ());</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sorting_validation">Sorting Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check if sorted ascending
+IsSorted (array);
+IsSorted (array, ascending: true);
+
+// Check if sorted descending
+IsSorted (array, ascending: false);
+
+// Generic implementation
+static bool IsSorted&lt;T&gt; (T[] array, bool ascending = true) where T : IComparable&lt;T&gt; =&gt;
+    array.SequenceEqual (ascending ? array.OrderBy (x =&gt; x) : array.OrderByDescending (x =&gt; x));
+
+// Usage
+bool namesSorted = IsSorted (ExtractPartNames (GetParts ()));
+bool areasSorted = IsSorted (GetAreas ());</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_data_dumping">Layout Data Dumping</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Dump to file
+Utils.DumpAutomationElement (
+    jobWin.FindFirstChild ("cPatternsList").FindFirstChild ()
+);
+
+// Verify with reference
+Assert.AreTextFilesEqual (
+    Utils.tData + "Test_C150733/test.txt",
+    Utils.tempPath + "temp.txt"
+);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_validation">File Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check file exists
+Utils.WaitForFileExists (file);
+Assert.True (File.Exists (file));
+
+// Compare text files
+Assert.AreTextFilesEqual (expectedPath, actualPath);
+
+// Compare binary files (DXF)
+Assert.AreTextFilesEqual (
+    $"{Utils.tData}Test_C162420/test_ExportRemSheet.dxf",
+    tempfile
+);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_script_execution">Script Execution</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_job_data_queries">Job Data Queries</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get all parts in job
+List&lt;string&gt; commands = [
+    "StringBuilder sb = new ();",
+    "foreach (var part in Flux.JobEditor.Current.Job.Parts) sb.Append(part.Name + \",\");",
+    "var result = sb.ToString();"
+];
+string result = Utils.RunScriptWithOutput (commands);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_validation">Layout Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Get part count in current layout
+Utils.RunScriptWithOutput ("var result = Flux.Layout.Current.PartCount.ToString();");
+
+// Validate parts in layout
+CheckPartsCountInLayout (expectedCount);
+CheckPartsCountInLayout (5, layoutIdx: 0);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_properties">Layout Properties</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check if all parts within margin
+Utils.RunScriptWithOutput ("var result = Flux.Layout.Current.Children.All (...).ToString();");
+
+// Access layout children
+Nesting.AreAllPartsNestedWithinSheet (includeTooling: true);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multi_line_script">Multi-Line Script</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">List&lt;string&gt; commands = [
+    "var lay = Flux.Layout.Current;",
+    "var sm = lay.SheetMargin;",
+    "var size = lay.SheetSize;",
+    "var bound = new Flux.Bound2 (sm.Left - 0.1, sm.Bottom - 0.1, size.X - sm.Right + 0.1, size.Y - sm.Top + 0.1);",
+    "var result = lay.Children.All (a =&gt; bound.Contains (a.GetBoundSansTooling ())).ToString();"
+];</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_job_workflows">Common Job Workflows</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_job_creation_workflow">Basic Job Creation Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1528, "Selecting 'New Job' toolbar button opens a pop-up dialog")]
+public void Test_C122130 () {
+    // 1. Open Flux
+    Utils.OpenFlux ();
+
+    // 2. Open New Job dialog
+    Utils.MainWin.FindFirstChild ("CmdBar").FindFirstChild (a =&gt; a.ByName ("new job")).Click ();
+
+    // 3. Verify dialog appears
+    Assert.IsNotNull (Utils.MainWin.FindFirstChild (a =&gt; a.ByName ("NewJobDlg")),
+        "New job dialog is not found");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_job_with_parts_addition_workflow">Job with Parts Addition Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1530, "Save Parts(s) from the job")]
+public void Test_C200408 () {
+    // 1. Open Flux and create job
+    Utils.OpenFlux ();
+    var job = CreateNewJob ();
+
+    // 2. Add parts
+    string[] parts = [FXFILE, "InnerContour.fx"];
+    AddPartsOrLayouts (ELoadOption.Part, parts);
+
+    // 3. Switch to parts tab
+    Utils.FindElement (() =&gt; job.FindFirstChild (a =&gt; a.ByName ("parts"))).Click ();
+
+    // 4. Select all and save
+    job.FindFirstChild (a =&gt; a.ByClassName ("PartsTable")).FindFirstChild ()
+        .FindFirstChild (a =&gt; a.ByName ("Name")).Click ();
+    Utils.Type ('a', CONTROL);
+    job.FindFirstChild ("cSavePart").Click ();
+
+    // 5. Specify save location
+    Utils.FindElement (() =&gt; job.FindFirstChild (a =&gt; a.ByName ("Select Folder")))
+        .FindFirstChild (a =&gt; a.ByControlType (ControlType.Edit).And (a.ByName ("Folder:")))
+        .Click ();
+    Utils.Type (Utils.tempPath.Replace ('/', '\\')[..^1]);
+
+    // 6. Save and verify
+    Utils.FindElement (() =&gt; Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Select Folder")
+        .And (a.ByClassName ("Button")))).Click ();
+
+    foreach (var filename in parts) {
+        var file = Utils.tempPath + filename;
+        Utils.WaitForFileExists (file);
+        Assert.True (File.Exists (file));
+        Thread.Sleep (500);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_management_workflow">Layout Management Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (401, "Adding and deleting layouts")]
+public void Test_C150732 () {
+    // 1. Open job
+    Utils.OpenJobOrLayout (Utils.tData + "TwinJob.fxjob");
+
+    // 2. Get job window and switch to layouts
+    var jobWin = Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("parts")).Parent;
+    jobWin.FindFirstChild (a =&gt; a.ByName ("layouts")).Click ();
+
+    // 3. Get buttons
+    var addBtn = jobWin.FindFirstChild ("cAddLayout");
+    var removeBtn = jobWin.FindFirstChild ("cRemovePattern");
+
+    // 4. Add layouts
+    Assert.True (layoutsCount () == 1);
+    for (int i = 0; i &lt; 6; i++) addBtn.Click ();
+    Assert.True (layoutsCount () == 7);
+
+    // 5. Remove layouts
+    for (int i = 0; i &lt; 3; i++) removeBtn.Click ();
+    Assert.True (layoutsCount () == 4);
+
+    // 6. Remove middle layout
+    jobWin.FindFirstChild ("cPatternsList").FindChildAt (new Random ().Next (3)).Click ();
+    removeBtn.Click ();
+    Assert.True (layoutsCount () == 3);
+
+    // Helper
+    int layoutsCount () =&gt; jobWin.FindFirstChild ("cPatternsList").FindAllChildren ().Length;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_priority_setting_workflow">Priority Setting Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (3527, "Set the priority for the part")]
+public void Test_C122180 () {
+    // 1. Open job
+    Utils.OpenJobOrLayout (Utils.tData + "NestingJobSample.fxjob");
+
+    // 2. Test multiple priority combinations
+    string[] parts = ["BigCircle", "Rectangle(400x200)", "Square(250x250)"];
+    List&lt;string[]&gt; priorityCombinations = [["1", "2", "3"], ["2", "1", "3"], ["3", "2", "1"], ["0", "1", "2"]];
+
+    for (int j = 0; j &lt; priorityCombinations.Count; j++) {
+        var newJobWindow = GetNewJobWindow ();
+        newJobWindow.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+
+        // 3. Get parts table
+        var partsTable = Utils.FindElement (() =&gt; newJobWindow
+            .FindFirstChild (a =&gt; a.ByClassName ("PartsTable")
+            .And (a.ByControlType (ControlType.Custom)))).FindFirstChild ();
+
+        // 4. Set priority for each part
+        for (int k = 0; k &lt; 3; k++) {
+            var idx = Array.FindIndex (partsTable.FindAllChildren (), a =&gt; a.Name == parts[k]);
+            partsTable.FindChildAt (idx + 3).DoubleClick ();
+            Utils.MouseClick (Mouse.Position, doubleClick: true);
+            Utils.Type ($"{priorityCombinations[j][k]}");
+        }
+
+        // 5. Switch to layout and renest
+        SwitchToLayoutPage ();
+        Utils.FindElement (() =&gt; newJobWindow.FindFirstChild ("cPatternsList").FindFirstChild ()).Click ();
+        Utils.Type ("a", CONTROL);
+        Utils.Type (DELETE);
+        newJobWindow.FindFirstChild ("cNesting").Click ();
+
+        // 6. Validate layouts
+        var layouts = Utils.FindElements (() =&gt; newJobWindow.FindFirstChild ("cPatternsList").FindAllChildren ());
+        for (int i = 0; i &lt; layouts.Length; i++) {
+            layouts[i].Click ();
+            Nesting.CheckPartsInLayout ("C122180", $"test_SetPriority{j + 1}-{i + 1}");
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_sort_workflow">Search &amp; Sort Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (3531, "Search the parts by its name in add button")]
+public void Test_C200439 () {
+    // 1. Open job
+    OpenJob ("NestingJobSample.fxjob");
+
+    // 2. Get job window and parts
+    var mainWin = Utils.MainWin;
+    var newJobWindow = mainWin.FindFirstChild ("NewJobWindow");
+    newJobWindow.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+
+    // 3. Get all part names
+    List&lt;string&gt; commands = [
+        "StringBuilder sb = new ();",
+        "foreach (var part in Flux.JobEditor.Current.Job.Parts) sb.Append(part.Name + \",\");",
+        "var result = sb.ToString();"
+    ];
+    string[] partNames = Utils.RunScriptWithOutput (commands)
+        .Split (',', options: StringSplitOptions.RemoveEmptyEntries);
+
+    // 4. Open Add dialog
+    Utils.Type (ESC);
+    Utils.Type ('a');
+    var searchBoxQuery = GetSearchBox ()
+        .FindFirstChild (a =&gt; a.ByClassName ("TextBox")).AsTextBox ();
+
+    // 5. Search for each unique part
+    foreach (var uniquePartName in partNames.Distinct ()) {
+        searchBoxQuery.Text = uniquePartName;
+        var addPartNames = ExtractPartNames (GetParts ());
+        Assert.True (addPartNames.All (addPartName =&gt; addPartName == uniquePartName));
+    }
+
+    // 6. Test case-insensitive search
+    foreach (var uniquePartName in partNames.Distinct ()) {
+        searchBoxQuery.Text = uniquePartName.ToUpper ();
+        var uppercaseResults = GetParts ();
+        searchBoxQuery.Text = uniquePartName.ToLower ();
+        var lowercaseResults = GetParts ();
+        Assert.AreEqual (ExtractPartNames (uppercaseResults), ExtractPartNames (lowercaseResults));
+    }
+
+    // 7. Test empty search and invalid search
+    searchBoxQuery.Text = "";
+    var addPartNames1 = ExtractPartNames (GetParts ());
+    Assert.True (partNames.All (partName =&gt; addPartNames1.Contains (partName)));
+
+    searchBoxQuery.Text = "ahsk%$$^%^&amp;";
+    Assert.True (GetParts ().Length == 0);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_copypaste_workflow">Copy/Paste Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (3530, "Cut/Copy &amp; Paste parts in layout sheets")]
+public void C145731 () {
+    // 1. Open job
+    Utils.OpenJobOrLayout (Utils.tData + "AsymmetricalPolygon.fxjob");
+
+    // 2. Handle material warning if needed
+    var newJobWindow = Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("NewJobWindow"));
+    newJobWindow.FindFirstChild (a =&gt; a.ByName ("parts")).Click ();
+    var scrollViewer = newJobWindow.FindFirstChild (a =&gt; a.ByClassName ("PartsTable"))
+        .FindFirstChild (a =&gt; a.ByClassName ("ScrollViewer"));
+    var warning = scrollViewer.FindFirstChild (a =&gt; a.ByClassName ("Image"));
+    if (warning != null) {
+        warning.Click ();
+        Utils.MainWin.FindFirstChild ()
+            .FindFirstChild (a =&gt; a.ByClassName ("ScrollViewer"))
+            .FindFirstChild (a =&gt; a.ByName ("Ignore and convert"))?.Click ();
+    }
+
+    // 3. Test Copy/Paste
+    SwitchToLayoutPage ();
+    Thread.Sleep (2000);
+    Utils.Type (ESC);
+    var pt = Utils.MeasurePtToPixel (new Utils.Measure (50, 90));
+    Utils.MouseClick (pt);
+    Utils.Type ("c", CONTROL);    // Copy
+    Utils.Type ("v", CONTROL);    // Paste
+    Assert.True (Nesting.AreAllPartsNestedWithinSheet ());
+    Nesting.CheckPartsInLayout ("C145731", "test_CopyPaste");
+
+    // 4. Test Cut/Paste
+    SwitchToLayoutPage ();
+    newJobWindow.FindFirstChild ("cRemovePattern").Click ();
+    newJobWindow.FindFirstChild ("cNesting").Click ();
+    Thread.Sleep (2000);
+    Utils.Type (ESC);
+    Thread.Sleep (500);
+    Utils.MouseClick (pt);
+    Utils.Type ("x", CONTROL);    // Cut
+    Utils.Type ("v", CONTROL);    // Paste
+    Assert.True (Nesting.AreAllPartsNestedWithinSheet ());
+    Nesting.CheckPartsInLayout ("C145731", "test_CutPaste");
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_helper_methods_reference">Helper Methods Reference</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_job_operations">Job Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">CreateNewJob(string name = "")              // Create new job
+OpenJob(string fileName)                    // Open job from test data
+GetNewJobWindow()                           // Get job window with retry
+OpenAddDialog(string fileName)              // Open job and Add dialog</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_operations_2">Layout Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">SwitchToLayoutPage()                        // Navigate to layout tab
+WaitTillNestingCompletes(int waitTime = 6) // Wait for nesting
+CheckPartsCountInLayout(int expected, int layoutIdx = 0)  // Validate part count</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_sort">Search &amp; Sort</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">GetComboBox()                               // Get Sort By dropdown
+GetSearchBox()                              // Get search textbox
+GetSortToggleCheckBox()                     // Get sort direction toggle
+GetParts()                                  // Get all parts in Add dialog
+GetNewJobWindow()                           // Get job window after loading</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_extraction">Data Extraction</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">ExtractPartNames(AutomationElement[] parts)      // Extract names from parts
+GetMeasurements(bool height = true)               // Extract width/height values
+GetRemQuantities()                                // Extract remaining quantities
+GetAreas()                                        // Calculate areas (width × height)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sorting_comparison">Sorting &amp; Comparison</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">IsSorted&lt;T&gt;(T[] array, bool ascending = true)     // Check sort order
+SortAscendingly(bool b)                           // Toggle sort direction</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_best_practices">Best Practices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>✅ <strong>DO:</strong>
+- Use <code>GetNewJobWindow()</code> for consistent job window access with retry logic
+- Always call <code>Utils.Type (ESC)</code> to finalize operations and close dialogs
+- Use <code>IDisposable</code> pattern for comprehensive cleanup
+- Use measurement points for consistent coordinate conversion
+- Validate with both file comparison AND part count checking
+- Use meaningful variable names for table indices and part references
+- Add comments for non-obvious UI automation steps
+- Use helper methods for repeated patterns (search, sort, priority)
+- Wait appropriately for async operations (nesting, file operations)</p>
+</div>
+<div class="paragraph">
+<p>❌ <strong>DON&#8217;T:</strong>
+- Hardcode pixel coordinates (always use measurement point conversion)
+- Skip <code>Utils.WaitForFileExists()</code> when checking file creation
+- Mix view switches without proper verification
+- Create multiple jobs without adequate cleanup
+- Skip assertions in validation workflows
+- Forget to handle material conversion warnings
+- Use generic variable names (g, dlg, etc. without context)
+- Access table children without understanding the index layout
+- Skip timeout specifications in <code>FindElement()</code> calls</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_pitfalls_solutions">Common Pitfalls &amp; Solutions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_job_window_not_loading">Job Window Not Loading</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: FindAllChildren() returns 0
+// Solution: Use GetNewJobWindow() helper
+var newJobWindow = GetNewJobWindow ();
+
+// Helper waits until all children load
+static AutomationElement GetNewJobWindow () {
+    AutomationElement newJobWindow;
+    do newJobWindow = Utils.MainWin.FindFirstChild ("NewJobWindow");
+    while (newJobWindow.FindAllChildren ().Length == 0);
+    return newJobWindow;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parts_table_column_access">Parts Table Column Access</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: Don't know which column index to use
+// Solution: Use specific offsets:
+// idx + 3  = Priority column
+// idx + 6  = Group column
+
+var idx = Array.FindIndex (partsTable.FindAllChildren (), a =&gt; a.Name == partName);
+partsTable.FindChildAt (idx + 3).DoubleClick ();  // Priority
+partsTable.FindChildAt (idx + 6).DoubleClick ();  // Group</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_material_conversion_warning">Material Conversion Warning</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: Dialog blocks further operations
+// Solution: Check and click warning
+var warning = scrollViewer.FindFirstChild (a =&gt; a.ByClassName ("Image"));
+if (warning != null) {
+    warning.Click ();
+    Utils.MainWin.FindFirstChild ()
+        .FindFirstChild (a =&gt; a.ByClassName ("ScrollViewer"))
+        .FindFirstChild (a =&gt; a.ByName ("Ignore and convert"))?.Click ();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_save_operations">File Save Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: File not found immediately after save
+// Solution: Use wait and sleep
+Utils.WaitForFileExists (tempfile);
+Thread.Sleep (500);  // Additional buffer
+Assert.True (File.Exists (file));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_dialog_not_appearing">Add Dialog Not Appearing</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: Add dialog doesn't open
+// Solution: Escape first, then open
+Utils.Type (ESC);
+Utils.Type ('a');
+
+// Or use helper
+OpenAddDialog ("NestingJobSample.fxjob");</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_reference_operation_matrix">Quick Reference: Operation Matrix</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Operation | Command | Example |
+|-----------|---------|---------|
+| Open Job | <code>Utils.OpenJobOrLayout (path)</code> | <code>Utils.OpenJobOrLayout (Utils.tData + "TwinJob.fxjob")</code> |
+| Create Job | <code>CreateNewJob ()</code> | <code>var job = CreateNewJob ();</code> |
+| Get Job Window | <code>GetNewJobWindow ()</code> | <code>var jobWin = GetNewJobWindow ();</code> |
+| Add Part | <code>AddPartsOrLayouts (ELoadOption.Part, parts)</code> | <code>AddPartsOrLayouts (ELoadOption.Part, new[] { "123.fx" })</code> |
+| Set Priority | <code>partsTable.FindChildAt (idx + 3).DoubleClick ()</code> | Set via textbox entry |
+| Set Group | <code>partsTable.FindChildAt (idx + 6).DoubleClick ()</code> | Set via textbox entry |
+| Add Layout | <code>job.FindFirstChild ("cAddLayout").Click ()</code> | Loop for multiple |
+| Renest | <code>job.FindFirstChild ("cNesting").Click ()</code> | Wait with <code>WaitTillNestingCompletes()</code> |
+| Search Parts | <code>GetSearchBox ().FindFirstChild (&#8230;&#8203;).AsTextBox ().Text</code> | <code>searchBox.Text = "PartName"</code> |
+| Sort Parts | <code>GetComboBox ().Select ("Name")</code> | Multiple sort options available |
+| Validate Count | <code>CheckPartsCountInLayout (expected)</code> | <code>CheckPartsCountInLayout (5)</code> |
+| Save Parts | <code>job.FindFirstChild ("cSavePart").Click ()</code> | Specify save folder |
+| Export Sheet | <code>g.FindFirstDescendant (a &#8658; a.ByName ("Export&#8230;&#8203;")).Click ()</code> | DXF format |
+| Import Sheet | <code>job.FindFirstChild ("cImportSheet").Click ()</code> | Choose DXF file |</p>
+</div>
+<div class="paragraph">
+<p>This recipe book covers all major patterns and commands used in the Job.cs framework for creating automated job management and nesting tests in the Flux application.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_table_of_contents">Table of Contents</a>
+  </li>
+  <li level="1">
+   <a href="#_test_structure_attributes">Test Structure &amp; Attributes</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_job_test_template">Basic Job Test Template</a>
+  </li>
+  <li level="2">
+   <a href="#_test_attributes">Test Attributes</a>
+  </li>
+  <li level="1">
+   <a href="#_idisposable_pattern_setup">IDisposable Pattern Setup</a>
+  </li>
+  <li level="2">
+   <a href="#_constructor_dispose_pattern">Constructor &amp; Dispose Pattern</a>
+  </li>
+  <li level="2">
+   <a href="#_machine_configuration">Machine Configuration</a>
+  </li>
+  <li level="1">
+   <a href="#_file_operations">File Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_opening_job_files">Opening Job Files</a>
+  </li>
+  <li level="2">
+   <a href="#_file_access_paths">File Access Paths</a>
+  </li>
+  <li level="2">
+   <a href="#_cleanup_operations">Cleanup Operations</a>
+  </li>
+  <li level="1">
+   <a href="#_job_creation_management">Job Creation &amp; Management</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_new_job">Creating New Job</a>
+  </li>
+  <li level="2">
+   <a href="#_opening_jobs">Opening Jobs</a>
+  </li>
+  <li level="2">
+   <a href="#_job_window_access">Job Window Access</a>
+  </li>
+  <li level="2">
+   <a href="#_job_dialog_operations">Job Dialog Operations</a>
+  </li>
+  <li level="1">
+   <a href="#_layout_operations">Layout Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_tab_navigation">Tab Navigation</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_management">Layout Management</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_list_operations">Layout List Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_nesting_operations">Nesting Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_switching">Layout Switching</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_tree_dumping">Layout Tree Dumping</a>
+  </li>
+  <li level="1">
+   <a href="#_part_management">Part Management</a>
+  </li>
+  <li level="2">
+   <a href="#_parts_tab_operations">Parts Tab Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_adding_parts">Adding Parts</a>
+  </li>
+  <li level="2">
+   <a href="#_parts_table_access">Parts Table Access</a>
+  </li>
+  <li level="2">
+   <a href="#_part_table_interactions">Part Table Interactions</a>
+  </li>
+  <li level="2">
+   <a href="#_part_operations">Part Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_part_quantity_management">Part Quantity Management</a>
+  </li>
+  <li level="2">
+   <a href="#_material_warning_handling">Material Warning Handling</a>
+  </li>
+  <li level="2">
+   <a href="#_part_validation">Part Validation</a>
+  </li>
+  <li level="1">
+   <a href="#_sheet_management">Sheet Management</a>
+  </li>
+  <li level="2">
+   <a href="#_sheets_tab_operations">Sheets Tab Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_sheets_table_access">Sheets Table Access</a>
+  </li>
+  <li level="2">
+   <a href="#_sheet_importexport">Sheet Import/Export</a>
+  </li>
+  <li level="2">
+   <a href="#_sheet_operations">Sheet Operations</a>
+  </li>
+  <li level="1">
+   <a href="#_part_properties_configuration">Part Properties Configuration</a>
+  </li>
+  <li level="2">
+   <a href="#_priority_settings">Priority Settings</a>
+  </li>
+  <li level="2">
+   <a href="#_rotation_settings">Rotation Settings</a>
+  </li>
+  <li level="2">
+   <a href="#_grouping_settings">Grouping Settings</a>
+  </li>
+  <li level="1">
+   <a href="#_dialog_interactions">Dialog Interactions</a>
+  </li>
+  <li level="2">
+   <a href="#_new_job_dialog">New Job Dialog</a>
+  </li>
+  <li level="2">
+   <a href="#_save_parts_dialog">Save Parts Dialog</a>
+  </li>
+  <li level="2">
+   <a href="#_confirmation_dialogs">Confirmation Dialogs</a>
+  </li>
+  <li level="2">
+   <a href="#_save_as_dialog">Save As Dialog</a>
+  </li>
+  <li level="1">
+   <a href="#_add_dialog_search_sorting">Add Dialog: Search &amp; Sorting</a>
+  </li>
+  <li level="2">
+   <a href="#_add_dialog_access">Add Dialog Access</a>
+  </li>
+  <li level="2">
+   <a href="#_search_operations">Search Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_sort_operations">Sort Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_sort_direction">Sort Direction</a>
+  </li>
+  <li level="2">
+   <a href="#_add_dialog_parts_list">Add Dialog Parts List</a>
+  </li>
+  <li level="2">
+   <a href="#_add_dialog_ui_validation">Add Dialog UI Validation</a>
+  </li>
+  <li level="1">
+   <a href="#_keyboard_input_commands">Keyboard &amp; Input Commands</a>
+  </li>
+  <li level="2">
+   <a href="#_navigation_keys">Navigation Keys</a>
+  </li>
+  <li level="2">
+   <a href="#_modifier_keys">Modifier Keys</a>
+  </li>
+  <li level="2">
+   <a href="#_text_input">Text Input</a>
+  </li>
+  <li level="1">
+   <a href="#_mouse_operations">Mouse Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_mouse_actions">Basic Mouse Actions</a>
+  </li>
+  <li level="2">
+   <a href="#_point_conversion">Point Conversion</a>
+  </li>
+  <li level="2">
+   <a href="#_drag_drop">Drag &amp; Drop</a>
+  </li>
+  <li level="1">
+   <a href="#_ui_element_access">UI Element Access</a>
+  </li>
+  <li level="2">
+   <a href="#_job_window_navigation">Job Window Navigation</a>
+  </li>
+  <li level="2">
+   <a href="#_tab_controls">Tab Controls</a>
+  </li>
+  <li level="2">
+   <a href="#_button_controls">Button Controls</a>
+  </li>
+  <li level="2">
+   <a href="#_table_controls">Table Controls</a>
+  </li>
+  <li level="2">
+   <a href="#_combobox_controls">ComboBox Controls</a>
+  </li>
+  <li level="2">
+   <a href="#_checkbox_controls">CheckBox Controls</a>
+  </li>
+  <li level="2">
+   <a href="#_textbox_controls">TextBox Controls</a>
+  </li>
+  <li level="2">
+   <a href="#_globdialog_controls">Glob/Dialog Controls</a>
+  </li>
+  <li level="1">
+   <a href="#_data_extraction_validation">Data Extraction &amp; Validation</a>
+  </li>
+  <li level="2">
+   <a href="#_extracting_job_data">Extracting Job Data</a>
+  </li>
+  <li level="2">
+   <a href="#_part_name_extraction">Part Name Extraction</a>
+  </li>
+  <li level="2">
+   <a href="#_sorting_validation">Sorting Validation</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_data_dumping">Layout Data Dumping</a>
+  </li>
+  <li level="2">
+   <a href="#_file_validation">File Validation</a>
+  </li>
+  <li level="1">
+   <a href="#_script_execution">Script Execution</a>
+  </li>
+  <li level="2">
+   <a href="#_job_data_queries">Job Data Queries</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_validation">Layout Validation</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_properties">Layout Properties</a>
+  </li>
+  <li level="2">
+   <a href="#_multi_line_script">Multi-Line Script</a>
+  </li>
+  <li level="1">
+   <a href="#_common_job_workflows">Common Job Workflows</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_job_creation_workflow">Basic Job Creation Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_job_with_parts_addition_workflow">Job with Parts Addition Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_management_workflow">Layout Management Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_priority_setting_workflow">Priority Setting Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_search_sort_workflow">Search &amp; Sort Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_copypaste_workflow">Copy/Paste Workflow</a>
+  </li>
+  <li level="1">
+   <a href="#_helper_methods_reference">Helper Methods Reference</a>
+  </li>
+  <li level="2">
+   <a href="#_job_operations">Job Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_operations_2">Layout Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_search_sort">Search &amp; Sort</a>
+  </li>
+  <li level="2">
+   <a href="#_data_extraction">Data Extraction</a>
+  </li>
+  <li level="2">
+   <a href="#_sorting_comparison">Sorting &amp; Comparison</a>
+  </li>
+  <li level="1">
+   <a href="#_best_practices">Best Practices</a>
+  </li>
+  <li level="1">
+   <a href="#_common_pitfalls_solutions">Common Pitfalls &amp; Solutions</a>
+  </li>
+  <li level="2">
+   <a href="#_job_window_not_loading">Job Window Not Loading</a>
+  </li>
+  <li level="2">
+   <a href="#_parts_table_column_access">Parts Table Column Access</a>
+  </li>
+  <li level="2">
+   <a href="#_material_conversion_warning">Material Conversion Warning</a>
+  </li>
+  <li level="2">
+   <a href="#_file_save_operations">File Save Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_add_dialog_not_appearing">Add Dialog Not Appearing</a>
+  </li>
+  <li level="1">
+   <a href="#_quick_reference_operation_matrix">Quick Reference: Operation Matrix</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="job.html">Job.cs Overview</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="res/index.js"></script>
+    <script src="res/files.js"></script>
+    <script src="res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

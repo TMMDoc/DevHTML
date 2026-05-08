@@ -1,0 +1,749 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Au (Gold) file</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Guidelines</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">File formats</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a class="active" href="augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a href="geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">File formats</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="augoldfile.html">Au (Gold) file</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Au (Gold) file</h1>
+<div class="sect1">
+<h2 id="_preamble">Preamble</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The native file format for Flux is known as the Au, or Gold, format. Au files are essentially ZIP files that contain various streams of data. Each stream is typically encoded in the Au stream format and contains a significant chunk of a part. For example, a <code>Drawing2</code> or a <code>Model3</code> could be saved in a stream. A full description of the Au file format therefore needs to focus on the encoding found in each Au stream, as well as the actual organization of the container ZIP file.</p>
+</div>
+<div class="paragraph">
+<p>This document discusses the bit-pattern of bytes inside an Au stream. <code>Fluxnote [TBD]</code> discusses the organization of the container ZIP file.</p>
+</div>
+<div class="paragraph">
+<p>Au files are binary files designed to be space-efficient and self-describing. The metadata for all types that appear in an Au file are included within the file itself. Because of this, the file format is very tolerant of versioning. Backward compatibility is easy to achieve, and the design also aims for forward compatibility, which is more difficult.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_primitives">Primitives</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_net_types">.NET types</h3>
+<div class="paragraph">
+<p>The following .NET primitive types are saved in Flux files using a bit-pattern similar to that produced by <code>BitConverter</code>, using little-endian byte ordering:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">int, uint, short, ushort, long, ulong, byte, sbyte, float, double, char, bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>DateTime</code> objects are written out as 64-bit integers using the <code>DateTime.FromBinary</code> and <code>DateTime.ToBinary</code> methods.</p>
+</div>
+<div class="paragraph">
+<p>Byte arrays (<code>byte[]</code>) are common in Flux and are therefore treated as primitive types. A byte array is written by first writing a count as an <code>IntV</code>, followed by the actual bytes of data. A null byte array is indicated by a byte count of <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p>Strings are also treated as primitive types. A string is first encoded as a byte array using UTF-8 and is then written out in the same way as a byte array: an <code>IntV</code> describing the count in bytes, followed by the actual bytes. A null string is indicated by a byte count of <code>-1</code>.</p>
+</div>
+<div class="paragraph">
+<p>Guids are treated as primitive types and are written out as a 16-byte array that can be obtained using <code>Guid.ToByteArray()</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variable_length_integers_intv">Variable length integers (IntV)</h3>
+<div class="paragraph">
+<p>In many places in an Au file, it is necessary to store small integers, such as string lengths, byte-array lengths, type IDs, and object IDs. These integers are typically small, but Flux does not want to impose arbitrary restrictions such as 16-bit limits. Such integers are therefore represented using a variable-length representation.</p>
+</div>
+<div class="paragraph">
+<p>An <code>IntV</code> encodes an integer into a sequence of bytes. Each byte holds 7 bits from the integer in the lower 7 bits, and the highest bit is used as a continuation bit. If that bit is set, more bytes follow. The bits from the integer are taken least-significant-byte first.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public unsafe void WriteIntV(int n)
+{
+    // We first add 1 to the value making it in the range -1..int.MaxValue-1.
+    n++;
+
+    for (;;)
+    {
+        // If the residual value is less than 128, write it out with the
+        // MSB set to 0 and exit.
+        if (n &lt; 128)
+        {
+            Write(&amp;n, 1);
+            break;
+        }
+
+        // Otherwise, write out the lowest 7 bits with the MSB set to 1
+        // to indicate that more data follows.
+        int m = (n &amp; 127) | 128;
+        Write(&amp;m, 1);
+
+        // Shift out the 7 bits we have just written and continue.
+        n &gt;&gt;= 7;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen in this code, <code>IntV</code> encoding can store values from <code>-1</code> to <code>int.MaxValue - 1</code>. The value <code>-1</code> is supported because it is often used as a marker to indicate no data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flux_primitives">Flux primitives</h3>
+<div class="paragraph">
+<p>These Flux types are treated as primitives because they occur very frequently in Flux files. They are read and written atomically since they are all structs whose layout in memory is known. More importantly, these structs should never be changed in the future. For example, a <code>Matrix3</code> is now effectively locked to always taking up exactly 132 bytes in memory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Point2, Point2f, Point3, Point3f, Vector2, Vector3, Vector3f, Vector3h,
+Bound2, Bound3, Size2, Size3, Matrix2, Matrix3, Matrix3f, Color32</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More types may be added to this list in the future.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_layout">File layout</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An Au file does not have much of an overall layout. First, there is a header that contains these two fields:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">uint Signature; // Au file signature, always 0x1A6F2D3D
+byte Version;   // Au file metadata version, currently 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you create an Au stream as a file, then go to a console window and type that file to display it on the console, you will see the special hidden meaning in this signature, and understand why <code>1A</code> is the fourth byte.</p>
+</div>
+<div class="paragraph">
+<p>The signature and version number take up the first 5 bytes.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image4.png" alt="AU Header" width="614" height="36"></span></p>
+</div>
+<div class="paragraph">
+<p>Following this header, there is exactly one top-level object stored in the Au file. This object could be a complex object such as a part or a nested layout and could contain hundreds or thousands of sub-objects inside. However, at the top, there is exactly one object. If you want to save multiple objects into an Au file, create a container object, put all of them in it, and save the container.</p>
+</div>
+<div class="paragraph">
+<p>Following this single top-level object, there is a trailer consisting of:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>Epilogue</code> token.</p>
+</li>
+<li>
+<p>The count of reference objects in the file, written as an <code>IntV</code>.</p>
+</li>
+<li>
+<p>The string <code>EOF</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This can be used to visually detect truncation. If the file does not end with the text <code>EOF</code>, it is truncated.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image5.png" alt="AU Footer" width="603" height="51"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_au_tokens">Au Tokens</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tokens are single-byte values that act like the keywords of an Au file. They are used to delimit distinct chunks of the file and guide the parsing process.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 66.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Token</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Null</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A null pointer or reference.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NominalType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An object follows that is of the nominal or expected type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DerivedType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An object follows that is of a derived type.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ObjectRef</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An object has already appeared in this stream. An integer object ID follows as a cross-reference.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PrimType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A type descriptor for a primitive type follows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ClassType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A type descriptor for a class type follows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StructType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A type descriptor for a struct type follows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ListType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A type descriptor for a list type follows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DictType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A type descriptor for a dictionary type follows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EnumType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A type descriptor for an enumeration type follows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Epilogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File epilogue follows, including object count and <code>EOF</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_type_descriptor">Type Descriptor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If there is no large up-front metadata block, where is the metadata saved? It is saved in scattered places throughout the file at the point of first use. The first time a type is referred to in an Au file, its metadata follows immediately.</p>
+</div>
+<div class="paragraph">
+<p>At various points in an Au file, Flux needs to provide a reference to a type. These are done using type IDs, which are integers starting from <code>0</code> and increasing consecutively. These IDs are local to a particular Au file and simply list types in the order in which they are encountered when reading the file.</p>
+</div>
+<div class="paragraph">
+<p>At any place where a type reference is expected, the reader first reads an integer representing the type ID. If this is the first time that type ID has been seen in the file, it is followed immediately by a type descriptor. Any time you read an <code>IntV</code> representing a type ID, you should therefore be prepared to read the corresponding type descriptor immediately afterwards.</p>
+</div>
+<div class="sect2">
+<h3 id="_primitive_types">Primitive types</h3>
+<div class="paragraph">
+<p>Primitive type descriptors are written as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>PrimType</code> token.</p>
+</li>
+<li>
+<p>The full name of the type, for example <code>System.Int32</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This is also the case for Flux-defined primitives such as <code>Flux.Point2</code>. It is assumed that the reader already knows what a <code>Flux.Point2</code> is, so no further definition is required beyond the name.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enumeration_types">Enumeration types</h3>
+<div class="paragraph">
+<p>Enumeration type descriptors are written as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>EnumType</code> token.</p>
+</li>
+<li>
+<p>The type ID for the underlying type of the enumeration, such as <code>Int32</code> or <code>UInt64</code>.</p>
+</li>
+<li>
+<p>The full name of the type, for example <code>Flux.ELType</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_and_struct_types">Class and struct types</h3>
+<div class="paragraph">
+<p>Class and struct type descriptors are written as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>ClassType</code> or <code>StructType</code> token.</p>
+</li>
+<li>
+<p>The full name of the type, for example <code>Flux.E3Plane</code>.</p>
+</li>
+<li>
+<p>The version number of the type, as an <code>IntV</code>.</p>
+</li>
+<li>
+<p>The base type ID, or <code>-1</code> for no base type, also as an <code>IntV</code>.</p>
+</li>
+<li>
+<p>The field count for serialized fields, as an <code>IntV</code>.</p>
+</li>
+<li>
+<p>For each field:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Field name.</p>
+</li>
+<li>
+<p>Alternative field name, meaning a human-readable name.</p>
+</li>
+<li>
+<p>The type ID for the field&#8217;s type, written as an <code>IntV</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This descriptor is recursive. To specify the base type or a field type, Flux writes another type ID. That referenced type may itself be new, in which case its full descriptor is inserted immediately at that point.</p>
+</div>
+<div class="paragraph">
+<p>Suppose we have a simple type like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace Sys
+{
+    public class Node
+    {
+        public int Min;
+        public int Max;
+        public string Tag;
+        public Node Next;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When trying to understand the type descriptor diagram for this class, it helps to remember that many fields are stored as <code>IntV</code>, and <code>IntV</code> encoding represents a small number <code>N</code> as <code>N + 1</code> in the file. So, for example, a field count of <code>4</code> is encoded as <code>05</code>.</p>
+</div>
+<div class="paragraph">
+<p>The first time the <code>System.Int32</code> type ID appears, as the type for the <code>Min</code> field, it is followed by the full type descriptor. The next time it appears, as the type for the <code>Max</code> field, only the type ID is emitted because the type has already been seen. In this example, types with IDs <code>0</code> (<code>Sys.Node</code>), <code>1</code> (<code>System.Int32</code>), and <code>2</code> (<code>System.String</code>) are introduced.</p>
+</div>
+<div class="paragraph">
+<p>Code that parses type descriptors must therefore be recursive and must be prepared to encounter a fresh new type descriptor even before the current one is fully parsed. Code that parses objects in an Au file must have the same flexibility.</p>
+</div>
+<div class="paragraph">
+<p>Type descriptors for classes and structs can sometimes be written out partially. In that case, the name and base type are written out but the field list is not. This is indicated by a field count of <code>-1</code>. Such a type is only partially specified, and objects of that type cannot yet be serialized or deserialized. Before the first object of that type is written, the field list is then written out. This optimization avoids storing metadata for objects that are never actually written.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image6.png" alt="Type Descriptor" width="571" height="176"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_list_types">List types</h3>
+<div class="paragraph">
+<p>Au files treat lists, meaning one-dimensional vectors, as special types. The internal runtime type used to implement the list is ignored. It could be an <code>Array</code>, a <code>List</code>, an <code>AList</code>, or any other type implementing <code>IList</code>. Lists are stored in a normalized form so that changes in implementation type do not affect the file format.</p>
+</div>
+<div class="paragraph">
+<p>List type descriptors are written as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>ListType</code> token.</p>
+</li>
+<li>
+<p>The type ID of the element type, written as an <code>IntV</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As always, if that type ID is encountered for the first time, the corresponding type descriptor follows immediately.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dict_types">Dict types</h3>
+<div class="paragraph">
+<p>Au files treat dictionaries, meaning associative arrays, specially as well. As with lists, the actual internal type used in memory is ignored and the dictionary is stored in a unified on-disk form.</p>
+</div>
+<div class="paragraph">
+<p>Dictionary type descriptors are written as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>DictType</code> token.</p>
+</li>
+<li>
+<p>The type ID of the key element type, written as an <code>IntV</code>.</p>
+</li>
+<li>
+<p>The type ID of the value element type, written as an <code>IntV</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_object_layout">Object layout</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_nominal_type">Nominal type</h3>
+<div class="paragraph">
+<p>Now that the type descriptor format is clear, object layout becomes easier to understand. An important concept is the nominal type. At every point in a file where an object is read, there is an expectation of what the type of that object should be. For example, if Flux is reading a list of integers, the expected type for each element is <code>int</code>.</p>
+</div>
+<div class="paragraph">
+<p>The actual layout of an object depends strongly on whether it must be of the nominal type or could be of some derived type. When reading elements of a <code>List&lt;int&gt;</code>, no variation is possible. Every element must be of type <code>int</code>. But when reading a <code>List&lt;Entity2&gt;</code> while loading a drawing, each element may be one of several derived types of <code>Entity2</code>.</p>
+</div>
+<div class="paragraph">
+<p>In situations where the actual type may differ from the nominal type, the stream begins with one of two tokens:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>NominalType</code>, if the object that follows is exactly of the nominal type.</p>
+</li>
+<li>
+<p><code>DerivedType</code>, if the object that follows is of a derived type.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the <code>DerivedType</code> case, the token is followed immediately by the type ID of the actual type, and then by the object data itself.</p>
+</div>
+<div class="paragraph">
+<p>When the nominal type cannot possibly vary, such as when reading a <code>List&lt;Point2&gt;</code>, neither <code>NominalType</code> nor <code>DerivedType</code> is written. The object data follows immediately.</p>
+</div>
+<div class="paragraph">
+<p>A special case occurs at the start of an Au file. At that point there is no real nominal type, so reading starts by assuming a nominal type of <code>System.Object</code>. Since the top-level object in an Au file is never actually <code>System.Object</code>, the first token after the header is invariably <code>DerivedType</code>, followed by the type ID and type descriptor of the first object.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nulls_and_cross_references">Nulls and cross-references</h3>
+<div class="paragraph">
+<p>When an object is expected to be read, there are two important special cases.</p>
+</div>
+<div class="paragraph">
+<p>If the object is null, the stream contains only the <code>Null</code> token.</p>
+</div>
+<div class="paragraph">
+<p>If the object has already appeared earlier in the file, which is common with cross-linked Flux data, the stream does not repeat the object data. Instead it writes an <code>ObjectRef</code> token followed by the object ID of the existing object, written as an <code>IntV</code>.</p>
+</div>
+<div class="paragraph">
+<p>Object IDs are assigned in the order in which objects appear in the file. The first object has object ID <code>0</code>. Subsequent IDs are assigned only to reference types. Value types such as structs and primitives are never assigned object IDs. Lists and dictionaries count as reference types here because they can be cross-referenced.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/image7.png" alt="Object Layout Flow" width="334" height="356"></span></p>
+</div>
+<div class="paragraph">
+<p>The object IDs are not explicitly written in the file; they are implied by object order. It is therefore essential that a reader track object IDs in perfect sync with the writer. The object count stored in the epilogue can help detect a synchronization error.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_actual_object_data">Actual object data</h3>
+<div class="paragraph">
+<p>Once the stream is past the <code>Null</code>, <code>ObjectRef</code>, <code>NominalType</code>, and <code>DerivedType</code> handling, the actual object data is straightforward.</p>
+</div>
+<div class="paragraph">
+<p>Classes and structs:
+All fields are written in metadata order. If some of those fields are reference types, the full object-layout logic above applies recursively.</p>
+</div>
+<div class="paragraph">
+<p>Lists:
+An <code>IntV</code> element count is written first, followed by the actual elements.</p>
+</div>
+<div class="paragraph">
+<p>Dictionaries:
+An <code>IntV</code> element count is written first, followed by each key-value pair.</p>
+</div>
+<div class="paragraph">
+<p>Primitives:
+Primitive types know how to encode themselves into bytes. For standard primitives such as <code>Int32</code> and <code>Int16</code>, helper methods in <code>ByteStm</code> are used. For other primitives such as <code>Point2</code> and <code>Matrix3</code>, the serializer expects static <code>FromBytes</code> and <code>ToBytes</code> methods.</p>
+</div>
+<div class="paragraph">
+<p>Enumerations:
+Enum types whose underlying type can be converted to <code>Int32</code> without truncation, such as <code>int</code>, <code>short</code>, <code>ushort</code>, <code>byte</code>, and <code>sbyte</code>, are serialized as <code>IntV</code> values. Other enums are serialized by casting to their underlying type. For example, an enum backed by <code>int</code> uses variable-length <code>IntV</code> storage, while an enum backed by <code>ulong</code> always takes exactly 8 bytes.</p>
+</div>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_preamble">Preamble</a>
+  </li>
+  <li level="1">
+   <a href="#_primitives">Primitives</a>
+  </li>
+  <li level="2">
+   <a href="#_net_types">.NET types</a>
+  </li>
+  <li level="2">
+   <a href="#_variable_length_integers_intv">Variable length integers (IntV)</a>
+  </li>
+  <li level="2">
+   <a href="#_flux_primitives">Flux primitives</a>
+  </li>
+  <li level="1">
+   <a href="#_file_layout">File layout</a>
+  </li>
+  <li level="1">
+   <a href="#_au_tokens">Au Tokens</a>
+  </li>
+  <li level="1">
+   <a href="#_type_descriptor">Type Descriptor</a>
+  </li>
+  <li level="2">
+   <a href="#_primitive_types">Primitive types</a>
+  </li>
+  <li level="2">
+   <a href="#_enumeration_types">Enumeration types</a>
+  </li>
+  <li level="2">
+   <a href="#_class_and_struct_types">Class and struct types</a>
+  </li>
+  <li level="2">
+   <a href="#_list_types">List types</a>
+  </li>
+  <li level="2">
+   <a href="#_dict_types">Dict types</a>
+  </li>
+  <li level="1">
+   <a href="#_object_layout">Object layout</a>
+  </li>
+  <li level="2">
+   <a href="#_nominal_type">Nominal type</a>
+  </li>
+  <li level="2">
+   <a href="#_nulls_and_cross_references">Nulls and cross-references</a>
+  </li>
+  <li level="2">
+   <a href="#_actual_object_data">Actual object data</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="fx.html">.FX File Format</a></span>
+ <span class="next"><a href="geo.html">.GEO File Format</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
