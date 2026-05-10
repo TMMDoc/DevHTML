@@ -1,0 +1,1230 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../../res/bento.css">
+  <link rel="stylesheet" href="../../../res/site.css">
+  <link rel="stylesheet" href="../../../res/tree.css">
+  <link rel="stylesheet" href="../../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Part.Load to Part.Dwg</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="../index.html">Data flow</a>
+     <ul>
+      <li>
+       <button class="tree open"></button>
+       <a href="index.html">Part</a>
+       <ul>
+        <li><button class="tree blank"></button><a href="partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a class="active" href="partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="../index.html">Data flow</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">Part</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="partload2.html">Part.Load to Part.Dwg</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Part.Load to Part.Dwg</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A detailed trace of how <code>Part.Load(filename)</code> reads a file and delivers a populated
+<code>Part.Dwg</code> (<code>Drawing2</code>) to the caller.
+The same pipeline handles <code>.geo</code>, <code>.dxf</code>, <code>.dwg</code>, <code>.iges</code>, and <code>.fx</code> files;
+the path taken depends solely on the file extension.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Part.Load (filename)               API layer   Src/API/Part/Part.cs:44
+ └── FX.LoadPart (file)            Core layer  Src/Core/FX.cs:1246
+      ├── FX.LoadDrawing (file)                Src/Core/FX.cs:1010
+      │    ├── GEOReader.Load()               Src/Core/IO/GeoReader.cs:68
+      │    ├── DXFReader.Load()               Src/Core/IO/DXFReader.cs
+      │    └── IGESReader.Load2D()            Src/Core/IO/IGS/IGSIn.cs
+      ├── Part.LoadFX (file)                  Src/Core/Part/Part.cs:990
+      │    └── ZipArchive.GetObject("Data\Dwg")
+      └── new Part { Dwg = dwg }
+           └── Part.Dwg setter                Src/Core/Part/Part.cs:94</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_step_1_api_entry_point_part_load">1. Step 1 — API Entry Point (Part.Load)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/API/Part/Part.cs</code> — line 44</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static Part Load (string filename) {
+    if (!filename.IsFile ())
+        throw new APIException (EResult.FileNotFound) { File = filename };
+    return LoadPart (() =&gt; FX.LoadPart (filename), filename);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Part.Load</code> is a thin wrapper in the public API layer.
+It verifies the file exists, then delegates to the internal <code>FX.LoadPart</code> via a lambda.
+If <code>FX.LoadPart</code> returns null or throws, <code>LoadPart</code> converts the exception to an
+<code>APIException</code> with the code <code>InvalidFile</code> (or <code>VersionMismatch</code>).</p>
+</div>
+<div class="paragraph">
+<p>The returned internal <code>Flux.Part</code> object is wrapped in the public <code>Flux.API.Part</code> class before
+being handed back to the caller.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_step_2_format_dispatch_fx_loadpart">2. Step 2 — Format Dispatch (FX.LoadPart)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/Core/FX.cs</code> — line 1246</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static Part LoadPart (string file, Part.EFXLoadFlags fxFlags = Part.EFXLoadFlags.Full,
+                              Dictionary&lt;string, object&gt; keys = null) {
+    if (!ExistsRead (file)) return null;
+    Part part = null; Model3 model = null;
+    var allKeys = MakeIOKeys;   // fresh dictionary for this load
+    if (keys != null) foreach (var kv in keys) allKeys[kv.Key] = kv.Value;
+
+    Drawing2 dwg = LoadDrawing (file, allKeys);   // ← try 2D first
+
+    if (dwg == null) {
+        model = LoadModel (file, allKeys);        // ← try 3D surface/sheet metal
+        if (model == null) {
+            switch (ext) {
+                case ".fx": case ".fxdiag":
+                    return Part.LoadFX (file, fxFlags);  // ← native format
+                // .pdg, .3d, .geo2, .mesh … handled separately
+            }
+        }
+    }
+
+    part ??= new Part { Dwg = dwg };   // ← Drawing2 assigned here
+
+    part.Info.Unit = DefaultUnit;
+    Part.LoadSettingsFile (Path.ChangeExtension (file, ".settings"), allKeys);
+    part.SetInfo (allKeys);            // ← copies keys → Part.Info
+    part.Info.Name = Path.GetFileNameWithoutExtension (file);
+    if (ext == ".geo") DoGeoBNCImport (file, part);
+    part.IsDirty = false;
+    return part;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The logic is:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Extension</th>
+<th class="tableblock halign-left valign-top">Path taken</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.geo</code> <code>.wzg</code> <code>.geox</code> <code>.dxf</code> <code>.dwg</code> <code>.igs</code> <code>.iges</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadDrawing()</code> succeeds → <code>dwg</code> is non-null → <code>new Part { Dwg = dwg }</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.fx</code> <code>.fxdiag</code> <code>.fxlantek</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadDrawing()</code> returns null → <code>LoadModel()</code> returns null → <code>Part.LoadFX()</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.stp</code> <code>.step</code> <code>.sat</code> <code>.igs</code> (solid) <code>.iges</code> (solid)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadDrawing()</code> returns null → <code>LoadModel()</code> succeeds → <code>new Part { Model = model }</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.pdg</code> <code>.3d</code> <code>.geo2</code> <code>.mesh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadDrawing()</code> and <code>LoadModel()</code> both null → extension-specific reader</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_the_iokeys_dictionary">2.1. The IOKeys Dictionary</h3>
+<div class="paragraph">
+<p><code>MakeIOKeys</code> creates a <code>Dictionary&lt;string, object&gt;</code> that travels through the entire
+load pipeline.
+Loaders write metadata into it as they parse:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// GEOReader writes into it via LoadDrawingInfo():
+allKeys["Thickness"] = 1.5;
+allKeys["MatlName"]  = "St37";
+allKeys["Comments"]  = "…";
+allKeys["Author"]    = "…";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After loading, <code>part.SetInfo(allKeys)</code> reads all these keys back into <code>Part.Info</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">part.SetInfo (allKeys);
+// equivalent to:
+part.Info.Thickness = (double)allKeys["Thickness"];
+part.Info.MatlName  = (string)allKeys["MatlName"];
+// …and so on for every known key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the mechanism by which thickness and material stored inside a <code>.geo</code> or <code>.dxf</code> file
+end up in <code>Part.Info</code> after loading.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_step_3_2d_drawing_loaders_fx_loaddrawing">3. Step 3 — 2D Drawing Loaders (FX.LoadDrawing)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/Core/FX.cs</code> — line 1010</p>
+</div>
+<div class="paragraph">
+<p><code>LoadDrawing</code> routes to the correct reader based on the file extension and returns a
+fully populated <code>Drawing2</code>, or <code>null</code> if the extension is not a 2D format.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static Drawing2 LoadDrawing (string file, Dictionary&lt;string, object&gt; keys = null, …) {
+    string ext = Path.GetExtension (file).ToLower ();
+    // Return null immediately for non-2D extensions:
+    if (ext != ".geo" &amp;&amp; ext != ".dxf" &amp;&amp; ext != ".wzg" &amp;&amp; ext != ".geox"
+        &amp;&amp; ext != ".igs" &amp;&amp; ext != ".iges") return null;
+
+    using var stm = File.OpenRead (file);
+    Drawing2 dwg = null;
+    switch (ext) {
+        case ".geo": case ".wzg":
+            dwg = new GEOReader (stm, keys).Load ();
+            break;
+        case ".geox":
+            dwg = LoadGEOX (stm, keys);           // ZIP with GEO + INI (pre-bent state)
+            break;
+        case ".dwg":
+            file = DWGtoDXF (file);               // convert via ODA/Teigha first
+            dwg  = new DXFReader (stm, keys).Load ()
+                       .SetLayerUses (IO.LayerUses)
+                       .CleanupLayerNames (false);
+            break;
+        case ".dxf":
+            dwg = new DXFReader (stm, keys).Load ()
+                      .SetLayerUses (IO.LayerUses)
+                      .CleanupLayerNames (false);
+            break;
+        case ".igs": case ".iges":
+            dwg = new IGESReader (stm).Load2D ();
+            // optional stitching pass if StitchThreshold &gt; 0
+            break;
+    }
+    UpdateTextLayers ();            // route text entities to correct layer
+    dwg.FitSmallSegsToArcOrLine (); // optional segment simplification
+    return dwg;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Two post-processing steps run on every <code>Drawing2</code> regardless of format:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UpdateTextLayers()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Re-assigns all <code>E2Text</code> entities to a target layer (<code>Std</code>, <code>Mark</code>, or <code>Info</code>) according
+    to the <code>IO.TextProcess</code> setting. The default (<code>ByLayer</code>) leaves text on whatever layer
+    the loader placed it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FitSmallSegsToArcOrLine()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When <code>Experimental.FitArcOrLine</code> is enabled, replaces runs of very short segments
+    with a single fitted line or arc. Off by default; does not change <code>Drawing2</code> structure.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_3a_geo_loader_georeader">3.1. 3a — GEO Loader (GEOReader)</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/Core/IO/GeoReader.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>GEOReader</code> owns a <code>Drawing2</code> field that it populates as it reads the file section by section.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">readonly Drawing2 mDwg = new ();   // created once at construction time (line 637)
+readonly List&lt;Point2&gt; mPts = new (); // coordinate table indexed by point-id</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Load()</code> method walks the file line by line looking for section markers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Drawing2 Load () {
+    for (;;) {
+        string s = GetLine (); if (s == "#~EOF") break;
+        if (s.StartsWith ("#~")) {
+            int n = s[2..].ToInt ();
+            switch (n) {
+                case 1:   LoadDrawingData ();        break;  // version, scale
+                case 3:   LoadPartData ();           break;  // comments
+                case 11:  LoadDrawingInfo ();        break;  // material, thickness, …
+                case 30:  LoadExtraKeys ();          break;  // misc key-value pairs
+                case 31:  LoadPoints ();             break;  // build mPts[] table
+                case 33:  StartContour ();           break;  // begin a pline contour
+                case 331:
+                case 32:
+                case 332: LoadSegments ();           break;  // add segs → mDwg
+                case 37:  mBendData = GetBlock (6); break;  // store raw bend data
+                case 371: LoadBendlines ();          break;  // build E2Bendline → mDwg
+                case 36:  LoadBevelAndFormAttributes (); break;
+                case 38:  LoadBendAttributes ();     break;
+            }
+        }
+    }
+    // Post-processing:
+    if (!mScale.EQ (1)) mDwg.Entities.ForEach (a =&gt; a.XForm (Matrix2.Scaling (mScale)));
+    if (mRotateHorizontal) mDwg.RotateHorizontal (true);
+    if (mDwg.Bendlines.Any () &amp;&amp; mDwg.Bendlines.All (a =&gt; a.SeqNo &gt; 0))
+        mDwg.AreBendsSequenced = true;
+    AssignLayers ();
+    if (miDeleteOverlaps) mDwg.RemoveDuplicates ();
+    return mDwg;
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_section_by_section_what_ends_up_in_drawing2">3.1.1. Section-by-section: what ends up in Drawing2</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Section</th>
+<th class="tableblock halign-left valign-top">Handler</th>
+<th class="tableblock halign-left valign-top">What it does to Drawing2 / keys</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadDrawingData()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reads version and sets <code>mScale = 25.4</code> if the unit flag indicates inches.
+    Geometry loaded later is scaled by <code>mScale</code> at the end.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~11</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadDrawingInfo()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Writes <code>Thickness</code>, <code>MatlName</code>, <code>Author</code>, <code>Comments</code>, <code>RuleName</code>, <code>TargetMachine</code>
+    into the <code>mKeys</code> dictionary. These propagate to <code>Part.Info</code> later via <code>SetInfo()</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadPartData()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Writes <code>Comments</code> into <code>mKeys</code> (only if not already set by <code>#~11</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~30</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadExtraKeys()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Writes miscellaneous <code>MISC_0</code> … <code>MISC_N</code> entries into <code>mKeys</code>.
+    Also overrides <code>MatlName</code> if a <code>WERKSTOFF@…</code> entry is present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~31</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadPoints()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Builds the <code>mPts[]</code> coordinate lookup table.
+    Every subsequent geometry section references points by their integer index.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~33</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartContour()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notes whether the upcoming segments form a closed or open contour
+    (<code>mContourClosed</code> = 1 or 0).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><mark>~331</code> <code></mark>~32</code> <code>#~332</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadSegments()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reads <code>LIN</code>, <code>ARC</code>, <code>CIR</code>, <code>CHA</code>, <code>FIL</code>, <code>PKT</code>, <code>TXT</code> primitives.
+    Builds <code>Pline</code> objects from <code>mPts</code> coordinates and appends them to the
+    current contour (<code>mPline</code>) or creates a standalone <code>E2Pline</code>.
+    When a contour ends (<code>|~</code>), wraps <code>mPline</code> in an <code>E2Pline</code> and adds it to
+    <code>mDwg.Entities</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~37</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(stores raw block)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Saves the raw 6-line bend-data block in <code>mBendData</code> for use by <code>#~371</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>#~371</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LoadBendlines()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uses <code>mBendData</code> + more lines to construct an <code>E2Bendline</code> (angle, radius,
+    punch/die names, sequence number, k-factor deduction).
+    Adds it to <code>mDwg.Entities</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_layer_assignment_post_load">3.1.2. Layer assignment (post-load)</h4>
+<div class="paragraph">
+<p>After the file is fully parsed, <code>AssignLayers()</code> maps entity colours to semantic layer roles:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Entity colour</th>
+<th class="tableblock halign-left valign-top">Mapped to</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red (<code>E2Point</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2.EUse.FormCenter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forming tool center-point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red (pline/other)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2.EUse.FormFootprint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forming tool footprint</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yellow (dotted line)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2.EUse.Evaporate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evaporation marking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yellow (solid)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2.EUse.Mark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser marking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cyan (<code>E2Point</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2.EUse.Mark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Marking point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cyan (pline)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2.EUse.Aux</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auxiliary geometry</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2.EUse.Std</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard cut geometry</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This colour-to-layer mapping is why a GEO file uses colour codes (<code>0</code>–<code>7</code>) to indicate
+semantic intent, while internally Flux tracks intent via <code>Layer2.EUse</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3b_dxf_loader_dxfreader">3.2. 3b — DXF Loader (DXFReader)</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/Core/IO/DXFReader.cs</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">readonly Drawing2 mDwg = new ();   // created at construction time</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>DXFReader.Load()</code> scans the DXF ENTITIES section, parsing group codes into entity objects:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">DXF entity type</th>
+<th class="tableblock halign-left valign-top">Created as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LINE</code>, <code>POLYLINE</code>, <code>LWPOLYLINE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Pline</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ARC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Pline</code> (arc segment)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CIRCLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Pline</code> (full circle)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TEXT</code>, <code>MTEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Text</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DIMENSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Dimension</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPLINE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Spline</code> (or discretized to <code>E2Pline</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INSERT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Insert</code> (block reference)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Open segments from separate entities are stitched together automatically
+during <code>DXFReader.Load()</code> according to the <code>StitchThreshold</code> key.</p>
+</div>
+<div class="paragraph">
+<p>After <code>DXFReader.Load()</code> returns, <code>LoadDrawing</code> calls two chained methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">dwg = new DXFReader (stm, keys).Load ()
+          .SetLayerUses (IO.LayerUses)       // map layer names → EUse roles
+          .CleanupLayerNames (false);        // deduplicate layer names</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>SetLayerUses</code> walks <code>Drawing2.Layers</code> and assigns <code>Layer2.EUse</code> by matching layer
+names against the configured <code>LayerUse[]</code> rules (exact name match first, then
+wildcard/regex match, then default: <code>Aux</code> if name starts with <code>_</code>, else <code>Std</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3c_iges_2d_loader">3.3. 3c — IGES 2D Loader</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/Core/IO/IGS/IGSIn.cs</code></p>
+</div>
+<div class="paragraph">
+<p>When loading a flat 2D outline from an IGES file (rare — only done if the IGES contains
+no solids), <code>IGESReader.Load2D()</code> extracts curve entities and builds <code>E2Pline</code> objects.
+An optional stitching pass is run based on the <code>StitchThreshold</code> key.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_step_4_native_format_fx_path_part_loadfx">4. Step 4 — Native Format (.fx) Path (Part.LoadFX)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/Core/Part/Part.cs</code> — line 1004</p>
+</div>
+<div class="paragraph">
+<p>When <code>FX.LoadPart</code> encounters <code>.fx</code> (or <code>.fxdiag</code>, <code>.fxlantek</code>), it bypasses <code>LoadDrawing</code>
+entirely and calls <code>Part.LoadFX</code> directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static Part LoadFX (Stream stm, EFXLoadFlags flags) {
+    var zip = new ZipArchive (stm, ZipArchiveMode.Read);
+    Part part = new ();
+
+    part.Info = (PartInfo)zip.GetObject (@"Data\Info", part);
+
+    if (flags.HasFlag (EFXLoadFlags.Dwg))
+        part.Dwg = (Drawing2)zip.GetObject (@"Data\Dwg", part);    // ← Dwg assigned
+
+    if (flags.HasFlag (EFXLoadFlags.Model))
+        part.Model = (Model3)zip.GetObject (@"Data\Model", part);
+
+    if (flags.HasFlag (EFXLoadFlags.FoldTech)) part.FoldTech = …;
+    if (flags.HasFlag (EFXLoadFlags.BendTech)) part.BendTech = …;
+    if (flags.HasFlag (EFXLoadFlags.CutTech))  part.CutTech  = …;
+
+    part.IsDirty = false;
+    return part;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>zip.GetObject(@"Data\Dwg", part)</code> reads the ZIP entry <code>Data\Dwg</code>, strips the
+4-byte AU wrapper header, then runs the AU binary deserializer to reconstruct a
+<code>Drawing2</code> object graph from scratch — no text parsing, no geometry building.
+The resulting object is identical in structure to one built by <code>GEOReader</code> or <code>DXFReader</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>EFXLoadFlags</code> controls which entries are loaded:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flag</th>
+<th class="tableblock halign-left valign-top">Entry loaded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Dwg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\Dwg</code> → <code>Part.Dwg</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Model</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\Model</code> → <code>Part.Model</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SurfaceModel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\SurfaceModel</code> → <code>Part.SurfaceModel</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\BendTech</code> → <code>Part.BendTech</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\FoldTech</code> → <code>Part.FoldTech</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Data\CutTech</code> → <code>Part.CutTech</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Full</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All of the above (default)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Nest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Dwg</code> + <code>Model</code> + <code>Info</code> + <code>CutTech</code> only (used by nesting)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_step_5_drawing2_assignment_part_dwg_setter">5. Step 5 — Drawing2 Assignment (Part.Dwg setter)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Src/Core/Part/Part.cs</code> — line 94</p>
+</div>
+<div class="paragraph">
+<p>Both paths (2D loaders and FX deserialization) end with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">part.Dwg = dwg;   // triggers the setter below</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public Drawing2 Dwg {
+    get =&gt; mDwg;
+    set {
+        if (value == null) CutTech = null;      // nulling Dwg also clears CutTech
+
+        // Disconnect old drawing
+        if (mDwg != null) {
+            mDwg.Owner = null;
+            mDwg.PUnwatch (OnSubPropChanged);
+        }
+
+        // Connect new drawing
+        if ((mDwg = value) != null) {
+            mDwg.Owner = this;                  // back-link: Drawing2 knows its Part
+            mDwg.PWatch (OnSubPropChanged);     // Part observes Drawing2 changes
+
+            // Scan text entities for known robot/automation keys
+            foreach (var t in mDwg.Entities.OfType&lt;E2Text&gt; ()
+                                   .SelectMany (a =&gt; a.Text.Split ('\n'))) {
+                int n = t.IndexOf (':'); if (n == -1) continue;
+                string key   = t[..n].ToUpper ().Trim ();
+                string kval  = t[(n + 1)..].Trim ();
+                if (sKnownKeys.Contains (key)) Info.Dict[key] = kval;
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Side effects when a <code>Drawing2</code> is assigned:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Side effect</th>
+<th class="tableblock halign-left valign-top">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutTech = null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut-tech references contours inside the drawing by identity. When the drawing is replaced,
+    those references are invalid, so the existing cut-tech must be discarded.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mDwg.Owner = this</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The drawing needs a back-reference to its part for certain operations
+    (e.g. thickness lookup, material lookup, bend annotation).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mDwg.PWatch (OnSubPropChanged)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The part subscribes to drawing change events so it can clear cached values
+    (bounds, area, etc.) when the geometry changes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">E2Text scan → <code>Info.Dict</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DXF files often encode part metadata in text entities using <code>KEY:VALUE</code> syntax.
+    The setter extracts keys in <code>sKnownKeys</code> — these are robot cell directives such as
+    <code>GRIPPER</code>, <code>SEPARATOR</code>, <code>JAWGRIPPER</code>, <code>DROPQTY</code>, etc. — and stores them directly
+    in <code>Part.Info.Dict</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The known automation keys scanned from text entities:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">static readonly HashSet&lt;string&gt; sKnownKeys = [
+    "GRIPPER", "SEPARATOR", "LIGHTTABLE", "PARTCONVEYOR", "PICKPALLETPOS",
+    "DROPPALLETPOS", "DROPPALLET", "DROPINCLINED", "DROPQTY", "DROPPITCH",
+    "DROPPART2SHIFT", "JAWGRIPPER", "GRIPPERPOSF", "GRIPPERPOSR",
+    BDepositExpert.JAWDROPSIMPLE,
+];</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_drawing2_after_load">6. Drawing2 After Load</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Regardless of the source format, the resulting <code>Drawing2</code> has the same structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Drawing2
+ │
+ ├── Entities (AList&lt;Entity2&gt;)
+ │    ├── E2Pline[]          closed or open contours (outer edge, holes, slots, arcs)
+ │    ├── E2Bendline[]       bend marks (angle, radius, k-factor, punch/die names)
+ │    ├── E2Text[]           text annotations
+ │    ├── E2Point[]          point markers
+ │    ├── E2Spline[]         spline curves (DXF only; may be discretized to E2Pline)
+ │    ├── E2Dimension[]      dimension annotations (DXF only)
+ │    └── E2Insert[]         block references (DXF only)
+ │
+ ├── Layers (AList&lt;Layer2&gt;)
+ │    Each layer carries:
+ │    ├── Name       string
+ │    ├── Color      Color32
+ │    ├── LType      ELType  (Continuous, Dash, Dot, DashDot)
+ │    └── Use        Layer2.EUse   ← semantic role assigned after load
+ │
+ ├── Blocks (List&lt;Block2&gt;)   block definitions (DXF only)
+ │
+ ├── FormInfos               forming tool positions (GEO bevel/form geometry)
+ │
+ └── Owner → Part            back-reference set by the Dwg setter</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layer2_euse_semantic_layer_roles">6.1. Layer2.EUse — Semantic Layer Roles</h3>
+<div class="paragraph">
+<p><code>EUse</code> is the most important property on a layer.
+It is assigned after load and controls how the drawing is processed for CAM:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">EUse</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Std</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normal cut geometry — outer edge, holes, slots</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Aux</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auxiliary geometry — not cut, used for reference only</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser marking (engraving without cutting through)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Evaporate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evaporation marking (very shallow laser pass)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FormCenter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Center point of a forming tool (GEO import)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FormFootprint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Footprint outline of a forming tool (GEO import)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutTooling</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generated cut-tooling paths (added by <code>MakeCutTech</code>, not from file)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Info</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informational text entities not to be cut</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Outer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forced outer boundary (red-bordered nesting override in GEO)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_complete_data_flow_summary">7. Complete Data Flow Summary</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Part.Load (filename)
+  │   Src/API/Part/Part.cs:44
+  │   file-exists check → APIException if missing
+  ▼
+FX.LoadPart (file)
+  │   Src/Core/FX.cs:1246
+  │   creates allKeys (IOKeys dictionary)
+  │
+  ├── [.geo / .dxf / .dwg / .igs]
+  │     FX.LoadDrawing (file, allKeys)
+  │       Src/Core/FX.cs:1010
+  │       │
+  │       ├── GEOReader (file, allKeys).Load ()
+  │       │     Src/Core/IO/GeoReader.cs:68
+  │       │     mDwg = new Drawing2()
+  │       │     LoadDrawingInfo() → allKeys["Thickness"], allKeys["MatlName"], …
+  │       │     LoadPoints()      → mPts[] coordinate table
+  │       │     LoadSegments()    → E2Pline, E2Text, E2Point → mDwg.Entities
+  │       │     LoadBendlines()   → E2Bendline → mDwg.Entities
+  │       │     AssignLayers()    → colour → Layer2.EUse mapping
+  │       │     return mDwg
+  │       │
+  │       ├── DXFReader (stm, allKeys).Load ()
+  │       │     Src/Core/IO/DXFReader.cs
+  │       │     mDwg = new Drawing2()
+  │       │     parse ENTITIES section group codes
+  │       │     LINE/ARC/CIRCLE  → E2Pline → mDwg.Entities
+  │       │     TEXT/MTEXT       → E2Text  → mDwg.Entities
+  │       │     stitch open segments
+  │       │     .SetLayerUses()   → layer-name → Layer2.EUse mapping
+  │       │     .CleanupLayerNames()
+  │       │     return mDwg
+  │       │
+  │       └── UpdateTextLayers() + FitSmallSegsToArcOrLine()
+  │           return dwg
+  │
+  │     part = new Part { Dwg = dwg }   ← Part.Dwg setter fires
+  │     part.SetInfo (allKeys)           ← allKeys → Part.Info.Thickness, MatlName, …
+  │     return part
+  │
+  └── [.fx]
+        Part.LoadFX (file, flags)
+          Src/Core/Part/Part.cs:990
+          zip = new ZipArchive (stm)
+          part.Info = zip.GetObject ("Data\Info")     AU deserialize → PartInfo
+          part.Dwg  = zip.GetObject ("Data\Dwg")      AU deserialize → Drawing2
+          part.Model, BendTech, FoldTech, CutTech … (if flags allow)
+          part.IsDirty = false
+          return part
+
+  Part.Dwg setter (for both paths above)
+    Src/Core/Part/Part.cs:94
+    mDwg.Owner = this           ← Drawing2 back-reference
+    mDwg.PWatch (…)             ← Part subscribes to Drawing2 change events
+    scan E2Text → Info.Dict     ← robot/automation keys extracted</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_files">8. Key Files</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/API/Part/Part.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Part.Load()</code> — public API entry point; wraps internal <code>Flux.Part</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/Core/FX.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.LoadPart()</code>, <code>FX.LoadDrawing()</code>, <code>FX.LoadGEOX()</code> — dispatch and format routing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/Core/IO/GeoReader.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GEOReader.Load()</code> — GEO section parser; builds <code>Drawing2</code> from text sections</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/Core/IO/DXFReader.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DXFReader.Load()</code> — DXF group-code parser; builds <code>Drawing2</code> from ENTITIES section</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/Core/IO/IGS/IGSIn.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IGESReader.Load2D()</code> — IGES 2D curve extraction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/Core/Part/Part.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Part.LoadFX()</code>, <code>Part.Dwg</code> setter, <code>sKnownKeys</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/Core/Drawing/Drawing.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Drawing2</code> class — <code>Entities</code>, <code>Layers</code>, <code>Blocks</code>, <code>FormInfos</code>, <code>Owner</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src/Core/Drawing/2DEntity.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entity2</code> base class; <code>E2Pline</code>, <code>E2Bendline</code>, <code>E2Text</code>, <code>E2Point</code>, <code>Layer2</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_step_1_api_entry_point_part_load">1. Step 1 — API Entry Point (Part.Load)</a>
+  </li>
+  <li level="1">
+   <a href="#_step_2_format_dispatch_fx_loadpart">2. Step 2 — Format Dispatch (FX.LoadPart)</a>
+  </li>
+  <li level="2">
+   <a href="#_the_iokeys_dictionary">2.1. The IOKeys Dictionary</a>
+  </li>
+  <li level="1">
+   <a href="#_step_3_2d_drawing_loaders_fx_loaddrawing">3. Step 3 — 2D Drawing Loaders (FX.LoadDrawing)</a>
+  </li>
+  <li level="2">
+   <a href="#_3a_geo_loader_georeader">3.1. 3a — GEO Loader (GEOReader)</a>
+  </li>
+  <li level="3">
+   <a href="#_section_by_section_what_ends_up_in_drawing2">3.1.1. Section-by-section: what ends up in Drawing2</a>
+  </li>
+  <li level="3">
+   <a href="#_layer_assignment_post_load">3.1.2. Layer assignment (post-load)</a>
+  </li>
+  <li level="2">
+   <a href="#_3b_dxf_loader_dxfreader">3.2. 3b — DXF Loader (DXFReader)</a>
+  </li>
+  <li level="2">
+   <a href="#_3c_iges_2d_loader">3.3. 3c — IGES 2D Loader</a>
+  </li>
+  <li level="1">
+   <a href="#_step_4_native_format_fx_path_part_loadfx">4. Step 4 — Native Format (.fx) Path (Part.LoadFX)</a>
+  </li>
+  <li level="1">
+   <a href="#_step_5_drawing2_assignment_part_dwg_setter">5. Step 5 — Drawing2 Assignment (Part.Dwg setter)</a>
+  </li>
+  <li level="1">
+   <a href="#_drawing2_after_load">6. Drawing2 After Load</a>
+  </li>
+  <li level="2">
+   <a href="#_layer2_euse_semantic_layer_roles">6.1. Layer2.EUse — Semantic Layer Roles</a>
+  </li>
+  <li level="1">
+   <a href="#_complete_data_flow_summary">7. Complete Data Flow Summary</a>
+  </li>
+  <li level="1">
+   <a href="#_key_files">8. Key Files</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="partload.html">Part.Load</a></span>
+ <span class="next"><a href="../bendtech.html">BendTech.cs</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../../res/index.js"></script>
+    <script src="../../../res/files.js"></script>
+    <script src="../../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

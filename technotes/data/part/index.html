@@ -1,0 +1,1490 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../../res/bento.css">
+  <link rel="stylesheet" href="../../../res/site.css">
+  <link rel="stylesheet" href="../../../res/tree.css">
+  <link rel="stylesheet" href="../../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Part</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="../index.html">Data flow</a>
+     <ul>
+      <li>
+       <button class="tree open"></button>
+       <a class="active" href="index.html">Part</a>
+       <ul>
+        <li><button class="tree blank"></button><a href="partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="../index.html">Data flow</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">Part</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Part</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Everything in Flux revolves around a single central concept: the
+<strong>Part</strong>.
+A Part is the digital twin of a physical sheet-metal component — it holds the 3D geometry, the 2D flat drawing, and all the manufacturing instructions needed to produce that component on real machines.</p>
+</div>
+<div class="paragraph">
+<p>Every other major object either <em>belongs to</em> a Part or <em>organises</em> Parts for production.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Part                       ← one sheet-metal component
+ ├── Model3                ← its 3D folded shape
+ ├── Drawing2              ← its unfolded flat shape
+ ├── BendTech              ← instructions for a press-brake
+ ├── FoldTech              ← instructions for a panel-bending machine
+ ├── FlatTech (CutTech)   ← instructions for laser / punch cutting
+ ├── Layout                ← single-part arrangement on one sheet
+ └── TrimJob / TrimTech   ← instructions for 5-axis trimming</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At a higher level, many Parts can be grouped together for production:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">NestJob                    ← one production batch
+ ├── NestPart[]            ← which parts, how many
+ ├── NestSheet[]           ← which raw-material sheets are available
+ └── NestPattern[]         ← calculated sheet arrangements (results)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_part">The Part</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Namespace:</strong> <code>Flux.Core</code> — <strong>File:</strong> <code>Core/Part/Part.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>Part</code> is the root domain object.
+It is a container that links together every representation of the same physical component.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Info</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PartInfo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name, material, thickness, and other metadata</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Model</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Model3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 3D folded shape of the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Dwg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Drawing2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 2D unfolded (flat) drawing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Press-brake processing data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Panel-bender processing data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlatTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Laser / punch cutting data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick single-part sheet arrangement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TrimJob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TrimJob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5-axis trim / pipe-cutting job</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TrimTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TrimTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5-axis CAM processing data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Flags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EFlags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bitfield of part-state switches</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_active_part">Active Part</h3>
+<div class="paragraph">
+<p><code>Part.Current</code> is the static property that holds whichever Part the user is currently working on.
+This is the application&#8217;s global selection state — think of it as "the open document".</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Part active = Part.Current;   // the part currently open in the editor</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3d_geometry_model3">3D Geometry — Model3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Model/Model3.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>Model3</code> represents the part in its <em>folded</em>, three-dimensional state — what you would hold in your hands.</p>
+</div>
+<div class="paragraph">
+<p>It stores a tree of connected planar faces and bends:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entities</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AList&lt;Entity3&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All geometric elements (faces, bends, meshes)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Baseplane</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E3Plane</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reference face — root of the geometry tree</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Flexes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IEnumerable&lt;E3Flex&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All bend lines in the model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlatMesh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CMesh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Triangle mesh in the fully flat state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldedMesh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CMesh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Triangle mesh in the folded state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Category</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ECategory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classification (sheet metal, laser, assembly …)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MassProps</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MassProps</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Centre of gravity, volume, weight</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_entity_hierarchy">Entity Hierarchy</h3>
+<div class="paragraph">
+<p><code>Entity3</code> is the base class for all geometric elements inside a model:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Entity3                 ← abstract base (has a name, transform)
+ ├── E3Thick            ← has a material thickness
+ │    ├── E3Plane       ← a flat face (most common element)
+ │    └── E3Flex        ← a bend connecting two faces
+ ├── E3Surface          ← imported freeform surface
+ ├── E3Insert           ← assembly sub-component
+ └── E3Mesh             ← arbitrary triangle mesh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>E3Plane</code> objects are the faces of the part.
+<code>E3Flex</code> objects are the bends that connect those faces.
+Together they form a directed acyclic graph (DAG) rooted at <code>Baseplane</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Baseplane (E3Plane)
+ └── [via E3Flex "bend A"]
+      └── Side face (E3Plane)
+           └── [via E3Flex "bend B"]
+                └── Flange (E3Plane)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every <code>E3Thick</code> has <code>Windward</code> (parent) and <code>Leeward</code> (child) pointers to navigate this tree.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2d_flat_drawing_drawing2">2D Flat Drawing — Drawing2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Model/Drawing2.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>Drawing2</code> is the unfolded, two-dimensional representation — the flat blank that will be cut from a sheet.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entities</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entity2[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All 2D elements</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Plines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Pline[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contours (outer edge, holes, internal features)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bendlines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Bendline[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lines where the part will be bent</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The most important element is <code>E2Pline</code> — a 2D polyline that describes a contour.
+The outer boundary of the flat part is one <code>E2Pline</code>; every hole or cutout is another.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_geometry_primitives">Geometry Primitives</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These types live in <code>Flux.Base</code> and are used throughout the entire codebase.</p>
+</div>
+<div class="sect2">
+<h3 id="_points_and_vectors">Points and Vectors</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2D position (x, y) as <code>double</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3D position (x, y, z) as <code>double</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2f</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2D position as <code>float</code> (used in rendering)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point3f</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3D position as <code>float</code> (used in rendering)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Vector2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2D direction with length</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Vector3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3D direction; supports dot product, cross product, normalisation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_transforms">Transforms</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Matrix2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2D affine transform — rotation, translation, scaling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Matrix3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3D affine transform</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CoordSystem</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An oriented coordinate frame: one origin point and three perpendicular axes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_polylines_pline">Polylines — Pline</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Base/Pline/Pline.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>Pline</code> is one of the most frequently used types in the codebase.
+It represents a 2D contour made of straight lines and arcs.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Segs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Segment[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The individual line or arc segments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsClosed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the contour is closed (a loop)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsOuter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this is an outer boundary (vs. a hole)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Axis-aligned bounding box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Area</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enclosed area</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Think of <code>Pline</code> as the 2D equivalent of a shape — it can be the outline of the whole part, a rectangular hole, or an arc slot.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_press_brake_data_bendtech">Press-Brake Data — BendTech</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Bend/BendTech.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>BendTech</code> stores everything needed to produce the part&#8217;s bends on a press-brake machine.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BMachine</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The target machine</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AList&lt;BendOp&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered list of bend operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cell</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robotic cell configuration (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Robotic</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether a robot handles the part</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_bend_operations_bendop">Bend Operations — BendOp</h3>
+<div class="paragraph">
+<p>Each <code>BendOp</code> is one individual bend, in sequence:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Flex</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E3Flex</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The model element being bent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What kind of bend (air bend, hem, coin …)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Target bend angle in degrees</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Handling</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EHandlingFlip</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How the operator re-orients the part after this step</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Tools</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendToolSet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Punch and die selected for this step</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_ebendkind_bend_types">EBendKind — Bend Types</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">enum EBendKind {
+    AirBend,        // most common: punch doesn't reach die bottom
+    Coining,        // high-pressure: punch presses all the way
+    ClosedHem,      // folds flat onto itself
+    OpenHem,        // folds back but leaves a gap
+    BumpBend,       // multiple small hits to form a curve
+    FormBend,       // uses a special forming tool
+    // … and several pre-bend variants
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ehandlingflip_part_re_orientation">EHandlingFlip — Part Re-orientation</h3>
+<div class="paragraph">
+<p>After each bend the operator (or robot) may need to turn the part:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">enum EHandlingFlip {
+    None,       // keep orientation
+    Bump,       // push forward along the machine
+    RotateL,    // rotate left 90°
+    RotateR,    // rotate right 90°
+    Rotate180,  // rotate 180°
+    Flip,       // flip over (turn upside down)
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_panel_bender_data_foldtech">Panel-Bender Data — FoldTech</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Fold/FoldTech.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>FoldTech</code> covers panel-bending and bump-bending machines — different from press-brakes in that the sheet stays mostly still and the machine&#8217;s bending beam moves.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FMachine</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldMachine</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Target machine</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IList&lt;FoldSection&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Segments of the part processed together</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Material</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Material</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resolved material (may differ from the request)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CanOptimizeSequence</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether bend order can be reordered freely</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_foldsection_foldstep">FoldSection → FoldStep</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">FoldTech
+ └── FoldSection[]     ← one group of bends processed without re-gripping
+      └── FoldStep[]   ← each individual machine movement</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cutting_data_flattech_cuttech">Cutting Data — FlatTech (CutTech)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Cut/FlatTech.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>FlatTech</code> holds everything for cutting the flat blank from a raw sheet, either by laser or by punch.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Dwg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Drawing2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The flat drawing being cut</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Config</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine, material, thickness, film/treatment settings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AllSteps</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;CutStep&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered cutting operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entities</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AList&lt;CutEntity&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contours being processed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HasUncutSegs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Warning: some contours have no tooling yet</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code>CutStep</code> subtypes include <code>LaserCut</code>, <code>PunchStep</code>, <code>CommonLineCut</code>, and <code>ScrapCut</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sheet_layout_layout">Sheet Layout — Layout</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Layout/Layout.cs</code></p>
+</div>
+<div class="paragraph">
+<p>A <code>Layout</code> arranges one or more part instances on a single physical sheet, ready for cutting.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SheetSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Size2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Physical sheet dimensions (width × height)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SheetMargin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Margin2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unusable margins at the sheet edges</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SheetGrain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EGrain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rolling direction of the material</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Children</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AList&lt;Placement&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each positioned part instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Config</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine and material settings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Estimate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Estimates</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Calculated machining time</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_placement">Placement</h3>
+<div class="paragraph">
+<p>Each <code>Placement</code> is one instance of a part on the sheet:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Tech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlatTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cutting data for this part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Position of the part on the sheet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rotation in radians</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mirrored</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the part is flipped on the X axis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsColliding</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validation: overlaps with another placement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GrainMismatch</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validation: rolling direction is wrong</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A single <code>Part</code> can appear as many <code>Placement</code> objects on the same sheet.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nesting_nestjob">Nesting — NestJob</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Nest/NestJob.cs</code></p>
+</div>
+<div class="paragraph">
+<p>When multiple different part types must be cut from a batch of sheets, a <code>NestJob</code> manages the optimisation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">NestJob
+ ├── NestPart[]       ← which parts are required and how many
+ ├── NestSheet[]      ← raw sheets available (size, grain, quantity)
+ └── NestPattern[]    ← one result sheet per used sheet
+      └── NestElement[] ← each part instance with its position</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nestpart">NestPart</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Part</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Part</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The part to nest</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Min</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum quantity required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Max</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum allowed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Complete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How many have been placed so far</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_nestsheet">NestSheet</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Size2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sheet dimensions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Margin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Margin2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unusable edge margins</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Qty</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of sheets available</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Grain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EGrain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rolling direction</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_nestpattern">NestPattern</h3>
+<div class="paragraph">
+<p>A <code>NestPattern</code> is one filled sheet — the output for a single raw sheet after nesting:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Job</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NestJob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent job</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sheet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NestSheet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Which sheet type was used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Elements</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;NestElement&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All placed part instances</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_robotic_bend_cell_bcelltech">Robotic Bend Cell — BCellTech</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/BCell/</code></p>
+</div>
+<div class="paragraph">
+<p>When a press-brake is combined with a robot for automated material handling, the robotic cell configuration is stored in <code>BCellTech</code>.</p>
+</div>
+<div class="paragraph">
+<p>The cell is composed of typed equipment items:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">BCellItem               ← abstract: has a name, size, and position
+ ├── BStorage           ← pallet, basket, conveyor (where parts wait)
+ ├── BGripper           ← end-of-arm tool (vacuum cups or jaw gripper)
+ ├── BLightBox          ← vision reference target
+ ├── BFurniture         ← passive collision geometry (tables, fences)
+ └── BEquipment         ← active conveyors</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Key planning objects:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRobotPose</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A robot TCP (tool-centre-point) position and orientation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BPickupPlan</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How and from where the robot picks up a part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDepositPlan</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where and how the robot places a finished part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRegrip</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A robot manoeuvre to re-orient the part mid-sequence</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_axis_trimming_trimjob_trimtech">5-Axis Trimming — TrimJob / TrimTech</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Files:</strong> <code>Core/Trim/</code></p>
+</div>
+<div class="paragraph">
+<p>For parts that need 5-axis cutting (e.g. pipes or complex 3D profiles), <code>TrimJob</code> and <code>TrimTech</code> fill the same role as <code>NestJob</code> and <code>FlatTech</code> do for flat cutting.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TrimJob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The production job: which machine, which parts, quantities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TrimTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CAM data for a single part: tool paths, lead-ins, sequences</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_global_state_fx">Global State — FX</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/FX.cs</code></p>
+</div>
+<div class="paragraph">
+<p><code>FX</code> is a large static class that acts as the application&#8217;s global state and service locator.
+A few key properties beginners will encounter frequently:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.Part.Current</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Part currently open in the editor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.Settings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application-wide user settings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.DefaultUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the app uses millimetres or inches</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.DataDir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the installation data directory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.AdminMode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether admin-only features are enabled</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>FX</code> extends <code>BA</code> (the Base utility module), which means all low-level helpers (logging, geometry, colours) are also accessible through <code>FX</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_change_notifications">Change Notifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The data model uses a lightweight property-watching system instead of (or alongside) standard .NET <code>INotifyPropertyChanged</code>.</p>
+</div>
+<div class="paragraph">
+<p>Classes that participate implement <code>ISheafSite</code> and expose <code>PWatch</code> / <code>PUnwatch</code> methods.
+Change events are identified by the <code>EProp</code> enum:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Subscribe to changes on a part:
+part.PWatch(EProp.DwgChanged, OnDwgChanged);
+
+// Unsubscribe:
+part.PUnwatch(EProp.DwgChanged, OnDwgChanged);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Common <code>EProp</code> values: <code>DwgChanged</code>, <code>Bendlines</code>, <code>Visual</code>, <code>SheetSize</code>, <code>SheetGrain</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_complete_relationship_diagram">Complete Relationship Diagram</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">                     NestJob
+                    /   |    \
+          NestPart[]  NestSheet[]  NestPattern[]
+              |                        |
+            Part*              NestElement[]
+            /|\\ \\                   /  \
+           / | \\ \\          NestPart   Point2
+          /  |  \\  \\
+    Model3 Dwg  BendTech  FoldTech  FlatTech(CutTech)  TrimJob
+      |    |       |          |          |
+  E3Plane  E2Pline  BendOp[]  FoldSection[]  CutStep[]
+  E3Flex   E2Bendline            FoldStep[]
+  E3Mesh
+
+Layout
+  └── Placement[]
+        ├── FlatTech (ref to Part's CutTech)
+        ├── Point2  (position on sheet)
+        └── double  (rotation angle)
+
+* A Layout also belongs to a Part (Part.Layout = quick single-part layout)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_enumerations_summary">Key Enumerations Summary</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enum</th>
+<th class="tableblock halign-left valign-top">Values (selection)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AirBend</code>, <code>Coining</code>, <code>ClosedHem</code>, <code>OpenHem</code>, <code>BumpBend</code>, <code>FormBend</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EHandlingFlip</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>None</code>, <code>Bump</code>, <code>RotateL</code>, <code>RotateR</code>, <code>Rotate180</code>, <code>Flip</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ECategory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SheetMetal</code>, <code>Laser</code>, <code>Assembly</code>, <code>Surface</code>, <code>Tube</code>, <code>MultiBody</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EGrain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Describes the rolling direction of sheet material</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ECutStatus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PartOverlap</code>, <code>UntooledPlines</code>, <code>GrainMismatch</code>, <code>OutOfMachineStroke</code> …</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EProp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DwgChanged</code>, <code>Bendlines</code>, <code>Visual</code>, <code>SheetSize</code>, <code>SheetGrain</code> …</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_the_part">The Part</a>
+  </li>
+  <li level="2">
+   <a href="#_active_part">Active Part</a>
+  </li>
+  <li level="1">
+   <a href="#_3d_geometry_model3">3D Geometry — Model3</a>
+  </li>
+  <li level="2">
+   <a href="#_entity_hierarchy">Entity Hierarchy</a>
+  </li>
+  <li level="1">
+   <a href="#_2d_flat_drawing_drawing2">2D Flat Drawing — Drawing2</a>
+  </li>
+  <li level="1">
+   <a href="#_geometry_primitives">Geometry Primitives</a>
+  </li>
+  <li level="2">
+   <a href="#_points_and_vectors">Points and Vectors</a>
+  </li>
+  <li level="2">
+   <a href="#_transforms">Transforms</a>
+  </li>
+  <li level="2">
+   <a href="#_polylines_pline">Polylines — Pline</a>
+  </li>
+  <li level="1">
+   <a href="#_press_brake_data_bendtech">Press-Brake Data — BendTech</a>
+  </li>
+  <li level="2">
+   <a href="#_bend_operations_bendop">Bend Operations — BendOp</a>
+  </li>
+  <li level="2">
+   <a href="#_ebendkind_bend_types">EBendKind — Bend Types</a>
+  </li>
+  <li level="2">
+   <a href="#_ehandlingflip_part_re_orientation">EHandlingFlip — Part Re-orientation</a>
+  </li>
+  <li level="1">
+   <a href="#_panel_bender_data_foldtech">Panel-Bender Data — FoldTech</a>
+  </li>
+  <li level="2">
+   <a href="#_foldsection_foldstep">FoldSection → FoldStep</a>
+  </li>
+  <li level="1">
+   <a href="#_cutting_data_flattech_cuttech">Cutting Data — FlatTech (CutTech)</a>
+  </li>
+  <li level="1">
+   <a href="#_sheet_layout_layout">Sheet Layout — Layout</a>
+  </li>
+  <li level="2">
+   <a href="#_placement">Placement</a>
+  </li>
+  <li level="1">
+   <a href="#_nesting_nestjob">Nesting — NestJob</a>
+  </li>
+  <li level="2">
+   <a href="#_nestpart">NestPart</a>
+  </li>
+  <li level="2">
+   <a href="#_nestsheet">NestSheet</a>
+  </li>
+  <li level="2">
+   <a href="#_nestpattern">NestPattern</a>
+  </li>
+  <li level="1">
+   <a href="#_robotic_bend_cell_bcelltech">Robotic Bend Cell — BCellTech</a>
+  </li>
+  <li level="1">
+   <a href="#_5_axis_trimming_trimjob_trimtech">5-Axis Trimming — TrimJob / TrimTech</a>
+  </li>
+  <li level="1">
+   <a href="#_global_state_fx">Global State — FX</a>
+  </li>
+  <li level="1">
+   <a href="#_change_notifications">Change Notifications</a>
+  </li>
+  <li level="1">
+   <a href="#_complete_relationship_diagram">Complete Relationship Diagram</a>
+  </li>
+  <li level="1">
+   <a href="#_key_enumerations_summary">Key Enumerations Summary</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="../index.html">Data flow</a></span>
+ <span class="next"><a href="partinformation.html">Part.Dwg</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../../res/index.js"></script>
+    <script src="../../../res/files.js"></script>
+    <script src="../../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

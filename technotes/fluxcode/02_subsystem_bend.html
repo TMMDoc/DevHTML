@@ -1,0 +1,1573 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Subsystem *Bend* (Press Brake)</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a class="active" href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Subsystem *Bend* (Press Brake)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Prerequisite:</strong> Chapter 00 (repo map) and Chapter 01 (architecture, M/V/Glob, Sheaf, Hub).
+<strong>Goal:</strong> Bend is the canonical subsystem. After this chapter you can localize any bug from the press-brake area to the right code and test entry point&#8201;&#8212;&#8201;<em>without</em> writing a fix. Reading time: 60&#8212;&#8203;90 minutes.
+<strong>Template note:</strong> this chapter doubles as the <strong>template</strong> for future per-subsystem chapters (Fold, Laser, Punch, Nest, BCell). The same 14-section structure should be followed.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_tldrbend_in_twelve_lines">1. TL;DR&#8201;&#8212;&#8201;Bend in twelve lines</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Domain:</strong> press-brake CAM (classical bending machine: punch + die). The <em>separate</em> domain <em>Fold</em> is the panel bender (TecZoneFold)&#8201;&#8212;&#8201;don&#8217;t confuse them.</p>
+</li>
+<li>
+<p><strong>Code root:</strong> <code>Src\Core\Bend\</code> (47 files, ~1.7 MB of source).</p>
+</li>
+<li>
+<p><strong>Top-level model:</strong> <code>Part</code> → <code>BendTech</code> → many <code>BendOp</code> (one bending operation each) and one or more <code>BendSetup</code> (one tool layout on the machine).</p>
+</li>
+<li>
+<p><strong>Auto-tooler:</strong> <code>Ops\BendTooler.cs</code> (139 KB)&#8201;&#8212;&#8201;the central engine that turns a 3D part into a sequence of bends + tool setups + back-gauge positions.</p>
+</li>
+<li>
+<p><strong>Machine:</strong> <code>BendMachine</code> (subclass of <code>Machine</code>)&#8201;&#8212;&#8201;loaded from <code>X:\Data\Machine\&lt;id&gt;\</code>.</p>
+</li>
+<li>
+<p><strong>Tools:</strong> <code>BTool</code> (punch / die / holder), per-tech <code>Inventory : BToolList</code>, per-catalog <code>BToolLibrary</code>.</p>
+</li>
+<li>
+<p><strong>Collision:</strong> two modules side by side&#8201;&#8212;&#8201;<code>BendOpCrash.cs</code> (classic) and <code>NBendCrash.cs</code> (new). Both exist <em>simultaneously</em>. Care needed.</p>
+</li>
+<li>
+<p><strong>UI hooks:</strong> <code>Src\UI\Bend\BendOpUI.cs</code> (<code>BendOpGlob</code>, <code>BendOpsGlob</code>) and siblings.</p>
+</li>
+<li>
+<p><strong>Tests:</strong> <code>Test\Bend\</code>&#8201;&#8212;&#8201;one file per year (<code>Bend2017.cs</code> through <code>Bend2025.cs</code>) plus thematic files (<code>BendACB.cs</code>, <code>BendAid.cs</code>, <code>BGPath.cs</code>, <code>BendShuffle.cs</code>, &#8230;&#8203;).</p>
+</li>
+<li>
+<p><strong>Golden-file pattern:</strong> auto-tooler runs, <code>tech.Dump (sw)</code> writes a setup text, <code>Assert.AreTextFilesEqual</code> compares against a <code>.txt</code> reference next to the <code>.geo</code> input.</p>
+</li>
+<li>
+<p><strong>Robotic bend:</strong> the logic is <em>not</em> in <code>BCell\</code>&#8201;&#8212;&#8201;<code>BendOp</code> itself knows about <code>Robotic</code> cases (regrip, cell stages). <code>BCell</code> models the robot cell, but Bend orchestrates.</p>
+</li>
+<li>
+<p><strong>Important non-obvious:</strong> models and VModels (rendering) live <em>together</em> in Core. UI controllers (Glob) live separately in <code>Flux.UI</code>.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_the_domain_in_two_minutesvocabulary_of_the_machine_world">2. The domain in two minutes&#8201;&#8212;&#8201;vocabulary of the machine world</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you read code, learn these 22 terms. They appear in every other class:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Term</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+<th class="tableblock halign-left valign-top">Where in code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Press brake</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bending machine: punch (top) presses sheet into die (bottom)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Punch / Die</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Top tool / bottom tool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BTool</code> with <code>IsUpper</code> / <code>IsLower</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tool piece</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One segment of a tool (tools are segmented)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BTool.Piece</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mount</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A specific tool placement at an X position on the table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMount</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Setup</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A complete set of mounts on the machine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendSetup</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Stage / Station</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An X region of the table with its own tools</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inside <code>BendSetup</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bend / Flex</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A bending operation. <em>Flex</em> = geometry entity, <em>Bend</em> = operation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E3Flex</code> (geometry) vs. <code>BendOp</code> (CAM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Phase</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hem and pre-bend operations split a flex into multiple phases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOp.Phases</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Spine</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Center line through the cross-section of a bending zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IFlexSpine</code> (Note 1005)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Flat length / bend deduction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unfolded length / shrinkage when bending</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendStaples.Deduction</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>V-width</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width of the die V-groove</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BTool</code> property + <code>BendCalc.SuggestDieWidth</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Open / closed height</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine stroke parameters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine.OpenHeight</code> / <code>.ClosedHeight</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BG (back gauge)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rear stop the operator pushes the sheet against</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendBG.cs</code>, <code>BGPath.cs</code>, <code>BGPlacer.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ACB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adjustable Crowning Beam&#8201;&#8212;&#8201;<em>not</em> the ACB <em>laser sensor</em> (different concept)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendACB.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bending aid</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helper that supports the sheet during the bend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendAid.cs</code>, <code>BAPlacer</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Hem</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hemming: closed/open seam bend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind.OpenHem</code> / <code>.ClosedHem</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bump-bend</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Many small bends to produce a large radius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind.BumpBend</code>, <code>BumpSteps</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Z-bend</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Offset bend with two close opposing flexes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind.ZBend*</code>, <code>ZBendTool.png</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Coining</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Coining bend (higher force, less springback)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind.Coining</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TBS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf Bend Solution (Trumpf&#8217;s own bend calculator)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TBSBendCalc.cs</code>, <code>TBSCustomDB.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Springback</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Material rebound after bending</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendStaples.SpringbackD</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Robotic bend</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-cell automation (robot, gripper)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOp.Robotic</code>, <code>BCRegrip</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regrip</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gripper repositions the part mid-job</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCRegrip</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Visuals for the vocabulary</strong> are at <code>X:\Doc\Img\Bend\</code>&#8201;&#8212;&#8201;e.g. <code>VWidthType.png</code>, <code>OverbendCrash.png</code>, <code>ZBendTool.png</code>, <code>BumpBendSpine.png</code>. If a term remains unclear, there is usually a picture.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_the_data_modelclass_hierarchy">3. The data model&#8201;&#8212;&#8201;class hierarchy</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>Part
+ └─ BendTech                                      [Src\Core\Bend\BendTech.cs]
+     ├─ BMachine : BendMachine                    [BendMachine.cs]
+     ├─ Inventory : BToolList                     [BendToolLib.cs]
+     ├─ Settings : Sheaf (Bend-specific settings)
+     ├─ Ops : List&lt;BendOp&gt;                        [BendOp.cs] — the sequence
+     │   ├─ Flexes : E3Flex[]                     (1..n, m:n mapping to flexes)
+     │   ├─ Phases : int[]                        (one per flex)
+     │   ├─ Kind : EBendKind                      (AirBend / Hem / Coining / BumpBend / ...)
+     │   ├─ UsedDie, UsedPunch : BTool
+     │   ├─ Setup : BendSetup
+     │   ├─ BAPos : BendAidPos[]                  (bending-aid positions)
+     │   ├─ BGTransition : Sheaf.EBGTransition    (how does the BG move?)
+     │   ├─ BumpSteps : int                       (only for bump-bends)
+     │   └─ (~200 more properties — file is 210 KB)
+     └─ Setups : List&lt;BendSetup&gt;                  [BendSetup.cs]
+         └─ Mounts : List&lt;BendMount&gt;              [BendMount.cs]
+             ├─ Tool : BTool
+             ├─ Pieces : Piece[]                  (segmentation)
+             ├─ MountPt : Point3                  (X/Z position on the table)
+             └─ IsFlipped : bool</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Three subtleties that trip up newcomers:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>m:n between flex and BendOp.</strong> A hem bend is <em>two</em> phases that exist as two <code>BendOp</code> objects on the same flex. A group bend bundles parallel flexes into <em>one</em> <code>BendOp</code>. See <code>BendOp.cs</code> lines 22&#8212;&#8203;32.</p>
+</li>
+<li>
+<p><strong><code>BendTech</code> is the root, not <code>Part</code>.</strong> <code>Part</code> is a generic component that may be laser/punch/fold too. The bend-specific data lives in <code>Part.BendTech</code>.</p>
+</li>
+<li>
+<p><strong>A <code>BendSetup</code> references <code>Mounts</code>, not <code>Tools</code>.</strong> Tool identity is not the unit of granularity for mounts&#8201;&#8212;&#8201;the same <code>BTool</code> may be mounted at multiple X positions.</p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_module_mapthe_47_files_grouped">4. Module map&#8201;&#8212;&#8201;the 47 files grouped</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_4_1_root_srccorebend_24_files">4.1 Root <code>Src\Core\Bend\</code> (24 files)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">Size</th>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">6 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BendCore.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enums (<code>EBendKind</code>, <code>EBATIssue</code>, <code>EHandlingFlip</code>), small shared types. <strong>Read this first</strong>&#8201;&#8212;&#8201;everything else references these enums.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">13 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BendCalc.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interface <code>IBendCalc</code> + data classes <code>BendStaples</code>, <code>Workpiece</code>, <code>ToolSet</code>. Central calculation abstraction (force, deduction, stroke, springback).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">23 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TBSBendCalc.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf-specific <code>IBendCalc</code> implementation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">41 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TBSCustomDB.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf custom database.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">17 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TSOBatch.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool-Setup-Optimizer batch mode.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendAid.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bending-aid model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">21 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendBG.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Back-gauge model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">14 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BGPath.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BG motion path between bends.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">60 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendACB.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adjustable Crowning Beam.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">16 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendExtensions.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Extension methods on the core types.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Clamp.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Punch-clamp model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">7 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlexCell.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flex bend-cell special case.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>107 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BendTech.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Main facade.</strong> Constructor reads the model, groups flexes, builds the initial <code>BendOp</code> sequence. Read lines 19&#8212;&#8203;120 for the constructor logic.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>210 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BendOp.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>The operation.</strong> Sealed partial class with ~200 properties. Represents <em>one</em> bending operation. Single source of truth for bend state.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">95 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOpStatus.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status / validation logic for an op.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">68 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOpCrash.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classical collision check.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">78 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NBendCrash.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"New" collision check. <strong>Both are alive</strong>&#8201;&#8212;&#8201;a runtime branch picks one.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">101 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendSetup.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool layout on the machine.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">76 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMount.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single tool mount.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">103 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Press-brake machine definition.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">119 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTool.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool model (<code>BTool</code>, <code>BPunch</code>, <code>BDie</code>, <code>BHolder</code>, &#8230;&#8203;).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">42 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendToolLib.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool library (<code>BToolLibrary</code>, <code>BToolList</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">23 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BTParametric.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parametric tools.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">59 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendVM.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View-models: <code>BendMountVM</code>, <code>BendNoVM</code>, <code>BendTechVM</code> (render via <code>Lux</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BC7000TestVM.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test VM for a specific machine class.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_4_2_srccorebendops_17_filestoolpath_sequencing">4.2 <code>Src\Core\Bend\Ops\</code> (17 files&#8201;&#8212;&#8201;toolpath / sequencing)</h3>
+<div class="paragraph">
+<p>This is the <em>algorithmic</em> heart. The root holds model + validation; <code>Ops\</code> holds computation.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">Size</th>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>139 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BendTooler.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Auto-tooler.</strong> Central engine. Constructor + <code>DoTooling</code> orchestrates: sequence → tool score → setup generation → BG placement. Read lines 16&#8212;&#8203;80 for the main pipeline.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">15 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendToolerCore.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shared data types for the tooler.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendToolerACB.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ACB-specific tool scoring.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">14 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendToolerAux.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helpers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">23 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendToolerRefine.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Refinement pass after initial sequencing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">35 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendToolHint.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool suggestions / constraints.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">50 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BAPlacer.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bending-aid placer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>101 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BGPlacer.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BG placer</strong>&#8201;&#8212;&#8201;where does the back gauge position the sheet? Very complex (stability, collision, rotation).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">16 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BGPlacer2X.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special case with two BG axes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">47 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendGAPAdjust.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GAP-adjust pass (tool spacing).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">41 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOpStep.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single steps of an op.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOpSim.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Op-level simulation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">37 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BSimulate.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simulation pipeline.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">21 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BOptimizer.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sequence optimizer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTechMemo.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memo structures.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">15 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BNCReader.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NC-code reader (re-import).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">16 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DLDExporter.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DLD-format export (Trumpf NC format).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">20 KB / 43 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ExportBMC.cs</code> / <code>ImportBMC.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BMC format I/O (Trumpf machine format, see Note 2016).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>JupiduReader.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Legacy reader.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">30 KB / 64 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TBendLibExport.cs</code> / <code>TBendLibImport.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool library exchange.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">28 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BToolDXF.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DXF tool I/O.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_4_3_ui_hooks_srcuibend_8_files">4.3 UI hooks <code>Src\UI\Bend\</code> (8 files)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Exposes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOpUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOpGlob</code> (single-select controller), <code>BendOpsGlob</code> (multi-select). Starts with <code>[Glob (Draw = true, Mouse = EMouse.LDown)]</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendSetupUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Setup-editor controller.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMountUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single-mount controller.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendACBUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ACB editor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendAidUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bending-aid editor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendClampUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clamp editor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendAgent.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend agent (mouse / keyboard handler).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendSheet.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Sheet" view of the bend sequence.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_4_4_notes_ftex">4.4 Notes (FTex)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Note</th>
+<th class="tableblock halign-left valign-top">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Dev\1005.BendAreaModeling.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Required reading.</strong> How Flux models bend geometry (<code>E3Plane</code> ↔ <code>E3Flex</code>, <code>IFlexSpine</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Dev\1008.BendTools.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool-import conventions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2006.BendInfoInDXF.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend information in DXF files.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2016.ImportBMC.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BMC-format import.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2017.CupGripperInfoInDwg.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cup-gripper info embedded in drawings (for robotic).</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_lifecycle_of_a_partsequence_diagram_in_words">5. Lifecycle of a part&#8201;&#8212;&#8201;sequence diagram in words</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>What happens <em>internally</em> when a user opens a 3D part and clicks "Bend Auto-Tool"?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>1. Part loads (CAD import or .fx file).
+   └─ Part.Model contains E3Plane + E3Flex entities.
+
+2. BendTech.Make (part, machine) is called.
+   └─ BendTech constructor (BendTech.cs lines 19–120):
+       a. RefineColliders() on the model
+       b. Split hem phases (one hem → 2 phases)
+       c. Identify groupable flexes (CanGroupWith / CanGroupDoubleSheet)
+       d. Per group + phase: create one BendOp
+       e. ValidOrder() on the list — topological sequence sort
+       f. Assign SeqNo
+       g. Decouple "flange-in-hole" multi-span bends into a manual list
+
+3. BendTooler.Process (tech, flags) starts the auto-tooler.
+   └─ Pipeline (BendTooler.cs lines 48–80):
+       a. PrepareForTooling – drop setups, reset sequence
+       b. SetupBasicSequence – dead-reckoning order
+       c. TurnOnBumpBending – large radii without tools → bump-bends
+       d. DemoteCrashingTools – 2D cross-section collisions
+       e. UpdateToolScores – favor tools every bend likes
+       f. DoToolerCore – final sequence + setup + BG placement
+
+4. Per BendOp: BAPlacer + BGPlacer
+   └─ Bending-aid position
+   └─ Back-gauge position per op + BG motion path between ops
+
+5. Validation — BendOpStatus + BendOpCrash (or NBendCrash)
+   └─ Per-op issues collected as EBATIssue flags.
+
+6. NC code generation runs through `BendTech.GenerateNCCode` → `Hub.GenerateNC`.
+   └─ Dispatched by `Src\API\Basis\Basis.cs::GenerateNC` (line 138) to a C# writer
+     in `Src\API\Bend\Post\` (TrumpfDLD, Bystronic, LVD, ...) based on the post
+     name token in `BMachine.Post`. The XML doc literally says
+     *"Generate NC code directly for a part (without using Hex)"*.</pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_three_canonical_reading_tours_15_min_each">6. Three canonical reading tours (15 min each)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_tour_ahow_does_a_3d_model_become_a_bend_sequence">Tour A&#8201;&#8212;&#8201;"How does a 3D model become a bend sequence?"</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Src\Core\Bend\BendCore.cs</code>&#8201;&#8212;&#8201;all enums (5 min).</p>
+</li>
+<li>
+<p><code>Src\Core\Bend\BendTech.cs</code> lines 19&#8212;&#8203;120&#8201;&#8212;&#8201;constructor (5 min).</p>
+</li>
+<li>
+<p><code>Src\Core\Bend\Ops\BendTooler.cs</code> lines 16&#8212;&#8203;80&#8201;&#8212;&#8201;constructor + <code>DoTooling</code> skeleton (5 min).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>You should be able to answer:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Why does a hem bend produce two <code>BendOp</code>s?</p>
+</li>
+<li>
+<p>What is a "group bend"?</p>
+</li>
+<li>
+<p>What are the six phases of the auto-tooler?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tour_bwhat_does_a_tool_setup_look_like_internally">Tour B&#8201;&#8212;&#8201;"What does a tool setup look like internally?"</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Src\Core\Bend\BendSetup.cs</code> lines 14&#8212;&#8203;80&#8201;&#8212;&#8201;class + <code>Dump</code> (very revealing because <code>Dump</code> is exactly the format compared in tests) (5 min).</p>
+</li>
+<li>
+<p><code>Src\Core\Bend\BendMount.cs</code>&#8201;&#8212;&#8201;the <code>BendMount</code> data structure (5 min).</p>
+</li>
+<li>
+<p><code>Src\Core\Bend\BendTool.cs</code>&#8201;&#8212;&#8201;search <code>class BTool</code> and its subclasses <code>BPunch</code>, <code>BDie</code>, <code>BHolder</code> (5 min).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>You should be able to answer:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the difference between <code>BTool</code> and <code>BTool.Piece</code>?</p>
+</li>
+<li>
+<p>How is a setup serialized? (Hint: <code>Dump</code> and <code>ComputeHash</code>.)</p>
+</li>
+<li>
+<p>Where does a <code>Mount</code> X position originate?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tour_cwhat_does_a_test_look_like_and_what_is_a_golden_file">Tour C&#8201;&#8212;&#8201;"What does a test look like, and what is a golden file?"</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Test\Bend\BasicBendAuto.cs</code> lines 11&#8212;&#8203;84&#8201;&#8212;&#8201;class <code>BasicBendAuto</code> and the <code>Test</code> helper (5 min).</p>
+</li>
+<li>
+<p>Open <code>X:\TData\Bend\Auto\Bend_04.geo</code> (binary&#8201;&#8212;&#8201;just confirm it exists).</p>
+</li>
+<li>
+<p>Open <code>X:\TData\Bend\Auto\Bend_04.txt</code>&#8201;&#8212;&#8201;<strong>the golden file</strong> that <code>tech.Dump (sw)</code> produces (5 min).</p>
+</li>
+<li>
+<p>Mentally walk through it: test 82 loads <code>Bend_04.geo</code>, calls <code>BendTech.Make</code> + <code>BendTooler.Process</code>, dumps → compared to <code>Bend_04.txt</code>. Any change to the auto-tooler requires regenerating <code>Bend_04.txt</code> (5 min).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>You should be able to answer:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How is a Bend bug typically frozen as a test?</p>
+</li>
+<li>
+<p>Why do we have files <code>Bend2017.cs</code> &#8230;&#8203; <code>Bend2025.cs</code>?</p>
+</li>
+<li>
+<p>How would you redirect a test to a <em>different</em> machine? (Hint: <code>idMachine = 13</code>.)</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_common_stumbling_blocks_observations_from_the_code">7. Common stumbling blocks (observations from the code)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_7_1_two_crash_engines_side_by_side">7.1 Two crash engines side by side</h3>
+<div class="paragraph">
+<p><code>BendOpCrash.cs</code> (old) and <code>NBendCrash.cs</code> (new) live <em>together</em>. Both are large (68 + 78 KB). When working on collision logic:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Find out which one is <em>active</em> first (settings/flag).</p>
+</li>
+<li>
+<p>Never modify only one without knowing what the other does.</p>
+</li>
+<li>
+<p>This duplication is presumably an in-flight migration.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_7_2_the_bendtech_constructor_is_the_logic">7.2 The <code>BendTech</code> constructor <em>is</em> the logic</h3>
+<div class="paragraph">
+<p><code>BendTech.Make</code> is a thin wrapper&#8201;&#8212;&#8201;the real sequence creation lives in the <strong>constructor</strong> (private, ~250 lines). Unusual but consistent: in Flux, constructors often contain "real" logic because they guarantee a fully constructed object.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_7_3_bendop_is_a_partial_class">7.3 <code>BendOp</code> is a <code>partial class</code></h3>
+<div class="paragraph">
+<p><code>BendOp.cs</code> (210 KB) holds <em>one</em> part. <code>Grep "partial.<strong>BendOp"</code> finds others (e.g. test-related auto-generated parts). *When editing: search the whole solution, not just one file.</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_7_4_robotic_bend_lives_in_bendop_not_separately">7.4 Robotic bend lives <em>in</em> <code>BendOp</code>, not separately</h3>
+<div class="paragraph">
+<p>For a bug from the BCell / robotics context (e.g. "regrip at the wrong point"), the logic is <em>in <code>BendOp`</em> (properties `Robotic</code>, <code>RegripDuringBend</code>, <code>IsFirstOp</code>/<code>IsLastOp</code> with cell-stage logic) and in the UI glob (<code>BendOpGlob.AddRegrip</code> in <code>Src\UI\Bend\BendOpUI.cs</code> lines 21&#8212;&#8203;55). Don&#8217;t only search under <code>BCell\</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_7_5_trumpf_specific_paths">7.5 Trumpf-specific paths</h3>
+<div class="paragraph">
+<p><code>BendCalc</code> has two implementations: <code>StdBendCalc</code> (default) and <code>TBSBendCalc</code> (Trumpf). The selection happens in <code>BendMachine.BendCalc</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public IBendCalc BendCalc =&gt; Settings.BendCalc switch {
+   Sheaf.EBendCalc.Default =&gt; IsTrumpf ? TBSBendCalc.It : StdBendCalc.It,
+   _ =&gt; StdBendCalc.It,
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a bug only reproduces on Trumpf machines: look at <code>TBSBendCalc.cs</code> and <code>TBSCustomDB.cs</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_7_6_dump_format_test_contract">7.6 Dump format = test contract</h3>
+<div class="paragraph">
+<p>If you change <code>BendSetup.Dump</code> or <code>BendTech.Dump</code>, <strong>you break every Bend test at once</strong>. That&#8217;s by design&#8201;&#8212;&#8201;the dump format is the contract between auto-tooler and tests. Changes here must come with a full golden-file regeneration.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_testshow_they_are_organized">8. Tests&#8201;&#8212;&#8201;how they are organized</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_inventory_xtestbend_25_files">Inventory (<code>X:\Test\Bend\</code>, 25 files)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">Files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Auto-tooler basics</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BasicBendAuto.cs</code>, <code>BendAutoGeneric.cs</code>, <code>BendAutoIGS.cs</code>, <code>BendAutoV2.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Yearly regression bundles</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bend2017.cs</code> &#8230;&#8203; <code>Bend2025.cs</code> (one per year)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Topical</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendACB.cs</code>, <code>BendAid.cs</code>, <code>BendShuffle.cs</code>, <code>BGPath.cs</code>, <code>Bend9AxisBG.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Tweaks / crash</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTweak.cs</code>, <code>BendSelfCrashTest.cs</code>, <code>BendMisc.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bug-fix suite</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BugFixes.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>I/O</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BToolIO.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>TSO</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TSOTest.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Other</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MCTypes.cs</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_the_standard_test_pattern">The standard test pattern</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[TestFixture (4, "Basic bend auto-tooler tests", Module = "Bend", Subsystem = "AutoTool")]
+class BasicBendAuto {
+   [Test (82, "Tooling basic part: Bend_04.geo")]
+   void Test1 () =&gt; Test ("Bend/Auto/Bend_04.geo");
+
+   public static Part Test (string file, int idMachine = 13, /* ... */) {
+      Part part = FX.LoadTestPart (file);
+      if (part.Model == null) part.DoFoldTo3D ().Is (EResult.OK);
+      BendTech.Make (part, BendMachine.Get (idMachine)).Is (EResult.OK);
+      var tech = part.BendTech;
+      // ...
+      BendTooler.Process (part.BendTech, flags);
+      CheckDump (tech, outfile);   // ← golden-file compare
+      return part;
+   }
+
+   public static void CheckDump (BendTech tech, string refFile) {
+      string file = FX.TmpTestFile;
+      using (StreamWriter sw = new (file)) tech.Dump (sw);
+      Assert.AreTextFilesEqual (refFile, file);
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Three takeaways:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Test IDs are globally unique</strong> (82, 84, 85, &#8230;&#8203;) and stable. An ID conflict is a merge problem.</p>
+</li>
+<li>
+<p><strong>Golden-file path mirrors the input</strong>&#8201;&#8212;&#8201;<code>Bend_04.geo</code> ↔ <code>Bend_04.txt</code>.</p>
+</li>
+<li>
+<p><strong>Machine 13</strong> is the default test machine. <code>X:\Data\Machine\13\</code> holds its definition.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_the_two_productively_important_machine_paths">9. The two productively important machine paths</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you want to understand machine behavior:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>X:\Data\Machine\13\         ← default test BendMachine
+X:\Data\Machine\99\         ← BendMachine.Default in BA.Testing mode
+X:\Data\Machine\&lt;custom&gt;\   ← customer machines (delivered with installation)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Per machine:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Machine.curl</code>&#8201;&#8212;&#8201;machine definition (mandatory)</p>
+</li>
+<li>
+<p><code>Machine.mech</code>&#8201;&#8212;&#8201;3D mechanism (animatable)</p>
+</li>
+<li>
+<p><code>Model\*.iges</code>&#8201;&#8212;&#8201;3D parts of the machine</p>
+</li>
+<li>
+<p><code>BMachine.Post</code> (a string in <code>Machine.curl</code> such as <code>wad:Post/Bend/TrumpfB23.hx</code>)&#8201;&#8212;&#8201;<strong>only a routing token</strong>. The basename selects a C# writer in <code>Src\API\Bend\Post\</code> via <code>Hub.GenerateNC</code>. The legacy <code>.hx</code> extension is preserved for backward compatibility; the file content is not interpreted as Hex.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>BendMachine</code> inherits from <code>Machine</code> (in <code>Src\Core\Model\</code> or similar). A bend machine is therefore a <em>specialization</em>. The pattern repeats for <code>LaserMachine</code>, <code>PunchMachine</code>, etc.
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_when_a_bend_bug_arrives60_second_triage">10. When a Bend bug arrives&#8201;&#8212;&#8201;60-second triage</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Symptom</th>
+<th class="tableblock halign-left valign-top">Likely code area</th>
+<th class="tableblock halign-left valign-top">First file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Wrong tool selection"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auto-tooler scoring</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BendTooler.cs</code> + <code>Ops\BendToolHint.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Wrong bend order"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sequence optimizer or <code>BendTech</code> constructor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BOptimizer.cs</code>, <code>BendTech.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Hem detected wrong / not at all"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Phase splitting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTech.cs</code> lines 32&#8212;&#8203;46</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Tool mounted in wrong spot"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mount generation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMount.cs</code>, <code>Ops\BendTooler.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Back-gauge position wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BG placer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BGPlacer.cs</code> (or <code>BGPlacer2X.cs</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Bending aid placed wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BA placer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BAPlacer.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Spurious collision warning"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crash engine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOpCrash.cs</code> <em>or</em> <code>NBendCrash.cs</code> (which is active?)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Force/deduction value off"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend calc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendCalc.cs</code> (Std) or <code>TBSBendCalc.cs</code> (Trumpf)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Robotic regrip in wrong place"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI glob + BendOp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\UI\Bend\BendOpUI.cs</code> lines 21&#8212;&#8203;55</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"GAP between tools wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GAP-adjust pass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BendGAPAdjust.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"NC code wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post-processor (C# writer per dialect)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\API\Bend\Post\&lt;Dialect&gt;.cs</code> (TrumpfDLD, Bystronic, LVD, &#8230;&#8203;); dispatcher in <code>Src\API\Basis\Basis.cs:138</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"BMC/DLD export wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format exporter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\ExportBMC.cs</code> / <code>DLDExporter.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"ACB sensor positioned wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ACB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendACB.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"TBS custom data not picked up"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf DB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TBSCustomDB.cs</code></p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_exercise_1find_explain_30_min_read_only">11. Exercise 1&#8201;&#8212;&#8201;"Find &amp; Explain" (30 min, read-only)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Task:</strong> in half a page, explain how a hem bend flows from geometry to the emitted <code>Dump</code> line.</p>
+</div>
+<div class="paragraph">
+<p><strong>Approach:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>BendCore.cs</code>: which <code>EBendKind</code> values belong to hems? (Hint: 4 of them.)</p>
+</li>
+<li>
+<p><code>BendTech.cs</code> lines 32&#8212;&#8203;46: how is a hem flex split into two <code>BendOp</code>s?</p>
+</li>
+<li>
+<p><code>BendOp</code> constructor (lines 36&#8212;&#8203;54): how is <code>mKind</code> set for hem bends? What is <code>OpenHemLimit</code>?</p>
+</li>
+<li>
+<p><code>BendSetup.Dump</code> lines 46&#8212;&#8203;62: which fields of a <code>BendMount</code> end up in the output?</p>
+</li>
+<li>
+<p><strong>Bonus:</strong> which test in <code>Test\Bend\</code> covers the hem path? (Hint: <code>BasicBendAuto2.Test6</code> is a clue.)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Rubric:</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Level</th>
+<th class="tableblock halign-left valign-top">Criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Finds <code>EBendKind.OpenHem</code> / <code>.ClosedHem</code> and <code>BendTech.cs</code> with the hem-phase logic</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can explain why a hem yields two <code>BendOp</code>s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connects this to the <code>Dump</code> format and a test</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the "hem prebend with pre-angle" edge case and locates the code path (<code>BendTech.cs</code> lines 81&#8212;&#8203;88)</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_exercise_2localize_a_real_bug_45_min_read_only">12. Exercise 2&#8201;&#8212;&#8201;"Localize a real bug" (45 min, read-only)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Task:</strong> look at commit <code>4a5119dcb</code>: <em>"Case 45728: Changing the suction cup state no longer deletes adjusted waypoints."</em> Answer:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Which classes were touched?</p>
+</li>
+<li>
+<p>Which subsystem (Bend root, <code>Ops\</code>, UI, BCell)?</p>
+</li>
+<li>
+<p>What was the trigger (which property setter)?</p>
+</li>
+<li>
+<p>Which test covers the case?</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Allowed tools:</strong> <code>git show 4a5119dcb</code> and <code>Grep</code>. Do not write any code.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>This exercise trains the most important reading skill in a repo this size: derive a code path backwards from an issue number.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_what_this_chapter_does_not_cover">13. What this chapter does <em>not</em> cover</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Fold domain</strong> (panel bender / TecZoneFold)&#8201;&#8212;&#8201;separate chapter, similar model but different machine kinematics (clamping beam vs. press beam).</p>
+</li>
+<li>
+<p><strong>BCell</strong> (robot cell)&#8201;&#8212;&#8201;separate chapter, own vocabulary (gripper, suction cups, regrip stations).</p>
+</li>
+<li>
+<p><strong>NC writers per dialect</strong> (<code>Src\API\Bend\Post\</code>)&#8201;&#8212;&#8201;each is a substantial subsystem of its own and a candidate for a dedicated chapter. Note 2004 (Hex) is <strong>historical</strong>&#8201;&#8212;&#8201;the postprocessors have all been rewritten in C#.</p>
+</li>
+<li>
+<p><strong><code>E3Plane</code> / <code>E3Flex</code> geometry model</strong>&#8201;&#8212;&#8201;see Note 1005, separate chapter for <code>Flux.Core\Model</code>.</p>
+</li>
+<li>
+<p><strong>Tool-Setup-Optimizer (TSO)</strong> in detail&#8201;&#8212;&#8201;separate special topic (<code>TSOBatch.cs</code>, <code>Ops\BOptimizer.cs</code>).</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_14_if_you_take_just_one_thing_from_this_chapter">14. If you take just one thing from this chapter</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Bend is not <em>one</em> operation but a <em>sequence</em>. The sequence is produced jointly by the <code>BendTech</code> constructor and the <code>BendTooler</code>. If a bug is about ordering, tool choice, or setup partitioning, the answer is almost always in <code>Src\Core\Bend\Ops\</code>&#8201;&#8212;&#8201;not in the root. The root holds state, <code>Ops\</code> holds algorithms.</strong></p>
+</div>
+</blockquote>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. Code paths verified against <code>Src\Core\Bend\</code> and <code>Test\Bend\</code>. When this document disagrees with the repo, the repo wins.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_1_tldrbend_in_twelve_lines">1. TL;DR&#8201;&#8212;&#8201;Bend in twelve lines</a>
+  </li>
+  <li level="1">
+   <a href="#_2_the_domain_in_two_minutesvocabulary_of_the_machine_world">2. The domain in two minutes&#8201;&#8212;&#8201;vocabulary of the machine world</a>
+  </li>
+  <li level="1">
+   <a href="#_3_the_data_modelclass_hierarchy">3. The data model&#8201;&#8212;&#8201;class hierarchy</a>
+  </li>
+  <li level="1">
+   <a href="#_4_module_mapthe_47_files_grouped">4. Module map&#8201;&#8212;&#8201;the 47 files grouped</a>
+  </li>
+  <li level="2">
+   <a href="#_4_1_root_srccorebend_24_files">4.1 Root <code>Src\Core\Bend\</code> (24 files)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_2_srccorebendops_17_filestoolpath_sequencing">4.2 <code>Src\Core\Bend\Ops\</code> (17 files&#8201;&#8212;&#8201;toolpath / sequencing)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_3_ui_hooks_srcuibend_8_files">4.3 UI hooks <code>Src\UI\Bend\</code> (8 files)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_4_notes_ftex">4.4 Notes (FTex)</a>
+  </li>
+  <li level="1">
+   <a href="#_5_lifecycle_of_a_partsequence_diagram_in_words">5. Lifecycle of a part&#8201;&#8212;&#8201;sequence diagram in words</a>
+  </li>
+  <li level="1">
+   <a href="#_6_three_canonical_reading_tours_15_min_each">6. Three canonical reading tours (15 min each)</a>
+  </li>
+  <li level="2">
+   <a href="#_tour_ahow_does_a_3d_model_become_a_bend_sequence">Tour A&#8201;&#8212;&#8201;"How does a 3D model become a bend sequence?"</a>
+  </li>
+  <li level="2">
+   <a href="#_tour_bwhat_does_a_tool_setup_look_like_internally">Tour B&#8201;&#8212;&#8201;"What does a tool setup look like internally?"</a>
+  </li>
+  <li level="2">
+   <a href="#_tour_cwhat_does_a_test_look_like_and_what_is_a_golden_file">Tour C&#8201;&#8212;&#8201;"What does a test look like, and what is a golden file?"</a>
+  </li>
+  <li level="1">
+   <a href="#_7_common_stumbling_blocks_observations_from_the_code">7. Common stumbling blocks (observations from the code)</a>
+  </li>
+  <li level="2">
+   <a href="#_7_1_two_crash_engines_side_by_side">7.1 Two crash engines side by side</a>
+  </li>
+  <li level="2">
+   <a href="#_7_2_the_bendtech_constructor_is_the_logic">7.2 The <code>BendTech</code> constructor <em>is</em> the logic</a>
+  </li>
+  <li level="2">
+   <a href="#_7_3_bendop_is_a_partial_class">7.3 <code>BendOp</code> is a <code>partial class</code></a>
+  </li>
+  <li level="2">
+   <a href="#_7_4_robotic_bend_lives_in_bendop_not_separately">7.4 Robotic bend lives <em>in</em> <code>BendOp</code>, not separately</a>
+  </li>
+  <li level="2">
+   <a href="#_7_5_trumpf_specific_paths">7.5 Trumpf-specific paths</a>
+  </li>
+  <li level="2">
+   <a href="#_7_6_dump_format_test_contract">7.6 Dump format = test contract</a>
+  </li>
+  <li level="1">
+   <a href="#_8_testshow_they_are_organized">8. Tests&#8201;&#8212;&#8201;how they are organized</a>
+  </li>
+  <li level="2">
+   <a href="#_inventory_xtestbend_25_files">Inventory (<code>X:\Test\Bend\</code>, 25 files)</a>
+  </li>
+  <li level="2">
+   <a href="#_the_standard_test_pattern">The standard test pattern</a>
+  </li>
+  <li level="1">
+   <a href="#_9_the_two_productively_important_machine_paths">9. The two productively important machine paths</a>
+  </li>
+  <li level="1">
+   <a href="#_10_when_a_bend_bug_arrives60_second_triage">10. When a Bend bug arrives&#8201;&#8212;&#8201;60-second triage</a>
+  </li>
+  <li level="1">
+   <a href="#_11_exercise_1find_explain_30_min_read_only">11. Exercise 1&#8201;&#8212;&#8201;"Find &amp; Explain" (30 min, read-only)</a>
+  </li>
+  <li level="1">
+   <a href="#_12_exercise_2localize_a_real_bug_45_min_read_only">12. Exercise 2&#8201;&#8212;&#8201;"Localize a real bug" (45 min, read-only)</a>
+  </li>
+  <li level="1">
+   <a href="#_13_what_this_chapter_does_not_cover">13. What this chapter does <em>not</em> cover</a>
+  </li>
+  <li level="1">
+   <a href="#_14_if_you_take_just_one_thing_from_this_chapter">14. If you take just one thing from this chapter</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></span>
+ <span class="next"><a href="03_api_maps.html">API Maps</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

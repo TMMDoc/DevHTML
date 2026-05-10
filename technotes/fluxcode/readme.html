@@ -1,0 +1,775 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Flux Onboarding Handbook</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a class="active" href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="readme.html">Flux Onboarding Handbook</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Flux Onboarding Handbook</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>For new engineers joining Flux development.</strong> This is the index. Every chapter stands on its own; the recommended path is below.</p>
+</div>
+<div class="paragraph">
+<p><strong>Philosophy.</strong> First six months: read, navigate, understand, ask. Productive code commits come <em>after</em> mental scaffolding is in place. These chapters teach the scaffolding.</p>
+</div>
+<div class="paragraph">
+<p><strong>Language.</strong> All chapters in English. Quoting code, paths, and FTex notes verbatim.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_at_a_glance">At a glance</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Ch</th>
+<th class="tableblock halign-left valign-top">Title</th>
+<th class="tableblock halign-left valign-top">What you get</th>
+<th class="tableblock halign-right valign-top">Length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>00</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 00 - Welcome and Repo Map[Welcome &amp; Repo Map]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What Flux is, repo layout, modules, flavors, build caveats, code conventions</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~270 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>01</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 01 - Architecture and System Context[Architecture &amp; System Context]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Five layers, M/V/Glob, Sheaf, Hub, Lux, persistence, threading, undo, errors</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~290 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>02</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 02 - Subsystem Bend (Press Brake)[Subsystem: Bend (Press Brake)]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Canonical subsystem walk-through. <strong>Template</strong> for future per-subsystem chapters.</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~330 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>02.1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 02.1 - Subsystem BCell (Bend Cell Automation)[Subsystem: BCell (Bend Cell Automation)]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robot-cell automation layered on top of Bend. Pickup / regrip / deposit, grippers, routing.</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~290 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>03</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 03 - API Maps[API Maps]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Central interfaces, abstract classes, callers/callees, stability legend</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~270 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>04</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 04 - Data Model Catalog[Data Model Catalog]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Five layers of data (Geo → Drawing → 3D → Tech → Part), persistence, migration</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~250 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>05</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 05 - Design Patterns[Design Patterns&#8201;&#8212;&#8201;A Reader&#8217;s Guide]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patterns Flux actually uses, with file references and pitfalls</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~210 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>06</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 06 - Tests and Golden Paths[Tests &amp; Golden Paths]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flit framework, golden-file pattern, debug tips for read-only debugging</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~180 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>07</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 07 - Guided Code Tours[Guided Code Tours]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eight 10&#8212;&#8203;20 min walks, each with named stops and a self-check</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~190 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>08</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 08 - CAM Glossary[CAM Glossary with Code Mapping]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alphabetized lookup of every term you&#8217;ll meet</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~270 lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>09</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:ac:Flux Onboarding 09 - Find and Explain Exercises[Find &amp; Explain Exercises]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 read-only exercises with rubrics and a 6-month calendar</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">~210 lines</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Total: ~2500 lines (≈ 60 printed pages).</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_recommended_reading_paths">Recommended reading paths</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_path_aim_starting_monday_5_days_10_hours">Path A&#8201;&#8212;&#8201;"I&#8217;m starting Monday" (5 days, ~10 hours)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Day</th>
+<th class="tableblock halign-left valign-top">Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 00 in full + skim 08 (glossary).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>2</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 01 in full + tour A and tour D from chapter 07.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 02 in full (Bend).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>4</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 06 (tests) + tour C (rendering) + tour E (persistence).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>5</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 09&#8201;&#8212;&#8201;exercise 1 and exercise 2.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>By Friday you have a vocabulary, a mental model, an understanding of one subsystem, and a sense of how tests work. That&#8217;s the right foundation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_path_btell_me_where_to_find_x_lookup_mode">Path B&#8201;&#8212;&#8201;"Tell me where to find X" (lookup mode)</h3>
+<div class="paragraph">
+<p>You&#8217;re triaging a question or a stack trace and need a fast lookup.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Need</th>
+<th class="tableblock halign-left valign-top">Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What does <em>this term</em> mean?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 08 (Glossary)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where is <em>this class</em> defined?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 08 cross-find table</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What is the public surface of subsystem X?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 03 (API Maps)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How does data flow through the system?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 04 (Data Model)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What pattern is this code?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 05 (Patterns)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How do tests work?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 06</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Walk me through <em>this flow</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chapter 07 (the relevant tour)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_path_csix_month_curriculum">Path C&#8201;&#8212;&#8201;"Six-month curriculum"</h3>
+<div class="paragraph">
+<p>Use the calendar in chapter 09 §"A learning calendar". One exercise per week, paced to internalize the content.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Month</th>
+<th class="tableblock halign-left valign-top">Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Navigate. Vocabulary. Mental model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data flow. Control flow.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Real bugs. Dual systems.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests. Persistence.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI flows. Full traces.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Synthesis. Teach a 30-minute tech talk.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_this_handbook_is_not">What this handbook is <em>not</em></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Not a replacement for <code>Notes\Dev\…</code> and <code>Notes\Tech\…</code>.</strong> Those are the source of truth for low-level facts. This handbook orients you so you can read those notes effectively.</p>
+</li>
+<li>
+<p><strong>Not a build guide.</strong> Build is in <code>Notes\Dev\1002.BuildingFlux.ftx</code> (with the caveats in chapter 00 §8). On day 1, ask your buddy.</p>
+</li>
+<li>
+<p><strong>Not a feature spec.</strong> Specs live in design tickets and PR descriptions.</p>
+</li>
+<li>
+<p><strong>Not API reference docs.</strong> Doxygen-style reference does not exist for Flux. Read code; chapter 03 gives orientation.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conventions_used_in_these_chapters">Conventions used in these chapters</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>File paths</strong> are absolute against the repo root (<code>X:\…</code>) or relative under <code>Src\</code> / <code>Notes\</code> / <code>Doc\</code> / <code>Test\</code>.</p>
+</li>
+<li>
+<p><strong>Code excerpts</strong> are quoted verbatim from the current tree. If you spot drift, file an issue.</p>
+</li>
+<li>
+<p><strong>Cross-references</strong> link by chapter (e.g. "see chapter 02 §7.5"). When section numbers move, update them.</p>
+</li>
+<li>
+<p><strong>Stability badges</strong> in chapter 03: 🟢 stable, 🟡 internal, 🔴 in-flight.</p>
+</li>
+<li>
+<p><strong>Single-line callouts</strong> (<code>&gt; ⚠️ ...</code>) flag pitfalls and intentional rough edges.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_keep_this_handbook_honest">How to keep this handbook honest</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These docs degrade fastest at three specific seams. Watch them:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>The §8 of chapter 00</strong> ("1002 says vs. today"). Refresh whenever the build toolchain changes.</p>
+</li>
+<li>
+<p><strong>Stability ratings</strong> in chapter 03. Move ratings between green/yellow/red as code matures or refactors.</p>
+</li>
+<li>
+<p><strong>Real-bug exercises</strong> in chapter 09 (especially exercise 5). Replace with newer fixes once a year.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>A small ritual: each new joiner files one issue or PR against this handbook reflecting one inaccuracy or one lesson learned. That&#8217;s how documentation stays alive.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_companion_resources_inside_the_repo">Companion resources inside the repo</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code>Notes\Dev\</code>&#8201;&#8212;&#8201;developer notes (FTex). Most important: 1001, 1002, 1003, 1005, 1009, 1011, 1013.</p>
+</li>
+<li>
+<p><code>Notes\Tech\</code>&#8201;&#8212;&#8201;technical notes (FTex). Most useful: 2007 (Curl), 2013 (Flavors), 2015 (Message IDs).</p>
+</li>
+<li>
+<p><code>Doc\Img\</code>&#8201;&#8212;&#8201;domain-specific image galleries. Open <code>Doc\Img\Bend\</code>, <code>Doc\Img\BCell\</code>, <code>Doc\Img\Fold\</code>, <code>Doc\Img\Laser\</code> to recognize machine vocabulary visually.</p>
+</li>
+<li>
+<p><code>Help\</code>&#8201;&#8212;&#8201;end-user manual (FTex). Sometimes the clearest definition of a feature lives here.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_where_to_ask">Where to ask</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Onboarding buddy.</strong> Your first day, ask for one. Use them.</p>
+</li>
+<li>
+<p><strong>Issues / PR comments.</strong> Public, searchable, durable.</p>
+</li>
+<li>
+<p><strong>Chat (Slack / Teams).</strong> Fast but volatile&#8201;&#8212;&#8201;for high-value answers, repost to the issue tracker.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contributing_to_this_handbook">Contributing to this handbook</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The chapters are markdown&#8201;&#8212;&#8201;edit them like any other source file.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keep prose tight; one idea per paragraph.</p>
+</li>
+<li>
+<p>Don&#8217;t repeat content that already lives in <code>Notes\</code> or <code>Help\</code>&#8201;&#8212;&#8201;link to it.</p>
+</li>
+<li>
+<p>Verify every code path you cite&#8201;&#8212;&#8201;paths and line numbers drift fast.</p>
+</li>
+<li>
+<p>File-scoped ownership: chapter 00 has the broadest reach, so changes there get extra review. Per-subsystem chapters belong to the subsystem owner.</p>
+</li>
+<li>
+<p>All chapters are in English, regardless of contributor language. The codebase is global.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_maintenance_ledger">Maintenance ledger</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Chapter</th>
+<th class="tableblock halign-left valign-top">Last full audit</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00 Welcome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Postprocessor section corrected (no longer Hex).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01 Architecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Diagram and HX entry corrected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02 Bend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NC generation section corrected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02.1 BCell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output-stage NC reference corrected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03 API Maps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">§10.2 (post-processor) and §11.3 (HXReader = HoopsReader) corrected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">04 Data Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">§9.4 IO table corrected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05 Design Patterns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">06 Tests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">07 Tours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08 Glossary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hex / PDL / NC code entries corrected; Post writer entry added.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09 Exercises</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2026-05-04</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Next audit target: when major refactors land in <code>Src\Core\Bend\Ops\</code>, or when the dual crash engines converge.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Welcome aboard. Read carefully. Ask early.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_at_a_glance">At a glance</a>
+  </li>
+  <li level="1">
+   <a href="#_recommended_reading_paths">Recommended reading paths</a>
+  </li>
+  <li level="2">
+   <a href="#_path_aim_starting_monday_5_days_10_hours">Path A&#8201;&#8212;&#8201;"I&#8217;m starting Monday" (5 days, ~10 hours)</a>
+  </li>
+  <li level="2">
+   <a href="#_path_btell_me_where_to_find_x_lookup_mode">Path B&#8201;&#8212;&#8201;"Tell me where to find X" (lookup mode)</a>
+  </li>
+  <li level="2">
+   <a href="#_path_csix_month_curriculum">Path C&#8201;&#8212;&#8201;"Six-month curriculum"</a>
+  </li>
+  <li level="1">
+   <a href="#_what_this_handbook_is_not">What this handbook is <em>not</em></a>
+  </li>
+  <li level="1">
+   <a href="#_conventions_used_in_these_chapters">Conventions used in these chapters</a>
+  </li>
+  <li level="1">
+   <a href="#_how_to_keep_this_handbook_honest">How to keep this handbook honest</a>
+  </li>
+  <li level="1">
+   <a href="#_companion_resources_inside_the_repo">Companion resources inside the repo</a>
+  </li>
+  <li level="1">
+   <a href="#_where_to_ask">Where to ask</a>
+  </li>
+  <li level="1">
+   <a href="#_contributing_to_this_handbook">Contributing to this handbook</a>
+  </li>
+  <li level="1">
+   <a href="#_maintenance_ledger">Maintenance ledger</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="09_find_and_explain_exercises.html">Assignments</a></span>
+ <span class="next"><a href="../data/index.html">Data flow</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    
+</body>
+</html>

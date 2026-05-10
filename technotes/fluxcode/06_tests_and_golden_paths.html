@@ -1,0 +1,894 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Tests and Golden Paths</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a class="active" href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Tests and Golden Paths</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Goal:</strong> read tests as documentation. Use them to learn the API contracts, the expected outputs, and the ways the team has frozen behavior. Reading time: 45 minutes.
+<strong>You don&#8217;t write tests in this chapter.</strong> You learn to <em>consume</em> them.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_the_test_frameworkflit">1. The test framework&#8201;&#8212;&#8201;Flit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux uses a <strong>custom</strong> test framework called <strong>Flit</strong>, not NUnit or xUnit. The project is <code>Test\Flux.Test.csproj</code> (169 .cs files). Conventions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Namespace:</strong> <code>namespace Flit;</code> (file-scoped).</p>
+</li>
+<li>
+<p><strong>Attributes:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>[TestFixture (id, description, Module = "...", Subsystem = "...")]</code> on classes.</p>
+</li>
+<li>
+<p><code>[Test (id, description)]</code> on methods.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Assertions:</strong> <code>Assert.AreTextFilesEqual</code>, <code>Assert.True</code>, <code>Assert.False</code>, plus extension methods like <code>.Is (EResult.OK)</code>.</p>
+</li>
+<li>
+<p><strong>Fixtures:</strong> standard <code>BendMachine.Get (13)</code> style&#8201;&#8212;&#8201;fixtures are real domain objects loaded from <code>X:\TData</code> and <code>X:\Data</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A canonical fixture (from <code>Test\Bend\BasicBendAuto.cs</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace Flit;
+#nullable enable
+
+[TestFixture (4, "Basic bend auto-tooler tests", Module = "Bend", Subsystem = "AutoTool")]
+class BasicBendAuto {
+   [Test (82, "Tooling basic part: Bend_04.geo")]
+   void Test1 () =&gt; Test ("Bend/Auto/Bend_04.geo");
+
+   public static Part Test (string file, int idMachine = 13, /* ... */) {
+      Part part = FX.LoadTestPart (file);
+      if (part.Model == null) part.DoFoldTo3D ().Is (EResult.OK);
+      BendTech.Make (part, BendMachine.Get (idMachine)).Is (EResult.OK);
+      var tech = part.BendTech;
+      // ...
+      BendTooler.Process (part.BendTech, flags);
+      CheckDump (tech, outfile);
+      return part;
+   }
+
+   public static void CheckDump (BendTech tech, string refFile) {
+      string file = FX.TmpTestFile;
+      using (StreamWriter sw = new (file)) tech.Dump (sw);
+      Assert.AreTextFilesEqual (refFile, file);
+   }
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_ids">Test IDs</h3>
+<div class="paragraph">
+<p>Test IDs (<code>82</code>, <code>84</code>, <code>85</code>, &#8230;&#8203;) are <strong>globally unique</strong> and stable across the entire test suite. An ID conflict during merge is a real conflict. A test that disappears keeps its ID retired.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_test_categories">2. Test categories</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux has roughly four categories of tests, all in the same project:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">What they assert</th>
+<th class="tableblock halign-left valign-top">Example file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pure unit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A small algorithm, often in <code>Flux.Base</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Geometry\</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Integration</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A whole subsystem flow with real fixtures</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Bend\BasicBendAuto.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Golden-file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A <code>Dump</code> output against a stored <code>.txt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">most of <code>Test\Bend\</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regression bundles</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Year-grouped fixes (one file per year)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Bend\Bend2017.cs</code> &#8230;&#8203; <code>Bend2025.cs</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The line between integration and golden-file is often thin&#8201;&#8212;&#8201;most integration tests in Bend / Fold <em>are</em> golden-file tests because the easiest assertion is "the auto-tooler still produces the same setup as last week".</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_the_golden_file_pattern_most_common">3. The golden-file pattern (most common)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_how_it_works">How it works</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A test loads a <code>.geo</code> (or <code>.dxf</code>, <code>.fx</code>) input from <code>X:\TData\&lt;domain&gt;\&lt;area&gt;\…</code>.</p>
+</li>
+<li>
+<p>The subsystem&#8217;s <code>Make</code> + auto-router runs to completion.</p>
+</li>
+<li>
+<p>The resulting tech is asked to <code>Dump (TextWriter)</code>.</p>
+</li>
+<li>
+<p>The output is compared to a <code>.txt</code> file <em>next to</em> the input.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <code>.txt</code> file is the <em>golden</em>. It is checked in. When the auto-tooler legitimately produces different output, the golden is regenerated and the diff is reviewed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_this_pattern_works">Why this pattern works</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The dump format is hand-readable, so a diff in a PR is reviewable.</p>
+</li>
+<li>
+<p>It captures dozens of decisions per file (sequence, tools, BG positions, BA placement, Z transitions) in a compact form.</p>
+</li>
+<li>
+<p>A regression in any of those decisions changes the golden&#8201;&#8212;&#8201;which makes accidental drift impossible to ship.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_this_pattern_hurts">Why this pattern hurts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Brittle.</strong> A cosmetic change to <code>Dump</code> cascades to dozens of <code>.txt</code> files.</p>
+</li>
+<li>
+<p><strong>Coupling.</strong> The dump format is the test contract&#8201;&#8212;&#8201;change it, change everything.</p>
+</li>
+<li>
+<p><strong>Hidden semantics.</strong> The <code>.txt</code> is a record, not an explanation. Some tests are reverse-engineered from "this is what the engine used to do".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_read_a_golden_file">How to read a golden file</h3>
+<div class="paragraph">
+<p>Open <code>X:\TData\Bend\Auto\Bend_04.txt</code>. You&#8217;ll see machine setup info, a list of tool mounts with X positions, and bend-specific lines per op. Match each line back to the <code>Dump</code> method in the relevant tech (<code>BendSetup.Dump</code>, <code>BendTech.Dump</code>).</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_the_yearly_regression_bundles">4. The yearly regression bundles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In <code>Test\Bend\</code> you&#8217;ll see <code>Bend2017.cs</code> &#8230;&#8203; <code>Bend2025.cs</code>. Each file is a layer of fixes from that year, captured as named regression cases. New cases land in the <em>current year</em> file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1128, "P10976: Part requires 2 setups, with punches mounted in opposite flips")]
+void Test13 () { ... }
+
+[Test (1129, "Case 10939: One bend not possible (23.16)")]
+void Test14 () =&gt; BasicBendAuto3D.Test ("Fold/Accept5/23.16.fx", 13, "Bend/Auto3/23.16.txt");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Patterns to notice:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cases reference internal issue numbers (<code>P10976</code>, <code>Case 10939</code>). Useful for cross-referencing.</p>
+</li>
+<li>
+<p>A regression test typically just runs the standard helper with a specific input and a specific golden&#8201;&#8212;&#8201;no re-implementation of logic.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_test_data_layout">5. Test data layout</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>X:\TData\
+├── 2D\           inputs for 2D drawing tests
+├── 3D\           inputs for 3D model tests
+├── Base\         Flux.Base level (Geometry / Math / Sys / IO)
+├── Bend\         press-brake inputs (.geo, .dxf, .fx) + golden .txt
+│   ├── Auto\     auto-tooling fixtures
+│   ├── Auto3\    extended fixtures (often 3D-input)
+│   ├── ...
+├── Cell\         BCell fixtures
+├── Cell7K\       7000-series cell variants
+├── Cut\          flat-cut fixtures
+├── Dwg\          drawing fixtures
+├── Fanuc\        Fanuc-related (BCell controller)
+├── Fold\         panel-bender fixtures
+├── IO\           IO format fixtures
+├── Laser\        laser fixtures
+├── Lib\          tool-library fixtures
+├── Nest\         nesting fixtures
+├── OEM\          OEM-specific fixtures
+├── Punch\        punch fixtures
+├── Sys\          system-level
+├── System\       (separate from Sys — historical split)
+└── Tmp\          scratch (test outputs go here transiently)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>X:\TDATA</code> is a separate clone of test data; the env var <code>FLUXTESTDATA</code> should point to it.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_reading_a_test_in_five_steps">6. Reading a test in five steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For any test you want to understand, do this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Read the <code>[TestFixture]</code> line</strong>&#8201;&#8212;&#8201;Module + Subsystem tell you the area.</p>
+</li>
+<li>
+<p><strong>Read the <code>[Test]</code> description</strong>&#8201;&#8212;&#8201;usually a one-line summary of the scenario.</p>
+</li>
+<li>
+<p><strong>Find the helper</strong>&#8201;&#8212;&#8201;the test body is usually a one-liner calling a static helper.</p>
+</li>
+<li>
+<p><strong>Read the helper&#8217;s <code>Test</code> method</strong>&#8201;&#8212;&#8201;that&#8217;s where the actual workflow runs (<code>Make</code>, <code>Process</code>, <code>CheckDump</code>).</p>
+</li>
+<li>
+<p><strong>Open the input + golden</strong>&#8201;&#8212;&#8201;match dump-line to a model property by reading either <code>BendSetup.Dump</code> or the tech&#8217;s <code>Dump</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This is the <strong>same workflow you&#8217;d use</strong> when writing a new test. So reading tests is also rehearsal for writing them.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_useful_helpers_fx_and_friends">7. Useful helpers (<code>FX</code> and friends)</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Helper</th>
+<th class="tableblock halign-left valign-top">What it does</th>
+<th class="tableblock halign-left valign-top">Where used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.LoadTestPart (relPath)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loads <code>.geo</code> / <code>.dxf</code> / <code>.fx</code> from <code>X:\TData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">every fixture</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.TestFile (relPath)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resolves a path under <code>X:\TData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">golden-file paths</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.TmpTestFile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A scratch path for test output</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dump comparisons</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.Testing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True while running under Flit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conditionals in production code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BA.Testing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mirror flag inside Flux.Base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conditionals in low-level code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine.Get (id)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loads machine 13 / 99 / etc.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">every Bend test</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BToolLibrary.Get (1)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loads tool catalog 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inventory setup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Assert.AreTextFilesEqual (a, b)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Diff-aware text compare</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">golden assertions</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_running_testswhat_you_actually_do">8. Running tests&#8201;&#8212;&#8201;what you actually do</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Day-1 caveat.</strong> This section describes the intended flow. The exact runner UI evolves; ask your buddy on day 1 for the current command.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The Flit runner is the <code>Flux.Test.exe</code> (built from <code>Test\Flux.Test.csproj</code>). It supports:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Console mode for headless / CI runs.</p>
+</li>
+<li>
+<p>A GUI runner for interactive use, including coverage.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Test scope filters are typically by <code>Module</code>, <code>Subsystem</code>, or by a list of test IDs. A typical workflow:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Run the smallest meaningful subset while iterating (e.g. <code>Module=Bend</code>, <code>Subsystem=AutoTool</code>).</p>
+</li>
+<li>
+<p>Run the whole suite before opening a PR.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Test inputs come from <code>X:\TData</code> (env var <code>FLUXTESTDATA</code>); make sure that subst drive is mounted and pointing at a fresh clone.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_debugging_a_failing_test_read_only">9. Debugging a failing test, read-only</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Even if you can&#8217;t write code yet, here&#8217;s how to debug a failing test in a way that explains the failure:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Find the diff.</strong> <code>Assert.AreTextFilesEqual</code> should print a diff (line-by-line). The first changed line is your scent.</p>
+</li>
+<li>
+<p><strong>Match the diff to a <code>Dump</code> line.</strong> Open <code>BendSetup.Dump</code> (or the tech&#8217;s <code>Dump</code>) and trace which property emits that line.</p>
+</li>
+<li>
+<p><strong>Set a breakpoint at the property</strong> in the production code. Run the test under the debugger.</p>
+</li>
+<li>
+<p><strong>Inspect the difference.</strong> Did the value change? Did the calling order change? Did a new code path activate?</p>
+</li>
+<li>
+<p><strong>Compare to git history.</strong> <code>git log -p &lt;file&gt;</code> on the property&#8217;s class will often surface the responsible change.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You don&#8217;t need to fix it&#8201;&#8212;&#8201;but at this point you can describe the failure and the suspected cause, which is the deliverable.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_five_hand_picked_tests_to_read_first">10. Five hand-picked tests to read first</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Bend\BasicBendAuto.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Canonical golden-file pattern. Read first.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Bend\BugFixes.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A grab-bag of historical bugs&#8201;&#8212;&#8201;entertaining and instructive.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Bend\BGPath.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heavy back-gauge tests (~31 KB). Shows BG-placer flows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Geometry\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pure unit tests in Flux.Base&#8201;&#8212;&#8201;useful for <code>Pline</code> / <code>Geo</code> API surface.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\IO\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DXF / GEO reader-writer round-trips. Good for IO understanding.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_the_seven_test_smellsdiagnostics_for_stale_tests">11. The seven test "smells"&#8201;&#8212;&#8201;diagnostics for stale tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When tests are failing in unexpected ways, look for:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Smell</th>
+<th class="tableblock halign-left valign-top">What it usually means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Many goldens change for a small code change</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The dump format changed (review intent).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One golden changes that no one expected</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hidden coupling&#8201;&#8212;&#8201;the property under test feeds the dump indirectly.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests that are skipped (<code>#if FALSE</code>, <code>[Test (… )]</code> commented out)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quarantined work; ask your buddy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BA.Testing</code> checks in production code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A code path bypassed during tests; understand <em>why</em> before changing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hard-coded machine IDs (13, 99)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard test machines; touching their <code>Machine.curl</code> cascades to everything.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Random-seeded behavior</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determinism violation; investigate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Input fixture missing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fresh clone of <code>TData</code> likely needed.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_self_check">12. Self-check</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>What does <code>Assert.AreTextFilesEqual</code> do? <em>(§7)</em></p>
+</li>
+<li>
+<p>Why are most Bend tests golden-file tests rather than direct-property checks? <em>(§3)</em></p>
+</li>
+<li>
+<p>Where do test IDs come from, and why do they matter? <em>(§1)</em></p>
+</li>
+<li>
+<p>What does the <code>Bend2025.cs</code> file mean? <em>(§4)</em></p>
+</li>
+<li>
+<p>If <code>BendSetup.Dump</code> changes its format, what <em>else</em> needs to change? <em>(§3, §11)</em></p>
+</li>
+<li>
+<p>Where is the .geo fixture file <code>Bend_04.geo</code> stored? <em>(§5)</em></p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_if_you_take_just_one_thing_from_this_chapter">13. If you take just one thing from this chapter</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>In Flux, tests are documentation. The <code>.txt</code> golden files are the most precise spec we have for many subsystems. Read them. When in doubt, the golden is the truth.</strong></p>
+</div>
+</blockquote>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. Verified against <code>Test\Bend\BasicBendAuto.cs</code>, <code>Test\Flux.Test.csproj</code>, and the <code>Test\Bend\</code> inventory.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_1_the_test_frameworkflit">1. The test framework&#8201;&#8212;&#8201;Flit</a>
+  </li>
+  <li level="2">
+   <a href="#_test_ids">Test IDs</a>
+  </li>
+  <li level="1">
+   <a href="#_2_test_categories">2. Test categories</a>
+  </li>
+  <li level="1">
+   <a href="#_3_the_golden_file_pattern_most_common">3. The golden-file pattern (most common)</a>
+  </li>
+  <li level="2">
+   <a href="#_how_it_works">How it works</a>
+  </li>
+  <li level="2">
+   <a href="#_why_this_pattern_works">Why this pattern works</a>
+  </li>
+  <li level="2">
+   <a href="#_why_this_pattern_hurts">Why this pattern hurts</a>
+  </li>
+  <li level="2">
+   <a href="#_how_to_read_a_golden_file">How to read a golden file</a>
+  </li>
+  <li level="1">
+   <a href="#_4_the_yearly_regression_bundles">4. The yearly regression bundles</a>
+  </li>
+  <li level="1">
+   <a href="#_5_test_data_layout">5. Test data layout</a>
+  </li>
+  <li level="1">
+   <a href="#_6_reading_a_test_in_five_steps">6. Reading a test in five steps</a>
+  </li>
+  <li level="1">
+   <a href="#_7_useful_helpers_fx_and_friends">7. Useful helpers (<code>FX</code> and friends)</a>
+  </li>
+  <li level="1">
+   <a href="#_8_running_testswhat_you_actually_do">8. Running tests&#8201;&#8212;&#8201;what you actually do</a>
+  </li>
+  <li level="1">
+   <a href="#_9_debugging_a_failing_test_read_only">9. Debugging a failing test, read-only</a>
+  </li>
+  <li level="1">
+   <a href="#_10_five_hand_picked_tests_to_read_first">10. Five hand-picked tests to read first</a>
+  </li>
+  <li level="1">
+   <a href="#_11_the_seven_test_smellsdiagnostics_for_stale_tests">11. The seven test "smells"&#8201;&#8212;&#8201;diagnostics for stale tests</a>
+  </li>
+  <li level="1">
+   <a href="#_12_self_check">12. Self-check</a>
+  </li>
+  <li level="1">
+   <a href="#_13_if_you_take_just_one_thing_from_this_chapter">13. If you take just one thing from this chapter</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></span>
+ <span class="next"><a href="07_guided_code_tours.html">Guided Code Tours</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

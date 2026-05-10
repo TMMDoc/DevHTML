@@ -1,0 +1,1135 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>CAM Glossary with Code Mapping</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a class="active" href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>CAM Glossary with Code Mapping</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Goal:</strong> a single, alphabetized reference of every CAM and Flux-internal term you&#8217;ll encounter in the first six months, with a one-line definition and a code or doc location. Use this as a lookup, not a read-through.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_a">A</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>ACB&#8201;&#8212;&#8201;Adjustable Crowning Beam</strong>
+Mechanical compensation for press-brake bed deflection under load.
+<em>Code:</em> <code>Src\Core\Bend\BendACB.cs</code>. <em>Image:</em> <code>Doc\Img\Bend\deflection.png</code>. <em>Note:</em> not the same as the <strong>ACB laser</strong> (a sensor on some Trumpf brakes).</p>
+</div>
+<div class="paragraph">
+<p><strong>Air bend</strong>
+A bend where the punch does not bottom out in the die&#8201;&#8212;&#8201;the most common bend kind.
+<em>Code:</em> <code>EBendKind.AirBend</code> in <code>BendCore.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Air gap</strong>
+The intentional gap between the upper blade and the sheet on a panel bender.
+<em>Doc:</em> <code>Notes\Tech\2018.AirGapTables.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Au / Gold</strong>
+Flux&#8217;s compact binary serialization format.
+<em>Doc:</em> <code>Notes\Dev\1003.AuGoldEncoding.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Auto-tooler</strong>
+The engine that turns a <code>BendTech</code> into a sequence + setups + BG positions.
+<em>Code:</em> <code>Src\Core\Bend\Ops\BendTooler.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_b">B</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>B-Rep</strong>
+Boundary representation of a 3D model. Flux uses a mix of B-Rep and meshes.</p>
+</div>
+<div class="paragraph">
+<p><strong>BA&#8201;&#8212;&#8201;Bending aid</strong>
+Helper that supports the sheet during bending. Has a position and an enabled state per op.
+<em>Code:</em> <code>Src\Core\Bend\BendAid.cs</code>, <code>Ops\BAPlacer.cs</code>. <em>Image:</em> <code>Doc\Img\Bend\BendAidLiftPos.png</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>BCell</strong>
+Bend Cell&#8201;&#8212;&#8201;automated bending with a robot, gripper, suction cups, regrip stations.
+<em>Code:</em> <code>Src\Core\BCell\</code> (34 files), <code>Src\UI\BCell\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>BendOp</strong>
+A single bending operation on a <code>BendTech</code>. Sealed <code>partial</code> class with ~200 properties.
+<em>Code:</em> <code>Src\Core\Bend\BendOp.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>BendSetup</strong>
+A complete tool layout on the press brake.
+<em>Code:</em> <code>Src\Core\Bend\BendSetup.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>BendTech</strong>
+The press-brake projection of a <code>Part</code>.
+<em>Code:</em> <code>Src\Core\Bend\BendTech.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>BG&#8201;&#8212;&#8201;Back gauge</strong>
+The rear stop the operator pushes the sheet against to position it.
+<em>Code:</em> <code>Src\Core\Bend\BendBG.cs</code>, <code>BGPath.cs</code>, <code>Ops\BGPlacer.cs</code>. <em>Image:</em> <code>Doc\Img\Bend\BGFlexEdge.png</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Blade</strong>
+On a panel bender, the moving upper / lower blade that forms the bend.
+<em>Code:</em> <code>Src\Core\Fold\</code> (search for <code>Blade</code>). <em>Images:</em> <code>Doc\Img\Fold\Blade*.png</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>BMC</strong>
+Trumpf machine format for press brakes.
+<em>Code:</em> <code>Src\Core\Bend\Ops\ImportBMC.cs</code>, <code>ExportBMC.cs</code>. <em>Doc:</em> <code>Notes\Tech\2016.ImportBMC.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Boost</strong>
+Trumpf platform. Flux integrates as the <code>Boost</code> flavor.
+<em>Doc:</em> <code>Notes\Tech\2012.BoostInterface.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Bump bend</strong>
+Many small bends to approximate a large radius.
+<em>Code:</em> <code>EBendKind.BumpBend</code>, <code>BumpSteps</code> on <code>BendOp</code>. <em>Image:</em> <code>Doc\Img\Bend\BumpBendSpine.png</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_c">C</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Coining</strong>
+Bending where the punch is forced into the die enough to "set" the material&#8201;&#8212;&#8201;higher force, less springback.
+<em>Code:</em> <code>EBendKind.Coining</code> in <code>BendCore.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Composite glob</strong>
+The auto-synthesized controller when the user selects multiple objects of the same kind.
+<em>Code:</em> <code>BendOpsGlob</code> in <code>Src\UI\Bend\BendOpUI.cs</code> line 661.</p>
+</div>
+<div class="paragraph">
+<p><strong>CMD file</strong>
+A batch script that drives Flux operations.
+<em>Doc:</em> <code>Notes\Tech\2005.FluxCommandFiles.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Crash / collision</strong>
+Detected interference between tools, sheet, and machine.
+<em>Code:</em> <code>Src\Core\Bend\BendOpCrash.cs</code> (classic) and <code>NBendCrash.cs</code> (new).</p>
+</div>
+<div class="paragraph">
+<p><strong>Curl</strong>
+Flux&#8217;s text-based serialization format (Lisp-flavored).
+<em>Doc:</em> <code>Notes\Tech\2007.CurlFiles.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Cup gripper</strong>
+A vacuum-cup gripper used by the bend cell.
+<em>Code:</em> <code>Src\Core\BCell\</code> (search for <code>Gripper</code>). <em>Doc:</em> <code>Notes\Tech\2017.CupGripperInfoInDwg.ftx</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_d">D</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Deduction (bend deduction)</strong>
+The amount by which the unfolded length is less than the sum of the flange lengths. Material-, thickness-, and tool-dependent.
+<em>Code:</em> <code>BendStaples.Deduction</code> in <code>BendCalc.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Determinism</strong>
+Property that the same inputs always produce the same outputs. Critical for golden-file tests; uses <code>GeomSort</code> instead of plain <code>OrderBy</code>.
+<em>Code:</em> <code>Src\Base\Geo\GeomSort.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Die</strong>
+The lower tool on a press brake. The sheet is bent into its V-groove.
+<em>Code:</em> <code>BDie</code> in <code>BendTool.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Die V-width</strong>
+The opening width of the die.
+<em>Code:</em> property on <code>BDie</code>. <em>Image:</em> <code>Doc\Img\Bend\VWidthType.png</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>DLD</strong>
+Trumpf NC format for press brakes.
+<em>Code:</em> <code>Src\Core\Bend\Ops\DLDExporter.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Dump</strong>
+The text-output method used by golden-file tests. <em>Not a debug print</em>; it&#8217;s the test contract.
+<em>Code:</em> <code>BendSetup.Dump</code>, <code>BendTech.Dump</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Dwg</strong>
+The 2D drawing held on <code>Part.Dwg</code>. Contains <code>E2*</code> entities.
+<em>Code:</em> <code>Src\Core\Drawing\</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_e">E</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>E2</strong>* (E2Line, E2Arc, &#8230;&#8203;)
+Two-dimensional drawing entities.
+<em>Code:</em> <code>Src\Core\Drawing\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>E3</strong>* (E3Plane, E3Flex, &#8230;&#8203;)
+Three-dimensional model entities.
+<em>Code:</em> <code>Src\Core\Model\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>EBendKind</strong>
+The enum identifying the kind of bend (<code>AirBend</code>, <code>OpenHem</code>, <code>ClosedHem</code>, <code>Coining</code>, <code>BumpBend</code>, <code>ZBend*</code>, <code>FlatBend</code>, &#8230;&#8203;).
+<em>Code:</em> <code>Src\Core\Bend\BendCore.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Engine flavor</strong>
+Headless Flux variant embedded in Praxis.
+<em>Doc:</em> <code>Notes\Tech\2013.FluxFlavors.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>EResult</strong>
+The standard return enum for fallible operations (<code>OK</code>, plus failure modes).
+<em>Code:</em> <code>Flux.Base</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>EVF tool</strong>
+Extended-V tool for press brakes.
+<em>Image:</em> <code>Doc\Img\Bend\EVF-tool.png</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_f">F</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Feature bit</strong>
+A flag controlling which Flux features are active in a given flavor.
+<em>Doc:</em> <code>Notes\Tech\2013.FluxFlavors.ftx</code> lines 38&#8212;&#8203;57.</p>
+</div>
+<div class="paragraph">
+<p><strong>FlatTech (= CutTech)</strong>
+The flat-cutting projection of a <code>Part</code> (laser / punch / combo).
+<em>Code:</em> <code>Src\Core\Laser\</code>, <code>Src\Core\Punch\</code>. <em>Held on <code>Part</code>:</em> <code>Part.CutTech</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Flavor</strong>
+A build variant of Flux (<code>Dev</code>, <code>Flux</code>, <code>Trumpf</code>, <code>Boost</code>, <code>Engine</code>, <code>B23</code>, <code>Fold</code>, <code>Tech</code>).
+<em>Doc:</em> <code>Notes\Tech\2013.FluxFlavors.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Flex</strong>
+A bend zone in the 3D model&#8201;&#8212;&#8201;<code>E3Flex</code>. Distinct from <code>BendOp</code> (which represents the bending operation).
+<em>Code:</em> <code>Src\Core\Model\E3Flex.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Flit</strong>
+The Flux test framework. <code>[TestFixture]</code> / <code>[Test]</code> attributes; namespace <code>Flit</code>.
+<em>Code:</em> <code>Test\</code> with <code>namespace Flit;</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Forming</strong>
+A non-bending feature (louver, lance, rib).
+<em>Code:</em> <code>Src\Core\Model\Forming.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>FoldTech</strong>
+The panel-bender projection of a <code>Part</code> (TecZoneFold).
+<em>Code:</em> <code>Src\Core\Fold\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>FX file</strong>
+The native Flux save format. Zip of Curl + Au + thumbnail.</p>
+</div>
+<div class="paragraph">
+<p><strong>FX (helper)</strong>
+The static helper class in <code>Flux.Base</code> (logging, test helpers, <code>FX.Notes</code> storage).
+<em>Code:</em> <code>Src\Base\</code> (search <code>class FX</code>).</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_g">G</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>GEO</strong>
+Trumpf&#8217;s geometry exchange format. Common test-input format.
+<em>Code:</em> <code>Src\Core\IO\GeoReader.cs</code>, <code>GeoWriter.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>GElement</strong>
+Abstract description of a glob property (UI-agnostic).
+<em>Code:</em> <code>Src\UI\</code> (search <code>class GElement</code>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Glob</strong>
+A controller wrapping a single domain object for UI editing. Composite globs handle multi-selection.
+<em>Code:</em> <code>Src\UI\Glob.cs</code>. <em>Examples:</em> <code>BendOpGlob</code>, <code>LaserCutGlob</code>, <code>BCellGlob</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Gold (= Au)</strong>
+Same as Au.</p>
+</div>
+<div class="paragraph">
+<p><strong>Golden file</strong>
+The reference <code>.txt</code> file that a test&#8217;s <code>Dump</code> output is compared against.
+<em>Doc:</em> chapter 06.</p>
+</div>
+<div class="paragraph">
+<p><strong>Group bend</strong>
+Multiple parallel flexes performed in one bending operation.
+<em>Code:</em> <code>BendTech.cs</code> constructor (lines 49&#8212;&#8203;80).</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_h">H</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Hem</strong>
+A seam-style bend. Open hem leaves a gap; closed hem closes it.
+<em>Code:</em> <code>EBendKind.OpenHem</code>, <code>.ClosedHem</code>, <code>.OpenHemPrebend</code>, <code>.ClosedHemPrebend</code> in <code>BendCore.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Hex</strong>
+A small Flux-internal scripting / interpreter library (<code>Src\Base\HexLib.cs</code>). Originally (Note 2004, 2016) planned as the post-processor language; that role was <strong>superseded by C# writers</strong> in <code>Src\API\Bend\Post\</code>. Today Hex survives at most as legacy / scripting infrastructure. Note 2004 is historical context, not a current spec.</p>
+</div>
+<div class="paragraph">
+<p><strong>Hoops</strong>
+TechSoft 3D library used for CAD-format import. Wrapped by <code>Flux.Hula64.dll</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Holder</strong>
+A tool holder (adapter, extender, radius holder) that mounts another tool.
+<em>Code:</em> <code>BHolder</code> in <code>BendTool.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Hub</strong>
+Static class providing typed delegate slots for cross-layer wiring (App ↔ Core/UI).
+<em>Code:</em> <code>Src\Core\Hub.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Hula / Flux.Hula64</strong>
+The C&#43;&#43;/CLI wrapper around HOOPS, providing 3D import.
+<em>Code:</em> <code>Src\Hula\</code>. <em>Build:</em> see <code>Notes\Dev\1002.BuildingFlux.ftx</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_i">I</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>IBendCalc</strong>
+Interface for the bend-physics calculator.
+<em>Code:</em> <code>Src\Core\Bend\BendCalc.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>IFlexSpine</strong>
+Interface for a bend cross-section.
+<em>Code:</em> <code>Src\Core\Model\BendSpine.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>INotifyPropChanged</strong>
+Flux&#8217;s variant of property-change notification (used jointly with undo).
+<em>Code:</em> <code>Flux.Base</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>ISheafSite</strong>
+Marker interface for objects whose settings cascade up to a parent.
+<em>Code:</em> <code>Src\Core\Settings\Sheaf.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_j">J</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Jaw gripper</strong>
+A mechanical gripper variant for the bend cell.
+<em>Code:</em> <code>Src\Core\BCell\</code> (search <code>BJaw*</code>).</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_k">K</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>KB40</strong>
+A Trumpf folding-machine variant. Mentioned in air-gap tables and tooling.
+<em>Image:</em> <code>Doc\Img\Fold\KB40MaxAdjust.png</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kerf</strong>
+Material removed by a laser cut (the cut width).</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_l">L</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Layer</strong>
+Render layer (<code>ELayer.BendMount</code>, <code>ELayer.LaserCut</code>, &#8230;&#8203;) controlling drawing visibility and order.
+<em>Code:</em> <code>Src\Base\Lux\Layers.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Layer2</strong>
+The drawing&#8217;s 2D layer system (<code>Dwg.Layers</code>).
+<em>Code:</em> <code>Src\Core\Drawing\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Leeward</strong>
+The "up" side of a bend (closer to the base plane in the flat-bend tree).
+<em>Doc:</em> <code>Notes\Dev\1005.BendAreaModeling.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Lux</strong>
+The OpenGL rendering layer (in <code>Flux.Base</code>).
+<em>Code:</em> <code>Src\Base\Lux\</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_m">M</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Machine</strong>
+Abstract base for per-domain machine definitions. Loaded from <code>X:\Data\Machine\&lt;id&gt;\</code>.
+<em>Code:</em> <code>Src\Core\</code> (search <code>class Machine</code>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Make</strong>
+The conventional name for static factories (<code>BendTech.Make</code>, <code>Machine.Get</code>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Mech</strong>
+A 3D animatable model of a machine. File: <code>Machine.mech</code> per machine folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>MetaCAM / Trek</strong>
+Legacy CAM stack. Trek is a private fork shipped with Flux as a CLI for legacy operations.
+<em>Doc:</em> <code>Notes\Tech\2011.MetaCAMInterface.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Microjoint</strong>
+A small unbroken connection left in a laser-cut profile so the part doesn&#8217;t drop out before unloading.
+<em>Image:</em> <code>Doc\Img\Laser\MicrojointLength.png</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Mood</strong>
+A render-style scope (<code>EMood.Selected</code>, <code>Normal</code>, &#8230;&#8203;).
+<em>Code:</em> <code>Src\Base\Lux\Lux.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Mount</strong>
+A tool placed at an X position on the brake table.
+<em>Code:</em> <code>BendMount</code> in <code>Src\Core\Bend\BendMount.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_n">N</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Nesting</strong>
+Arranging multiple parts on a sheet to maximize material usage.
+<em>Code:</em> <code>Src\Core\Nest\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>NBendCrash</strong>
+The "new" collision engine for bend operations, parallel to <code>BendOpCrash</code>.
+<em>Code:</em> <code>Src\Core\Bend\NBendCrash.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>NC code</strong>
+Numerical control code emitted to the machine. For press brakes it is generated by a C# post-writer in <code>Src\API\Bend\Post\</code> (TrumpfDLD, Bystronic, LVD, BNCWriter for Cell5K / TrumpfB23, &#8230;&#8203;) dispatched via <code>Hub.GenerateNC</code>. The legacy Hex / PDL languages are no longer used at runtime.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_o">O</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>OEM</strong>
+OEM-specific customizations.
+<em>Code:</em> <code>Src\Core\OEM\</code>, <code>Src\API\OEM\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Op</strong>
+Shorthand for an operation (<code>BendOp</code>, <code>LaserCut</code>, etc.).</p>
+</div>
+<div class="paragraph">
+<p><strong>Open height / closed height</strong>
+The press brake&#8217;s vertical machine parameters defining the stroke.
+<em>Code:</em> <code>BendMachine.OpenHeight</code>, <code>.ClosedHeight</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_p">P</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Part</strong>
+Top-level job aggregate. One <code>Part</code> per opened document.
+<em>Code:</em> <code>Src\Core\Part\Part.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Phase</strong>
+A subdivision of a bend (e.g. hem prebend → final hem). One flex can have multiple phases.
+<em>Code:</em> <code>BendOp.Phases</code> in <code>BendOp.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Pline</strong>
+The polyline workhorse type.
+<em>Code:</em> <code>Src\Base\Pline\</code>, <code>Src\Base\Geo\Profile.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>PostLoad</strong>
+Attribute on a method that runs after Au-deserialization, used for forward migration.
+<em>Code:</em> search <code>[PostLoad]</code> (e.g. <code>BendSetup.cs</code> lines 64&#8212;&#8203;76).</p>
+</div>
+<div class="paragraph">
+<p><strong>Praxis</strong>
+Internal Trumpf system embedding Flux as the <code>Engine</code> flavor.
+<em>Doc:</em> <code>Notes\Tech\2013.FluxFlavors.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>PDL</strong>
+Legacy post-processor language. Effectively deprecated; current postprocessors are C# in <code>Src\API\Bend\Post\</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Post writer (NC)</strong>
+A C# class in <code>Src\API\Bend\Post\</code> that emits NC code for a specific machine dialect (TrumpfDLD, Bystronic, LVD, Cybelec, Safan, Cell5K/B23 via <code>BNCWriter</code>, &#8230;&#8203;). Routed via <code>Hub.GenerateNC</code> → <code>Src\API\Basis\Basis.cs::GenerateNC</code> (line 138). The dispatch key is the basename of <code>BMachine.Post</code>; the legacy <code>.hx</code> extension on that filename is a routing token only.</p>
+</div>
+<div class="paragraph">
+<p><strong>Punch</strong>
+The upper tool on a press brake; or the cutting domain for sheet metal.
+<em>Code:</em> <code>BPunch</code> in <code>BendTool.cs</code>; domain at <code>Src\Core\Punch\</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_q">Q</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(reserved)</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_r">R</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Rear stop / back gauge</strong>&#8201;&#8212;&#8201;see <strong>BG</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Regrip</strong>
+The bend cell&#8217;s gripper releases and re-grips the part mid-job, often at a regrip station.
+<em>Code:</em> <code>BCRegrip</code> in <code>Src\Core\BCell\</code>. <em>Image:</em> <code>Doc\Img\BCell\Slide.png</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Robotic bend</strong>
+A bend cycle performed in a bend cell with a robot.
+<em>Code:</em> <code>BendOp.Robotic</code> and the <code>RegripDuringBend</code> family of properties.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_s">S</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Setup</strong>
+A tool layout on the machine. One press brake job often has 1&#8212;&#8203;3 setups.
+<em>Code:</em> <code>BendSetup</code> in <code>Src\Core\Bend\BendSetup.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Sheaf</strong>
+The cascaded settings dictionary. Every <code>ISheafSite</code> has its own dict and a parent.
+<em>Code:</em> <code>Src\Core\Settings\Sheaf.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Spine</strong>
+The center-line through the cross-section of a bending zone.
+<em>Code:</em> <code>IFlexSpine</code> in <code>Src\Core\Model\BendSpine.cs</code>. <em>Doc:</em> <code>Notes\Dev\1005.BendAreaModeling.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Springback</strong>
+The angular rebound of material after the punch retracts.
+<em>Code:</em> <code>BendStaples.SpringbackD</code> in <code>BendCalc.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Station / stage</strong>
+An X region of the brake table that holds an independent set of tools.
+<em>Code:</em> inside <code>BendSetup</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>STL</strong>
+Mesh exchange format.
+<em>Code:</em> <code>Src\Core\IO\STLModel.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_t">T</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>TBS&#8201;&#8212;&#8201;Trumpf Bend Solution</strong>
+Trumpf&#8217;s own bend-physics calculator.
+<em>Code:</em> <code>TBSBendCalc.cs</code>, <code>TBSCustomDB.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>TecZoneBend / TecZoneFold</strong>
+Trumpf brand names for the press-brake / panel-bender flavors.</p>
+</div>
+<div class="paragraph">
+<p><strong>Tech</strong>
+Domain projection of a <code>Part</code> (<code>BendTech</code>, <code>FoldTech</code>, <code>FlatTech</code>, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p><strong>TLM / TLE&#8201;&#8212;&#8201;Trumpf License Manager / Expert</strong>
+Two licensing backends. TLM (Sentinel) for <code>Fold</code> flavor; TLE (WIBU) for <code>Trumpf</code> and <code>Boost</code>.
+<em>Doc:</em> <code>Notes\Tech\2013.FluxFlavors.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Trek</strong>
+The private fork of MetaCAM shipped with Flux as a CLI.
+<em>Doc:</em> <code>Notes\Dev\1004.TrekCommandLine.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>TSO&#8201;&#8212;&#8201;Tool Setup Optimizer</strong>
+Optimizer for tool layouts across a sequence.
+<em>Code:</em> <code>Src\Core\Bend\TSOBatch.cs</code>, <code>Src\Core\Bend\Ops\BOptimizer.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_u">U</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>UID</strong>
+A per-tech unique identifier (e.g. <code>BendOp.UID</code>, <code>BendSetup.UID</code>). Stable across save/load.</p>
+</div>
+<div class="paragraph">
+<p><strong>Undo</strong>
+Per-part undo stack. Mutations registered through <code>BA.Set</code> are automatically tracked.
+<em>Code:</em> <code>Src\Base\Undo\</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_v">V</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Valency</strong>
+The mounting compatibility "type" between tools and adapters.
+<em>Code:</em> <code>BTool.TopValency</code>, <code>BTool.BottomValency</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>VDwg</strong>
+Vector-drawing format used to render geometric images.
+<em>Doc:</em> <code>Notes\Dev\1013.TheVdwgFileFormat.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>VModel</strong>
+Base class for view-models. Lives next to its model in <code>Flux.Core</code>.
+<em>Code:</em> <code>Src\Base\Lux\VModel.cs</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>V-width</strong>&#8201;&#8212;&#8201;see <strong>Die V-width</strong>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_w">W</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Wad / Flux.wad</strong>
+Zip of read-only resources (shaders, metadata, fonts).
+<em>Doc:</em> <code>Notes\Dev\1002.BuildingFlux.ftx</code> lines 223&#8212;&#8203;238.</p>
+</div>
+<div class="paragraph">
+<p><strong>Waypoint</strong>
+A discrete robot-cell position in the trajectory of a bending job.
+<em>Code:</em> <code>Src\Core\BCell\</code> (search <code>Waypoint</code>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Windward</strong>
+The "down" side of a bend (further from the base plane).
+<em>Doc:</em> <code>Notes\Dev\1005.BendAreaModeling.ftx</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Workpiece</strong>
+Record bundling material + thickness for bend calculations.
+<em>Code:</em> <code>BendCalc.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_x_y_z">X / Y / Z</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>XVec / YVec / ZVec</strong>
+The local coordinate system axes on an <code>E3Plane</code>.
+<em>Doc:</em> <code>Notes\Dev\1005.BendAreaModeling.ftx</code> lines 91&#8212;&#8203;105.</p>
+</div>
+<div class="paragraph">
+<p><strong>Z-bend</strong>
+A bend where two close opposing flexes form an offset.
+<em>Code:</em> <code>EBendKind.ZBendAirBend</code>, <code>.ZBendCoining</code>. <em>Image:</em> <code>Doc\Img\Bend\ZBendTool.png</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cross_domain_quick_find">Cross-domain quick-find</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">If you see this&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">Look here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendOp.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserCut</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Laser\LaserCut.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Pline\</code> and <code>Src\Base\Geo\</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sheaf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Settings\Sheaf.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hub</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Hub.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VModel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Lux\VModel.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Glob</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\UI\Glob.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Machine.Get</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\</code> (search <code>class Machine</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine.Get</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendMachine.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[PostLoad]</code> migration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search <code>[PostLoad]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind.*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendCore.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EResult.*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.Out</code>, <code>FX.LoadTestPart</code>, <code>FX.Notes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\</code> (search <code>class FX</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BA.Set</code>, <code>BA.Testing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\</code> (search <code>class BA</code>)</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. When this glossary disagrees with the code or the Notes, the code wins. Fixes welcome.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_a">A</a>
+  </li>
+  <li level="1">
+   <a href="#_b">B</a>
+  </li>
+  <li level="1">
+   <a href="#_c">C</a>
+  </li>
+  <li level="1">
+   <a href="#_d">D</a>
+  </li>
+  <li level="1">
+   <a href="#_e">E</a>
+  </li>
+  <li level="1">
+   <a href="#_f">F</a>
+  </li>
+  <li level="1">
+   <a href="#_g">G</a>
+  </li>
+  <li level="1">
+   <a href="#_h">H</a>
+  </li>
+  <li level="1">
+   <a href="#_i">I</a>
+  </li>
+  <li level="1">
+   <a href="#_j">J</a>
+  </li>
+  <li level="1">
+   <a href="#_k">K</a>
+  </li>
+  <li level="1">
+   <a href="#_l">L</a>
+  </li>
+  <li level="1">
+   <a href="#_m">M</a>
+  </li>
+  <li level="1">
+   <a href="#_n">N</a>
+  </li>
+  <li level="1">
+   <a href="#_o">O</a>
+  </li>
+  <li level="1">
+   <a href="#_p">P</a>
+  </li>
+  <li level="1">
+   <a href="#_q">Q</a>
+  </li>
+  <li level="1">
+   <a href="#_r">R</a>
+  </li>
+  <li level="1">
+   <a href="#_s">S</a>
+  </li>
+  <li level="1">
+   <a href="#_t">T</a>
+  </li>
+  <li level="1">
+   <a href="#_u">U</a>
+  </li>
+  <li level="1">
+   <a href="#_v">V</a>
+  </li>
+  <li level="1">
+   <a href="#_w">W</a>
+  </li>
+  <li level="1">
+   <a href="#_x_y_z">X / Y / Z</a>
+  </li>
+  <li level="1">
+   <a href="#_cross_domain_quick_find">Cross-domain quick-find</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="07_guided_code_tours.html">Guided Code Tours</a></span>
+ <span class="next"><a href="09_find_and_explain_exercises.html">Assignments</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    
+</body>
+</html>

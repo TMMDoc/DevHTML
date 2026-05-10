@@ -1,0 +1,1281 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Architecture & System Context</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a class="active" href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="01_architecture.html">Architecture & System Context</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Architecture & System Context</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Prerequisite:</strong> Chapter 00 read (repo map, eight projects, the M/V/Glob terminology).
+<strong>Goal:</strong> by the end you can sketch Flux&#8217;s runtime architecture on a whiteboard, name the major cross-cutting subsystems (settings, rendering, undo, persistence, hub), and explain <em>why</em> certain design choices were made. Reading time: 60&#8212;&#8203;90 minutes.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_the_big_picture_in_three_diagrams">1. The big picture in three diagrams</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_1_static_module_dependencies">1.1 Static module dependencies</h3>
+<div class="listingblock">
+<div class="content">
+<pre>                        ┌───────────────────────────────────┐
+                        │           Flux.exe                │
+                        │  (entry point — Flux.App)         │
+                        └─────────┬─────────────────────────┘
+                                  │
+                                  ▼
+                        ┌───────────────────────────────────┐
+                        │           Flux.UI                 │
+                        │  Globs (controllers) + WPF        │
+                        └─────────┬─────────────────────────┘
+                                  │
+                                  ▼
+              ┌───────────────────────────────────┐    ┌───────────┐
+              │           Flux.Core               │◄───┤ Flux.API  │
+              │  Models + VModels + domain logic  │    │ (3rd-party│
+              └─────────┬─────────────────────────┘    │  facade)  │
+                        │                              └───────────┘
+                        ▼
+              ┌───────────────────────────────────┐
+              │          Flux.Base                │
+              │  Geo, Mesh, Pline, Lux (render),  │
+              │  Undo, IO primitives, FText       │
+              └─────────┬─────────────────────────┘
+                        │
+                        ▼
+              ┌───────────────────────────────────┐
+              │     Flux.Hula64.dll (C++/CLI)     │
+              │     wraps HOOPS for 3D import     │
+              └───────────────────────────────────┘
+
+Side projects (bind to Core):
+  Flux.Test ─► Core      Flux.Migrate ─► Core      Flux.Console ─► Core</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_2_runtime_layers_a_single_flux_process">1.2 Runtime layers (a single Flux process)</h3>
+<div class="listingblock">
+<div class="content">
+<pre>┌───────────────────────────────────────────────────────────────────┐
+│ Process: Flux.exe                                                 │
+│  ┌──────────────────────────────────────────────────────────┐     │
+│  │ Main window (App)                                        │     │
+│  │   Tabs ─ each tab hosts one open Part                    │     │
+│  │   Selection state, Undo stack, Glob panel                │     │
+│  └────────────┬─────────────────────────────────────────────┘     │
+│               │                                                   │
+│               ▼                                                   │
+│  ┌──────────────────────────────────────────────────────────┐     │
+│  │ Open Parts (Part.Active : List&lt;Part&gt;)                    │     │
+│  │   Part.Current ─ the active one                          │     │
+│  │   each Part has Dwg / Model / BendTech / FoldTech / ...  │     │
+│  └────────────┬─────────────────────────────────────────────┘     │
+│               │                                                   │
+│               ▼                                                   │
+│  ┌──────────────────────────────────────────────────────────┐     │
+│  │ Cross-cutting services (singletons / static gateways)    │     │
+│  │   Hub        — global glue / dependency injection         │     │
+│  │   Sheaf      — cascaded settings (per-machine, per-tech)  │     │
+│  │   FX.Notes   — persistent user notes (recent items)       │     │
+│  │   Lux        — rendering pipeline (OpenGL)                │     │
+│  │   Lib        — wad-resource loader                        │     │
+│  │   Trek       — out-of-process MetaCAM bridge              │     │
+│  └──────────────────────────────────────────────────────────┘     │
+└───────────────────────────────────────────────────────────────────┘
+                          │
+                          ▼ (file I/O, no network in Flux core)
+                X:\Data, X:\Wad, X:\Resources, user data folder</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_3_pipeline_for_a_typical_cam_job">1.3 Pipeline for a typical CAM job</h3>
+<div class="listingblock">
+<div class="content">
+<pre>   user opens 3D file ─►  IO (DXFReader / GeoReader / HoopsReader-via-Hula+HOOPS)
+                                      │
+                                      ▼
+                         Part.Model (B-Rep / mesh / E3 entities)
+                                      │
+                       ┌──────────────┼──────────────┐
+                       ▼              ▼              ▼
+                 BendTech        FlatTech       FoldTech
+                 (press brake)   (laser/punch)  (panel bender)
+                       │              │              │
+                       ▼              ▼              ▼
+                 BendTooler     LaserAuto/     FoldAuto
+                 (auto-tool)    AutoRouter     (sequencing)
+                       │              │              │
+                       └──────────────┼──────────────┘
+                                      ▼
+                               Postprocessor
+                       (C# writer in Src\API\Bend\Post\,
+                       picked by post name from BMachine.Post)
+                                      │
+                                      ▼
+                                NC code file</pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_the_five_layers_explained">2. The five layers explained</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_1_flux_basefoundations">2.1 <code>Flux.Base</code>&#8201;&#8212;&#8201;foundations</h3>
+<div class="paragraph">
+<p><code>Flux.Base</code> is the CAD/CAM-agnostic foundation. It contains:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Folder</th>
+<th class="tableblock halign-left valign-top">What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Geo\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Point/Vector/Matrix, <code>Pline</code> (polyline), <code>Profile</code>, <code>Spline</code>, <code>GeomSort</code>, basic geometry algorithms. <code>Geo.cs</code> is 64 KB of constants/utilities (<code>Geo.PI</code>, <code>Geo.HalfPI</code>, <code>Geo.QuarterPI</code>, &#8230;&#8203;).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mesh\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3D triangle mesh primitives (<code>Mesh3</code> and friends)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pline\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Polyline-specific helpers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Lux\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The OpenGL rendering layer&#8201;&#8212;&#8201;<code>Lux</code>, <code>LuxDraw</code>, <code>LuxPanel</code>, <code>Scene</code>, <code>VModel</code>, <code>SGNode</code>. Every render path goes through here.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Gold\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Au/Gold binary serialization runtime</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Types\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shared value types and enums</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Undo\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo/redo infrastructure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IO\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Low-level IO primitives (streams, encoding)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FText\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rich text / FTex text rendering</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GL\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lower-level OpenGL bindings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3D\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic 3D math beyond <code>Geo</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Rule of thumb:</strong> if a class lives in <code>Flux.Base</code>, it should have <strong>no awareness of bending, laser cutting, or any CAM concept</strong>. If you find such leakage, that&#8217;s a smell.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_flux_corethe_cam_engine">2.2 <code>Flux.Core</code>&#8201;&#8212;&#8201;the CAM engine</h3>
+<div class="paragraph">
+<p>This is where the domain logic lives. The folder structure (16 folders) was listed in chapter 00 §4. Key points:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Models and VModels live together.</strong> <code>BendOp</code> (model) and <code>BendOpVM</code> (view) sit next to each other. This is <em>not</em> an accident&#8201;&#8212;&#8201;see §3 below.</p>
+</li>
+<li>
+<p><strong><code>Part</code></strong> (<code>Src\Core\Part\Part.cs</code>) is the central job aggregate, holding <code>Model</code>, <code>Dwg</code>, <code>BendTech</code>, <code>FoldTech</code>, <code>CutTech</code>, machine references, etc.</p>
+</li>
+<li>
+<p><strong><code>Sheaf</code></strong> (<code>Src\Core\Settings\Sheaf.cs</code>) is a cascaded settings dictionary: every domain object that has settings implements <code>ISheafSite</code> (string <code>SHName</code>, dictionary, parent fallback).</p>
+</li>
+<li>
+<p><strong><code>Hub</code></strong> (<code>Src\Core\Hub.cs</code>) is the central dependency-injection point. It exposes static <code>Func&lt;&gt;</code>/<code>Action&lt;&gt;</code> slots (e.g. <code>BigChooser</code>, <code>ClosePartByJobID</code>, <code>APIWrapper</code>) that are filled in at startup by the App or API layer. This is the <em>replacement</em> for the old "Hub whiteboard" hack and is now the official cross-layer wiring mechanism.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_3_flux_uithe_controllers">2.3 <code>Flux.UI</code>&#8201;&#8212;&#8201;the controllers</h3>
+<div class="paragraph">
+<p><code>Flux.UI</code> provides:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Globs</strong>&#8201;&#8212;&#8201;see §3.</p>
+</li>
+<li>
+<p><strong>WPF dialogs and editors</strong>&#8201;&#8212;&#8201;<code>TurretEditor</code>, <code>SheafEditor</code>, <code>LaserDBEditor</code>, <code>MachineEditor</code>, etc.</p>
+</li>
+<li>
+<p><strong>Agents</strong>&#8201;&#8212;&#8201;input handlers per domain (<code>BendAgent</code>, <code>LaserAgent</code>).</p>
+</li>
+<li>
+<p><strong>Sheets</strong>&#8201;&#8212;&#8201;list/grid views (<code>BendSheet</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Convention: a domain&#8217;s UI files match the <code>Src\UI\&lt;domain&gt;\&lt;Domain&gt;*UI.cs</code> pattern. Files in this layer can reference Core freely; the reverse (Core → UI) is forbidden by the module dependency.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_4_flux_appthe_shell">2.4 <code>Flux.App</code>&#8201;&#8212;&#8201;the shell</h3>
+<div class="paragraph">
+<p>This is the top of the stack and the actual <code>Flux.exe</code> content. Responsibilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Main window, tabs, status bar.</p>
+</li>
+<li>
+<p>Selection state, undo lifecycle, glob panel.</p>
+</li>
+<li>
+<p>Document lifecycle (open/save/close <code>Part</code>).</p>
+</li>
+<li>
+<p>Loading the right <code>Flux.flavor</code> and feature bits at startup.</p>
+</li>
+<li>
+<p>Wiring up <code>Hub</code> slots so Core/UI can call into App services.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_5_flux_apithe_controlled_exposure">2.5 <code>Flux.API</code>&#8201;&#8212;&#8201;the controlled exposure</h3>
+<div class="paragraph">
+<p><code>Flux.API</code> is a <em>narrow</em> facade for 3rd-party automation. It:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mirrors a sub-set of Core types behind API-level wrappers.</p>
+</li>
+<li>
+<p>Bundles its dependencies (Core, Base, Hula) so consumers see only <code>Flux.API.dll</code>.</p>
+</li>
+<li>
+<p>Has its own folder structure (<code>Src\API\Job\</code>, <code>Src\API\Cut\</code>, <code>Src\API\Part\</code>, &#8230;&#8203;) mirroring Core.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re ever asked "can a 3rd party do X?", the answer is in <code>Src\API\</code>&#8201;&#8212;&#8201;not in Core.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_why_model_and_view_live_together">3. Why model and view live together</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is the most non-obvious decision in Flux&#8217;s architecture, and it is intentional. The full rationale is in <code>Notes\Dev\1002.BuildingFlux.ftx</code> lines 31&#8212;&#8203;61. Short version:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Flux objects are <strong>CAD/CAM objects tightly coupled to their visual representation.</strong> An <code>E3Plane</code> is meaningless without a way to render it.</p>
+</li>
+<li>
+<p>The earlier architecture put VMs in a separate higher layer ("UI layer renders, Core only knows data"). This forced ugly workarounds for any operation that needed rendering&#8201;&#8212;&#8201;<em>every</em> setup-sheet generation, <em>every</em> thumbnail in an FX file, <em>every</em> PDF report. The result was the <strong>"Hub whiteboard"</strong>: a global object bag used to fake the missing dependency.</p>
+</li>
+<li>
+<p>The trade-off was reversed. Today, models and VMs sit in the same DLL (<code>Flux.Core</code>), and the rendering layer (<code>Lux</code>) is in <code>Flux.Base</code> so both can see it. <strong>Globs (controllers) remain separate</strong> in <code>Flux.UI</code>, because they really do need WPF/keyboard/mouse and shouldn&#8217;t be dragged into headless usage (Engine flavor, batch jobs).</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Practical consequence:</strong> when adding a feature, expect to touch model + VModel + Glob. When debugging a rendering issue, you&#8217;ll be in <code>Flux.Core</code>, not <code>Flux.UI</code>. When debugging an interaction issue (mouse, keyboard, properties panel), you&#8217;ll be in <code>Flux.UI</code>.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_the_glob_systemcontrollers_in_detail">4. The Glob system&#8201;&#8212;&#8201;controllers in detail</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>Glob</code> is a controller object that:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Wraps a domain object (<code>new BendOpGlob (op)</code>).</p>
+</li>
+<li>
+<p>Exposes properties via <code>GElement</code> (abstract) → <code>PanelMaker</code> translates to WPF.</p>
+</li>
+<li>
+<p>Exposes commands (e.g. <code>BendOpGlob.AddRegrip</code> in <code>Src\UI\Bend\BendOpUI.cs</code> line 22).</p>
+</li>
+<li>
+<p>Supports composites&#8201;&#8212;&#8201;when multiple objects are selected, the system constructs a <em>composite glob</em> showing only the shared properties, and operations apply to all wrapped objects.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>A glob is decorated with attributes like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Glob (Draw = true, Mouse = EMouse.LDown)]
+public class BendOpGlob : Glob {
+   public BendOpGlob (BendOp op) : base (op) { ... }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Draw = true</code> means the glob has its own drawing behavior; <code>Mouse = EMouse.LDown</code> lets it consume mouse events. The full attribute model is in <code>Src\UI\Glob.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_the_sheafcascaded_settings_everywhere">5. The Sheaf&#8201;&#8212;&#8201;cascaded settings everywhere</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every domain object that has settings implements <strong><code>ISheafSite</code></strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public interface ISheafSite {
+   string SHName { get; }                       // e.g. "Machine 135" or "Bend 3"
+   Dictionary&lt;SH, object&gt; SHDict { get; set; }  // local settings (may be null)
+   ISheafSite SHParent { get; }                 // fallback site
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Reading a setting walks <code>SHDict</code> → <code>SHParent.SHDict</code> → &#8230;&#8203; until found. This means:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Machine-level defaults</strong> are inherited by all bend techs that target the machine.</p>
+</li>
+<li>
+<p><strong>Per-tech overrides</strong> mask machine defaults.</p>
+</li>
+<li>
+<p><strong>Per-op overrides</strong> mask per-tech.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>BendOp</code>, <code>BendTech</code>, <code>BendMachine</code>, <code>Part</code>, and many others all implement <code>ISheafSite</code>. The keys are values of the <code>SH</code> enum (a domain-wide closed set of setting identifiers).</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Why this matters when reading code:</strong> you&#8217;ll often see <code>Settings.RamVBend</code>, <code>Settings.BGTransition</code>, etc. accessed on a <code>BendOp</code>. These are <em>resolved</em> through the sheaf cascade&#8201;&#8212;&#8201;the value may have been set on the parent machine, not the op itself.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_the_hubwiring_layers_without_circular_dependencies">6. The Hub&#8201;&#8212;&#8201;wiring layers without circular dependencies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Src\Core\Hub.cs</code> defines a static class with public delegate slots:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static Func&lt;string, string, IList&lt;string&gt;, int, bool, object, int&gt; BigChooser;
+public static Action CloseBlankMainWindow;
+public static Func&lt;string, bool, int&gt; ClosePartByJobID;
+// ... and many more</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At startup, <code>Flux.App</code> (and optionally <code>Flux.API</code>) <strong>fills in</strong> these slots with concrete implementations. Core and UI then <strong>invoke</strong> them. This is dependency injection done the simple way&#8201;&#8212;&#8201;no DI container.</p>
+</div>
+<div class="paragraph">
+<p>The pattern matters because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It lets Core call back into App without a project reference cycle.</p>
+</li>
+<li>
+<p>It cleanly handles the headless case (Engine flavor): <code>Hub.BigChooser</code> is simply <code>null</code>, and Core falls back to a default.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When you see <code>Hub.ClosePartByJobID?.Invoke (...)</code> somewhere in Core, that&#8217;s the pattern in action.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_renderingthe_lux_pipeline">7. Rendering&#8201;&#8212;&#8201;the Lux pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All drawing flows through <code>Src\Base\Lux\</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Lux.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Static entry point&#8201;&#8212;&#8201;<code>Lux.DrawMesh</code>, <code>Lux.Layer</code>, <code>Lux.Mood</code>, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LuxDraw.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lower-level draw primitives.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LuxPanel.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The hosting WPF panel.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Scene.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The scene graph, manages live <code>VModel</code>s.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VModel.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base class for view-models.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SGNode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scene-graph node&#8201;&#8212;&#8201;geometry, transform, or mood override.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_the_lifecycle_of_a_vmodel">The lifecycle of a VModel</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Construction.</strong> A VModel wraps a domain object (<code>new BendMountVM (mount)</code>).</p>
+</li>
+<li>
+<p><strong>Plug into a screen.</strong> When the part is opened in a tab, the screen visits the model and calls <code>VModel.Draw()</code>. At first draw, the VM gets a unique <code>Id</code> and <code>SGNode</code>s are created.</p>
+</li>
+<li>
+<p><strong>Live state.</strong> While <code>Id != 0</code>, the VM is "live"&#8201;&#8212;&#8201;re-renders go through cached scene-graph nodes. State changes set <code>Dirty</code> flags and trigger <code>Lux.Redraw</code>.</p>
+</li>
+<li>
+<p><strong>Detach.</strong> When the part closes, scene-graph resources are released.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Layers (<code>ELayer.BendMount</code>, <code>ELayer.LaserCut</code>, &#8230;&#8203;) and moods (<code>EMood.Selected</code>, <code>EMood.Normal</code>) provide global filtering and styling.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_this_matters_for_debugging">Why this matters for debugging</h3>
+<div class="paragraph">
+<p>If a bend setup looks wrong on screen, the bug is <strong>never</strong> in WPF&#8201;&#8212;&#8201;it&#8217;s in the corresponding <code>*VM.Draw()</code>. Set a breakpoint there, and inspect what <code>Lux.DrawMesh</code> is asked to render.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_persistence_model">8. Persistence model</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Used for</th>
+<th class="tableblock halign-left valign-top">Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Curl</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine definitions, tool catalogs, settings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2007.CurlFiles.ftx</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Au / Gold</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compact binary for <code>Part</code>, <code>BendTech</code>, etc.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Dev\1003.AuGoldEncoding.ftx</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FX</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Native Flux file (zipped Curl/Au + thumbnail)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mentioned in 1002</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DXF / DWG</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2D drawing exchange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\IO\DXFReader.cs</code> (57 KB), <code>DXFWriter.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>GEO</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf geometry exchange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\IO\GeoReader.cs</code> (33 KB), <code>GeoWriter.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>HOOPS-driven 3D</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CATIA / Parasolid / ACIS / Pro-E / STEP via HOOPS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\IO\HXReader.cs</code> (39 KB&#8201;&#8212;&#8201;hosts <code>HoopsReader</code>; the filename is misleading, this is <em>not</em> a Hex reader)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>STL</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mesh exchange</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\IO\STLModel.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BMC</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf machine format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\Ops\ImportBMC.cs</code> (43 KB)&#8201;&#8212;&#8201;see Note 2016</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DLD</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf NC format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\Ops\DLDExporter.cs</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_postloadthe_migration_hook"><code>[PostLoad]</code>&#8201;&#8212;&#8201;the migration hook</h3>
+<div class="paragraph">
+<p>Au-deserialized objects can declare a <code>[PostLoad]</code> method that runs after deserialization. It is the standard place to migrate older versions of the same object (<code>AuType.ObjVersion</code> tells you which version came in). Example from <code>BendSetup.cs</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[PostLoad]
+void PostLoad () {
+   mMounts.RemoveIf (a =&gt; a.Tool == null);
+   mMounts.Changed += MountsChanged;
+   if (mClampPos != null &amp;&amp; AuType.ObjVersion &lt; 4 &amp;&amp; BMachine != null) {
+      // forward-migrate older clamp positions
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you bump a domain class in a way that changes the on-disk shape, you almost certainly need a <code>[PostLoad]</code> migration.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_threading_model">9. Threading model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux is predominantly <strong>single-threaded UI + opportunistic worker threads</strong>. The common patterns:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>UI thread.</strong> Owns the main window, all WPF, all Lux rendering. The vast majority of domain code runs here.</p>
+</li>
+<li>
+<p><strong>Worker tasks.</strong> Long operations (auto-tooler, full simulation, large imports) may be <code>Task.Run</code>'d, but their results must be marshalled back to the UI thread before mutating live state.</p>
+</li>
+<li>
+<p><strong>Static state.</strong> <code>Part.Current</code>, <code>Part.Active</code>, <code>BendMachine.Default</code>, and the <code>Hub</code> slots are static. Treat them as UI-thread-only unless documented otherwise.</p>
+</li>
+<li>
+<p><strong>Cancellation.</strong> Long-running operations check <code>Part.Flags &amp; Part.EFlags.AbortTooling</code> (see <code>BendTooler.DoTooling</code>)&#8201;&#8212;&#8201;there is no <code>CancellationToken</code> plumbing throughout.</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Practical rule:</strong> do not introduce <code>Task.Run</code> lightly. Most "concurrency bugs" in Flux are actually re-entrancy bugs (two property setters racing on the same domain object during user interaction).</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_undo_redo">10. Undo / redo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Src\Base\Undo\</code> provides the undo infrastructure:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each user-visible mutation is wrapped in an undo unit.</p>
+</li>
+<li>
+<p>Globs are the canonical place to register undos (the controller knows the user intent).</p>
+</li>
+<li>
+<p>A part&#8217;s undo stack is part-scoped&#8201;&#8212;&#8201;switching tabs switches stacks.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When you see code like <code>BA.Set (ref <em>field, value)</code>, the <code>BA</code> (an internal helper) is also responsible for change notification and undo bookkeeping. It is _not</em> a plain field assignment.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_errors_logging_and_fx">11. Errors, logging, and "FX"</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A small but pervasive utility class is <code>FX</code> (in <code>Flux.Base</code>). It wraps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FX.Out (EOut.Info, msgId, args)</code>&#8201;&#8212;&#8201;log output with a numeric message ID.</p>
+</li>
+<li>
+<p><code>FX.Notes</code>&#8201;&#8212;&#8201;a persistent settings store (key-value, used for "recent X").</p>
+</li>
+<li>
+<p><code>FX.Testing</code>&#8201;&#8212;&#8201;a global flag set when running under Flit.</p>
+</li>
+<li>
+<p><code>FX.LoadTestPart</code>, <code>FX.TestFile</code>, <code>FX.TmpTestFile</code>&#8201;&#8212;&#8201;test helpers.</p>
+</li>
+<li>
+<p><code>FX.CopyFields</code>&#8201;&#8212;&#8201;reflection-based shallow-copy helper used in shallow-copy constructors.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Two recurring exception types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CodingError</code>&#8201;&#8212;&#8201;internal invariant violation. Should never fire in production. Carries a numeric ID for grep-ability.</p>
+</li>
+<li>
+<p><code>EResult</code>&#8201;&#8212;&#8201;a result enum used by methods that can fail (<code>EResult.OK</code>, plus various failure modes). Preferred over throwing for predictable failure paths.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>Notes\Tech\2015.MessageIDs.ftx</code> documents the message-ID convention.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_configuration_flavors_and_feature_bits_at_runtime">12. Configuration, flavors, and feature bits at runtime</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Startup sequence (simplified):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Flux.exe</code> starts (entry in <code>Flux.App</code>).</p>
+</li>
+<li>
+<p>Reads <code>Flux.flavor</code> next to the EXE → picks a <code>EFlavor</code> value.</p>
+</li>
+<li>
+<p>Loads feature bits from the flavor (e.g. <code>Bend</code>, <code>Laser</code>, <code>Punch</code>, <code>Trumpf</code>).</p>
+</li>
+<li>
+<p>Validates licensing (Aegis or Trumpf WIBU/Sentinel, depending on flavor).</p>
+</li>
+<li>
+<p>Locates the data folder (<code>FLUXDATA</code> env var on dev machines, <code>C:\ProgramData\…</code> on installed flavors).</p>
+</li>
+<li>
+<p>Loads the wad (<code>FLUXWAD</code> env var or <code>Flux.wad</code> next to the EXE).</p>
+</li>
+<li>
+<p>Bootstraps <code>Hub</code> slots, opens the main window.</p>
+</li>
+<li>
+<p>Restores last-open documents (Engine flavor: skips UI bootstrap entirely).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Code paths to inspect:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Solution startup project: <code>Flux.App</code> → main entry typically named <code>App.cs</code> or similar.</p>
+</li>
+<li>
+<p><code>Notes\Tech\2013.FluxFlavors.ftx</code> for the feature-bit table.</p>
+</li>
+<li>
+<p><code>Notes\Tech\2009.FluxConfiguration.ftx</code> for configuration.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_cross_cutting_modules_at_a_glance">13. Cross-cutting modules at a glance</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Cross-cutting</th>
+<th class="tableblock halign-left valign-top">Where</th>
+<th class="tableblock halign-left valign-top">Touchpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Settings (Sheaf)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Settings\Sheaf.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Every domain object via <code>ISheafSite</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hub (DI)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Hub.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">App fills slots; Core/UI invoke them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rendering (Lux)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Lux\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Every <code>VModel.Draw()</code> method</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Undo\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Globs and <code>BA.Set</code> helper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Persistence (Au/Curl)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Gold\</code>, <code>Notes\Dev\1003.AuGoldEncoding.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All persisted models</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IO formats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\IO\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per-format Reader/Writer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Licensing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Lib\</code> (NuPkgs) + per-flavor wiring</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">App startup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux.wad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\Wad\</code> and Flux.wad zip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resource loader at startup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging / messages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FX.Out</code>, <code>Notes\Tech\2015.MessageIDs.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pervasive</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_14_the_architectures_three_pain_points_be_aware">14. The architecture&#8217;s three pain points (be aware)</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>The dual crash engines</strong> in Bend (<code>BendOpCrash.cs</code> vs. <code>NBendCrash.cs</code>)&#8201;&#8212;&#8201;both alive, both ~70 KB. A migration in flight; treat with care.</p>
+</li>
+<li>
+<p><strong><code>partial</code> classes spanning many files.</strong> <code>BendOp</code> (210 KB) is one example; <code>BendTech</code> and <code>Part</code> are similar. A <code>Grep</code> for a method name will lead you to the right partial&#8201;&#8212;&#8201;but the <em>whole</em> class lives across files.</p>
+</li>
+<li>
+<p><strong>Static singletons (<code>Part.Current</code>, <code>BendMachine.Default</code>, <code>Hub.</strong></code>).* These are not unit-testable in isolation. The Flit framework works around it by setting <code>BA.Testing = true</code> and substituting fixtures&#8201;&#8212;&#8201;<code>BendMachine.Default</code> returns machine 99 in test mode for that reason.</p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_15_self_check_questions">15. Self-check questions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After this chapter you should be able to answer all of these without looking back. If not, re-read the relevant section.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Why are model and VModel in the same assembly? <em>(§3)</em></p>
+</li>
+<li>
+<p>How does Core invoke a UI dialog without a project reference to UI? <em>(§6&#8201;&#8212;&#8201;Hub)</em></p>
+</li>
+<li>
+<p>What does <code>ISheafSite.SHParent</code> give you, in one sentence? <em>(§5)</em></p>
+</li>
+<li>
+<p>Where does <code>VModel.Draw()</code> actually draw to? <em>(§7)</em></p>
+</li>
+<li>
+<p>If a bug only appears on Trumpf machines, which two files are likely involved? <em>(§4 of chapter 02&#8201;&#8212;&#8201;<code>BendCalc</code> switch via <code>IsTrumpf</code>)</em></p>
+</li>
+<li>
+<p>How does the Engine flavor (no UI) avoid bootstrapping WPF? <em>(§6 + §12&#8201;&#8212;&#8201;null Hub slots, no main window)</em></p>
+</li>
+<li>
+<p>After deserializing an old <code>BendSetup</code>, how does it forward-migrate? <em>(§8&#8201;&#8212;&#8201;<code>[PostLoad]</code>)</em></p>
+</li>
+<li>
+<p>What happens when the user has multiple bends selected and edits one property? <em>(§4&#8201;&#8212;&#8201;composite Glob)</em></p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_16_reading_order_for_chapter_01">16. Reading order for chapter 01</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you&#8217;re reading these notes for the first time, do this in order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Notes\Dev\1002.BuildingFlux.ftx</code> lines 31&#8212;&#8203;95 (the architecture rationale).</p>
+</li>
+<li>
+<p><code>Src\Core\Hub.cs</code>&#8201;&#8212;&#8201;skim, see the slot pattern.</p>
+</li>
+<li>
+<p><code>Src\Core\Settings\Sheaf.cs</code> lines 1&#8212;&#8203;80&#8201;&#8212;&#8201;the cascade.</p>
+</li>
+<li>
+<p><code>Src\Base\Lux\VModel.cs</code> lines 1&#8212;&#8203;80&#8201;&#8212;&#8201;the render base.</p>
+</li>
+<li>
+<p><code>Src\Core\Part\Part.cs</code> lines 1&#8212;&#8203;80&#8201;&#8212;&#8201;the part aggregate.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>That&#8217;s about 30 minutes of focused reading and gives you the spine of the system.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_17_if_you_take_just_one_thing_from_this_chapter">17. If you take just one thing from this chapter</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Flux is built around a <code>Part</code> aggregate that owns multiple <code>*Tech</code> projections (BendTech, FoldTech, CutTech). Cross-cutting state is reached through <code>Hub</code> (DI) and <code>Sheaf</code> (settings). Rendering is <code>Lux</code>. Once you internalize those four words&#8201;&#8212;&#8201;Part, Tech, Hub, Sheaf&#8201;&#8212;&#8201;the whole codebase becomes navigable.</strong></p>
+</div>
+</blockquote>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. Verified against <code>Src\Core\Hub.cs</code>, <code>Src\Core\Settings\Sheaf.cs</code>, <code>Src\Base\Lux\VModel.cs</code>, <code>Src\Core\Part\Part.cs</code>, and Notes 1002/1003/1005/2013/2015.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_1_the_big_picture_in_three_diagrams">1. The big picture in three diagrams</a>
+  </li>
+  <li level="2">
+   <a href="#_1_1_static_module_dependencies">1.1 Static module dependencies</a>
+  </li>
+  <li level="2">
+   <a href="#_1_2_runtime_layers_a_single_flux_process">1.2 Runtime layers (a single Flux process)</a>
+  </li>
+  <li level="2">
+   <a href="#_1_3_pipeline_for_a_typical_cam_job">1.3 Pipeline for a typical CAM job</a>
+  </li>
+  <li level="1">
+   <a href="#_2_the_five_layers_explained">2. The five layers explained</a>
+  </li>
+  <li level="2">
+   <a href="#_2_1_flux_basefoundations">2.1 <code>Flux.Base</code>&#8201;&#8212;&#8201;foundations</a>
+  </li>
+  <li level="2">
+   <a href="#_2_2_flux_corethe_cam_engine">2.2 <code>Flux.Core</code>&#8201;&#8212;&#8201;the CAM engine</a>
+  </li>
+  <li level="2">
+   <a href="#_2_3_flux_uithe_controllers">2.3 <code>Flux.UI</code>&#8201;&#8212;&#8201;the controllers</a>
+  </li>
+  <li level="2">
+   <a href="#_2_4_flux_appthe_shell">2.4 <code>Flux.App</code>&#8201;&#8212;&#8201;the shell</a>
+  </li>
+  <li level="2">
+   <a href="#_2_5_flux_apithe_controlled_exposure">2.5 <code>Flux.API</code>&#8201;&#8212;&#8201;the controlled exposure</a>
+  </li>
+  <li level="1">
+   <a href="#_3_why_model_and_view_live_together">3. Why model and view live together</a>
+  </li>
+  <li level="1">
+   <a href="#_4_the_glob_systemcontrollers_in_detail">4. The Glob system&#8201;&#8212;&#8201;controllers in detail</a>
+  </li>
+  <li level="1">
+   <a href="#_5_the_sheafcascaded_settings_everywhere">5. The Sheaf&#8201;&#8212;&#8201;cascaded settings everywhere</a>
+  </li>
+  <li level="1">
+   <a href="#_6_the_hubwiring_layers_without_circular_dependencies">6. The Hub&#8201;&#8212;&#8201;wiring layers without circular dependencies</a>
+  </li>
+  <li level="1">
+   <a href="#_7_renderingthe_lux_pipeline">7. Rendering&#8201;&#8212;&#8201;the Lux pipeline</a>
+  </li>
+  <li level="2">
+   <a href="#_the_lifecycle_of_a_vmodel">The lifecycle of a VModel</a>
+  </li>
+  <li level="2">
+   <a href="#_why_this_matters_for_debugging">Why this matters for debugging</a>
+  </li>
+  <li level="1">
+   <a href="#_8_persistence_model">8. Persistence model</a>
+  </li>
+  <li level="2">
+   <a href="#_postloadthe_migration_hook"><code>[PostLoad]</code>&#8201;&#8212;&#8201;the migration hook</a>
+  </li>
+  <li level="1">
+   <a href="#_9_threading_model">9. Threading model</a>
+  </li>
+  <li level="1">
+   <a href="#_10_undo_redo">10. Undo / redo</a>
+  </li>
+  <li level="1">
+   <a href="#_11_errors_logging_and_fx">11. Errors, logging, and "FX"</a>
+  </li>
+  <li level="1">
+   <a href="#_12_configuration_flavors_and_feature_bits_at_runtime">12. Configuration, flavors, and feature bits at runtime</a>
+  </li>
+  <li level="1">
+   <a href="#_13_cross_cutting_modules_at_a_glance">13. Cross-cutting modules at a glance</a>
+  </li>
+  <li level="1">
+   <a href="#_14_the_architectures_three_pain_points_be_aware">14. The architecture&#8217;s three pain points (be aware)</a>
+  </li>
+  <li level="1">
+   <a href="#_15_self_check_questions">15. Self-check questions</a>
+  </li>
+  <li level="1">
+   <a href="#_16_reading_order_for_chapter_01">16. Reading order for chapter 01</a>
+  </li>
+  <li level="1">
+   <a href="#_17_if_you_take_just_one_thing_from_this_chapter">17. If you take just one thing from this chapter</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="00_welcome.html">Welcome & Repo Map</a></span>
+ <span class="next"><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

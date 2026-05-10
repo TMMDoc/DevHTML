@@ -1,0 +1,695 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>LaserAuto.cs Detailed Documentation</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Flux Workflow</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="../fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">Flux.Test</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a class="active" href="laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../technotes/folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../../technotes/data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../technotes/data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../../technotes/data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../technotes/machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Flux Workflow</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">Flux.Test</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="laserauto.html">LaserAuto.cs Detailed Documentation</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>LaserAuto.cs Detailed Documentation</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>LaserAuto.cs</code> contains regression and behavior tests for automatic laser tooling.</p>
+</div>
+<div class="paragraph">
+<p>General pattern in many tests:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>LoadPart(&#8230;&#8203;)</code></p>
+</li>
+<li>
+<p>Configure part/tech settings when needed</p>
+</li>
+<li>
+<p>Call <code>DoCutTooling(&#8230;&#8203;)</code> or layout code generation</p>
+</li>
+<li>
+<p>Validate with boolean assertions or text comparisons (<code>Assert.AreTextEqual</code>)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_detailed_test_coverage">Detailed Test Coverage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_group_a_baseline_and_layer_semantics">Group A: Baseline and Layer Semantics</h3>
+<div class="sect3">
+<h4 id="_test1_6147">Test1 (6147)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Performance timing on <code>ZuriTrimmed.geo</code>.
+<strong>Validation:</strong> <code>DoCutTooling</code> completes in under 8 seconds.
+<strong>Why it matters:</strong> Guards against performance regressions in a representative geometry.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test2_6149">Test2 (6149)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Mark-layer entity tooling in <code>MarkLayer.fx</code>.
+<strong>Validation:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mark-layer points are tooled as <code>PointCut</code> with pierce type <code>EPierce.Mark</code>.</p>
+</li>
+<li>
+<p>Mark-layer polylines remain <code>PlineCut</code> with marking enabled (<code>CC.IsMarking</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Why it matters:</strong> Prevents simplification rules from incorrectly converting mark polylines into pierce points.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test3_6156">Test3 (6156)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> GEO file containing point entities.
+<strong>Validation:</strong> Every <code>E2Point</code> is represented by a <code>PointCut</code> step.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test4_6174">Test4 (6174)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Layer-based behavior in <code>MarkLayer2.fx</code>.
+<strong>Validation:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Std</code> polyline cuts are not marking.</p>
+</li>
+<li>
+<p><code>Mark</code> polyline cuts are marking.</p>
+</li>
+<li>
+<p><code>Aux</code> entities are not allowed to be tooled.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test5_6175">Test5 (6175)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Approach markers from <code>AppMarkers.fx</code>.
+<strong>Validation:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PlineCut.ApproachBase</code> matches expected marker points.</p>
+</li>
+<li>
+<p>Marker-layer points are not tooled as <code>PointCut</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_group_b_text_marking_and_rule_parameter_sweeps">Group B: Text Marking and Rule Parameter Sweeps</h3>
+<div class="sect3">
+<h4 id="_test6_6206">Test6 (6206)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Automatic laser text placement with parameter sweep.
+<strong>Validation:</strong> For all combinations of orientation, horizontal alignment, vertical alignment, and multiple heights, generated <code>LaserText</code> placement/angle/text data matches <code>LaserText.txt</code>.
+<strong>Why it matters:</strong> Exhaustive regression net for text placement logic.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test24_9063">Test24 (9063)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Special macros in <code>TC_WRITE</code>.
+<strong>Validation:</strong> Generated code from a macro-based text rule matches <code>C41979.lst</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test25_9064">Test25 (9064)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> DataMatrix marking (<code>TC_LABEL_DMC</code>).
+<strong>Validation:</strong> Mixed variable/literal DataMatrix rules generate expected code (<code>C43021.lst</code>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test26_9065">Test26 (9065)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Grouping behavior for multiple text marks.
+<strong>Validation:</strong> Across orientation/alignment combinations and toggled grouping flags, dumped mark info matches <code>C43327.txt</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test27_9066">Test27 (9066)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Missing marking generation regression (<code>C43151</code>).
+<strong>Validation:</strong> Two related parts both generate expected mark outputs (<code>C43151.txt</code>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test28_9067">Test28 (9067)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Multiple marking output types.
+<strong>Validation:</strong> Output code supports/serializes expected mixed types (<code>TC_LABEL_DMC</code>, <code>TC_LABEL_Text</code>, <code>TC_WRITE</code>, <code>Geometry</code>) and matches <code>C44634.lst</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test31_9070">Test31 (9070)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Marking overlap issue with open polyline inner contours (<code>C45360</code>).
+<strong>Validation:</strong> Mark placement dump matches <code>C45360.txt</code> after applying varied mark rules.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_group_c_process_rules_contours_and_open_polyline_behavior">Group C: Process Rules, Contours, and Open Polyline Behavior</h3>
+<div class="sect3">
+<h4 id="_test7_6217">Test7 (6217)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> DXF with countersinks and material context.
+<strong>Validation:</strong> Trace output equals <code>CounterSink.txt</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test8_6218_and_test9_6219">Test8 (6218) and Test9 (6219)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Dashed lines in GEO files.
+<strong>Validation:</strong> No undesired approaches; trace outputs match <code>NoAppOnDashed*.txt</code> references.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test11_6312">Test11 (6312)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Open contour piercing behavior.
+<strong>Validation:</strong> Every <code>TraceCut</code> has a non-<code>None</code> pierce type.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test18_9005">Test18 (9005)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Pie slugout strategy selection.
+<strong>Validation:</strong> A non-inner-circular case does not use pie slugout.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test20_9034">Test20 (9034)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Open polylines processing mode.
+<strong>Validation:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mark-layer open polylines default to mark operation.</p>
+</li>
+<li>
+<p>Std-layer open polylines default to cut operation.</p>
+</li>
+<li>
+<p>Forced modes (<code>Cut</code>, <code>Mark</code>, <code>None</code>) override behavior as expected.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test30_9517">Test30 (9517)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> End optimization scope and interactions with finish rules.
+<strong>Validation:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>End optimization applies only to inner closed contours.</p>
+</li>
+<li>
+<p>Outer and open contours remain unoptimized.</p>
+</li>
+<li>
+<p>Settings (<code>AppAngle</code>, <code>AppRadius</code>) are correct for optimized and non-optimized paths.</p>
+</li>
+<li>
+<p>With pie strategy and finish rules enabled, optimized contour count and approach defaults remain correct.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test32_13517">Test32 (13517)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Cavity cut generation level.
+<strong>Validation:</strong> Cavity cuts are produced at part level, ordering is deterministic, and first two cut ranges match <code>C45774.txt</code>.
+<strong>Special note:</strong> Uses <code>try/finally</code> to restore global experimental flag.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_group_d_layer_filtering_import_semantics_and_geometry_selection">Group D: Layer Filtering, Import Semantics, and Geometry Selection</h3>
+<div class="sect3">
+<h4 id="_test10_6263">Test10 (6263)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Info-layer geometry handling.
+<strong>Validation:</strong> Tooling excludes info-layer geometry (only one step remains).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test12_6317">Test12 (6317)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Point-on-polyline skipping policy.
+<strong>Validation:</strong> With default config, one point entity is tooled; with <code>PointEntitiesToSkip = All</code>, point tooling is removed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test13_6318">Test13 (6318)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Form footprint marking.
+<strong>Validation:</strong> Enabling <code>MarkFormingFootprint</code> increases marking step count.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test14_2556">Test14 (2556)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Outer geometry detection when one outline is smaller than a hole.
+<strong>Validation:</strong> <code>OuterPlines</code> count equals 2.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test16_6387">Test16 (6387)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Red geometry in GEO used for nesting when no closed polyline exists.
+<strong>Validation:</strong> Standard outer polylines are discovered.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test16b_6448">Test16B (6448)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Handling red polylines when standard closed geometry exists.
+<strong>Validation:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>One polyline is assigned to <code>Aux</code>.</p>
+</li>
+<li>
+<p>Tooling completes successfully.</p>
+</li>
+<li>
+<p>At least one outer closed standard <code>LaserPathCut</code> exists.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test19_9009">Test19 (9009)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Import setting for text entities (<code>TextProcess</code>).
+<strong>Validation:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>None</code> maps imported texts to <code>Info</code> layer.</p>
+</li>
+<li>
+<p><code>Mark</code> maps imported texts to <code>Mark</code> layer.</p>
+</li>
+<li>
+<p>Setting restored to <code>ByLayer</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test22_9059">Test22 (9059)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> GEO reader and <code>PROCESS_SIDE = BOTTOM</code>.
+<strong>Validation:</strong> Entities are flagged <code>SkipLaserTooling</code> and excluded from final tooling (single step remains).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test29_17518">Test29 (17518)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Blue contour handling in GEO.
+<strong>Validation:</strong> Blue entities may exist in drawing, but none appear in generated tooling steps.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_group_e_layout_code_generation_and_special_regressions">Group E: Layout, Code Generation, and Special Regressions</h3>
+<div class="sect3">
+<h4 id="_test15_6376">Test15 (6376)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Conversion of point operations when thickness changes.
+<strong>Validation:</strong> Reducing thickness from 8 to 1 mm converts previously pierce-only point operations into path-cut operations (no <code>PointCut</code> remains).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test17_2564">Test17 (2564)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Pre-cutting exception regression (<code>C32519</code>).
+<strong>Validation:</strong> With sheared-sheet enabled, tooling traces match <code>C32519.txt</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test21_9036">Test21 (9036)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Condition selection by area under sheet slicing.
+<strong>Validation:</strong> All generated <code>SliceCut</code> operations use condition ID 1.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test23_9061">Test23 (9061)</h4>
+<div class="paragraph">
+<p><strong>Scenario:</strong> Performance/robustness for saw-blade-like geometry (<code>C39426</code>).
+<strong>Validation:</strong> Generated code equals <code>C39426.lst</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_helper_methods_and_their_roles">Helper Methods and Their Roles</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_filepathstring_filename"><code>FilePath(string fileName)</code></h3>
+<div class="paragraph">
+<p>Builds path to fixture data under <code>Laser\\Auto\\</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dumpmarkinfostringbuilder_sb_flattech_tech"><code>DumpMarkInfo(StringBuilder sb, FlatTech tech)</code></h3>
+<div class="paragraph">
+<p>Serializes each <code>LaserText</code> step into deterministic text lines including text value, height, position, angle, and DataMatrix flag.
+Used by tests that verify marking placement/output stability.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_loadpartstring_file"><code>LoadPart(string file)</code></h3>
+<div class="paragraph">
+<p>Loads a part from test data path.
+Centralizes input loading and keeps tests concise.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testtoolingflattech_tech_string_reffile"><code>TestTooling(FlatTech tech, string refFile)</code></h3>
+<div class="paragraph">
+<p>Collects <code>TraceCut.Trace0</code> curl representation into text and compares with golden file.
+Used for compact regression checks where full object assertions are unnecessary.</p>
+</div>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_detailed_test_coverage">Detailed Test Coverage</a>
+  </li>
+  <li level="2">
+   <a href="#_group_a_baseline_and_layer_semantics">Group A: Baseline and Layer Semantics</a>
+  </li>
+  <li level="2">
+   <a href="#_group_b_text_marking_and_rule_parameter_sweeps">Group B: Text Marking and Rule Parameter Sweeps</a>
+  </li>
+  <li level="2">
+   <a href="#_group_c_process_rules_contours_and_open_polyline_behavior">Group C: Process Rules, Contours, and Open Polyline Behavior</a>
+  </li>
+  <li level="2">
+   <a href="#_group_d_layer_filtering_import_semantics_and_geometry_selection">Group D: Layer Filtering, Import Semantics, and Geometry Selection</a>
+  </li>
+  <li level="2">
+   <a href="#_group_e_layout_code_generation_and_special_regressions">Group E: Layout, Code Generation, and Special Regressions</a>
+  </li>
+  <li level="1">
+   <a href="#_helper_methods_and_their_roles">Helper Methods and Their Roles</a>
+  </li>
+  <li level="2">
+   <a href="#_filepathstring_filename"><code>FilePath(string fileName)</code></a>
+  </li>
+  <li level="2">
+   <a href="#_dumpmarkinfostringbuilder_sb_flattech_tech"><code>DumpMarkInfo(StringBuilder sb, FlatTech tech)</code></a>
+  </li>
+  <li level="2">
+   <a href="#_loadpartstring_file"><code>LoadPart(string file)</code></a>
+  </li>
+  <li level="2">
+   <a href="#_testtoolingflattech_tech_string_reffile"><code>TestTooling(FlatTech tech, string refFile)</code></a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="basicbendauto.html">BasicBendAuto Test</a></span>
+ <span class="next"><a href="test1.html">Laserexample:Test1</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    
+</body>
+</html>

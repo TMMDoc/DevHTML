@@ -1,0 +1,816 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Guided Code Tours</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a class="active" href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="07_guided_code_tours.html">Guided Code Tours</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Guided Code Tours</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Goal:</strong> seven structured, time-boxed reading walks through the most important Flux flows. Each tour starts at a precise file and line, has named stops, and ends with a question to confirm understanding. Every tour is doable read-only&#8201;&#8212;&#8201;you do not need to compile or run anything.</p>
+</div>
+<div class="paragraph">
+<p><strong>Use this when:</strong> you want to build mental scaffolding for an unfamiliar area in 15&#8212;&#8203;20 minutes flat.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_use_these_tours">How to use these tours</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Open exactly the files named.</strong> Don&#8217;t wander; you can always do a second pass.</p>
+</li>
+<li>
+<p><strong>Don&#8217;t read the whole file.</strong> Stop at the named lines.</p>
+</li>
+<li>
+<p><strong>At each stop, write one sentence</strong> in your own words about what you just read. If you can&#8217;t, re-read.</p>
+</li>
+<li>
+<p><strong>End with the self-check question.</strong> If you can&#8217;t answer, redo the last stop.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_afrom_cad_import_to_bend_sequence_20_min">Tour A&#8201;&#8212;&#8201;From CAD import to bend sequence (20 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> You opened a 3D model. Click "Bend Auto-Tool". What just happened?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Open</th>
+<th class="tableblock halign-left valign-top">Read</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\IO\GeoReader.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 60 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The entry point that parses a <code>.geo</code> file into a <code>Part</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Part\Part.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 22&#8212;&#8203;80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Part</code> properties: <code>Model</code>, <code>Dwg</code>, <code>BendTech</code>, <code>FoldTech</code>, <code>CutTech</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendTech.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 19&#8212;&#8203;120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>BendTech</code> constructor&#8201;&#8212;&#8201;group flexes, split hem phases, build BendOps.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\Ops\BendTooler.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 16&#8212;&#8203;80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>BendTooler</code> constructor + <code>DoTooling</code> skeleton.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendSetup.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 46&#8212;&#8203;62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>Dump</code> method&#8201;&#8212;&#8201;the test contract.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> in three sentences, describe how a <code>.geo</code> file becomes a <code>BendTech</code> with N <code>BendOp</code>s and one or more <code>BendSetup</code>s. Where would you set a breakpoint to inspect the <em>initial</em> (pre-tooler) sequence?</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_bthe_glob_system_in_action_15_min">Tour B&#8201;&#8212;&#8201;The Glob system in action (15 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> Why does selecting a bend in the UI show a properties panel?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Open</th>
+<th class="tableblock halign-left valign-top">Read</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\UI\Bend\BendOpUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 1&#8212;&#8203;60</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>BendOpGlob</code> declaration: <code>[Glob (Draw = true, Mouse = EMouse.LDown)]</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\UI\Bend\BendOpUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 21&#8212;&#8203;55</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>AddRegrip</code> static method&#8201;&#8212;&#8201;composite command shaping.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\UI\Bend\BendOpUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">line 661</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>BendOpsGlob</code> (multi-select composite) declaration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\UI\Glob.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 80 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The base <code>Glob</code> class itself.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> when the user selects three bends, what class wraps them? Where does it decide which properties are shown?</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_crendering_pipeline_15_min">Tour C&#8201;&#8212;&#8201;Rendering pipeline (15 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> Where does the screen get its pixels from?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Open</th>
+<th class="tableblock halign-left valign-top">Read</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Lux\VModel.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 1&#8212;&#8203;80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VModel</code> base, <code>Id</code>, <code>Nodes</code>, <code>Scene</code>, <code>Obj</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendVM.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 1&#8212;&#8203;80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMountVM.Draw()</code>&#8201;&#8212;&#8201;how a tool mount becomes geometry.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Lux\Lux.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 60 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The static <code>Lux.DrawMesh</code>, <code>Lux.Layer</code>, <code>Lux.Mood</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Base\Lux\Scene.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 60 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The scene graph that holds live <code>VModel</code>s.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> if the bend setup <em>renders</em> incorrectly, name the <em>one</em> method you would put a breakpoint on first.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_da_test_end_to_end_15_min">Tour D&#8201;&#8212;&#8201;A test, end-to-end (15 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> Tests are documentation. Read one carefully.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Open</th>
+<th class="tableblock halign-left valign-top">Read</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\Bend\BasicBendAuto.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">full file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A textbook fixture with one helper.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\TData\Bend\Auto\Bend_04.geo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(just the filename)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A binary input&#8201;&#8212;&#8201;confirm it exists.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\TData\Bend\Auto\Bend_04.txt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">full file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The golden file.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendSetup.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Dump</code> method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What writes the lines you just read.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> if test 82 fails after a code change, what&#8217;s the first thing you compare?</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_epersistence_au_load_migration_15_min">Tour E&#8201;&#8212;&#8201;Persistence (Au load + migration) (15 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> How does Flux load yesterday&#8217;s file with today&#8217;s classes?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Open</th>
+<th class="tableblock halign-left valign-top">Read</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Dev\1003.AuGoldEncoding.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 80 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Au binary format.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendSetup.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 64&#8212;&#8203;76</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A real <code>[PostLoad]</code> migration handling clamp positions and blade sensors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2007.CurlFiles.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 60 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Curl text format and its grammar.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\Data\Machine\13\Machine.curl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 30 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A real Curl file&#8201;&#8212;&#8201;the test machine.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> if you change a property&#8217;s type on <code>BendOp</code>, what do you write <em>and</em> in which file?</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_fa_real_bug_fix_in_the_wild_20_min">Tour F&#8201;&#8212;&#8201;A real bug fix in the wild (20 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> Watch how a bug is fixed in this codebase.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Command / Open</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run <code>git show 4a5119dcb</code> (or look up its diff)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Case 45728: Changing the suction cup state no longer deletes adjusted waypoints."</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identify which files were touched</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The blast radius of the change.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For each file, read 30 lines around the change</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <em>why</em> of the change.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find the test that locks it in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usually a new <code>[Test]</code> or amended fixture.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> describe in one paragraph what behavior was broken, what change fixed it, and what test now guards it.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_gsettings_cascade_sheaf_10_min">Tour G&#8201;&#8212;&#8201;Settings cascade (Sheaf) (10 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> Why does a setting "live" at the right level?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Open</th>
+<th class="tableblock halign-left valign-top">Read</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Settings\Sheaf.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 21&#8212;&#8203;80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>ISheafSite</code> contract and helpers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendOp.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">first 40 lines + the <code>BendSpeed</code> property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A <code>BendOp</code> resolving <code>Settings.RamVBend</code> through its parent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendMachine.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 80 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The machine-level settings.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> if you set <code>RamVBend = 50</code> on a single op, does it affect future ops? On the machine, does it affect future techs?</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tour_hlayer_dependencies_and_the_hub_10_min">Tour H&#8201;&#8212;&#8201;Layer dependencies and the Hub (10 min)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Premise.</strong> How does Core call back into App without a project reference?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Step</th>
+<th class="tableblock halign-left valign-top">Open</th>
+<th class="tableblock halign-left valign-top">Read</th>
+<th class="tableblock halign-left valign-top">What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Hub.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top 80 lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The slot pattern: static <code>Func&lt;&gt;</code>/<code>Action&lt;&gt;</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Dev\1002.BuildingFlux.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lines 31&#8212;&#8203;95</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The architectural decision behind the Hub.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search the codebase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hub.ClosePartByJobID?.Invoke</code> (or any other slot)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Real call sites.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Self-check:</strong> in headless (Engine flavor) mode, what happens when <code>Hub.BigChooser?.Invoke (...)</code> is called?</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_read_these_tours_productively">How to read these tours productively</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Time-box each tour</strong> to its target. Going long means you&#8217;re trying to memorize, not understand.</p>
+</li>
+<li>
+<p><strong>Repeat tours weekly</strong> for the first month. The same tour reveals more on the second pass.</p>
+</li>
+<li>
+<p><strong>Make your own notes.</strong> Three lines per tour is plenty.</p>
+</li>
+<li>
+<p><strong>Discuss with your buddy.</strong> Each tour ends with a question&#8201;&#8212;&#8201;answer it out loud.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_a_gentle_calendar_for_the_first_three_weeks">A gentle calendar for the first three weeks</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Week</th>
+<th class="tableblock halign-left valign-top">Tours to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A, D, G&#8201;&#8212;&#8201;the spine: import-to-bend, a test, and the Sheaf cascade.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>2</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B, C, E&#8201;&#8212;&#8201;Glob, rendering, persistence.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F, H&#8201;&#8212;&#8201;bug fix in the wild, layer wiring.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>By the end of week 3 you&#8217;ve internalized the full reading vocabulary of the codebase.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. All file paths and line numbers verified against the current tree.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_how_to_use_these_tours">How to use these tours</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_afrom_cad_import_to_bend_sequence_20_min">Tour A&#8201;&#8212;&#8201;From CAD import to bend sequence (20 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_bthe_glob_system_in_action_15_min">Tour B&#8201;&#8212;&#8201;The Glob system in action (15 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_crendering_pipeline_15_min">Tour C&#8201;&#8212;&#8201;Rendering pipeline (15 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_da_test_end_to_end_15_min">Tour D&#8201;&#8212;&#8201;A test, end-to-end (15 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_epersistence_au_load_migration_15_min">Tour E&#8201;&#8212;&#8201;Persistence (Au load + migration) (15 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_fa_real_bug_fix_in_the_wild_20_min">Tour F&#8201;&#8212;&#8201;A real bug fix in the wild (20 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_gsettings_cascade_sheaf_10_min">Tour G&#8201;&#8212;&#8201;Settings cascade (Sheaf) (10 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_tour_hlayer_dependencies_and_the_hub_10_min">Tour H&#8201;&#8212;&#8201;Layer dependencies and the Hub (10 min)</a>
+  </li>
+  <li level="1">
+   <a href="#_how_to_read_these_tours_productively">How to read these tours productively</a>
+  </li>
+  <li level="1">
+   <a href="#_a_gentle_calendar_for_the_first_three_weeks">A gentle calendar for the first three weeks</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></span>
+ <span class="next"><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    
+</body>
+</html>

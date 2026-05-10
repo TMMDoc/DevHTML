@@ -1,0 +1,715 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>BasicBendAuto Test</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Flux Workflow</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="../fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">Flux.Test</a>
+     <ul>
+      <li><button class="tree blank"></button><a class="active" href="basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../technotes/folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../technotes/data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../../technotes/data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../../technotes/data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../../technotes/data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../../technotes/data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../technotes/machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Flux Workflow</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">Flux.Test</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="basicbendauto.html">BasicBendAuto Test</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>BasicBendAuto Test</h1>
+<div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document describes the <code>BasicBendAuto</code> test fixture and its helper methods from <code>Test/Bend/BasicBendAuto.cs</code>. It explains the purpose of each line in the main class and the associated static helpers used by the tests.</p>
+</div>
+<div class="paragraph">
+<p>Test data is in X:\TData\Bend\Auto</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+open the .geo file and the dump file and compare the results
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_source_snippet_context">Source snippet (context)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">namespace Flit;
+#nullable enable
+
+[TestFixture (4, "Basic bend auto-tooler tests", Module = "Bend", Subsystem = "AutoTool")]
+class BasicBendAuto {
+   [Test (82, "Tooling basic part: Bend_04.geo")]
+   void Test1 () =&gt; Test ("Bend/Auto/Bend_04.geo");
+
+   [Test (84, "Tooling basic part: Bend_01.geo")]
+   void Test3 () =&gt; Test ("Bend/Auto/Bend_01.geo");
+
+   [Test (85, "Tooling basic part: Bend_02_1000.geo")]
+   void Test4 () =&gt; Test ("Bend/Auto/Bend_02_1000.geo");
+
+...
+
+   public static Part Test (string file, int idMachine = 13, bool infiniteInventory = true,
+      bool ignoreToolHints = false, string? outfile = null,
+      EDoFlags flags = EDoFlags.NoGAPAdjust, string? btools = null,
+      bool openForEditing = false) {
+      Part part = FX.LoadTestPart (file);
+      if (part.Model == null) part.DoFoldTo3D ().Is (EResult.OK);
+      BendTech.Make (part, BendMachine.Get (idMachine)).Is (EResult.OK);
+      var tech = part.BendTech;
+      if (tech.Inventory == tech.BMachine.Inventory)
+         tech.Inventory = BToolLibrary.Get (1).MakeTestInventory (2);
+      tech.Settings.InfiniteBInventory = infiniteInventory;
+      tech.Settings.IgnoreBToolHints = ignoreToolHints;
+      if (btools != null) tech.Inventory = BToolList.Load (FX.TestFile (btools));
+      BendTooler.Process (part.BendTech, flags);
+      outfile = outfile == null ? Path.ChangeExtension (file, ".txt") : FX.TestFile (outfile);
+      if (openForEditing) part.OpenForEditing ();
+      CheckDump (tech, outfile);
+      return part;
+   }
+
+   public static void CheckDump (BendTech tech, string refFile) {
+      string file = FX.TmpTestFile;
+      refFile = FX.TestFile (refFile);
+      using (StreamWriter sw = new (file)) tech.Dump (sw);
+      Assert.AreTextFilesEqual (refFile, file);
+   }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_line_by_line_explanation">Line-by-line explanation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Below each numbered line or small group of lines from the main class is explained. The explanations focus on intent, side effects, and interactions with test infrastructure.</p>
+</div>
+<div class="ulist">
+<div class="title">1: <code>namespace Flit;</code></div>
+<ul>
+<li>
+<p>Declares the <code>Flit</code> namespace for the file. Groups related types and avoids global name collisions.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">3-4: <code>[TestFixture (4, "Basic bend auto-tooler tests", Module = "Bend", Subsystem = "AutoTool")]</code></div>
+<ul>
+<li>
+<p>Applies a test-framework attribute marking the <code>BasicBendAuto</code> class as a test fixture.</p>
+</li>
+<li>
+<p>The parameters (e.g., <code>4</code>, description, <code>Module</code>, <code>Subsystem</code>) are metadata used by the project&#8217;s test runner to categorize and identify the fixture.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">5: <code>class BasicBendAuto {</code></div>
+<ul>
+<li>
+<p>Begins the definition of the test fixture class named <code>BasicBendAuto</code>. Contains test methods and helpers.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">6: `   [Test (82, "Tooling basic part: Bend_04.geo")]`</div>
+<ul>
+<li>
+<p>Attribute marking the next method as a test case.</p>
+</li>
+<li>
+<p>First parameter <code>82</code> is the test id used by the project&#8217;s test harness; the string describes the test.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">7: `   void Test1 () &#8658; Test ("Bend/Auto/Bend_04.geo");`</div>
+<ul>
+<li>
+<p>Single-line test method using expression-bodied syntax.</p>
+</li>
+<li>
+<p>Calls the static helper <code>Test(&#8230;&#8203;)</code> to run tooling on the indicated test file.</p>
+</li>
+<li>
+<p>Keeps the test method minimal; all heavy lifting delegated to <code>Test</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(Tests 2–n follow the same pattern: attribute with id and description, and a one-line method calling <code>Test</code> with a file path.)
+- Each test method pairs an id + description attribute with a minimal body that invokes the shared <code>Test</code> helper. This avoids duplicating setup and verification logic across tests.</p>
+</div>
+<div class="ulist">
+<div class="title">21-40: <code>public static Part Test (string file, int idMachine = 13, bool infiniteInventory = true, bool ignoreToolHints = false, string? outfile = null, EDoFlags flags = EDoFlags.NoGAPAdjust, string? btools = null, bool openForEditing = false) {</code></div>
+<ul>
+<li>
+<p>Declares a public static helper method used by all the test methods.</p>
+</li>
+<li>
+<p>Parameters:</p>
+</li>
+<li>
+<p><code>file</code>: relative path to the test input file (DXF/.geo/.fx, etc.).</p>
+</li>
+<li>
+<p><code>idMachine</code>: machine id to use (default <code>13</code>).</p>
+</li>
+<li>
+<p><code>infiniteInventory</code>: if <code>true</code>, simulate unlimited tools in inventory (default <code>true</code>).</p>
+</li>
+<li>
+<p><code>ignoreToolHints</code>: if <code>true</code>, ignore hints embedded in the model about tooling.</p>
+</li>
+<li>
+<p><code>outfile</code>: optional expected output file path (if null, derived from input filename).</p>
+</li>
+<li>
+<p><code>flags</code>: processing flags controlling pre-processing/accuracy; default is <code>EDoFlags.NoGAPAdjust</code>.</p>
+</li>
+<li>
+<p><code>btools</code>: optional override tool-list file.</p>
+</li>
+<li>
+<p><code>openForEditing</code>: if true, leaves the part open for manual inspection.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">41: `      Part part = FX.LoadTestPart (file);`</div>
+<ul>
+<li>
+<p>Loads the test part from the provided <code>file</code> using a test helper <code>FX.LoadTestPart</code>.</p>
+</li>
+<li>
+<p>Returns a domain <code>Part</code> object representing the model to test.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">42: `      if (part.Model == null) part.DoFoldTo3D ().Is (EResult.OK);`</div>
+<ul>
+<li>
+<p>If the loaded <code>Part</code> does not already have a 3D model, call <code>DoFoldTo3D()</code> to generate/fold it.</p>
+</li>
+<li>
+<p>The <code>.Is(EResult.OK)</code> call asserts the result equals <code>EResult.OK</code> — a lightweight assertion idiom in this codebase.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">43: `      BendTech.Make (part, BendMachine.Get (idMachine)).Is (EResult.OK);`</div>
+<ul>
+<li>
+<p>Constructs or computes <code>BendTech</code> for the <code>part</code> targeting the machine returned by <code>BendMachine.Get(idMachine)</code>.</p>
+</li>
+<li>
+<p><code>.Is(EResult.OK)</code> asserts the operation succeeded. <code>BendTech.Make</code> prepares tooling, stations, and other bend-specific data.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">44: `      var tech = part.BendTech;`</div>
+<ul>
+<li>
+<p>Short local to hold the computed <code>BendTech</code> object for convenient access in subsequent steps.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">45-46: `      if (tech.Inventory == tech.BMachine.Inventory) tech.Inventory = BToolLibrary.Get (1).MakeTestInventory (2);`</div>
+<ul>
+<li>
+<p>Ensures the <code>BendTech</code> has a testable inventory distinct from the machine default:</p>
+</li>
+<li>
+<p>If the <code>tech.Inventory</code> references the machine&#8217;s default inventory, replace it with a test inventory created from <code>BToolLibrary.Get(1)</code>.</p>
+</li>
+<li>
+<p><code>MakeTestInventory(2)</code> likely creates a small inventory with 2 copies or 2 sets for deterministic testing.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">47: `      tech.Settings.InfiniteBInventory = infiniteInventory;`</div>
+<ul>
+<li>
+<p>Sets a boolean testing setting on the <code>BendTech</code> to simulate unlimited stock of tools when <code>true</code>. Useful to avoid inventory-limited failures during tests.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">48: `      tech.Settings.IgnoreBToolHints = ignoreToolHints;`</div>
+<ul>
+<li>
+<p>Controls whether tooling hints embedded in the model are honored. When <code>true</code>, hints are ignored so the auto-tooler decides without model-supplied recommendations.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">49: `      if (btools != null) tech.Inventory = BToolList.Load (FX.TestFile (btools));`</div>
+<ul>
+<li>
+<p>If the test specified a <code>btools</code> path, load that tool list and use it as the <code>tech.Inventory</code>, overriding prior inventory adjustments.</p>
+</li>
+<li>
+<p><code>FX.TestFile</code> converts a logical test file path to a filesystem path.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">50: `      BendTooler.Process (part.BendTech, flags);`</div>
+<ul>
+<li>
+<p>Runs the core auto-tooling algorithm <code>BendTooler.Process</code> on the prepared <code>BendTech</code>.</p>
+</li>
+<li>
+<p><code>flags</code> controls behavior such as alignment, gap adjustments, and other processing nuances.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">51: `      outfile = outfile == null ? Path.ChangeExtension (file, ".txt") : FX.TestFile (outfile);`</div>
+<ul>
+<li>
+<p>Determine the expected output reference file:</p>
+</li>
+<li>
+<p>If <code>outfile</code> was not provided, derive it by replacing the input file extension with <code>.txt</code> (e.g., <code>Bend_04.geo</code> &#8594; <code>Bend_04.txt</code>).</p>
+</li>
+<li>
+<p>If <code>outfile</code> was provided, convert it to the actual test reference path using <code>FX.TestFile</code>.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">52: `      if (openForEditing) part.OpenForEditing ();`</div>
+<ul>
+<li>
+<p>If <code>openForEditing</code> is true, open the resulting <code>Part</code> in an editor or UI for manual inspection (useful for debugging failing tests).</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">53: `      CheckDump (tech, outfile);`</div>
+<ul>
+<li>
+<p>Call <code>CheckDump</code> to serialize the <code>BendTech</code> to a temporary file and compare it to the reference <code>outfile</code>.</p>
+</li>
+<li>
+<p>This is the primary assertion: produced tooling dump must match the expected text dump.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">54: `      return part;`</div>
+<ul>
+<li>
+<p>Return the <code>Part</code> instance so callers/tests can make further checks if needed.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">55: `   }`</div>
+<ul>
+<li>
+<p>End of <code>Test</code> method.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">56: `   public static void CheckDump (BendTech tech, string refFile) {`</div>
+<ul>
+<li>
+<p>Declare a helper that writes the current tooling state to a temporary file and compares it with a reference text file.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">57: `      string file = FX.TmpTestFile;`</div>
+<ul>
+<li>
+<p>Acquire a temporary file path from test helper <code>FX.TmpTestFile</code> to hold the dump output.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">58: `      refFile = FX.TestFile (refFile);`</div>
+<ul>
+<li>
+<p>Resolve the provided <code>refFile</code> logical path to an absolute test-file path used for comparison.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">59: `      using (StreamWriter sw = new (file)) tech.Dump (sw);`</div>
+<ul>
+<li>
+<p>Open a <code>StreamWriter</code> to the temp file and call <code>tech.Dump(sw)</code> to serialize the <code>BendTech</code> contents (tools, stations, sequence, settings) to text.</p>
+</li>
+<li>
+<p><code>using</code> ensures the writer (and file descriptor) is disposed/closed.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">60: `      Assert.AreTextFilesEqual (refFile, file);`</div>
+<ul>
+<li>
+<p>Compare the reference file and produced temp file text content via the project&#8217;s <code>Assert.AreTextFilesEqual</code> helper.</p>
+</li>
+<li>
+<p>If they differ, the test fails and the diff indicates tooling/regression.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">61: `   }`</div>
+<ul>
+<li>
+<p>End of <code>CheckDump</code> method.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">62: <code>}</code></div>
+<ul>
+<li>
+<p>End of <code>BasicBendAuto</code> class.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_dump_from_geo04_txt">Example dump from GEO04.txt</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>Matl=1.0038  Thick=2  MC=13:"5130X 6A B23"</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4, 2, 8, 6</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>'OW202/S R1/28 H220'  [500+30]  X=0
+'EV005 W16/30 R1.6'  [500+30]  X=0</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Open=110
+G1  (-308,54,-8)  Surf=4
+G2  (267,70,-8)  Surf=1
+Status=RotateR</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Open=110  HBox=101
+G1  (-308,54,-8)  Surf=4
+G2  (267,70,-8)  Surf=1
+Status=RotateR</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Open=110  HBox=101
+G1  (-308,54,-8)  Surf=4
+G2  (267,70,-8)  Surf=1
+Status=RotateR</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Open=110  HBox=101
+G1  (-308,54,-8)  Surf=4
+G2  (267,70,-8)  Surf=1
+Status=OK</pre>
+</div>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_overview">Overview</a>
+  </li>
+  <li level="1">
+   <a href="#_source_snippet_context">Source snippet (context)</a>
+  </li>
+  <li level="1">
+   <a href="#_line_by_line_explanation">Line-by-line explanation</a>
+  </li>
+  <li level="1">
+   <a href="#_example_dump_from_geo04_txt">Example dump from GEO04.txt</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="index.html">Flux.Test</a></span>
+ <span class="next"><a href="laserauto.html">LaserAuto.cs Detailed Documentation</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

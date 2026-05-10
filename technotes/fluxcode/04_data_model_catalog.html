@@ -1,0 +1,1115 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Data Model Catalog</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a class="active" href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="04_data_model_catalog.html">Data Model Catalog</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Data Model Catalog</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Goal:</strong> know the shape of the most important persisted data classes in Flux&#8201;&#8212;&#8201;what they are, how they relate, how they serialize, and where the migration hooks live. Reading time: 45 minutes.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_the_five_layers_of_data">1. The five layers of data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux&#8217;s data model has five conceptual layers. The same <code>Pline</code> may appear in all of them, but the <em>role</em> changes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>1. Geometric primitives          Pline, Vector2/3, Point2/3, Matrix3, Mesh3
+                                 ────────────────────────────────────────────
+2. Drawing entities              E2*: Line, Arc, Circle, Spline, Bendline, Profile
+                                 ────────────────────────────────────────────
+3. 3D model entities             E3*: Plane, Flex, Patch, Thick, Forming
+                                 ────────────────────────────────────────────
+4. Tech projections (per-domain) BendTech, FoldTech, FlatTech, PunchTech
+                                 │   contains:   *Op   *Setup   *Mount   *Tool
+                                 ────────────────────────────────────────────
+5. Top-level aggregate           Part   (one job)
+                                 Job    (several parts on a sheet, for nesting)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Layers 1&#8212;&#8203;3 are <em>what the part is</em>. Layer 4 is <em>what we will do to the part</em>. Layer 5 binds them.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_layer_1geometric_primitives_flux_base">2. Layer 1&#8201;&#8212;&#8201;Geometric primitives (Flux.Base)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2_1_plinethe_workhorse">2.1 <code>Pline</code>&#8201;&#8212;&#8201;the workhorse</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Base\Pline\</code> and <code>Src\Base\Geo\Profile.cs</code>.
+<strong>What:</strong> an immutable polyline (vertices + segment-type info). Used for cross-sections, tool outlines, bend spines, cut profiles, you name it.
+<strong>Persistence:</strong> Au-serializable. Preserves arc segments (not just point sequences).
+<strong>Notes:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Pline</code> is the <em>single</em> polyline type&#8201;&#8212;&#8201;there is no separate "polygon" or "outline" class.</p>
+</li>
+<li>
+<p>Many algorithms in <code>Flux.Base\Geo</code> operate on <code>Pline</code> (offsets, sorts, intersections, fillets).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_mesh3triangle_mesh">2.2 <code>Mesh3</code>&#8201;&#8212;&#8201;triangle mesh</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Base\Mesh\</code>.
+<strong>Persistence:</strong> binary inside Au; STL via <code>Src\Core\IO\STLModel.cs</code>.
+<strong>Used by:</strong> machine <code>.mech</code> files, tool meshes, render.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_3_vector_matrix_family">2.3 Vector / Matrix family</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Base\Geo\Point.cs</code>, <code>Vector.cs</code>, <code>Matrix.cs</code>.
+<strong>Concrete types:</strong> <code>Point2</code>, <code>Point3</code>, <code>Vector2</code>, <code>Vector3</code>, <code>Matrix3</code>, <code>Matrix3f</code>, value-typed.
+<strong>Notes:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All units are <strong>mm</strong> unless explicitly stated otherwise.</p>
+</li>
+<li>
+<p>Angles are stored in <strong>radians</strong> internally (<code>Geo.PI</code>, <code>Geo.HalfPI</code>, <code>Geo.QuarterPI</code>); conversions via <code>.D2R()</code> / <code>.R2D()</code> extension methods.</p>
+</li>
+<li>
+<p>Float-vs-double choice is not arbitrary&#8201;&#8212;&#8201;<code>Point3f</code> for render-bound, <code>Point3</code> for compute-bound.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_4_constants_and_helpers">2.4 Constants and helpers</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Base\Geo\Geo.cs</code> (64 KB).
+<strong>Highlights:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Geo.PI</code>, <code>Geo.HalfPI</code>, <code>Geo.QuarterPI</code>&#8201;&#8212;&#8201;fundamental angles.</p>
+</li>
+<li>
+<p>Tolerance constants used pervasively (<code>Geo.EPS</code>, dimensionless and dimensioned variants).</p>
+</li>
+<li>
+<p>Static methods for normalization, classification, comparison.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_layer_2drawing_entities_e2">3. Layer 2&#8201;&#8212;&#8201;Drawing entities (<code>E2*</code>)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The 2D drawing model lives in <code>Src\Core\Drawing\</code> (and a few siblings). Drawings represent the unfolded view of a sheet metal part, the laser/punch toolpath, dimension annotations, etc.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Line</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Straight line segment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Arc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Circular arc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Circle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full circle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Spline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parametric curve (B-spline)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Bendline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A line annotated as a bend axis (used in unfolded views)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Profile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compound profile (a closed boundary)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layer/category container</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Container:</strong> <code>Dwg</code> (the part&#8217;s drawing)&#8201;&#8212;&#8201;exposed as <code>Part.Dwg</code>. Walks via <code>Dwg.Entities</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Persistence:</strong> Au; DXF/DWG via <code>Src\Core\IO\DXFReader.cs</code> / <code>DXFWriter.cs</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_layer_33d_model_entities_e3">4. Layer 3&#8201;&#8212;&#8201;3D model entities (<code>E3*</code>)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Src\Core\Model\</code> (9 files, ~290 KB). Every 3D part decomposes into these. The model lives at <code>Part.Model</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_4_1_entity3_base">4.1 <code>Entity3</code> (base)</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Entity3.cs</code> (29 KB).
+<strong>Subclasses:</strong>
+| Type | Size | Role |
+|--|--:|--|
+| <code>E3Plane</code> | 48 KB | A flat region of sheet metal. |
+| <code>E3Flex</code> | 55 KB | A bend zone. Holds an <code>IFlexSpine</code> and connectivity info. |
+| <code>E3Patch</code> | 8 KB | A non-developable patch (rare). |
+| <code>E3Thick</code> | (in <code>BendCore</code>) | Thick-plate entity. |
+| <code>Forming</code> | 23 KB | A forming feature (louver, rib, lance). |</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_2_the_flat_bend_topology">4.2 The flat-bend topology</h3>
+<div class="paragraph">
+<p>A sheet-metal model forms a tree (really a DAG) with one <strong>base plane</strong> as the root. Alternate levels are bends; a bend connects to one <em>leeward</em> plane and one or more <em>windward</em> planes. The terminology is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Leeward = "up" side of the bend (the side closer to root)
+Windward = "down" side (further from root)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is documented in <code>Notes\Dev\1005.BendAreaModeling.ftx</code>. The note&#8217;s ASCII / image diagrams are worth ten paragraphs of prose.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_3_iflexspine">4.3 <code>IFlexSpine</code></h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Model\BendSpine.cs</code> and <code>E3Flex.cs</code>.
+<strong>Members:</strong> <code>GetSpine(double bendLie)</code> returns the cross-section polyline at a given bend "lie" (0 = flat, 1 = fully folded); <code>Thickness</code> returns the sheet thickness.
+<strong>Implementations:</strong> <code>BendSpine</code> (standard), <code>FlatBendSpine</code> (special), Z-bend variants, hem variants.
+<strong>Used by:</strong> rendering, bend area modeling, collision, simulation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_4_the_model3_container">4.4 The <code>Model3</code> container</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Model\Model3.cs</code> (71 KB).
+<strong>What:</strong> the entity collection plus utilities (search, traversal, edits). <code>Part.Model</code> is a <code>Model3</code>.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_layer_4tech_projections">5. Layer 4&#8201;&#8212;&#8201;Tech projections</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A part can have several tech projections at once. Each one is a per-domain "what we plan to do".</p>
+</div>
+<div class="sect2">
+<h3 id="_5_1_the_shared_shape">5.1 The shared shape</h3>
+<div class="paragraph">
+<p>Every <code>*Tech</code> follows the same pattern:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Constructed via a static <code>Make (Part, Machine, ...)</code> factory returning <code>EResult</code>.</p>
+</li>
+<li>
+<p>Holds a list of operations (<code>Ops</code>) and a list of setups (<code>Setups</code>).</p>
+</li>
+<li>
+<p>Implements <code>ISheafSite</code> (settings cascade through to <code>Part</code>).</p>
+</li>
+<li>
+<p>Has a <code>Dump (TextWriter)</code> method used by golden-file tests.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_2_bendtechsee_chapter_02">5.2 BendTech&#8201;&#8212;&#8201;see chapter 02</h3>
+<div class="paragraph">
+<p>The most thoroughly documented tech.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_3_flattech_a_k_a_cuttech">5.3 FlatTech (a.k.a. CutTech)</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Laser\</code> and <code>Src\Core\Punch\</code>.
+<strong>Role:</strong> unifies laser, punch, and combo machining into a single flat-cutting projection.
+<strong>Held on <code>Part</code>:</strong> <code>Part.CutTech</code> (note the alias <code>FlatTech ≡ CutTech</code> in code).
+<strong>Specialized cuts:</strong> <code>LaserCut</code>, <code>PlineCut</code>, <code>ScrapCut</code>, <code>SliceCut</code>, <code>StitchCutter</code>, <code>TraceCut</code>, <code>Bevel3DTooler</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_4_foldtech">5.4 FoldTech</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Fold\</code> (42 files).
+<strong>Role:</strong> panel-bender (TecZoneFold) projection. Different machine kinematics than press brake.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_5_punchtech">5.5 PunchTech</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Punch\</code> (13 files). Specialization for punching.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_6_bcellthe_orchestration_sibling">5.6 BCell&#8201;&#8212;&#8201;the orchestration sibling</h3>
+<div class="paragraph">
+<p>Not a tech in the strict sense, but lives at the same conceptual level. Models the robot cell&#8217;s gripper, regrips, deposits, pickups. The bend operations themselves still own the robotic awareness; BCell models the <strong>physical cell</strong> that performs them.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_layer_5part">6. Layer 5&#8201;&#8212;&#8201;<code>Part</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_6_1_the_aggregate">6.1 The aggregate</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Part\Part.cs</code> (sealed class, 77 KB).
+<strong>Implements:</strong> <code>ISheafSite</code>, <code>INotifyPropChanged</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public sealed class Part : ISheafSite, INotifyPropChanged {
+   public BendTech BendTech { get; set; }     // press brake projection
+   public BendTechMemo BendTechMemo { get; set; }
+   public FoldTech FoldTech { get; set; }     // panel bender
+   public FlatTech CutTech { get; set; }      // laser/punch
+   public Mesh3[] BoostMeshes { get; set; }   // Boost-mode formings
+   public Model3 Model { get; }               // 3D model
+   public Dwg Dwg { get; }                    // 2D drawing
+   public bool IsDirty { get; }
+   public Part.EFlags Flags { get; }
+   public bool Diagnostic { get; }
+   public static Part Current { get; set; }   // active part
+   public static List&lt;Part&gt; Active { get; }   // all open parts
+   // ... and ~50 more
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_2_static_state">6.2 Static state</h3>
+<div class="paragraph">
+<p>Two pieces of static state are notable:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Part.Active</code>&#8201;&#8212;&#8201;list of all parts currently loaded into the process.</p>
+</li>
+<li>
+<p><code>Part.Current</code>&#8201;&#8212;&#8201;the part the user is currently editing.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Both are UI-thread-only in practice. Inspect them when debugging anything related to "which part is this affecting?"</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_3_lifecycle">6.3 Lifecycle</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Construct empty (<code>new Part ()</code>).</p>
+</li>
+<li>
+<p>Hydrate via Au-deserialize (FX file) or via an IO reader (DXF/GEO/STEP).</p>
+</li>
+<li>
+<p>Optional <code>DoFoldTo3D</code> if input was unfolded.</p>
+</li>
+<li>
+<p>Construct one or more techs (<code>BendTech.Make</code>, <code>FoldTech.Make</code>, &#8230;&#8203;).</p>
+</li>
+<li>
+<p>User edits / auto-tools.</p>
+</li>
+<li>
+<p>Save to FX, or export NC code.</p>
+</li>
+<li>
+<p>Close&#8201;&#8212;&#8201;removed from <code>Active</code>.</p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_bend_domain_catalog_deep_dive_companion_to_chapter_02">7. Bend-domain catalog (deep-dive companion to chapter 02)</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendTech</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendTech.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Press-brake projection root.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendOp.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A single bending operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendSetup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendSetup.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A complete tool layout on the machine.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendMount.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One tool mount at one X position.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendMachine.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The press-brake machine model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BTool</code> (+ <code>BPunch</code>, <code>BDie</code>, <code>BHolder</code>, <code>BTool.Piece</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendTool.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tool model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BToolList</code> / <code>BToolLibrary</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendToolLib.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inventory and catalogs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendStaples</code> (struct), <code>Workpiece</code> (record)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendCalc.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Calculation results / inputs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBendKind</code>, <code>EBATIssue</code>, <code>EHandlingFlip</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendCore.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Domain enums.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendAid</code>, <code>BAPlacer</code>, <code>BendAidPos</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendAid.cs</code>, <code>Ops\BAPlacer.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bending-aid model + placement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendBG</code>, <code>BGPath</code>, <code>BGPlacer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\Bend\BendBG.cs</code>, <code>BGPath.cs</code>, <code>Ops\BGPlacer.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Back-gauge model + path + placement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCRegrip</code>, <code>BWaypoint</code>, <code>BGripper</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\Core\BCell\</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robotic cell concepts.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_cross_cutting_state">8. Cross-cutting state</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_8_1_sheafsettings_dictionary">8.1 <code>Sheaf</code>&#8201;&#8212;&#8201;settings dictionary</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Settings\Sheaf.cs</code>.
+<strong>Shape:</strong> every site has its own <code>Dictionary&lt;SH, object&gt;</code> and a parent. Resolution walks the chain. The keys are values of <code>enum SH</code> (a closed registry of setting identifiers).
+<strong>Persistence:</strong> sheafs persist with their owning object (e.g. <code>BendOp</code> carries its <code>SHDict</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_2_bendtechmemo">8.2 <code>BendTechMemo</code></h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Bend\Ops\BendTechMemo.cs</code>.
+<strong>Why:</strong> when a <code>BendTech</code> is replaced, the prior state is captured into a memo so editing history can be preserved. Pattern repeats elsewhere&#8201;&#8212;&#8201;look for <code>*Memo</code> types.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_3_tags_layers_moods">8.3 Tags, layers, moods</h3>
+<div class="paragraph">
+<p>Across rendering and editing you&#8217;ll see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ELayer.&lt;*&gt;</code>&#8201;&#8212;&#8201;render layer (<code>BendMount</code>, <code>LaserCut</code>, &#8230;&#8203;).</p>
+</li>
+<li>
+<p><code>EMood.&lt;*&gt;</code>&#8201;&#8212;&#8201;visual mood (<code>Selected</code>, <code>Normal</code>, <code>Hover</code>, &#8230;&#8203;).</p>
+</li>
+<li>
+<p><code>EGTag</code>&#8201;&#8212;&#8201;glob-action tags (<code>AddAtClamp</code>, <code>AddAtStation</code>, &#8230;&#8203;) for command routing.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These are not "data" in the persistence sense, but they are first-class nouns in the code.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_persistence_formats_and_migration">9. Persistence formats and migration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_9_1_au_gold_binary">9.1 Au / Gold (binary)</h3>
+<div class="paragraph">
+<p><strong>Format:</strong> compact tagged binary. See <code>Notes\Dev\1003.AuGoldEncoding.ftx</code>.
+<strong>Encodes:</strong> <code>Part</code>, <code>BendTech</code>, <code>BendOp</code>, <code>BendSetup</code>, machine definitions, etc.
+<strong>Versioning:</strong> every Au type has a <code>ObjVersion</code>. Migrations are applied via <code>[PostLoad]</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_9_2_curl_text">9.2 Curl (text)</h3>
+<div class="paragraph">
+<p><strong>Format:</strong> Lisp-flavored text with named fields. See <code>Notes\Tech\2007.CurlFiles.ftx</code>.
+<strong>Encodes:</strong> human-curated data&#8201;&#8212;&#8201;machines, tool catalogs, settings profiles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_9_3_fx_file">9.3 FX file</h3>
+<div class="paragraph">
+<p><strong>Format:</strong> zip containing Curl + Au + thumbnail.
+<strong>Encodes:</strong> the user&#8217;s part as a saveable, shareable bundle.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_9_4_dxf_geo_3d_import_stl_bmc_dld">9.4 DXF / GEO / 3D import / STL / BMC / DLD</h3>
+<div class="paragraph">
+<p>| Format | Role | Reader / Writer |
+|--|--|--|
+| DXF / DWG | 2D drawing exchange | <code>DXFReader.cs</code>, <code>DXFWriter.cs</code> |
+| GEO | Trumpf geometry exchange | <code>GeoReader.cs</code>, <code>GeoWriter.cs</code> |
+| HOOPS-driven 3D | CATIA / Parasolid / ACIS / Pro-E / STEP | <code>HXReader.cs</code> (despite the name, this is <code>HoopsReader</code>, <em>not</em> a Hex reader) |
+| NC post output | Press-brake NC code per dialect | C# writers in <code>Src\API\Bend\Post\</code>; dispatched by <code>Src\API\Basis\Basis.cs:138</code> (no Hex involved) |
+| STL | Mesh exchange | <code>STLModel.cs</code>, <code>MeshIO.cs</code> |
+| BMC | Trumpf machine format (bend) | <code>Bend\Ops\ImportBMC.cs</code>, <code>ExportBMC.cs</code> |
+| DLD | Trumpf NC format (bend) | <code>Bend\Ops\DLDExporter.cs</code> |</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_9_5_the_postload_migration_hook">9.5 The <code>[PostLoad]</code> migration hook</h3>
+<div class="paragraph">
+<p>The pattern (from <code>BendSetup.cs</code> lines 64&#8212;&#8203;76):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[PostLoad]
+void PostLoad () {
+   mMounts.RemoveIf (a =&gt; a.Tool == null);
+   mMounts.Changed += MountsChanged;
+   if (mClampPos != null &amp;&amp; AuType.ObjVersion &lt; 4 &amp;&amp; BMachine != null) {
+      float dx = BMachine.Clamp0XPos;
+      for (int i = 0; i &lt; mClampPos.Length; i++) mClampPos[i] += dx;
+   }
+   if (AuType.ObjVersion &lt; 5)
+      foreach (var m in mMounts)
+         if (m.Tool.TopValency.IsBlade () &amp;&amp; m.SensorPair != null)
+            AdjustLockedMount (m);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Two things to note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AuType.ObjVersion</code> is the version <em>that came in</em>, not the current one.</p>
+</li>
+<li>
+<p>Migrations are <strong>forward-only</strong>&#8201;&#8212;&#8201;you migrate version 3 → 4, you never read a future version.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_identity_and_uniqueness">10. Identity and uniqueness</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Concept</th>
+<th class="tableblock halign-left valign-top">Where</th>
+<th class="tableblock halign-left valign-top">Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOp.UID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">per-tech sequence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">comparing ops across edits</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOp.SeqNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sequence index</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">display order</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendSetup.UID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">per-tech sequence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mount routing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Part GUID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Workpiece.PartGuid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cross-system identification</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">integer, used as folder name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine.Get(id)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">per catalog</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BTool</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VModel.Id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">per process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scene-graph routing</p></td>
+</tr>
+</tbody>
+</table>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Convention:</strong> UIDs are stable across save/load (they live on the object). <code>VModel.Id</code> is <em>only</em> stable for the lifetime of one Flux process&#8201;&#8212;&#8201;never persist it.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_coordinate_systems">11. Coordinate systems</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>World CS</strong>&#8201;&#8212;&#8201;overall scene. <code>CoordSystem.World</code>.</p>
+</li>
+<li>
+<p><strong>Plane CS</strong> (per <code>E3Plane</code>)&#8201;&#8212;&#8201;Org / XVec / YVec / ZVec are anchored to a side wall (see <code>Notes\Dev\1005.BendAreaModeling.ftx</code>).</p>
+</li>
+<li>
+<p><strong>Flex CS</strong>&#8201;&#8212;&#8201;bends inherit from their leeward plane.</p>
+</li>
+<li>
+<p><strong>Machine CS</strong>&#8201;&#8212;&#8201;anchored to the bend machine table; X along table length.</p>
+</li>
+<li>
+<p><strong>Mount CS</strong>&#8201;&#8212;&#8201;mount X is a local coordinate on the table.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When a bug looks like "things drawn in the wrong spot", <strong>always</strong> ask which CS the coordinates are in. The transition between Plane CS and World CS is a frequent source of subtle errors.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_units_and_tolerances">12. Units and tolerances</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>All lengths in <strong>mm</strong>. All angles in <strong>radians</strong> at runtime; degrees only for user-facing strings (use <code>.R2D()</code> / <code>.D2R()</code>).</p>
+</li>
+<li>
+<p>Tolerances live in <code>Geo.cs</code> and are domain-specific (geometric tolerance vs. simulation tolerance vs. file-format precision).</p>
+</li>
+<li>
+<p><strong>Determinism</strong>&#8201;&#8212;&#8201;sorting must use <code>GeomSort</code> or <code>Pline</code>-aware comparators that handle floating-point near-ties consistently. Plain <code>OrderBy</code> on doubles is a smell.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_self_check">13. Self-check</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>What&#8217;s the difference between <code>E3Flex</code> and <code>BendOp</code>? <em>(§4.1 / chapter 02 §3)</em></p>
+</li>
+<li>
+<p>Which class implements <code>IFlexSpine</code> for a hem? <em>(§4.3, search for hem-specific spine subclass)</em></p>
+</li>
+<li>
+<p>Which method is the test contract for <code>BendTech</code> / <code>BendSetup</code>? <em>(§5.1 + §9.5&#8201;&#8212;&#8201;<code>Dump</code>)</em></p>
+</li>
+<li>
+<p>What format is a <code>Machine.curl</code>? <em>(§9.2)</em></p>
+</li>
+<li>
+<p>Where do you put a forward-migration when you change a class&#8217;s persisted shape? <em>(§9.5)</em></p>
+</li>
+<li>
+<p>What is the unit of all lengths in Flux? <em>(§12)</em></p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_14_if_you_take_just_one_thing_from_this_chapter">14. If you take just one thing from this chapter</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>A <code>Part</code> aggregates one or more <em>tech</em> projections, each with its own <code>Ops</code> and <code>Setups</code>. Geometry sits in <code>Model</code> (3D) and <code>Dwg</code> (2D). Settings cascade through <code>Sheaf</code>. Persisted shape is migrated forward via <code>[PostLoad]</code>. Once you can place any class on this map, you can read any subsystem.</strong></p>
+</div>
+</blockquote>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. Verified against <code>Src\Core\Part\Part.cs</code>, <code>Src\Core\Model\</code>, <code>Src\Core\Bend\</code>, <code>Src\Core\Settings\Sheaf.cs</code>, and Notes 1003/1005/2007.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_1_the_five_layers_of_data">1. The five layers of data</a>
+  </li>
+  <li level="1">
+   <a href="#_2_layer_1geometric_primitives_flux_base">2. Layer 1&#8201;&#8212;&#8201;Geometric primitives (Flux.Base)</a>
+  </li>
+  <li level="2">
+   <a href="#_2_1_plinethe_workhorse">2.1 <code>Pline</code>&#8201;&#8212;&#8201;the workhorse</a>
+  </li>
+  <li level="2">
+   <a href="#_2_2_mesh3triangle_mesh">2.2 <code>Mesh3</code>&#8201;&#8212;&#8201;triangle mesh</a>
+  </li>
+  <li level="2">
+   <a href="#_2_3_vector_matrix_family">2.3 Vector / Matrix family</a>
+  </li>
+  <li level="2">
+   <a href="#_2_4_constants_and_helpers">2.4 Constants and helpers</a>
+  </li>
+  <li level="1">
+   <a href="#_3_layer_2drawing_entities_e2">3. Layer 2&#8201;&#8212;&#8201;Drawing entities (<code>E2*</code>)</a>
+  </li>
+  <li level="1">
+   <a href="#_4_layer_33d_model_entities_e3">4. Layer 3&#8201;&#8212;&#8201;3D model entities (<code>E3*</code>)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_1_entity3_base">4.1 <code>Entity3</code> (base)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_2_the_flat_bend_topology">4.2 The flat-bend topology</a>
+  </li>
+  <li level="2">
+   <a href="#_4_3_iflexspine">4.3 <code>IFlexSpine</code></a>
+  </li>
+  <li level="2">
+   <a href="#_4_4_the_model3_container">4.4 The <code>Model3</code> container</a>
+  </li>
+  <li level="1">
+   <a href="#_5_layer_4tech_projections">5. Layer 4&#8201;&#8212;&#8201;Tech projections</a>
+  </li>
+  <li level="2">
+   <a href="#_5_1_the_shared_shape">5.1 The shared shape</a>
+  </li>
+  <li level="2">
+   <a href="#_5_2_bendtechsee_chapter_02">5.2 BendTech&#8201;&#8212;&#8201;see chapter 02</a>
+  </li>
+  <li level="2">
+   <a href="#_5_3_flattech_a_k_a_cuttech">5.3 FlatTech (a.k.a. CutTech)</a>
+  </li>
+  <li level="2">
+   <a href="#_5_4_foldtech">5.4 FoldTech</a>
+  </li>
+  <li level="2">
+   <a href="#_5_5_punchtech">5.5 PunchTech</a>
+  </li>
+  <li level="2">
+   <a href="#_5_6_bcellthe_orchestration_sibling">5.6 BCell&#8201;&#8212;&#8201;the orchestration sibling</a>
+  </li>
+  <li level="1">
+   <a href="#_6_layer_5part">6. Layer 5&#8201;&#8212;&#8201;<code>Part</code></a>
+  </li>
+  <li level="2">
+   <a href="#_6_1_the_aggregate">6.1 The aggregate</a>
+  </li>
+  <li level="2">
+   <a href="#_6_2_static_state">6.2 Static state</a>
+  </li>
+  <li level="2">
+   <a href="#_6_3_lifecycle">6.3 Lifecycle</a>
+  </li>
+  <li level="1">
+   <a href="#_7_bend_domain_catalog_deep_dive_companion_to_chapter_02">7. Bend-domain catalog (deep-dive companion to chapter 02)</a>
+  </li>
+  <li level="1">
+   <a href="#_8_cross_cutting_state">8. Cross-cutting state</a>
+  </li>
+  <li level="2">
+   <a href="#_8_1_sheafsettings_dictionary">8.1 <code>Sheaf</code>&#8201;&#8212;&#8201;settings dictionary</a>
+  </li>
+  <li level="2">
+   <a href="#_8_2_bendtechmemo">8.2 <code>BendTechMemo</code></a>
+  </li>
+  <li level="2">
+   <a href="#_8_3_tags_layers_moods">8.3 Tags, layers, moods</a>
+  </li>
+  <li level="1">
+   <a href="#_9_persistence_formats_and_migration">9. Persistence formats and migration</a>
+  </li>
+  <li level="2">
+   <a href="#_9_1_au_gold_binary">9.1 Au / Gold (binary)</a>
+  </li>
+  <li level="2">
+   <a href="#_9_2_curl_text">9.2 Curl (text)</a>
+  </li>
+  <li level="2">
+   <a href="#_9_3_fx_file">9.3 FX file</a>
+  </li>
+  <li level="2">
+   <a href="#_9_4_dxf_geo_3d_import_stl_bmc_dld">9.4 DXF / GEO / 3D import / STL / BMC / DLD</a>
+  </li>
+  <li level="2">
+   <a href="#_9_5_the_postload_migration_hook">9.5 The <code>[PostLoad]</code> migration hook</a>
+  </li>
+  <li level="1">
+   <a href="#_10_identity_and_uniqueness">10. Identity and uniqueness</a>
+  </li>
+  <li level="1">
+   <a href="#_11_coordinate_systems">11. Coordinate systems</a>
+  </li>
+  <li level="1">
+   <a href="#_12_units_and_tolerances">12. Units and tolerances</a>
+  </li>
+  <li level="1">
+   <a href="#_13_self_check">13. Self-check</a>
+  </li>
+  <li level="1">
+   <a href="#_14_if_you_take_just_one_thing_from_this_chapter">14. If you take just one thing from this chapter</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="03_api_maps.html">API Maps</a></span>
+ <span class="next"><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

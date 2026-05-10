@@ -1,0 +1,1737 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Laser Cutting Technology</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">Data flow</a>
+     <ul>
+      <li>
+       <button class="tree closed"></button>
+       <a href="part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a class="active" href="lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">Data flow</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="lasertech.html">Laser Cutting Technology</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Laser Cutting Technology</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document explains the laser cutting pipeline in Flux: the cutting-condition
+database, the cut-step class hierarchy, the auto-tooler, and the NC output path.</p>
+</div>
+<div class="paragraph">
+<p><strong>Primary files:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Core/Laser/LaserCore.cs</code> — cutting-condition database infrastructure</p>
+</li>
+<li>
+<p><code>Core/Laser/LaserCut.cs</code> — <code>LaserStep</code>, <code>LaserPathCut</code>, <code>PointCut</code>, <code>LaserText</code></p>
+</li>
+<li>
+<p><code>Core/Laser/PlineCut.cs</code> — <code>PlineCut</code> and <code>MacroCut</code> (the main cut steps)</p>
+</li>
+<li>
+<p><code>Core/Laser/TraceCut.cs</code> — <code>TraceCut</code> (approach/escape/profile base)</p>
+</li>
+<li>
+<p><code>Core/Laser/Ops/LaserAuto.cs</code> — <code>LaserAutotooler</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview">1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The laser pipeline has three layers that work in sequence:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Drawing2  (E2Pline, E2Point entities)
+   ↓  LaserAutotooler.DoTooling()
+FlatTech  (IStepCollection of CutStep objects: PlineCut, PointCut, …)
+   ↓  ICodeGenerator / LSTGen
+NC file   (.lst, .nc, .nc3d, …)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <strong>database layer</strong> (<code>LaserCore.cs</code>) provides the cutting parameters — speed, gas
+pressure, kerf width, pierce time — for a given material and thickness. The
+<strong>step layer</strong> (<code>PlineCut</code>, <code>TraceCut</code>) carries per-contour tooling: which condition to
+use, where the approach starts, corner treatments, bevel data. The <strong>tooler</strong>
+(<code>LaserAutotooler</code>) creates steps from drawing entities and selects conditions
+automatically.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_cutting_condition_database_lasercore_cs">2. The Cutting-Condition Database (LaserCore.cs)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>LaserCore.cs</code> is the core database infrastructure. It is not named after a machine —
+the file provides the classes that represent a machine&#8217;s laser parameter database
+(Trumpf calls this an "LTT", Laser Technology Table).</p>
+</div>
+<div class="sect2">
+<h3 id="_the_three_level_hierarchy">2.1. The three-level hierarchy</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">LaserDBBook   (one per machine)
+  └── LaserDBPage[]   (one per material × thickness × surface combination)
+        └── LaserCondition[]  (cut, mark, vaporize, pierce conditions)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_laserdbbook">2.2. LaserDBBook</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCore.cs:385</code></p>
+</div>
+<div class="paragraph">
+<p>One <code>LaserDBBook</code> exists per <code>CutMachine</code>. It is the top-level container for all
+cutting conditions on that machine and is loaded from two <code>.curl</code> files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mc:&lt;machineId&gt;/cutdbFactory.curl</code> — factory-shipped defaults (read-only)</p>
+</li>
+<li>
+<p><code>mc:&lt;machineId&gt;/cutdbUser.curl</code> — user modifications layered on top</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MachineID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine identifier string (e.g. <code>"7035"</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All <code>LaserDBPage</code> objects in this book</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CCField</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of field IDs for cutting conditions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PCField</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of field IDs for pierce conditions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ECField</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of field IDs for edge-control conditions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AllowedPages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pages filtered by the machine&#8217;s <code>ExcludedFocalLengths</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SupportedMaterial</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Materials for which at least one page exists; follows <code>LaserAlias</code> links</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Changes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserPageChangeset</code> list — diffs between factory and user books</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Looking up a page:</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetPagesFor(mat, thickness, film, treatment)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exact match only; returns ordered sequence</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetLenientPagesFor(&#8230;&#8203;)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Closest match with scoring: ±thickness 5 %, film mismatch +5, treatment mismatch +1500, wrong material +1000. Returns up to ~3 score buckets.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetDefaultPage(&#8230;&#8203;)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First exact match (<code>FirstOrDefault</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetBestPage(&#8230;&#8203;)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First lenient match</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Field index lookups (<code>GetCCFieldIndex</code>, <code>GetPCFieldIndex</code>) map a <code>LaserDBField.EFields</code>
+enum value to the offset inside <code>LaserCondition.Val[]</code>. The result is cached in a
+256-entry byte array, so the lookup is O(1) after the first call.</p>
+</div>
+<div class="paragraph">
+<p><strong>Saving:</strong></p>
+</div>
+<div class="paragraph">
+<p><code>Save()</code> writes only the diff between the factory book and the current book to
+<code>cutdbUser.curl</code> using <code>AuCurl.Save</code>. <code>SaveFactory()</code> writes the entire book to the
+shared archive (developer use only).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_laserdbpage">2.3. LaserDBPage</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCore.cs:960</code></p>
+</div>
+<div class="paragraph">
+<p>A <code>LaserDBPage</code> is one row in the machine&#8217;s technology table — cutting parameters for
+a specific <strong>material × thickness × surface</strong> combination.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique ID. Factory pages: &lt; 100001. User-defined: ≥ 100001.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsFactoryPage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Id &lt; UserPageIdStart (100001)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Material</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Material name matching <code>Material.Name</code> in Flux DB (e.g. <code>"STEEL"</code>, <code>"SS"</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Thickness</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sheet thickness in mm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SurfaceTreatment</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sheaf.ETreatment</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Painted, oiled, bare, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Film</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Sheaf.EFilm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Protective film presence</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ProcType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ELaserProcessTypes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard, OxygenCutting, HiLas, HighSpeed, CompressedAir, BrightLine, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ProcOptions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ELaserProcessOptions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flags: FlyLine, CoolLine, BevelCut, RedFlyLine, NanoJoints</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GasType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EGasTypes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N₂, O₂, Air, Argon, N₂O₂, Custom</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FocalLength</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lens focal length (mm)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PageName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Human-readable name (e.g. <code>"P0008-N2-1.0"</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Conds</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;LaserCondition&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All conditions on this page</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>STAMMData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raw LST STAMM table values (Trumpf machines)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LTXData</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ltx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LTC/LCE/LPE table data (newer Trumpf format)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AccelerationLimit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum acceleration for this page (m/s²)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MaxChamferAngle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum bevel chamfer angle (default 50°)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NozzleDia</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parsed from <code>Lense</code> string (mm; default 2 mm)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ReqMacFunctions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ERequiredMachineFunctions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Required machine capabilities</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Convenience accessors:</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property / Method</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StdCC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The "large contour" <code>ECut.Cut</code> condition (first in <code>GetCCs(ECut.Cut)</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StdKerfWidth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StdCC.KerfWidth</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ActiveCutConds</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non-redundant cut conditions, largest geometry first. Drops medium if it is identical to small.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SupportsVaporization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if any <code>ECut.Vaporize</code> condition exists</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VaporizeCond</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The vaporize condition (or null)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetCCs(ECut op)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All path conditions of the given cut type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetCC(id)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single condition by ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetPC(EPierce)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Best pierce condition for the given pierce type, respecting <code>PierceLine</code> availability</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GetCCByLayer(name)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Condition tagged to a specific layer name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsTinyContour(pline)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if the pline is smaller than the smallest active condition&#8217;s <code>GeomSize</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ChooseCC(op, pline, ccBy)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auto-selects the best condition for a pline</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_choosecc_how_a_condition_is_selected_for_a_contour">2.3.1. <code>ChooseCC</code> — how a condition is selected for a contour</h4>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCore.cs:1120</code></p>
+</div>
+<div class="paragraph">
+<p>The goal is to pick the fastest condition whose geometry threshold the pline satisfies.</p>
+</div>
+<div class="paragraph">
+<p>When <code>ccBy == EChooseCCBy.Area</code>: uses the pline&#8217;s enclosed area directly —
+selects the first condition whose <code>GeomSize ≤ area</code>.</p>
+</div>
+<div class="paragraph">
+<p>When <code>ccBy == EChooseCCBy.Average</code> or <code>MaxSegment</code>: measures segment lengths along
+the pline, but <strong>merges consecutive segments separated by a turn angle &lt; 10°</strong> to avoid
+penalising smooth spline-approximated curves. For each resulting effective segment
+length, a "corrected" length is computed that accounts for curve radius:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">corrected_len = len × (1 + (f - 1) × (1 - R_threshold / seg.Radius))  // for curves
+corrected_len = len × f                                                  // for straights
+  where f = 2 × √π ≈ 3.545</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The average (or maximum) corrected length is compared against
+<code>2 × √(GeomSize × π)</code> — the diameter of a circle with area = <code>GeomSize</code>. The
+first condition for which the metric exceeds this threshold is chosen (large
+contour condition = largest <code>GeomSize</code> = selected for large/complex contours).</p>
+</div>
+<div class="paragraph">
+<p>If no condition qualifies, the last (slowest) condition is returned as fallback.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lasercondition">2.4. LaserCondition</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCore.cs:1338</code></p>
+</div>
+<div class="paragraph">
+<p>A single cutting or piercing condition. All numeric parameters are stored as <code>float[]
+Val</code>, indexed by position in the owner book&#8217;s <code>CCField</code> or <code>PCField</code> array.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unique within the page</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"Large"</code>, <code>"Medium"</code>, <code>"Small"</code>, <code>"Normal"</code>, <code>"Gentle"</code>, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EKind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Path</code> (contour), <code>Point</code> (pierce), <code>EdgeCtrl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserOp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>short</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cast to <code>ECut</code> (for Path) or <code>EPierce</code> (for Point)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layer name this condition is mapped to (for layer-driven selection)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GeomSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum contour area (mm²) for this condition to apply</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Val[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parameter values; indexed via <code>GetCCFieldIndex</code> / <code>GetPCFieldIndex</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SHDict</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SHDict</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sheaf settings attached to this condition (approach radius, etc.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UVal[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vendor-specific extra values (third-party machines)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Fast-access properties</strong> (call <code>GetValue(EFields.xxx)</code> internally):</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Speed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cutting speed (m/min)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GasPressure</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gas pressure (bar)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>KerfWidth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut width on sheet (mm)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NozzleDistance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Head-to-sheet distance (mm)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PierceTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pierce duration (s)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsMarking</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True for <code>ECut.Mark</code>, <code>ECut.DotMark</code>, or <code>EPierce.Mark</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsVaporize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True for <code>ECut.Vaporize</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsStdCC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if this is the large-contour standard condition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>WithPierceLine</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if Trumpf PierceLine field is set in <code>Val</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_key_enumerations">2.5. Key Enumerations</h3>
+<div class="sect3">
+<h4 id="_epierce_pierce_operation_types">2.5.1. EPierce — pierce operation types</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Normal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard pierce (default; stored as 0 so it can be omitted in .curl)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>None</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No pierce (start on sheet edge or pre-pierced)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Gentle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Soft / slow pierce for sensitive materials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Quick</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Power / fast pierce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cool pierce (gas cooling)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dot-mark only (no through-cut)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Tool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Punched on a combination machine</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Peck</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Peck piercing (staged)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Multi</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multi-step pierce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RampPower/Duty/Focus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ramp-modulated piercing variants</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Jet</code>/<code>Blow</code>/<code>OilSpray</code>/<code>SoapSpray</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gas-assisted pierce variants</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Rapid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fast pierce</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_ecut_path_operation_types">2.5.2. ECut — path operation types</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cut</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Through-cut (removes material)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Vaporize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Burns off protective film without cutting through</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Engraves/scores the surface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DotMark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dot-by-dot marking</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_elaserprocesstypes_primary_process">2.5.3. ELaserProcessTypes — primary process</h4>
+<div class="paragraph">
+<p>Standard, OxygenCutting, HiLas (nitrogen high-pressure), HighSpeed, CompressedAir,
+NitroLinePlasma, HighQuality, BrightLine, ThickLine, ArgonCutting, PrecisionCutting,
+Reliable3D.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_elaserprocessoptions_secondary_flags_bitfield">2.5.4. ELaserProcessOptions — secondary flags (bitfield)</h4>
+<div class="paragraph">
+<p><code>FlyLine</code> (stitch cut), <code>CoolLine</code>, <code>BevelCut</code>, <code>RedFlyLine</code>, <code>NanoJoints</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_egastypes">2.5.5. EGasTypes</h4>
+<div class="paragraph">
+<p><code>Undefined</code>, <code>N2</code>, <code>O2</code>, <code>Air</code>, <code>Argon</code>, <code>N2O2</code>, <code>Custom</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ecornertreatment">2.5.6. ECornerTreatment</h4>
+<div class="paragraph">
+<p><code>DoNothing</code>, <code>Rounding</code>, <code>Looping</code>, <code>Dwell</code>, <code>Cool</code>, <code>Stop</code>, <code>Slowdown</code>,
+<code>BevelSharpCorner</code>, <code>BevelCylindricalRounding</code>, <code>BevelConicalPoint</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_cut_step_class_hierarchy">3. The Cut-Step Class Hierarchy</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">CutStep  (abstract base — Entity2 + CutConfig)
+  └── LaserStep  (abstract — adds LaserPage, Settings)
+        ├── LaserPathCut  (abstract — adds CCId, CC, BevelData, Pierce)
+        │     └── TraceCut  (abstract — adds Trace, approach/escape profile)
+        │           ├── PlineCut    ← main workhorse for contour cutting
+        │           └── MacroCut   ← special-shape template cutting
+        ├── PointCut      ← point pierce / dot mark
+        └── LaserText     ← automatically added text markings</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cutstep">3.1. CutStep</h3>
+<div class="paragraph">
+<p>The base class shared across laser, punch, and other technologies. Holds:
+<code>Entity2 Entity</code>, <code>CutConfig Config</code>, <code>ESFlags Flags</code>, and the dirty/notification
+infrastructure (<code>Dirty()</code>, <code>PFire()</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_laserstep">3.2. LaserStep</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCut.cs:58</code></p>
+</div>
+<div class="paragraph">
+<p>Adds laser-specific concerns:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserPage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <code>LaserDBPage</code> for this step. Defaults to <code>Config.LaserPage</code>; can be overridden per-step. Persisted as <code>LaserPageId</code> (int) to avoid bloating the file.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Settings</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserCAMSettings</code> wrapper — lazy proxy into the Sheaf settings hierarchy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HeadBound</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Always equals <code>Bound</code> (the laser head occupies the same footprint as the cut)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserPageChanged()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abstract — called by <code>FlatTech</code> when the page on <code>CutConfig</code> changes; derived classes reset their condition IDs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsIdentical(other)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds <code>LaserPage.Id</code> to the equality check</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_laserpathcut">3.3. LaserPathCut</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCut.cs:111</code></p>
+</div>
+<div class="paragraph">
+<p>Abstract base for all contour operations. Adds cutting-condition selection:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Member</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CCId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Primary cutting-condition ID. <code>-1</code> = auto-select on next access. Auto-selection reads the layer use (<code>VBend</code> / <code>MBend</code> → Mark, <code>Evaporate</code> → Vaporize, etc.), checks if the contour is tiny, and calls <code>LaserDBPage.ChooseCC</code>. Once auto-selected the ID is cached.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserCondition</code> — lazy resolve of <code>CCId</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PierceCondition</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pierce condition ID auto-selected from the page</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pierce</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EPierce</code> type; set to <code>None</code> automatically for open plines that are being marked</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BevelData</code> — null for straight cuts; carries angle, radius, corner treatment for bevel cutting</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HasBevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BD != null &amp;&amp; !IsStraightCut &amp;&amp; CC.LaserOp == ECut.Cut</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsTinyContour</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True when the pline is smaller than the page&#8217;s smallest condition geometry</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserPageChanged()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resets <code>CCId = -1</code> and clears <code>BD</code> if the new page doesn&#8217;t support bevel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SHParent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent in the Sheaf hierarchy: wraps <code>CC.SHDict</code> above <code>Config</code> — approach parameters cascade from condition → config → machine</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_plinecut">3.4. PlineCut</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/PlineCut.cs:13</code></p>
+</div>
+<div class="paragraph">
+<p>The primary cut step for normal contours. Extends <code>TraceCut</code> with per-cut overrides:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BeamOffset</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EBeamOffset</code> — <code>None</code>, <code>BySoftware</code> (Flux applies kerf offset), <code>ByHardware</code> (machine controller handles offset)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Acceleration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ELevel</code> — <code>Normal</code>, <code>Reduced</code>, <code>Maximum</code>; written to NC code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Dynamics</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ELevel</code> from Sheaf; controls machine dynamic settings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EndOptimization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EEndOptType</code> — <code>None</code>, <code>RampDown</code>, <code>ReduceSpeed</code>; affects approach radius near cut end</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CanAutoMoveApp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True when approach point is not fixed and there are no mid-path CC changes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CCChanges</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ImmutableArray&lt;CCChange&gt;</code> — sorted list of condition changes at specific lies along the path (e.g. slow down before a sharp corner, then resume)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Corners</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CornerData[]</code> — corner index, angle, treatment, rounding radius, and trace node index for every corner on the pline</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CornerOverrules</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-overridden corner treatments (by corner index)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>JunctionsLies</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crossing points with other cuts (for commonline/shared-cut optimisation)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BevelChangePoints</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positions where bevel angle changes (from <code>BevelData</code> geometry)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BevelJointLies</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lie values where bevel joints are inserted</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_macrocut">3.5. MacroCut</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/PlineCut.cs</code> (at the end of the file)</p>
+</div>
+<div class="paragraph">
+<p>A <code>TraceCut</code> that cuts a standard shape (circle, D-shape, rounded rectangle, chamfered
+rectangle, double-D) using a pre-computed shape template instead of the entity pline
+directly. The <code>LaserAutotooler</code> creates <code>MacroCut</code> when <code>ToolStdShape</code> succeeds.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tracecut">3.6. TraceCut</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/TraceCut.cs</code></p>
+</div>
+<div class="paragraph">
+<p>Abstract base for <code>PlineCut</code> and <code>MacroCut</code>. Owns the computed toolpath profile:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Trace</code> / <code>Trace0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The main trace polyline (approach + cut + escape)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TDNeutral</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TraceData</code> for the neutral (non-bevel) plane</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Profile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Complete toolpath: approach → pierce position → cut → escape</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Start</code> / <code>End</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First and last points of the profile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutLength</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total path length being cut (not counting approach/escape)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApproachLength</code> / <code>EscapeLength</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lead-in / lead-out arc or line lengths</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FixedApproachLie</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forced approach position on the pline (float, NaN = auto)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FixedEndLie</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forced cut-end position (used for sheared-sheet edge cuts)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsAppLieFixed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Flags.HasFlag(ESFlags.ApproachLieFixed)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Flags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ESFlags</code> bitfield (see below)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Key <code>ESFlags</code> values:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flag</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApproachLieFixed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approach location locked (from approach marker entity or user)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FullCut</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard <code>PlineCut</code> (set in constructor)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This cut marks a bend line (selects Mark condition automatically)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartOnSheetEdge</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approach starts on a sheared sheet edge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EndOnSheetEdge</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut ends on a sheared sheet edge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OffsetIssuesChecked</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kerf offset has been validated; cleared when <code>CCId</code> changes</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Key methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Dirty()</code> — marks the profile for recomputation and fires <code>EProp.CodeDirty</code>.</p>
+</li>
+<li>
+<p><code>GetNestingPlines()</code> — returns approach and escape plines for nesting (the <code>CutTooling</code>
+layer plines added to the part outline for collision avoidance).</p>
+</li>
+<li>
+<p><code>GetToolingPlines()</code> — approach, cut body, and escape segments separately.</p>
+</li>
+<li>
+<p><code>MoveApproach(lie)</code> — relocates the approach start on the pline.</p>
+</li>
+<li>
+<p><code>Flip(really)</code> — reverses the cut direction (clockwise ↔ counter-clockwise).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pointcut">3.7. PointCut</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCut.cs:262</code></p>
+</div>
+<div class="paragraph">
+<p>A single pierce or dot-mark at a point. Can be created from:
+* <code>E2Point ep</code> — explicit point entity in the drawing
+* <code>E2Pline e2p</code> — pierces the bounding box centre of the pline (for pre-pierce)</p>
+</div>
+<div class="paragraph">
+<p>Key properties: <code>Pierce</code> (<code>EPierce</code>), <code>PierceCondition</code> (the <code>LaserCondition</code>).
+NC generation calls <code>cg.TurnLaserOn(PierceCondition, null, EKerfCorrection.None)</code>.
+Optionally calls <code>cg.VaporizePoint</code> for film vaporization around the pierce.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lasertext">3.8. LaserText</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCut.cs:356</code></p>
+</div>
+<div class="paragraph">
+<p>A marking step for automatically added laser text (part numbers, data-matrix codes,
+etc.) created by finishing rules. Not backed by an <code>E2Text</code> entity in the drawing.
+Properties include <code>Text</code>, <code>Angle</code>, font settings, position, and <code>EMarkOutputType</code>
+(plain text, data-matrix, QR, etc.).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_laserautotooler_dotooling">4. LaserAutotooler.DoTooling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/Ops/LaserAuto.cs:24</code></p>
+</div>
+<div class="paragraph">
+<p><code>LaserAutotooler</code> is the orchestrator that transforms a <code>Drawing2</code> into a fully tooled
+<code>FlatTech</code> (the <code>IStepCollection</code>). Called from <code>Part.DoCutTooling()</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_precondition">4.1. Precondition</h3>
+<div class="paragraph">
+<p>If <code>Config.LaserPage == null</code> (no cutting-condition page could be found for this
+material/thickness), the tooler returns <code>EResult.NoLaserPage</code> immediately.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_by_step_process">4.2. Step-by-step process</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public EResult DoTooling (EDoFlags flags = EDoFlags.Default) {
+    Tech.CompOnce.Clear ();          // 1. clear cached values
+    GatherSpecialEntities ();        // 2. find approach markers
+    // 3. stitch cutting
+    if (FlyLine &amp;&amp; StitchCutDist &gt; 1) {
+        new StitchCutterCircles (Tech).DoTooling ();
+        new StitchCutter (Tech).DoTooling ();
+    }
+    // 4. tool each entity
+    foreach (var ent in Dwg.Entities) { … create PlineCut / PointCut … }
+    // 5. sheared-sheet edge notches
+    // 6. trim concavities (experimental)
+    // 7. finishing rules
+    Tech.ApplyFinishingRules (contourMap);
+    Tech.OptimizeCutEnds ();         // 8. optimize
+    Tech.RefreshMarkings ();         // 9. laser markings
+    Tech.MarkBendLines ();           // 10. bend-line marks
+    return EResult.OK;
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_approach_markers">4.2.1. Step 2 — Approach markers</h4>
+<div class="paragraph">
+<p>Entities on the <code>ApproachMarker</code> layer are gathered. Their positions are matched
+against plines later in step 4 to lock the approach point.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3_stitch_cutting_flyline">4.2.2. Step 3 — Stitch cutting (FlyLine)</h4>
+<div class="paragraph">
+<p>When <code>ELaserProcessOptions.FlyLine</code> is enabled and <code>StitchCutDist &gt; 1 mm</code>,
+<code>StitchCutterCircles</code> and <code>StitchCutter</code> create <code>PlineCut</code> fragments that produce
+tabs between parts on a nested sheet — the laser cuts almost all the way around each
+part but leaves small uncut bridges (stitches) so pieces stay connected until the
+operator removes them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_4_tooling_entities">4.2.3. Step 4 — Tooling entities</h4>
+<div class="paragraph">
+<p>For each <code>E2Pline</code> in the drawing:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Skip already-tooled</strong> (<code>Tech.HasSteps(ent)</code>) and covered entities.</p>
+</li>
+<li>
+<p><strong>Sheared sheet:</strong> if the outer pline has sheared edges, skip it here; handle it
+separately after the main loop.</p>
+</li>
+<li>
+<p><strong>Standard shape</strong> (<code>ToolStdShape</code>): if the machine has <code>SplShapeMask</code> and the
+pline matches a supported shape (circle, D, rounded rect, chamfered rect,
+double-D), a <code>MacroCut</code> is created with a pre-computed shape trace and a fixed
+90° approach. Returns <code>true</code> to skip further handling.</p>
+</li>
+<li>
+<p><strong>Normal pline:</strong> create <code>PlineCut(e2p, config)</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the auto-selected <code>CC</code> is not a cut (marking/vaporize), set <code>Pierce = None</code>.</p>
+</li>
+<li>
+<p>For outer or open plines: disable end optimisation.</p>
+</li>
+<li>
+<p>If <code>SlowerCCForConstrainedApproach</code> is set: while the approach is constrained
+(tool head can&#8217;t reach the start without crossing the part), try a slower CC
+that provides a longer approach lead-in.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For <code>E2Point</code> entities: create <code>PointCut</code> with the configured pierce type.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_5_sheared_sheet_notches">4.2.4. Step 5 — Sheared-sheet notches</h4>
+<div class="paragraph">
+<p>If the outer pline has sections that should be sheared (sheet edge already cut by
+guillotine), only the remaining unsheared portions are tooled as separate <code>PlineCut</code>
+fragments with <code>StartOnSheetEdge</code> / <code>EndOnSheetEdge</code> flags set.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_steps_710_post_processing">4.2.5. Steps 7–10 — Post-processing</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ApplyFinishingRules</code> — applies user-defined rules (e.g. mark this feature, skip
+that layer, add approach at specific angle).</p>
+</li>
+<li>
+<p><code>OptimizeCutEnds</code> — moves approach start points to minimise rapid-travel distance
+between consecutive cuts.</p>
+</li>
+<li>
+<p><code>RefreshMarkings</code> — adds <code>LaserText</code> steps for part numbers, barcodes etc. as
+configured by marking rules.</p>
+</li>
+<li>
+<p><code>MarkBendLines</code> — creates <code>PlineCut</code> steps with <code>ESFlags.BendMark</code> for each
+<code>E2Bendline</code>, using the <code>Mark</code> condition.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_toolstdshape_special_shape_macro_cuts">4.2.6. <code>ToolStdShape</code> — special-shape macro cuts</h4>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/Ops/LaserAuto.cs:150</code></p>
+</div>
+<div class="paragraph">
+<p>Checks <code>SplShapeMask</code> against the pline&#8217;s <code>ShapeDesc</code>. Recognized shapes:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 66.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shape</th>
+<th class="tableblock halign-left valign-top"><code>sliceAt</code></th>
+<th class="tableblock halign-left valign-top">Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Circle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approach at segment 0, max approach = diameter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RoundRectangle</code> / <code>ChamferedRectangle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approach at segment 2.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SingleD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max approach = width / √2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DoubleD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max approach = width / √2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A <code>MacroCut</code> is created with <code>AppLength</code> capped at the shape&#8217;s maximum approach, zero
+radius, and a 90° approach angle.</p>
+</div>
+<div class="paragraph">
+<p>Thin-shape rejection: if <code>BreakThinMacro</code> is set and the aspect ratio exceeds
+<code>ThinMacroFactor</code>, the macro is rejected and a normal <code>PlineCut</code> is used instead.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_trumpf_ltt_data_lstlttparameter_and_ltx">5. Trumpf LTT Data: LstLTTParameter and Ltx</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_lstlttparameter">5.1. LstLTTParameter</h3>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Laser/LaserCore.cs:1442</code></p>
+</div>
+<div class="paragraph">
+<p>Metadata for each column in a Trumpf LST STAMM table. Loaded once from <code>ltxData.json</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON key (camelCase, e.g. <code>"cuttingSpeed"</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LstColumnId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LST column number (e.g. 2290 = MaterialStandard)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Unit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unit string written into STAMM (<code>"m/min"</code>, <code>"bar"</code>, etc.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsNumeric</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code> = numeric column (<code>Z</code>), <code>false</code> = text column (<code>T</code>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code>CreateSTAMMTable(pages)</code> generates the <code>BEGIN_LTT_STAMM … END_LTT_STAMM</code> block
+for the LST file by iterating <code>LstLTTParameter.Parameters</code> and reading each page&#8217;s
+<code>STAMMData</code> array at the matching index.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ltx_ltxrow_ltxfield_ltxparameter">5.2. Ltx, LtxRow, LtxField, LtxParameter</h3>
+<div class="paragraph">
+<p>Newer Trumpf laser machines use an <code>LTX</code> format (three linked tables: LTC common
+parameters, LCE cut extension, LPE pierce extension) instead of the older STAMM
+approach.</p>
+</div>
+<div class="paragraph">
+<p><code>Ltx</code> holds the three table strings. <code>LtxRow</code> stores a row of encrypted
+(AES-256) key-value pairs, protecting proprietary machine parameters. <code>LtxParameter</code>
+provides the static column definitions (loaded from <code>ltxData.json</code>) and formula
+rules for generating LST expressions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_complete_pipeline">6. Complete Pipeline</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Drawing2 (E2Pline, E2Point, E2Bendline)
+  │
+  ↓  Part.DoCutTooling()
+  │    → new LaserAutotooler(part).DoTooling()
+  │
+  ├── For each E2Pline
+  │     ├── ToolStdShape?  → MacroCut (template trace)
+  │     └── else           → PlineCut
+  │           ├── CCId auto-select: LaserDBPage.ChooseCC(op, pline, ccBy)
+  │           ├── Pierce auto-select: LaserDBPage.GetPC(pierceType)
+  │           └── Profile computed by TraceCut (approach arc + cut + escape)
+  │
+  ├── For each E2Point → PointCut
+  ├── StitchCutter → stitch PlineCuts (FlyLine)
+  ├── ApplyFinishingRules
+  ├── OptimizeCutEnds
+  ├── RefreshMarkings → LaserText steps
+  └── MarkBendLines → PlineCut (BendMark flag, Mark condition)
+  │
+  ↓  FlatTech (IStepCollection)
+       all CutStep objects in cut order
+  │
+  ↓  ICodeGenerator.GenCode() / LSTGen
+       per step:
+         ├── PlineCut  → RapidMove to approach → TurnLaserOn(CC, pierce)
+         │               → CutPath with kerf offset, corner treatments,
+         │               → CCChanges mid-path → TurnLaserOff → escape
+         ├── PointCut  → VaporizePoint (optional) → TurnLaserOn(PC)
+         └── LaserText → WriteText
+  │
+  ↓  NC file (.lst, .nc, .nc3d, …)
+       + Trumpf STAMM / LTX tables (LstLTTParameter.CreateSTAMMTable)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_files">7. Key Files</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Laser/LaserCore.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database: <code>LaserDBBook</code>, <code>LaserDBPage</code>, <code>LaserCondition</code>, <code>LstLTTParameter</code>, <code>Ltx</code>; all cutting-condition enumerations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Laser/LaserCut.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class hierarchy: <code>LaserStep</code>, <code>LaserPathCut</code>, <code>PointCut</code>, <code>LaserText</code>; corner treatment and epilog enumerations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Laser/PlineCut.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PlineCut</code> (main cut step), <code>MacroCut</code>, <code>CornerData</code>, <code>CCChange</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Laser/TraceCut.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TraceCut</code> — approach/escape/profile computation, trace data, <code>ESFlags</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Laser/Ops/LaserAuto.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LaserAutotooler.DoTooling()</code> — full auto-tooling pipeline</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Laser/Ops/StitchCutter.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StitchCutter</code>, <code>StitchCutterCircles</code> — FlyLine/stitch cutting</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Laser/Ops/AutoRouter.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cut-sequence routing optimisation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Part/Part.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Part.DoCutTooling()</code> — outer entry point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Layout/Post/LSTGen.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf LST NC code generator; consumes <code>LaserDBPage.STAMMData</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_overview">1. Overview</a>
+  </li>
+  <li level="1">
+   <a href="#_the_cutting_condition_database_lasercore_cs">2. The Cutting-Condition Database (LaserCore.cs)</a>
+  </li>
+  <li level="2">
+   <a href="#_the_three_level_hierarchy">2.1. The three-level hierarchy</a>
+  </li>
+  <li level="2">
+   <a href="#_laserdbbook">2.2. LaserDBBook</a>
+  </li>
+  <li level="2">
+   <a href="#_laserdbpage">2.3. LaserDBPage</a>
+  </li>
+  <li level="3">
+   <a href="#_choosecc_how_a_condition_is_selected_for_a_contour">2.3.1. <code>ChooseCC</code> — how a condition is selected for a contour</a>
+  </li>
+  <li level="2">
+   <a href="#_lasercondition">2.4. LaserCondition</a>
+  </li>
+  <li level="2">
+   <a href="#_key_enumerations">2.5. Key Enumerations</a>
+  </li>
+  <li level="3">
+   <a href="#_epierce_pierce_operation_types">2.5.1. EPierce — pierce operation types</a>
+  </li>
+  <li level="3">
+   <a href="#_ecut_path_operation_types">2.5.2. ECut — path operation types</a>
+  </li>
+  <li level="3">
+   <a href="#_elaserprocesstypes_primary_process">2.5.3. ELaserProcessTypes — primary process</a>
+  </li>
+  <li level="3">
+   <a href="#_elaserprocessoptions_secondary_flags_bitfield">2.5.4. ELaserProcessOptions — secondary flags (bitfield)</a>
+  </li>
+  <li level="3">
+   <a href="#_egastypes">2.5.5. EGasTypes</a>
+  </li>
+  <li level="3">
+   <a href="#_ecornertreatment">2.5.6. ECornerTreatment</a>
+  </li>
+  <li level="1">
+   <a href="#_the_cut_step_class_hierarchy">3. The Cut-Step Class Hierarchy</a>
+  </li>
+  <li level="2">
+   <a href="#_cutstep">3.1. CutStep</a>
+  </li>
+  <li level="2">
+   <a href="#_laserstep">3.2. LaserStep</a>
+  </li>
+  <li level="2">
+   <a href="#_laserpathcut">3.3. LaserPathCut</a>
+  </li>
+  <li level="2">
+   <a href="#_plinecut">3.4. PlineCut</a>
+  </li>
+  <li level="2">
+   <a href="#_macrocut">3.5. MacroCut</a>
+  </li>
+  <li level="2">
+   <a href="#_tracecut">3.6. TraceCut</a>
+  </li>
+  <li level="2">
+   <a href="#_pointcut">3.7. PointCut</a>
+  </li>
+  <li level="2">
+   <a href="#_lasertext">3.8. LaserText</a>
+  </li>
+  <li level="1">
+   <a href="#_laserautotooler_dotooling">4. LaserAutotooler.DoTooling</a>
+  </li>
+  <li level="2">
+   <a href="#_precondition">4.1. Precondition</a>
+  </li>
+  <li level="2">
+   <a href="#_step_by_step_process">4.2. Step-by-step process</a>
+  </li>
+  <li level="3">
+   <a href="#_step_2_approach_markers">4.2.1. Step 2 — Approach markers</a>
+  </li>
+  <li level="3">
+   <a href="#_step_3_stitch_cutting_flyline">4.2.2. Step 3 — Stitch cutting (FlyLine)</a>
+  </li>
+  <li level="3">
+   <a href="#_step_4_tooling_entities">4.2.3. Step 4 — Tooling entities</a>
+  </li>
+  <li level="3">
+   <a href="#_step_5_sheared_sheet_notches">4.2.4. Step 5 — Sheared-sheet notches</a>
+  </li>
+  <li level="3">
+   <a href="#_steps_710_post_processing">4.2.5. Steps 7–10 — Post-processing</a>
+  </li>
+  <li level="3">
+   <a href="#_toolstdshape_special_shape_macro_cuts">4.2.6. <code>ToolStdShape</code> — special-shape macro cuts</a>
+  </li>
+  <li level="1">
+   <a href="#_trumpf_ltt_data_lstlttparameter_and_ltx">5. Trumpf LTT Data: LstLTTParameter and Ltx</a>
+  </li>
+  <li level="2">
+   <a href="#_lstlttparameter">5.1. LstLTTParameter</a>
+  </li>
+  <li level="2">
+   <a href="#_ltx_ltxrow_ltxfield_ltxparameter">5.2. Ltx, LtxRow, LtxField, LtxParameter</a>
+  </li>
+  <li level="1">
+   <a href="#_complete_pipeline">6. Complete Pipeline</a>
+  </li>
+  <li level="1">
+   <a href="#_key_files">7. Key Files</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="bend.html">Bend Technology</a></span>
+ <span class="next"><a href="../machineids.html">Machine ID Scheme</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1585 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Subsystem *BCell* (Bend Cell Automation)</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a class="active" href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Subsystem *BCell* (Bend Cell Automation)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Prerequisite:</strong> Chapter 02 (Bend) read. BCell is layered <em>on top of</em> Bend&#8201;&#8212;&#8201;every BCell concept ultimately wraps a <code>BendOp</code>.
+<strong>Goal:</strong> understand the bend-cell automation subsystem well enough to localize any robot-cell bug to the right code area without writing a fix. Reading time: 60&#8212;&#8203;90 minutes.
+<strong>Companion to:</strong> chapter 02 §7.4 ("Robotic bend lives <em>in</em> <code>BendOp</code>, not separately")&#8201;&#8212;&#8201;that paragraph is the orientation; this chapter is the depth.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_tldrbcell_in_twelve_lines">1. TL;DR&#8201;&#8212;&#8201;BCell in twelve lines</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Domain:</strong> automated press-brake bending performed by a robot cell (Trumpf BendMaster 60/150, Cell5000, Cell7000, FlexCell 10, B23-attached cells).</p>
+</li>
+<li>
+<p><strong>Code root:</strong> <code>Src\Core\BCell\</code> (34 files, ~1.2 MB) plus <code>Src\UI\BCell\</code> (10 files).</p>
+</li>
+<li>
+<p><strong>Top-level model:</strong> <code>BCellTech</code> is <strong>abstract</strong>&#8201;&#8212;&#8201;concrete subclasses include <code>BM5000</code>/<code>BM7000</code>/<code>BC7000</code> family. Lives at <code>BendTech.Cell</code> (every <code>BendTech</code> <em>may</em> have one cell).</p>
+</li>
+<li>
+<p><strong>Three primary stages:</strong> <strong>Pickup</strong> (<code>BCPickup</code>) → many <strong>Bends</strong> (regular <code>BendOp</code> plus possibly <code>BCRegrip</code> between them) → <strong>Deposit</strong> (<code>BCDeposit</code>).</p>
+</li>
+<li>
+<p><strong>Cell items:</strong> physical objects that can sit in the cell&#8201;&#8212;&#8201;<code>BPallet</code>, <code>BDispenser</code>, <code>BCupGrip</code>, <code>BJawGrip</code>, <code>BProfileGrip</code>, <code>BFlipConveyor</code>, <code>BTiltConveyor</code>, <code>BLightBox</code>, <code>BFurniture</code>&#8201;&#8212;&#8201;all under one base <code>BCellItem</code>.</p>
+</li>
+<li>
+<p><strong>Components vs. items:</strong> an <em>item</em> is the catalog object; a <code>BCComponent</code> is the <em>placed instance</em> in this cell at a specific transform.</p>
+</li>
+<li>
+<p><strong>Robot pose:</strong> kinematic state via <code>BRobotPose</code> (axes / wrist / part transforms); inverse kinematics included.</p>
+</li>
+<li>
+<p><strong>Routing:</strong> <code>BRouting</code> decides per-bend insert/bend/extract strategy (front, side-left, side-right, with-ram, vacuum-on, swivel).</p>
+</li>
+<li>
+<p><strong>Regrip flavors:</strong> <code>BCRegrip.EFlavor</code>&#8201;&#8212;&#8201;<code>Pickup</code>, <code>Deposit</code>, <code>Station</code>, <code>Clamp</code>, <code>PostBend</code>, <code>DuringBend</code>, <code>CenteringTable</code>, <code>DoubleSheet</code>. Each has different rules about where it can be added.</p>
+</li>
+<li>
+<p><strong>Output:</strong> robot code (proprietary text) + EIN files (Trumpf simulation) + standard NC for the brake.</p>
+</li>
+<li>
+<p><strong>UI controllers:</strong> <code>BCellGlob</code>, <code>BPickupGlob</code>, <code>BRegripGlob</code>, <code>BDepositGlob</code>, <code>BWaypointGlob</code>, <code>BGripperGlob</code>, <code>BJawPickupGlob</code>, <code>BGripperToolGlob</code>, <code>BFlexiGripperGlob</code>, <code>BRobotStrategyGlob</code>&#8201;&#8212;&#8201;all under <code>Src\UI\BCell\</code>.</p>
+</li>
+<li>
+<p><strong>Tests:</strong> <code>Test\Bend\Cell\</code>&#8201;&#8212;&#8201;yearly bundles (<code>Cell2021.cs</code> &#8230;&#8203; <code>Cell2026.cs</code>) plus thematic (<code>CellBasic.cs</code>, <code>CellFixes.cs</code>, <code>CellGripper.cs</code>, <code>BCRegripTest.cs</code>, <code>BCPickupTest.cs</code>, <code>BCDepositTest.cs</code>, <code>BCRouting.cs</code>, <code>BCExtract.cs</code>, <code>CellCustomer.cs</code>, <code>CellUI.cs</code>).</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_vocabulary25_terms">2. Vocabulary&#8201;&#8212;&#8201;25 terms</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Term</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+<th class="tableblock halign-left valign-top">Where in code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cell</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The bend cell&#8201;&#8212;&#8201;a robot, grippers, machine, peripherals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BendMaster (BM60/BM150)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf robotic bending cell families (60 kg / 150 kg payload)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellItem.EFlags.BM60</code>/<code>BM150</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cell5000 / Cell7000</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Newer Trumpf cell platforms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech</code> subclasses; <code>7K\BC7000Tech.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>B23</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Trumpf APC-controlled brake; can be cell-attached</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellItem.EFlags.B23</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FlexCell 10</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compact cell variant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellItem.EFlags.FC10</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pickup</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picking the unbent blank from a pallet/dispenser</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCPickup</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Deposit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Putting the finished part on a pallet/conveyor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCDeposit</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regrip</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mid-job change of how the gripper holds the part</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCRegrip</code> (eight flavors)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pallet</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Passive part-storage shelf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BPallet : BStorage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Dispenser</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Active blank-feeder with lifting suction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDispenser : BStorage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Conveyor</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Active transport (flip / tilt variants)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BFlipConveyor</code>, <code>BTiltConveyor</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Light box</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transillumination platform for image-recognition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BLightBox</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cup gripper</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vacuum or magnetic suction-cup gripper</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCupGrip</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Jaw gripper</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pincer-style gripper</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BJawGrip</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Profile gripper</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Long-thin gripper with a slide for extruded profiles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BProfileGrip</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Multi-circuit gripper</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cup gripper with independent vacuum groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BGripperM</code>/<code>BGripperS</code> plus <code>CupGroup</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Suction cup</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A single cup on the cup gripper</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BSuctionCup</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cup state</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per-cup on/off/leak state in a configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCupGripConfig</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Waypoint</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discrete 3D pose along the robot trajectory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech.Waypoints[]</code>, <code>BWaypointUI.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Routing</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert / bend / extract strategy per bend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRouting</code> (<code>EIn.Normal/Left/Right</code>, <code>EOut.*</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Regrip station</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fixed cell location used for hand-off regrips</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRegripStnVM</code>; tracked in <code>RegripStnHome</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Centering table</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell component used to reference part position</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellItem.EFlags.Centering</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Separator sheet</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paper/foam sheet placed between parts in a stack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BSeparator</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Lattice / DPlan</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The deposit lattice: rows×cols×layers + pitch + start corner + weave</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDepositPlan</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>EIN file</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trumpf simulation output for the bend cell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech.EINWriter</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Visuals:</strong> <code>Doc\Img\BCell\</code> has the entire concept gallery&#8201;&#8212;&#8201;gripper anatomy, pickup cycle, deposit cycle, swivel side, slide, regrip station, separator sheet, image-point calculation, inverse-kinematics diagram. Every term above has a picture.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_the_data_modelclass_hierarchy">3. The data model&#8201;&#8212;&#8201;class hierarchy</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>Part
+ └─ BendTech
+     └─ Cell : BCellTech (optional, only for robotic parts)        [BCellTech.cs]
+         ├─ BMachine (inherited via BendTech)
+         ├─ Components : List&lt;BCComponent&gt;                          [BCComponent.cs]
+         │   └─ Item : BCellItem (gripper / pallet / dispenser…)   [BCellItem.cs]
+         ├─ Pickup : BCPickup                                       [BPickup.cs]
+         ├─ Regrips : List&lt;BCRegrip&gt;                                [BRegrip.cs]
+         ├─ Deposits : List&lt;BCDeposit&gt;                              [BDeposit.cs]
+         ├─ Gripper : BGripper (active gripper for this run)        [BCellItem.cs]
+         ├─ DPlan : BDepositPlan (the lattice)                      [BDepositPlan.cs]
+         ├─ Routing : per-BendOp BRouting                           [BRouting.cs]
+         ├─ Waypoints : List&lt;Waypoint&gt;                              [internal in BCellTech]
+         ├─ RobotCode : string                                      (generated)
+         └─ Separators : (per pallet/dispenser)                     [BSeparator.cs]</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cell_item_hierarchy_from_bcellitem_cs_lines_823">Cell-item hierarchy (from <code>BCellItem.cs</code> lines 8&#8212;&#8203;23)</h3>
+<div class="listingblock">
+<div class="content">
+<pre>BCellItem
+ ├─ BStorage
+ │   ├─ BPallet
+ │   └─ BDispenser
+ ├─ BGripper
+ │   ├─ BCupGrip
+ │   │   ├─ BProfileGrip
+ │   │   ├─ BGripperM
+ │   │   └─ BGripperS
+ │   └─ BJawGrip
+ ├─ BLightBox
+ ├─ BFurniture
+ └─ BEquipment
+     ├─ BFlipConveyor
+     └─ BTiltConveyor</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_three_subtleties">Three subtleties</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong><code>BCellTech</code> is abstract.</strong> Every concrete cell is one of a small set of subclasses (<code>BM5000</code> family, <code>BC7000Tech</code>). When you read <code>BCellTech.Foo()</code>, look at the <em>concrete</em> class that the part actually owns&#8201;&#8212;&#8201;overrides matter.</p>
+</li>
+<li>
+<p><strong>Items are catalog, components are placements.</strong> Editing a <code>BCupGrip</code> (item) potentially affects all parts that use it; editing its <code>BCComponent</code> (placement) only affects the current cell.</p>
+</li>
+<li>
+<p><strong>Stages are siblings, but ordered.</strong> A cell run is <em>Pickup → (Bends with optional Regrips between them) → Deposit</em>. The Bend ops themselves are owned by the parent <code>BendTech</code>; BCell owns the inter-bend "glue".</p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_module_mapthe_34_files_grouped">4. Module map&#8201;&#8212;&#8201;the 34 files grouped</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_4_1_root_srccorebcell_24_files">4.1 Root <code>Src\Core\BCell\</code> (24 files)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">Size</th>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>81 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BCellTech.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The abstract cell tech. <strong>Read first.</strong> Constructors, dump format, robot-code mangling, components/regrips/deposits lists.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>85 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BCellItem.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The item type hierarchy (gripper, pallet, dispenser, conveyors). Long but the comment header (lines 8&#8212;&#8203;23) is the cheat-sheet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">66 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellUtil.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cross-cutting helpers used by the cell stages.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">28 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellVM.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View-models for cell rendering: <code>BCellVM</code>, <code>BM5000VM</code>, <code>BCComponentVM</code>, <code>BDispenserVM</code>, <code>BProfileGripVM</code>, <code>BRegripStnVM</code>, <code>PartForPickupVM</code>, <code>PartAtDepositVM</code>. The header comment (lines 7&#8212;&#8203;16) lists everything.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">14 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCMiscTypes.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Small types and enums shared across the module.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">7 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCOperations.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operations facade.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">28 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCComponent.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The "placed instance" wrapper around a <code>BCellItem</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>57 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BPickup.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pickup operation (vacuum from pallet, jaw from dispenser, with light-box imaging). Implements <code>IBSimStage</code> and <code>IGripSource</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BPickupPlan.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lattice/plan for the pickup pile.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>61 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BRegrip.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Regrip operation. <strong>Eight flavors</strong> in <code>EFlavor</code>. The most subtle file in the module.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>34 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDeposit.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deposit operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">46 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDepositPlan.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The deposit lattice (<code>DPlan</code>): rows, cols, layers, pitch, weave, two-part stagger.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>42 KB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>BCupGrip.cs</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cup gripper, suction cups, multi-circuit configuration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BFlexiGripper.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flexible gripper variant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">14 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BEquipment.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Active equipment (flip/tilt conveyors).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">21 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BSeparator.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Separator-sheet model.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">31 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRouting.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per-bend insert/bend/extract strategy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">34 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRobotPose.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robot kinematics&#8201;&#8212;&#8201;FK/IK, axes ↔ wrist ↔ part transforms.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">45 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BSimStepNeo.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step-by-step simulation of a cell run.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cell5KNCSim.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NC-side simulation for Cell5000.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">10 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BNCInterface.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NC-code interface.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">21 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GripperTool.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tooling-side gripper representation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>7K\BC7000Tech.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell7000 specialization.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">13 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Fanuc\BCFanucTech.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fanuc-controller specialization.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_4_2_srccorebcellops_10_filesalgorithms">4.2 <code>Src\Core\BCell\Ops\</code> (10 files&#8201;&#8212;&#8201;algorithms)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">Size</th>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">39 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCComputer.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell-level computation orchestrator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">22 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellImport.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Importing grippers (ARV / JSON / DXF / GEO&#8201;&#8212;&#8201;see Note 2017).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">45 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDepositExpert.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The lattice/deposit expert (decides where each part lands).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">16 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRegripExpert.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decides <em>whether</em> / <em>which</em> regrips to insert.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">42 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRegripAux.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Regrip auxiliary algorithms.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">20 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PickupExpert.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decides pickup parameters (which gripper config, which cups, which approach).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">24 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DispenserExpert.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special-case logic for dispenser pickups.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">29 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BStepComputer.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per-step computer (waypoints, simulation steps).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">40 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CellRefine.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Refinement passes after initial planning.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">26 KB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RPathPlanner.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robot-path planner (between any two cell poses).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_4_3_ui_hooks_srcuibcell_10_files">4.3 UI hooks <code>Src\UI\BCell\</code> (10 files)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Wraps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellGlob</code>&#8201;&#8212;&#8201;top-level cell editor (largest at 35 KB)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BPickupUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BPickupGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRegripUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRegripGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDepositUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BDepositGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BWaypointUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BWaypointGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BGripperUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BGripperGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BGripperToolUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BGripperToolGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BJawPickupUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BJawPickupGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BFlexiGripperUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BFlexiGripperGlob</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRobotStrategyUI.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">strategy editor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_4_4_notes">4.4 Notes</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Note</th>
+<th class="tableblock halign-left valign-top">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2017.CupGripperInfoInDwg.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Required reading.</strong> How DXF/GEO files import cup-gripper data (cup positions, groups, baseplate, multi-circuit).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2016.ImportBMC.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BMC machine format (cell-aware machines too).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Notes\Tech\2020.ImportBComponent.ftx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Importing cell components.</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_the_eight_regrip_flavors_the_most_subtle_topic">5. The eight regrip flavors (the most subtle topic)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>BCRegrip.EFlavor</code> (in <code>BRegrip.cs</code>) drives where and how a regrip can be inserted. Each flavor has different placement rules&#8201;&#8212;&#8201;see <code>BendOpGlob.AddRegrip</code> in <code>Src\UI\Bend\BendOpUI.cs</code> lines 21&#8212;&#8203;55.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flavor</th>
+<th class="tableblock halign-left valign-top">Where it occurs</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pickup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right after the pickup, before the first bend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Available if the pickup pose differs from what the first bend wants.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Deposit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right before deposit, after the last bend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Available if the deposit pose differs from the last-bend hold.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Station</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">At a fixed regrip station between two bends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires <code>HasRegripStns</code> and not jaw-grip.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Clamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">While the part is held by the brake clamp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Available if previous regrip wasn&#8217;t a station/pickup/centering-table.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PostBend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right after a bend, before the next</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cannot stack with another <code>Station</code>-type regrip.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DuringBend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">While the part is being bent (rare, machine-dependent)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires <code>RegripDuringBend = true</code> on the prior op.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CenteringTable</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">At a centering-table component</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires a <code>Centering</code>-flagged component.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DoubleSheet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">At a double-sheet station for paired processing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires <code>HasDoubleSheetStn</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>When debugging "regrip in the wrong place" or "regrip cannot be added", the answer is almost always in this enum&#8217;s rules combined with the per-cell capability flags.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_lifecycle_of_a_robotic_partsequence_in_words">6. Lifecycle of a robotic part&#8201;&#8212;&#8201;sequence in words</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>1. Part loads (.fx or 3D import).
+2. BendTech.Make creates the bend projection (chapter 02 §5).
+3. If the target machine is cell-attached:
+   a. BCellTech is constructed (concrete subclass: BM5000 / BC7000 / Fanuc).
+   b. Cell components (gripper, pallet, dispenser, regrip stns) are placed.
+   c. BendTech.Cell = cellTech.
+4. BendTooler.Process runs (still chapter 02).
+   ─ But: now mRobotic = true → tool-scoring / sequencing rules differ.
+5. Cell-level expert passes:
+   a. PickupExpert / DispenserExpert decide pickup parameters.
+   b. BRegripExpert decides regrips between bends.
+   c. BDepositExpert decides the deposit lattice.
+   d. CellRefine refines the plan.
+   e. RPathPlanner plans robot motion between every pose.
+   f. BStepComputer materializes per-step waypoints.
+6. BSimStepNeo simulates the run end-to-end.
+7. Validation: per-stage EBCStatus / EBStatus flags collected.
+8. Output:
+   ─ NC code for the brake — produced by a C# writer in Src\API\Bend\Post\
+     (e.g. BNCWriter for Cell5K / TrumpfB23, TrumpfDLD, ...) via Hub.GenerateNC.
+   ─ Robot code (cell-specific text) — generated by BCellTech.RobotCode + MangleRobotCode.
+   ─ Optionally an EIN file (Trumpf simulation) via BCellTech.EINWriter.</pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_three_canonical_reading_tours_15_min_each">7. Three canonical reading tours (15 min each)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_tour_awhat_does_a_cell_run_actually_consist_of">Tour A&#8201;&#8212;&#8201;"What does a cell run actually consist of?"</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Src\Core\BCell\BCellTech.cs</code> lines 27&#8212;&#8203;80&#8201;&#8212;&#8201;the abstract base, components/regrips/deposits lists.</p>
+</li>
+<li>
+<p><code>Src\Core\BCell\BCellTech.cs</code> <code>Dump</code> method lines 45&#8212;&#8203;78&#8201;&#8212;&#8201;exactly what gets compared in tests.</p>
+</li>
+<li>
+<p><code>Test\Bend\Cell\CellBasic.cs</code> lines 13&#8212;&#8203;137&#8201;&#8212;&#8201;a fixture with <code>Test</code> helper. <strong>Note</strong> the helper calls <code>tech.Cell.CheckDump (...)</code> <em>and</em> <code>tech.CheckBNC (...)</code>: two golden files per test (cell text + NC).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Self-check:</strong> name the three lists on <code>BCellTech</code> that determine cell behavior. What does <code>MangleRobotCode</code> do?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tour_bwhat_is_a_regrip_mechanically">Tour B&#8201;&#8212;&#8201;"What is a regrip, mechanically?"</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Src\Core\BCell\BRegrip.cs</code> lines 14&#8212;&#8203;60&#8201;&#8212;&#8201;class declaration and constructor.</p>
+</li>
+<li>
+<p><code>BCRegrip.EFlavor</code> enum (search <code>enum EFlavor</code> inside <code>BRegrip.cs</code>)&#8201;&#8212;&#8201;the eight kinds.</p>
+</li>
+<li>
+<p><code>Src\UI\Bend\BendOpUI.cs</code> lines 21&#8212;&#8203;55&#8201;&#8212;&#8201;<code>BendOpGlob.AddRegrip</code>. The rules of "what flavor can be added next" live here.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Self-check:</strong> if the user clicks "Add Regrip" on the <em>first</em> bend, which flavors are eligible?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tour_chow_are_grippers_imported">Tour C&#8201;&#8212;&#8201;"How are grippers imported?"</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Notes\Tech\2017.CupGripperInfoInDwg.ftx</code>&#8201;&#8212;&#8201;the entire note (~90 lines).</p>
+</li>
+<li>
+<p><code>Src\Core\BCell\Ops\BCellImport.cs</code> lines 1&#8212;&#8203;30&#8201;&#8212;&#8201;the <code>BCupGripImport.Load</code> entry, ARV vs. JSON.</p>
+</li>
+<li>
+<p><code>Src\Core\BCell\BCupGrip.cs</code> lines 13&#8212;&#8203;40&#8201;&#8212;&#8201;the <code>ICupGrip</code> interface, what the imported gripper must expose.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Self-check:</strong> what is a "multi-circuit" gripper, and where in the DXF does the circuit grouping appear?</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_common_stumbling_blocks">8. Common stumbling blocks</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_8_1_bcell_logic_is_split_across_bendop_and_bcregrip">8.1 BCell logic is split across <code>BendOp</code> and <code>BCRegrip</code></h3>
+<div class="paragraph">
+<p>Robotic-bend awareness lives partly in <code>BendOp</code> (<code>Robotic</code>, <code>RegripDuringBend</code>, <code>IsFirstOp</code>/<code>IsLastOp</code> cell-stage logic) and partly in <code>BCRegrip</code> (the regrip itself). When a "regrip in wrong place" bug arrives, <strong>both</strong> places need inspection, not just BCell.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_2_bcelltech_is_abstractevery_override_matters">8.2 <code>BCellTech</code> is abstract&#8201;&#8212;&#8201;every override matters</h3>
+<div class="paragraph">
+<p><code>BCellTech</code> defines the contract; <code>BM5000</code>, <code>BC7000Tech</code>, <code>BCFanucTech</code> override behavior. A bug "only on Cell7000" usually points at <code>7K\BC7000Tech.cs</code>. A "only on Fanuc" bug → <code>Fanuc\BCFanucTech.cs</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_3_versioning_is_everywhere">8.3 Versioning is everywhere</h3>
+<div class="paragraph">
+<p><code>BPickup.PostLoad</code> (<code>BPickup.cs</code> lines 31&#8212;&#8203;50) does an <em>in-line</em> migration based on <code>mCell.FXBuildRev</code> and <code>mCell.FXBuildNo</code>&#8201;&#8212;&#8201;not just <code>AuType.ObjVersion</code>. The pattern is: turn off status flags that older builds couldn&#8217;t set correctly. <strong>When you find a flag mysteriously missing, check the build-number gates.</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_4_robot_code_post_processing_is_in_the_dump">8.4 Robot-code post-processing is in the dump</h3>
+<div class="paragraph">
+<p><code>BCellTech.MangleRobotCode</code> (lines 80&#8212;&#8203;119) post-processes the raw robot code to produce the canonical text used in tests. If you see odd <code>DZ</code>/<code>DY</code>/<code>DX</code> deltas in golden files, that&#8217;s this method emitting compact relative motion.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_5_cell_items_have_eflags_for_capability_gating">8.5 Cell items have <code>EFlags</code> for capability gating</h3>
+<div class="paragraph">
+<p><code>BCellItem.EFlags</code> (25 flags!) gates compatibility (BM60 vs. BM150 vs. B23 vs. FC10 vs. Cell7000 vs. TBC7030, plus structural attributes like <code>Conveyor</code>, <code>Centering</code>, <code>DoubleSheet</code>, <code>Inclined</code>, <code>RotateBy180</code>). When a component doesn&#8217;t appear in a placement dialog, the answer is here.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_6_the_igripsource_interface">8.6 The <code>IGripSource</code> interface</h3>
+<div class="paragraph">
+<p><code>BCPickup</code> and <code>BCRegrip</code> both implement <code>IGripSource</code> (search the interface in <code>BCupGrip.cs</code> or sibling)&#8201;&#8212;&#8201;they are the two places the part transitions to a new gripper hold. Bugs about "gripper hold transform after regrip/pickup" are at this interface.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_8_7_two_output_streams">8.7 Two output streams</h3>
+<div class="paragraph">
+<p>A cell test uses <strong>two</strong> golden files: a <code>.txt</code> (the cell dump) and a <code>.nc</code> (the brake NC code). Changing one without the other = one of the two will fail.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_testshow_they_are_organized">9. Tests&#8201;&#8212;&#8201;how they are organized</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_inventory_xtestbendcell_15_files_plus_cell7kcell7kbase_cs">Inventory (<code>X:\Test\Bend\Cell\</code>, 15 files; plus <code>Cell7K\Cell7KBase.cs</code>)</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">Files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cell5000 basics</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CellBasic.cs</code> (~360 tests)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Yearly regression bundles</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cell2021.cs</code> &#8230;&#8203; <code>Cell2026.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Per-stage tests</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCPickupTest.cs</code>, <code>BCRegripTest.cs</code>, <code>BCDepositTest.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Routing &amp; extraction</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCRouting.cs</code>, <code>BCExtract.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Customer-specific</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CellCustomer.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Grippers</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CellGripper.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Misc / fixes</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CellFixes.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>UI</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CellUI.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cell7000</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cell7K\Cell7KBase.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Cell-aware IO</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Test\IO\CellCfgReaderTest.cs</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_the_standard_test_pattern">The standard test pattern</h3>
+<div class="paragraph">
+<p>From <code>Test\Bend\Cell\CellBasic.cs</code> lines 131&#8212;&#8203;137:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static Part Test (string infile, int idMC = 93, bool checkBNC = true) {
+   var part = FX.LoadTestPart (infile);
+   part.DoSwitchToBending (EDoFlags.NoGAPAdjust, BendMachine.Get (idMC));
+   part.BendTech.Cell.CheckDump (Path.ChangeExtension (infile, ".txt"));
+   if (checkBNC) part.BendTech.CheckBNC (Path.ChangeExtension (infile, ".nc"));
+   return part;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note the differences from chapter-02 Bend tests:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>idMC = 93</code> is the standard cell-attached machine (<code>X:\Data\Machine\93\</code>), not 13.</p>
+</li>
+<li>
+<p><code>DoSwitchToBending</code> not <code>BendTech.Make</code> directly (cell-aware switching).</p>
+</li>
+<li>
+<p><strong>Two</strong> golden checks: <code>Cell.CheckDump</code> (cell text) + <code>BendTech.CheckBNC</code> (brake NC).</p>
+</li>
+<li>
+<p><code>BendCellMisc</code> adds <strong>EIN-file tests</strong> (<code>EINTest</code>, lines 169&#8212;&#8203;174) and <strong>recognition-image</strong> tests (<code>Test</code>, lines 175&#8212;&#8203;187).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Test inputs live under <code>X:\TData\Cell\&lt;area&gt;\</code> with the same subdirectory taxonomy as the test categories above. Customer cases use the prefix <code>C&lt;number&gt;</code> (e.g. <code>C45292</code>, <code>C42921</code>); internal tickets use <code>T&lt;number&gt;</code> (e.g. <code>T4715</code>, <code>T8574</code>).</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_the_four_standard_machines_cells">10. The four standard machines / cells</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ID</th>
+<th class="tableblock halign-left valign-top">What</th>
+<th class="tableblock halign-left valign-top">Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>93</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default cell-attached test machine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\Data\Machine\93\</code>&#8201;&#8212;&#8201;used for <code>CellBasic</code> tests</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>13</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default standalone bend test machine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\Data\Machine\13\</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>99</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendMachine.Default</code> in <code>BA.Testing</code> mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\Data\Machine\99\</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">custom</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Customer machines (delivered with installation)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X:\Data\Machine\&lt;custom&gt;\</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Cell-aware machines have additional cell metadata in their <code>Machine.curl</code>. The cell-tech subclass is selected based on the machine&#8217;s cell type.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_when_a_bcell_bug_arrives60_second_triage">11. When a BCell bug arrives&#8201;&#8212;&#8201;60-second triage</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Symptom</th>
+<th class="tableblock halign-left valign-top">Likely code area</th>
+<th class="tableblock halign-left valign-top">First file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Wrong gripper choice"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pickup expert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\PickupExpert.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Cup state wrong / waypoints don&#8217;t update"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pickup setter logic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BPickup.cs</code> (notice the build-version gates around line 42)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Regrip inserted in wrong place"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add-regrip rules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Src\UI\Bend\BendOpUI.cs</code> lines 21&#8212;&#8203;55 + <code>BRegrip.cs</code> <code>EFlavor</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Regrip-station collision"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Regrip-station Y position / shift</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRegrip.cs</code> <code>ShiftX</code> (line 32) and <code>RegripStnHome</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Deposit lattice wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deposit expert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BDepositExpert.cs</code> + <code>BDepositPlan.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Robot motion through obstacle"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path planner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\RPathPlanner.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Wrong insert/extract direction"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Routing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRouting.cs</code> (<code>EIn</code>/<code>EOut</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Robot code looks wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mangling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech.MangleRobotCode</code> (lines 80&#8212;&#8203;119)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"EIN file mismatch"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EIN writer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellTech.EINWriter</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Component missing from placement dialog"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Capability flags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCellItem.EFlags</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Gripper import fails"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Import path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BCellImport.cs</code> (ARV/JSON), <code>Notes\Tech\2017</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Cell-only on Cell7000"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell7000 override</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>7K\BC7000Tech.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Cell-only on Fanuc"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fanuc override</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Fanuc\BCFanucTech.cs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Image recognition off"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pickup imaging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BPickup.cs</code> <code>IImageRecogSrc</code> and <code>mImages</code> (line 37)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Separator-sheet stack wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Separator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BSeparator.cs</code>, <code>BDepositPlan</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Force/payload check wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cup load</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BCupGrip.cs</code> cup-state logic</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Stroke / reach error"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robot pose</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BRobotPose.cs</code> (FK/IK)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Sim step wrong"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step computer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Ops\BStepComputer.cs</code> + <code>BSimStepNeo.cs</code></p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_exercise_1find_explain_30_min_read_only">12. Exercise 1&#8201;&#8212;&#8201;"Find &amp; Explain" (30 min, read-only)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Task.</strong> Explain in half a page what happens when a user adds a "Station" regrip to the second bend of a cell-attached part.</p>
+</div>
+<div class="paragraph">
+<p><strong>Approach:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Src\UI\Bend\BendOpUI.cs</code> lines 21&#8212;&#8203;55&#8201;&#8212;&#8201;<code>AddRegrip</code>. Which conditions enable <code>EGTag.AddAtStation</code>?</p>
+</li>
+<li>
+<p><code>Src\Core\BCell\BRegrip.cs</code> lines 14&#8212;&#8203;60&#8201;&#8212;&#8201;what does the constructor do, and what is <code>mGripXfmAfter</code>?</p>
+</li>
+<li>
+<p><code>Src\Core\BCell\Ops\BRegripExpert.cs</code>&#8201;&#8212;&#8201;does the expert recompute anything, or is the user&#8217;s edit final?</p>
+</li>
+<li>
+<p><code>BCellTech.Dump</code>&#8201;&#8212;&#8201;where in the cell text does this regrip appear?</p>
+</li>
+<li>
+<p><strong>Bonus:</strong> what test in <code>Test\Bend\Cell\BCRegripTest.cs</code> is closest to this scenario?</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Rubric:</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Level</th>
+<th class="tableblock halign-left valign-top">Criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Locates <code>AddRegrip</code> and the <code>Station</code> flavor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Explains the eligibility conditions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plus: traces to a re-validation pass and to the dump</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plus: identifies the corner case where station regrips collide with regrip-station home positions</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_exercise_2trace_a_real_cell_bug_45_min_read_only">13. Exercise 2&#8201;&#8212;&#8201;"Trace a real cell bug" (45 min, read-only)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Task.</strong> The recent commit <code>4a5119dcb</code> (<em>"Case 45728: Changing the suction cup state no longer deletes adjusted waypoints"</em>) is a textbook BCell bug. Read the diff and answer:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Which class&#8217;s setter triggered the bug? (Hint: cup state lives in a cup-grip-config type.)</p>
+</li>
+<li>
+<p>Which setter forgot to invalidate which dirty flag? (See <code>EBDirty</code> / <code>EBInvalid</code>.)</p>
+</li>
+<li>
+<p>Which test fixture covers the case?</p>
+</li>
+<li>
+<p><strong>Bonus:</strong> the second recent commit <code>3a1791bf8</code> (<em>"Case 46197: Don&#8217;t change GripperHoldXfm when changing base plane for centering regrip"</em>) is a related class. Compare the two: same module? Same flavor of fix?</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Rubric:</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Level</th>
+<th class="tableblock halign-left valign-top">Criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names the file and the property</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the dirty / invalidate flag pattern</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plus: locates the test</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plus: explains why the centering-regrip variant needed the <em>opposite</em> of the first fix</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_14_what_this_chapter_does_not_cover">14. What this chapter does <em>not</em> cover</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NC code generation for the brake</strong>&#8201;&#8212;&#8201;see chapter 02 §10. NC writing is handled by C# writers in <code>Src\API\Bend\Post\</code> (e.g. <code>BNCWriter</code> for Cell5K / TrumpfB23, <code>TrumpfDLD</code>, &#8230;&#8203;) dispatched via <code>Hub.GenerateNC</code>.</p>
+</li>
+<li>
+<p><strong>The Bend Tooler proper</strong>&#8201;&#8212;&#8201;chapter 02. BCell <em>influences</em> it via <code>mRobotic</code>; it does not reimplement it.</p>
+</li>
+<li>
+<p><strong>Cell7000 / Fanuc deep specifics</strong>&#8201;&#8212;&#8201;separate chapters when those subsystems mature further.</p>
+</li>
+<li>
+<p><strong>The wider <code>Sim</code> subsystem</strong>&#8201;&#8212;&#8201;<code>Src\Core\Sim\</code> is invoked by BCell but is its own area.</p>
+</li>
+<li>
+<p><strong>Individual gripper-import format details</strong>&#8201;&#8212;&#8201;see <code>Notes\Tech\2017</code> for cup grippers; jaw / profile have their own notes.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_15_if_you_take_just_one_thing_from_this_chapter">15. If you take just one thing from this chapter</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>BCell lives at <code>BendTech.Cell</code> and orchestrates three stages&#8201;&#8212;&#8201;Pickup, Regrips, Deposit&#8201;&#8212;&#8201;around the existing Bend sequence. Almost every cell-specific bug is a flavor / capability / version gate in one of those three stages, or the regrip-add rules in <code>BendOpGlob.AddRegrip</code>. Models are catalog (<code>BCellItem</code>); placements are instances (<code>BCComponent</code>). Always check both.</strong></p>
+</div>
+</blockquote>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. Code paths verified against <code>Src\Core\BCell\</code>, <code>Src\UI\BCell\</code>, <code>Test\Bend\Cell\</code>, and Note 2017.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_1_tldrbcell_in_twelve_lines">1. TL;DR&#8201;&#8212;&#8201;BCell in twelve lines</a>
+  </li>
+  <li level="1">
+   <a href="#_2_vocabulary25_terms">2. Vocabulary&#8201;&#8212;&#8201;25 terms</a>
+  </li>
+  <li level="1">
+   <a href="#_3_the_data_modelclass_hierarchy">3. The data model&#8201;&#8212;&#8201;class hierarchy</a>
+  </li>
+  <li level="2">
+   <a href="#_cell_item_hierarchy_from_bcellitem_cs_lines_823">Cell-item hierarchy (from <code>BCellItem.cs</code> lines 8&#8212;&#8203;23)</a>
+  </li>
+  <li level="2">
+   <a href="#_three_subtleties">Three subtleties</a>
+  </li>
+  <li level="1">
+   <a href="#_4_module_mapthe_34_files_grouped">4. Module map&#8201;&#8212;&#8201;the 34 files grouped</a>
+  </li>
+  <li level="2">
+   <a href="#_4_1_root_srccorebcell_24_files">4.1 Root <code>Src\Core\BCell\</code> (24 files)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_2_srccorebcellops_10_filesalgorithms">4.2 <code>Src\Core\BCell\Ops\</code> (10 files&#8201;&#8212;&#8201;algorithms)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_3_ui_hooks_srcuibcell_10_files">4.3 UI hooks <code>Src\UI\BCell\</code> (10 files)</a>
+  </li>
+  <li level="2">
+   <a href="#_4_4_notes">4.4 Notes</a>
+  </li>
+  <li level="1">
+   <a href="#_5_the_eight_regrip_flavors_the_most_subtle_topic">5. The eight regrip flavors (the most subtle topic)</a>
+  </li>
+  <li level="1">
+   <a href="#_6_lifecycle_of_a_robotic_partsequence_in_words">6. Lifecycle of a robotic part&#8201;&#8212;&#8201;sequence in words</a>
+  </li>
+  <li level="1">
+   <a href="#_7_three_canonical_reading_tours_15_min_each">7. Three canonical reading tours (15 min each)</a>
+  </li>
+  <li level="2">
+   <a href="#_tour_awhat_does_a_cell_run_actually_consist_of">Tour A&#8201;&#8212;&#8201;"What does a cell run actually consist of?"</a>
+  </li>
+  <li level="2">
+   <a href="#_tour_bwhat_is_a_regrip_mechanically">Tour B&#8201;&#8212;&#8201;"What is a regrip, mechanically?"</a>
+  </li>
+  <li level="2">
+   <a href="#_tour_chow_are_grippers_imported">Tour C&#8201;&#8212;&#8201;"How are grippers imported?"</a>
+  </li>
+  <li level="1">
+   <a href="#_8_common_stumbling_blocks">8. Common stumbling blocks</a>
+  </li>
+  <li level="2">
+   <a href="#_8_1_bcell_logic_is_split_across_bendop_and_bcregrip">8.1 BCell logic is split across <code>BendOp</code> and <code>BCRegrip</code></a>
+  </li>
+  <li level="2">
+   <a href="#_8_2_bcelltech_is_abstractevery_override_matters">8.2 <code>BCellTech</code> is abstract&#8201;&#8212;&#8201;every override matters</a>
+  </li>
+  <li level="2">
+   <a href="#_8_3_versioning_is_everywhere">8.3 Versioning is everywhere</a>
+  </li>
+  <li level="2">
+   <a href="#_8_4_robot_code_post_processing_is_in_the_dump">8.4 Robot-code post-processing is in the dump</a>
+  </li>
+  <li level="2">
+   <a href="#_8_5_cell_items_have_eflags_for_capability_gating">8.5 Cell items have <code>EFlags</code> for capability gating</a>
+  </li>
+  <li level="2">
+   <a href="#_8_6_the_igripsource_interface">8.6 The <code>IGripSource</code> interface</a>
+  </li>
+  <li level="2">
+   <a href="#_8_7_two_output_streams">8.7 Two output streams</a>
+  </li>
+  <li level="1">
+   <a href="#_9_testshow_they_are_organized">9. Tests&#8201;&#8212;&#8201;how they are organized</a>
+  </li>
+  <li level="2">
+   <a href="#_inventory_xtestbendcell_15_files_plus_cell7kcell7kbase_cs">Inventory (<code>X:\Test\Bend\Cell\</code>, 15 files; plus <code>Cell7K\Cell7KBase.cs</code>)</a>
+  </li>
+  <li level="2">
+   <a href="#_the_standard_test_pattern">The standard test pattern</a>
+  </li>
+  <li level="1">
+   <a href="#_10_the_four_standard_machines_cells">10. The four standard machines / cells</a>
+  </li>
+  <li level="1">
+   <a href="#_11_when_a_bcell_bug_arrives60_second_triage">11. When a BCell bug arrives&#8201;&#8212;&#8201;60-second triage</a>
+  </li>
+  <li level="1">
+   <a href="#_12_exercise_1find_explain_30_min_read_only">12. Exercise 1&#8201;&#8212;&#8201;"Find &amp; Explain" (30 min, read-only)</a>
+  </li>
+  <li level="1">
+   <a href="#_13_exercise_2trace_a_real_cell_bug_45_min_read_only">13. Exercise 2&#8201;&#8212;&#8201;"Trace a real cell bug" (45 min, read-only)</a>
+  </li>
+  <li level="1">
+   <a href="#_14_what_this_chapter_does_not_cover">14. What this chapter does <em>not</em> cover</a>
+  </li>
+  <li level="1">
+   <a href="#_15_if_you_take_just_one_thing_from_this_chapter">15. If you take just one thing from this chapter</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="01_architecture.html">Architecture & System Context</a></span>
+ <span class="next"><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

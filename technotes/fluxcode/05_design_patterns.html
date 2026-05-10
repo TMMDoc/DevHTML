@@ -1,0 +1,1093 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../res/bento.css">
+  <link rel="stylesheet" href="../../res/site.css">
+  <link rel="stylesheet" href="../../res/tree.css">
+  <link rel="stylesheet" href="../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Design Patterns -- A Reader's Guide</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="index.html">FluxCode</a>
+     <ul>
+      <li><button class="tree blank"></button><a href="00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a class="active" href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">FluxCode</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="05_design_patterns.html">Design Patterns -- A Reader's Guide</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Design Patterns -- A Reader's Guide</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Goal:</strong> recognize the recurring design patterns Flux actually uses (which is not the same as a textbook tour). For each pattern: what it looks like in code, where to find canonical examples, and what to watch out for when modifying. Reading time: 45 minutes.</p>
+</div>
+</blockquote>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_how_to_read_this_chapter">1. How to read this chapter</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Flux is ~25 years of evolved code. Some patterns are pristine; some are intentional pragmatic deviations. We list both.</p>
+</div>
+<div class="paragraph">
+<p>For each pattern:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Form in Flux</strong>&#8201;&#8212;&#8201;how it looks in this codebase, not in a textbook.</p>
+</li>
+<li>
+<p><strong>Where</strong>&#8201;&#8212;&#8201;concrete file references.</p>
+</li>
+<li>
+<p><strong>Watch out for</strong>&#8201;&#8212;&#8201;pitfalls when extending.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_strategyselectable_algorithm_behind_an_interface">2. Strategy&#8201;&#8212;&#8201;selectable algorithm behind an interface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux">Form in Flux</h3>
+<div class="paragraph">
+<p>A small interface (<code>IBendCalc</code>, <code>IFlexSpine</code>, <code>Glob</code> subtype hierarchy) plus concrete implementations chosen at runtime by a property accessor or factory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_ibendcalc">Canonical example: <code>IBendCalc</code></h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Bend\BendCalc.cs</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public interface IBendCalc {
+   void GetDieVRange (double thickness, out int min, out int max);
+   double SuggestDieWidth (double thickness, double radius, double interiorAngle);
+   double SuggestPunchRadius (double thickness);
+   double GetBendRadiusFactor (double thickness, double interiorAngle);
+   BendStaples GetBendStaples (Workpiece workpiece, ToolSet toolSet, EBendKind kind);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong> <code>StdBendCalc</code>, <code>TBSBendCalc</code> (Trumpf).
+<strong>Selection:</strong> in <code>BendMachine.BendCalc</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public IBendCalc BendCalc =&gt; Settings.BendCalc switch {
+   Sheaf.EBendCalc.Default =&gt; IsTrumpf ? TBSBendCalc.It : StdBendCalc.It,
+   _ =&gt; StdBendCalc.It,
+};</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The selection key (here <code>Settings.BendCalc</code>) lives in <code>Sheaf</code>. Adding a new strategy requires extending the enum and the switch.</p>
+</li>
+<li>
+<p>Strategy instances are typically singletons (<code>StdBendCalc.It</code>). Don&#8217;t add per-instance state.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_examples">Other examples</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>IFlexSpine</code> (multiple implementations per bend kind).</p>
+</li>
+<li>
+<p>Crash engines (<code>BendOpCrash</code> vs. <code>NBendCrash</code>)&#8201;&#8212;&#8201;selected by feature flag, currently <em>both</em> exist (this is the in-flight one).</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_compositeuniform_handling_of_single_group_objects">3. Composite&#8201;&#8212;&#8201;uniform handling of single + group objects</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_2">Form in Flux</h3>
+<div class="paragraph">
+<p>The Glob system is a textbook Composite: when the user selects multiple objects, the system synthesizes a <em>composite glob</em> that exposes the shared properties and dispatches commands to all members.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example">Canonical example</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BendOpGlob</code> wraps a single <code>BendOp</code> (<code>Src\UI\Bend\BendOpUI.cs</code> line 17).</p>
+</li>
+<li>
+<p><code>BendOpsGlob</code> wraps multiple (<code>Src\UI\Bend\BendOpUI.cs</code> line 661).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The composite is built automatically by the glob machinery&#8201;&#8212;&#8201;you only need to expose properties cooperatively. Properties that disagree across members typically fall back to a "mixed" sentinel.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_2">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Multi-edit semantics.</strong> When a property differs across selection, <em>show</em> the disagreement; don&#8217;t silently default to the first value. This is a common source of edit bugs.</p>
+</li>
+<li>
+<p><strong>Bulk command dispatch.</strong> Commands that mutate must be idempotent across members or wrapped in a single undo unit.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_factory_methodmake_everywhere">4. Factory method&#8201;&#8212;&#8201;<code>Make</code> everywhere</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_3">Form in Flux</h3>
+<div class="paragraph">
+<p>Every non-trivial top-level model is constructed via a static <code>Make</code> factory that returns <code>EResult</code>. The constructor itself is private and assumes valid inputs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_examples">Canonical examples</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BendTech.Make (Part, BendMachine, EDoFlags = 0) → EResult</code>.</p>
+</li>
+<li>
+<p><code>Machine.Get (int id) → Machine</code> (cached factory).</p>
+</li>
+<li>
+<p><code>BendMachine.Get (string sid) → BendMachine</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_3">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>Make</code> is <em>the</em> validation gate. Don&#8217;t add bypass paths that construct directly.</p>
+</li>
+<li>
+<p>The constructor often contains substantial logic (<code>BendTech</code> constructor is 250 lines). Read it as the spec for the object&#8217;s invariants.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_cascaded_dictionarythe_sheaf">5. Cascaded dictionary&#8201;&#8212;&#8201;the Sheaf</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_4">Form in Flux</h3>
+<div class="paragraph">
+<p>A custom pattern: each settings holder (<code>ISheafSite</code>) has a local <code>Dictionary&lt;SH, object&gt;</code> and a parent. Reads walk up the chain.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_2">Canonical example</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Settings\Sheaf.cs</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public interface ISheafSite {
+   string SHName { get; }
+   Dictionary&lt;SH, object&gt; SHDict { get; set; }
+   ISheafSite SHParent { get; }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A read for <code>SH.RamVBend</code> on a <code>BendOp</code> walks: <code>BendOp.SHDict</code> → <code>BendTech.SHDict</code> → <code>BendMachine.SHDict</code> → defaults.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_4">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Where you write matters.</strong> Setting a value at the op level shadows the tech and machine values. Setting at the machine level affects every tech that uses that machine.</p>
+</li>
+<li>
+<p>The <code>SH</code> enum is a closed registry. Adding a setting means extending the enum and (often) adding metadata.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_service_locatorhub">6. Service locator&#8201;&#8212;&#8201;Hub</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_5">Form in Flux</h3>
+<div class="paragraph">
+<p>Static class <code>Hub</code> exposes named delegate slots. The App layer fills them at startup. Core/UI code invokes them with null-safe calls.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_3">Canonical example</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Core\Hub.cs</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static Func&lt;string, string, IList&lt;string&gt;, int, bool, object, int&gt; BigChooser;
+public static Action CloseBlankMainWindow;
+public static Func&lt;string, bool, int&gt; ClosePartByJobID;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Usage: <code>Hub.ClosePartByJobID?.Invoke (jobId, force)</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_5">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Always null-safe.</strong> A null slot is a valid headless state (Engine flavor).</p>
+</li>
+<li>
+<p><strong>Don&#8217;t add slots casually.</strong> The Hub is meant for genuine cross-layer plumbing, not as an alternative to passing arguments.</p>
+</li>
+<li>
+<p>The pattern was introduced as a <em>replacement</em> for the older "Hub whiteboard" anti-pattern (see <code>Notes\Dev\1002.BuildingFlux.ftx</code> lines 31&#8212;&#8203;61). Don&#8217;t regress.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_observerinotifypropchanged_undo">7. Observer&#8201;&#8212;&#8201;<code>INotifyPropChanged</code> + undo</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_6">Form in Flux</h3>
+<div class="paragraph">
+<p>Flux has its own <code>INotifyPropChanged</code> (note the abbreviated name). Property setters typically route through <code>BA.Set&lt;T&gt;(ref field, value)</code> which performs three things at once:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Equality check (skip notification if unchanged).</p>
+</li>
+<li>
+<p>Notification to subscribers.</p>
+</li>
+<li>
+<p>Undo registration.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_4">Canonical example</h3>
+<div class="paragraph">
+<p>Throughout the domain code, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public ISheafSite SHParent =&gt; Owner;
+public bool BGAdjusted {
+   get =&gt; Get (EFlags.BGAdjusted);
+   set =&gt; Set (EFlags.BGAdjusted, value);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_6">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>A direct field assignment (<code>mField = value</code>) bypasses notification and undo. It&#8217;s a smell unless explicitly justified.</p>
+</li>
+<li>
+<p>The <code>Set</code> patterns differ between flag bits (<code>Set (EFlags.X, value)</code>) and full-typed fields (<code>BA.Set (ref _field, value)</code>). Match the surrounding code.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_template_methodvmodel_draw">8. Template method&#8201;&#8212;&#8201;VModel.Draw</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_7">Form in Flux</h3>
+<div class="paragraph">
+<p>The base class <code>VModel</code> defines the lifecycle (construction, going live, draw, detach). Subclasses override one method: <code>Draw()</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_5">Canonical example</h3>
+<div class="paragraph">
+<p><strong>Where:</strong> <code>Src\Base\Lux\VModel.cs</code> (base) and any subclass like <code>BendMountVM</code> (<code>Src\Core\Bend\BendVM.cs</code>).</p>
+</div>
+<div class="paragraph">
+<p>The override emits scene-graph nodes via <code>Lux.DrawMesh</code>, sets <code>Lux.Layer</code> and <code>Lux.Mood</code>, and uses <code>using</code> blocks for shading scopes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_7">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>All draw work must be deterministic and side-effect-free apart from the scene graph.</p>
+</li>
+<li>
+<p>Don&#8217;t call back into model mutation from <code>Draw()</code>&#8201;&#8212;&#8201;that&#8217;s a re-entrancy bug waiting to happen.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_migration_via_postload">9. Migration via <code>[PostLoad]</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_8">Form in Flux</h3>
+<div class="paragraph">
+<p>A method annotated <code>[PostLoad]</code> runs after Au-deserialization. It uses <code>AuType.ObjVersion</code> to detect older shapes and migrate them forward.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_6">Canonical example</h3>
+<div class="paragraph">
+<p><code>BendSetup.cs</code> lines 64&#8212;&#8203;76 (see chapter 04 §9.5).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_8">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Migrations are forward-only.</p>
+</li>
+<li>
+<p>Always check <code>AuType.ObjVersion &lt; N</code> (not <code>==</code>)&#8201;&#8212;&#8201;a file that sat through several versions still gets correctly upgraded.</p>
+</li>
+<li>
+<p>After migrating, the in-memory object should be indistinguishable from one created at version N.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_result_status_enums_instead_of_exceptions">10. Result / status enums instead of exceptions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_9">Form in Flux</h3>
+<div class="paragraph">
+<p>Predictable failure modes return an <code>EResult</code> rather than throw. Exceptions (<code>CodingError</code>) are reserved for invariant violations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_examples_2">Canonical examples</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BendTech.Make (...) → EResult</code>.</p>
+</li>
+<li>
+<p><code>Part.DoFoldTo3D () → EResult</code>.</p>
+</li>
+<li>
+<p>Tests assert <code>.Is (EResult.OK)</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_9">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding a new failure mode? Audit <code>switch</code>/<code>Is</code> callers&#8201;&#8212;&#8201;the enum is exhaustively used.</p>
+</li>
+<li>
+<p>Don&#8217;t conflate user-error and coding-error in the same enum.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_visitor_lightmodel_walking_helpers">11. Visitor (light)&#8201;&#8212;&#8201;model-walking helpers</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_10">Form in Flux</h3>
+<div class="paragraph">
+<p>There is no formal <code>IVisitor</code> interface, but model walks are concentrated in <code>Model3</code> (<code>Src\Core\Model\Model3.cs</code>, 71 KB) and similar containers. The pattern is iteration with type filters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">foreach (var flex in model.Entities.OfType&lt;E3Flex&gt; ()) { ... }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_10">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Reflection-flavored <code>OfType&lt;T&gt;</code> is fine for clarity; use index lookups (<code>Entities[i] is T</code>) when performance matters.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_memocapture_and_restore">12. Memo&#8201;&#8212;&#8201;capture-and-restore</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_11">Form in Flux</h3>
+<div class="paragraph">
+<p>When a tech is replaced, the previous state can be captured into a memo to allow recovery. Pattern: <code>*Memo</code> types adjacent to <code>*Tech</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_7">Canonical example</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BendTechMemo</code> (<code>Src\Core\Bend\Ops\BendTechMemo.cs</code>) constructed when <code>Part.BendTech</code> is replaced.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_11">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>A memo holds references; consider whether it should be a deep copy or a reference snapshot.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_singletons_by_convention">13. Singletons by convention</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_form_in_flux_12">Form in Flux</h3>
+<div class="paragraph">
+<p>Static instances named <code>.It</code> (e.g. <code>StdBendCalc.It</code>). This is a convention, not a runtime-enforced singleton&#8201;&#8212;&#8201;but every call site uses it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_canonical_example_8">Canonical example</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">public static readonly BToolPieceDescending It = new ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_watch_out_for_12">Watch out for</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don&#8217;t add per-instance state to a <code>.It</code> type.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_14_the_big_anti_patterns_here_be_dragons">14. The big anti-patterns (here be dragons)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_14_1_the_hub_whiteboard_legacy">14.1 The Hub whiteboard (legacy)</h3>
+<div class="paragraph">
+<p>The previous incarnation of <code>Hub</code> was an <code>object</code>-typed dictionary used to pass arbitrary state across layers. <em>Replaced</em> by typed delegate slots&#8201;&#8212;&#8201;see §6. Any code resembling the old form is a refactor target.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_14_2_two_crash_engines">14.2 Two crash engines</h3>
+<div class="paragraph">
+<p><code>BendOpCrash.cs</code> and <code>NBendCrash.cs</code> co-exist (chapter 02 §7.1). Treat any change to collision logic as a coordinated change to <em>both</em>, or you risk hidden divergence.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_14_3_constructors_with_substantial_logic">14.3 Constructors with substantial logic</h3>
+<div class="paragraph">
+<p>The <code>BendTech</code> constructor is ~250 lines. This is <em>intentional</em>&#8201;&#8212;&#8201;the type&#8217;s invariants are enforced once, in one place&#8201;&#8212;&#8201;but it is unusual. Don&#8217;t refactor toward small constructors unless you have a good reason.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_14_4_partial_classes_spanning_multiple_files">14.4 <code>partial</code> classes spanning multiple files</h3>
+<div class="paragraph">
+<p><code>BendOp</code> and others are split across files via <code>partial</code>. A <code>Grep</code> for a method may not find it in the file you&#8217;d guess. <strong>When editing, search the whole solution.</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_14_5_static_state_that_hides_re_entrancy_bugs">14.5 Static state that hides re-entrancy bugs</h3>
+<div class="paragraph">
+<p><code>Part.Current</code>, <code>Part.Active</code>, <code>BendMachine.Default</code>, the <code>Hub</code> slots&#8201;&#8212;&#8201;all static. A subtle bug class is "during a long operation, the user changes Part.Current". The auto-tooler guards against this with the <code>Part.EFlags.AbortTooling</code> check; other places may not.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_14_6_direct_field_assignment">14.6 Direct field assignment</h3>
+<div class="paragraph">
+<p>A pure <code>mField = value</code> instead of <code>BA.Set</code> skips notification and undo. Sometimes intentional (private fixup), often a bug.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_15_how_to_spot_a_pattern_in_unfamiliar_code">15. How to spot a pattern in unfamiliar code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A short checklist when you encounter a class for the first time:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Does it implement <code>ISheafSite</code>? → it owns settings; reads cascade.</p>
+</li>
+<li>
+<p>Does it implement <code>INotifyPropChanged</code>? → its property setters fire change events.</p>
+</li>
+<li>
+<p>Are there <code>*VM</code> siblings? → the rendering lives next to the model.</p>
+</li>
+<li>
+<p>Is there a <code>Make</code> factory? → constructor is private; use the factory.</p>
+</li>
+<li>
+<p>Is there a <code>Dump (TextWriter)</code> method? → there is a golden-file test that compares against it.</p>
+</li>
+<li>
+<p>Is there a <code>[PostLoad]</code> method? → there are persisted older versions in the wild.</p>
+</li>
+<li>
+<p>Does it have a <code>.It</code> static? → it&#8217;s a stateless helper / strategy.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_16_self_check">16. Self-check</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>What pattern is <code>BendOpsGlob</code> an instance of? <em>(§3)</em></p>
+</li>
+<li>
+<p>Why is <code>Hub</code> <em>not</em> a "service locator" in the textbook sense? <em>(§6&#8201;&#8212;&#8201;typed slots, null-safe, App-driven)</em></p>
+</li>
+<li>
+<p>What does <code>BA.Set</code> do that a plain field assignment doesn&#8217;t? <em>(§7)</em></p>
+</li>
+<li>
+<p>Where is the <code>[PostLoad]</code> migration of <code>BendSetup</code>? <em>(§9 + chapter 04 §9.5)</em></p>
+</li>
+<li>
+<p>Why are some constructors very long in Flux? <em>(§14.3)</em></p>
+</li>
+<li>
+<p>What&#8217;s the canonical way to choose between <code>StdBendCalc</code> and <code>TBSBendCalc</code>? <em>(§2 + chapter 02 §7.5)</em></p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_17_if_you_take_just_one_thing_from_this_chapter">17. If you take just one thing from this chapter</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Patterns in Flux are pragmatic, not idealized. The Sheaf cascade, the Make factory, the Hub slots, and the BA.Set helper are the four most pervasive idioms. Recognize them, and ~80% of unfamiliar code becomes immediately readable.</strong></p>
+</div>
+</blockquote>
+</div>
+<hr>
+<div class="paragraph">
+<p><em>Last updated: 2026-05-04. Pattern attributions verified against <code>Src\Core\Bend\BendCalc.cs</code>, <code>Src\Core\Hub.cs</code>, <code>Src\Core\Settings\Sheaf.cs</code>, <code>Src\Base\Lux\VModel.cs</code>, <code>Src\UI\Bend\BendOpUI.cs</code>, and <code>Notes\Dev\1002.BuildingFlux.ftx</code>.</em></p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_1_how_to_read_this_chapter">1. How to read this chapter</a>
+  </li>
+  <li level="1">
+   <a href="#_2_strategyselectable_algorithm_behind_an_interface">2. Strategy&#8201;&#8212;&#8201;selectable algorithm behind an interface</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_ibendcalc">Canonical example: <code>IBendCalc</code></a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for">Watch out for</a>
+  </li>
+  <li level="2">
+   <a href="#_other_examples">Other examples</a>
+  </li>
+  <li level="1">
+   <a href="#_3_compositeuniform_handling_of_single_group_objects">3. Composite&#8201;&#8212;&#8201;uniform handling of single + group objects</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_2">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_2">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_4_factory_methodmake_everywhere">4. Factory method&#8201;&#8212;&#8201;<code>Make</code> everywhere</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_3">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_examples">Canonical examples</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_3">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_5_cascaded_dictionarythe_sheaf">5. Cascaded dictionary&#8201;&#8212;&#8201;the Sheaf</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_4">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_2">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_4">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_6_service_locatorhub">6. Service locator&#8201;&#8212;&#8201;Hub</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_5">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_3">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_5">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_7_observerinotifypropchanged_undo">7. Observer&#8201;&#8212;&#8201;<code>INotifyPropChanged</code> + undo</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_6">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_4">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_6">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_8_template_methodvmodel_draw">8. Template method&#8201;&#8212;&#8201;VModel.Draw</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_7">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_5">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_7">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_9_migration_via_postload">9. Migration via <code>[PostLoad]</code></a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_8">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_6">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_8">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_10_result_status_enums_instead_of_exceptions">10. Result / status enums instead of exceptions</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_9">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_examples_2">Canonical examples</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_9">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_11_visitor_lightmodel_walking_helpers">11. Visitor (light)&#8201;&#8212;&#8201;model-walking helpers</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_10">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_10">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_12_memocapture_and_restore">12. Memo&#8201;&#8212;&#8201;capture-and-restore</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_11">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_7">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_11">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_13_singletons_by_convention">13. Singletons by convention</a>
+  </li>
+  <li level="2">
+   <a href="#_form_in_flux_12">Form in Flux</a>
+  </li>
+  <li level="2">
+   <a href="#_canonical_example_8">Canonical example</a>
+  </li>
+  <li level="2">
+   <a href="#_watch_out_for_12">Watch out for</a>
+  </li>
+  <li level="1">
+   <a href="#_14_the_big_anti_patterns_here_be_dragons">14. The big anti-patterns (here be dragons)</a>
+  </li>
+  <li level="2">
+   <a href="#_14_1_the_hub_whiteboard_legacy">14.1 The Hub whiteboard (legacy)</a>
+  </li>
+  <li level="2">
+   <a href="#_14_2_two_crash_engines">14.2 Two crash engines</a>
+  </li>
+  <li level="2">
+   <a href="#_14_3_constructors_with_substantial_logic">14.3 Constructors with substantial logic</a>
+  </li>
+  <li level="2">
+   <a href="#_14_4_partial_classes_spanning_multiple_files">14.4 <code>partial</code> classes spanning multiple files</a>
+  </li>
+  <li level="2">
+   <a href="#_14_5_static_state_that_hides_re_entrancy_bugs">14.5 Static state that hides re-entrancy bugs</a>
+  </li>
+  <li level="2">
+   <a href="#_14_6_direct_field_assignment">14.6 Direct field assignment</a>
+  </li>
+  <li level="1">
+   <a href="#_15_how_to_spot_a_pattern_in_unfamiliar_code">15. How to spot a pattern in unfamiliar code</a>
+  </li>
+  <li level="1">
+   <a href="#_16_self_check">16. Self-check</a>
+  </li>
+  <li level="1">
+   <a href="#_17_if_you_take_just_one_thing_from_this_chapter">17. If you take just one thing from this chapter</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="04_data_model_catalog.html">Data Model Catalog</a></span>
+ <span class="next"><a href="06_tests_and_golden_paths.html">Tests and Golden Paths</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../res/index.js"></script>
+    <script src="../../res/files.js"></script>
+    <script src="../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

@@ -38,7 +38,7 @@
   </li>
   <li>
    <button class="tree open"></button>
-   <a href="index.html">Flux Guidelines</a>
+   <a href="index.html">Flux Workflow</a>
    <ul>
     <li><button class="tree blank"></button><a href="fluxgitworkflow.html">Flux Workflow</a></li>
     <li><button class="tree blank"></button><a href="fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
@@ -46,6 +46,15 @@
     <li><button class="tree blank"></button><a href="sonarcloud.html">SonarCloud analysis for Flux</a></li>
     <li><button class="tree blank"></button><a href="usingfluxsdk.html">Build a Flux SDK Program</a></li>
     <li><button class="tree blank"></button><a class="active" href="shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
    </ul>
   </li>
   <li>
@@ -57,7 +66,7 @@
      <a href="../technotes/fileformats/index.html">File formats</a>
      <ul class="hide">
       <li><button class="tree blank"></button><a href="../technotes/fileformats/fx.html">.FX File Format</a></li>
-      <li><button class="tree blank"></button><a href="../technotes/fileformats/augoldfile.html">Au (Gold) file</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/augoldfile.html">Au(Gold) streams</a></li>
       <li><button class="tree blank"></button><a href="../technotes/fileformats/geo.html">.GEO File Format</a></li>
       <li><button class="tree blank"></button><a href="../technotes/fileformats/lst.html">.LST File Format</a></li>
       <li><button class="tree blank"></button><a href="../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
@@ -74,6 +83,50 @@
       <li><button class="tree blank"></button><a href="../technotes/folders/machines.html">Data\Machines</a></li>
      </ul>
     </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../technotes/data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../fluxtester/t.html">Fluxtester</a></li>
    </ul>
   </li>
   <li>
@@ -150,7 +203,7 @@
   </button>
  </div>
  <div>
-  <a href="index.html">Flux Guidelines</a>
+  <a href="index.html">Flux Workflow</a>
  </div>
  <div>/</div>
  <div>
@@ -653,7 +706,7 @@ The release notes should contain all the cherry picked fixes. So, move the fix f
             </div>
             <nav class="pagination">
  <span class="prev"><a href="usingfluxsdk.html">Build a Flux SDK Program</a></span>
- <span class="next"><a href="../technotes/index.html">Technical Notes</a></span>
+ <span class="next"><a href="test/index.html">Flux.Test</a></span>
 </nav>
 
         </div>

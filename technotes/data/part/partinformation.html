@@ -1,0 +1,1653 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../../../res/bento.css">
+  <link rel="stylesheet" href="../../../res/site.css">
+  <link rel="stylesheet" href="../../../res/tree.css">
+  <link rel="stylesheet" href="../../../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Part.Dwg</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../../../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../../../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../../../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../../../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../../../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../../../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../../../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="../../index.html">Technical Notes</a>
+   <ul>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../../fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../../folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../../fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree open"></button>
+     <a href="../index.html">Data flow</a>
+     <ul>
+      <li>
+       <button class="tree open"></button>
+       <a href="index.html">Part</a>
+       <ul>
+        <li><button class="tree blank"></button><a class="active" href="partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../fluxtester/index.html">Fluxtester</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../fluxtester/t.html">Fluxtester</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../../../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../../../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../../../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../../../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../../../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../../../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../../../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="../../index.html">Technical Notes</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="../index.html">Data flow</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="index.html">Part</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="partinformation.html">Part.Dwg</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Part.Dwg</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Part.Dwg</code> holds the complete 2D representation of a sheet-metal part after it has been
+unfolded from its 3D model (or imported directly from a flat format such as DXF).
+It is an instance of <code>Drawing2</code> — a container that stores every geometric and semantic
+element of the flat blank.</p>
+</div>
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/Drawing.cs</code> — class <code>Drawing2</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_big_picture">The Big Picture</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Drawing2
+ ├── AList&lt;Layer2&gt;     Layers      ← named groups with display and semantic roles
+ ├── AList&lt;Entity2&gt;    Entities    ← all geometry and annotation
+ │    ├── E2Pline[]               ← contours  (blank outline, holes, slots …)
+ │    ├── E2Bendline[]            ← bend marks (where to fold, at what angle)
+ │    ├── E2Point[]               ← pierce points, forming centres, approach markers
+ │    ├── E2Text[]                ← text labels, part numbers, engrave text
+ │    ├── E2Insert[]              ← block references (DXF blocks / sub-assemblies)
+ │    ├── E2Spline[]              ← free-form spline curves (from DXF)
+ │    └── E2Dimension[]           ← dimension annotations
+ ├── List&lt;Block2&gt;      Blocks      ← reusable block definitions (referenced by E2Insert)
+ └── List&lt;FormInfo&gt;    FormInfos   ← 3D press-form metadata (from .geo import)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every entity knows which <code>Layer2</code> it lives on.
+The layer carries both display information (colour, line type, visibility) and a semantic
+role (<code>EUse</code>) that tells the rest of the system how to treat the entity — whether to cut
+it, mark it, skip it for nesting, etc.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_drawing2_top_level_properties">Drawing2 — Top-Level Properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/Drawing.cs</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entities</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AList&lt;Entity2&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All geometry and annotation in the drawing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AList&lt;Layer2&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All layers; every entity belongs to one</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Blocks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;Block2&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reusable block definitions (referenced by E2Insert)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FormInfos</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;FormInfo&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Press-form metadata from imported .geo files</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Owner</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Part</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Back-reference to the owning Part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bounding box of all non-auxiliary entities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Area</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Net enclosed area (outer minus holes), in mm²</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Centroid</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Centre of gravity of the flat blank</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AreBendsSequenced</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether bend-lines have been put in processing order</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BaseTileMarker</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hint used to keep the base plane stable across fold operations</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_computed_shape_properties">Computed Shape Properties</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OuterPline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The single outer boundary contour (throws if there is more than one)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OuterPlines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All outer boundary contours (for multi-body drawings)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OuterPlinesStd</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outer contours relevant to CAM (excludes auxiliary layers)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClosedPlines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All closed <code>E2Pline</code> entities (outer + holes)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpenPlines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All open <code>E2Pline</code> entities (approach paths, etch lines)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bendlines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All <code>E2Bendline</code> entities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NarrowestFlange</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width of the narrowest flange (used for tool selection)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width × height of the pline bounding box</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layers_layer2">Layers — Layer2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/DwgAux.cs</code> — class <code>Layer2</code></p>
+</div>
+<div class="paragraph">
+<p>A <code>Layer2</code> is a named group. Every entity in the drawing belongs to exactly one layer.
+Layers serve two purposes: display (colour, line style) and semantics (what this entity
+is used for).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Layer name, e.g. <code>"Cut"</code>, <code>"Bend"</code>, <code>"Mark"</code>, <code>"Footprint"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Color</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Color32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default display colour for entities on this layer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LineType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ELType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Line style: <code>Continuous</code>, <code>Dot</code>, <code>Dash</code>, <code>DashDot</code> …</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Use</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EUse</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semantic role (see table below)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Visible</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether entities on this layer are shown</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Locked</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevents accidental editing</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_layer2_euse_semantic_roles">Layer2.EUse — Semantic Roles</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">EUse</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Std</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normal layer — geometry here is cut by laser or punch</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Aux</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Auxiliary / construction — ignored by CAM and nesting</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MBend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mountain (upward) bend lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VBend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valley (downward) bend lines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Inner</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used for inside/outside classification only — not tooled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Outer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used for inside/outside classification only — not tooled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mark</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Engrave / mark — not cut through; becomes a laser marking path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApproachMarker</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-placed point that locks where the laser enters the contour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SequenceMarker</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text marker that forces a specific cutting order</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FormCenter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Centre point or small L-mark of a press-form feature</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FormFootprint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outline (footprint) of a press-form feature; moved to auxiliary during CAM</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutTooling</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approach and exit paths generated by laser tooling; not rendered in the 2D view</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Evaporate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to be evaporated (very light laser pass, no kerf)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DotMarking</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to be dot-punched (Trumpf marking method)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Info</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informational — shown in reports but not tooled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Tooling</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tooling outlines created by Flux or MetaCAM</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>Auxiliary</code> is a computed property that returns <code>true</code> for <code>Aux</code>, <code>ApproachMarker</code>,
+<code>SequenceMarker</code>, <code>FormCenter</code>, and <code>Info</code>. Auxiliary entities are excluded from
+bounding-box computation, nesting outlines, and most CAM operations.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_entity_hierarchy">The Entity Hierarchy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/2DEntity.cs</code> — class <code>Entity2</code> (abstract base)</p>
+</div>
+<div class="paragraph">
+<p>Every object in <code>Drawing2.Entities</code> inherits from <code>Entity2</code>.
+The base class provides:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property / Method</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>int</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stable numeric identity assigned when added to the drawing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The layer this entity belongs to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Color</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Color32</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per-entity colour override (<code>Nil</code> means use the layer colour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Flags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Flags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bitfield of entity-level state (see below)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Dwg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Drawing2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Back-reference to the owning drawing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Axis-aligned bounding box (abstract — each subtype computes its own)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XForm(m)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">—</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transform the entity by a <code>Matrix2</code> (rotate, translate, scale)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_e2flags_per_entity_state_bits">E2Flags — Per-Entity State Bits</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flag</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Selected</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entity is currently selected in the editor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Error</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This entity has a problem (e.g. a bend-line with non-collinear points)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IllFormed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Structural defect: odd number of bend-line points, or degenerate geometry</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PreBent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-line was already bent by a punch press before this operation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PostBent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-line is processed after the current bend sequence</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldTooled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-line has been assigned to a panel-bender operation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendOnBaseplane</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-line connects directly to the base plane</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RadiusLocked</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend radius was set explicitly and must not be auto-adjusted</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ZCoining</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a Z-bend with coining</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BevelCut</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contour has a chamfered (bevel) edge from a .geo import</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SkipLaserTooling</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contour is on the back face and must not receive laser tooling</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_e2pline_contours">E2Pline — Contours</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/2DEntity.cs</code> — class <code>E2Pline</code></p>
+</div>
+<div class="paragraph">
+<p><code>E2Pline</code> is by far the most common entity. It wraps a <code>Pline</code> — a 2D polyline made of
+line and arc segments.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The underlying geometric contour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HighQualitySegments</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;int&gt;?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indexes of segments that must not be simplified during cleanup</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>Pline</code> itself carries the geometry:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Segs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Segment[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Line and arc segments that make up the contour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsClosed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the contour is a closed loop</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsOuter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outer boundary (<code>true</code>) vs. hole (<code>false</code>) — set by <code>PrepareForCAM</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bound2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Axis-aligned bounding box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Area</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enclosed area (positive; holes subtract from the part area)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_how_inner_and_outer_is_determined">How Inner and Outer Is Determined</h3>
+<div class="paragraph">
+<p><code>Drawing2.PrepareForCAM()</code> calls <code>DoQuickMarkInOut()</code> (or <code>DoSlowMarkInOut()</code> for
+complex drawings). The algorithm sorts all closed plines by descending area and marks a
+pline as <code>IsOuter = true</code> if it is not contained inside any other outer pline.</p>
+</div>
+<div class="paragraph">
+<p>The largest closed pline that is not contained inside another closed pline becomes the
+outer blank boundary. Every closed pline that lies inside the outer boundary is a hole
+(<code>IsOuter = false</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_contours_are_in_the_drawing">What Contours Are in the Drawing</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Contour</th>
+<th class="tableblock halign-left valign-top">Origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outer blank boundary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unfolded from <code>E3Plane.Contours</code> via <code>Unfolder.AddPlaneLoops</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Holes and cutouts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unfolded from inner contours of <code>E3Plane</code> faces, or imported from DXF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open paths (slots, etch)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Imported from DXF, or from markings on the 3D model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approach paths</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added by <code>LaserAutotooler</code> on layer <code>CutTooling</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_e2bendline_bend_marks">E2Bendline — Bend Marks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/2DEntity.cs</code> — class <code>E2Bendline</code></p>
+</div>
+<div class="paragraph">
+<p>An <code>E2Bendline</code> marks where the part will be bent. It stores all the parameters a
+press-brake or panel-bender needs to reproduce the bend from the flat blank.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The bend-line path as pairs of points (always an even count)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exterior bend angle in radians (+ve = valley / up, −ve = mountain / down)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>InteriorAngle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interior angle (π − |Angle|) — what most operators measure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Radius</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inner bend radius in mm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Thickness</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sheet thickness (copied from <code>Part.Thickness</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>KFactor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Neutral fibre ratio (default 0.35; affects flat-width calculation)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlatWidth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Width of the deformed zone in the flat blank</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Deduction</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend deduction (how much shorter the flat is vs. the unfolded length)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SeqNo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>short</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend sequence number (1 = first bend, set after sequencing)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Kind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EKind</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of bend (see below)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PunchName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the assigned punch tool (filled after bend tooling)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DieName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the assigned die (filled after bend tooling)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Airgap</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>float</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Air gap used by the panel-bender (filled after fold tooling)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PrebendAngle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Angle of first phase in a two-phase bend (0 = single phase)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BumpCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>short</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of bumps for a step-bend (&gt; 1 = bump-bend)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Moniker</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tag name from CAD system (used by Boost / MetaCAM)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsPreBent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Already bent by a punch press — skip in press-brake sequence</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsPostBent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Processed after the current sequence</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PairedFlex</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E3Flex?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The matching 3D bend element (looked up by <code>UID</code>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_e2bendline_ekind_bend_types_in_the_drawing">E2Bendline.EKind — Bend Types in the Drawing</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Kind</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Std</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normal air bend (most common)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Coining</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High-pressure coining bend</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpenHem</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fold back with a gap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClosedHem</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fold flat onto itself</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlatBend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Two-phase helper bend to avoid tool collision</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ZBendHalf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One half of a Z-bend pair</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ZBend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Synthesised Z-bend (two parallel <code>ZBendHalf</code> merged together)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DoubleSheetBendHalf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One half of a double-sheet bend</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_how_bend_line_points_work">How Bend-Line Points Work</h3>
+<div class="paragraph">
+<p><code>Pts</code> always has an even number of entries. Each pair <code>[i, i+1]</code> is one contiguous
+segment of the bend line. A bend line that is interrupted by a hole will have multiple
+segments (4 or 6 points). The segments are always collinear — they all lie on the same
+straight line.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Iterate bend-line segments:
+for (int i = 0; i &lt; bendline.Pts.Length; i += 2) {
+    Point2 start = bendline.Pts[i];
+    Point2 end   = bendline.Pts[i + 1];
+    // draw or process this segment
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connection_back_to_the_3d_model">Connection Back to the 3D Model</h3>
+<div class="paragraph">
+<p>Every <code>E2Bendline</code> has the same <code>UID</code> as the <code>E3Flex</code> that produced it during unfolding.
+This lets the system navigate in both directions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// From drawing → 3D model:
+E3Flex flex = bendline.PairedFlex;     // looks up by UID in Part.Model
+
+// From 3D model → drawing:
+E2Bendline bl = drawing.Bendlines
+    .FirstOrDefault(b =&gt; b.UID == flex.BendlineUID);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_e2point_points">E2Point — Points</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/2DEntity.cs</code> — class <code>E2Point</code></p>
+</div>
+<div class="paragraph">
+<p>A single 2D point. Its meaning depends on its layer:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Layer use</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Std</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic point (forming centre, pierce reference)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ApproachMarker</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-locked laser entry point for the nearest contour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FormCenter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Centre of a press-form feature</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CutTooling</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pierce point generated by laser tooling (a <code>PointCut</code> step)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The 2D coordinate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EPDMode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display mode override (cross, circle, etc.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Tag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object?</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arbitrary user data attached by tooling algorithms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_e2text_text_labels">E2Text — Text Labels</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/E2Text.cs</code> — class <code>E2Text</code></p>
+</div>
+<div class="paragraph">
+<p>Text labels are stored as <code>E2Text</code> entities. During <code>PrepareForCAM</code>, text on non-auxiliary
+layers is converted to <code>E2Pline</code> contours so it can be laser-engraved or marked.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Text</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The text content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insertion point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Height</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Character height in mm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Fontname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vector font name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text rotation in radians</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Alignment</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ETextAlign</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Horizontal and vertical alignment</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A common use is embedding part metadata that <code>ExplodeDrawing</code> can read back:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Text format understood by ExplodeDrawing:
+"PN: MyPartNumber"       // sets Part.Info.Name
+"THICKNESS: 2.0"         // sets a custom property in Part.Info.Dict</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_e2insert_block_references">E2Insert — Block References</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/2DEntity.cs</code> — class <code>E2Insert</code></p>
+</div>
+<div class="paragraph">
+<p><code>E2Insert</code> is an instance of a reusable <code>Block2</code>. Blocks come from DXF imports or from
+assembly drawings. An insert stores a position, rotation, and scale; the actual geometry
+lives in the block definition.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Block</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Block2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The block definition (looked up by name from <code>Drawing2.Blocks</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Pt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insertion point</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rotation angle in radians</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XScale</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Horizontal scale factor (negative = mirrored)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>YScale</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vertical scale factor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Xfm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Matrix2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Computed combined transform matrix</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><code>E2Insert.Explode()</code> replaces the insert with copies of the block&#8217;s entities transformed
+into drawing space. <code>Drawing2.ExplodeDrawing()</code> uses this to split an assembly drawing
+into individual parts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_e2spline_spline_curves">E2Spline — Spline Curves</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/2DEntity.cs</code> — class <code>E2Spline</code></p>
+</div>
+<div class="paragraph">
+<p>Wraps a <code>Spline2</code> (B-spline or NURBS curve) imported from DXF. Splines are discretised
+to line segments when needed for nesting or tooling.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Spline</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Spline2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The underlying spline curve</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_block2_reusable_geometry_definitions">Block2 — Reusable Geometry Definitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/DwgAux.cs</code> — class <code>Block2</code></p>
+</div>
+<div class="paragraph">
+<p>A <code>Block2</code> is a named, reusable group of entities — the same concept as a DXF block or
+AutoCAD block reference.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block name (used to look it up from <code>Drawing2.Blocks</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Base</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Origin point of the block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entities</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>List&lt;Entity2&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The geometry inside the block</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_forminfo_press_form_metadata">FormInfo — Press-Form Metadata</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>File:</strong> <code>Core/Drawing/Drawing.cs</code> — class <code>FormInfo</code></p>
+</div>
+<div class="paragraph">
+<p>When a part is imported from a <code>.geo</code> file that contains press-form features,
+their 3D metadata is stored in <code>Drawing2.FormInfos</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Position</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Point3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3D position of the form feature on the part</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Angle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rotation angle of the form punch</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mesh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mesh3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3D mesh of the formed shape (for visualisation)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OnBackFace</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the form is applied from the underside</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PunchName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the punch tool that creates this form</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DieName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the die</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DuringBending</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bool</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this form is applied at the same time as bending</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_internal_state_flags_eflags">Internal State Flags (EFlags)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Drawing2</code> tracks its own preparation state with an internal <code>EFlags</code> bitfield.
+These flags prevent redundant work when CAM algorithms call <code>PrepareForCAM</code> multiple
+times:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Flag</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OrientedCCW</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All closed plines have been oriented counter-clockwise</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>InOutMarked</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IsOuter</code> has been computed for all plines</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CleanedPlines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Duplicate nodes and collinear segments have been removed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SingleOuter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">There is exactly one outer pline (fast path for tooling)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendSequenced</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-lines carry a valid <code>SeqNo</code> processing order</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BendAnnotated</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-lines have been updated with punch/die names from <code>BendTech</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FoldAnnotated</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bend-lines have been updated with air-gap from <code>FoldTech</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PreprocessForCAM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter-sinks identified, text converted to plines</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prepareforcam_making_the_drawing_ready_for_tooling">PrepareForCAM — Making the Drawing Ready for Tooling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before laser tooling (or any CAM operation) reads the drawing, <code>PrepareForCAM()</code> is
+called. It runs a sequence of normalisation steps, each guarded by a flag so it only
+runs once:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">PrepareForCAM()
+ ├── DoCleanupPlines()         — remove degenerate segments, collinear nodes
+ ├── SplitCircleToArcInOpenPlines() — convert full circles in open plines to two arcs
+ ├── DoOrientCCW()             — ensure all closed plines wind counter-clockwise
+ ├── DoQuickMarkInOut()        — mark IsOuter for simple drawings (one outer pline)
+ │    └─ DoSlowMarkInOut()     — fallback for multi-outer drawings
+ └── DoCAMPreprocessing()
+      ├── Identify counter-sinks (concentric circles) → move outer to FormFootprint layer
+      └── Convert E2Text on cut layers → E2Pline (so they can be laser-engraved)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_complete_memory_layout">Complete Memory Layout</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Drawing2
+ │
+ ├── Layers: [Layer2, Layer2, …]
+ │    each: Name, Color, LineType, EUse (Std/Aux/Mark/CutTooling/…), Visible, Locked
+ │
+ ├── Entities: [Entity2, Entity2, …]
+ │
+ │   ┌─ E2Pline ──────────────────────────────────────────────────────────┐
+ │   │  Layer → Layer2 (e.g. Std = to be cut)                             │
+ │   │  Flags → E2Flags.BevelCut, SkipLaserTooling, …                    │
+ │   │  UID   → stable int used by tooling to find its cut steps          │
+ │   │  Pline → Segment[] (lines + arcs)                                  │
+ │   │           IsOuter, IsClosed, Bound, Area                           │
+ │   └────────────────────────────────────────────────────────────────────┘
+ │
+ │   ┌─ E2Bendline ───────────────────────────────────────────────────────┐
+ │   │  Pts[]    → pairs of Point2 (each pair = one bend fragment)        │
+ │   │  Angle    → exterior bend angle (radians, ± = valley/mountain)     │
+ │   │  Radius   → inner bend radius (mm)                                 │
+ │   │  Thickness → sheet thickness                                       │
+ │   │  KFactor  → neutral-fibre ratio (default 0.35)                     │
+ │   │  FlatWidth → developed width of bent zone                          │
+ │   │  Deduction → bend deduction                                        │
+ │   │  SeqNo    → processing order (1 = first)                           │
+ │   │  Kind     → Std / Coining / Hem / ZBend / …                        │
+ │   │  PunchName, DieName → set by BendTech after tooling                │
+ │   │  Airgap   → set by FoldTech after tooling                          │
+ │   │  UID      → same as paired E3Flex.BendlineUID in the 3D model      │
+ │   └────────────────────────────────────────────────────────────────────┘
+ │
+ │   ┌─ E2Point ──────────────────────────────────────────────────────────┐
+ │   │  Pt    → Point2 coordinate                                         │
+ │   │  Layer → ApproachMarker / FormCenter / CutTooling / …              │
+ │   └────────────────────────────────────────────────────────────────────┘
+ │
+ │   ┌─ E2Text ───────────────────────────────────────────────────────────┐
+ │   │  Text, Pt, Height, Fontname, Angle, Alignment                      │
+ │   │  Converted to E2Pline during PrepareForCAM if on a cut layer       │
+ │   └────────────────────────────────────────────────────────────────────┘
+ │
+ │   ┌─ E2Insert ─────────────────────────────────────────────────────────┐
+ │   │  Block → Block2 (look up by name from Drawing2.Blocks)             │
+ │   │  Pt, Angle, XScale, YScale → placement transform                   │
+ │   └────────────────────────────────────────────────────────────────────┘
+ │
+ │   ┌─ E2Spline ─────────────────────────────────────────────────────────┐
+ │   │  Spline → Spline2 (NURBS / B-spline from DXF)                      │
+ │   └────────────────────────────────────────────────────────────────────┘
+ │
+ ├── Blocks: [Block2, …]
+ │    each: Name, Base (Point2), Entities (List&lt;Entity2&gt;)
+ │
+ └── FormInfos: [FormInfo, …]
+      each: Position, Angle, Mesh, PunchName, DieName, OnBackFace, DuringBending</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_files">Key Files</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Drawing/Drawing.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Drawing2</code> class — container, <code>PrepareForCAM</code>, in/out marking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Drawing/2DEntity.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Entity2</code> base, <code>E2Pline</code>, <code>E2Bendline</code>, <code>E2Point</code>, <code>E2Insert</code>, <code>E2Spline</code>, <code>E2Solid</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Drawing/E2Text.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Text</code> — text labels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Drawing/DwgAux.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Layer2</code>, <code>Block2</code>, <code>Layer2.EUse</code> — layers and block definitions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Drawing/Dimension.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E2Dimension</code> — dimension annotations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Core/Model/Ops/Unfolder.cs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Produces the drawing from a 3D model</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_the_big_picture">The Big Picture</a>
+  </li>
+  <li level="1">
+   <a href="#_drawing2_top_level_properties">Drawing2 — Top-Level Properties</a>
+  </li>
+  <li level="2">
+   <a href="#_computed_shape_properties">Computed Shape Properties</a>
+  </li>
+  <li level="1">
+   <a href="#_layers_layer2">Layers — Layer2</a>
+  </li>
+  <li level="2">
+   <a href="#_layer2_euse_semantic_roles">Layer2.EUse — Semantic Roles</a>
+  </li>
+  <li level="1">
+   <a href="#_the_entity_hierarchy">The Entity Hierarchy</a>
+  </li>
+  <li level="2">
+   <a href="#_e2flags_per_entity_state_bits">E2Flags — Per-Entity State Bits</a>
+  </li>
+  <li level="1">
+   <a href="#_e2pline_contours">E2Pline — Contours</a>
+  </li>
+  <li level="2">
+   <a href="#_how_inner_and_outer_is_determined">How Inner and Outer Is Determined</a>
+  </li>
+  <li level="2">
+   <a href="#_what_contours_are_in_the_drawing">What Contours Are in the Drawing</a>
+  </li>
+  <li level="1">
+   <a href="#_e2bendline_bend_marks">E2Bendline — Bend Marks</a>
+  </li>
+  <li level="2">
+   <a href="#_e2bendline_ekind_bend_types_in_the_drawing">E2Bendline.EKind — Bend Types in the Drawing</a>
+  </li>
+  <li level="2">
+   <a href="#_how_bend_line_points_work">How Bend-Line Points Work</a>
+  </li>
+  <li level="2">
+   <a href="#_connection_back_to_the_3d_model">Connection Back to the 3D Model</a>
+  </li>
+  <li level="1">
+   <a href="#_e2point_points">E2Point — Points</a>
+  </li>
+  <li level="1">
+   <a href="#_e2text_text_labels">E2Text — Text Labels</a>
+  </li>
+  <li level="1">
+   <a href="#_e2insert_block_references">E2Insert — Block References</a>
+  </li>
+  <li level="1">
+   <a href="#_e2spline_spline_curves">E2Spline — Spline Curves</a>
+  </li>
+  <li level="1">
+   <a href="#_block2_reusable_geometry_definitions">Block2 — Reusable Geometry Definitions</a>
+  </li>
+  <li level="1">
+   <a href="#_forminfo_press_form_metadata">FormInfo — Press-Form Metadata</a>
+  </li>
+  <li level="1">
+   <a href="#_internal_state_flags_eflags">Internal State Flags (EFlags)</a>
+  </li>
+  <li level="1">
+   <a href="#_prepareforcam_making_the_drawing_ready_for_tooling">PrepareForCAM — Making the Drawing Ready for Tooling</a>
+  </li>
+  <li level="1">
+   <a href="#_complete_memory_layout">Complete Memory Layout</a>
+  </li>
+  <li level="1">
+   <a href="#_key_files">Key Files</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="index.html">Part</a></span>
+ <span class="next"><a href="partload.html">Part.Load</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../../../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../../../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../../../res/index.js"></script>
+    <script src="../../../res/files.js"></script>
+    <script src="../../../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
