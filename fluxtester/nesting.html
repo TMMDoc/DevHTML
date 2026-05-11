@@ -1,0 +1,963 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Nesting.cs Overview</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../technotes/data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="index.html">FluxTester</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+    <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book</a></li>
+    <li><button class="tree blank"></button><a class="active" href="nesting.html">Nesting.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="nestingcookbook.html">Nesting.cs Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">FluxTester</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="nesting.html">Nesting.cs Overview</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Nesting.cs Overview</h1>
+<div class="sect1">
+<h2 id="_purpose"><strong>Purpose</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Nesting.cs</code> is a comprehensive test fixture for validating <strong>Layout and
+Nesting functionality</strong> in the Flux cutting application. It tests how
+parts are arranged, positioned, and organized on a cutting sheet.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fixture_details"><strong>Fixture Details</strong></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Fixture ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1501</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8220;Nesting Test&#8221;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Module</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FluxCut</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Subsystem</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nesting</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Test Machine</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2230001</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Primary File</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">123.fx</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setup_teardown"><strong>Setup &amp; Teardown</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_fixtureinitialize"><strong>[FixtureInitialize]</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Installs cutting machines (ID: 2230001) before running tests</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fixturecleanup"><strong>[FixtureCleanUp]</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes temporary .txt and .png files from <code>Utils.tempPath</code></p>
+</li>
+<li>
+<p>Uninstalls the test machine after all tests complete</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_methods_13_tests"><strong>Test Methods (13 Tests)</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_part_selection_highlighting"><strong>Part Selection &amp; Highlighting</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C122099</strong> (Test 424) - &#8220;Similar option highlights Parts with the same
+angle and tooling should be selected together&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens DXF, assigns thickness and machine</p>
+</li>
+<li>
+<p>Tests &#8220;Similar&#8221; selection highlighting</p>
+</li>
+<li>
+<p>Validates that 55 similar parts are selected</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>C123187</strong> (Test 437) - &#8220;Parts Selection using the options: &#8216;Same
+parts&#8217;, &#8216;Similar parts in row&#8217; and &#8216;Similar parts in column&#8217;&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests three selection modes in nested layout</p>
+</li>
+<li>
+<p>Validates each selection method with reference data</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_movement_positioning"><strong>Part Movement &amp; Positioning</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C122169</strong> (Test 428) - &#8220;Moving the part by dragging&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests drag-and-drop part movement</p>
+</li>
+<li>
+<p>Validates final part placement</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>C122170</strong> (Test 1510) - &#8220;Moving the part by selecting it&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests double-click &#43; mouse move for part positioning</p>
+</li>
+<li>
+<p>Validates layout after movement</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>C122171</strong> (Test 430) - &#8220;Creating duplicate parts using Ctrl&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests Ctrl&#43;drag to create part duplicates</p>
+</li>
+<li>
+<p>Validates duplicate placement in layout</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_array_pattern_creation"><strong>Array &amp; Pattern Creation</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C122172</strong> (Test 1511) - &#8220;Creating array of parts in layout&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Creates part arrays along COLUMN direction</p>
+</li>
+<li>
+<p>Creates part arrays along ROW direction</p>
+</li>
+<li>
+<p>Validates multi-dimensional part arrangement</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_collision_display"><strong>Part Collision &amp; Display</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C123184</strong> (Test 434) - &#8220;Overlapping parts are shown in red&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests part overlap visualization</p>
+</li>
+<li>
+<p>Compares with and without Ctrl key (collision detection)</p>
+</li>
+<li>
+<p>Renders screen comparison</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_rotation"><strong>Part Rotation</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C123185</strong> (Test 1512) - &#8220;Rotating the parts with mouse wheel&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests Ctrl&#43;Mouse wheel rotation</p>
+</li>
+<li>
+<p>Validates rotated part placement</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_grouping_operations"><strong>Grouping Operations</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C123186</strong> (Test 1513) - &#8220;Group parts together&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests grouping multiple parts</p>
+</li>
+<li>
+<p>Tests ungrouping parts</p>
+</li>
+<li>
+<p>Validates selection behavior for grouped/ungrouped parts</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nesting_corner_options"><strong>Nesting Corner Options</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C123192</strong> (Test 1514) - &#8220;Nest start corner option&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests four corner start positions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bottom left</p>
+</li>
+<li>
+<p>Bottom right</p>
+</li>
+<li>
+<p>Top left</p>
+</li>
+<li>
+<p>Top right</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tests Quick-Nest generation with different corner settings</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_renesting_options"><strong>Renesting Options</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C145736</strong> (Test 1517) - &#8220;Nesting options under Nesting icon in the
+command bar&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests 5 renesting strategies:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CreateRemSheet (Rearrange to create remainder sheet)</p>
+</li>
+<li>
+<p>UseFullSheet (Rearrange to full sheet)</p>
+</li>
+<li>
+<p>SpreadAlongX (Spread parts along X axis)</p>
+</li>
+<li>
+<p>SpreadAlongY (Spread parts along Y axis)</p>
+</li>
+<li>
+<p>SpreadAlongXandY (Spread along both axes)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_advanced_nesting"><strong>Advanced Nesting</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C150617</strong> (Test 1518) - &#8220;Manual Twinline Nesting&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests Shift&#43;drag for twinline nesting</p>
+</li>
+<li>
+<p>Validates that all parts have <code>CLGroup</code> technology</p>
+</li>
+<li>
+<p>Uses Flux scripting validation</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ui_elements"><strong>UI Elements</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C200391</strong> (Test 3516) - &#8220;Display of support pins in Cut view&#8221;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests support pins visibility in Cut view</p>
+</li>
+<li>
+<p>Navigates to nesting view (&#8216;n&#8217; key)</p>
+</li>
+<li>
+<p>Enables support pins display</p>
+</li>
+<li>
+<p>Visual comparison with reference</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_helper_methods"><strong>Helper Methods</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_nesting_operations"><strong>Nesting Operations</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">DoNewQuickNest(bool singlePart = false)     // Create quick nest layout
+SelectPartsBy(string option)                 // Select parts by criteria
+Renest(RenestOption option)                  // Perform renesting operations
+Recompute(RecomputeOption option = ...)      // Trigger recompute/retooling</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validation_methods"><strong>Validation Methods</strong></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">CheckLuxScreen(string folder, filename = "test")        // Bitmap comparison
+CheckPartsInLayout(string folder, filename)             // Layout data comparison
+CheckSelectedParts(string folder, filename)             // Selected parts validation
+DoAnyPartOverlaps()                                      // Boolean: Parts colliding?
+AreAllPartsNestedWithinSheet(bool includeTooling = ...) // Boolean: Parts in margin?</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_key_enums"><strong>Key Enums</strong></h3>
+<div class="sect3">
+<h4 id="_renestoption"><strong>RenestOption</strong></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">RearrangeToCreateRemSheet = 0  // 'a'
+RearrangeToFullSheet = 1       // 'b'
+SpreadPartsAlongX = 2          // 'c'
+SpreadPartsAlongY = 3          // 'd'
+SpreadPartsAlongXY = 4         // 'e'
+Cancel = 5                     // 'f'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_recomputeoption"><strong>RecomputeOption</strong></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">RetoolAllElements = 0              // Drop existing &amp; retool all
+ToolOnlyUntooledElements = 1       // Tool only untooled parts
+Sequence = 2                       // Recompute sequence
+Routing = 3                        // Recompute routing
+Cancel = 4                         // Cancel operation</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_patterns_used"><strong>Key Patterns Used</strong></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ui_automation"><strong>UI Automation</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Keyboard input:</strong> <code>Utils.Type()</code> for commands (e.g., &#8216;l&#8217; for CutCAM,
+&#8216;n&#8217; for nesting)</p>
+</li>
+<li>
+<p><strong>Mouse operations:</strong> Click, drag-and-drop, double-click, mouse wheel</p>
+</li>
+<li>
+<p><strong>Keyboard modifiers:</strong> Ctrl, Shift for special interactions</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_coordinates"><strong>Part Coordinates</strong></h3>
+<div class="paragraph">
+<p>Parts are identified using pixel coordinates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">new (50, 90)        // Base part position
+new (150, 90)       // Target position
+new (87, 167)       // Intermediate point
+new (1500, 1500)    // Far position for arrays</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flux_scripting_integration"><strong>Flux Scripting Integration</strong></h3>
+<div class="paragraph">
+<p>Validates layout and part state using Flux C# scripts:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Utils.RunScriptWithOutput(commands)  // Execute Flux script &amp; get result
+Flux.Layout.Current                  // Access current layout
+Flux.Layout.Current.Children         // Access parts in layout</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_visual_data_validation"><strong>Visual &amp; Data Validation</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Screen comparison:</strong> Renders to PNG, compares with reference (95%
+tolerance)</p>
+</li>
+<li>
+<p><strong>Text comparison:</strong> Validates layout dumps, part outlines, NC data</p>
+</li>
+<li>
+<p><strong>Bitmap comparison:</strong> Visual verification of rendering</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_data_requirements"><strong>Test Data Requirements</strong></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">123.fx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Primary test part file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">thinComplex.dxf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Complex drawing with 55&#43; similar parts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test_C122099/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for similar parts test</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test_C123187/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for part selection tests</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test_C122169/ through Test_C200391/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data/images for
+each test</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_testing_areas"><strong>Key Testing Areas</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>✅ <strong>Part Selection</strong> - Similar parts highlighting - Row/column selection
+modes</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Part Manipulation</strong> - Dragging, moving, rotating - Duplicate creation
+- Array generation</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Grouping/Organization</strong> - Part grouping/ungrouping - Collision
+detection - Part overlap visualization</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Nesting Strategies</strong> - Quick-Nest with corner options - Renesting
+with various algorithms - Twinline nesting</p>
+</div>
+<div class="paragraph">
+<p>✅ <strong>Visual Validation</strong> - Screen rendering comparison - Support pins
+display - Layout data verification</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture_highlights"><strong>Architecture Highlights</strong></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Modular design:</strong> Separate helper methods for common operations</p>
+</li>
+<li>
+<p><strong>Fluent assertions:</strong> Direct state validation via Flux scripting</p>
+</li>
+<li>
+<p><strong>Reference-based validation:</strong> Compares against baseline files/images</p>
+</li>
+<li>
+<p><strong>Multi-modal interaction:</strong> Keyboard, mouse, and scripting commands</p>
+</li>
+<li>
+<p><strong>Tolerance-based comparison:</strong> 95% bitmap similarity threshold for
+visual tests</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is a <strong>sophisticated layout/nesting validation framework</strong> ensuring
+correct part arrangement, positioning, and display in the Flux
+application’s cutting optimization engine.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_purpose"><strong>Purpose</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_fixture_details"><strong>Fixture Details</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_setup_teardown"><strong>Setup &amp; Teardown</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_fixtureinitialize"><strong>[FixtureInitialize]</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_fixturecleanup"><strong>[FixtureCleanUp]</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_test_methods_13_tests"><strong>Test Methods (13 Tests)</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_part_selection_highlighting"><strong>Part Selection &amp; Highlighting</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_part_movement_positioning"><strong>Part Movement &amp; Positioning</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_array_pattern_creation"><strong>Array &amp; Pattern Creation</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_part_collision_display"><strong>Part Collision &amp; Display</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_part_rotation"><strong>Part Rotation</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_grouping_operations"><strong>Grouping Operations</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_nesting_corner_options"><strong>Nesting Corner Options</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_renesting_options"><strong>Renesting Options</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_advanced_nesting"><strong>Advanced Nesting</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_ui_elements"><strong>UI Elements</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_helper_methods"><strong>Helper Methods</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_nesting_operations"><strong>Nesting Operations</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_validation_methods"><strong>Validation Methods</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_key_enums"><strong>Key Enums</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_key_patterns_used"><strong>Key Patterns Used</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_ui_automation"><strong>UI Automation</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_part_coordinates"><strong>Part Coordinates</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_flux_scripting_integration"><strong>Flux Scripting Integration</strong></a>
+  </li>
+  <li level="2">
+   <a href="#_visual_data_validation"><strong>Visual &amp; Data Validation</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_test_data_requirements"><strong>Test Data Requirements</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_key_testing_areas"><strong>Key Testing Areas</strong></a>
+  </li>
+  <li level="1">
+   <a href="#_architecture_highlights"><strong>Architecture Highlights</strong></a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="lasertoolingcookbook.html">Fluxtester Recipe Book</a></span>
+ <span class="next"><a href="nestingcookbook.html">Nesting.cs Recipe Book</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

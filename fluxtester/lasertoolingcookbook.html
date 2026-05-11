@@ -1,0 +1,1392 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Fluxtester Recipe Book</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../technotes/data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="index.html">FluxTester</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+    <li><button class="tree blank"></button><a class="active" href="lasertoolingcookbook.html">Fluxtester Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="nestingcookbook.html">Nesting.cs Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">FluxTester</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="lasertoolingcookbook.html">Fluxtester Recipe Book</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Fluxtester Recipe Book</h1>
+<div class="sect1">
+<h2 id="_table_of_contents">Table of Contents</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#test-structure--attributes">Test Structure &amp; Attributes</a></p>
+</li>
+<li>
+<p><a href="#file-operations">File Operations</a></p>
+</li>
+<li>
+<p><a href="#keyboard--input-commands">Keyboard &amp; Input Commands</a></p>
+</li>
+<li>
+<p><a href="#ui-automation-patterns">UI Automation Patterns</a></p>
+</li>
+<li>
+<p><a href="#assertions--validations">Assertions &amp; Validations</a></p>
+</li>
+<li>
+<p><a href="#test-specific-utilities">Test-Specific Utilities</a></p>
+</li>
+<li>
+<p><a href="#common-test-workflows">Common Test Workflows</a></p>
+</li>
+<li>
+<p><a href="#helper-methods-reference">Helper Methods Reference</a></p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_structure_attributes">Test Structure &amp; Attributes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_test_fixture_template">Basic Test Fixture Template</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[TestFixture (ID, "Display Name", Module = "ModuleName", Subsystem = "SubsystemName")]
+internal class TestClassName {
+    const string testMachineID = "97";
+
+    [FixtureInitialize]
+    public void Init () {
+        // Setup code - runs once before all tests
+        Utils.ConfigureMachine (testMachineID);
+    }
+
+    [FixtureCleanUp]
+    public void CleanUp () {
+        // Cleanup code - runs once after all tests
+        Utils.UninstallMachine (testMachineID);
+    }
+
+    [TestInitialize]
+    void Setup () {
+        // Runs before each test
+    }
+
+    [TestCleanUp]
+    void TearDown () {
+        // Runs after each test
+    }
+
+    [Test (ID, "Test Description", Type = TestType.Functional)]
+    public void Test_MethodName () {
+        // Test implementation
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_attributes">Test Attributes</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Test Type Options
+Type = TestType.Functional
+Type = TestType.Smoke
+Type = TestType.Other
+Type = TestType.None
+Type = TestType.Smoke | TestType.Functional  // Multiple types
+
+// Test ID Assignment (Per Developer)
+// IDs should be unique per developer branch</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_operations">File Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_opening_files">Opening Files</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open a part/drawing file
+Utils.OpenFile (Utils.tData + "123.fx");
+Utils.OpenFile (Utils.tData + "folder/filename.ext");
+
+// Open job or layout files
+Utils.OpenJobOrLayout (Path.Combine (sCutFilesPath, filename));
+
+// Open specific file types (Bend, Assembly, etc.)
+Utils.OpenFile (tData + "bendtooling/C16922.dxf");
+Utils.OpenFile (tData + "assem1.sldasm");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_closing_files_parts">Closing Files &amp; Parts</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Close current part (with or without saving)
+Utils.ClosePart (true);   // Close with save
+Utils.ClosePart (false);  // Close without save
+
+// Close Flux application entirely
+Utils.CloseFlux ();
+Utils.ForceCloseFlux ();  // Force close if needed</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_temporary_file_management">Temporary File Management</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Create/clear temp directory
+Utils.FlushTempPath ();
+
+// Access temp paths
+Utils.tempPath                           // e.g., "c:/programdata/metamation/temp/"
+Utils.tempTxtFile = Path.Combine (tempPath, "temp.txt");
+Utils.tempPath + "test.png"
+
+// Wait for file creation
+Utils.WaitForFileExists ();
+
+// Delete specific temp files
+foreach (var file in Directory.GetFiles (Utils.tempPath)) {
+    if (file.Contains (".txt")) File.Delete (file);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_data_access">Test Data Access</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Path constants
+Utils.tData                              // Test data directory
+Utils.resources                          // Resources directory
+Utils.fluxPath                           // Flux executable path
+Utils.fluxDataPath                       // Flux application data
+
+// Build paths
+Utils.tData + "123.fx"
+Utils.tData + "InnerContour.fx"
+Utils.tData + "Test_C150616/test_normalProfile.txt"
+$"{Utils.tData}Test_{folder}/{filename}.txt"</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keyboard_input_commands">Keyboard &amp; Input Commands</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_key_press_patterns">Key Press Patterns</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Single character keystrokes
+Utils.Type ('l');          // Navigate to laser tooling
+Utils.Type ('k');          // Laser CAM settings
+Utils.Type ('b');          // Bend operations
+Utils.Type ('t');          // Settings
+Utils.Type ('a');          // Layout settings
+Utils.Type ('r');          // Recompute/Refresh
+Utils.Type ('2');          // Select options
+Utils.Type ('3');          // 3D view
+Utils.Type ('w');          // Window/workspace operations
+Utils.Type ('s');          // Select/settings
+Utils.Type ('x');          // Explode components
+
+// Key combinations
+Utils.Type (Utils.KeyShort.ESC);        // Escape key
+Utils.Type (Utils.KeyShort.ENTER);      // Enter/Return
+Utils.Type (Utils.KeyShort.TAB);        // Tab key
+
+// String input
+Utils.Type ("lta");        // Multiple keys in sequence
+Utils.Type ("w");
+Utils.Type ("s");
+Utils.Type ("2");
+Utils.Type ("l");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_keyshort_enum_values">KeyShort Enum Values</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using static FluxTester.Utils.KeyShort;
+
+// Common key shortcuts
+ESC             // Escape
+ENTER           // Enter
+TAB             // Tab
+LBUTTON         // Left mouse button
+// (See Utils.cs KeyShort enum for full list)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mouse_operations">Mouse Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Click at specific coordinates
+Utils.MouseClick (Utils.MeasurePtToPixel (new (153.946, 91.549, 0)));
+
+// Drag and drop
+Utils.DragAndDrop (startPoint, endPoint);
+
+// Zoom scene
+Utils.ZoomScene (0, 0, 0, 0.5);        // Zoom out
+Utils.ZoomScene (0, 0, 0, 2.0);        // Zoom in
+
+// Get clickable point
+var clickablePoint = scrollBar.GetClickablePoint ();</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ui_automation_patterns">UI Automation Patterns</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_finding_ui_elements">Finding UI Elements</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Find by automation ID
+Utils.MainWin.FindFirstChild ("FXMainWin");
+Utils.MainWin.FindFirstChild ("DocsPanel");
+Utils.MainWin.FindFirstChild ("CmdBar");
+Utils.MainWin.FindFirstChild ("Glob");
+
+// Find by name
+Utils.MainWin.FindFirstDescendant (e =&gt; e.ByName ("Laser Cut"));
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Reverse"));
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Contour"));
+
+// Find by class name
+Utils.MainWin.FindFirstDescendant (e =&gt; e.ByClassName ("TextBox"));
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByClassName ("ComboBox"));
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByClassName ("CheckBox"));
+
+// Find by control type
+Utils.MainWin.FindFirstChild (e =&gt; e.ByControlType (FlaUI.Core.Definitions.ControlType.Edit));
+Utils.MainWin.FindFirstDescendant (e =&gt; e.ByControlType (ControlType.Pane));
+
+// Complex queries with AND/OR
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Laser CAM").And (a.ByClassName ("TextBlock")));
+Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("mm").Or (a.ByName ("inch")));
+
+// Find child at index
+Utils.MainWin.FindChildAt (0);
+settings.FindChildAt (2);
+
+// Find all descendants/children
+var descendants = element.FindAllDescendants ();
+var children = element.FindAllChildren ();
+var textBoxes = element.FindAllChildren (a =&gt; a.ByClassName ("TextBox"));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_interacting_with_controls">Interacting with Controls</h3>
+<div class="sect3">
+<h4 id="_textbox_operations">TextBox Operations</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Set text value
+var appAngle = g.FindFirstChild ("AppAngle").AsTextBox ();
+appAngle.Text = "90";
+
+g.FindFirstChild ("EscLength").AsTextBox ().Text = "5";
+g.FindFirstChild ("EscRadius").AsTextBox ().Text = "10";
+g.FindFirstChild ("EscAngle").AsTextBox ().Text = "45";
+
+// Multi-step textbox update
+setting.FindAllChildren (c =&gt; c.ByClassName ("TextBox"))[1].AsTextBox ().Text = "5";
+setting.FindAllChildren (c =&gt; c.ByClassName ("TextBox"))[4].AsTextBox ().Text = "25";
+setting.FindAllChildren (c =&gt; c.ByClassName ("TextBox"))[5].AsTextBox ().Text = "25";</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_combobox_operations">ComboBox Operations</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Select from dropdown
+var comboBox = g.FindFirstChild (a =&gt; a.ByClassName ("ComboBox")).AsComboBox ();
+comboBox.Select ("Large");
+comboBox.Collapse ();
+
+// Multiple selections with loop
+string[] options = { "Small", "Medium", "Large", "Mark", "Vaporize", "Dot mark" };
+foreach (var option in options) {
+    comboBox.Select (option);
+    // Perform validation
+}
+
+// Get selected item
+var selectedItem = comboBox.SelectedItem.Name;
+Assert.AreEqual (selectedItem, "Footprint");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_checkbox_operations">CheckBox Operations</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Toggle checkbox
+var dimpleCheckBox = g.FindFirstChild (a =&gt; a.ByAutomationId ("Dimple").And (a.ByClassName ("CheckBox"))).AsCheckBox ();
+dimpleCheckBox.ToggleState = ToggleState.On;
+dimpleCheckBox.ToggleState = ToggleState.Off;
+
+// Click checkbox
+g.FindFirstChild (a =&gt; a.ByName ("Layer")).Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_button_operations">Button Operations</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Click buttons
+LaserCutGlob (fxFile).FindFirstDescendant (a =&gt; a.ByName ("Reverse")).Click ();
+g.FindFirstDescendant (a =&gt; a.ByName ("Add")).Click ();
+g.FindFirstDescendant (a =&gt; a.ByName ("Remove All")).Click ();
+g.FindFirstDescendant (a =&gt; a.ByName ("Auto compute")).Click ();
+
+// Click with assertion
+Assert.IsNotNull (ToPointOperationButton, "Button not found");
+ToPointOperationButton.Click ();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_window_management">Window Management</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Wait for dialog/glob
+var g = Utils.WaitForGlob ();
+Assert.IsNotNull (g, "Laser Cut glob did not open");
+
+// Close window
+glob.AsWindow ().Close ();
+
+// Check if element exists
+var element = Utils.MainWin.FindFirstDescendant (e =&gt; e.ByName ("Laser Cut"));
+Assert.True (element is null);  // Element should not exist
+
+// Use FindElement with retry
+Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("CmdBar"));
+Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("DocsPanel").FindFirstChild (a =&gt; a.ByName (file)));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_glob_modal_dialog_pattern">Glob (Modal Dialog) Pattern</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open laser cut editing dialog
+var g = LaserCutGlob (fxFile);
+
+// Interact with glob elements
+g.FindFirstChild (a =&gt; a.ByName ("Contour")).Click ();
+g.FindFirstChild ("AppLength").AsTextBox ().Text = "5";
+
+// Close glob
+Utils.Type (ESC);
+
+// Verify glob state
+Assert.IsNotNull (g, "Glob did not open");
+Assert.True (g.FindFirstDescendant (a =&gt; a.ByName ("Laser Cut")) is null);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assertions_validations">Assertions &amp; Validations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_element_assertions">Element Assertions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Null/Not null checks
+Assert.IsNotNull (element, "Element not found message");
+Assert.True (Utils.MainWin.FindFirstDescendant (e =&gt; e.ByName ("Laser Cut")) is null);
+
+// Text equality
+Assert.AreEqual (actualValue, expectedValue);
+Assert.AreEqual (selectedItem.Name, "Footprint");
+
+// Boolean assertions
+Assert.True (condition, "Message if false");
+Assert.False (Utils.FluxCrashed ());
+
+// Collection assertions
+Assert.True (comboBox.Items.Any (e =&gt; e.Text = process));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_assertions">File Assertions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// File exists
+Assert.True (File.Exists (Utils.tempPath + "importvacuumgripper.fxresp"));
+
+// Text file comparison
+Assert.AreTextFilesEqual (expectedPath, actualPath);
+Assert.AreTextEqual (expectedPath, actualContent);
+
+// Binary file comparison
+Assert.AreBinaryFilesEqual (expectedPath, actualPath);
+
+// Bitmap comparison
+Assert.AreBitmapsEqual (expectedPath, actualPath, 95);  // 95% tolerance</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_content_validation">File Content Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Read and check file content
+var lines = File.ReadAllLines (Utils.tempPath + "response.fxresp");
+Assert.True (lines[2] = "Completed=1");
+
+// Check for specific text
+var content = File.ReadAllText (Utils.tempPath + "temp.txt");
+bool hasInvalidData = content.Contains ("Invalid bend data. Bend lines could not be marked.");
+Assert.True (process != "None" ? hasInvalidData : !hasInvalidData);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_specific_utilities">Test-Specific Utilities</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_laser_cutting_utilities">Laser Cutting Utilities</h3>
+<div class="sect3">
+<h4 id="_lasercutglob_helper">LaserCutGlob Helper</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open laser cut dialog with predefined file
+var g = LaserCutGlob (fxFile);                    // "123.fx"
+var g = LaserCutGlob (fxFileWithInnerContour);    // "InnerContour.fx"
+var g = LaserCutGlob (fxFileWithsmallcircle);     // "smallcircle.fx"
+
+// Open with custom coordinates
+var g = LaserCutGlob (x: 50.15, y: 46.54);
+
+// Open with special parameters
+var g = LaserCutGlob (partFileName: "file.fx", bevel: true, openPoly: false);
+
+// Auto-expands: Approach, Withdrawal, Microjoint, Advanced sections</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cutting_type_changes">Cutting Type Changes</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Change cutting condition
+ChangeCutTypeTo ("Large");
+ChangeCutTypeTo ("Small");
+ChangeCutTypeTo ("Medium");
+ChangeCutTypeTo ("Mark");
+ChangeCutTypeTo ("Vaporize");
+ChangeCutTypeTo ("Dot mark");
+
+// Change pierce condition
+ChangePierceTypeTo ("Normal");
+ChangePierceTypeTo ("Gentle");
+ChangePierceTypeTo ("Mark");
+ChangePierceTypeTo ("None");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_scrap_tooling_management">Scrap Tooling Management</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Create or delete scrap tooling
+EditScrapTooling (true);   // Create
+EditScrapTooling (false);  // Delete</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_laser_cam_settings">Laser CAM Settings</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open settings panel
+var settings = OpenLaserCAMSettings ();
+
+// Interact with settings
+settings.FindFirstChild ("OpenPlineProcess").AsComboBox ().Select ("Mark");
+settings.FindFirstChild (c =&gt; c.ByName ("Cool at corners...")).Click ();
+settings.FindAllChildren (c =&gt; c.ByClassName ("TextBox"))[1].AsTextBox ().Text = "5";
+settings.FindFirstChild (c =&gt; c.ByName ("Mark forming footprint")).Click ();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validation_helpers">Validation Helpers</h3>
+<div class="sect3">
+<h4 id="_cut_condition_validation">Cut Condition Validation</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check cutting condition matches expected value
+CheckCutCondition ("Large");
+CheckCutCondition ("Mark");
+CheckCutCondition ("", 1);  // With polyline index
+
+// Internal: Uses Flux scripting
+// var lpc = (Flux.LaserPathCut)((Flux.LaserStep)part.CutTech.AllSteps.ElementAtOrDefault(0));
+// var result = lpc.CC.Name.ToString();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pierce_condition_validation">Pierce Condition Validation</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check pierce condition
+CheckPierceCondition ("Normal");
+CheckPierceCondition ("Mark");    // Converted to "MarkPt" internally
+CheckPierceCondition ("None");    // Converted to "" internally
+CheckPierceCondition ("Gentle", 1);  // With polyline index</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_profile_validation">Profile Validation</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check laser cut profile against reference
+CheckLaserCutProfile ("C150616", "test_normalProfile");
+CheckLaserCutProfile ("C150616", "test_reversedProfile");
+
+// Generates tooling pline data and compares with reference file
+// Reference path: {Utils.tData}Test_{folder}/{filename}.txt</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_nc_code_validation">NC Code Validation</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Generate NC code and validate
+CheckNC ("C122167", "addedmicrojointnc");
+CheckNC ("C122167", "removedmicrojointnc");
+
+// Reference path: {Utils.tData}Test_{folder}/{filename}.txt</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_machine_configuration">Machine Configuration</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Configure test machine
+Utils.ConfigureMachine (testMachineID);        // Before tests
+Utils.ConfigureMachine ("130167");
+
+// Uninstall machine after tests
+Utils.UninstallMachine (testMachineID);
+
+// Temporary machine context
+using var _ = new Utils.TmpMachine ("120057");  // Auto-uninstall when disposed</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reset_operations">Reset Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Reset Flux data to initial state
+Utils.ResetFluxData ();
+
+// Reset LTT settings
+LTT.GeneralSettings.ResetLTTSettings ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_script_execution">Script Execution</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Run Flux C# script
+Utils.RunScript ("Flux.PartEditor.Current.Skin = CutCAM");
+
+// Run script and capture output
+var result = Utils.RunScriptWithOutput ("var result = Flux.Part.Current.Name;");
+
+// Multi-line script
+var result = Utils.RunScriptWithOutput (new List&lt;string&gt; {
+    "var part = Flux.Part.Current;",
+    "var lpc = (Flux.LaserPathCut)((Flux.LaserStep)part.CutTech.AllSteps.ElementAtOrDefault(0));",
+    "var result = lpc.CC.Name.ToString();"
+});
+
+// Dump console history
+Utils.RunScriptWithOutput ("Flux.MConsole.DumpHistory (@\"" + Utils.tempPath + "temp.txt\");");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nc_file_operations">NC File Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Generate NC code file
+Utils.NCFileCreation ();  // Creates temp.txt with NC code
+
+// Render scene to file
+Utils.RenderSceneToFile (Utils.tempPath + "test.png");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_operations">Part Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open specific part view
+Utils.IsPartView (Utils.EPartView.Layout);
+
+// Close current part
+Utils.ClosePart (true);   // With save
+Utils.ClosePart (false);  // Without save
+
+// Select bendline
+Utils.SelectBendline (3);  // Bendline index</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nestingrecompute_operations">Nesting/Recompute Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Recompute tooling
+Nesting.Recompute ();
+
+// Quick nest
+Nesting.DoNewQuickNest ();</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_test_workflows">Common Test Workflows</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_test_flow">Basic Test Flow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1519, "Test Description")]
+public void TestMethod () {
+    // 1. Open file
+    Utils.OpenFile (Utils.tData + fxFile);
+    Thread.Sleep (500);
+
+    // 2. Navigate to feature (e.g., laser tooling)
+    Utils.Type ('l');
+
+    // 3. Perform action
+    LaserCutGlob (fxFile).FindFirstDescendant (a =&gt; a.ByName ("Reverse")).Click ();
+
+    // 4. Validate result
+    CheckLaserCutProfile ("C150616", "test_reversedProfile");
+
+    // 5. Clean up (auto-handled by framework)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_loop_based_test_pattern">Loop-Based Test Pattern</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1520, "Changing the cutting condition")]
+public void C122143 () {
+    Utils.OpenFile (Utils.tData + fxFile);
+    foreach (var cuttingType in new[] { "Small", "Medium", "Large" }) {
+        // Perform action
+        ChangeCutTypeTo (cuttingType);
+
+        // Validate each iteration
+        CheckCutCondition (cuttingType);
+
+        // Optional: Re-open for next iteration
+        Utils.OpenFile (Utils.tData + fxFile);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_settings_modification_pattern">Settings Modification Pattern</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (ID, "Settings Test")]
+public void TestSettings () {
+    Utils.OpenFile (Utils.tData + filename);
+    Utils.Type ('l');
+
+    var settings = OpenLaserCAMSettings ();
+
+    // Modify multiple settings
+    settings.FindFirstChild ("FieldName").AsTextBox ().Text = "25";
+    settings.FindFirstChild (c =&gt; c.ByName ("Checkbox Name")).Click ();
+    settings.FindFirstChild ("ComboField").AsComboBox ().Select ("Option");
+
+    Utils.Type (ESC);  // Close settings
+
+    // Validate changes
+    CheckLaserCutProfile ("C200390", "test_Before0.5Approach");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_comparison_pattern">File Comparison Pattern</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (ID, "NC Code Validation")]
+public void TestNCCode () {
+    Utils.OpenFile (Utils.tData + fxFile);
+    Utils.Type ('l');
+
+    // Perform tooling operations
+    LaserCutGlob (fxFile).FindFirstDescendant (a =&gt; a.ByName ("Add")).Click ();
+
+    // Generate and validate NC file
+    CheckNC ("C122167", "addedmicrojointnc");
+
+    // Or validate using reference file
+    Utils.NCFileCreation ();
+    Assert.AreTextFilesEqual (
+        $"{Utils.tData}Test_C122167/addedmicrojointnc.txt",
+        Utils.tempPath + "temp.txt"
+    );
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multi_step_validation_pattern">Multi-Step Validation Pattern</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (2539, "Complex Validation")]
+public void Test_C145702 () {
+    Utils.OpenFile (Utils.tData + "countersink.geo");
+
+    var circlePt = Utils.MeasurePtToPixel (new (31.102, 7.319, 0));
+    Utils.MouseClick (circlePt);
+
+    // Assertion 1: Check initial state
+    Assert.True (Utils.MainWin.FindFirstChild ("Glob").FindFirstChild (c =&gt; c.ByName ("Layer")) is null);
+
+    // Perform action
+    Utils.Type ('l');
+    OpenLaserCAMSettings ().FindFirstChild (c =&gt; c.ByName ("Mark forming footprint")).Click ();
+
+    // Continue workflow
+    Utils.Type (ESC); Utils.Type ('r'); Utils.Type ('a');
+    Utils.MouseClick (circlePt);
+
+    // Assertion 2: Check action result
+    CheckCutCondition ("Mark");
+
+    // Assertion 3: Verify final state
+    Utils.Type ('2');
+    Utils.MouseClick (Utils.MeasurePtToPixel (new (31.091, 7.323, 0)));
+    Assert.AreEqual (
+        Utils.WaitForGlob ().FindFirstChild ("Layer").AsComboBox ().SelectedItem.Name,
+        "Footprint"
+    );
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_helper_methods_reference">Helper Methods Reference</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ui_element_helpers">UI Element Helpers</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Main window reference
+var mainWin = Utils.MainWin;
+
+// Check if Flux is running
+bool isRunning = Utils.IsRunning ();
+
+// Get DPI
+int dpi = Utils.DPI;
+
+// Measure point to pixel conversion
+var pixelPoint = Utils.MeasurePtToPixel (new (X, Y, Z));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_path_helpers">File &amp; Path Helpers</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check if file is open
+Utils.IsThisFileOpen ("123.fx");
+
+// Dump automation tree
+Utils.DumpAutomationElement (element, pathToFile);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_timing_wait_operations">Timing &amp; Wait Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Sleep with duration
+Thread.Sleep (500);     // 500ms
+Thread.Sleep (1000);    // 1 second
+Thread.Sleep (1500);    // 1.5 seconds
+
+// Wait for conditions
+Utils.WaitForFileExists ();
+Utils.WaitForGlob ();
+Utils.FindElement (() =&gt; ...);  // With retry logic</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_geometry_helpers">Geometry Helpers</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Create measurement point (3D)
+var point = new Utils.Measure (X, Y, Z);
+var contourPt = new (153.946, 18.168);
+
+// Measurement shortcuts
+new (153.946, 91.549, 0)
+new (50.15, 46.54)
+new (31.102, 7.319, 0)</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_reference_common_commands_by_use_case">Quick Reference: Common Commands by Use Case</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_creating_a_basic_test">Creating a Basic Test</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (ID, "Description")]
+public void Test_CaseID () {
+    Utils.OpenFile (Utils.tData + filename);
+    Utils.Type ('l');
+    // Perform actions
+    CheckLaserCutProfile ("CaseID", "test_name");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_ui_change">Testing UI Change</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var element = Utils.MainWin.FindFirstDescendant (a =&gt; a.ByName ("Name"));
+element.AsTextBox ().Text = "value";
+Assert.AreEqual (element.AsTextBox ().Text, "value");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_settings">Testing Settings</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var settings = OpenLaserCAMSettings ();
+settings.FindFirstChild ("FieldName").AsTextBox ().Text = "25";
+Utils.Type (ESC);
+CheckNC ("CaseID", "test_name");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_dropdown_selection">Testing Dropdown Selection</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var combo = element.AsComboBox ();
+combo.Select ("Option");
+combo.Collapse ();
+Assert.True (combo.Items.Any (e =&gt; e.Text = "Option"));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_loop_testing_multiple_values">Loop Testing Multiple Values</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">foreach (var value in new[] { "Val1", "Val2", "Val3" }) {
+    Utils.OpenFile (Utils.tData + file);
+    ChangeValue (value);
+    ValidateValue (value);
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_best_practices">Best Practices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>✅ <strong>DO:</strong> - Use descriptive test names with test case IDs - Always clean
+up resources in <code>[FixtureCleanUp]</code> - Use meaningful constants
+for file paths and IDs - Add comments for non-obvious UI automation
+steps - Use assertions with descriptive messages - Follow the test →
+action → validate pattern</p>
+</div>
+<div class="paragraph">
+<p>❌ <strong>DON’T:</strong> - Use magic numbers without constants - Leave resources
+uncleaned - Skip assertions in loops - Use generic variable names (g, h,
+s, etc. without context) - Hardcode long delays without reason - Mix
+test logic with assertions in complex expressions</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>This recipe book covers all major patterns and commands used in the
+Fluxtester framework for creating automated UI tests for the Flux
+application.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_table_of_contents">Table of Contents</a>
+  </li>
+  <li level="1">
+   <a href="#_test_structure_attributes">Test Structure &amp; Attributes</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_test_fixture_template">Basic Test Fixture Template</a>
+  </li>
+  <li level="2">
+   <a href="#_test_attributes">Test Attributes</a>
+  </li>
+  <li level="1">
+   <a href="#_file_operations">File Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_opening_files">Opening Files</a>
+  </li>
+  <li level="2">
+   <a href="#_closing_files_parts">Closing Files &amp; Parts</a>
+  </li>
+  <li level="2">
+   <a href="#_temporary_file_management">Temporary File Management</a>
+  </li>
+  <li level="2">
+   <a href="#_test_data_access">Test Data Access</a>
+  </li>
+  <li level="1">
+   <a href="#_keyboard_input_commands">Keyboard &amp; Input Commands</a>
+  </li>
+  <li level="2">
+   <a href="#_key_press_patterns">Key Press Patterns</a>
+  </li>
+  <li level="2">
+   <a href="#_keyshort_enum_values">KeyShort Enum Values</a>
+  </li>
+  <li level="2">
+   <a href="#_mouse_operations">Mouse Operations</a>
+  </li>
+  <li level="1">
+   <a href="#_ui_automation_patterns">UI Automation Patterns</a>
+  </li>
+  <li level="2">
+   <a href="#_finding_ui_elements">Finding UI Elements</a>
+  </li>
+  <li level="2">
+   <a href="#_interacting_with_controls">Interacting with Controls</a>
+  </li>
+  <li level="2">
+   <a href="#_window_management">Window Management</a>
+  </li>
+  <li level="2">
+   <a href="#_glob_modal_dialog_pattern">Glob (Modal Dialog) Pattern</a>
+  </li>
+  <li level="1">
+   <a href="#_assertions_validations">Assertions &amp; Validations</a>
+  </li>
+  <li level="2">
+   <a href="#_element_assertions">Element Assertions</a>
+  </li>
+  <li level="2">
+   <a href="#_file_assertions">File Assertions</a>
+  </li>
+  <li level="2">
+   <a href="#_file_content_validation">File Content Validation</a>
+  </li>
+  <li level="1">
+   <a href="#_test_specific_utilities">Test-Specific Utilities</a>
+  </li>
+  <li level="2">
+   <a href="#_laser_cutting_utilities">Laser Cutting Utilities</a>
+  </li>
+  <li level="2">
+   <a href="#_validation_helpers">Validation Helpers</a>
+  </li>
+  <li level="2">
+   <a href="#_machine_configuration">Machine Configuration</a>
+  </li>
+  <li level="2">
+   <a href="#_reset_operations">Reset Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_script_execution">Script Execution</a>
+  </li>
+  <li level="2">
+   <a href="#_nc_file_operations">NC File Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_part_operations">Part Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_nestingrecompute_operations">Nesting/Recompute Operations</a>
+  </li>
+  <li level="1">
+   <a href="#_common_test_workflows">Common Test Workflows</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_test_flow">Basic Test Flow</a>
+  </li>
+  <li level="2">
+   <a href="#_loop_based_test_pattern">Loop-Based Test Pattern</a>
+  </li>
+  <li level="2">
+   <a href="#_settings_modification_pattern">Settings Modification Pattern</a>
+  </li>
+  <li level="2">
+   <a href="#_file_comparison_pattern">File Comparison Pattern</a>
+  </li>
+  <li level="2">
+   <a href="#_multi_step_validation_pattern">Multi-Step Validation Pattern</a>
+  </li>
+  <li level="1">
+   <a href="#_helper_methods_reference">Helper Methods Reference</a>
+  </li>
+  <li level="2">
+   <a href="#_ui_element_helpers">UI Element Helpers</a>
+  </li>
+  <li level="2">
+   <a href="#_file_path_helpers">File &amp; Path Helpers</a>
+  </li>
+  <li level="2">
+   <a href="#_timing_wait_operations">Timing &amp; Wait Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_geometry_helpers">Geometry Helpers</a>
+  </li>
+  <li level="1">
+   <a href="#_quick_reference_common_commands_by_use_case">Quick Reference: Common Commands by Use Case</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_a_basic_test">Creating a Basic Test</a>
+  </li>
+  <li level="2">
+   <a href="#_testing_ui_change">Testing UI Change</a>
+  </li>
+  <li level="2">
+   <a href="#_testing_settings">Testing Settings</a>
+  </li>
+  <li level="2">
+   <a href="#_testing_dropdown_selection">Testing Dropdown Selection</a>
+  </li>
+  <li level="2">
+   <a href="#_loop_testing_multiple_values">Loop Testing Multiple Values</a>
+  </li>
+  <li level="1">
+   <a href="#_best_practices">Best Practices</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="lasertooling.html">LaserTooling.cs Test Steps</a></span>
+ <span class="next"><a href="nesting.html">Nesting.cs Overview</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>

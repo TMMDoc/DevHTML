@@ -1,0 +1,1887 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>Nesting.cs Recipe Book</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../technotes/data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="index.html">FluxTester</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+    <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+    <li><button class="tree blank"></button><a class="active" href="nestingcookbook.html">Nesting.cs Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">FluxTester</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="nestingcookbook.html">Nesting.cs Recipe Book</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>Nesting.cs Recipe Book</h1>
+<div class="sect1">
+<h2 id="_table_of_contents">Table of Contents</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#test-structure--attributes">Test Structure &amp; Attributes</a></p>
+</li>
+<li>
+<p><a href="#fixture-setup--teardown">Fixture Setup &amp; Teardown</a></p>
+</li>
+<li>
+<p><a href="#file-operations">File Operations</a></p>
+</li>
+<li>
+<p><a href="#navigation--view-management">Navigation &amp; View Management</a></p>
+</li>
+<li>
+<p><a href="#quick-nest-operations">Quick-Nest Operations</a></p>
+</li>
+<li>
+<p><a href="#part-selection">Part Selection</a></p>
+</li>
+<li>
+<p><a href="#part-manipulation">Part Manipulation</a></p>
+</li>
+<li>
+<p><a href="#keyboard--input-commands">Keyboard &amp; Input Commands</a></p>
+</li>
+<li>
+<p><a href="#mouse-operations">Mouse Operations</a></p>
+</li>
+<li>
+<p><a href="#renesting-operations">Renesting Operations</a></p>
+</li>
+<li>
+<p><a href="#validation--assertions">Validation &amp; Assertions</a></p>
+</li>
+<li>
+<p><a href="#script-execution">Script Execution</a></p>
+</li>
+<li>
+<p><a href="#common-nesting-workflows">Common Nesting Workflows</a></p>
+</li>
+<li>
+<p><a href="#helper-methods-reference">Helper Methods Reference</a></p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_structure_attributes">Test Structure &amp; Attributes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_nesting_test_template">Basic Nesting Test Template</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[TestFixture (1501, "Nesting Test", Module = "FluxCut", Subsystem = "Nesting")]
+class Nesting {
+    const string fxFile = "123.fx";
+    const string testMachineID = "2230001";
+
+    [FixtureInitialize]
+    public void Init () {
+        // Setup machines and resources
+        Utils.InstallCutMachines (testMachineID);
+    }
+
+    [FixtureCleanUp]
+    public void CleanUp () {
+        // Clean temporary files
+        foreach (var file in Directory.GetFiles (Utils.tempPath)) {
+            if (file.Contains (".txt") || file.Contains (".png")) File.Delete (file);
+        }
+        Utils.UninstallMachine (testMachineID);
+    }
+
+    [Test (ID, "Test Description", Type = TestType.Functional)]
+    public void Test_CaseID () {
+        // Test implementation
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_machine_ids">Machine IDs</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">const string testMachineID = "2230001";      // Primary test machine
+Utils.InstallCutMachines (testMachineID);    // Install machines
+Utils.UninstallMachine (testMachineID);      // Uninstall after tests</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fixture_setup_teardown">Fixture Setup &amp; Teardown</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_installation_configuration">Installation &amp; Configuration</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Install cutting machine(s)
+[FixtureInitialize]
+public void Init () =&gt; Utils.InstallCutMachines ("2230001");
+
+// Set default machine via script
+Utils.RunScript ("Flux.CutMachine.Default = Flux.CutMachine.Get (2230001);");
+
+// Set part thickness via script
+Utils.RunScript ("Flux.PartEditor.Current.Part.Info.Thickness = 4;");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resource_cleanup">Resource Cleanup</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[FixtureCleanUp]
+public void CleanUp () {
+    // Delete temporary .txt files
+    foreach (var file in Directory.GetFiles (Utils.tempPath)) {
+        if (file.Contains (".txt")) File.Delete (file);
+    }
+
+    // Delete temporary .png files
+    foreach (var file in Directory.GetFiles (Utils.tempPath)) {
+        if (file.Contains (".png")) File.Delete (file);
+    }
+
+    // Combined cleanup
+    foreach (var file in Directory.GetFiles (Utils.tempPath)) {
+        if (file.Contains (".txt") || file.Contains (".png")) File.Delete (file);
+    }
+
+    // Uninstall machine
+    Utils.UninstallMachine ("2230001");
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_file_operations">File Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_opening_files">Opening Files</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open part file
+Utils.OpenFile (Utils.tData + "123.fx");
+Utils.OpenFile (Utils.tData + fxFile);
+
+// Open drawing file
+Utils.OpenFile (Utils.tData + "thinComplex.dxf");
+
+// Open with path construction
+Utils.OpenFile (Utils.tData + filename);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_references">File References</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Temporary paths
+Utils.tempPath              // "c:/programdata/metamation/temp/"
+Utils.tempPath + "test.png"
+Utils.tempPath + "temp.txt"
+
+// Test data paths
+Utils.tData                 // Test data directory
+Utils.tData + "123.fx"      // Primary test file
+Utils.tData + "thinComplex.dxf"
+Utils.tData + "Test_C122169/test_MovePartByDrag.txt"</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_navigation_view_management">Navigation &amp; View Management</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_view_switching">View Switching</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Switch to CutCAM view (laser tooling view)
+Utils.Type ('l');
+
+// Switch to Nesting view
+Utils.Type ('n');
+
+// Switch to settings
+Utils.Type ('t');
+Utils.Type ('a');  // Layout settings
+
+// Access Layout view via script
+Utils.RunScript ("Flux.PartEditor.Current.Skin = Layout");
+Utils.RunScript ("Flux.PartEditor.Current.Skin = CutCAM");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_workflow_panel">Workflow Panel</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open workflow panel
+Utils.MainWin.FindFirstDescendant (e =&gt; e.ByName ("workflow")).Click ();
+
+// Access workflow elements
+var workflowElems = Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("WorkflowPanel")).FindAllChildren ();
+
+// Find Quick-Nest button
+var qnIcon = workflowElems.First (a =&gt; a.Name.StartsWith ("Quick-Nest"));
+var pt = qnIcon.GetClickablePoint ();
+
+// Check if Layout exists
+workflowElems.FirstOrDefault (a =&gt; a.Name.StartsWith ("Layout")) != null</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_settings_panel">Settings Panel</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Open settings
+var settings = Utils.MainWin.FindFirstChild ("SheafEditor");
+
+// Access settings elements
+layoutSettings.FindFirstDescendant (a =&gt; a.ByName ("Cut View")).Click ();
+layoutSettings.FindFirstChild (a =&gt; a.ByClassName ("ScrollViewer"));
+
+// Navigate sections
+settings.FindFirstChild (a =&gt; a.ByControlType (ControlType.Pane));</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_nest_operations">Quick-Nest Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_creating_quick_nest">Creating Quick-Nest</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Basic quick nest (entire part)
+DoNewQuickNest ();
+
+// Single-part quick nest
+DoNewQuickNest (true);
+
+// Multi-part quick nest
+DoNewQuickNest (false);
+
+// Internal implementation
+internal static void DoNewQuickNest (bool singlePart = false) {
+    Utils.Type ('l');  // Switch to CutCAM view
+    Utils.MainWin.FindFirstDescendant (e =&gt; e.ByName ("workflow")).Click ();
+
+    var workflowElems = Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("WorkflowPanel"))
+        .FindAllChildren ();
+    var qnIcon = workflowElems.First (a =&gt; a.Name.StartsWith ("Quick-Nest"));
+    var pt = qnIcon.GetClickablePoint ();
+
+    // Delete existing layout
+    if (workflowElems.FirstOrDefault (a =&gt; a.Name.StartsWith ("Layout")) != null) {
+        Utils.MouseClick (pt, CONTROL);
+        Utils.Type (LEFT); Utils.Type (ENTER);
+    }
+
+    // Create new quick nest
+    Utils.MouseClick (pt, singlePart ? SHIFT : None);
+    Thread.Sleep (500);
+    Utils.Type (ESCAPE);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quick_nest_with_modifiers">Quick-Nest with Modifiers</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Single-part nest (with Shift key)
+Utils.MouseClick (qnBtn, SHIFT);
+
+// Standard multi-part nest
+Utils.MouseClick (qnBtn);
+
+// Delete existing nest
+Utils.MouseClick (pt, CONTROL);  // Ctrl+click
+Utils.Type (LEFT);               // Navigate to Yes
+Utils.Type (ENTER);              // Confirm</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_part_selection">Part Selection</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_selection_methods">Selection Methods</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Select by point click
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+
+// Select by double-click
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)), doubleClick: true);
+
+// Select by double-click (alternative syntax)
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90, 0)), doubleClick: true);
+
+// Select similar parts
+SelectPartsBy ("Similar");
+
+// Select same parts
+SelectPartsBy ("Same Parts");
+
+// Select parts in row
+SelectPartsBy ("Similar Parts in Row");
+
+// Select parts in column
+SelectPartsBy ("Similar Parts in Column");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selection_helper">Selection Helper</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">internal static AutomationElement SelectPartsBy (string option) {
+    var g = Utils.WaitForGlob ();
+    g.FindFirstChild (a =&gt; a.ByName (option)).Click ();
+    return g;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_glob_operations_selection_dialog">Glob Operations (Selection Dialog)</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Wait for selection dialog
+var g = Utils.WaitForGlob ();
+
+// Interact with glob options
+g.FindFirstChild (a =&gt; a.ByName ("All Blocks")).Click ();
+g.FindFirstChild (a =&gt; a.ByName ("Similar")).Click ();
+g.FindFirstDescendant (a =&gt; a.ByName ("Explode")).Click ();
+g.FindFirstChild (a =&gt; a.ByName ("Group")).Click ();
+g.FindFirstDescendant (a =&gt; a.ByName ("Ungroup")).Click ();
+
+// Return to access glob again
+var g = Utils.WaitForGlob ();</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_part_manipulation">Part Manipulation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_part_movement">Part Movement</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Convert measurement points to pixels
+var p = Utils.MeasurePtsToPixel ([new (50, 90), new (150, 90)]);
+
+// Move part by dragging
+Utils.MouseClick (p[0]);                    // Select part
+Utils.DragAndDrop (Mouse.Position, p[1]);  // Drag from current to target
+Utils.Type (ESC);                           // Finalize
+
+// Move part by double-click + mouse move
+Utils.MouseClick (p[0], true);              // Double-click to enable move
+Utils.MouseMove (p[1]);                     // Move to target position
+Utils.Type (ESC);                           // Finalize</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_duplicates">Creating Duplicates</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Duplicate with Ctrl+drag
+var p = Utils.MeasurePtsToPixel ([new (50, 90), new (150, 90)]);
+Utils.MouseClick (p[0]);                    // Enable edit mode
+using (var ob = Keyboard.Pressing ((VirtualKeyShort)CONTROL))
+    Utils.DragAndDrop (Mouse.Position, p[1]);  // Ctrl+drag
+Utils.Type (ESC);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_part_arrays">Creating Part Arrays</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Array along COLUMN direction
+var p = Utils.MeasurePtsToPixel ([
+    new (50, 90),       // Click point
+    new (87, 167),      // Start point
+    new (190, 1500)     // End point
+]);
+Utils.MouseClick (p[0]);        // Click at corner
+Utils.MoveGlob ();              // Move any glob if needed
+Utils.DragAndDrop (p[1], p[2]); // Drag to create array
+
+// Array along ROW direction
+Utils.Type (ESC);
+Utils.Type ('a', CONTROL);      // Ctrl+A to select all
+Utils.MoveGlob ();
+var p2 = Utils.MeasurePtsToPixel ([
+    new (90, 1360),
+    new (3000, 1500)
+]);
+Utils.DragAndDrop (p2[0], p2[1]);
+Utils.Type (ESC);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_rotation">Part Rotation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Rotate with Ctrl+mouse wheel
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90, 0)), doubleClick: true);
+using (Keyboard.Pressing ((VirtualKeyShort)CONTROL))
+    Mouse.Scroll (25);  // Rotate by 25 units</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_grouping_parts">Grouping Parts</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Group parts
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+SelectPartsBy ("Similar").FindFirstDescendant (a =&gt; a.ByName ("Group")).Click ();
+Utils.Type (ESC);
+
+// Ungroup parts
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+Utils.WaitForGlob ().FindFirstDescendant (a =&gt; a.ByName ("Ungroup")).Click ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_overlaps">Creating Overlaps</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Move part to create overlap
+var p = Utils.MeasurePtsToPixel ([new (50, 90), new (150, 90)]);
+Utils.MouseClick (p[0]);
+using var ob = Keyboard.Pressing ((VirtualKeyShort)CONTROL);
+Utils.DragAndDrop (p[0], p[1]);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keyboard_input_commands">Keyboard &amp; Input Commands</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_navigation_keys">Navigation Keys</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// View switching
+Utils.Type ('l');      // CutCAM view
+Utils.Type ('n');      // Nesting view
+Utils.Type ('t');      // Settings
+Utils.Type ('a');      // Layout/Cut settings
+Utils.Type ('w');      // Window/Workspace
+Utils.Type ('s');      // Select/Settings
+Utils.Type ('k');      // Laser CAM settings
+
+// Finalization
+Utils.Type (ESC);      // Escape/Cancel
+Utils.Type (ESCAPE);   // Alternative Escape
+Utils.Type (ENTER);    // Confirm
+Utils.Type (LEFT);     // Navigate left</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modifier_keys">Modifier Keys</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">using static FluxTester.Utils.KeyShort;
+
+// Key constants
+CONTROL              // Ctrl key
+SHIFT                // Shift key
+ESC                  // Escape key
+ENTER               // Enter key
+TAB                 // Tab key
+LEFT                // Left arrow
+RIGHT               // Right arrow</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multi_key_input">Multi-Key Input</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Sequential key presses
+Utils.Type ('t'); Utils.Type ('a');  // Settings &gt; Layout
+
+// Type character with modifier
+Utils.Type ('a', CONTROL);  // Ctrl+A (select all)
+
+// Access key shortcuts with KeyShort
+using (Keyboard.Pressing ((VirtualKeyShort)CONTROL))
+    Mouse.Scroll (25);  // Ctrl+mouse wheel
+
+using (Keyboard.Pressing ((VirtualKeyShort)SHIFT))
+    Utils.DragAndDrop (start, end);  // Shift+drag</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mouse_operations">Mouse Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_mouse_actions">Basic Mouse Actions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Single click
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+
+// Double click
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)), doubleClick: true);
+
+// Click with modifier
+Utils.MouseClick (pt, CONTROL);    // Ctrl+click
+Utils.MouseClick (pt, SHIFT);      // Shift+click
+
+// Get current mouse position
+var currentPos = Mouse.Position;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_measurement_conversion">Measurement &amp; Conversion</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Single point conversion
+var pixelPt = Utils.MeasurePtToPixel (new (X, Y, Z));
+var pixelPt = Utils.MeasurePtToPixel (new (153.946, 91.549, 0));
+
+// Multiple points conversion
+var pixels = Utils.MeasurePtsToPixel ([
+    new (50, 90),
+    new (87, 167),
+    new (190, 1500)
+]);
+
+// Access individual points
+pixels[0]  // First point
+pixels[1]  // Second point
+pixels[2]  // Third point</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_drag_drop">Drag &amp; Drop</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Simple drag and drop
+Utils.DragAndDrop (startPoint, endPoint);
+
+// Drag from current position
+Utils.DragAndDrop (Mouse.Position, p[1]);
+
+// Drag with modifier key (Ctrl+drag)
+using (Keyboard.Pressing ((VirtualKeyShort)CONTROL))
+    Utils.DragAndDrop (start, end);
+
+// Drag with Shift (twinline nesting)
+using (var ob = Keyboard.Pressing ((VirtualKeyShort)SHIFT))
+    Utils.DragAndDrop (start, end);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mouse_movement">Mouse Movement</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Move mouse to position
+Utils.MouseMove (Utils.MeasurePtToPixel (new (150, 90)));
+
+// Move glob if in the way
+Utils.MoveGlob ();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mouse_wheel">Mouse Wheel</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Scroll/rotate with modifier
+using (Keyboard.Pressing ((VirtualKeyShort)CONTROL))
+    Mouse.Scroll (25);  // Rotate parts by 25 units</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_renesting_operations">Renesting Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_renest_method">Renest Method</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Renest with specific option
+Renest (RenestOption.RearrangeToCreateRemSheet);
+Renest (RenestOption.RearrangeToFullSheet);
+Renest (RenestOption.SpreadPartsAlongX);
+Renest (RenestOption.SpreadPartsAlongY);
+Renest (RenestOption.SpreadPartsAlongXY);
+
+// Renest by enum cast (0-4)
+for (int i = 0; i &lt; 5; i++) {
+    Renest ((RenestOption)i);
+}
+
+// Internal implementation
+internal static void Renest (RenestOption option) {
+    Utils.RunScript ("Flux.PartEditor.Current.Skin = Layout");
+    Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("CmdBar")
+        .FindFirstChild (a =&gt; a.ByName ("nesting"))).Click ();
+
+    char key = (option) switch {
+        RenestOption.RearrangeToCreateRemSheet =&gt; 'a',
+        RenestOption.RearrangeToFullSheet =&gt; 'b',
+        RenestOption.SpreadPartsAlongX =&gt; 'c',
+        RenestOption.SpreadPartsAlongY =&gt; 'd',
+        RenestOption.SpreadPartsAlongXY =&gt; 'e',
+        RenestOption.Cancel or _ =&gt; 'f',
+    };
+    Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ()
+        .FindFirstChild (a =&gt; a.ByControlType (ControlType.MenuItem)));
+    Utils.Type (key);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_renestoption_enum">RenestOption Enum</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">internal enum RenestOption {
+    RearrangeToCreateRemSheet = 0,  // 'a'
+    RearrangeToFullSheet = 1,       // 'b'
+    SpreadPartsAlongX = 2,          // 'c'
+    SpreadPartsAlongY = 3,          // 'd'
+    SpreadPartsAlongXY = 4,         // 'e'
+    Cancel = 5                      // 'f'
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_recompute_operations">Recompute Operations</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_recompute_method">Recompute Method</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Default recompute (retool all elements)
+Recompute ();
+
+// Specific recompute option
+Recompute (RecomputeOption.RetoolAllElements);
+Recompute (RecomputeOption.ToolOnlyUntooledElements);
+Recompute (RecomputeOption.Sequence);
+Recompute (RecomputeOption.Routing);
+
+// Internal implementation
+internal static void Recompute (RecomputeOption option = RecomputeOption.RetoolAllElements) {
+    Utils.Type (ESC);
+
+    bool skinIsLayout = Utils.RunScriptWithOutput ("var result = Flux.PartEditor.Current.Skin.ToString()")
+        = "Layout";
+
+    Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("CmdBar")
+        .FindFirstChild (a =&gt; a.ByName ("recompute"))).Click ();
+
+    char key = (option) switch {
+        RecomputeOption.RetoolAllElements =&gt; skinIsLayout ? 'd' : 'a',
+        RecomputeOption.ToolOnlyUntooledElements =&gt; skinIsLayout ? 'a' : 'b',
+        RecomputeOption.Sequence =&gt; skinIsLayout ? 'b' : 'c',
+        RecomputeOption.Routing =&gt; skinIsLayout ? 'c' : 'd',
+        _ =&gt; skinIsLayout ? 'd' : 'e'
+    };
+
+    Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ()
+        .FindFirstChild (a =&gt; a.ByControlType (ControlType.MenuItem)));
+    Utils.Type (key);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_recomputeoption_enum">RecomputeOption Enum</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">internal enum RecomputeOption {
+    RetoolAllElements = 0,              // CutCAM: 'a', Layout: 'd'
+    ToolOnlyUntooledElements = 1,       // CutCAM: 'b', Layout: 'a'
+    Sequence = 2,                       // CutCAM: 'c', Layout: 'b'
+    Routing = 3,                        // CutCAM: 'd', Layout: 'c'
+    Cancel = 4                          // CutCAM: 'e', Layout: 'd'
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validation_assertions">Validation &amp; Assertions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_layout_data_validation">Layout Data Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check part placement in layout
+CheckPartsInLayout (folder: "C122169", filename: "test_MovePartByDrag");
+CheckPartsInLayout ("C122170", "test_MovePartBySelect");
+CheckPartsInLayout ("C122172", "test_CreatePartsArray");
+
+// Internal implementation
+internal static void CheckPartsInLayout (string folder, string filename) {
+    List&lt;string&gt; commands = [
+        "StringBuilder layData = new ();",
+        "Flux.Layout.Current.Dump (layData)",
+        "var result = layData.ToString ();"
+    ];
+    string output = Utils.RunScriptWithOutput (commands);
+    Assert.AreTextEqual ($"{Utils.tData}Test_{folder}/{filename}.txt", output);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selected_parts_validation">Selected Parts Validation</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check selected part outlines
+CheckSelectedParts ("C123187", "test_Similar Parts in Row");
+CheckSelectedParts ("C123186", "test_grouped");
+CheckSelectedParts ("C123186", "test_ungrouped");
+
+// Internal implementation
+internal static void CheckSelectedParts (string folder, string filename) {
+    List&lt;string&gt; commands = [
+        "StringBuilder selectedParts = new ();",
+        "foreach (var part in Flux.Layout.Current.Children) { " +
+        "  if (part.IsSelected) { " +
+        "     foreach (var v in part.PartOutlines) selectedParts.Append (v.ToString () + '\\n');" +
+        "  }" +
+        "}",
+        "var result = selectedParts.ToString ();"
+    ];
+    Assert.AreTextEqual ($"{Utils.tData}Test_{folder}/{filename}.txt", Utils.RunScriptWithOutput (commands));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_visual_validation_screenshots">Visual Validation (Screenshots)</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Render and compare screen
+CheckLuxScreen ("C123184", "test_OverlappingParts");
+CheckLuxScreen ("C200391", "supportPins");
+
+// Internal implementation
+internal static void CheckLuxScreen (string folder, string filename = "test") {
+    string path = Utils.tempPath + "test.png";
+    Utils.RenderSceneToFile (path);
+    Assert.AreBitmapsEqual ($"{Utils.tData}Test_{folder}/{filename}.png", path, 95);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_script_based_assertions">Script-Based Assertions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Script with output validation
+List&lt;string&gt; commands = [
+    "int count = 0;",
+    "foreach (var v in Flux.Part.Current.CutTech.AllSteps) { if (v.IsSelected) count++; }",
+    "var result = count.ToString();"
+];
+Assert.AreEqual (Utils.RunScriptWithOutput (commands), "55");
+
+// Twinline validation
+List&lt;string&gt; commands = [
+    "StringBuilder sb = new ();",
+    "bool twinline = true;",
+    "foreach (var v in Flux.Layout.Current.Children) { if (v.Tech != Flux.CLGroup) twinline = false; }",
+    "var result = (twinline = true).ToString();"
+];
+Assert.AreEqual (Utils.RunScriptWithOutput (commands), "True");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_query_based_assertions">Query-Based Assertions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check overlapping parts
+bool hasOverlap = DoAnyPartOverlaps ();
+Assert.False (hasOverlap);
+
+// Check parts within sheet margin
+bool withinMargin = AreAllPartsNestedWithinSheet (includeTooling: true);
+Assert.True (withinMargin);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_script_execution">Script Execution</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_simple_script_execution">Simple Script Execution</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Run script without output
+Utils.RunScript ("Flux.PartEditor.Current.Part.Info.Thickness = 4;");
+
+// Set default machine
+Utils.RunScript ("Flux.CutMachine.Default = Flux.CutMachine.Get (2230001);");
+
+// Switch view
+Utils.RunScript ("Flux.PartEditor.Current.Skin = Layout");
+Utils.RunScript ("Flux.PartEditor.Current.Skin = CutCAM");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_script_with_output">Script with Output</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Single line script
+var result = Utils.RunScriptWithOutput ("var result = Flux.Part.Current.Name;");
+
+// Get current skin
+bool skinIsLayout = Utils.RunScriptWithOutput ("var result = Flux.PartEditor.Current.Skin.ToString()")
+    = "Layout";
+
+// Multi-line script
+var result = Utils.RunScriptWithOutput (new List&lt;string&gt; {
+    "int count = 0;",
+    "foreach (var v in Flux.Part.Current.CutTech.AllSteps) { if (v.IsSelected) count++; }",
+    "var result = count.ToString();"
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_complex_multi_line_scripts">Complex Multi-Line Scripts</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Layout data dump
+List&lt;string&gt; commands = [
+    "StringBuilder layData = new ();",
+    "Flux.Layout.Current.Dump (layData)",
+    "var result = layData.ToString ();"
+];
+string output = Utils.RunScriptWithOutput (commands);
+
+// Selected parts collection
+List&lt;string&gt; commands = [
+    "StringBuilder selectedParts = new ();",
+    "foreach (var part in Flux.Layout.Current.Children) { " +
+    "  if (part.IsSelected) { " +
+    "     foreach (var v in part.PartOutlines) selectedParts.Append (v.ToString () + '\\n');" +
+    "  }" +
+    "}",
+    "var result = selectedParts.ToString ();"
+];
+
+// Twinline check
+List&lt;string&gt; commands = [
+    "StringBuilder sb = new ();",
+    "bool twinline = true;",
+    "foreach (var v in Flux.Layout.Current.Children) { if (v.Tech != Flux.CLGroup) twinline = false; }",
+    "var result = (twinline = true).ToString();"
+];
+
+// Sheet margin check
+List&lt;string&gt; commands = [
+    "var lay = Flux.Layout.Current;",
+    "var sm = lay.SheetMargin;",
+    "var size = lay.SheetSize;",
+    "var bound = new Flux.Bound2 (sm.Left - 0.1, sm.Bottom - 0.1, size.X - sm.Right + 0.1, size.Y - sm.Top + 0.1);",
+    "var result = lay.Children.All (a =&gt; bound.Contains (a.GetBoundSansTooling ())).ToString();"
+];</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_nesting_workflows">Common Nesting Workflows</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_part_movement_workflow">Basic Part Movement Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (428, "Moving the part by dragging")]
+public void Test_C122169 () {
+    // 1. Open file and create quick nest
+    Utils.OpenFile (Utils.tData + fxFile);
+    DoNewQuickNest (true);
+
+    // 2. Get target coordinates
+    var p = Utils.MeasurePtsToPixel ([new (50, 90), new (150, 90)]);
+
+    // 3. Move part
+    Utils.MouseClick (p[0]);
+    Utils.DragAndDrop (Mouse.Position, p[1]);
+    Utils.Type (ESC);
+
+    // 4. Validate
+    CheckPartsInLayout (folder: "C122169", filename: "test_MovePartByDrag");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_part_selection_workflow">Part Selection Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (437, "Parts Selection")]
+public void Test_C123187 () {
+    string[] options = ["Same Parts", "Similar Parts in Row", "Similar Parts in Column"];
+
+    for (int i = 0; i &lt; 3; i++) {
+        string option = options[i];
+
+        // 1. Setup
+        Utils.OpenFile (Utils.tData + fxFile);
+        DoNewQuickNest (false);
+
+        // 2. Select part
+        Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+
+        // 3. Apply selection mode
+        SelectPartsBy (option);
+
+        // 4. Validate
+        CheckSelectedParts ("C123187", $"test_{option}");
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_grouping_workflow">Grouping Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1513, "Group parts together")]
+public void Test_C123186 () {
+    // Setup
+    Utils.OpenFile (Utils.tData + fxFile);
+    DoNewQuickNest ();
+
+    // GROUPING PHASE
+    // 1. Select initial part
+    Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+
+    // 2. Select similar and group
+    SelectPartsBy ("Similar").FindFirstDescendant (a =&gt; a.ByName ("Group")).Click ();
+    Utils.Type (ESC);
+
+    // 3. Verify group selection
+    Utils.MouseClick (Utils.MeasurePtToPixel (new (150, 90)));
+    CheckSelectedParts ("C123186", "test_grouped");
+
+    // UNGROUPING PHASE
+    // 4. Select part and ungroup
+    Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+    Utils.WaitForGlob ().FindFirstDescendant (a =&gt; a.ByName ("Ungroup")).Click ();
+
+    // 5. Verify ungrouped
+    Utils.MouseClick (Utils.MeasurePtToPixel (new (150, 90)));
+    CheckSelectedParts ("C123186", "test_ungrouped");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quick_nest_with_settings_workflow">Quick-Nest with Settings Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1514, "Nest start corner option")]
+public void Test_C123192 () {
+    int index = 0;
+    Utils.OpenFile (Utils.tData + fxFile);
+    DoNewQuickNest (true);
+
+    foreach (var type in new string[] { "Bottom left", "Bottom right", "Top left", "Top right" }) {
+        // 1. Open workflow
+        Utils.MainWin.FindFirstDescendant (e =&gt; e.ByName ("workflow")).Click ();
+
+        // 2. Access settings
+        var qnBtn = Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("WorkflowPanel"))
+            .FindAllChildren ().First (a =&gt; a.Name.StartsWith ("Quick-Nest"))
+            .GetClickablePoint ();
+        Utils.MouseClick (qnBtn);
+
+        // 3. Select corner option
+        var qnSettings = Utils.MainWin.FindFirstChild ("SheafEditor");
+        var combo = qnSettings.FindFirstChild (a =&gt; a.ByControlType (ControlType.Pane))
+            .FindAllChildren (a =&gt; a.ByControlType (ControlType.ComboBox))[1]
+            .AsComboBox ();
+        combo.Expand ();
+        combo.Items[index++].Click ();
+
+        // 4. Create new nest
+        Utils.MouseClick (qnBtn);
+        DoNewQuickNest (true);
+
+        // 5. Validate
+        CheckPartsInLayout (folder: "C123192", filename: $"test_{type}");
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_renesting_workflow">Renesting Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1517, "Nesting options")]
+public void Test_C145736 () {
+    string[] nestConds = ["CreateRemSheet", "UseFullSheet", "SpreadAlongX", "SpreadAlongY", "SpreadAlongXandY"];
+
+    // Setup
+    Utils.OpenFile (Utils.tData + fxFile);
+    DoNewQuickNest (singlePart: true);
+
+    // Create some parts
+    var p = Utils.MeasurePtsToPixel ([new (50, 90), new (87, 167), new (1500, 1500)]);
+    Utils.MouseClick (p[0]);
+    Utils.MoveGlob ();
+    Utils.DragAndDrop (p[1], p[2]);
+    Thread.Sleep (1000);
+    Utils.Type (ESC);
+
+    // Test each renest option
+    for (int i = 0; i &lt; 5; i++) {
+        Renest ((RenestOption)i);
+        CheckPartsInLayout ("C145736", $"test_{nestConds[i]}");
+        Thread.Sleep (2000);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_twinline_nesting_workflow">Twinline Nesting Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1518, "Manual Twinline Nesting")]
+public void Test_C150617 () {
+    // Setup
+    Utils.OpenFile (Utils.tData + fxFile);
+    DoNewQuickNest (singlePart: true);
+
+    // Select and position
+    Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+    Utils.MoveGlob ();
+
+    // Create twinline with Shift+drag
+    using (var ob = Keyboard.Pressing ((VirtualKeyShort)SHIFT))
+        Utils.DragAndDrop (
+            Utils.MeasurePtToPixel (new (87, 167)),
+            Utils.MeasurePtToPixel (new (3000, 1500))
+        );
+
+    Thread.Sleep (500);
+    Utils.Type (ESC);
+
+    // Validate twinline
+    List&lt;string&gt; commands = [
+        "StringBuilder sb = new ();",
+        "bool twinline = true;",
+        "foreach (var v in Flux.Layout.Current.Children) { if (v.Tech != Flux.CLGroup) twinline = false; }",
+        "var result = (twinline = true).ToString();"
+    ];
+    Assert.AreEqual (Utils.RunScriptWithOutput (commands), "True");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_array_creation_workflow">Array Creation Workflow</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">[Test (1511, "Creating array of parts in layout")]
+public void Test_C122172 () {
+    Utils.OpenFile (Utils.tData + fxFile);
+    DoNewQuickNest (true);
+
+    var p = Utils.MeasurePtsToPixel ([
+        new (50, 90),        // Click point
+        new (87, 167),       // Column start
+        new (190, 1500),     // Column end
+        new (90, 1360),      // Row start
+        new (3000, 1500)     // Row end
+    ]);
+
+    // Column array
+    Utils.MouseClick (p[0]);
+    Utils.MoveGlob ();
+    Utils.DragAndDrop (p[1], p[2]);
+    Utils.Type (ESC);
+
+    // Row array
+    Utils.Type ('a', CONTROL);      // Select all
+    Utils.MoveGlob ();
+    Utils.DragAndDrop (p[3], p[4]);
+    Utils.Type (ESC);
+
+    // Validate
+    CheckPartsInLayout ("C122172", "test_CreatePartsArray");
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_helper_methods_reference">Helper Methods Reference</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ui_navigation_helpers">UI Navigation Helpers</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Find main window
+Utils.MainWin
+
+// Get clickable point
+element.GetClickablePoint ()
+
+// Find element with retry
+Utils.FindElement (() =&gt; Utils.MainWin.FindFirstChild ("CmdBar"))
+
+// Retry settings
+var r = Utils.RetrySettings ();
+
+// Get desktop
+var desktop = new UIA3Automation ().GetDesktop ()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_layout_part_queries">Layout &amp; Part Queries</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Check for overlaps
+DoAnyPartOverlaps ()
+// Returns: bool.Parse (Utils.RunScriptWithOutput (...))
+
+// Check margin fit
+AreAllPartsNestedWithinSheet (includeTooling: false)
+// Returns: bool based on Flux script
+
+// Count selected
+int selectedCount = ...  // Via script iteration
+
+// Get part count
+Flux.Layout.Current.Children.Count  // Via script</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_timing_sync">Timing &amp; Sync</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">Thread.Sleep (500);     // 500ms delay
+Thread.Sleep (1000);    // 1 second
+Thread.Sleep (2000);    // 2 seconds
+Utils.WaitForGlob ();   // Wait for dialog
+Utils.FindElement (...) // Wait with retry</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_operations_2">File Operations</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Cleanup
+foreach (var file in Directory.GetFiles (Utils.tempPath)) {
+    if (file.Contains (".txt") || file.Contains (".png"))
+        File.Delete (file);
+}
+
+// Write files (via script)
+Utils.RenderSceneToFile (path);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_best_practices">Best Practices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>✅ <strong>DO:</strong> - Use <code>DoNewQuickNest()</code> for consistent nest creation - Always
+call <code>Utils.Type (ESC)</code> to finalize operations - Use measurement point
+conversion for consistent coordinates - Validate with both layout data
+AND visual comparison - Clean up temporary files in
+<code>[FixtureCleanUp]</code> - Use meaningful variable names for part
+coordinates - Add comments for non-obvious UI operations - Use helper
+methods for repeated patterns</p>
+</div>
+<div class="paragraph">
+<p>❌ <strong>DON’T:</strong> - Hardcode pixel coordinates (use measurement points) - Skip
+<code>Utils.MoveGlob()</code> when dragging near dialogs - Forget <code>Thread.Sleep()</code>
+for async operations - Mix view switches without proper navigation -
+Create multiple quick-nests without cleanup - Skip assertions in
+validation - Use generic names (p, g, r, etc. without context) - Forget
+to close settings/dialogs with ESC</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common_pitfalls_solutions">Common Pitfalls &amp; Solutions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_glob_interference">Glob Interference</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: Glob blocks drag operation
+// Solution: Move glob before dragging
+Utils.MoveGlob ();
+Utils.DragAndDrop (start, end);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_view_state_confusion">View State Confusion</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: Don't know which view is active
+// Solution: Check via script
+bool skinIsLayout = Utils.RunScriptWithOutput ("var result = Flux.PartEditor.Current.Skin.ToString()") = "Layout";</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_timing_issues">Timing Issues</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: Operation not complete
+// Solution: Add appropriate delays
+Utils.MouseClick (pt);
+Thread.Sleep (500);
+Utils.Type (ESC);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selection_not_persisting">Selection Not Persisting</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">// Problem: Selection lost after operation
+// Solution: Re-select before validation
+Utils.MouseClick (Utils.MeasurePtToPixel (new (50, 90)));
+SelectPartsBy ("Similar");
+CheckSelectedParts (...);</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_reference_cheat_sheet">Quick Reference Cheat Sheet</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 55%;">
+<col style="width: 45%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create quick nest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DoNewQuickNest (bool singlePart = false)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select parts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SelectPartsBy (string option)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move part</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Utils.DragAndDrop (start, end)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rotate part</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Keyboard.Pressing (CONTROL) &#43; Mouse.Scroll (25)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create duplicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Keyboard.Pressing (CONTROL) &#43; Utils.DragAndDrop (&#8230;&#8203;)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create twinline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Keyboard.Pressing (SHIFT) &#43; Utils.DragAndDrop (&#8230;&#8203;)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Group parts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SelectPartsBy ("Similar").FindFirstDescendant (a =&gt; a.ByName ("Group")).Click ()</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Renest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Renest (RenestOption.option)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recompute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Recompute (RecomputeOption.option)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validate layout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CheckPartsInLayout (folder, filename)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validate selection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CheckSelectedParts (folder, filename)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visual validation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CheckLuxScreen (folder, filename)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch view</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Utils.Type ('l')</code> for CutCAM, <code>Utils.Type ('n')</code> for
+Nesting</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This recipe book covers all major patterns and commands used in the
+Nesting.cs framework for creating automated layout and nesting tests in
+the Flux application.</p>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_table_of_contents">Table of Contents</a>
+  </li>
+  <li level="1">
+   <a href="#_test_structure_attributes">Test Structure &amp; Attributes</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_nesting_test_template">Basic Nesting Test Template</a>
+  </li>
+  <li level="2">
+   <a href="#_machine_ids">Machine IDs</a>
+  </li>
+  <li level="1">
+   <a href="#_fixture_setup_teardown">Fixture Setup &amp; Teardown</a>
+  </li>
+  <li level="2">
+   <a href="#_installation_configuration">Installation &amp; Configuration</a>
+  </li>
+  <li level="2">
+   <a href="#_resource_cleanup">Resource Cleanup</a>
+  </li>
+  <li level="1">
+   <a href="#_file_operations">File Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_opening_files">Opening Files</a>
+  </li>
+  <li level="2">
+   <a href="#_file_references">File References</a>
+  </li>
+  <li level="1">
+   <a href="#_navigation_view_management">Navigation &amp; View Management</a>
+  </li>
+  <li level="2">
+   <a href="#_view_switching">View Switching</a>
+  </li>
+  <li level="2">
+   <a href="#_workflow_panel">Workflow Panel</a>
+  </li>
+  <li level="2">
+   <a href="#_settings_panel">Settings Panel</a>
+  </li>
+  <li level="1">
+   <a href="#_quick_nest_operations">Quick-Nest Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_quick_nest">Creating Quick-Nest</a>
+  </li>
+  <li level="2">
+   <a href="#_quick_nest_with_modifiers">Quick-Nest with Modifiers</a>
+  </li>
+  <li level="1">
+   <a href="#_part_selection">Part Selection</a>
+  </li>
+  <li level="2">
+   <a href="#_selection_methods">Selection Methods</a>
+  </li>
+  <li level="2">
+   <a href="#_selection_helper">Selection Helper</a>
+  </li>
+  <li level="2">
+   <a href="#_glob_operations_selection_dialog">Glob Operations (Selection Dialog)</a>
+  </li>
+  <li level="1">
+   <a href="#_part_manipulation">Part Manipulation</a>
+  </li>
+  <li level="2">
+   <a href="#_part_movement">Part Movement</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_duplicates">Creating Duplicates</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_part_arrays">Creating Part Arrays</a>
+  </li>
+  <li level="2">
+   <a href="#_part_rotation">Part Rotation</a>
+  </li>
+  <li level="2">
+   <a href="#_grouping_parts">Grouping Parts</a>
+  </li>
+  <li level="2">
+   <a href="#_creating_overlaps">Creating Overlaps</a>
+  </li>
+  <li level="1">
+   <a href="#_keyboard_input_commands">Keyboard &amp; Input Commands</a>
+  </li>
+  <li level="2">
+   <a href="#_navigation_keys">Navigation Keys</a>
+  </li>
+  <li level="2">
+   <a href="#_modifier_keys">Modifier Keys</a>
+  </li>
+  <li level="2">
+   <a href="#_multi_key_input">Multi-Key Input</a>
+  </li>
+  <li level="1">
+   <a href="#_mouse_operations">Mouse Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_mouse_actions">Basic Mouse Actions</a>
+  </li>
+  <li level="2">
+   <a href="#_measurement_conversion">Measurement &amp; Conversion</a>
+  </li>
+  <li level="2">
+   <a href="#_drag_drop">Drag &amp; Drop</a>
+  </li>
+  <li level="2">
+   <a href="#_mouse_movement">Mouse Movement</a>
+  </li>
+  <li level="2">
+   <a href="#_mouse_wheel">Mouse Wheel</a>
+  </li>
+  <li level="1">
+   <a href="#_renesting_operations">Renesting Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_renest_method">Renest Method</a>
+  </li>
+  <li level="2">
+   <a href="#_renestoption_enum">RenestOption Enum</a>
+  </li>
+  <li level="1">
+   <a href="#_recompute_operations">Recompute Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_recompute_method">Recompute Method</a>
+  </li>
+  <li level="2">
+   <a href="#_recomputeoption_enum">RecomputeOption Enum</a>
+  </li>
+  <li level="1">
+   <a href="#_validation_assertions">Validation &amp; Assertions</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_data_validation">Layout Data Validation</a>
+  </li>
+  <li level="2">
+   <a href="#_selected_parts_validation">Selected Parts Validation</a>
+  </li>
+  <li level="2">
+   <a href="#_visual_validation_screenshots">Visual Validation (Screenshots)</a>
+  </li>
+  <li level="2">
+   <a href="#_script_based_assertions">Script-Based Assertions</a>
+  </li>
+  <li level="2">
+   <a href="#_query_based_assertions">Query-Based Assertions</a>
+  </li>
+  <li level="1">
+   <a href="#_script_execution">Script Execution</a>
+  </li>
+  <li level="2">
+   <a href="#_simple_script_execution">Simple Script Execution</a>
+  </li>
+  <li level="2">
+   <a href="#_script_with_output">Script with Output</a>
+  </li>
+  <li level="2">
+   <a href="#_complex_multi_line_scripts">Complex Multi-Line Scripts</a>
+  </li>
+  <li level="1">
+   <a href="#_common_nesting_workflows">Common Nesting Workflows</a>
+  </li>
+  <li level="2">
+   <a href="#_basic_part_movement_workflow">Basic Part Movement Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_part_selection_workflow">Part Selection Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_grouping_workflow">Grouping Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_quick_nest_with_settings_workflow">Quick-Nest with Settings Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_renesting_workflow">Renesting Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_twinline_nesting_workflow">Twinline Nesting Workflow</a>
+  </li>
+  <li level="2">
+   <a href="#_array_creation_workflow">Array Creation Workflow</a>
+  </li>
+  <li level="1">
+   <a href="#_helper_methods_reference">Helper Methods Reference</a>
+  </li>
+  <li level="2">
+   <a href="#_ui_navigation_helpers">UI Navigation Helpers</a>
+  </li>
+  <li level="2">
+   <a href="#_layout_part_queries">Layout &amp; Part Queries</a>
+  </li>
+  <li level="2">
+   <a href="#_timing_sync">Timing &amp; Sync</a>
+  </li>
+  <li level="2">
+   <a href="#_file_operations_2">File Operations</a>
+  </li>
+  <li level="1">
+   <a href="#_best_practices">Best Practices</a>
+  </li>
+  <li level="1">
+   <a href="#_common_pitfalls_solutions">Common Pitfalls &amp; Solutions</a>
+  </li>
+  <li level="2">
+   <a href="#_glob_interference">Glob Interference</a>
+  </li>
+  <li level="2">
+   <a href="#_view_state_confusion">View State Confusion</a>
+  </li>
+  <li level="2">
+   <a href="#_timing_issues">Timing Issues</a>
+  </li>
+  <li level="2">
+   <a href="#_selection_not_persisting">Selection Not Persisting</a>
+  </li>
+  <li level="1">
+   <a href="#_quick_reference_cheat_sheet">Quick Reference Cheat Sheet</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="nesting.html">Nesting.cs Overview</a></span>
+ <span class="next"><a href="job.html">Job.cs Overview</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+  <script>
+    if (!hljs.initHighlighting.called) {
+      hljs.initHighlighting.called = true
+      ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+    }
+  </script>
+</body>
+</html>
