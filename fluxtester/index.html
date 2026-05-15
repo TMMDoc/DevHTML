@@ -119,6 +119,7 @@
       <li><button class="tree blank"></button><a href="../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
      </ul>
     </li>
+    <li><button class="tree blank"></button><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></li>
     <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
    </ul>
   </li>
@@ -126,6 +127,10 @@
    <button class="tree open"></button>
    <a class="active" href="index.html">FluxTester</a>
    <ul>
+    <li><button class="tree blank"></button><a href="introscript.html">Commands and Scripts</a></li>
+    <li><button class="tree blank"></button><a href="commands.html">Command Cookbook</a></li>
+    <li><button class="tree blank"></button><a href="scripts.html">Script Commands</a></li>
+    <li><button class="tree blank"></button><a href="bendtoolingtst.html">BendTooling.cs Test Inventory</a></li>
     <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
     <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book</a></li>
     <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
@@ -194,6 +199,7 @@
      </ul>
     </li>
     <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+    <li><button class="tree blank"></button><a href="../documentation/annotationpics/index.html">Annotation in pics</a></li>
    </ul>
   </li>
  </ul>
@@ -274,6 +280,49 @@
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_get_started">Get started</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_to_run_a_flux_automation_test_script_in_fluxtester">To run a Flux automation test script in FluxTester</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Need to clone FluxTester repository.</p>
+</li>
+<li>
+<p>Need to clone TestFrameWork repository.</p>
+</li>
+<li>
+<p>Build the TestFramework.sln (in visual studio)-&#8594; We can Flit.dll in bin folder.</p>
+</li>
+<li>
+<p>We have to reference the Flit.dll in FluxTester dependencies.</p>
+</li>
+<li>
+<p>Build the FluxTester.sln (in visual studio) -&#8594; Now we can run any test.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_flauinspect_tool_to_see_the_automation_elements_from_flux_ui">Use FlaUInspect tool to see the automation elements from Flux UI</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Need to clone FlaUInspect repository not FlaUI repository (these 2 are different repos).</p>
+</li>
+<li>
+<p>Build FlaUInspect.sln -&#8594; We get FlaUInspect.ext in bin folder.</p>
+</li>
+<li>
+<p>Run that exe -&#8594; Now we can find the automation elements tree in the opened applicaition.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
 
                     </article>
                 </div>
@@ -287,6 +336,15 @@
   <li level="1">
    <a href="#_dependencies">Dependencies</a>
   </li>
+  <li level="1">
+   <a href="#_get_started">Get started</a>
+  </li>
+  <li level="2">
+   <a href="#_to_run_a_flux_automation_test_script_in_fluxtester">To run a Flux automation test script in FluxTester</a>
+  </li>
+  <li level="2">
+   <a href="#_use_flauinspect_tool_to_see_the_automation_elements_from_flux_ui">Use FlaUInspect tool to see the automation elements from Flux UI</a>
+  </li>
  </ul>
 </aside>
 
@@ -294,7 +352,7 @@
             </div>
             <nav class="pagination">
  <span class="prev"><a href="../technotes/machineids.html">Machine ID Scheme</a></span>
- <span class="next"><a href="lasertooling.html">LaserTooling.cs Test Steps</a></span>
+ <span class="next"><a href="introscript.html">Commands and Scripts</a></span>
 </nav>
 
         </div>

@@ -1,0 +1,1096 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Condensed:wght@400;600&family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../res/bento.css">
+  <link rel="stylesheet" href="../res/site.css">
+  <link rel="stylesheet" href="../res/tree.css">
+  <link rel="stylesheet" href="../res/sibling.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <title>BendTooling.cs Test Inventory</title>
+</head>
+<body id="site-body" onload="sLoaded()">
+    <header id="site-header">
+        <div id="header-logo"><img src="../img/logo.png" width="207" height="34" /></div>
+        <div><p>Metamation Developer Notes</p></div>
+    </header>
+    <div id="site-main">
+        <nav id="site-nav">
+            <div class="treesite">
+ <ul>
+  <li><button class="tree blank"></button><a href="../index.html">Developer Notes</a></li>
+  <li><button class="tree blank"></button><a href="../resourcemap.html">Resource Map</a></li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../tools/index.html">Tools</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../tools/codeformatting.html">Code Formatting</a></li>
+    <li><button class="tree blank"></button><a href="../tools/configuregit.html">Configuring Git</a></li>
+    <li><button class="tree blank"></button><a href="../tools/assignments.html">Assignments</a></li>
+    <li><button class="tree blank"></button><a href="../tools/testsandbox.html">Testing with Windows Sandbox</a></li>
+    <li><button class="tree blank"></button><a href="../tools/singlefileapps.html">Single Binary Applications</a></li>
+    <li><button class="tree blank"></button><a href="../tools/selfupdate.html">Self-Updating Applications</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../flux/index.html">Flux Workflow</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../flux/fluxgitworkflow.html">Flux Workflow</a></li>
+    <li><button class="tree blank"></button><a href="../flux/fluxdevelopementstyleguide.html">Flux Development Style Guide</a></li>
+    <li><button class="tree blank"></button><a href="../flux/releasenotes.html">Release notes for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/sonarcloud.html">SonarCloud analysis for Flux</a></li>
+    <li><button class="tree blank"></button><a href="../flux/usingfluxsdk.html">Build a Flux SDK Program</a></li>
+    <li><button class="tree blank"></button><a href="../flux/shippingflux.html">Shipping Flux</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../flux/test/index.html">Flux.Test</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../flux/test/basicbendauto.html">BasicBendAuto Test</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/laserauto.html">LaserAuto.cs Detailed Documentation</a></li>
+      <li><button class="tree blank"></button><a href="../flux/test/test1.html">Laserexample:Test1</a></li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../technotes/index.html">Technical Notes</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fileformats/index.html">File formats</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/fx.html">.FX File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/augoldfile.html">Au(Gold) streams</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/geo.html">.GEO File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lst.html">.LST File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/lsttechno.html">.LST file - technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/bnc.html">.BNC File Format</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/wadfile.html">.WAD Files: Flux Resource Packages</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fileformats/curlfiles.html">.Curl Files: ASCII config information</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/folders/index.html">Folders App</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/folders/bendtool.html">Data\Bendtools</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/folders/machines.html">Data\Machines</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/fluxcode/index.html">FluxCode</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/00_welcome.html">Welcome & Repo Map</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/01_architecture.html">Architecture & System Context</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_subsystem_bend.html">Subsystem *Bend* (Press Brake)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/02_1_subsystem_bcell.html">Subsystem *BCell* (Bend Cell Automation)</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/03_api_maps.html">API Maps</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/04_data_model_catalog.html">Data Model Catalog</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/05_design_patterns.html">Design Patterns -- A Reader's Guide</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/06_tests_and_golden_paths.html">Tests and Golden Paths</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/07_guided_code_tours.html">Guided Code Tours</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/08_cam_glossary.html">CAM Glossary with Code Mapping</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/09_find_and_explain_exercises.html">Assignments</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/fluxcode/readme.html">Flux Onboarding Handbook</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../technotes/data/index.html">Data flow</a>
+     <ul class="hide">
+      <li>
+       <button class="tree closed"></button>
+       <a href="../technotes/data/part/index.html">Part</a>
+       <ul class="hide">
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partinformation.html">Part.Dwg</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload.html">Part.Load</a></li>
+        <li><button class="tree blank"></button><a href="../technotes/data/part/partload2.html">Part.Load to Part.Dwg</a></li>
+       </ul>
+      </li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bendtech.html">BendTech.cs</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/bend.html">Bend Technology</a></li>
+      <li><button class="tree blank"></button><a href="../technotes/data/lasertech.html">Laser Cutting Technology</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../technotes/lts.html">LTS (Long term support mechanism)</a></li>
+    <li><button class="tree blank"></button><a href="../technotes/machineids.html">Machine ID Scheme</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree open"></button>
+   <a href="index.html">FluxTester</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="introscript.html">Commands and Scripts</a></li>
+    <li><button class="tree blank"></button><a href="commands.html">Command Cookbook</a></li>
+    <li><button class="tree blank"></button><a href="scripts.html">Script Commands</a></li>
+    <li><button class="tree blank"></button><a class="active" href="bendtoolingtst.html">BendTooling.cs Test Inventory</a></li>
+    <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+    <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="nestingcookbook.html">Nesting.cs Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../software/python.html">Python</a></li>
+   </ul>
+  </li>
+  <li>
+   <button class="tree closed"></button>
+   <a href="../documentation/index.html">Documentation</a>
+   <ul class="hide">
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/asciidoc/index.html">Bento tool</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/bento.html">Structure</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/asciidoc/attributes.html">Attributes</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/software/index.html">Software</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/software/softwarerequired.html">Software Requirement</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/prerequisites.html">Installation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/git.html">Git Workflow</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/environmentvariables.html">Environment Variable</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/software/tools/index.html">Tools</a></li>
+     </ul>
+    </li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/workflow/index.html">Workflow</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/workflow/roles.html">Roles</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/analyze.html">Analyze</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/edit.html">Edit</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/review.html">Proofread</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/approve.html">Pre-Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/publish.html">Publish</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/release.html">Release cycle</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/informationrequired.html">Information required for Documentation Team</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/workflow/checklist.html">Checklist for Documenters</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/styleguide.html">Styleguide</a></li>
+    <li><button class="tree blank"></button><a href="../documentation/flavoring.html">Flavoring</a></li>
+    <li>
+     <button class="tree closed"></button>
+     <a href="../documentation/translation/index.html">Translation</a>
+     <ul class="hide">
+      <li><button class="tree blank"></button><a href="../documentation/translation/deltatranslation.html">General process</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/anchor.html">Anchor points</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/generate/index.html">BT Diff Generation</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/edit/index.html">BT Translate</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/btapply/index.html">BT Apply Changes</a></li>
+      <li><button class="tree blank"></button><a href="../documentation/translation/order/index.html">Order at Seprotec</a></li>
+     </ul>
+    </li>
+    <li><button class="tree blank"></button><a href="../documentation/citations.html">Citations</a></li>
+    <li><button class="tree blank"></button><a href="../documentation/annotationpics/index.html">Annotation in pics</a></li>
+   </ul>
+  </li>
+ </ul>
+</div>
+
+        </nav>
+        <div id="site-nav-right">
+            <nav id="site-crumb">
+ <div>
+  <button>
+   <img src="../res/home.png">
+  </button>
+ </div>
+ <div>
+  <a href="index.html">FluxTester</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="bendtoolingtst.html">BendTooling.cs Test Inventory</a>
+ </div>
+</nav>
+
+            <div id="site-crumb-below">
+                <div id="site-toc-left">
+                    <article id="article">
+                        <h1>BendTooling.cs Test Inventory</h1>
+<div class="sect1">
+<h2 id="_bendtooling_fixture_50_tests">BendTooling Fixture (50 tests)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Primary fixture for broad bend tooling regression coverage.</p>
+</div>
+<div class="sect2">
+<h3 id="_setup_and_basic_operations">Setup and Basic Operations</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 196] Flux should allow bend setups to be added from bnc and bsetup files</dt>
+<dd>
+<p>Opens file dialog from "B Setup from File" menu, validates two file type filters (Bend Setup Files, BNC Code).</p>
+</dd>
+<dt class="hdlist1">[Test 254] Punch should NOT be flipped when tooling is generated for machines with 'don&#8217;t auto flip tool' enabled</dt>
+<dd>
+<p>Uses script to verify flipped state on mounts for machine 2020087, expects False.</p>
+</dd>
+<dt class="hdlist1">[Test 255] 'No angle measurement' option should be disabled when all ACB methods are disabled</dt>
+<dd>
+<p>Disables all ACB methods, checks mNoACB control is disabled in UI.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_machine_specific_behavior">Machine-Specific Behavior</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 29] Test tooling for all machines (SKIPPED)</dt>
+<dd>
+<p>Iterates all available machines, performs bend tech, reports pass/fail per machine.</p>
+</dd>
+<dt class="hdlist1">[Test 30] Test auto tooling results for various parts with FX Bend machine (SKIPPED)</dt>
+<dd>
+<p>Runs AutoCompute on multiple sanity parts, validates output consistency against references.</p>
+</dd>
+<dt class="hdlist1">[Test 31] Sanity test for hybrid machine 220057 (SKIPPED)</dt>
+<dd>
+<p>Tests 8m.geo part with hybrid machine, verifies curl, report, and DLD file consistency.</p>
+</dd>
+<dt class="hdlist1">[Test 32] Test all machines with all display settings enabled (SKIPPED)</dt>
+<dd>
+<p>Configures display settings, iterates machines, opens FX files, checks for crashes.</p>
+</dd>
+<dt class="hdlist1">[Test 111] Flux should NOT crash on bend tech when Trumpf catalog is not installed</dt>
+<dd>
+<p>Uninstalls Trumpf catalog, runs PerformBendTech on machine 1520004, verifies no crash.</p>
+</dd>
+<dt class="hdlist1">[Test 121100 context] "121100" machine tests</dt>
+<dd>
+<p>Multiple tests use Trumabend V-series (121100) for NC generation and report naming.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_crash_prevention_critical_stability_tests">Crash Prevention (Critical Stability Tests)</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 33] Flux should NOT crash when ungrouped bends are grouped again</dt>
+<dd>
+<p>Ungroups a bend op, then regroups it; asserts no crash.</p>
+</dd>
+<dt class="hdlist1">[Test 36] Flux should NOT crash when ev die is removed from a hem station</dt>
+<dd>
+<p>Replaces tool to RB300, removes mount from hem station; asserts no crash.</p>
+</dd>
+<dt class="hdlist1">[Test 37] Flux should NOT crash when there are no Z tools in the inventory and tooling is performed for a part with Z bend</dt>
+<dd>
+<p>Strips all OWZ/EVZ tools from inventory, runs PerformBendTech on zbend.dxf; asserts no crash.</p>
+</dd>
+<dt class="hdlist1">[Test 38] Machine Decal should be displayed correctly</dt>
+<dd>
+<p>Renders 3D scene with ShowBMachineFrame:True setting, compares rendered image to reference.</p>
+</dd>
+<dt class="hdlist1">[Test 41] Flux should NOT crash when prebend is added</dt>
+<dd>
+<p>Drags operations to create prebend, toggles prebend checkbox; asserts no crash.</p>
+</dd>
+<dt class="hdlist1">[Test 67] Flux should NOT crash when two hem bends are grouped</dt>
+<dd>
+<p>Selects two hem bends, clicks Group button; asserts no crash.</p>
+</dd>
+<dt class="hdlist1">[Test 91] Flux should NOT crash when flipped is enabled in deposit glob</dt>
+<dd>
+<p>Modifies deposit combo in glob, verifies no crash.</p>
+</dd>
+<dt class="hdlist1">[Test 98] Flux should NOT crash when bend tech is created with tandem machine</dt>
+<dd>
+<p>Creates bend tech with machine 220444 (tandem); asserts no crash.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tool_replacement_and_inventory_behavior">Tool Replacement and Inventory Behavior</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 48] Other catalogs - Die height should be adjusted after die adapter is replaced</dt>
+<dd>
+<p>Replaces die tools in specific sequence, validates height adjustment in visual scene.</p>
+</dd>
+<dt class="hdlist1">[Test 101] Flux should allow fold bar to be added to appropriate dies (non hem bend)</dt>
+<dd>
+<p>Opens die mount, adds fold bar; verifies new fold bar entry created.</p>
+</dd>
+<dt class="hdlist1">[Test 283] R30 insert should be disabled in replace tool panel when radius holder is OW308/K and radius insert is R50</dt>
+<dd>
+<p>Validates replacement tool constraints based on current holder/insert pair.</p>
+</dd>
+<dt class="hdlist1">[Test 284] R12.5 insert should be disabled in replace tool panel when radius holder is OW308/S</dt>
+<dd>
+<p>Similar constraint validation for R12.5 insert.</p>
+</dd>
+<dt class="hdlist1">[Test 285] Radius bends can be converted to 'bump' bending and vice versa</dt>
+<dd>
+<p>Toggles bump-bend checkbox; validates tool mount string changes and unfold size consistency.</p>
+</dd>
+<dt class="hdlist1">[Test 286] Radius bends which cannot be done in a single step should be converted to bump bends automatically</dt>
+<dd>
+<p>Loads part with radius bend, verifies automatic conversion to multi-step bump bend.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_output_generation_and_file_comparison">Output Generation and File Comparison</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 49] Attach pdf report to NC - automatic NC generation</dt>
+<dd>
+<p>Configures BendRepAttachToNC:True, opens part, validates PDF in generated jupidu zip.</p>
+</dd>
+<dt class="hdlist1">[Test 50] Attach pdf report to NC - forced NC generation</dt>
+<dd>
+<p>Similar, but uses forced NC generation (Type 'c') instead of automatic.</p>
+</dd>
+<dt class="hdlist1">[Test 51] Attach pdf report to NC - forced NC generation (Acceptance test)</dt>
+<dd>
+<p>Validates workflow panel post-process flow with PDF attachment.</p>
+</dd>
+<dt class="hdlist1">[Test 53] Trumabend - V series: NC and report naming</dt>
+<dd>
+<p>Tests multi-setup part with 120872 machine, validates generated file naming conventions.</p>
+</dd>
+<dt class="hdlist1">[Test 54] Trumabend - V series: NC and report naming (variant with HTML)</dt>
+<dd>
+<p>Similar to Test 53 but generates HTML reports.</p>
+</dd>
+<dt class="hdlist1">[Test 145] Reports should be output for each setup in a multi setup bend tech</dt>
+<dd>
+<p>Validates separate PDF reports for each setup in multi-setup part.</p>
+</dd>
+<dt class="hdlist1">[Test 155] Bend deduction value should be output in correct units in the bend report</dt>
+<dd>
+<p>Validates deduction digits in HTML report (Normal: 0076, DIN: 0834, Custom: 0157).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bend_deduction_and_unit_conversion">Bend Deduction and Unit Conversion</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 119] Deduction should be displayed in working units in bend op tooltip</dt>
+<dd>
+<p>Compares tooltip text dumps for custom, DIN, and normal deduction curves.</p>
+</dd>
+<dt class="hdlist1">[Test 125] Deduction should be displayed in working units in bend op tooltip (with MM units)</dt>
+<dd>
+<p>Similar to 119 but explicitly switches to MM and validates tooltip.</p>
+</dd>
+<dt class="hdlist1">[Test 127] Bend deduction value should be displayed in correct units in the bend tool tip</dt>
+<dd>
+<p>Validates numeric deduction values in glob (4, 21.1923, 1.934 for custom/din/normal in MM).</p>
+</dd>
+<dt class="hdlist1">[Test 154] Bend deduction value should be displayed in correct units in the bend tool tip</dt>
+<dd>
+<p>Validates deduction in 3D model glob (0.1575, 0.8343, 0.0761 for custom/din/normal).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sequence_and_mode_behavior">Sequence and Mode Behavior</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 115] Sequence icon should be highlighted when in bend sequence mode</dt>
+<dd>
+<p>Toggles sequence mode, validates icon pixel color change.</p>
+</dd>
+<dt class="hdlist1">[Test 250] Change bend sequence manually in sequence mode</dt>
+<dd>
+<p>Clicks on bend segments in sequence mode, validates DeformingLength changes.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_view_and_visual_rendering">View and Visual Rendering</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 39] 3d model should NOT be disjoint when GAP strategy 3 is used (SKIPPED)</dt>
+<dd>
+<p>Tests gap adaptation strategy with visual render comparison.</p>
+</dd>
+<dt class="hdlist1">[Test 40] Tool segment name should be displayed next to the segment dropdown when navigating between segments</dt>
+<dd>
+<p>Clicks segments, validates Tool Segment and dropdown name are available.</p>
+</dd>
+<dt class="hdlist1">[Test 42] Flux should display upper and lower sides of a part in different colors, in bend simulation</dt>
+<dd>
+<p>Renders top and bottom views, compares to reference images for color differentiation.</p>
+</dd>
+<dt class="hdlist1">[Test 81] Flux should display upper and lower sides of a part in different colors, in bend simulation</dt>
+<dd>
+<p>Similar view color validation (appears twice with different machine options).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_geometry_and_dimension_constraints">Geometry and Dimension Constraints</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 122] Geo: Flux should set bend lines marked 'Post_Process' as skipped</dt>
+<dd>
+<p>Validates processing dropdown correctly shows "Post-bent" for marked bend lines.</p>
+</dd>
+<dt class="hdlist1">[Test 123] Geo: Flux should set bend lines marked 'Pre_Process' as pre bent</dt>
+<dd>
+<p>Validates processing dropdown correctly shows "Pre-bent" for marked bend lines.</p>
+</dd>
+<dt class="hdlist1">[Test 287] Pre and post bends should have the same deduction value</dt>
+<dd>
+<p>Toggles pre-bending, validates Ops[0] and Ops[2] deductions are equal.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mount_and_station_positioning">Mount and Station Positioning</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 99] Part should move with the tool station when it is moved</dt>
+<dd>
+<p>Drags mount position, validates scene render matches reference.</p>
+</dd>
+<dt class="hdlist1">[Test 189] Flux should allow to increase mount length by dragging if there are no pieces in inventory and inventory check is disabled</dt>
+<dd>
+<p>Drags mount end point, validates length increases beyond 2000.</p>
+</dd>
+<dt class="hdlist1">[Test 190] Flux should NOT allow to increase mount length by dragging if there are no pieces in inventory and inventory check is enabled</dt>
+<dd>
+<p>Enables inventory check, drags mount, validates length stays at 1200.</p>
+</dd>
+<dt class="hdlist1">[Test 204] Mount positions should NOT be changed when a saved bsetup is loaded if the setup is not centered</dt>
+<dd>
+<p>Loads .bsetup file, validates mount position constraint is preserved.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_machine_configuration_and_settings">Machine Configuration and Settings</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 205] Max. value for 'min. bend length to use angle measure' should be the same as bed length of the machine</dt>
+<dd>
+<p>Modifies machine TableLength, validates max spinner value in settings reflects new value.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_backgauge_and_related_features">Backgauge and Related Features</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 280] 'Backgauge' hyperlink should be displayed in bend globs</dt>
+<dd>
+<p>Opens bend glob, clicks "• Back-gauges" hyperlink, validates Gauges panel appears.</p>
+</dd>
+<dt class="hdlist1">[Test 281] Segment name should NOT be empty in segment glob</dt>
+<dd>
+<p>Opens segment glob, validates selected combo item name is "12.7".</p>
+</dd>
+<dt class="hdlist1">[Test 282] Actual length of the mount should be displayed in mount glob below the length field</dt>
+<dd>
+<p>Validates "Actual" label and length value (319.79998779296875) in glob.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inventory_check_feature">Inventory Check Feature</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 57] Mark the segments not in inventory when 'inventory check' option is enabled</dt>
+<dd>
+<p>Enables inventory check, renders scene with marked tools, compares to reference image.</p>
+</dd>
+</dl>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hemming_fixture_8_tests">Hemming Fixture (8 tests)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tests for hem-specific bend workflows and special tool rules.</p>
+</div>
+<div class="sect2">
+<h3 id="_coining_behavior_for_hems">Coining Behavior for Hems</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 95] Coining should NOT be displayed in bend glob for hem bends</dt>
+<dd>
+<p>Opens hem bend glob, verifies Coining field is absent.</p>
+</dd>
+<dt class="hdlist1">[Test 96] Coining should NOT be displayed in bend glob for hem bends (via bendline dialog)</dt>
+<dd>
+<p>Opens bendline dialog, sets processing to hem, then switches to bend tech; validates Coining hidden.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hem_die_and_flipping_rules">Hem Die and Flipping Rules</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 97] Hemming with FEV hem die</dt>
+<dd>
+<p>Configures machine with ACBLaser:1, renders hem bend, compares visual to reference.</p>
+</dd>
+<dt class="hdlist1">[Test 112] Flux should allow tool change from EV-F to EV die in hem bends in I axis machines</dt>
+<dd>
+<p>Validates that EV-TEST die is available and enabled for replacement in I-axis machine.</p>
+</dd>
+<dt class="hdlist1">[Test 113] Flux should NOT allow tool change from EV-F to EV die in hem bends in non I axis machines</dt>
+<dd>
+<p>Validates that EV-TEST die is unavailable or shows "Process mismatch" tooltip in non-I-axis.</p>
+</dd>
+<dt class="hdlist1">[Test 114] Flux should display same sort options as bend tool inventory in replace tool dialog</dt>
+<dd>
+<p>Opens bend tools DB and replace dialog, validates sort dropdown options match (minus V.Width and Radius for dies).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_segment_parity_under_inventory_checks">Segment Parity Under Inventory Checks</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 210] The segments of the die and the hem bar should be the same when 'tool inventory check' is disabled</dt>
+<dd>
+<p>Tests with InfiniteBInventory:True, validates segment parity by dumping bend tech state.</p>
+</dd>
+<dt class="hdlist1">[Test 211] The segments of the die and the hem bar should be the same when 'tool inventory check' is enabled</dt>
+<dd>
+<p>Tests with InfiniteBInventory:False, validates segment parity under inventory check.</p>
+</dd>
+</dl>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bendsetup_fixture_7_tests">BendSetup Fixture (7 tests)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tests for setup-level configuration and station management.</p>
+</div>
+<div class="sect2">
+<h3 id="_acb_segment_and_flipping">ACB Segment and Flipping</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 121] Flux should flip the ACB sensor disk when flipping an ACB segment</dt>
+<dd>
+<p>Configures machine with ACB systems, opens segment glob, flips G25/WL segment; renders and compares scene.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manual_tool_positioning">Manual Tool Positioning</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 120] Flux should snap tools to the center of the ram when positioning them manually</dt>
+<dd>
+<p>Drags punch tool horizontally, validates it snaps to center; compares rendered scene.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_moving_stations_and_creating_new_setups">Moving Stations and Creating New Setups</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 124] Moving stations to a new setup</dt>
+<dd>
+<p>Opens Tool Station menu, clicks "New Setup", validates setup combo shows "1" and navigator image matches reference.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flip_tool_visibility_rules">Flip Tool Visibility Rules</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 126] Flip tool option should not displayed in punch glob for machines with 'dontautoflip' enabled</dt>
+<dd>
+<p>Tests multiple machines marked with don&#8217;t auto flip; validates Flip Tool option is absent.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_clamp_options_by_machine_type">Clamp Options by Machine Type</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 168] 'Clamp' option in mount glob and 'Clamp' glob should NOT be displayed for machines without clamps or with ONE style clamp</dt>
+<dd>
+<p>Machine 120315 has no/single clamp; validates Clamps option is absent.</p>
+</dd>
+<dt class="hdlist1">[Test 169] 'Clamp' option in mount glob and 'Clamp' glob should be displayed for machines with tool clamps</dt>
+<dd>
+<p>Machine 120405 with ShowBClamps:True; validates Clamps option and glob appear.</p>
+</dd>
+<dt class="hdlist1">[Test 170] 'Clamp' option in mount glob and 'Clamp' glob should NOT be displayed when tool clamps are invisible</dt>
+<dd>
+<p>Machine 120405 with ShowBClamps:False; validates Clamps option is absent despite machine having clamps.</p>
+</dd>
+</dl>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_globtests_fixture_18_tests">GlobTests Fixture (18 tests)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tests for UI dialog/glob behavior, tool filtering, and configuration constraints.</p>
+</div>
+<div class="sect2">
+<h3 id="_tool_list_and_filter_behavior">Tool List and Filter Behavior</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 16] Tools not in the selected 'Tool-list' should not be displayed in replace tool panel</dt>
+<dd>
+<p>Copies custom 408.btools, opens replace tool dialog, filters by list; validates only 3 tools shown.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_setup_and_station_options">New Setup and Station Options</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 128] New setup option should not be displayed in station glob when dv adapter is present in the station</dt>
+<dd>
+<p>Opens dvtest.fx, validates "New Setup" option is hidden.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flip_tool_symmetry_rules">Flip Tool Symmetry Rules</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 129] Flip tool option should NOT be displayed for symmetric tools</dt>
+<dd>
+<p>Opens part with symmetric tool, validates Flip Tool option is absent even in Advanced panel.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_segment_selection_and_display">Segment Selection and Display</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 130] Selected segment length should be displayed next to segment dropdown in segment glob</dt>
+<dd>
+<p>Clicks segments in scene, validates dropdown selected item names (500, 10).</p>
+</dd>
+<dt class="hdlist1">[Test 281] Segment name should NOT be empty in segment glob</dt>
+<dd>
+<p>(Duplicate from BendTooling; validates segment combo shows "12.7").</p>
+</dd>
+<dt class="hdlist1">[Test 282] Actual length of the mount should be displayed in mount glob below the length field</dt>
+<dd>
+<p>(Duplicate from BendTooling; validates actual length 319.79998779296875).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_visual_styling_constraints">Visual Styling Constraints</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 175] Expanded section of a glob should NOT be borderless</dt>
+<dd>
+<p>Opens punch glob with Advanced section, validates all left-edge pixels match expected border color.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_segment_flipping_across_mount_pairs">Segment Flipping Across Mount Pairs</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 306] Flux should allow to flip individual segments of the insert and holder</dt>
+<dd>
+<p>Opens segment glob, clicks Flip Segment, validates IsFlipped state is TrueTrueFalseFalse for 4 pieces.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multi_v_die_options">Multi-V Die Options</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 310] Other die option should be displayed in die glob for multi v dies</dt>
+<dd>
+<p>Loads custom Multi-V dies, replaces with one variant, validates "Other V" button absent; loads both variants and validates button present.</p>
+</dd>
+<dt class="hdlist1">[Test 311] 'Other V' die option should be displayed when only one of the dies is in inventory and 'tool inventory check' is disabled</dt>
+<dd>
+<p>With infinite inventory, validates "Other V" option appears and changes I-axis position.</p>
+</dd>
+<dt class="hdlist1">[Test 312] 'Other V' die option should not be displayed when machine has no I axis (SKIPPED)</dt>
+<dd>
+<p>Configures machine with IAxis=0, validates "Other V" option is absent.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_double_v_adapter_shift_behavior">Double V Adapter Shift Behavior</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 313] 'DV shift' option should be displayed when double V adapter is mounted with only one die</dt>
+<dd>
+<p>Opens replace dialog, selects DV adapter, validates "DV Shift" button appears and changes I-axis position.</p>
+</dd>
+<dt class="hdlist1">[Test 314] 'DV shift' option should be displayed when double V adapter is mounted with two dies</dt>
+<dd>
+<p>(Test name suggests two dies but test validates it is NOT displayed; logic may be inverted or test misnamed).</p>
+</dd>
+<dt class="hdlist1">[Test 315] 'DV shift' option should be displayed when double V adapter is mounted with two dies (variant)</dt>
+<dd>
+<p>Similar constraint test with another file variant.</p>
+</dd>
+<dt class="hdlist1">[Test 316] Station with DV adapter - Flux should perform DV shift when a bend op is switched from station 1 to 2</dt>
+<dd>
+<p>Changes bend op station from 0 to 1, validates I-axis position changes.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multi_setup_and_dv_setup_interaction">Multi-Setup and DV Setup Interaction</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 2062] Bend radius/deduction should be changed when switching between stations in a DV setup</dt>
+<dd>
+<p>Creates new mount in second setup with DV adapter, validates tooltip warns "Bend radii and/or deductions were changed for some bends".</p>
+</dd>
+<dt class="hdlist1">[Test 2063] Flux should NOT use BOX safety mode unnecessarily for hem bends</dt>
+<dd>
+<p>Runs bend tech on hem part, opens bend settings, validates "Box safety mode" is not shown.</p>
+</dd>
+<dt class="hdlist1">[Test 2064] Flux should use BOX safety mode for hem bends when necessary</dt>
+<dd>
+<p>Runs bend tech on hem part requiring safety, validates "Box safety mode" is shown.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_machine_configuration">Machine Configuration</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">[Test 2067] Tool master check box should be displayed in the machine configuration dialog</dt>
+<dd>
+<p>Opens Machines DB, searches 120077, verifies Toolmaster checkbox visible during install.</p>
+</dd>
+<dt class="hdlist1">[Test 2068] Machine should show up immediately in 'Installed' list when it is installed</dt>
+<dd>
+<p>Opens Machines DB, installs 120077, validates it appears in installed list immediately.</p>
+</dd>
+</dl>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary_statistics">Summary Statistics</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Total Tests:</strong> 83</p>
+</li>
+<li>
+<p><strong>Skipped:</strong> 6 (Tests 29, 30, 31, 32, 39, 312)</p>
+</li>
+<li>
+<p><strong>Active:</strong> 77</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_by_fixture">By Fixture</h3>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fixture</th>
+<th class="tableblock halign-left valign-top">Test Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BendTooling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GlobTests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hemming</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BendSetup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_by_category_conceptual">By Category (Conceptual)</h3>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crash prevention</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output/file validation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tool/inventory behavior</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI/glob functionality</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unit/deduction display</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visual rendering</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Setup/station management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Machine configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hem-specific rules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+                    </article>
+                </div>
+                <div id="site-toc-holder">
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_bendtooling_fixture_50_tests">BendTooling Fixture (50 tests)</a>
+  </li>
+  <li level="2">
+   <a href="#_setup_and_basic_operations">Setup and Basic Operations</a>
+  </li>
+  <li level="2">
+   <a href="#_machine_specific_behavior">Machine-Specific Behavior</a>
+  </li>
+  <li level="2">
+   <a href="#_crash_prevention_critical_stability_tests">Crash Prevention (Critical Stability Tests)</a>
+  </li>
+  <li level="2">
+   <a href="#_tool_replacement_and_inventory_behavior">Tool Replacement and Inventory Behavior</a>
+  </li>
+  <li level="2">
+   <a href="#_output_generation_and_file_comparison">Output Generation and File Comparison</a>
+  </li>
+  <li level="2">
+   <a href="#_bend_deduction_and_unit_conversion">Bend Deduction and Unit Conversion</a>
+  </li>
+  <li level="2">
+   <a href="#_sequence_and_mode_behavior">Sequence and Mode Behavior</a>
+  </li>
+  <li level="2">
+   <a href="#_view_and_visual_rendering">View and Visual Rendering</a>
+  </li>
+  <li level="2">
+   <a href="#_geometry_and_dimension_constraints">Geometry and Dimension Constraints</a>
+  </li>
+  <li level="2">
+   <a href="#_mount_and_station_positioning">Mount and Station Positioning</a>
+  </li>
+  <li level="2">
+   <a href="#_machine_configuration_and_settings">Machine Configuration and Settings</a>
+  </li>
+  <li level="2">
+   <a href="#_backgauge_and_related_features">Backgauge and Related Features</a>
+  </li>
+  <li level="2">
+   <a href="#_inventory_check_feature">Inventory Check Feature</a>
+  </li>
+  <li level="1">
+   <a href="#_hemming_fixture_8_tests">Hemming Fixture (8 tests)</a>
+  </li>
+  <li level="2">
+   <a href="#_coining_behavior_for_hems">Coining Behavior for Hems</a>
+  </li>
+  <li level="2">
+   <a href="#_hem_die_and_flipping_rules">Hem Die and Flipping Rules</a>
+  </li>
+  <li level="2">
+   <a href="#_segment_parity_under_inventory_checks">Segment Parity Under Inventory Checks</a>
+  </li>
+  <li level="1">
+   <a href="#_bendsetup_fixture_7_tests">BendSetup Fixture (7 tests)</a>
+  </li>
+  <li level="2">
+   <a href="#_acb_segment_and_flipping">ACB Segment and Flipping</a>
+  </li>
+  <li level="2">
+   <a href="#_manual_tool_positioning">Manual Tool Positioning</a>
+  </li>
+  <li level="2">
+   <a href="#_moving_stations_and_creating_new_setups">Moving Stations and Creating New Setups</a>
+  </li>
+  <li level="2">
+   <a href="#_flip_tool_visibility_rules">Flip Tool Visibility Rules</a>
+  </li>
+  <li level="2">
+   <a href="#_clamp_options_by_machine_type">Clamp Options by Machine Type</a>
+  </li>
+  <li level="1">
+   <a href="#_globtests_fixture_18_tests">GlobTests Fixture (18 tests)</a>
+  </li>
+  <li level="2">
+   <a href="#_tool_list_and_filter_behavior">Tool List and Filter Behavior</a>
+  </li>
+  <li level="2">
+   <a href="#_new_setup_and_station_options">New Setup and Station Options</a>
+  </li>
+  <li level="2">
+   <a href="#_flip_tool_symmetry_rules">Flip Tool Symmetry Rules</a>
+  </li>
+  <li level="2">
+   <a href="#_segment_selection_and_display">Segment Selection and Display</a>
+  </li>
+  <li level="2">
+   <a href="#_visual_styling_constraints">Visual Styling Constraints</a>
+  </li>
+  <li level="2">
+   <a href="#_segment_flipping_across_mount_pairs">Segment Flipping Across Mount Pairs</a>
+  </li>
+  <li level="2">
+   <a href="#_multi_v_die_options">Multi-V Die Options</a>
+  </li>
+  <li level="2">
+   <a href="#_double_v_adapter_shift_behavior">Double V Adapter Shift Behavior</a>
+  </li>
+  <li level="2">
+   <a href="#_multi_setup_and_dv_setup_interaction">Multi-Setup and DV Setup Interaction</a>
+  </li>
+  <li level="2">
+   <a href="#_machine_configuration">Machine Configuration</a>
+  </li>
+  <li level="1">
+   <a href="#_summary_statistics">Summary Statistics</a>
+  </li>
+  <li level="2">
+   <a href="#_by_fixture">By Fixture</a>
+  </li>
+  <li level="2">
+   <a href="#_by_category_conceptual">By Category (Conceptual)</a>
+  </li>
+ </ul>
+</aside>
+
+                </div>
+            </div>
+            <nav class="pagination">
+ <span class="prev"><a href="scripts.html">Script Commands</a></span>
+ <span class="next"><a href="lasertooling.html">LaserTooling.cs Test Steps</a></span>
+</nav>
+
+        </div>
+        <div id="searchbox">
+          <input id="searchinput" type="search" placeholder="Search... (Key: F)" autocomplete="false" size="30" />
+          <ul id="results"></ul>
+        </div>
+    </div>
+    <footer id="site-footer">
+        <div class="left">
+            <p>&nbsp;&nbsp;Copyright &copy; 2025 TRUMPF Metamation. All rights reserved.</p>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <p>Compiled by Bento</p>
+            <img src="../res/bento.png" />
+        </div>
+    </footer>
+    <script>
+        // The baseLevel is used to assign the search result pages.
+        var baseLevel = "../res".replace("res", "");
+    </script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="../res/index.js"></script>
+    <script src="../res/files.js"></script>
+    <script src="../res/site.js"></script>
+
+    
+</body>
+</html>

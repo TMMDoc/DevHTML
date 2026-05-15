@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../res/sibling.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  <title>3d party software</title>
+  <title>Command Cookbook</title>
 </head>
 <body id="site-body" onload="sLoaded()">
     <header id="site-header">
@@ -124,26 +124,26 @@
    </ul>
   </li>
   <li>
-   <button class="tree closed"></button>
-   <a href="../fluxtester/index.html">FluxTester</a>
-   <ul class="hide">
-    <li><button class="tree blank"></button><a href="../fluxtester/introscript.html">Commands and Scripts</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/commands.html">Command Cookbook</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/scripts.html">Script Commands</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/bendtoolingtst.html">BendTooling.cs Test Inventory</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/lasertooling.html">LaserTooling.cs Test Steps</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/lasertoolingcookbook.html">Fluxtester Recipe Book</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/nesting.html">Nesting.cs Overview</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/nestingcookbook.html">Nesting.cs Recipe Book</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/job.html">Job.cs Overview</a></li>
-    <li><button class="tree blank"></button><a href="../fluxtester/jobcookbook.html">Job.cs Recipe Book</a></li>
+   <button class="tree open"></button>
+   <a href="index.html">FluxTester</a>
+   <ul>
+    <li><button class="tree blank"></button><a href="introscript.html">Commands and Scripts</a></li>
+    <li><button class="tree blank"></button><a class="active" href="commands.html">Command Cookbook</a></li>
+    <li><button class="tree blank"></button><a href="scripts.html">Script Commands</a></li>
+    <li><button class="tree blank"></button><a href="bendtoolingtst.html">BendTooling.cs Test Inventory</a></li>
+    <li><button class="tree blank"></button><a href="lasertooling.html">LaserTooling.cs Test Steps</a></li>
+    <li><button class="tree blank"></button><a href="lasertoolingcookbook.html">Fluxtester Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="nesting.html">Nesting.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="nestingcookbook.html">Nesting.cs Recipe Book</a></li>
+    <li><button class="tree blank"></button><a href="job.html">Job.cs Overview</a></li>
+    <li><button class="tree blank"></button><a href="jobcookbook.html">Job.cs Recipe Book</a></li>
    </ul>
   </li>
   <li>
-   <button class="tree open"></button>
-   <a class="active" href="index.html">3d party software</a>
-   <ul>
-    <li><button class="tree blank"></button><a href="python.html">Python</a></li>
+   <button class="tree closed"></button>
+   <a href="../software/index.html">3d party software</a>
+   <ul class="hide">
+    <li><button class="tree blank"></button><a href="../software/python.html">Python</a></li>
    </ul>
   </li>
   <li>
@@ -214,33 +214,100 @@
   </button>
  </div>
  <div>
-  <a href="index.html">3d party software</a>
+  <a href="index.html">FluxTester</a>
+ </div>
+ <div>/</div>
+ <div>
+  <a href="commands.html">Command Cookbook</a>
  </div>
 </nav>
 
             <div id="site-crumb-below">
                 <div id="site-toc-left">
                     <article id="article">
-                        <h1>3d party software</h1>
+                        <h1>Command Cookbook</h1>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>If specialized third-party software is required, please contact <a href="mailto:it.tinc@trumpf.com">TINC-IT</a> for assistance.</p>
+<p>This cookbook summarizes the command patterns</p>
 </div>
-<div class="paragraph">
-<p>For installation and configuration, if no specific security guidelines are provided, refer to Chapter 8 - <strong>Use of Third-Party Software Components</strong> in the security policy GL70.G200.</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_quick_command_surfaces">Quick Command Surfaces</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code>RunScript("&#8230;&#8203;")</code>: execute Flux API commands without returning a value.</p>
+</li>
+<li>
+<p><code>RunScriptWithOutput("&#8230;&#8203;")</code>: execute commands and capture <code>result</code> string output.</p>
+</li>
+<li>
+<p><code>RunScript(List&lt;string&gt;)</code>: execute a multi-line command sequence.</p>
+</li>
+<li>
+<p><code>Type("&#8230;&#8203;")</code> and <code>Type(KeyShort.XXX)</code>: trigger keyboard-driven commands in the UI.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keyboard_command_cheatsheet">Keyboard Command Cheatsheet</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The document is available at the following link: (<a href="https://trumpf.sharepoint.com/sites/trumpfdocumentmgmt/freigegebene%20dokumente/forms/allitems.aspx?id=%2fsites%2ftrumpfdocumentmgmt%2ffreigegebene%20dokumente%2fgroup%2fgl70%5fg200%5fsecurity%5fpolicy%5fsecure%5fsoftware%5fdevelopment%2edocx&amp;parent=%2f">GL70.G200 Security Policy - Secure Software Development</a>).</p>
+<p>Common command keys used throughout the file:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Type("b")</code>: switch/trigger bend workflow or bend tech actions.</p>
+</li>
+<li>
+<p><code>Type("c")</code>: trigger post-process / NC generation style command path.</p>
+</li>
+<li>
+<p><code>Type("w")</code>: open or use workflow panel actions.</p>
+</li>
+<li>
+<p><code>Type("1")</code>, <code>Type("3")</code>: numeric workflow responses in bend prompts.</p>
+</li>
+<li>
+<p><code>Type(KeyShort.TAB)</code>: commit edited field values.</p>
+</li>
+<li>
+<p><code>Type(KeyShort.ESC)</code>: close/cancel active UI mode.</p>
+</li>
+<li>
+<p><code>Type(VirtualKeyShort.F11)</code>: toggle fullscreen in one test flow.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
                     </article>
                 </div>
                 <div id="site-toc-holder">
-                    <aside id="site-toc"></aside>
+                    <aside id="site-toc">
+ <h3>Contents</h3>
+ <ul>
+  <li level="1">
+   <a href="#_quick_command_surfaces">Quick Command Surfaces</a>
+  </li>
+  <li level="1">
+   <a href="#_keyboard_command_cheatsheet">Keyboard Command Cheatsheet</a>
+  </li>
+ </ul>
+</aside>
+
                 </div>
             </div>
             <nav class="pagination">
- <span class="prev"><a href="../fluxtester/jobcookbook.html">Job.cs Recipe Book</a></span>
- <span class="next"><a href="python.html">Python</a></span>
+ <span class="prev"><a href="introscript.html">Commands and Scripts</a></span>
+ <span class="next"><a href="scripts.html">Script Commands</a></span>
 </nav>
 
         </div>
